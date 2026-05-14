@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://leonardwwq.github.io';
+const demoPath = '/prototypes/波波/前台/首页.html';
+const demoUrl = `${site}${demoPath}`;
+---
+
+<BaseLayout
+  title="波波微博数据分析平台 · 作品"
+  description="微博数据分析平台案例：背景、目标、过程、结果与嵌入式原型预览。"
+>
+  <article>
+    <h1 class="page-title">波波微博数据分析平台</h1>
+    <div class="blockquote">为运营与内容团队提供可解释的微博话题监测与分析能力，缩短从「感知热点」到「判断行动」的路径。</div>
+
+    <h2 class="section-title">背景</h2>
+    <div class="panel prose">
+      <p>
+        描述问题场景：微博话题传播快、信息噪声高；业务方需要在有限时间内判断话题价值、内容结构与潜在风险。说明用户/业务处境，以及为什么此时必须做这套能力。
+      </p>
+    </div>
+
+    <h2 class="section-title">目标</h2>
+    <div class="panel prose">
+      <p>
+        列出可对齐或可衡量的目标：例如核心监测指标、必须覆盖的角色任务、上线窗口、成功判据（即便偏定性也要写清「怎样算做对」）。
+      </p>
+    </div>
+
+    <h2 class="section-title">过程</h2>
+    <div class="panel prose">
+      <p>
+        行动叙事：调研结论、信息架构与关键页面、与设计与研发的协作方式、你做的取舍（范围砍了什么、为什么）。若原「约束 / 我的角色 / 反思」有信息，合并进本节子段落即可。
+      </p>
+    </div>
+
+    <h2 class="section-title">结果</h2>
+    <div class="panel prose">
+      <p>上线或交付结果：数据、反馈或定性结论；若无硬数据，写清产出物（原型、PRD、指标体系等）与复盘。</p>
+    </div>
+
+    <h2 class="section-title">嵌入式预览</h2>
+    <p class="muted">下方为固定高度嵌入预览；若外链禁止嵌入，可改为全宽截图并保留文末完整 URL。</p>
+    <div class="embed">
+      <iframe src={demoPath} title="波波微博数据分析前台原型预览" loading="lazy"></iframe>
+    </div>
+
+    <h2 class="section-title">完整演示链接</h2>
+    <div class="panel">
+      <p style="margin: 0 0 0.5rem" class="muted">新窗口打开完整演示（可复制分享）：</p>
+      <p style="margin: 0">
+        <a class="link-external" href={demoUrl} target="_blank" rel="noopener noreferrer">{demoUrl}</a>
+      </p>
+    </div>
+  </article>
+</BaseLayout>

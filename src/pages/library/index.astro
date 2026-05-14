@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="资料库 · 王伟权" description="按分类整理的阅读材料：元数据与要点摘录。">
+  <h1 class="page-title">资料库</h1>
+  <p class="page-sub">
+    每条材料归属一个主题分类；书目/文献元数据格式不限（列表、表格、一段话均可）；要点摘录用短引述与个人转述，避免大段复制原文。论文与电子书以外链溯源为主。
+  </p>
+
+  <section class="library-category">
+    <h2>用户研究</h2>
+    <div class="entry">
+      <div class="meta-line">示例 · 书名 / 作者 / 年份 · ebook</div>
+      <p class="muted" style="margin: 0">可替换为任意排版：表格、YAML 导出、或出版社链接。</p>
+      <p class="section-title" style="margin: 0.75rem 0 0.35rem; font-size: 0.95rem">要点摘录</p>
+      <ul>
+        <li>论点一：用你自己的话概括，并标注页码或章节（如有）。</li>
+        <li>论点二：可引用结论 + 对你工作的启发。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="library-category">
+    <h2>决策研究</h2>
+    <div class="entry">
+      <div class="meta-line">示例 · 论文标题 · arXiv:xxxx.xxxxx · 202x</div>
+      <p class="section-title" style="margin: 0.75rem 0 0.35rem; font-size: 0.95rem">要点摘录</p>
+      <ul>
+        <li>方法或结论摘要一条。</li>
+        <li>可迁移到产品决策的 takeaway 一条。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="library-category">
+    <h2>人工智能</h2>
+    <div class="entry">
+      <div class="meta-line">在此追加你的阅读版图；分类可随主题增减。</div>
+      <ul>
+        <li>占位：等你填入材料与摘录。</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

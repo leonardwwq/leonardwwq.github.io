@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="联系与简历 · 王伟权" description="邮箱、社交与简历下载入口。">
+  <h1 class="page-title">联系与简历</h1>
+  <p class="page-sub">把转化路径放短：一个明确的邮箱、可选社交链接，以及简历 PDF 固定入口。</p>
+
+  <div class="panel prose">
+    <h2 class="section-title" style="margin-top: 0">邮箱</h2>
+    <p>将 <span class="mono" style="font-family: var(--mono)">yourname@example.com</span> 替换为你的联系邮箱。</p>
+  </div>
+
+  <div class="panel prose">
+    <h2 class="section-title" style="margin-top: 0">社交</h2>
+    <p>可选：LinkedIn、即刻、GitHub 等外链列表。</p>
+  </div>
+
+  <div class="panel">
+    <h2 class="section-title" style="margin-top: 0">简历 PDF</h2>
+    <p class="muted" style="margin-top: 0">与站点内固定路径一致，便于分享与更新文件名。</p>
+    <div class="cta-row" style="margin-top: 0.75rem">
+      <a class="btn btn-primary" href="/profile/202605-第三版-王伟权-产品经理.pdf" target="_blank" rel="noopener"
+        >打开简历 PDF</a
+      >
+    </div>
+  </div>
+</BaseLayout>

@@ -285,6 +285,33 @@ a:hover {
   color: var(--muted);
 }
 
+.flow-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flow-list li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.flow-list li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.flow-list a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(94, 234, 212, 0.35);
+  text-underline-offset: 0.15em;
+}
+
+.flow-list a:hover {
+  text-decoration-color: rgba(94, 234, 212, 0.75);
+}
+
 .library-category {
   margin-top: 2rem;
 }

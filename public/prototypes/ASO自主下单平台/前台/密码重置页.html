@@ -1,0 +1,544 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>密码重置页</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/密码重置页/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-3.2.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/密码重置页/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- 需求清单 (Group) -->
+      <div id="u289" class="ax_default" data-label="需求清单" data-left="1460" data-top="0" data-width="936" data-height="3519">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u290" class="ax_default box_1">
+          <div id="u290_div" class=""></div>
+          <div id="u290_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+          </div>
+        </div>
+
+        <!-- 板块一 (Group) -->
+        <div id="u291" class="ax_default" data-label="板块一" data-left="1512" data-top="31" data-width="863" data-height="913">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u292" class="ax_default heading_3">
+            <div id="u292_div" class=""></div>
+            <div id="u292_text" class="text ">
+              <p><span style="font-family:'PingFangSC-Semibold', 'PingFang SC Semibold', 'PingFang SC', sans-serif;font-weight:650;">需求说明：</span></p><p><span style="font-family:'Arial-BoldMT', 'Arial Bold', 'Arial', sans-serif;font-weight:700;"><br></span></p><p><span style="font-family:'Arial-BoldMT', 'Arial Bold', 'Arial', sans-serif;font-weight:700;"><br></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u293" class="ax_default heading_3">
+            <div id="u293_div" class=""></div>
+            <div id="u293_text" class="text ">
+              <p><span>一、返回</span></p><p><span>1.1、点击 【Log in】 返回至登录页</span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u294" class="ax_default heading_3">
+            <div id="u294_div" class=""></div>
+            <div id="u294_text" class="text ">
+              <p><span>二、验证码</span></p><p><span>2.1、触发条件：邮箱已填写完成，且格式校验通过。如果不能满足则无法触发，无法触发样式参照设计稿</span></p><p><span>2.2、触发后向用户填写的邮箱发送验证码。验证码倒计时：Resend in ’xx’s</span></p><p><span>2.3、即时校验：当失去焦点时进行校验。校验失败提示文案：Verification failed</span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u295" class="ax_default paragraph">
+            <div id="u295_div" class=""></div>
+            <div id="u295_text" class="text ">
+              <p><span>一、格式校验：</span></p><p><span>1.1、邮箱格式校验：^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$</span></p><p><span>当邮箱（未注册）没重复校验提醒文案：</span></p><p><span>‘’’</span></p><p><span>This email is not registered. Please try:</span></p><p><span><br></span></p><p><span style="color:#169BD5;">Sign Up</span><span> for a new account</span></p><p><span>‘’’</span></p><p><span><br></span></p><p><span>邮箱格式校验提醒文案：请输入正确的邮箱地址/Please enter a valid email</span></p><p><span><br></span></p><p><span>1.2、密码格式校验：需要同时包含 大小写字母和数字 大于等于8位小于等于20位</span></p><p><span>密码校验提醒文案：请输入正确的密码/Please enter a valid password</span></p><p><span><br></span></p><p><span>1.3、密码确认：需与密码完全一致</span></p><p><span>提醒文案：请输入正确的密码/Please enter a valid password</span></p><p><span><br></span></p><p><span>1.4、校验提醒事件：当输入框失去焦点，且格式校验不通过时，需要进行错误提醒</span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u296" class="ax_default heading_3">
+            <div id="u296_div" class=""></div>
+            <div id="u296_text" class="text ">
+              <p><span>三、流程</span></p><p><span>3.1、</span><span style="text-decoration:line-through ;">先进行验证码校验完成后。进入密码重置。</span><span>验证直接同框完成即可。</span></p><p><span>3.2、密码重置，密码重置成功后，进行弱提醒并自动登录。弱提醒内容：</span></p><p><span>All Set!</span></p><p><span>You will be automatically logged in and redirected in 3 seconds.</span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u297" class="ax_default paragraph">
+            <div id="u297_div" class=""></div>
+            <div id="u297_text" class="text ">
+              <p><span>To 设计：</span></p><p><span>1、弱提醒样式</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 视觉图占位 (Group) -->
+      <div id="u298" class="ax_default" data-label="视觉图占位" data-left="0" data-top="0" data-width="720" data-height="800">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u299" class="ax_default box_2">
+          <div id="u299_div" class=""></div>
+          <div id="u299_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u300" class="ax_default image">
+          <img id="u300_img" class="img " src="images/登录页/u156.svg"/>
+          <div id="u300_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (logo) -->
+
+        <!-- Unnamed (Image) -->
+        <div id="u302" class="ax_default image">
+          <img id="u302_img" class="img " src="images/登录页/u158.png"/>
+          <div id="u302_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+          </div>
+        </div>
+        <div id="u301" style="display:none; visibility:hidden;"></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u303" class="ax_default" data-left="929" data-top="83" data-width="274" data-height="72">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u304" class="ax_default heading_3">
+          <div id="u304_div" class=""></div>
+          <div id="u304_text" class="text ">
+            <p><span>Reset Password</span></p>
+          </div>
+        </div>
+
+        <!-- 同意 (Group) -->
+        <div id="u305" class="ax_default" data-label="同意" data-left="929" data-top="130" data-width="274" data-height="25">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u306" class="ax_default link_button">
+            <div id="u306_div" class=""></div>
+            <div id="u306_text" class="text ">
+              <p><span style="text-decoration:underline ;">Log In</span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u307" class="ax_default heading_3">
+            <div id="u307_div" class=""></div>
+            <div id="u307_text" class="text ">
+              <p><span>I remember my password.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 重置密码 (Dynamic Panel) -->
+      <div id="u308" class="ax_default" data-label="重置密码">
+        <div id="u308_state0" class="panel_state" data-label="第一步" style="">
+          <div id="u308_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (Group) -->
+            <div id="u309" class="ax_default" data-left="0" data-top="0" data-width="600" data-height="379">
+
+              <!-- 邮箱 (Group) -->
+              <div id="u310" class="ax_default" data-label="邮箱" data-left="0" data-top="0" data-width="600" data-height="81">
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u311" class="ax_default heading_3">
+                  <div id="u311_div" class=""></div>
+                  <div id="u311_text" class="text ">
+                    <p><span style="color:#FF0E0E;">*</span><span> Email address</span></p>
+                  </div>
+                </div>
+
+                <!-- Unnamed (Group) -->
+                <div id="u312" class="ax_default" data-left="0" data-top="31" data-width="600" data-height="50">
+
+                  <!-- Unnamed (Rectangle) -->
+                  <div id="u313" class="ax_default box_1">
+                    <img id="u313_img" class="img " src="images/登录页/u163.svg"/>
+                    <div id="u313_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Shape) -->
+                  <div id="u314" class="ax_default shape">
+                    <img id="u314_img" class="img " src="images/登录页/u164.svg"/>
+                    <div id="u314_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Text Field) -->
+                  <div id="u315" class="ax_default text_field">
+                    <div id="u315_div" class=""></div>
+                    <input id="u315_input" type="text" value="" class="u315_input"/>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 密码 (Group) -->
+              <div id="u316" class="ax_default" data-label="密码" data-left="0" data-top="298" data-width="600" data-height="81">
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u317" class="ax_default heading_3">
+                  <div id="u317_div" class=""></div>
+                  <div id="u317_text" class="text ">
+                    <p><span style="color:#FF0E0E;">*</span><span> Email verification code</span></p>
+                  </div>
+                </div>
+
+                <!-- Unnamed (Group) -->
+                <div id="u318" class="ax_default" data-left="0" data-top="329" data-width="600" data-height="50">
+
+                  <!-- Unnamed (Rectangle) -->
+                  <div id="u319" class="ax_default box_1">
+                    <img id="u319_img" class="img " src="images/登录页/u163.svg"/>
+                    <div id="u319_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Text Field) -->
+                  <div id="u320" class="ax_default text_field">
+                    <div id="u320_div" class=""></div>
+                    <input id="u320_input" type="text" value="" class="u320_input"/>
+                  </div>
+
+                  <!-- Unnamed (Shape) -->
+                  <div id="u321" class="ax_default shape">
+                    <img id="u321_img" class="img " src="images/注册页/u287.svg"/>
+                    <div id="u321_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Rectangle) -->
+                  <div id="u322" class="ax_default link_button">
+                    <div id="u322_div" class=""></div>
+                    <div id="u322_text" class="text ">
+                      <p><span>Get Code</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 密码组 (Group) -->
+              <div id="u323" class="ax_default" data-label="密码组" data-left="0" data-top="96" data-width="600" data-height="182">
+
+                <!-- 密码 (Group) -->
+                <div id="u324" class="ax_default" data-label="密码" data-left="0" data-top="96" data-width="600" data-height="81">
+
+                  <!-- Unnamed (Rectangle) -->
+                  <div id="u325" class="ax_default heading_3">
+                    <div id="u325_div" class=""></div>
+                    <div id="u325_text" class="text ">
+                      <p><span style="color:#FF0E0E;">*</span><span> New Password</span></p>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Group) -->
+                  <div id="u326" class="ax_default" data-left="0" data-top="127" data-width="600" data-height="50">
+
+                    <!-- Unnamed (Rectangle) -->
+                    <div id="u327" class="ax_default box_1">
+                      <img id="u327_img" class="img " src="images/登录页/u163.svg"/>
+                      <div id="u327_text" class="text " style="display:none; visibility: hidden">
+                        <p></p>
+                      </div>
+                    </div>
+
+                    <!-- Unnamed (Text Field) -->
+                    <div id="u328" class="ax_default text_field">
+                      <div id="u328_div" class=""></div>
+                      <input id="u328_input" type="text" value="" class="u328_input"/>
+                    </div>
+
+                    <!-- Unnamed (Group) -->
+                    <div id="u329" class="ax_default" data-left="24" data-top="140" data-width="25" data-height="25">
+
+                      <!-- Unnamed (Shape) -->
+                      <div id="u330" class="ax_default shape">
+                        <img id="u330_img" class="img " src="images/登录页/u172.svg"/>
+                        <div id="u330_text" class="text " style="display:none; visibility: hidden">
+                          <p></p>
+                        </div>
+                      </div>
+
+                      <!-- Unnamed (Shape) -->
+                      <div id="u331" class="ax_default shape">
+                        <img id="u331_img" class="img " src="images/登录页/u173.svg"/>
+                        <div id="u331_text" class="text " style="display:none; visibility: hidden">
+                          <p></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Unnamed (Shape) -->
+                    <div id="u332" class="ax_default shape">
+                      <img id="u332_img" class="img " src="images/登录页/u174.svg"/>
+                      <div id="u332_text" class="text " style="display:none; visibility: hidden">
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 密码 (Group) -->
+                <div id="u333" class="ax_default" data-label="密码" data-left="0" data-top="197" data-width="600" data-height="81">
+
+                  <!-- Unnamed (Rectangle) -->
+                  <div id="u334" class="ax_default heading_3">
+                    <div id="u334_div" class=""></div>
+                    <div id="u334_text" class="text ">
+                      <p><span style="color:#FF0E0E;">*</span><span> Confirm</span></p>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Group) -->
+                  <div id="u335" class="ax_default" data-left="0" data-top="228" data-width="600" data-height="50">
+
+                    <!-- Unnamed (Rectangle) -->
+                    <div id="u336" class="ax_default box_1">
+                      <img id="u336_img" class="img " src="images/登录页/u163.svg"/>
+                      <div id="u336_text" class="text " style="display:none; visibility: hidden">
+                        <p></p>
+                      </div>
+                    </div>
+
+                    <!-- Unnamed (Text Field) -->
+                    <div id="u337" class="ax_default text_field">
+                      <div id="u337_div" class=""></div>
+                      <input id="u337_input" type="text" value="" class="u337_input"/>
+                    </div>
+
+                    <!-- Unnamed (Group) -->
+                    <div id="u338" class="ax_default" data-left="24" data-top="241" data-width="25" data-height="25">
+
+                      <!-- Unnamed (Shape) -->
+                      <div id="u339" class="ax_default shape">
+                        <img id="u339_img" class="img " src="images/登录页/u172.svg"/>
+                        <div id="u339_text" class="text " style="display:none; visibility: hidden">
+                          <p></p>
+                        </div>
+                      </div>
+
+                      <!-- Unnamed (Shape) -->
+                      <div id="u340" class="ax_default shape">
+                        <img id="u340_img" class="img " src="images/登录页/u173.svg"/>
+                        <div id="u340_text" class="text " style="display:none; visibility: hidden">
+                          <p></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Unnamed (Shape) -->
+                    <div id="u341" class="ax_default shape">
+                      <img id="u341_img" class="img " src="images/登录页/u174.svg"/>
+                      <div id="u341_text" class="text " style="display:none; visibility: hidden">
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u342" class="ax_default primary_button ax_default_hidden" style="display:none; visibility: hidden">
+              <div id="u342_div" class=""></div>
+              <div id="u342_text" class="text ">
+                <p><span>Reset Password</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u343" class="ax_default primary_button">
+              <div id="u343_div" class=""></div>
+              <div id="u343_text" class="text ">
+                <p><span>Reset Password</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="u308_state1" class="panel_state" data-label="第二步" style="visibility: hidden;">
+          <div id="u308_state1_content" class="panel_state_content">
+
+            <!-- 密码组 (Group) -->
+            <div id="u344" class="ax_default" data-label="密码组" data-left="0" data-top="0" data-width="600" data-height="182">
+
+              <!-- 密码 (Group) -->
+              <div id="u345" class="ax_default" data-label="密码" data-left="0" data-top="0" data-width="600" data-height="81">
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u346" class="ax_default heading_3">
+                  <div id="u346_div" class=""></div>
+                  <div id="u346_text" class="text ">
+                    <p><span style="color:#FF0E0E;">*</span><span> New Password</span></p>
+                  </div>
+                </div>
+
+                <!-- Unnamed (Group) -->
+                <div id="u347" class="ax_default" data-left="0" data-top="31" data-width="600" data-height="50">
+
+                  <!-- Unnamed (Rectangle) -->
+                  <div id="u348" class="ax_default box_1">
+                    <img id="u348_img" class="img " src="images/登录页/u163.svg"/>
+                    <div id="u348_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Text Field) -->
+                  <div id="u349" class="ax_default text_field">
+                    <div id="u349_div" class=""></div>
+                    <input id="u349_input" type="text" value="" class="u349_input"/>
+                  </div>
+
+                  <!-- Unnamed (Group) -->
+                  <div id="u350" class="ax_default" data-left="24" data-top="44" data-width="25" data-height="25">
+
+                    <!-- Unnamed (Shape) -->
+                    <div id="u351" class="ax_default shape">
+                      <img id="u351_img" class="img " src="images/登录页/u172.svg"/>
+                      <div id="u351_text" class="text " style="display:none; visibility: hidden">
+                        <p></p>
+                      </div>
+                    </div>
+
+                    <!-- Unnamed (Shape) -->
+                    <div id="u352" class="ax_default shape">
+                      <img id="u352_img" class="img " src="images/登录页/u173.svg"/>
+                      <div id="u352_text" class="text " style="display:none; visibility: hidden">
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Shape) -->
+                  <div id="u353" class="ax_default shape">
+                    <img id="u353_img" class="img " src="images/登录页/u174.svg"/>
+                    <div id="u353_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 密码 (Group) -->
+              <div id="u354" class="ax_default" data-label="密码" data-left="0" data-top="101" data-width="600" data-height="81">
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u355" class="ax_default heading_3">
+                  <div id="u355_div" class=""></div>
+                  <div id="u355_text" class="text ">
+                    <p><span style="color:#FF0E0E;">*</span><span> Confirm</span></p>
+                  </div>
+                </div>
+
+                <!-- Unnamed (Group) -->
+                <div id="u356" class="ax_default" data-left="0" data-top="132" data-width="600" data-height="50">
+
+                  <!-- Unnamed (Rectangle) -->
+                  <div id="u357" class="ax_default box_1">
+                    <img id="u357_img" class="img " src="images/登录页/u163.svg"/>
+                    <div id="u357_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Text Field) -->
+                  <div id="u358" class="ax_default text_field">
+                    <div id="u358_div" class=""></div>
+                    <input id="u358_input" type="text" value="" class="u358_input"/>
+                  </div>
+
+                  <!-- Unnamed (Group) -->
+                  <div id="u359" class="ax_default" data-left="24" data-top="145" data-width="25" data-height="25">
+
+                    <!-- Unnamed (Shape) -->
+                    <div id="u360" class="ax_default shape">
+                      <img id="u360_img" class="img " src="images/登录页/u172.svg"/>
+                      <div id="u360_text" class="text " style="display:none; visibility: hidden">
+                        <p></p>
+                      </div>
+                    </div>
+
+                    <!-- Unnamed (Shape) -->
+                    <div id="u361" class="ax_default shape">
+                      <img id="u361_img" class="img " src="images/登录页/u173.svg"/>
+                      <div id="u361_text" class="text " style="display:none; visibility: hidden">
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Shape) -->
+                  <div id="u362" class="ax_default shape">
+                    <img id="u362_img" class="img " src="images/登录页/u174.svg"/>
+                    <div id="u362_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u363" class="ax_default primary_button">
+              <div id="u363_div" class=""></div>
+              <div id="u363_text" class="text ">
+                <p><span>Comfirm</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="resources/scripts/axure/ios.js"></script>
+  </body>
+</html>

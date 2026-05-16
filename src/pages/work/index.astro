@@ -1,20 +1,60 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { workCategories, workProjects } from '../../data/workProjects';
 ---
 
-<BaseLayout title="作品 · 王伟权" description="案例索引：封面式卡片进入详情。">
+<BaseLayout title="作品 · 王伟权" description="案例索引：按平台案例、原型演示与规划中分组。">
   <h1 class="page-title">作品</h1>
-  <p class="page-sub">每条案例用一句话说明价值主张；详情页采用统一的背景 / 目标 / 过程 / 结果结构，并附可交互预览与完整链接。</p>
+  <p class="page-sub">
+    公开原型托管于 <code>public/prototypes/</code>
+    ，本站条目与目录结构对齐：每条案例进入详情后可嵌入预览或查看完整链接（规划中条目请先补齐原型文件）。
+  </p>
 
-  <div class="card-grid">
-    <a class="card" href="/work/bobo-weibo" style="text-decoration: none; color: inherit">
-      <h3>波波微博数据分析平台</h3>
-      <p>面向微博生态的数据监测与分析前台：帮助业务快速理解话题热度与内容结构。</p>
-      <div class="meta">
-        <span class="tag">数据产品</span>
-        <span class="tag">B 端</span>
-        <span class="tag">原型演示</span>
-      </div>
-    </a>
-  </div>
+  {
+    workCategories.map((cat) => {
+      const items = workProjects.filter((p) => p.categoryId === cat.id);
+      if (items.length === 0) return null;
+      return (
+        <section class="work-category">
+          <h2 class="section-title">{cat.title}</h2>
+          <p class="muted work-category-intro">{cat.intro}</p>
+          <div class="card-grid">
+            {items.map((p) => (
+              <a class="card" href={`/work/${p.slug}`} style="text-decoration: none; color: inherit">
+                <h3>{p.title}</h3>
+                <p>{p.description}</p>
+                <div class="meta">
+                  {p.tags.map((t) => (
+                    <span class="tag">{t}</span>
+                  ))}
+                  {!p.demoPath ? <span class="tag">待接入预览</span> : null}
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      );
+    })
+  }
 </BaseLayout>
+
+<style>
+  .work-category {
+    margin-top: 2.25rem;
+  }
+
+  .work-category-intro {
+    margin: -0.35rem 0 0;
+    max-width: 52rem;
+    line-height: 1.65;
+  }
+
+  .page-sub code {
+    font-family: var(--mono);
+    font-size: 0.86em;
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+  }
+</style>

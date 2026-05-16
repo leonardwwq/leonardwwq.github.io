@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="59px" height="21px" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="1202.96018811697" y1="129.094786729858" x2="1332.4034815895" y2="129.094786729858" id="LinearGradient168">
+      <stop id="Stop169" stop-color="#ffffff" offset="0" />
+      <stop id="Stop170" stop-color="#f85a00" stop-opacity="0.8" offset="1" />
+    </linearGradient>
+    <filter x="1275px" y="118px" width="59px" height="21px" filterUnits="userSpaceOnUse" id="filter171">
+      <feOffset dx="-1" dy="0" in="SourceAlpha" result="shadowOffsetInner" />
+      <feGaussianBlur stdDeviation="1" in="shadowOffsetInner" result="shadowGaussian" />
+      <feComposite in2="shadowGaussian" operator="atop" in="SourceAlpha" result="shadowComposite" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.874509803921569  0 0 0 0 0.494117647058824  0 0 0 0 0.494117647058824  0 0 0 0.349019607843137 0  " in="shadowComposite" />
+    </filter>
+    <g id="widget172">
+      <path d="M 1278 120  L 1328 120  A 5 5 0 0 1 1333 125 L 1333 132  A 5 5 0 0 1 1328 137 L 1278 137  L 1278 120  Z " fill-rule="nonzero" fill="url(#LinearGradient168)" stroke="none" />
+    </g>
+  </defs>
+  <g transform="matrix(1 0 0 1 -1275 -118 )">
+    <use xlink:href="#widget172" filter="url(#filter171)" />
+    <use xlink:href="#widget172" />
+  </g>
+</svg>

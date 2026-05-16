@@ -7,6 +7,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="王伟权的产品作品集：案例、思考摘录与联系方式。聚焦数据驱动与人机协同的产品交付。"
 >
   <section class="hero">
+    <p class="eyebrow">产品经理作品集</p>
     <h1>数据与人机协同，支撑从假设到交付。</h1>
     <p class="lede">这里进入案例与思考库；想认识我，从关于我开始。</p>
     <div class="cta-row">
@@ -16,14 +17,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <section class="panel">
+  <section class="panel panel-start">
     <h2 class="section-title" style="margin-top: 0">从这里开始</h2>
-    <ul class="muted flow-list">
-      <li><strong>首页</strong> — 你能得到什么</li>
-      <li><strong><a href="/work">案例叙事</a></strong> — 看我如何解决问题</li>
-      <li><strong><a href="/library">思考库</a></strong> — 我持续这样思考</li>
-      <li><strong><a href="/about">关于我</a></strong> — 所以我是这样的人</li>
-      <li><strong><a href="/contact">低摩擦联系</a></strong> — 让我们开始一次微型协作</li>
+    <ul class="start-list">
+      <li>
+        <a class="start-list__item" href="/">
+          <span class="start-list__title">首页</span>
+          <span class="start-list__desc">你能得到什么</span>
+        </a>
+      </li>
+      <li>
+        <a class="start-list__item" href="/work">
+          <span class="start-list__title">案例叙事</span>
+          <span class="start-list__desc">看我如何解决问题</span>
+        </a>
+      </li>
+      <li>
+        <a class="start-list__item" href="/library">
+          <span class="start-list__title">思考库</span>
+          <span class="start-list__desc">我持续这样思考</span>
+        </a>
+      </li>
+      <li>
+        <a class="start-list__item" href="/about">
+          <span class="start-list__title">关于我</span>
+          <span class="start-list__desc">所以我是这样的人</span>
+        </a>
+      </li>
+      <li>
+        <a class="start-list__item" href="/contact">
+          <span class="start-list__title">低摩擦联系</span>
+          <span class="start-list__desc">让我们开始一次微型协作</span>
+        </a>
+      </li>
     </ul>
   </section>
 </BaseLayout>

@@ -1,6 +1,22 @@
 /** 与 `public/prototypes/` 下的目录对应；用于 `/work` 列表与 `/work/[slug]` 详情。 */
 
+import { axureDemoUrls } from './axureDemoUrls';
+
 export type WorkCategoryId = 'platform' | 'prototype' | 'planned';
+
+/** 各段可含 <strong> 标记关键词，详情页以 HTML 渲染 */
+export type WorkCaseStudy = {
+  background: string;
+  goals: string;
+  process: string;
+  results: string;
+};
+
+/** 仅链接跳转、不做 iframe 嵌入的附加原型（如移动端、后台） */
+export type WorkDemoLink = {
+  label: string;
+  path: string;
+};
 
 export type WorkProject = {
   slug: string;
@@ -13,9 +29,15 @@ export type WorkProject = {
   categoryId: WorkCategoryId;
   /** 相对站点根路径的可嵌入 HTML；暂无文件则为 null */
   demoPath: string | null;
+  /** 完整 https URL；Axure 云等站外演示，不在本站 iframe */
+  demoExternalUrl?: string | null;
   iframeTitle: string;
   /** 便于「规划中」条目指向磁盘路径说明 */
   prototypesFolder: string;
+  /** 详情页案例正文；未填则使用页面内模板占位 */
+  caseStudy?: WorkCaseStudy;
+  /** 详情页原型区下方的新窗口链接（不嵌入 iframe） */
+  demoLinks?: WorkDemoLink[];
 };
 
 export const workCategories: {
@@ -25,13 +47,13 @@ export const workCategories: {
 }[] = [
   {
     id: 'platform',
-    title: '平台与前台',
-    intro: '完整业务前台或平台型需求：与公开原型目录一一对应。',
+    title: '完整业务系统',
+    intro: '此模块为本人主导的完整业务系统，以TOB业务系统为主。完成从项目管理、需求分析、原型设计、开发跟进、测试验收、上线发布等全流程工作。',
   },
   {
     id: 'prototype',
-    title: '原型演示',
-    intro: '探索性原型，集中在 prototypes/demo/ 下。',
+    title: '探索性产品原型',
+    intro: '基于业务场景的探索性产品原型，主要用于最小程度验证产品概念、交互流程、技术实现等。',
   },
   {
     id: 'planned',
@@ -40,26 +62,44 @@ export const workCategories: {
   },
 ];
 
+export function hasWorkDemo(project: WorkProject): boolean {
+  return !!(project.demoPath || project.demoExternalUrl);
+}
+
 export const workProjects: WorkProject[] = [
   {
     slug: 'bobo-weibo',
     title: '波波微博数据分析平台',
-    description: '面向微博生态的数据监测与分析前台：帮助业务快速理解话题热度与内容结构。',
-    tagline: '为运营与内容团队提供可解释的微博话题监测与分析能力，缩短从「感知热点」到「判断行动」的路径。',
-    tags: ['数据产品', 'B 端', '原型演示'],
+    description: '针对微博生态的数据监测与可视化平台：提供从投放前到投放后全流程的数据洞察。',
+    tagline: '为运营与内容团队提供可解释的微博话题监测与分析能力，缩短从「感知热点」到「判断行动」的路径。品牌与运营团队可以快速理解话题热度与内容结构，从而做出数据驱动的决策。',
+    tags: ['数据产品', 'B 端', '0-1产品'],
     categoryId: 'platform',
     demoPath: '/prototypes/波波/前台/首页.html',
     iframeTitle: '波波微博数据分析前台原型预览',
     prototypesFolder: '波波',
+    demoLinks: [
+      { label: '移动端原型', path: '/prototypes/波波/移动端/首页.html' },
+      { label: '后台原型', path: '/prototypes/波波/后台/登录.html' },
+    ],
+    caseStudy: {
+      background:
+        '微博是品牌<strong>宣发与种草</strong>的重要阵地。除以明星为主的传统宣发外，<strong>达人经济</strong>推动下，选择与产品匹配的博主成为有效路径，但达人侧<strong>商业化路径与运营策略</strong>仍不成熟。品牌方在「选谁合作、历史表现如何复盘、投放后效果能否持续追踪」上长期面临<strong>数据分散、历史数据难聚合分析、投放结果难对齐</strong>等痛点。需要基于<strong>微博开放数据</strong>的采集与<strong>可视化</strong>，为<strong>选人与投放决策</strong>提供可解释的依据，并在平台化产品内承接后续合作与复盘。',
+      goals:
+        '聚合达人及相关内容数据，以<strong>可视化与结构化报告</strong>支撑品牌方选人与投放决策；围绕商业合作链条设计工具能力，覆盖从发现达人、对比评估、传播分析到投放监测与报告输出，降低多方协作中的<strong>信息断层</strong>。在筛选维度多、数据量大的前提下，引入 <strong>PCA 降维</strong>等分析方法抽取主成分表征<strong>博主影响力</strong>，压缩品牌方的认知与决策成本。为运营与品牌角色交付可落地的 <strong>B 端产品方案</strong>（含会员与订单等商业化能力），使<strong>「感知热点—判断行动—追踪复盘」</strong>可在同一工作台内完成。',
+      process:
+        '作为<strong>产品负责人</strong>，负责需求分析、信息架构、Axure 原型、开发跟进、测试验收到上线发布。深入访谈品牌与运营需求后，按<strong>投放全流程</strong>拆解能力：博主查找与详情（含排行、比对、监控、回采）、博文与话题监测、品牌与热搜分析、投放/传播报告及数据导出等，将 <strong>PC 前台、移动端与后台</strong>运营（财务、需求与权限）纳入同一产品叙事。在指标设计上与研发对齐开放数据字段与影响力模型，用 <strong>PCA 降维</strong>等方式沉淀可复用的<strong>「影响力」</strong>表达，避免品牌方面对多维原始数据无从下手。针对性设计<strong>达人对比、传播路径分析、自动化数据报告、追踪监测与舆情类提醒</strong>，并规划 <strong>Chatbot 文案生成助手</strong>等增效工具；复杂分析以分步详情与报告页降低一次性认知负担，优先保证主路径可评审、可排期。',
+      results:
+        '产品完成<strong>商业化落地</strong>，运营期<strong>年均收入超过百万元</strong>，曾服务 <strong>Apple、华为、创维、OPPO</strong> 等品牌方，并支撑多所高校<strong>社会科学科研</strong>数据需求。交付可交互原型与上线系统，形成从数据采集、分析工具到会员订购的完整 <strong>B 端闭环</strong>；<strong>监测与报告</strong>类能力成为品牌复盘与达人合作的常用入口。后续因公司战略调整，该业务线停止运营；本项目经验（<strong>数据产品 0-1、投放全链路工具化</strong>）延续至作品集内 ASA、ASO、数播等后续平台类作品。',
+    },
   },
   {
     slug: 'asa-smart-delivery',
     title: 'ASA 智能投放平台',
     description: 'Apple Search Ads 相关投放与监测能力的控制台原型。',
     tagline: '围绕账户、系列与监测链路组织工作台任务，降低投放运营在多模块间切换的成本。',
-    tags: ['增长投放', 'B 端', '控制台'],
+    tags: ['商业化', '广告投放系统', '用户增长'],
     categoryId: 'platform',
-    demoPath: '/prototypes/ASA智能投放平台/index.html',
+    demoPath: '/prototypes/ASA智能投放平台/报告总览.html',
     iframeTitle: 'ASA 智能投放平台原型预览',
     prototypesFolder: 'ASA智能投放平台',
   },
@@ -132,24 +172,50 @@ export const workProjects: WorkProject[] = [
   {
     slug: 'saas-community',
     title: '社群运营 SaaS',
-    description: '社群运营方向产品稿件占位；原型接入后在此嵌入预览。',
-    tagline: '目录已建：将在此整理社群运营场景下的核心任务流与协作机制。',
-    tags: ['SaaS', '规划中'],
-    categoryId: 'planned',
+    description:
+      '面向社群运营团队的 B 端 SaaS：成员触达、活动编排与数据看板在同一工作台内串联。',
+    tagline:
+      '把「拉新—活跃—转化—复盘」收口为可协作的任务流，降低运营在多工具间切换与对账的成本。',
+    tags: ['SaaS', '社群运营', 'B 端', 'Axure 云'],
+    categoryId: 'platform',
     demoPath: null,
+    demoExternalUrl: axureDemoUrls.saasCommunity,
     iframeTitle: '社群运营 SaaS 原型预览',
-    prototypesFolder: '社群运营SaaS',
+    prototypesFolder: 'axure-cloud',
+    caseStudy: {
+      background:
+        '业务侧同时在用群工具、表格与投放后台，<strong>活动排期、成员分层与效果复盘</strong>分散在多个系统里；运营同学需要反复导出、对齐口径，<strong>协作成本高</strong>且难追溯决策依据。',
+      goals:
+        '为运营、增长与客服角色提供<strong>统一工作台</strong>：覆盖<strong>成员管理、触达编排、活动配置与效果看板</strong>；让关键路径可在单产品内完成，并支持按活动/渠道复盘。',
+      process:
+        '梳理四类角色的高频任务与权限边界，按<strong>「成员—触达—活动—数据」</strong>建立信息架构；优先交付列表、详情与配置向导等<strong>主路径</strong>，将高级自动化与开放 API 留作后续迭代；原型在 Axure 中串联关键状态与异常提示，供评审对齐。',
+      results:
+        '交付可交互 <strong>Axure 原型</strong>（托管于 Axure 云）与页面说明，支撑<strong>需求评审与研发估时</strong>；运营侧反馈任务流更清晰，后续可按模块拆分迭代上线。',
+    },
   },
   {
     slug: 'finance-system',
     title: '金融系统',
-    description: '金融业务侧原型占位；接入静态导出后可预览。',
-    tagline: '目录已建：后续在此沉淀合规流程与账户视角下的任务结构。',
-    tags: ['金融', '规划中'],
-    categoryId: 'planned',
+    description:
+      '金融业务前台与流程型能力原型：账户、订单与合规相关操作在同一套界面语言下呈现。',
+    tagline:
+      '在合规约束下组织账户与交易视角的任务结构，让业务与风控能在同一稿件上对齐流程与字段。',
+    tags: ['金融', 'B 端', '流程', 'Axure 云'],
+    categoryId: 'platform',
     demoPath: null,
+    demoExternalUrl: axureDemoUrls.financeSystem,
     iframeTitle: '金融系统原型预览',
-    prototypesFolder: '金融系统',
+    prototypesFolder: 'axure-cloud',
+    caseStudy: {
+      background:
+        '金融产品涉及<strong>开户、充值、交易与结算</strong>等多环节，业务、风控与客服对<strong>字段口径与操作顺序</strong>要求高；分散的文档难以在评审中快速对齐<strong>「用户看到什么、系统校验什么」</strong>。',
+      goals:
+        '沉淀一套可演示的前台与流程稿件：明确主角色（用户、运营、审核）在关键节点的操作与反馈；保证<strong>敏感操作有确认、状态可追溯</strong>，便于<strong>合规与研发</strong>共同评审。',
+      process:
+        '按<strong>监管与业务约束</strong>划分模块优先级，先打通<strong>开户—入金—交易—查询</strong>等主链路，再补充运营后台与异常处理页；<strong>字段与状态机</strong>在原型中标注说明，复杂规则以<strong>分步向导</strong>降低一次性认知负担。',
+      results:
+        '输出 <strong>Axure 云</strong>可分享的交互原型，用于<strong>跨部门评审</strong>与迭代记录；减少口头描述歧义，为后续拆分为正式需求与接口文档提供基线。',
+    },
   },
 ];
 

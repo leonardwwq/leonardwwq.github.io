@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { workCategories, workProjects } from '../../data/workProjects';
+import { hasWorkDemo, workCategories, workProjects } from '../../data/workProjects';
 ---
 
 <BaseLayout title="作品 · 王伟权" description="案例索引：按平台案例、原型演示与规划中分组。">
   <h1 class="page-title">作品</h1>
   <p class="page-sub">
-    公开原型托管于 <code>public/prototypes/</code>
-    ，本站条目与目录结构对齐：每条案例进入详情后可嵌入预览或查看完整链接（规划中条目请先补齐原型文件）。
+    多数案例的原型托管于 <code>public/prototypes/</code>
+    ，详情页可站内嵌入预览；部分案例演示托管于 Axure 云，详情页提供外链打开。
   </p>
 
   {
@@ -27,7 +27,7 @@ import { workCategories, workProjects } from '../../data/workProjects';
                   {p.tags.map((t) => (
                     <span class="tag">{t}</span>
                   ))}
-                  {!p.demoPath ? <span class="tag">待接入预览</span> : null}
+                  {!hasWorkDemo(p) ? <span class="tag">待接入预览</span> : null}
                 </div>
               </a>
             ))}

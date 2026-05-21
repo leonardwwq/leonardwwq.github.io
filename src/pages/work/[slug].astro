@@ -14,6 +14,24 @@ type Props = { project: WorkProject };
 const { project } = Astro.props;
 const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://leonardwwq.github.io';
 const demoUrl = project.demoPath ? `${site}${project.demoPath}` : null;
+const externalDemoUrl = project.demoExternalUrl ?? null;
+const extraDemoLinks =
+  project.demoLinks?.map((link) => ({
+    label: link.label,
+    url: `${site}${link.path}`,
+  })) ?? [];
+
+const caseTemplate = {
+  background:
+    '描述问题场景与用户处境：为何在此阶段需要这套能力或原型；业务或用户在缺少它时的痛点。',
+  goals:
+    '可对齐或可衡量的目标：覆盖的角色任务、关键指标或交付窗口，以及「怎样算做对」的判据（定性亦可）。',
+  process:
+    '调研结论、信息架构与关键页面、协作方式与范围取舍（砍了什么、为何砍）。可将约束、角色分工与复盘合并写在本节。',
+  results: '上线或交付结果：数据与反馈；若无硬指标，说明产出物（原型、文档等）与复盘结论。',
+};
+
+const caseStudy = project.caseStudy ?? caseTemplate;
 ---
 
 <BaseLayout
@@ -31,35 +49,29 @@ const demoUrl = project.demoPath ? `${site}${project.demoPath}` : null;
 
     <h2 class="section-title">背景</h2>
     <div class="panel prose">
-      <p>
-        描述问题场景与用户处境：为何在此阶段需要这套能力或原型；业务或用户在缺少它时的痛点。
-      </p>
+      <p set:html={caseStudy.background} />
     </div>
 
     <h2 class="section-title">目标</h2>
     <div class="panel prose">
-      <p>
-        可对齐或可衡量的目标：覆盖的角色任务、关键指标或交付窗口，以及「怎样算做对」的判据（定性亦可）。
-      </p>
+      <p set:html={caseStudy.goals} />
     </div>
 
     <h2 class="section-title">过程</h2>
     <div class="panel prose">
-      <p>
-        调研结论、信息架构与关键页面、协作方式与范围取舍（砍了什么、为何砍）。可将约束、角色分工与复盘合并写在本节。
-      </p>
+      <p set:html={caseStudy.process} />
     </div>
 
     <h2 class="section-title">结果</h2>
     <div class="panel prose">
-      <p>上线或交付结果：数据与反馈；若无硬指标，说明产出物（原型、文档等）与复盘结论。</p>
+      <p set:html={caseStudy.results} />
     </div>
 
-    <h2 class="section-title">嵌入式预览</h2>
+    <h2 class="section-title">原型演示</h2>
     {
       project.demoPath ? (
         <>
-          <p class="muted">下方为固定高度嵌入预览；若外链禁止嵌入，可改为全宽截图并保留文末完整 URL。</p>
+          <p class="muted">嵌入式预览（固定高度）；亦可使用下方链接在新窗口打开完整演示。</p>
           <div class="embed">
             <iframe src={project.demoPath} title={project.iframeTitle} loading="lazy"></iframe>
           </div>
@@ -74,19 +86,94 @@ const demoUrl = project.demoPath ? `${site}${project.demoPath}` : null;
               </a>
             </p>
           </div>
+          {extraDemoLinks.length > 0 ? (
+            <>
+              <h2 class="section-title">更多原型入口</h2>
+              <div class="panel demo-links">
+                <p style="margin: 0 0 0.75rem" class="muted">
+                  以下为该项目中后台端与移动端，可点击跳转查看：
+                </p>
+                <ul class="demo-links-list">
+                  {extraDemoLinks.map((link) => (
+                    <li>
+                      <a
+                        class="link-external"
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {link.label}
+                      </a>
+                      <span class="muted demo-links-url">{link.url}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          ) : null}
+        </>
+      ) : externalDemoUrl ? (
+        <>
+          <p class="muted">演示托管于 Axure 云，请在新窗口打开交互原型（公开链接，无需密码）。</p>
+          <div class="panel demo-external">
+            <p style="margin: 0 0 1rem">
+              <a
+                class="btn btn-primary"
+                href={externalDemoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                打开 Axure 原型
+              </a>
+            </p>
+            <p style="margin: 0 0 0.5rem" class="muted">完整演示链接（可复制分享）：</p>
+            <p style="margin: 0">
+              <a
+                class="link-external"
+                href={externalDemoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {externalDemoUrl}
+              </a>
+            </p>
+          </div>
         </>
       ) : (
         <div class="panel prose">
           <p style="margin: 0">
             原型文件尚未放入站点。请将导出 HTML 放入
             <code>public/prototypes/{project.prototypesFolder}/</code>
-            ，并在
+            ，或在
             <code>src/data/workProjects.ts</code>
-            中为该条目录填写 <code>demoPath</code>
-            后即可在此嵌入预览。
+            中填写 <code>demoExternalUrl</code>
+            （Axure 云）或 <code>demoPath</code>（站内嵌入）后即可预览。
           </p>
         </div>
       )
     }
   </article>
 </BaseLayout>
+
+<style>
+  .demo-external .btn {
+    display: inline-flex;
+  }
+
+  .demo-links-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .demo-links-list li + li {
+    margin-top: 0.75rem;
+  }
+
+  .demo-links-url {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.875rem;
+    word-break: break-all;
+  }
+</style>

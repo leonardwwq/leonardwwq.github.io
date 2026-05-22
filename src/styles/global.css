@@ -122,8 +122,8 @@ a:hover {
 
 .brand {
   display: flex;
-  align-items: baseline;
-  gap: 0.45rem;
+  align-items: center;
+  gap: 0.55rem;
   font-weight: 600;
   font-size: 0.98rem;
   letter-spacing: -0.02em;
@@ -139,6 +139,16 @@ a:hover {
   color: var(--faint);
   font-weight: 400;
   font-size: 0.78rem;
+}
+
+.brand-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 0 1px rgba(94, 234, 212, 0.08);
 }
 
 .nav {

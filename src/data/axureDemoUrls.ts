@@ -4,5 +4,5 @@
  */
 export const axureDemoUrls = {
   saasCommunity: 'https://4mtjam.axshare.com/',
-  financeSystem: 'https://r5n70b.axshare.com/',
+  financeSystem: 'https://r0pt4l.axshare.com/',
 } as const;

@@ -80,18 +80,25 @@ const caseStudy = project.caseStudy ?? caseTemplate;
             <p style="margin: 0 0 0.5rem" class="muted">
               新窗口打开完整演示（可复制分享）：
             </p>
-            <p style="margin: 0">
+            <div class="demo-url-row">
               <a class="link-external" href={demoUrl} target="_blank" rel="noopener noreferrer">
                 {demoUrl}
               </a>
-            </p>
+              <button
+                type="button"
+                class="copy-url-btn"
+                data-copy-url={demoUrl}
+                aria-label="复制链接"
+                title="复制链接"
+              ></button>
+            </div>
           </div>
           {extraDemoLinks.length > 0 ? (
             <>
               <h2 class="section-title">更多原型入口</h2>
               <div class="panel demo-links">
                 <p style="margin: 0 0 0.75rem" class="muted">
-                  以下为该项目中后台端与移动端，可点击跳转查看：
+                  以下为该项目的其他原型入口，可点击跳转查看：
                 </p>
                 <ul class="demo-links-list">
                   {extraDemoLinks.map((link) => (
@@ -104,7 +111,16 @@ const caseStudy = project.caseStudy ?? caseTemplate;
                       >
                         {link.label}
                       </a>
-                      <span class="muted demo-links-url">{link.url}</span>
+                      <div class="demo-url-row">
+                        <span class="muted demo-links-url">{link.url}</span>
+                        <button
+                          type="button"
+                          class="copy-url-btn"
+                          data-copy-url={link.url}
+                          aria-label={`复制 ${link.label} 链接`}
+                          title="复制链接"
+                        ></button>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -127,7 +143,7 @@ const caseStudy = project.caseStudy ?? caseTemplate;
               </a>
             </p>
             <p style="margin: 0 0 0.5rem" class="muted">完整演示链接（可复制分享）：</p>
-            <p style="margin: 0">
+            <div class="demo-url-row">
               <a
                 class="link-external"
                 href={externalDemoUrl}
@@ -136,7 +152,14 @@ const caseStudy = project.caseStudy ?? caseTemplate;
               >
                 {externalDemoUrl}
               </a>
-            </p>
+              <button
+                type="button"
+                class="copy-url-btn"
+                data-copy-url={externalDemoUrl}
+                aria-label="复制链接"
+                title="复制链接"
+              ></button>
+            </div>
           </div>
         </>
       ) : (
@@ -155,6 +178,159 @@ const caseStudy = project.caseStudy ?? caseTemplate;
   </article>
 </BaseLayout>
 
+<script>
+  const COPY_ICON_HTML = `<svg class="copy-url-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+  const CHECK_ICON_HTML = `<svg class="copy-url-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>`;
+
+  async function copyTextToClipboard(text: string): Promise<boolean> {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        return ok;
+      } catch {
+        return false;
+      }
+    }
+  }
+
+  const ICON_FADE_MS = 220;
+  const RESET_DELAY_MS = 2000;
+
+  function clearResetTimer(btn: HTMLButtonElement) {
+    const timerId = btn.dataset.resetTimer;
+    if (!timerId) return;
+    window.clearTimeout(Number(timerId));
+    delete btn.dataset.resetTimer;
+  }
+
+  function waitIconTransition(icon: SVGElement): Promise<void> {
+    return new Promise((resolve) => {
+      const done = () => resolve();
+      icon.addEventListener('transitionend', done, { once: true });
+      window.setTimeout(done, ICON_FADE_MS + 40);
+    });
+  }
+
+  function setIconOpacity(icon: SVGElement, opacity: number) {
+    icon.style.opacity = String(opacity);
+  }
+
+  function resetCopyButton(btn: HTMLButtonElement) {
+    clearResetTimer(btn);
+    btn.innerHTML = COPY_ICON_HTML;
+    btn.classList.remove('copy-url-btn--success');
+    const label = btn.dataset.defaultLabel ?? '复制链接';
+    btn.setAttribute('aria-label', label);
+    btn.setAttribute('title', '复制链接');
+  }
+
+  async function fadeResetCopyButton(btn: HTMLButtonElement) {
+    clearResetTimer(btn);
+    const icon = btn.querySelector<SVGElement>('.copy-url-icon');
+
+    if (icon) {
+      setIconOpacity(icon, 1);
+      void icon.getBoundingClientRect();
+      setIconOpacity(icon, 0);
+      await waitIconTransition(icon);
+    }
+
+    resetCopyButton(btn);
+
+    const nextIcon = btn.querySelector<SVGElement>('.copy-url-icon');
+    if (!nextIcon) return;
+
+    setIconOpacity(nextIcon, 0);
+    void nextIcon.getBoundingClientRect();
+    setIconOpacity(nextIcon, 1);
+    await waitIconTransition(nextIcon);
+    nextIcon.style.opacity = '';
+  }
+
+  function scheduleFadeReset(btn: HTMLButtonElement) {
+    if (!btn.classList.contains('copy-url-btn--success')) return;
+    clearResetTimer(btn);
+    btn.dataset.resetTimer = String(
+      window.setTimeout(() => {
+        delete btn.dataset.resetTimer;
+        void fadeResetCopyButton(btn);
+      }, RESET_DELAY_MS),
+    );
+  }
+
+  function showCopySuccess(btn: HTMLButtonElement) {
+    clearResetTimer(btn);
+    btn.innerHTML = CHECK_ICON_HTML;
+    btn.classList.add('copy-url-btn--success');
+    btn.setAttribute('aria-label', '已复制');
+    btn.setAttribute('title', '已复制');
+    const icon = btn.querySelector<SVGElement>('.copy-url-icon');
+    if (icon) icon.style.opacity = '';
+  }
+
+  function initCopyUrlButtons() {
+    document.querySelectorAll<HTMLButtonElement>('.copy-url-btn').forEach((btn) => {
+      if (btn.dataset.copyBound === '1') return;
+      btn.dataset.copyBound = '1';
+
+      if (!btn.dataset.defaultLabel) {
+        btn.dataset.defaultLabel = btn.getAttribute('aria-label') ?? '复制链接';
+      }
+      resetCopyButton(btn);
+
+      btn.addEventListener('pointerup', async (event) => {
+        if (event.button !== 0) return;
+
+        const url = btn.dataset.copyUrl;
+        if (!url) return;
+
+        const copied = await copyTextToClipboard(url);
+        if (copied) showCopySuccess(btn);
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        scheduleFadeReset(btn);
+      });
+
+      btn.addEventListener('mouseenter', () => {
+        clearResetTimer(btn);
+      });
+
+      btn.addEventListener('keyup', async (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+
+        const url = btn.dataset.copyUrl;
+        if (!url) return;
+
+        const copied = await copyTextToClipboard(url);
+        if (copied) showCopySuccess(btn);
+      });
+
+      btn.addEventListener('blur', () => {
+        scheduleFadeReset(btn);
+      });
+
+      btn.addEventListener('focus', () => {
+        clearResetTimer(btn);
+      });
+    });
+  }
+
+  initCopyUrlButtons();
+  document.addEventListener('astro:page-load', initCopyUrlButtons);
+</script>
+
 <style>
   .demo-external .btn {
     display: inline-flex;
@@ -170,10 +346,72 @@ const caseStudy = project.caseStudy ?? caseTemplate;
     margin-top: 0.75rem;
   }
 
-  .demo-links-url {
-    display: block;
+  .demo-url-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.35rem;
     margin-top: 0.2rem;
+  }
+
+  .demo-url-row .link-external {
+    flex: 1;
+    min-width: 0;
+    word-break: break-all;
+  }
+
+  .demo-links-url {
+    flex: 1;
+    min-width: 0;
     font-size: 0.875rem;
     word-break: break-all;
+  }
+
+  .copy-url-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-top: 0.05rem;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface2);
+    color: var(--muted);
+    cursor: pointer;
+    transition:
+      color 0.12s ease,
+      border-color 0.12s ease,
+      background 0.12s ease;
+  }
+
+  .copy-url-btn:hover:not(:active):not(.copy-url-btn--success) {
+    color: var(--accent-soft);
+    border-color: var(--accent-border);
+    background: var(--accent-fill);
+  }
+
+  .copy-url-btn:active:not(.copy-url-btn--success) {
+    color: var(--accent);
+    border-color: var(--accent-border-hover);
+    background: var(--accent-fill-hover);
+  }
+
+  .copy-url-btn--success {
+    color: var(--accent);
+    border-color: var(--accent-border-hover);
+    background: var(--accent-fill-hover);
+  }
+
+  .copy-url-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .copy-url-icon {
+    display: block;
+    pointer-events: none;
+    transition: opacity 0.22s ease;
   }
 </style>

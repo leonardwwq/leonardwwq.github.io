@@ -30,7 +30,9 @@ function isCurrent(href: string) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -44,6 +46,14 @@ function isCurrent(href: string) {
     <header class="site-header">
       <div class="inner">
         <a class="brand" href="/" transition:animate="fade">
+          <img
+            class="brand-avatar"
+            src="/images/avatar.webp"
+            alt=""
+            width="32"
+            height="32"
+            decoding="async"
+          />
           王伟权 <small>作品集</small>
         </a>
         <nav class="nav" aria-label="主导航">

@@ -12,14 +12,10 @@ export function getStaticPaths() {
 type Props = { project: WorkProject };
 
 const { project } = Astro.props;
-const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://leonardwwq.github.io';
-const demoUrl = project.demoPath ? `${site}${project.demoPath}` : null;
 const externalDemoUrl = project.demoExternalUrl ?? null;
-const extraDemoLinks =
-  project.demoLinks?.map((link) => ({
-    label: link.label,
-    url: `${site}${link.path}`,
-  })) ?? [];
+/** 站内原型用相对路径，避免本地预览时链接跳到已部署的旧站 */
+const demoPath = project.demoPath;
+const extraDemoLinks = project.demoLinks ?? [];
 
 const caseTemplate = {
   background:
@@ -62,7 +58,7 @@ const caseStudy = project.caseStudy ?? caseTemplate;
       <p set:html={caseStudy.process} />
     </div>
 
-    <h2 class="section-title">结果</h2>
+    <h2 id="results" class="section-title">结果</h2>
     <div class="panel prose">
       <p set:html={caseStudy.results} />
     </div>
@@ -73,7 +69,7 @@ const caseStudy = project.caseStudy ?? caseTemplate;
         <>
           <p class="muted">嵌入式预览（固定高度）；亦可使用下方链接在新窗口打开完整演示。</p>
           <div class="embed">
-            <iframe src={project.demoPath} title={project.iframeTitle} loading="lazy"></iframe>
+            <iframe src={demoPath} title={project.iframeTitle} loading="lazy"></iframe>
           </div>
           <h2 class="section-title">完整演示链接</h2>
           <div class="panel">
@@ -81,13 +77,13 @@ const caseStudy = project.caseStudy ?? caseTemplate;
               新窗口打开完整演示（可复制分享）：
             </p>
             <div class="demo-url-row">
-              <a class="link-external" href={demoUrl} target="_blank" rel="noopener noreferrer">
-                {demoUrl}
+              <a class="link-external" href={demoPath} target="_blank" rel="noopener noreferrer">
+                {demoPath}
               </a>
               <button
                 type="button"
                 class="copy-url-btn"
-                data-copy-url={demoUrl}
+                data-copy-url={demoPath}
                 aria-label="复制链接"
                 title="复制链接"
               ></button>
@@ -105,18 +101,18 @@ const caseStudy = project.caseStudy ?? caseTemplate;
                     <li>
                       <a
                         class="link-external"
-                        href={link.url}
+                        href={link.path}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         {link.label}
                       </a>
                       <div class="demo-url-row">
-                        <span class="muted demo-links-url">{link.url}</span>
+                        <span class="muted demo-links-url">{link.path}</span>
                         <button
                           type="button"
                           class="copy-url-btn"
-                          data-copy-url={link.url}
+                          data-copy-url={link.path}
                           aria-label={`复制 ${link.label} 链接`}
                           title="复制链接"
                         ></button>
@@ -181,6 +177,11 @@ const caseStudy = project.caseStudy ?? caseTemplate;
 <script>
   const COPY_ICON_HTML = `<svg class="copy-url-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
   const CHECK_ICON_HTML = `<svg class="copy-url-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>`;
+
+  function resolveAbsoluteUrl(pathOrUrl: string): string {
+    if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
+    return new URL(pathOrUrl, window.location.origin).href;
+  }
 
   async function copyTextToClipboard(text: string): Promise<boolean> {
     try {
@@ -295,7 +296,7 @@ const caseStudy = project.caseStudy ?? caseTemplate;
         const url = btn.dataset.copyUrl;
         if (!url) return;
 
-        const copied = await copyTextToClipboard(url);
+        const copied = await copyTextToClipboard(resolveAbsoluteUrl(url));
         if (copied) showCopySuccess(btn);
       });
 
@@ -313,7 +314,7 @@ const caseStudy = project.caseStudy ?? caseTemplate;
         const url = btn.dataset.copyUrl;
         if (!url) return;
 
-        const copied = await copyTextToClipboard(url);
+        const copied = await copyTextToClipboard(resolveAbsoluteUrl(url));
         if (copied) showCopySuccess(btn);
       });
 

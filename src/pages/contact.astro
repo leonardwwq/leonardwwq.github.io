@@ -1,28 +1,84 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getActiveSocialLinks, profile } from '../data/profile';
+
+const socialLinks = getActiveSocialLinks();
 ---
 
 <BaseLayout title="联系与简历 · 王伟权" description="邮箱、社交与简历下载入口。">
   <h1 class="page-title">联系与简历</h1>
-  <p class="page-sub">把转化路径放短：一个明确的邮箱、可选社交链接，以及简历 PDF 固定入口。</p>
+  <p class="page-sub">把转化路径放短：明确的联系方式与简历 PDF 固定入口。</p>
 
   <div class="panel prose">
-    <h2 class="section-title" style="margin-top: 0">邮箱</h2>
-    <p>将 <span class="mono" style="font-family: var(--mono)">yourname@example.com</span> 替换为你的联系邮箱。</p>
+    <h2 class="section-title" style="margin-top: 0">联系方式</h2>
+    <ul class="contact-list">
+      <li>
+        <span class="contact-list__label muted">邮箱</span>
+        <a href={`mailto:${profile.contact.email}`}>{profile.contact.email}</a>
+      </li>
+      <li>
+        <span class="contact-list__label muted">手机</span>
+        <a href={`tel:${profile.contact.phone}`}>{profile.contact.phone}</a>
+      </li>
+      <li>
+        <span class="contact-list__label muted">城市</span>
+        <span>{profile.location}</span>
+      </li>
+    </ul>
   </div>
 
-  <div class="panel prose">
-    <h2 class="section-title" style="margin-top: 0">社交</h2>
-    <p>可选：LinkedIn、即刻、GitHub 等外链列表。</p>
-  </div>
+  {
+    socialLinks.length > 0 ? (
+      <div class="panel prose">
+        <h2 class="section-title" style="margin-top: 0">社交</h2>
+        <ul class="social-list">
+          {socialLinks.map((link) => (
+            <li>
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ) : null
+  }
 
   <div class="panel">
     <h2 class="section-title" style="margin-top: 0">简历 PDF</h2>
     <p class="muted" style="margin-top: 0">与站点内固定路径一致，便于分享与更新文件名。</p>
     <div class="cta-row" style="margin-top: 0.75rem">
-      <a class="btn btn-primary" href="/profile/202605-第三版-王伟权-产品经理.pdf" target="_blank" rel="noopener"
-        >打开简历 PDF</a
-      >
+      <a class="btn btn-primary" href={profile.resumePath} target="_blank" rel="noopener">打开简历 PDF</a>
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .contact-list,
+  .social-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .contact-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 1rem;
+  }
+
+  .contact-list li + li {
+    margin-top: 0.75rem;
+  }
+
+  .contact-list__label {
+    min-width: 2.5rem;
+  }
+
+  .social-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+  }
+</style>

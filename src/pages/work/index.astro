@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { hasWorkDemo, workCategories, workProjects } from '../../data/workProjects';
+import { workProjectIcons } from '../../data/workProjectIcons';
 ---
 
 <BaseLayout title="作品 · 王伟权" description="案例索引：按平台案例、原型演示与规划中分组。">
@@ -21,6 +22,7 @@ import { hasWorkDemo, workCategories, workProjects } from '../../data/workProjec
           <div class="card-grid">
             {items.map((p) => (
               <a class="card" href={`/work/${p.slug}`} style="text-decoration: none; color: inherit">
+                <span class="card__icon" aria-hidden="true" set:html={workProjectIcons[p.iconId]} />
                 <h3>{p.title}</h3>
                 <p>{p.description}</p>
                 <div class="meta">

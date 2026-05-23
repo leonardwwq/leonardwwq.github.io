@@ -1,6 +1,7 @@
 /** 与 `public/prototypes/` 下的目录对应；用于 `/work` 列表与 `/work/[slug]` 详情。 */
 
 import { axureDemoUrls } from './axureDemoUrls';
+import type { WorkProjectIconId } from './workProjectIcons';
 
 export type WorkCategoryId = 'platform' | 'prototype' | 'planned';
 
@@ -26,6 +27,8 @@ export type WorkProject = {
   /** 详情页顶部引言 */
   tagline: string;
   tags: string[];
+  /** 列表卡片右上角 icon */
+  iconId: WorkProjectIconId;
   categoryId: WorkCategoryId;
   /** 相对站点根路径的可嵌入 HTML；暂无文件则为 null */
   demoPath: string | null;
@@ -75,6 +78,7 @@ export const workProjects: WorkProject[] = [
     tagline:
       '将原本分散的投放操作、数据查看与调整建议收口到同一后台，让运营在账户投放过程中即可获取可解释的建议并一键应用，降低对外部链路不稳定性的依赖。',
     tags: ['Apple Search Ads', '广告投放系统', '智能投放', '用户增长'],
+    iconId: 'megaphone',
     categoryId: 'platform',
     demoPath: '/prototypes/ASA智能投放平台/index.html',
     iframeTitle: 'ASA 智能投放平台原型预览',
@@ -98,6 +102,7 @@ export const workProjects: WorkProject[] = [
     tagline:
       '让小微客户无需反复商务对接即可在平台上一键下单，销售侧则获得新的规模化获客入口；用行为数据看清流失路径并驱动流程迭代。',
     tags: ['ASO', '自助下单', '增长获客', '数据驱动'],
+    iconId: 'smartphone',
     categoryId: 'platform',
     demoPath: '/prototypes/ASO自主下单平台/前台/index.html',
     iframeTitle: 'ASO 一站式下单平台前台预览',
@@ -124,6 +129,7 @@ export const workProjects: WorkProject[] = [
     tagline:
       '为品牌与运营团队提供可解释的微博话题监测与分析能力，缩短从「感知热点」到「判断行动」的路径；支持达人筛选、投放追踪与传播复盘在同一平台内完成。',
     tags: ['微博', '数据产品', '0-1 产品', '达人营销'],
+    iconId: 'bar-chart-3',
     categoryId: 'platform',
     demoPath: '/prototypes/波波/前台/index.html',
     iframeTitle: '波波微博数据分析前台原型预览',
@@ -138,9 +144,9 @@ export const workProjects: WorkProject[] = [
       goals:
         '聚合达人及相关内容数据，以<strong>可视化与结构化报告</strong>支撑品牌方选人与投放决策；围绕商业合作链条设计工具能力，覆盖从发现达人、对比评估、传播分析到投放监测与报告输出，降低多方协作中的<strong>信息断层</strong>。在筛选维度多、数据量大的前提下，引入 <strong>PCA 降维</strong>等分析方法抽取主成分表征<strong>博主影响力</strong>，压缩品牌方的认知与决策成本。为运营与品牌角色交付可落地的 <strong>B 端产品方案</strong>（含会员与订单等商业化能力），使<strong>「感知热点—判断行动—追踪复盘」</strong>可在同一工作台内完成。',
       process:
-        '作为<strong>产品负责人</strong>，负责需求分析、信息架构、Axure 原型、开发跟进、测试验收到上线发布。深入访谈品牌与运营需求后，按<strong>投放全流程</strong>拆解能力：博主查找与详情（含排行、比对、监控、回采）、博文与话题监测、品牌与热搜分析、投放/传播报告及数据导出等，将 <strong>PC 前台、移动端与后台</strong>运营（财务、需求与权限）纳入同一产品叙事。在指标设计上与研发对齐开放数据字段与影响力模型，用 <strong>PCA 降维</strong>等方式沉淀可复用的<strong>「影响力」</strong>表达，避免品牌方面对多维原始数据无从下手。针对性设计<strong>达人对比、传播路径分析、自动化数据报告、追踪监测与舆情类提醒</strong>，并规划 <strong>Chatbot 文案生成助手</strong>等增效工具；复杂分析以分步详情与报告页降低一次性认知负担，优先保证主路径可评审、可排期。',
+        '作为<strong>产品负责人</strong>，负责需求分析、信息架构、Axure 原型、开发跟进、测试验收到上线发布。深入访谈品牌与运营需求后，按<strong>投放全流程</strong>拆解能力：博主查找与详情（含排行、比对、监控、回采）、博文与话题监测、品牌与热搜分析、投放/传播报告及数据导出等，将 <strong>PC 前台、移动端与后台</strong>运营（财务、需求与权限）纳入同一产品叙事。在指标设计上与研发对齐开放数据字段与影响力模型，用 <strong>PCA 降维</strong>等方式沉淀可复用的<strong>「影响力」</strong>表达，避免品牌方面对多维原始数据无从下手。针对性设计<strong>达人对比、传播路径分析、自动化数据报告、追踪监测与舆情类提醒</strong>，并规划 <strong>Chatbot 文案生成助手</strong>等增效工具；复杂分析以分步详情与报告页降低一次性认知负担，优先保证主路径可评审、可排期。文案助手探索原型见 <a href="/work/demo-ai-chat">AI 投放文案生成助手</a>。',
       results:
-        '产品完成<strong>商业化落地</strong>，运营期<strong>年均收入超过百万元</strong>，曾服务 <strong>Apple、华为、创维、OPPO</strong> 等品牌方，并支撑多所高校<strong>社会科学科研</strong>数据需求。交付可交互原型与上线系统，形成从数据采集、分析工具到会员订购的完整 <strong>B 端闭环</strong>；<strong>监测与报告</strong>类能力成为品牌复盘与达人合作的常用入口。后续因公司战略调整，该业务线停止运营；本项目经验（<strong>数据产品 0-1、投放全链路工具化</strong>）延续至作品集内 ASA、ASO、数播等后续平台类作品。',
+        '产品完成<strong>商业化落地</strong>，运营期<strong>年均收入超过百万元</strong>，曾服务 <strong>Apple、华为、创维、OPPO</strong> 等品牌方，并支撑多所高校<strong>社会科学科研</strong>数据需求。交付可交互原型与上线系统，形成从数据采集、分析工具到会员订购的完整 <strong>B 端闭环</strong>；<strong>监测与报告</strong>类能力成为品牌复盘与达人合作的常用入口。后续将高频单点能力<strong>拆线独立售卖</strong>：<a href="/work/demo-ad-assistant">投放助手</a>（数据导出）、<a href="/work/demo-hotsearch-engine">热搜引擎</a>（历史热搜查询），以及 <a href="/work/demo-ai-chat">AI 投放文案生成助手</a>，与主平台数据联动。后续因公司战略调整，该业务线停止运营；本项目经验（<strong>数据产品 0-1、投放全链路工具化</strong>）延续至作品集内 ASA、ASO、数播等后续平台类作品。',
     },
   },
   {
@@ -151,6 +157,7 @@ export const workProjects: WorkProject[] = [
     tagline:
       '把跨平台「筛选—下单—排期—验收—复盘」收口到同一工作台，用标准化流程与行为数据缩短从感知到交付的决策路径。',
     tags: ['多平台', '数据产品', 'KOL 投放', '流程产品化', '用户行为分析', 'B 端'],
+    iconId: 'layers',
     categoryId: 'platform',
     demoPath: '/prototypes/Topsocial数播/前台/index.html',
     iframeTitle: 'TopSocial 数据分析平台前台原型预览',
@@ -177,6 +184,7 @@ export const workProjects: WorkProject[] = [
     tagline:
       '将「申请—授信—运营审核」收口为可同屏评审的信贷主链路，让业务、风控与研发对齐用户侧展示与后台校验规则，降低分散文档带来的口径歧义。',
     tags: ['分期信贷', '授信', '运营后台', '合规流程', 'B 端'],
+    iconId: 'credit-card',
     categoryId: 'platform',
     demoPath: null,
     demoExternalUrl: axureDemoUrls.financeSystem,
@@ -195,47 +203,108 @@ export const workProjects: WorkProject[] = [
   },
   {
     slug: 'demo-ai-chat',
-    title: 'AI 对话产品原型（ChatGPT 风格）',
-    description: '会话、落地与引导流程的 Axure / 原型导出演示。',
-    tagline: '用于推敲会话容器、空状态与核心转化路径的交互稿件。',
-    tags: ['原型演示', 'AI', '会话'],
+    title: 'AI 投放文案生成助手',
+    description:
+      '集成文案生成辅助工具：根据达人特点与品牌调性自动生成多版投放文案初稿，支持编辑优化，并与波波达人分析平台协同推荐。',
+    tagline:
+      '把「选人—写稿—改稿—投放」中的创意环节产品化：会话式生成多版初稿，注入达人画像与品牌配置，缩短品牌运营的内容生产路径。',
+    tags: ['AI', '达人营销', '文案生成', '商业化', '波波'],
+    iconId: 'sparkles',
     categoryId: 'prototype',
     demoPath: '/prototypes/demo/chatgpt/index.html',
-    iframeTitle: 'AI 对话原型预览',
+    iframeTitle: 'AI 投放文案生成助手原型预览',
     prototypesFolder: 'demo/chatgpt',
+    demoLinks: [
+      { label: '落地页（快捷场景）', path: '/prototypes/demo/chatgpt/落地页面.html' },
+      { label: '会话页（多版初稿）', path: '/prototypes/demo/chatgpt/会话页面.html' },
+      { label: '使用指南', path: '/prototypes/demo/chatgpt/操作指南.html' },
+    ],
+    caseStudy: {
+      background:
+        '品牌在<strong>微博达人投放</strong>中，选定博主后仍需撰写贴合<strong>达人风格</strong>与<strong>品牌调性</strong>的种草/宣发文案。运营往往反复试错、多轮沟通，<strong>创意产出慢</strong>且难复用历史爆款表达；若与选人分析割裂，文案容易「像品牌自说自话」而非达人原生口吻。需要在<strong>波波微博数据分析平台</strong>的达人画像与历史内容数据基础上，提供可嵌入工作流的<strong>文案生成辅助</strong>能力。',
+      goals:
+        '以<strong>独立产品模块</strong>交付文案生成能力，并验证「<strong>生成 → 多版对比 → 编辑优化 → 复制投放</strong>」主路径。支持根据<strong>达人特点</strong>与<strong>品牌调性</strong>一次生成<strong>多版投放文案初稿</strong>；允许用户<strong>个性化编辑</strong>；与波波达人分析平台<strong>账号与数据联动</strong>，基于达人画像与历史数据给出更具吸引力的表达方向，提升投放效率与内容创意质量。',
+      process:
+        '作为<strong>独立拆线产品</strong>搭建 <strong>会话式文案生成</strong>能力（落地页、会话页、操作指南），复用会员/次数/模型切换等商业化框架，并与波波打通达人上下文注入。落地页设计<strong>投放文案、达人画像、品牌调性</strong>三类快捷场景；会话页展示<strong>多版初稿并列</strong>与复制、编辑态；在<strong>波波达人详情/对比页</strong>预留带入画像（昵称、内容标签、近期爆款话题等）的入口。与研发对齐 Prompt 结构（达人上下文 + 品牌约束 + 输出条数/字数）及跨产品跳转协议。',
+      results:
+        '产品已<strong>单独拆线并商业化上线</strong>，与波波微博数据分析平台保持<strong>产品联动</strong>：支持从达人详情带入画像、生成多版初稿、编辑后复制投放。主路径「<strong>带入达人 → 描述品牌 → 生成多版 → 编辑复制</strong>」在上线环境中可用，与数据选人等能力形成「选人—写稿—投放—复盘」协同，显著提升投放效率与内容创意。站内保留 <strong>Axure 交互原型</strong>（三页入口）供作品集演示。',
+    },
   },
   {
     slug: 'demo-miniprogram-mall',
     title: '小程序商城系统',
-    description: '商城前台链路：商品、订单与个人中心等页面原型。',
-    tagline: '对齐小程序场景下的浏览与下单路径，便于评审关键触点。',
-    tags: ['小程序', '电商', '原型演示'],
+    description:
+      '微信小程序商城与管理后台的产品方案：覆盖浏览选购、活动限购、购物车与订单履约等标准电商 MVP 链路。',
+    tagline:
+      '在约定范围内将「小程序选购 + 后台运营」收口为可评审的 Axure 主路径，便于交付对齐与研发排期。',
+    tags: ['小程序', '电商', 'Axure 原型', 'B 端后台'],
+    iconId: 'shopping-bag',
     categoryId: 'prototype',
     demoPath: '/prototypes/demo/小程序商城系统/前台/index.html',
     iframeTitle: '小程序商城前台预览',
     prototypesFolder: 'demo/小程序商城系统',
+    demoLinks: [
+      { label: '小程序前台', path: '/prototypes/demo/小程序商城系统/前台/index.html' },
+      { label: '管理后台', path: '/prototypes/demo/小程序商城系统/后台/index.html' },
+    ],
+    caseStudy: {
+      background:
+        '客户需要一套可运营的<strong>微信小程序商城</strong>，并配套<strong>管理后台</strong>完成商品与订单日常管理。原有下单方式分散、流程不统一，希望在 MVP 范围内跑通「注册—选购—下单—履约」；用户侧偏<strong>企业采购</strong>场景（注册公司名称展示、账号审核等），不宜做成复杂营销中台。',
+      goals:
+        '在约定范围内交付<strong>可交互 Axure 原型</strong>与交互说明，跑通主路径并覆盖常见边界：前台完成品类浏览、搜索、商品/活动详情、购物车加购与下单、订单列表与状态查看；后台完成商品与分类维护、活动配置、订单取消/配送/完成及客户与管理员管理。支撑客户<strong>评审定稿与研发估时</strong>，能力定位为标准电商闭环而非功能堆砌。',
+      process:
+        '对接客户需求后拆分<strong>小程序前台 / 管理后台</strong>信息架构并搭建原型。前台约 <strong>11 个页面</strong>：登录注册（手机号与验证码校验）、首页品类与懒加载、商品详情与活动页、购物车（货品维度、活动限购、下架/无库存/规格变更等<strong>失效态</strong>）、订单与个人信息、企业账号审核态等。后台覆盖<strong>商品与分类 CRUD、活动管理、订单履约操作、客户与管理员</strong>等模块，并标注权限与状态流转。输出页面级交互规则（如限购、订单确认弹窗），便于研发对齐字段与状态机。',
+      results:
+        '按期交付 <strong>Axure 交互原型</strong>与需求/交互说明，客户基于稿件<strong>自行组织研发</strong>。系统体量相对精简，聚焦标准双端电商能力；无公开经营数据可陈述。案例体现<strong>小程序 + B 端后台</strong>的信息架构、主路径与异常态设计，以及项目制场景下的范围管理与交付节奏。',
+    },
   },
   {
     slug: 'demo-ad-assistant',
     title: '投放助手',
-    description: '投放工具侧购买、权益与数据能力的页面原型。',
-    tagline: '聚焦投放工具付费与使用记录，支撑插件类产品的 IA 讨论。',
-    tags: ['投放工具', '插件产品', '原型演示'],
+    description:
+      '从波波拆出的轻量投放工具：跨平台作品/账号数据获取与导出，按条数购买权益，服务「只要导出」的用户。',
+    tagline:
+      '把高频「获取—导出」从全量分析平台中分流，用条数权益跑通轻量投放数据闭环。',
+    tags: ['波波衍生', '投放工具', '数据导出', '按量付费', '多平台'],
+    iconId: 'download',
     categoryId: 'prototype',
     demoPath: '/prototypes/demo/投放助手/index.html',
     iframeTitle: '投放助手原型预览',
     prototypesFolder: 'demo/投放助手',
+    caseStudy: {
+      background:
+        '<a href="/work/bobo-weibo">波波微博数据分析平台</a>能力完整，但部分客户<strong>仅需作品/账号数据导出</strong>，不愿为达人分析、监测报告等全量功能付费。需在保留核心数据能力的前提下，降低使用与付费门槛，避免「大平台配小需求」带来的流失。',
+      goals:
+        '将「<strong>获取 → 记录 → 导出</strong>」独立产品化：支持微博、抖音、小红书、今日头条等平台的<strong>批量作品/账号数据拉取</strong>；提供导出全部/导出错误、使用记录与截图、发布凭证存档等配套能力；采用<strong>按条数购买、全平台共用权益</strong>的计费方式，使轻量用户可预期成本。',
+      process:
+        '从波波<strong>数据导出与监测</strong>相关能力抽离信息架构，搭建 Axure 原型（批量获取、分平台定制工具详情、获取记录、购买与权益记录等）。统一「权益无区分、全平台共用条数」规则，并在页面中标注已用/剩余条数。与研发对齐与波波<strong>账号与数据源</strong>的联动方式，优先保证主路径可评审、可排期。',
+      results:
+        '产品已<strong>独立上线并商业化售卖</strong>，承接「只要导出」客群，与波波主平台<strong>互补而非替代</strong>。无公开经营数据可陈述；案例体现<strong>高频能力拆线、按量付费与多平台 IA</strong> 等产品判断。站内保留 Axure 原型供作品集演示。',
+    },
   },
   {
     slug: 'demo-hotsearch-engine',
     title: '热搜引擎',
-    description: '热搜查询、会员与购买记录相关前台演示。',
-    tagline: '围绕热搜查询与增值能力的原型切片，用于验证信息流与付费动机。',
-    tags: ['热点', '增值', '原型演示'],
+    description:
+      '从波波拆出的历史热搜查询产品：多平台关键词检索、热榜与监控，会员分层与数据导出。',
+    tagline:
+      '把热搜查询与导出从主平台独立成轻入口，用会员与次数规则验证增值付费。',
+    tags: ['波波衍生', '热搜', '数据导出', '会员', '多平台'],
+    iconId: 'flame',
     categoryId: 'prototype',
     demoPath: '/prototypes/demo/热搜引擎/index.html',
     iframeTitle: '热搜引擎原型预览',
     prototypesFolder: 'demo/热搜引擎',
+    caseStudy: {
+      background:
+        '<a href="/work/bobo-weibo">波波</a>内已具备话题/热搜相关分析能力，但不少用户<strong>只需查历史热搜、导出结果列表</strong>，不需要达人选人、传播报告等重型模块。适合将热搜能力<strong>拆为独立轻量产品</strong>，单独入口与会员体系，降低认知与付费门槛。',
+      goals:
+        '交付独立 MVP：<strong>历史热搜关键词检索</strong>，支持多平台与榜单筛选（含微博、抖音及后续扩展的知乎、今日头条、百度等）；配套热榜浏览、热搜/热词监控；明确<strong>会员与非会员</strong>差异（如结果模糊、每日次数、导出需先完成搜索）；支撑数据导出与会员购买闭环。',
+      process:
+        '拆出首页、热搜查询、热榜聚焦、监控类页面及会员购买/购买记录/个人中心等模块。迭代多平台榜单与「全部平台」检索规则；将部分权限由禁用改为<strong>点击触发升级弹窗</strong>，优化非会员体验与转化路径。与波波侧能力保持数据与账号联动，原型中沉淀搜索、翻页、导出等交互说明。',
+      results:
+        '产品已<strong>独立上线</strong>，与波波<strong>并列售卖、能力联动</strong>，体量小于主平台但覆盖明确的单点需求。无公开经营数据可陈述。案例体现<strong>能力拆线、会员分层与多平台热搜 IA</strong>。站内保留 Axure 原型供作品集演示。',
+    },
   },
   {
     slug: 'saas-community',
@@ -245,6 +314,7 @@ export const workProjects: WorkProject[] = [
     tagline:
       '早期 B 端原型实践——把模块级页面与状态流转做成可演示稿件，支撑团队讨论而非独立定义业务方案。',
     tags: ['产品实习', 'Axure 原型', '社群运营', 'B 端', '交互设计'],
+    iconId: 'users',
     categoryId: 'prototype',
     demoPath: null,
     demoExternalUrl: axureDemoUrls.saasCommunity,

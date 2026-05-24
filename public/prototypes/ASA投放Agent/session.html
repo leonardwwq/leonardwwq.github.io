@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ASA 投放 Agent · 会话</title>
+    <link rel="stylesheet" href="assets/css/agent.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="topbar__brand">
+          <span class="topbar__dot" aria-hidden="true"></span>
+          ASA 投放 Agent
+        </div>
+        <div class="topbar__meta">
+          <span class="topbar__pill">1 条待处理预警</span>
+          <span>统计范围：过去 24h</span>
+          <span>数据更新：10 分钟前</span>
+        </div>
+      </header>
+
+      <div class="main">
+        <aside class="sidebar" aria-label="账户树">
+          <div class="sidebar__head">账户结构</div>
+          <nav class="tree" id="account-tree">
+            <div class="tree-node" data-id="account-1">
+              <div class="tree-row" data-select="account" data-node="account-1">
+                <button type="button" class="tree-toggle" aria-label="展开或收起">▼</button>
+                <span class="tree-icon tree-icon--account" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+                <span class="tree-label">某游戏·中国区</span>
+              </div>
+              <div class="tree-children">
+                <div class="tree-node" data-id="campaign-1">
+                  <div class="tree-row is-selected" data-select="campaign" data-node="campaign-1">
+                    <button type="button" class="tree-toggle" aria-label="展开或收起">▼</button>
+                    <span class="tree-icon tree-icon--letter" aria-hidden="true">C</span>
+                    <span class="tree-label">品牌词-核心</span>
+                    <span class="tree-badge" title="异常预警">!</span>
+                  </div>
+                  <div class="tree-children">
+                    <div class="tree-row" data-select="adgroup" data-node="adgroup-1">
+                      <button type="button" class="tree-toggle is-hidden" tabindex="-1">▼</button>
+                      <span class="tree-icon tree-icon--letter" aria-hidden="true">G</span>
+                      <span class="tree-label">品牌词-IOS</span>
+                    </div>
+                    <div class="tree-row" data-select="adgroup" data-node="adgroup-2">
+                      <button type="button" class="tree-toggle is-hidden" tabindex="-1">▼</button>
+                      <span class="tree-icon tree-icon--letter" aria-hidden="true">G</span>
+                      <span class="tree-label">品牌词-通用</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tree-node" data-id="campaign-2">
+                  <div class="tree-row" data-select="campaign" data-node="campaign-2">
+                    <button type="button" class="tree-toggle" aria-label="展开或收起">▼</button>
+                    <span class="tree-icon tree-icon--letter" aria-hidden="true">C</span>
+                    <span class="tree-label">竞品词-拓展</span>
+                  </div>
+                  <div class="tree-children is-collapsed">
+                    <div class="tree-row" data-select="adgroup" data-node="adgroup-3">
+                      <button type="button" class="tree-toggle is-hidden" tabindex="-1">▼</button>
+                      <span class="tree-icon tree-icon--letter" aria-hidden="true">G</span>
+                      <span class="tree-label">竞品-组A</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tree-node" data-id="account-2">
+              <div class="tree-row" data-select="account" data-node="account-2">
+                <button type="button" class="tree-toggle" aria-label="展开或收起">▼</button>
+                <span class="tree-icon tree-icon--account" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+                <span class="tree-label">某工具·美区</span>
+              </div>
+              <div class="tree-children is-collapsed">
+                <div class="tree-row" data-select="campaign" data-node="campaign-3">
+                  <button type="button" class="tree-toggle is-hidden" tabindex="-1">▼</button>
+                  <span class="tree-icon tree-icon--letter" aria-hidden="true">C</span>
+                  <span class="tree-label">通用词-美区</span>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </aside>
+
+        <main class="workspace" id="workspace">          <section class="workspace-pane is-active" data-pane="campaign-1">
+            <p class="workspace__breadcrumb">某游戏·中国区 / 品牌词-核心</p>
+            <h1 class="workspace__title">品牌词-核心</h1>
+            <div class="metrics-row">
+              <div class="metric-card is-alert">
+                <div class="metric-card__label">今日 CPA</div>
+                <div class="metric-card__value">¥48.6</div>
+                <div class="metric-card__delta up-bad">环比 +32%</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card__label">消耗</div>
+                <div class="metric-card__value">¥12,840</div>
+                <div class="metric-card__delta up-bad">环比 +18%</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card__label">点击转化率</div>
+                <div class="metric-card__value">8.2%</div>
+                <div class="metric-card__delta down-bad">环比 -15%</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card__label">安装量</div>
+                <div class="metric-card__value">264</div>
+                <div class="metric-card__delta down-bad">环比 -12%</div>
+              </div>
+            </div>
+            <section class="panel">
+              <h2 class="panel__title">投放配置</h2>
+              <div class="config-grid">
+                <div class="config-item"><div class="config-item__label">广告系列 ID</div><div class="config-item__value">中国大陆（ID: 1234567890）</div></div>
+                <div class="config-item"><div class="config-item__label">投放国家</div><div class="config-item__value">中国大陆</div></div>
+                <div class="config-item"><div class="config-item__label">日预算</div><div class="config-item__value">¥15,000</div></div>
+                <div class="config-item"><div class="config-item__label">目标 CPA</div><div class="config-item__value">¥32.0</div></div>
+                <div class="config-item"><div class="config-item__label">出价策略</div><div class="config-item__value">目标 CPA</div></div>
+                <div class="config-item"><div class="config-item__label">投放状态</div><div class="config-item__value"><span class="tag tag--green">投放中</span></div></div>
+              </div>
+            </section>
+            <section class="panel">
+              <h2 class="panel__title">广告组明细</h2>
+              <table class="data-table">
+                <thead><tr><th>广告组</th><th>状态</th><th>最高 CPT</th><th>消耗</th><th>今日 CPA</th><th>点击转化率</th></tr></thead>
+                <tbody>
+                  <tr><td>品牌词-IOS</td><td><span class="tag tag--green">投放中</span></td><td>¥6.8</td><td>¥4,520</td><td><span class="tag tag--red">¥52.1 ↑</span></td><td>7.8% ↓</td></tr>
+                  <tr><td>品牌词-通用</td><td><span class="tag tag--green">投放中</span></td><td>¥5.2</td><td>¥3,860</td><td><span class="tag tag--red">¥41.3 ↑</span></td><td>9.1%</td></tr>
+                </tbody>
+              </table>
+            </section>
+          </section>
+
+          <section class="workspace-pane" data-pane="adgroup-1">
+            <p class="workspace__breadcrumb">某游戏·中国区 / 品牌词-核心 / 品牌词-IOS</p>
+            <h1 class="workspace__title">品牌词-IOS</h1>
+            <div class="metrics-row">
+              <div class="metric-card is-alert"><div class="metric-card__label">今日 CPA</div><div class="metric-card__value">¥52.1</div><div class="metric-card__delta up-bad">环比 +38%</div></div>
+              <div class="metric-card"><div class="metric-card__label">消耗</div><div class="metric-card__value">¥4,520</div><div class="metric-card__delta neutral">占比 35%</div></div>
+              <div class="metric-card"><div class="metric-card__label">最高 CPT</div><div class="metric-card__value">¥6.8</div><div class="metric-card__delta up-bad">环比 +38%</div></div>
+            </div>
+            <section class="panel"><h2 class="panel__title">定向设置</h2><div class="config-grid">
+              <div class="config-item"><div class="config-item__label">匹配方式</div><div class="config-item__value">完全匹配</div></div>
+              <div class="config-item"><div class="config-item__label">设备</div><div class="config-item__value">iPhone</div></div>
+              <div class="config-item"><div class="config-item__label">受众扩展</div><div class="config-item__value">关闭</div></div>
+            </div></section>
+          </section>
+
+          <section class="workspace-pane" data-pane="adgroup-2">
+            <p class="workspace__breadcrumb">某游戏·中国区 / 品牌词-核心 / 品牌词-通用</p>
+            <h1 class="workspace__title">品牌词-通用</h1>
+            <div class="metrics-row">
+              <div class="metric-card"><div class="metric-card__label">今日 CPA</div><div class="metric-card__value">¥41.3</div><div class="metric-card__delta up-bad">环比 +22%</div></div>
+              <div class="metric-card"><div class="metric-card__label">点击转化率</div><div class="metric-card__value">9.1%</div><div class="metric-card__delta neutral">环比持平</div></div>
+              <div class="metric-card"><div class="metric-card__label">消耗</div><div class="metric-card__value" style="font-size:14px">稳定</div><div class="metric-card__delta up-bad">低于同级均值</div></div>
+            </div>
+            <section class="panel"><h2 class="panel__title">定向设置</h2><div class="config-grid">
+              <div class="config-item"><div class="config-item__label">最高 CPT</div><div class="config-item__value">¥5.2</div></div>
+              <div class="config-item"><div class="config-item__label">受众</div><div class="config-item__value">全部用户（未限制）</div></div>
+            </div></section>
+          </section>
+
+          <section class="workspace-pane" data-pane="account-1">
+            <p class="workspace__breadcrumb">某游戏·中国区</p>
+            <h1 class="workspace__title">某游戏·中国区</h1>
+            <div class="metrics-row">
+              <div class="metric-card"><div class="metric-card__label">总消耗</div><div class="metric-card__value">¥28,600</div></div>
+              <div class="metric-card is-alert"><div class="metric-card__label">今日 CPA</div><div class="metric-card__value">¥44.2</div></div>
+              <div class="metric-card"><div class="metric-card__label">活跃系列</div><div class="metric-card__value">2</div></div>
+            </div>
+            <section class="panel"><h2 class="panel__title">系列汇总</h2>
+              <table class="data-table"><thead><tr><th>广告系列</th><th>消耗</th><th>今日 CPA</th><th>状态</th></tr></thead>
+              <tbody>
+                <tr><td>品牌词-核心</td><td>¥12,840</td><td><span class="tag tag--red">¥48.6 ↑</span></td><td><span class="tag tag--green">投放中</span></td></tr>
+                <tr><td>竞品词-拓展</td><td>¥8,200</td><td>¥36.5</td><td><span class="tag tag--green">投放中</span></td></tr>
+              </tbody></table>
+            </section>
+          </section>
+
+          <section class="workspace-pane" data-pane="campaign-2">
+            <p class="workspace__breadcrumb">某游戏·中国区 / 竞品词-拓展</p>
+            <h1 class="workspace__title">竞品词-拓展</h1>
+            <section class="panel"><p style="margin:0;color:#6b7280">选中节点暂无更多预警，可在左侧树展开广告组查看明细。</p></section>
+          </section>
+
+          <section class="workspace-pane" data-pane="account-2">
+            <p class="workspace__breadcrumb">某工具·美区</p>
+            <h1 class="workspace__title">某工具·美区</h1>
+            <section class="panel"><p style="margin:0;color:#6b7280">该账户暂无异常预警，数据按日汇总显示。</p></section>
+          </section>
+        </main>        <aside class="agent-panel" aria-label="Agent 面板">
+          <div class="agent-tabs" role="tablist">
+            <button type="button" class="agent-tab is-active" role="tab" data-tab="alert" aria-selected="true">异常预警</button>
+            <button type="button" class="agent-tab is-disabled" role="tab" data-tab="history" aria-selected="false" title="即将上线">对话记录</button>
+          </div>
+          <div class="agent-body">
+            <div class="agent-pane is-active" data-tab-pane="alert" role="tabpanel">
+              <div class="alert-summary">
+                <div class="alert-summary__title"><span aria-hidden="true">⚠</span> CPA 异常 · 品牌词-核心</div>
+                <p class="alert-summary__rule">触发规则：今日 CPA 环比 ≥ 20%（当前 +32%）<br />数据来源：过去 24h · 10 分钟前更新</p>
+              </div>
+              <div class="mini-metrics">
+                <div class="mini-metric"><div class="mini-metric__label">今日 CPA</div><div class="mini-metric__value">+32%</div></div>
+                <div class="mini-metric"><div class="mini-metric__label">消耗</div><div class="mini-metric__value">+18%</div></div>
+                <div class="mini-metric"><div class="mini-metric__label">最高 CPT</div><div class="mini-metric__value">+52%</div></div>
+              </div>
+              <div class="thinking" id="thinking-block">
+                <button type="button" class="thinking__head" id="thinking-toggle">Agent 分析 <span class="thinking__chevron" aria-hidden="true">▼</span></button>
+                <div class="thinking__body">
+                  <p><strong>结论</strong>：今日 CPA 环比上升 32%，主要由品牌词-IOS 最高 CPT 上涨带动；同系列品牌词-通用同步偏高，排除单点异常。</p>
+                  <p><strong>依据</strong>：</p>
+                  <ul>
+                    <li>品牌词-IOS：CPT ¥6.8（环比 +38%），消耗占系列 35%，CPA ¥52.1 超目标</li>
+                    <li>品牌词-通用：点击转化 9.1% 正常但 CPA ¥41.3 仍高于目标 ¥32</li>
+                    <li>昨日 14:00 后竞价动作增加约 80%，与成本上升节奏一致</li>
+                  </ul>
+                  <p>建议优先回调出价并观察受众，预计 6–12h 内系列 CPA 回落至 ¥34–38。</p>
+                </div>
+              </div>
+              <div class="suggestions" id="suggestions-panel">
+                <h3 class="suggestions__title">优化建议</h3>
+                <p class="suggestions__hint">勾选后点击「采纳」将生成执行单（演示）</p>
+                <div class="suggestion-list" id="suggestion-list">
+                  <label class="suggestion-item is-checked"><input type="checkbox" name="suggestion" value="bid-ios" checked /><span class="suggestion-item__text"><strong>品牌词-IOS</strong> · 出价调整：CPT ¥6.8 → <strong>¥5.5</strong><span class="suggestion-item__effect">预计 CPA 下降 15%</span></span></label>
+                  <label class="suggestion-item is-checked"><input type="checkbox" name="suggestion" value="bid-general" checked /><span class="suggestion-item__text"><strong>品牌词-通用</strong> · 出价调整：CPT ¥5.2 → <strong>¥4.6</strong><span class="suggestion-item__effect">预计 CPA 下降 10%</span></span></label>
+                  <label class="suggestion-item"><input type="checkbox" name="suggestion" value="audience-general" /><span class="suggestion-item__text"><strong>品牌词-通用</strong> · 受众调整为 <strong>18–34 岁 · 游戏兴趣</strong><span class="suggestion-item__effect">可能降低覆盖 · 需观察</span></span></label>
+                </div>
+                <div class="suggestions__actions">
+                  <button type="button" class="btn btn--ghost" id="btn-dismiss">忽略</button>
+                  <button type="button" class="btn btn--primary" id="btn-adopt">采纳</button>
+                </div>
+              </div>
+              <div class="feedback" id="feedback" role="status"></div>
+            </div>
+            <div class="agent-pane" data-tab-pane="history" role="tabpanel">
+              <div class="empty-state">对话记录功能即将上线…</div>
+            </div>
+          </div>
+          <div class="agent-input">
+            <div class="agent-input__row">
+              <textarea id="agent-input" rows="1" placeholder="向 Agent 提问，例如：为什么 IOS 组 CPA 更高？"></textarea>
+              <button type="button" class="agent-input__send" id="btn-send">发送</button>
+            </div>
+            <p class="agent-input__roles" aria-label="Agent 角色">
+              <span class="role-tag is-active">数据分析师</span>
+              <span class="role-tag">资深优化师</span>
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <script src="assets/js/session.js"></script>
+  </body>
+</html>

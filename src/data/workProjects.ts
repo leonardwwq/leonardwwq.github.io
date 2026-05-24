@@ -83,6 +83,9 @@ export const workProjects: WorkProject[] = [
     demoPath: '/prototypes/ASA智能投放平台/index.html',
     iframeTitle: 'ASA 智能投放平台原型预览',
     prototypesFolder: 'ASA智能投放平台',
+    demoLinks: [
+      { label: 'ASA 投放 Agent（探索原型）', path: '/prototypes/ASA投放Agent/index.html' },
+    ],
     caseStudy: {
       background:
         '依赖第三方或外部链路的 <strong>Apple Search Ads（ASA）</strong> 投放后台，在<strong>网络波动</strong>与工具扩展性上存在局限，投放运营难以稳定使用自研能力。团队选择<strong>自建 ASA 智能投放后台</strong>，以便集成更灵活的<strong>自研投放工具</strong>、沉淀可复用的<strong>投放数据</strong>，并为后续 <strong>AI 决策</strong>与<strong>报表类办公场景</strong>提供数据基础，从「能投」走向「可优化、可复盘」的<strong>智能投放</strong>服务，并延续既有<strong>投放全链路工具化</strong>产品经验。',
@@ -92,6 +95,30 @@ export const workProjects: WorkProject[] = [
         '作为<strong>产品负责人</strong>，负责需求分析、信息架构、Axure 原型、开发跟进、测试验收到上线发布。在原有功能结构上做<strong>交互与业务逻辑重设计</strong>，按投放链路组织<strong>账户管理、广告系列/组/关键词、搜索词与否定词、SOV/CPP、报告总览</strong>等模块，并纳入<strong>全局概览、智能监测、MMP 授权与客户管理</strong>等配套能力。完成交互与视觉升级后，叠加<strong>投放辅助工具</strong>与 <strong>AI 决策助手</strong>（建议展示 + <strong>一键应用</strong>），与研发对齐<strong>数据监听、多时区统计、监控通知</strong>等规则；复杂配置以分步向导与报告页降低认知负担，优先保证主路径可评审、可排期。',
       results:
         '交付可交互<strong>原型与重构后的投放后台</strong>，形成从账户操作、辅助工具到<strong>报告与智能监测</strong>的一体化工作台；<strong>AI 建议与一键应用</strong>缩短「看数—判断—改价/调价」路径，投放过程<strong>效率显著提升</strong>。与波波等前序数据/投放类产品形成同一产品线上的能力递进。',
+    },
+  },
+  {
+    slug: 'asa-delivery-agent',
+    title: 'ASA 投放 Agent',
+    description:
+      '三栏 Agent 工作台探索原型：账户树 + 数据工作区 + 异常预警侧栏，以监测告警驱动可解释归因与多选建议采纳，验证「看数—决策—执行」闭环。',
+    tagline:
+      '不是独立聊天窗口，而是嵌入投放上下文的 Agent：异常先触发、数据可对照、建议可勾选、采纳仅执行选中项，强化 AI 决策说服力。',
+    tags: ['Apple Search Ads', 'AI Agent', '异常监测', '智能投放'],
+    iconId: 'sparkles',
+    categoryId: 'prototype',
+    demoPath: '/prototypes/ASA投放Agent/index.html',
+    iframeTitle: 'ASA 投放 Agent 原型预览',
+    prototypesFolder: 'ASA投放Agent',
+    caseStudy: {
+      background:
+        '在 <a href="/work/asa-smart-delivery">ASA 智能投放平台</a> 中，<strong>AI 辅助决策</strong>需解决两个问题：一是建议不能脱离<strong>账户/系列/组</strong>上下文悬浮；二是运营需要看到<strong>监测为何报警</strong>、<strong>依据哪些指标</strong>，才能信任并执行调价/受众等操作。本探索原型将 Agent 收口为<strong>三栏工作台</strong>，与完整 ASA 后台 Axure 原型分离，专注验证交互与叙事。',
+      goals:
+        '验证「<strong>异常预警 → Agent 归因解读 → 多选建议 → 忽略/采纳</strong>」主路径是否清晰可演示。右栏以<strong>异常预警</strong> Tab 为主场景，建议项需与中栏广告组数据<strong>名称与指标一致</strong>；<strong>采纳</strong>仅提交已勾选项，体现可控执行而非黑盒替代。',
+      process:
+        '基于 ASA 投放链路与既有智能监测规则，设计<strong>左栏三级树</strong>（账户—系列—组）、<strong>中栏层级工作区</strong>（配置 + 下属组表/指标）、<strong>右栏 Agent 面板</strong>（预警摘要、可折叠分析、建议多选、底部输入）。Mock 场景预设系列 CPA 环比 +32%，归因至两个广告组的 CPT/受众，建议含 2 条出价 + 1 条受众调整；静态 HTML/CSS/JS 实现选中联动与采纳反馈。',
+      results:
+        '交付可嵌入作品集的<strong>单页静态原型</strong>（<code>public/prototypes/ASA投放Agent/</code>），作为 ASA 平台的<strong>探索性 Agent 形态</strong>单独展示，并在 ASA 案例页提供「更多原型」入口。后续可扩展对话记录 Tab、更多预警类型或与真实 ASA API 联调。',
     },
   },
   {

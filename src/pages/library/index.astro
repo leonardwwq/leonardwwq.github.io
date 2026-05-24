@@ -1,45 +1,23 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LibraryCategory from '../../components/LibraryCategory.astro';
+import { getEntriesForCategory, libraryCategories } from '../../data/library';
 ---
 
 <BaseLayout title="思考库 · 王伟权" description="按主题整理的阅读摘录与持续思考。">
   <h1 class="page-title">思考库</h1>
   <p class="page-sub">
-    每条材料归属一个主题分类；书目/文献元数据格式不限（列表、表格、一段话均可）；要点摘录用短引述与个人转述，避免大段复制原文。论文与电子书以外链溯源为主。
+    按主题分类沉淀阅读与思考；每类默认展示前三条，右侧可展开更早条目。每条左侧可收起/展开思考，同一分类同时只展开一条。要点以个人转述为主，材料以外链溯源。
   </p>
 
-  <section class="library-category">
-    <h2>用户研究</h2>
-    <div class="entry">
-      <div class="meta-line">示例 · 书名 / 作者 / 年份 · ebook</div>
-      <p class="muted" style="margin: 0">可替换为任意排版：表格、YAML 导出、或出版社链接。</p>
-      <p class="section-title" style="margin: 0.75rem 0 0.35rem; font-size: 0.95rem">要点摘录</p>
-      <ul>
-        <li>论点一：用你自己的话概括，并标注页码或章节（如有）。</li>
-        <li>论点二：可引用结论 + 对你工作的启发。</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="library-category">
-    <h2>决策研究</h2>
-    <div class="entry">
-      <div class="meta-line">示例 · 论文标题 · arXiv:xxxx.xxxxx · 202x</div>
-      <p class="section-title" style="margin: 0.75rem 0 0.35rem; font-size: 0.95rem">要点摘录</p>
-      <ul>
-        <li>方法或结论摘要一条。</li>
-        <li>可迁移到产品决策的 takeaway 一条。</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="library-category">
-    <h2>人工智能</h2>
-    <div class="entry">
-      <div class="meta-line">在此追加你的阅读版图；分类可随主题增减。</div>
-      <ul>
-        <li>占位：等你填入材料与摘录。</li>
-      </ul>
-    </div>
-  </section>
+  {
+    libraryCategories.map((cat) => (
+      <LibraryCategory
+        categoryId={cat.id}
+        title={cat.title}
+        entries={getEntriesForCategory(cat.id)}
+      />
+    ))
+  }
 </BaseLayout>
+

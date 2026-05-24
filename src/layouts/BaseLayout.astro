@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import EngagementBubble from '../components/EngagementBubble.astro';
 import '../styles/global.css';
 
 type Props = {
@@ -7,15 +8,15 @@ type Props = {
   description?: string;
 };
 
-const { title, description = '产品经理作品集：作品、思考库与关于我。' } = Astro.props;
+const { title, description = '产品经理作品集：案例库、思考库与关于我。' } = Astro.props;
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const nav = [
   { href: '/', label: '首页' },
-  { href: '/about', label: '关于我' },
-  { href: '/work', label: '作品' },
+  { href: '/work', label: '案例库' },
   { href: '/library', label: '思考库' },
-  { href: '/contact', label: '联系与简历' },
+  { href: '/about', label: '关于我' },
+  { href: '/contact', label: '联系我' },
 ];
 
 function isCurrent(href: string) {
@@ -74,7 +75,7 @@ function isCurrent(href: string) {
       <div class="row">
         <span>© {new Date().getFullYear()} 王伟权</span>
         <span>
-          <a href="/contact">联系与简历</a>
+          <a href="/contact">联系我</a>
           ·
           <a href="/profile/202605-第三版-王伟权-产品经理.pdf" target="_blank" rel="noopener"
             >下载简历 PDF</a
@@ -82,5 +83,10 @@ function isCurrent(href: string) {
         </span>
       </div>
     </footer>
+    <EngagementBubble />
+    <script>
+      import '../scripts/library-page';
+      import '../scripts/engagement-bubble';
+    </script>
   </body>
 </html>

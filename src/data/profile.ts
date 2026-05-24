@@ -73,6 +73,26 @@ export const profile = {
   } satisfies ProfileBackground,
   highlights: [
     {
+      title: 'ASA 智能投放平台',
+      slug: 'asa-smart-delivery',
+      logo: '/images/highlights/asa-smart-delivery.webp',
+      summary: '自建 Apple Search Ads 投放后台，集成 AI 决策建议与一键应用，缩短看数改价路径。',
+      metric: {
+        label: '投放过程效率',
+        displayValue: '显著提升',
+      },
+    },
+    {
+      title: 'ASA 投放 Agent',
+      slug: 'asa-delivery-agent',
+      logo: '/images/highlights/asa-delivery-agent.webp',
+      summary: '嵌入投放上下文的 Agent 工作台：异常预警驱动归因解读，支持多选建议与可控采纳，验证「看数—决策—执行」闭环。',
+      metric: {
+        label: 'Agent 交互路径',
+        displayValue: '闭环验证',
+      },
+    },
+    {
       title: 'ASO 一站式下单平台',
       slug: 'aso-self-service',
       logo: '/images/highlights/aso-self-service.webp',
@@ -92,27 +112,6 @@ export const profile = {
         value: 100,
         suffix: ' 万+',
         label: '运营期年均收入',
-      },
-    },
-    {
-      title: 'TopSocial 数据分析平台',
-      slug: 'topsocial-shubo',
-      logo: '/images/highlights/topsocial-shubo.webp',
-      summary: '整合多平台达人数据，重构体验并将下单、排期、验收流程产品化。',
-      metric: {
-        value: 25,
-        suffix: '%',
-        label: '关键路径跳出率下降',
-      },
-    },
-    {
-      title: 'ASA 智能投放平台',
-      slug: 'asa-smart-delivery',
-      logo: '/images/highlights/asa-smart-delivery.webp',
-      summary: '自建 Apple Search Ads 投放后台，集成 AI 决策建议与一键应用，缩短看数改价路径。',
-      metric: {
-        label: '投放过程效率',
-        displayValue: '显著提升',
       },
     },
   ] satisfies ProfileHighlight[],

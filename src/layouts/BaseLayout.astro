@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import EngagementBubble from '../components/EngagementBubble.astro';
+import { resumePath } from '../data/profile';
 import '../styles/global.css';
 
 type Props = {
@@ -77,9 +78,7 @@ function isCurrent(href: string) {
         <span>
           <a href="/contact">联系我</a>
           ·
-          <a href="/profile/202605-第三版-王伟权-产品经理.pdf" target="_blank" rel="noopener"
-            >下载简历 PDF</a
-          >
+          <a href={resumePath} target="_blank" rel="noopener">下载简历 PDF</a>
         </span>
       </div>
     </footer>

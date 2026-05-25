@@ -1,5 +1,18 @@
 /** 站点「关于我 / 联系」个人信息；与简历 PDF 对齐。 */
 
+/** 简历 PDF 所在目录（对应 public/profile/） */
+export const RESUME_DIR = '/profile';
+
+/**
+ * 当前简历文件名。更新简历时：
+ * 1. 将新 PDF 放入 public/profile/
+ * 2. 只改下面这一行文件名
+ * 3. 可删除旧 PDF（可选）
+ */
+export const resumeFileName = '202605-第三版-王伟权-产品经理.pdf';
+
+export const resumePath = `${RESUME_DIR}/${resumeFileName}`;
+
 export type ProfileEducation = {
   school: string;
   degree: string;
@@ -52,7 +65,7 @@ export const profile = {
   role: '产品经理',
   location: '北京',
   status: '在职',
-  resumePath: '/profile/202605-第三版-王伟权-产品经理.pdf',
+  resumePath,
   contact: {
     email: 'Oldschooldevotee@Foxmail.com',
     phone: '13502508112',

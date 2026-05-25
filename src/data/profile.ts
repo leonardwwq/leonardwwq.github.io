@@ -9,7 +9,7 @@ export const RESUME_DIR = '/profile';
  * 2. 只改下面这一行文件名
  * 3. 可删除旧 PDF（可选）
  */
-export const resumeFileName = '202605-第三版-王伟权-产品经理.pdf';
+export const resumeFileName = '王伟权-广告投放产品经理V5-2605.pdf';
 
 export const resumePath = `${RESUME_DIR}/${resumeFileName}`;
 
@@ -80,7 +80,7 @@ export const profile = {
     trajectory:
       '职业主线从单平台 0-1（波波微博数据）到多平台中台（TopSocial 数播），再到增长侧工具矩阵（ASO / ASA）——一直在做同一条 B 端数据与投放产品线，而非零散换赛道。',
     approach:
-      '习惯把复杂业务流程拆成可评审的主路径与状态机，用指标、漏斗和 A/B 测试驱动迭代；在投放与增长场景里，把运营经验沉淀为规则化、半自动化的产品能力，并结合 LLM 做文案与决策辅助，探索人机协同而非黑盒替代。',
+      '习惯把复杂业务流程拆成可评审的实现路径，用指标、漏斗和 A/B 测试驱动迭代；在投放与增长场景里，把运营经验沉淀为规则化、半自动化的产品能力，并结合 LLM 做文案与决策辅助，探索人机协同而非黑盒替代。',
   } satisfies ProfileBackground,
   highlights: [
     {

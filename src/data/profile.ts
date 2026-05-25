@@ -49,8 +49,6 @@ export type ProfileHighlight = {
   title: string;
   slug: string;
   summary: string;
-  /** 产品 logo，置于 public/images/highlights/ 下，如 aso-self-service.webp */
-  logo?: string;
   metric: ProfileHighlightMetric;
 };
 
@@ -88,7 +86,6 @@ export const profile = {
     {
       title: 'ASA 智能投放平台',
       slug: 'asa-smart-delivery',
-      logo: '/images/highlights/asa-smart-delivery.webp',
       summary: '自建 Apple Search Ads 投放后台，集成 AI 决策建议与一键应用，缩短看数改价路径。',
       metric: {
         label: '投放过程效率',
@@ -98,7 +95,6 @@ export const profile = {
     {
       title: 'ASA 投放 Agent',
       slug: 'asa-delivery-agent',
-      logo: '/images/highlights/asa-delivery-agent.webp',
       summary: '嵌入投放上下文的 Agent 工作台：异常预警驱动归因解读，支持多选建议与可控采纳，验证「看数—决策—执行」闭环。',
       metric: {
         label: 'Agent 交互路径',
@@ -108,7 +104,6 @@ export const profile = {
     {
       title: 'ASO 一站式下单平台',
       slug: 'aso-self-service',
-      logo: '/images/highlights/aso-self-service.webp',
       summary: '将 ASO 业务标准化为自助下单与交付，用埋点与漏斗持续优化获客全链路。',
       metric: {
         value: 117,
@@ -119,7 +114,6 @@ export const profile = {
     {
       title: '波波微博数据分析平台',
       slug: 'bobo-weibo',
-      logo: '/images/highlights/bobo-weibo.webp',
       summary: '0-1 完成商业化落地，服务 Apple、华为、OPPO 等品牌，后续拆线多个轻量工具。',
       metric: {
         value: 100,

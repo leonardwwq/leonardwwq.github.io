@@ -14,31 +14,6 @@ const { highlights } = Astro.props;
       <article class="highlight-slide" data-highlight-slide>
         <div class="highlight-slide__inner">
           <div class="highlight-slide__main">
-            <div class="highlight-slide__logo">
-              {
-                item.logo ? (
-                  <>
-                    <img
-                      class="highlight-slide__logo-img"
-                      src={item.logo}
-                      alt=""
-                      width="48"
-                      height="48"
-                      loading="lazy"
-                      decoding="async"
-                      data-highlight-logo
-                    />
-                    <span class="highlight-slide__logo-fallback" aria-hidden="true">
-                      {item.title.slice(0, 1)}
-                    </span>
-                  </>
-                ) : (
-                  <span class="highlight-slide__logo-fallback is-visible" aria-hidden="true">
-                    {item.title.slice(0, 1)}
-                  </span>
-                )
-              }
-            </div>
             <h3 class="highlight-slide__title">{item.title}</h3>
             <p class="highlight-slide__summary">{item.summary}</p>
             <a class="highlight-slide__cta btn" href={`/work/${item.slug}#results`}>
@@ -98,7 +73,6 @@ const { highlights } = Astro.props;
     width: 100%;
   }
 
-  .highlight-slide__logo,
   .highlight-slide__title,
   .highlight-slide__summary,
   .highlight-slide__cta,
@@ -110,69 +84,28 @@ const { highlights } = Astro.props;
       transform 0.5s ease;
   }
 
-  .highlight-slide.is-active .highlight-slide__logo {
+  .highlight-slide.is-active .highlight-slide__title {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0ms;
   }
 
-  .highlight-slide.is-active .highlight-slide__title {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 80ms;
-  }
-
   .highlight-slide.is-active .highlight-slide__metric-wrap {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 160ms;
+    transition-delay: 100ms;
   }
 
   .highlight-slide.is-active .highlight-slide__summary {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 260ms;
+    transition-delay: 200ms;
   }
 
   .highlight-slide.is-active .highlight-slide__cta {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 340ms;
-  }
-
-  .highlight-slide__logo {
-    width: 3rem;
-    height: 3rem;
-    margin-bottom: 0.85rem;
-    position: relative;
-  }
-
-  .highlight-slide__logo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: var(--radius-sm);
-  }
-
-  .highlight-slide__logo-fallback {
-    display: none;
-    place-items: center;
-    width: 100%;
-    height: 100%;
-    border-radius: var(--radius-sm);
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--accent);
-  }
-
-  .highlight-slide__logo-fallback.is-visible {
-    display: grid;
-  }
-
-  .highlight-slide__logo:has(.highlight-slide__logo-img:not([hidden])) .highlight-slide__logo-fallback:not(.is-visible) {
-    display: none;
+    transition-delay: 280ms;
   }
 
   .highlight-slide__title {
@@ -258,7 +191,6 @@ const { highlights } = Astro.props;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .highlight-slide__logo,
     .highlight-slide__title,
     .highlight-slide__summary,
     .highlight-slide__cta,
@@ -299,24 +231,11 @@ const { highlights } = Astro.props;
     requestAnimationFrame(tick);
   }
 
-  function initHighlightLogos() {
-    document.querySelectorAll<HTMLImageElement>('[data-highlight-logo]').forEach((img) => {
-      const fallback = img.nextElementSibling;
-      const showFallback = () => {
-        img.hidden = true;
-        fallback?.classList.add('is-visible');
-      };
-      if (img.complete && img.naturalWidth === 0) showFallback();
-      else img.addEventListener('error', showFallback, { once: true });
-    });
-  }
-
   let highlightObserver: IntersectionObserver | null = null;
 
   function initHighlightShowcase() {
     highlightObserver?.disconnect();
     highlightObserver = null;
-    initHighlightLogos();
 
     const slides = document.querySelectorAll<HTMLElement>('[data-highlight-slide]');
     if (slides.length === 0) return;

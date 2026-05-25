@@ -1,4 +1,5 @@
 ---
+import LibraryEntryDownloadLink from './LibraryEntryDownloadLink.astro';
 import type { LibraryCategoryId } from '../data/library';
 import { LIBRARY_DEFAULT_VISIBLE, type LibraryEntry } from '../data/library';
 
@@ -81,9 +82,7 @@ function thoughtParagraphs(text: string) {
             </time>
           </div>
           <p class="library-entry__link-row">
-            <a href={entry.link.href} target="_blank" rel="noopener noreferrer">
-              {entry.link.label ?? entry.link.href}
-            </a>
+            <LibraryEntryDownloadLink href={entry.link.href} label={entry.link.label} />
           </p>
           <div
             class="library-entry__body"
@@ -137,9 +136,7 @@ function thoughtParagraphs(text: string) {
                 </time>
               </div>
               <p class="library-entry__link-row">
-                <a href={entry.link.href} target="_blank" rel="noopener noreferrer">
-                  {entry.link.label ?? entry.link.href}
-                </a>
+                <LibraryEntryDownloadLink href={entry.link.href} label={entry.link.label} />
               </p>
               <div
                 class="library-entry__body"

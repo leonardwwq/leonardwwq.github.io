@@ -1,5 +1,7 @@
 /** 思考库：按分类维护阅读材料与个人思考；`featured` 条目优先出现在默认展示的前三条内。 */
 
+import { libraryAssetUrls } from './libraryAssetUrls';
+
 export type LibraryCategoryId = 'user-research' | 'decision' | 'ai';
 
 export type LibraryEntry = {
@@ -84,14 +86,26 @@ export const libraryEntries: LibraryEntry[] = [
     featured: true,
   },
   {
-    id: 'ai-placeholder',
+    id: 'ai-deep-learning',
     categoryId: 'ai',
-    title: '在此追加你的阅读材料',
-    author: '—',
-    year: '—',
-    updatedAt: '2025-05-20',
-    link: { href: '#', label: '作品链接（更新时请改为真实 URL）' },
-    thoughts: '展开后写入你的思考；全量材料可继续在本分类下追加条目。',
+    title: 'Deep Learning',
+    author: 'Ian Goodfellow, Yoshua Bengio, Aaron Courville',
+    year: 2016,
+    updatedAt: '2025-05-25',
+    link: { href: libraryAssetUrls.deepLearningPdf, label: 'PDF · 下载' },
+    thoughts: '（占位）核心概念与章节笔记待补充。\n\n（占位）与产品 / 算法相关的 takeaway 待补充。',
+    featured: true,
+  },
+  {
+    id: 'ai-calculus-lifesaver',
+    categoryId: 'ai',
+    title: 'The Calculus Lifesaver',
+    author: 'Adrian Banner',
+    year: 2007,
+    updatedAt: '2025-05-25',
+    link: { href: libraryAssetUrls.calculusLifesaverMobi, label: 'MOBI · 下载' },
+    thoughts: '（占位）阅读进度与重点公式待补充。\n\n（占位）个人理解与应用场景待补充。',
+    featured: true,
   },
 ];
 

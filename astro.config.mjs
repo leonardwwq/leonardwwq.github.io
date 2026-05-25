@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// User site: https://leonardwwq.github.io — no base path.
+// User site: https://weipm.com — no base path.
 export default defineConfig({
-  site: 'https://leonardwwq.github.io',
+  site: 'https://weipm.com',
 });

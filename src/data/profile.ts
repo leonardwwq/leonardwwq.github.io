@@ -1,4 +1,4 @@
-/** 站点「关于我 / 联系」个人信息；与简历 PDF 对齐，社交链接待补 URL。 */
+/** 站点「关于我 / 联系」个人信息；与简历 PDF 对齐。 */
 
 export type ProfileEducation = {
   school: string;
@@ -58,9 +58,9 @@ export const profile = {
     phone: '13502508112',
   },
   social: {
-    telegram: '',
+    telegram: 'https://t.me/+8613502508112',
     twitter: '',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/伟权-王-780885360',
   } satisfies ProfileSocial,
   tagline: '用数据丈量，用逻辑抽象，用规则决策，用心理加温，从假设到交付的循环验证。为了做出有价值、有意义、有温度的产品。',
   background: {

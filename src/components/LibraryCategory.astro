@@ -27,6 +27,13 @@ function thoughtParagraphs(text: string) {
     .map((p) => p.trim())
     .filter(Boolean);
 }
+
+function hasDisplayYear(year: LibraryEntry['year']): boolean {
+  if (year === undefined) return false;
+  if (typeof year === 'number' && !Number.isNaN(year)) return true;
+  const s = String(year).trim();
+  return Boolean(s && s !== '—' && s !== '-' && s !== '–' && s !== '未知');
+}
 ---
 
 <section class="library-category" data-library-category data-category-id={categoryId}>
@@ -71,19 +78,25 @@ function thoughtParagraphs(text: string) {
                 ·
               </span>
               <span class="library-entry__author">{entry.author}</span>
-              <span class="library-entry__sep" aria-hidden="true">
-                ·
-              </span>
-              <span class="library-entry__year">{entry.year}</span>
+              {hasDisplayYear(entry.year) ? (
+                <>
+                  <span class="library-entry__sep" aria-hidden="true">
+                    ·
+                  </span>
+                  <span class="library-entry__year">{entry.year}</span>
+                </>
+              ) : null}
               {entry.featured ? <span class="library-entry__badge">精选</span> : null}
             </div>
             <time class="library-entry__updated" datetime={entry.updatedAt}>
               更新 {formatUpdated(entry.updatedAt)}
             </time>
           </div>
-          <p class="library-entry__link-row">
-            <LibraryEntryDownloadLink href={entry.link.href} label={entry.link.label} />
-          </p>
+          {entry.link ? (
+            <p class="library-entry__link-row">
+              <LibraryEntryDownloadLink href={entry.link.href} label={entry.link.label} />
+            </p>
+          ) : null}
           <div
             class="library-entry__body"
             id={`${categoryId}-${entry.id}-body`}
@@ -125,19 +138,25 @@ function thoughtParagraphs(text: string) {
                     ·
                   </span>
                   <span class="library-entry__author">{entry.author}</span>
-                  <span class="library-entry__sep" aria-hidden="true">
-                    ·
-                  </span>
-                  <span class="library-entry__year">{entry.year}</span>
+                  {hasDisplayYear(entry.year) ? (
+                    <>
+                      <span class="library-entry__sep" aria-hidden="true">
+                        ·
+                      </span>
+                      <span class="library-entry__year">{entry.year}</span>
+                    </>
+                  ) : null}
                   {entry.featured ? <span class="library-entry__badge">精选</span> : null}
                 </div>
                 <time class="library-entry__updated" datetime={entry.updatedAt}>
                   更新 {formatUpdated(entry.updatedAt)}
                 </time>
               </div>
-              <p class="library-entry__link-row">
-                <LibraryEntryDownloadLink href={entry.link.href} label={entry.link.label} />
-              </p>
+              {entry.link ? (
+                <p class="library-entry__link-row">
+                  <LibraryEntryDownloadLink href={entry.link.href} label={entry.link.label} />
+                </p>
+              ) : null}
               <div
                 class="library-entry__body"
                 id={`${categoryId}-${entry.id}-body`}

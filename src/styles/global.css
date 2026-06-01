@@ -233,7 +233,7 @@ a:hover {
 
 /* Hero */
 .hero {
-  padding: 4.5rem 0 3rem;
+  padding: 5.6rem 0 3.4rem;
 }
 
 .eyebrow {
@@ -241,14 +241,15 @@ a:hover {
   align-items: center;
   gap: 0.5rem;
   margin: 0 0 1.25rem;
-  padding: 0.35rem 0.75rem;
+  width: fit-content;
+  padding: 0.28rem 0.58rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-strong);
   background: var(--bg2);
   color: var(--muted);
   font-size: 0.76rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
@@ -273,8 +274,8 @@ a:hover {
 .hero .lede {
   font-size: 1.125rem;
   color: var(--muted);
-  max-width: 48ch;
-  margin: 0 0 2rem;
+  max-width: 44ch;
+  margin: 0 0 2.3rem;
   line-height: 1.62;
   font-weight: 400;
 }
@@ -282,7 +283,8 @@ a:hover {
 .cta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
 }
 
 /* Buttons — pill + glass, refined hover */
@@ -406,11 +408,15 @@ a:hover {
 }
 
 .content-section {
-  margin-top: 2.4rem;
+  margin-top: 3rem;
 }
 
 .content-section:first-of-type {
   margin-top: 0;
+}
+
+.hero.content-section {
+  margin-top: 3rem;
 }
 
 .shelf-head {
@@ -652,6 +658,121 @@ a:hover {
 /* 首页 · 从这里开始 */
 .panel-start {
   padding: 1.35rem 1.25rem 1.25rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0) 100%), var(--surface);
+}
+
+.home-core-cases .card p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.home-screen {
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+.home-screen .card-grid {
+  margin-top: 1.1rem;
+}
+
+.home-section-head {
+  margin-bottom: 1rem;
+}
+
+.home-section-title {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.home-section-note {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.62;
+  max-width: 58ch;
+}
+
+.home-about-slogan {
+  margin: 0.9rem 0 0;
+  font-size: clamp(1.25rem, 2.2vw, 1.85rem);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  max-width: 34ch;
+}
+
+.home-about-desc {
+  margin: 1rem 0 0;
+  max-width: 64ch;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.home-knowledge-list {
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+}
+
+.home-knowledge-list li {
+  margin: 0;
+  padding: 0 0 0.95rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.home-knowledge-list h3 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.home-knowledge-list p {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.home-reveal {
+  animation: home-section-reveal 0.56s ease both;
+}
+
+.home-reveal--1 {
+  animation-delay: 0.04s;
+}
+
+.home-reveal--2 {
+  animation-delay: 0.12s;
+}
+
+.home-reveal--3 {
+  animation-delay: 0.2s;
+}
+
+.home-reveal--4 {
+  animation-delay: 0.28s;
+}
+
+@keyframes home-section-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .start-list {
@@ -727,6 +848,12 @@ a:hover {
 
   .start-list__desc {
     font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .home-knowledge-list {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1006,13 +1133,13 @@ a:hover {
   }
 }
 
-/* 全站停留提示浮窗 */
+/* 机器人导览浮窗 */
 .engagement-float {
   position: fixed;
   right: 1.25rem;
   bottom: 2rem;
   z-index: 45;
-  max-width: min(20rem, calc(100vw - 2rem));
+  max-width: none;
   pointer-events: none;
   opacity: 0;
   transform: translateY(0.5rem) scale(0.98);
@@ -1027,17 +1154,171 @@ a:hover {
   transform: translateY(0) scale(1);
 }
 
-.engagement-float__bubble {
+.robot-assistant {
   position: relative;
+  display: block;
+  width: max-content;
+  padding-top: 0.25rem;
+  padding-right: 0.15rem;
+}
+
+.robot-shell {
+  flex-shrink: 0;
+  width: 3.45rem;
+  padding-top: 0.68rem;
+  position: relative;
+  z-index: 2;
+  transform-origin: 50% 58%;
+  will-change: transform;
+}
+
+.robot-shell--pixel {
+  --robot-line: #8fe9ff;
+  --robot-face: #050608;
+}
+
+.robot-antenna {
+  position: absolute;
+  top: 0.03rem;
+  width: 2px;
+  height: 0.58rem;
+  background: var(--robot-line);
+}
+
+.robot-antenna::before {
+  content: "";
+  position: absolute;
+  top: -0.14rem;
+  left: 50%;
+  width: 0.26rem;
+  height: 0.26rem;
+  border: 2px solid var(--robot-line);
+  background: #050608;
+  transform: translateX(-50%);
+}
+
+.robot-antenna--left {
+  left: 0.9rem;
+}
+
+.robot-antenna--right {
+  right: 0.9rem;
+}
+
+.robot-head {
+  position: relative;
+  width: 3.02rem;
+  height: 2.52rem;
+  border: 2px solid var(--robot-line);
+  border-radius: 0;
+  background: var(--robot-face);
+  clip-path: polygon(
+    0.48rem 0,
+    calc(100% - 0.48rem) 0,
+    100% 0.48rem,
+    100% calc(100% - 0.48rem),
+    calc(100% - 0.48rem) 100%,
+    0.48rem 100%,
+    0 calc(100% - 0.48rem),
+    0 0.48rem
+  );
+  box-shadow:
+    inset 0 0 0 1px rgba(143, 233, 255, 0.1),
+    0 0 0 1px rgba(143, 233, 255, 0.14);
+  transform-origin: 50% 62%;
+  will-change: transform;
+}
+
+.robot-head::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--robot-line), var(--robot-line)) left 0.2rem top 0.06rem / 0.14rem 0.14rem no-repeat,
+    linear-gradient(var(--robot-line), var(--robot-line)) left 0.34rem top 0.2rem / 0.14rem 0.14rem no-repeat,
+    linear-gradient(var(--robot-line), var(--robot-line)) right 0.2rem top 0.06rem / 0.14rem 0.14rem no-repeat,
+    linear-gradient(var(--robot-line), var(--robot-line)) right 0.34rem top 0.2rem / 0.14rem 0.14rem no-repeat,
+    linear-gradient(var(--robot-line), var(--robot-line)) left 0.2rem bottom 0.06rem / 0.14rem 0.14rem no-repeat,
+    linear-gradient(var(--robot-line), var(--robot-line)) left 0.34rem bottom 0.2rem / 0.14rem 0.14rem no-repeat,
+    linear-gradient(var(--robot-line), var(--robot-line)) right 0.2rem bottom 0.06rem / 0.14rem 0.14rem no-repeat,
+    linear-gradient(var(--robot-line), var(--robot-line)) right 0.34rem bottom 0.2rem / 0.14rem 0.14rem no-repeat;
+}
+
+.robot-eye {
+  position: absolute;
+  top: 0.96rem;
+  width: 2px;
+  height: 0.72rem;
+  background: var(--robot-line);
+  box-shadow:
+    0 0 6px rgba(143, 233, 255, 0.95),
+    0 0 0 1px rgba(143, 233, 255, 0.3);
+  transform: translate(0, 0);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.robot-eye--left {
+  left: 1.06rem;
+}
+
+.robot-eye--right {
+  right: 1.06rem;
+}
+
+.engagement-float__bubble {
+  position: absolute;
+  right: calc(100% - 1.15rem);
+  bottom: calc(100% - 1.7rem);
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  min-width: 15rem;
+  max-width: min(18.5rem, calc(100vw - 7rem));
   padding: 0.75rem 0.5rem 0.75rem 1rem;
-  background: rgba(31, 31, 31, 0.96);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
-  box-shadow: rgba(0, 0, 0, 0.5) 0 8px 24px;
-  backdrop-filter: blur(10px) saturate(1);
+  background: #050608;
+  border: 2px solid var(--robot-line);
+  border-radius: 0;
+  box-shadow:
+    0 0 0 1px rgba(143, 233, 255, 0.18),
+    rgba(0, 0, 0, 0.42) 0 10px 24px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.24rem);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.engagement-float__bubble::after {
+  content: "";
+  position: absolute;
+  right: 0.62rem;
+  bottom: -0.52rem;
+  width: 0.92rem;
+  height: 0.92rem;
+  background:
+    linear-gradient(135deg, #050608 0 50%, transparent 50% 100%);
+  border-right: 2px solid var(--robot-line);
+  border-bottom: 2px solid var(--robot-line);
+  transform: rotate(45deg);
+}
+
+.engagement-float__bubble::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--robot-line), var(--robot-line)) left 0.08rem top 0.08rem / 0.18rem 0.18rem no-repeat,
+    linear-gradient(var(--robot-line), var(--robot-line)) right 0.08rem top 0.08rem / 0.18rem 0.18rem no-repeat,
+    linear-gradient(var(--robot-line), var(--robot-line)) left 0.08rem bottom 0.08rem / 0.18rem 0.18rem no-repeat,
+    linear-gradient(var(--robot-line), var(--robot-line)) right 0.08rem bottom 0.08rem / 0.18rem 0.18rem no-repeat;
+}
+
+.robot-assistant.is-speaking .engagement-float__bubble {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .engagement-float__text {
@@ -1045,7 +1326,31 @@ a:hover {
   flex: 1;
   font-size: 0.88rem;
   line-height: 1.45;
-  color: var(--text);
+  color: #d7f8ff;
+  text-shadow: 0 0 8px rgba(143, 233, 255, 0.16);
+}
+
+.robot-assistant.is-thinking .engagement-float__text {
+  color: #b9c0c9;
+  text-shadow: none;
+}
+
+.robot-assistant.is-thinking .engagement-float__text::after {
+  content: "...";
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  vertical-align: baseline;
+  animation: thinking-dots 1s steps(4, end) infinite;
+}
+
+@keyframes thinking-dots {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 1.6em;
+  }
 }
 
 .engagement-float__cta {
@@ -1055,17 +1360,19 @@ a:hover {
   justify-content: center;
   width: 2.25rem;
   height: 2.25rem;
-  color: #000000;
-  background: var(--accent);
-  border-radius: 50%;
+  color: #050608;
+  background: var(--robot-line);
+  border: 2px solid var(--robot-line);
+  border-radius: 0;
   text-decoration: none;
-  transition: box-shadow 0.15s ease;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .engagement-float__cta:hover {
-  color: #000000;
-  background: var(--accent);
-  box-shadow: 0 4px 16px var(--accent-glow);
+  color: #050608;
+  background: #a9f1ff;
+  box-shadow: 0 0 0 1px rgba(143, 233, 255, 0.26);
+  transform: translateX(1px);
 }
 
 .engagement-float__arrow {
@@ -1088,24 +1395,35 @@ a:hover {
   padding: 0;
   font-size: 0.95rem;
   line-height: 1;
-  color: var(--muted);
-  background: var(--bg1);
-  border: 1px solid var(--border);
-  border-radius: 50%;
+  color: var(--robot-line);
+  background: #050608;
+  border: 2px solid var(--robot-line);
+  border-radius: 0;
   cursor: pointer;
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .engagement-float__dismiss:hover {
-  color: var(--text);
-  border-color: var(--text);
+  color: #050608;
+  border-color: var(--robot-line);
+  background: var(--robot-line);
 }
 
 @media (max-width: 640px) {
   .engagement-float {
     right: 0.75rem;
     bottom: 1.25rem;
-    max-width: calc(100vw - 1.5rem);
+  }
+
+  .engagement-float__bubble {
+    right: 0.78rem;
+    bottom: calc(100% + 0.42rem);
+    min-width: 0;
+    max-width: min(16rem, calc(100vw - 1.5rem));
+  }
+
+  .engagement-float__bubble::after {
+    right: 0.9rem;
   }
 
   .engagement-float__text {
@@ -1114,7 +1432,23 @@ a:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-reveal {
+    animation: none;
+  }
+
   .engagement-float {
+    transition: none;
+  }
+
+  .robot-head,
+  .robot-shell,
+  .robot-eye {
+    transform: none !important;
+    transition: none;
+    will-change: auto;
+  }
+
+  .engagement-float__bubble {
     transition: none;
   }
 

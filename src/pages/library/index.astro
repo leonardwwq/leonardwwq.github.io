@@ -5,10 +5,12 @@ import { getEntriesForCategory, libraryCategories } from '../../data/library';
 ---
 
 <BaseLayout title="思考库 · 王伟权" description="按主题整理的阅读摘录与持续思考。">
-  <h1 class="page-title">思考库</h1>
-  <p class="page-sub">
-    按主题分类沉淀阅读与思考；每类默认展示前三条，右侧可展开更早条目。每条左侧可收起/展开思考，同一分类同时只展开一条。要点以个人转述为主，材料以外链溯源。
-  </p>
+  <section class="content-section">
+    <h1 class="page-title">思考库</h1>
+    <p class="page-sub">
+      按主题分类沉淀阅读与思考；每类默认展示前三条，右侧可展开更早条目。每条左侧可收起/展开思考，同一分类同时只展开一条。要点以个人转述为主，材料以外链溯源。
+    </p>
+  </section>
 
   {
     libraryCategories.map((cat) => (

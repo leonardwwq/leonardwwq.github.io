@@ -45,8 +45,8 @@ function isCurrent(href: string) {
     <ClientRouter />
   </head>
   <body>
-    <header class="site-header">
-      <div class="inner">
+    <div class="app-layout">
+      <aside class="site-sidebar">
         <a class="brand" href="/" transition:animate="fade">
           <img
             class="brand-avatar"
@@ -67,21 +67,52 @@ function isCurrent(href: string) {
             ))
           }
         </nav>
+        <a class="btn sidebar-resume" href={resumePath} target="_blank" rel="noopener">
+          下载简历
+        </a>
+      </aside>
+
+      <div class="site-main">
+        <header class="site-header">
+          <div class="inner">
+            <a class="brand brand--mobile" href="/" transition:animate="fade">
+              <img
+                class="brand-avatar"
+                src="/images/avatar.webp"
+                alt=""
+                width="32"
+                height="32"
+                decoding="async"
+              />
+              王伟权 <small>作品集</small>
+            </a>
+            <nav class="nav nav--mobile" aria-label="主导航">
+              {
+                nav.map((item) => (
+                  <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                    {item.label}
+                  </a>
+                ))
+              }
+            </nav>
+          </div>
+        </header>
+
+        <main class="shell">
+          <slot />
+        </main>
+        <footer class="site-footer shell">
+          <div class="row">
+            <span>© {new Date().getFullYear()} 王伟权</span>
+            <span>
+              <a href="/contact">联系我</a>
+              ·
+              <a href={resumePath} target="_blank" rel="noopener">下载简历（PDF）</a>
+            </span>
+          </div>
+        </footer>
       </div>
-    </header>
-    <main class="shell">
-      <slot />
-    </main>
-    <footer class="site-footer shell">
-      <div class="row">
-        <span>© {new Date().getFullYear()} 王伟权</span>
-        <span>
-          <a href="/contact">联系我</a>
-          ·
-          <a href={resumePath} target="_blank" rel="noopener">下载简历 PDF</a>
-        </span>
-      </div>
-    </footer>
+    </div>
     <EngagementBubble />
     <script>
       import '../scripts/library-page';

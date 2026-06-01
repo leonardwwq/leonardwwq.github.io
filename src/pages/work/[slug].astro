@@ -34,36 +34,38 @@ const caseStudy = project.caseStudy ?? caseTemplate;
   title={`${project.title} · 案例库`}
   description={`${project.title}：案例背景、目标、过程、结果与原型预览。`}
 >
-  <article>
-    <p class="muted" style="margin-bottom: 0.35rem">
-      <a href="/work">案例库</a>
-      <span aria-hidden="true"> · </span>
-      <span>{project.title}</span>
-    </p>
-    <h1 class="page-title">{project.title}</h1>
-    <div class="blockquote">{project.tagline}</div>
+  <article class="content-section">
+    <section class="page-head">
+      <p class="page-head__meta">
+        <a href="/work">案例库</a>
+        <span aria-hidden="true"> / </span>
+        <span>{project.title}</span>
+      </p>
+      <h1 class="page-title">{project.title}</h1>
+      <div class="blockquote">{project.tagline}</div>
+    </section>
 
-    <h2 class="section-title">背景</h2>
+    <h2 class="section-title content-section">背景</h2>
     <div class="panel prose">
       <p set:html={caseStudy.background} />
     </div>
 
-    <h2 class="section-title">目标</h2>
+    <h2 class="section-title content-section">目标</h2>
     <div class="panel prose">
       <p set:html={caseStudy.goals} />
     </div>
 
-    <h2 class="section-title">过程</h2>
+    <h2 class="section-title content-section">过程</h2>
     <div class="panel prose">
       <p set:html={caseStudy.process} />
     </div>
 
-    <h2 id="results" class="section-title">结果</h2>
+    <h2 id="results" class="section-title content-section">结果</h2>
     <div class="panel prose">
       <p set:html={caseStudy.results} />
     </div>
 
-    <h2 class="section-title">原型演示</h2>
+    <h2 class="section-title content-section">原型演示</h2>
     {
       project.demoPath ? (
         <>
@@ -372,13 +374,13 @@ const caseStudy = project.caseStudy ?? caseTemplate;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 1.9rem;
+    height: 1.9rem;
     margin-top: 0.05rem;
     padding: 0;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: var(--surface2);
+    border: 1px solid var(--border-strong);
+    border-radius: 50%;
+    background: var(--bg2);
     color: var(--muted);
     cursor: pointer;
     transition:
@@ -388,21 +390,21 @@ const caseStudy = project.caseStudy ?? caseTemplate;
   }
 
   .copy-url-btn:hover:not(:active):not(.copy-url-btn--success) {
-    color: var(--accent-soft);
-    border-color: var(--accent-border);
-    background: var(--accent-fill);
+    color: var(--text);
+    border-color: var(--text);
+    background: var(--surface2);
   }
 
   .copy-url-btn:active:not(.copy-url-btn--success) {
-    color: var(--accent);
-    border-color: var(--accent-border-hover);
-    background: var(--accent-fill-hover);
+    color: var(--text);
+    border-color: var(--text);
+    background: var(--surface2);
   }
 
   .copy-url-btn--success {
-    color: var(--accent);
-    border-color: var(--accent-border-hover);
-    background: var(--accent-fill-hover);
+    color: #000000;
+    border-color: transparent;
+    background: var(--accent);
   }
 
   .copy-url-btn:focus-visible {

@@ -5,20 +5,29 @@ import { workProjectIcons } from '../../data/workProjectIcons';
 ---
 
 <BaseLayout title="案例库 · 王伟权" description="案例索引：按平台案例、原型演示与规划中分组。">
-  <h1 class="page-title">案例库</h1>
-  <p class="page-sub">
-    多数案例的原型托管于 <code>public/prototypes/</code>
-    ，详情页可站内嵌入预览；部分案例演示托管于 Axure 云，详情页提供外链打开。
-  </p>
+  <section class="content-section" id="top">
+    <h1 class="page-title">案例库</h1>
+    <p class="page-sub">
+      多数案例的原型托管于 <code>public/prototypes/</code>
+      ，详情页可站内嵌入预览；部分案例演示托管于 Axure 云，详情页提供外链打开。
+    </p>
+  </section>
 
   {
     workCategories.map((cat) => {
       const items = workProjects.filter((p) => p.categoryId === cat.id);
       if (items.length === 0) return null;
       return (
-        <section class="work-category">
-          <h2 class="section-title">{cat.title}</h2>
-          <p class="muted work-category-intro">{cat.intro}</p>
+        <section class="work-category content-section">
+          <div class="shelf-head">
+            <div>
+              <h2 class="shelf-title">{cat.title}</h2>
+              <p class="muted work-category-intro">{cat.intro}</p>
+            </div>
+            <a class="shelf-action" href="#top">
+              回到顶部
+            </a>
+          </div>
           <div class="card-grid">
             {items.map((p) => (
               <a class="card" href={`/work/${p.slug}`} style="text-decoration: none; color: inherit">
@@ -41,12 +50,8 @@ import { workProjectIcons } from '../../data/workProjectIcons';
 </BaseLayout>
 
 <style>
-  .work-category {
-    margin-top: 2.25rem;
-  }
-
   .work-category-intro {
-    margin: -0.35rem 0 0;
+    margin: 0.3rem 0 0;
     max-width: 52rem;
     line-height: 1.65;
   }

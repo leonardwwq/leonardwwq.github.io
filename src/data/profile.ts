@@ -9,7 +9,7 @@ export const RESUME_DIR = '/profile';
  * 2. 只改下面这一行文件名
  * 3. 可删除旧 PDF（可选）
  */
-export const resumeFileName = '王伟权-广告投放产品经理V5-2605.pdf';
+export const resumeFileName = '王伟权-产品经理V5-2605.pdf';
 
 export const resumePath = `${RESUME_DIR}/${resumeFileName}`;
 

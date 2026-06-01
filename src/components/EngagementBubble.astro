@@ -3,32 +3,45 @@ const contactHref = '/contact';
 ---
 
 <aside class="engagement-float" data-engagement-float hidden aria-label="阅读提示">
-  <div class="engagement-float__bubble" role="dialog" aria-labelledby="engagement-float-msg">
-    <p id="engagement-float-msg" class="engagement-float__text">文字太多了？可约我当面了解~</p>
-    <a
-      href={contactHref}
-      class="engagement-float__cta"
-      aria-label="前往联系我"
-      data-astro-prefetch
-    >
-      <svg
-        class="engagement-float__arrow"
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.25"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
+  <div class="robot-assistant robot-assistant--float" role="dialog" aria-labelledby="engagement-float-msg">
+    <div class="robot-shell robot-shell--pixel" data-robot-shell aria-hidden="true">
+      <span class="robot-antenna robot-antenna--left"></span>
+      <span class="robot-antenna robot-antenna--right"></span>
+      <div class="robot-head">
+        <span class="robot-eye robot-eye--left" data-robot-eye-left></span>
+        <span class="robot-eye robot-eye--right" data-robot-eye-right></span>
+      </div>
+    </div>
+    <div class="engagement-float__bubble">
+      <p id="engagement-float-msg" class="engagement-float__text" data-robot-message>
+        先浏览感兴趣的模块，我来给你导览。
+      </p>
+      <a
+        href={contactHref}
+        class="engagement-float__cta"
+        aria-label="前往联系我"
+        data-robot-cta
+        data-astro-prefetch
       >
-        <path d="M5 12h12"></path>
-        <path d="M13 7l5 5-5 5"></path>
-      </svg>
-    </a>
-    <button type="button" class="engagement-float__dismiss" data-engagement-dismiss aria-label="关闭提示">
-      <span aria-hidden="true">×</span>
-    </button>
+        <svg
+          class="engagement-float__arrow"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.25"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h12"></path>
+          <path d="M13 7l5 5-5 5"></path>
+        </svg>
+      </a>
+      <button type="button" class="engagement-float__dismiss" data-engagement-dismiss aria-label="关闭提示">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
   </div>
 </aside>

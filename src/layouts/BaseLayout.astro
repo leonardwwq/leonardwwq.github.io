@@ -13,11 +13,11 @@ const { title, description = '产品经理作品集：案例库、思考库与�
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const nav = [
-  { href: '/', label: '首页' },
-  { href: '/work', label: '案例库' },
-  { href: '/library', label: '思考库' },
-  { href: '/about', label: '关于我' },
-  { href: '/contact', label: '联系我' },
+  { href: '/', label: '首页', topic: 'home' },
+  { href: '/work', label: '案例库', topic: 'work' },
+  { href: '/library', label: '思考库', topic: 'library' },
+  { href: '/about', label: '关于我', topic: 'about' },
+  { href: '/contact', label: '联系我', topic: 'contact' },
 ];
 
 function isCurrent(href: string) {
@@ -61,13 +61,23 @@ function isCurrent(href: string) {
         <nav class="nav" aria-label="主导航">
           {
             nav.map((item) => (
-              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+              <a
+                href={item.href}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+                data-robot-topic={item.topic}
+              >
                 {item.label}
               </a>
             ))
           }
         </nav>
-        <a class="btn sidebar-resume" href={resumePath} target="_blank" rel="noopener">
+        <a
+          class="btn sidebar-resume"
+          href={resumePath}
+          target="_blank"
+          rel="noopener"
+          data-robot-topic="resume"
+        >
           下载简历
         </a>
       </aside>
@@ -89,7 +99,11 @@ function isCurrent(href: string) {
             <nav class="nav nav--mobile" aria-label="主导航">
               {
                 nav.map((item) => (
-                  <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                  <a
+                    href={item.href}
+                    aria-current={isCurrent(item.href) ? 'page' : undefined}
+                    data-robot-topic={item.topic}
+                  >
                     {item.label}
                   </a>
                 ))
@@ -105,9 +119,9 @@ function isCurrent(href: string) {
           <div class="row">
             <span>© {new Date().getFullYear()} 王伟权</span>
             <span>
-              <a href="/contact">联系我</a>
+              <a href="/contact" data-robot-topic="contact">联系我</a>
               ·
-              <a href={resumePath} target="_blank" rel="noopener">下载简历（PDF）</a>
+              <a href={resumePath} target="_blank" rel="noopener" data-robot-topic="resume">下载简历（PDF）</a>
             </span>
           </div>
         </footer>

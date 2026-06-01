@@ -17,11 +17,11 @@ const socialLinks = getActiveSocialLinks();
     <ul class="contact-list">
       <li>
         <span class="contact-list__label muted">邮箱</span>
-        <a href={`mailto:${profile.contact.email}`}>{profile.contact.email}</a>
+        <a href={`mailto:${profile.contact.email}`} data-robot-topic="email">{profile.contact.email}</a>
       </li>
       <li>
         <span class="contact-list__label muted">手机</span>
-        <a href={`tel:${profile.contact.phone}`}>{profile.contact.phone}</a>
+        <a href={`tel:${profile.contact.phone}`} data-robot-topic="phone">{profile.contact.phone}</a>
       </li>
       <li>
         <span class="contact-list__label muted">城市</span>
@@ -37,7 +37,7 @@ const socialLinks = getActiveSocialLinks();
         <ul class="social-list">
           {socialLinks.map((link) => (
             <li>
-              <a href={link.href} target="_blank" rel="noopener noreferrer">
+              <a href={link.href} target="_blank" rel="noopener noreferrer" data-robot-topic="social">
                 {link.label}
               </a>
             </li>
@@ -51,7 +51,7 @@ const socialLinks = getActiveSocialLinks();
     <h2 class="section-title section-title--flush">简历（PDF）</h2>
     <p class="muted mt-0">与站点内固定路径一致，便于分享与更新文件名。</p>
     <div class="cta-row mt-075">
-      <a class="btn btn-primary" href={profile.resumePath} target="_blank" rel="noopener">打开简历（PDF）</a>
+      <a class="btn btn-primary" href={profile.resumePath} target="_blank" rel="noopener" data-robot-topic="resume">打开简历（PDF）</a>
     </div>
   </div>
 </BaseLayout>

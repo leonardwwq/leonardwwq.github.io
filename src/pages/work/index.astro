@@ -24,13 +24,13 @@ import { workProjectIcons } from '../../data/workProjectIcons';
               <h2 class="shelf-title">{cat.title}</h2>
               <p class="muted work-category-intro">{cat.intro}</p>
             </div>
-            <a class="shelf-action" href="#top">
+            <a class="shelf-action" href="#top" data-robot-topic="top">
               回到顶部
             </a>
           </div>
           <div class="card-grid">
             {items.map((p) => (
-              <a class="card" href={`/work/${p.slug}`} style="text-decoration: none; color: inherit">
+              <a class="card" href={`/work/${p.slug}`} style="text-decoration: none; color: inherit" data-robot-topic="work-detail">
                 <span class="card__icon" aria-hidden="true" set:html={workProjectIcons[p.iconId]} />
                 <h3>{p.title}</h3>
                 <p>{p.description}</p>

@@ -24,6 +24,8 @@ export type WorkProject = {
   title: string;
   /** 列表卡片摘要 */
   description: string;
+  /** 机器人悬浮提示短描述 */
+  tooltipSummary?: string;
   /** 详情页顶部引言 */
   tagline: string;
   tags: string[];
@@ -75,6 +77,7 @@ export const workProjects: WorkProject[] = [
     title: 'ASA 智能投放平台',
     description:
       '面向 Apple Search Ads 的自建智能投放工作台：在账户与系列全链路中集成辅助工具与 AI 决策建议，并以报表与监测支撑投放复盘。',
+    tooltipSummary: 'ASA 投放一体化平台，整合数据监测、策略建议与执行操作。',
     tagline:
       '将原本分散的投放操作、数据查看与调整建议收口到同一后台，让运营在账户投放过程中即可获取可解释的建议并一键应用，降低对外部链路不稳定性的依赖。',
     tags: ['Apple Search Ads', '广告投放系统', '智能投放', '用户增长'],
@@ -102,6 +105,7 @@ export const workProjects: WorkProject[] = [
     title: 'ASA 投放 Agent',
     description:
       '三栏 Agent 工作台探索原型：账户树 + 数据工作区 + 异常预警侧栏，以监测告警驱动可解释归因与多选建议采纳，验证「看数—决策—执行」闭环。',
+    tooltipSummary: '面向异常预警的投放 Agent 工作台，串联诊断分析与建议执行。',
     tagline:
       '不是独立聊天窗口，而是嵌入投放上下文的 Agent：异常先触发、数据可对照、建议可勾选、采纳仅执行选中项，强化 AI 决策说服力。',
     tags: ['Apple Search Ads', 'AI Agent', '异常监测', '智能投放'],
@@ -126,6 +130,7 @@ export const workProjects: WorkProject[] = [
     title: 'ASO 一站式下单平台',
     description:
       '将 ASO 业务标准化为可自助完成的下单与交付流程：以营销前台承接获客，以数据埋点与转化分析持续优化全链路效率。',
+    tooltipSummary: 'ASO 自助下单平台，标准化获客、下单与交付全流程。',
     tagline:
       '让小微客户无需反复商务对接即可在平台上一键下单，销售侧则获得新的规模化获客入口；用行为数据看清流失路径并驱动流程迭代。',
     tags: ['ASO', '自助下单', '增长获客', '数据驱动'],
@@ -153,6 +158,7 @@ export const workProjects: WorkProject[] = [
     title: '波波微博数据分析平台',
     description:
       '面向品牌与运营的微博数据平台：聚合达人开放数据，支撑选人对比、话题监测与投放传播报告，覆盖投放全链路洞察。',
+    tooltipSummary: '微博达人数据平台，支持选人评估、话题监测与投放复盘。',
     tagline:
       '为品牌与运营团队提供可解释的微博话题监测与分析能力，缩短从「感知热点」到「判断行动」的路径；支持达人筛选、投放追踪与传播复盘在同一平台内完成。',
     tags: ['微博', '数据产品', '0-1 产品', '达人营销'],
@@ -181,6 +187,7 @@ export const workProjects: WorkProject[] = [
     title: 'TopSocial 数据分析平台',
     description:
       '整合微博、抖音、小红书等多平台达人数据与工具的多平台服务中台：支撑跨平台 KOL 筛选、营销分析与投放协作，并将下单与效果验收流程产品化。',
+    tooltipSummary: '跨平台 KOL 数据中台，统一筛选、下单、验收与效果复盘。',
     tagline:
       '把跨平台「筛选—下单—排期—验收—复盘」收口到同一工作台，用标准化流程与行为数据缩短从感知到交付的决策路径。',
     tags: ['多平台', '数据产品', 'KOL 投放', '流程产品化', '用户行为分析', 'B 端'],
@@ -208,6 +215,7 @@ export const workProjects: WorkProject[] = [
     title: '分期信贷平台',
     description:
       '分期信贷业务的用户申请、授信评估与运营审核流程：在合规约束下统一申请入口、额度管理与后台审核的信息架构，支撑主链路可演示、状态可追溯。',
+    tooltipSummary: '分期信贷流程平台，贯通申请、授信评估与运营审核链路。',
     tagline:
       '将「申请—授信—运营审核」收口为可同屏评审的信贷主链路，让业务、风控与研发对齐用户侧展示与后台校验规则，降低分散文档带来的口径歧义。',
     tags: ['分期信贷', '授信', '运营后台', '合规流程', 'B 端'],
@@ -233,6 +241,7 @@ export const workProjects: WorkProject[] = [
     title: 'AI 投放文案生成助手',
     description:
       '集成文案生成辅助工具：根据达人特点与品牌调性自动生成多版投放文案初稿，支持编辑优化，并与波波达人分析平台协同推荐。',
+    tooltipSummary: 'AI 投放文案助手，基于达人画像生成多版文案并支持编辑优化。',
     tagline:
       '把「选人—写稿—改稿—投放」中的创意环节产品化：会话式生成多版初稿，注入达人画像与品牌配置，缩短品牌运营的内容生产路径。',
     tags: ['AI', '达人营销', '文案生成', '商业化', '波波'],
@@ -262,6 +271,7 @@ export const workProjects: WorkProject[] = [
     title: '小程序商城系统',
     description:
       '微信小程序商城与管理后台的产品方案：覆盖浏览选购、活动限购、购物车与订单履约等标准电商 MVP 链路。',
+    tooltipSummary: '小程序商城与后台方案，覆盖选购下单到订单履约主链路。',
     tagline:
       '在约定范围内将「小程序选购 + 后台运营」收口为可评审的 Axure 主路径，便于交付对齐与研发排期。',
     tags: ['小程序', '电商', 'Axure 原型', 'B 端后台'],
@@ -290,6 +300,7 @@ export const workProjects: WorkProject[] = [
     title: '投放助手',
     description:
       '从波波拆出的轻量投放工具：跨平台作品/账号数据获取与导出，按条数购买权益，服务「只要导出」的用户。',
+    tooltipSummary: '轻量投放工具，提供跨平台数据获取、记录与导出能力。',
     tagline:
       '把高频「获取—导出」从全量分析平台中分流，用条数权益跑通轻量投放数据闭环。',
     tags: ['波波衍生', '投放工具', '数据导出', '按量付费', '多平台'],
@@ -314,6 +325,7 @@ export const workProjects: WorkProject[] = [
     title: '热搜引擎',
     description:
       '从波波拆出的历史热搜查询产品：多平台关键词检索、热榜与监控，会员分层与数据导出。',
+    tooltipSummary: '历史热搜查询工具，支持多平台检索、监控与结果导出。',
     tagline:
       '把热搜查询与导出从主平台独立成轻入口，用会员与次数规则验证增值付费。',
     tags: ['波波衍生', '热搜', '数据导出', '会员', '多平台'],
@@ -338,6 +350,7 @@ export const workProjects: WorkProject[] = [
     title: '社群运营 SaaS',
     description:
       '实习期参与社群运营 SaaS：在既定需求下完成 10 个功能模块的 Axure 原型与交互说明，用于评审对齐与研发估时。',
+    tooltipSummary: '社群运营 SaaS 实习项目，交付模块化原型与交互说明文档。',
     tagline:
       '早期 B 端原型实践——把模块级页面与状态流转做成可演示稿件，支撑团队讨论而非独立定义业务方案。',
     tags: ['产品实习', 'Axure 原型', '社群运营', 'B 端', '交互设计'],
@@ -362,4 +375,10 @@ export const workProjects: WorkProject[] = [
 
 export function getWorkProject(slug: string): WorkProject | undefined {
   return workProjects.find((p) => p.slug === slug);
+}
+
+export function getWorkTooltipSummary(slug: string): string | null {
+  const project = getWorkProject(slug);
+  if (!project) return null;
+  return project.tooltipSummary?.trim() || project.description.trim() || null;
 }

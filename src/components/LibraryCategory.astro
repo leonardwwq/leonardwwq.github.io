@@ -1,5 +1,6 @@
 ---
 import LibraryEntryDownloadLink from './LibraryEntryDownloadLink.astro';
+import LibraryEntryExternalLink from './LibraryEntryExternalLink.astro';
 import type { LibraryCategoryId } from '../data/library';
 import { LIBRARY_DEFAULT_VISIBLE, type LibraryEntry } from '../data/library';
 
@@ -7,9 +8,11 @@ type Props = {
   categoryId: LibraryCategoryId;
   title: string;
   entries: LibraryEntry[];
+  layout?: 'accordion' | 'compact';
 };
 
-const { categoryId, title, entries } = Astro.props;
+const { categoryId, title, entries, layout = 'accordion' } = Astro.props;
+const isCompact = layout === 'compact';
 
 const visible = entries.slice(0, LIBRARY_DEFAULT_VISIBLE);
 const archive = entries.slice(LIBRARY_DEFAULT_VISIBLE);
@@ -36,7 +39,12 @@ function hasDisplayYear(year: LibraryEntry['year']): boolean {
 }
 ---
 
-<section class="library-category" data-library-category data-category-id={categoryId}>
+<section
+  class="library-category"
+  data-library-category
+  data-category-id={categoryId}
+  data-library-layout={layout}
+>
   <div class="library-category__head">
     <h2>{title}</h2>
     {
@@ -55,121 +63,205 @@ function hasDisplayYear(year: LibraryEntry['year']): boolean {
 
   <div class="library-entries" data-library-accordion>
     {
-      visible.map((entry, index) => (
-        <article
-          class:list={['library-entry', { 'is-open': index === 0 }]}
-          data-library-entry
-          id={`${categoryId}-${entry.id}`}
-        >
-          <div class="library-entry__header">
-            <button
-              type="button"
-              class="library-entry__toggle"
-              data-library-entry-toggle
-              aria-expanded={index === 0 ? 'true' : 'false'}
-              aria-controls={`${categoryId}-${entry.id}-body`}
-            >
-              <span class="library-entry__toggle-icon" aria-hidden="true" />
-              <span class="sr-only">{index === 0 ? '收起' : '展开'}</span>
-            </button>
-            <div class="library-entry__meta">
-              <span class="library-entry__title">{entry.title}</span>
-              <span class="library-entry__sep" aria-hidden="true">
-                ·
-              </span>
-              <span class="library-entry__author">{entry.author}</span>
-              {hasDisplayYear(entry.year) ? (
-                <>
-                  <span class="library-entry__sep" aria-hidden="true">
-                    ·
-                  </span>
-                  <span class="library-entry__year">{entry.year}</span>
-                </>
-              ) : null}
-              {entry.featured ? <span class="library-entry__badge">精选</span> : null}
-            </div>
-            <time class="library-entry__updated" datetime={entry.updatedAt}>
-              更新 {formatUpdated(entry.updatedAt)}
-            </time>
-          </div>
-          {entry.link ? (
-            <p class="library-entry__link-row">
-              <LibraryEntryDownloadLink href={entry.link.href} label={entry.link.label} />
-            </p>
-          ) : null}
-          <div
-            class="library-entry__body"
-            id={`${categoryId}-${entry.id}-body`}
-            data-library-entry-body
+      visible.map((entry, index) =>
+        isCompact ? (
+          <article
+            class="library-entry library-entry--compact"
+            data-library-entry
+            id={`${categoryId}-${entry.id}`}
           >
-            <div class="library-entry__thoughts prose">
-              {thoughtParagraphs(entry.thoughts).map((p) => (
-                <p>{p}</p>
-              ))}
+            <div class="library-entry__header">
+              <div class="library-entry__meta">
+                <span class="library-entry__title">{entry.title}</span>
+                <span class="library-entry__sep" aria-hidden="true">
+                  ·
+                </span>
+                <span class="library-entry__author">{entry.author}</span>
+                {hasDisplayYear(entry.year) ? (
+                  <>
+                    <span class="library-entry__sep" aria-hidden="true">
+                      ·
+                    </span>
+                    <span class="library-entry__year">{entry.year}</span>
+                  </>
+                ) : null}
+                {entry.featured ? <span class="library-entry__badge">精选</span> : null}
+              </div>
+              <time class="library-entry__updated" datetime={entry.updatedAt}>
+                更新 {formatUpdated(entry.updatedAt)}
+              </time>
             </div>
-          </div>
-        </article>
-      ))
+            <div class="library-entry__body" id={`${categoryId}-${entry.id}-body`}>
+              <div class="library-entry__thoughts prose">
+                {thoughtParagraphs(entry.thoughts).map((p) => (
+                  <p>{p}</p>
+                ))}
+              </div>
+              {entry.link ? (
+                <p class="library-entry__link-row">
+                  <LibraryEntryExternalLink href={entry.link.href} label={entry.link.label} />
+                </p>
+              ) : null}
+            </div>
+          </article>
+        ) : (
+          <article
+            class:list={['library-entry', { 'is-open': index === 0 }]}
+            data-library-entry
+            id={`${categoryId}-${entry.id}`}
+          >
+            <div class="library-entry__header">
+              <button
+                type="button"
+                class="library-entry__toggle"
+                data-library-entry-toggle
+                aria-expanded={index === 0 ? 'true' : 'false'}
+                aria-controls={`${categoryId}-${entry.id}-body`}
+              >
+                <span class="library-entry__toggle-icon" aria-hidden="true" />
+                <span class="sr-only">{index === 0 ? '收起' : '展开'}</span>
+              </button>
+              <div class="library-entry__meta">
+                <span class="library-entry__title">{entry.title}</span>
+                <span class="library-entry__sep" aria-hidden="true">
+                  ·
+                </span>
+                <span class="library-entry__author">{entry.author}</span>
+                {hasDisplayYear(entry.year) ? (
+                  <>
+                    <span class="library-entry__sep" aria-hidden="true">
+                      ·
+                    </span>
+                    <span class="library-entry__year">{entry.year}</span>
+                  </>
+                ) : null}
+                {entry.featured ? <span class="library-entry__badge">精选</span> : null}
+              </div>
+              <time class="library-entry__updated" datetime={entry.updatedAt}>
+                更新 {formatUpdated(entry.updatedAt)}
+              </time>
+            </div>
+            {entry.link ? (
+              <p class="library-entry__link-row">
+                <LibraryEntryDownloadLink href={entry.link.href} label={entry.link.label} />
+              </p>
+            ) : null}
+            <div
+              class="library-entry__body"
+              id={`${categoryId}-${entry.id}-body`}
+              data-library-entry-body
+            >
+              <div class="library-entry__thoughts prose">
+                {thoughtParagraphs(entry.thoughts).map((p) => (
+                  <p>{p}</p>
+                ))}
+              </div>
+            </div>
+          </article>
+        ),
+      )
     }
 
     {
       hasArchive ? (
         <div class="library-entries__archive" data-library-archive>
-          {archive.map((entry) => (
-            <article
-              class="library-entry"
-              data-library-entry
-              id={`${categoryId}-${entry.id}`}
-            >
-              <div class="library-entry__header">
-                <button
-                  type="button"
-                  class="library-entry__toggle"
-                  data-library-entry-toggle
-                  aria-expanded="false"
-                  aria-controls={`${categoryId}-${entry.id}-body`}
-                >
-                  <span class="library-entry__toggle-icon" aria-hidden="true" />
-                  <span class="sr-only">展开</span>
-                </button>
-                <div class="library-entry__meta">
-                  <span class="library-entry__title">{entry.title}</span>
-                  <span class="library-entry__sep" aria-hidden="true">
-                    ·
-                  </span>
-                  <span class="library-entry__author">{entry.author}</span>
-                  {hasDisplayYear(entry.year) ? (
-                    <>
-                      <span class="library-entry__sep" aria-hidden="true">
-                        ·
-                      </span>
-                      <span class="library-entry__year">{entry.year}</span>
-                    </>
-                  ) : null}
-                  {entry.featured ? <span class="library-entry__badge">精选</span> : null}
-                </div>
-                <time class="library-entry__updated" datetime={entry.updatedAt}>
-                  更新 {formatUpdated(entry.updatedAt)}
-                </time>
-              </div>
-              {entry.link ? (
-                <p class="library-entry__link-row">
-                  <LibraryEntryDownloadLink href={entry.link.href} label={entry.link.label} />
-                </p>
-              ) : null}
-              <div
-                class="library-entry__body"
-                id={`${categoryId}-${entry.id}-body`}
-                data-library-entry-body
+          {archive.map((entry) =>
+            isCompact ? (
+              <article
+                class="library-entry library-entry--compact"
+                data-library-entry
+                id={`${categoryId}-${entry.id}`}
               >
-                <div class="library-entry__thoughts prose">
-                  {thoughtParagraphs(entry.thoughts).map((p) => (
-                    <p>{p}</p>
-                  ))}
+                <div class="library-entry__header">
+                  <div class="library-entry__meta">
+                    <span class="library-entry__title">{entry.title}</span>
+                    <span class="library-entry__sep" aria-hidden="true">
+                      ·
+                    </span>
+                    <span class="library-entry__author">{entry.author}</span>
+                    {hasDisplayYear(entry.year) ? (
+                      <>
+                        <span class="library-entry__sep" aria-hidden="true">
+                          ·
+                        </span>
+                        <span class="library-entry__year">{entry.year}</span>
+                      </>
+                    ) : null}
+                    {entry.featured ? <span class="library-entry__badge">精选</span> : null}
+                  </div>
+                  <time class="library-entry__updated" datetime={entry.updatedAt}>
+                    更新 {formatUpdated(entry.updatedAt)}
+                  </time>
                 </div>
-              </div>
-            </article>
-          ))}
+                <div class="library-entry__body" id={`${categoryId}-${entry.id}-body`}>
+                  <div class="library-entry__thoughts prose">
+                    {thoughtParagraphs(entry.thoughts).map((p) => (
+                      <p>{p}</p>
+                    ))}
+                  </div>
+                  {entry.link ? (
+                    <p class="library-entry__link-row">
+                      <LibraryEntryExternalLink href={entry.link.href} label={entry.link.label} />
+                    </p>
+                  ) : null}
+                </div>
+              </article>
+            ) : (
+              <article
+                class="library-entry"
+                data-library-entry
+                id={`${categoryId}-${entry.id}`}
+              >
+                <div class="library-entry__header">
+                  <button
+                    type="button"
+                    class="library-entry__toggle"
+                    data-library-entry-toggle
+                    aria-expanded="false"
+                    aria-controls={`${categoryId}-${entry.id}-body`}
+                  >
+                    <span class="library-entry__toggle-icon" aria-hidden="true" />
+                    <span class="sr-only">展开</span>
+                  </button>
+                  <div class="library-entry__meta">
+                    <span class="library-entry__title">{entry.title}</span>
+                    <span class="library-entry__sep" aria-hidden="true">
+                      ·
+                    </span>
+                    <span class="library-entry__author">{entry.author}</span>
+                    {hasDisplayYear(entry.year) ? (
+                      <>
+                        <span class="library-entry__sep" aria-hidden="true">
+                          ·
+                        </span>
+                        <span class="library-entry__year">{entry.year}</span>
+                      </>
+                    ) : null}
+                    {entry.featured ? <span class="library-entry__badge">精选</span> : null}
+                  </div>
+                  <time class="library-entry__updated" datetime={entry.updatedAt}>
+                    更新 {formatUpdated(entry.updatedAt)}
+                  </time>
+                </div>
+                {entry.link ? (
+                  <p class="library-entry__link-row">
+                    <LibraryEntryDownloadLink href={entry.link.href} label={entry.link.label} />
+                  </p>
+                ) : null}
+                <div
+                  class="library-entry__body"
+                  id={`${categoryId}-${entry.id}-body`}
+                  data-library-entry-body
+                >
+                  <div class="library-entry__thoughts prose">
+                    {thoughtParagraphs(entry.thoughts).map((p) => (
+                      <p>{p}</p>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ),
+          )}
         </div>
       ) : null
     }

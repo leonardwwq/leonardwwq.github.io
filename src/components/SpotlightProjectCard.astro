@@ -1,0 +1,61 @@
+---
+import type { SpotlightProject } from '../data/spotlightProjects';
+import { workProjectIcons } from '../data/workProjectIcons';
+
+type Props = {
+  project: SpotlightProject;
+  layout: 'featured' | 'banner';
+};
+
+const { project, layout } = Astro.props;
+const ctaLabel = project.ctaLabel ?? '查看 Demo';
+const iconHtml = project.iconId ? workProjectIcons[project.iconId] : null;
+const description = layout === 'banner' ? project.homeDescription : project.description;
+---
+
+<a
+  class:list={['spotlight-card', 'card', `spotlight-card--${layout}`]}
+  href={project.externalUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-robot-topic="spotlight"
+>
+  {iconHtml ? <span class="card__icon" aria-hidden="true" set:html={iconHtml} /> : null}
+
+  <div class="spotlight-card__body">
+    {layout === 'banner' && project.homeEyebrow ? (
+      <p class="spotlight-card__eyebrow">{project.homeEyebrow}</p>
+    ) : null}
+    <div class="spotlight-card__headline">
+      <div class="spotlight-card__copy">
+        <h3 class="spotlight-card__title">{project.title}</h3>
+        <p class="spotlight-card__desc">{description}</p>
+        <div class="meta spotlight-card__meta">
+          {project.badge ? <span class="spotlight-card__badge">{project.badge}</span> : null}
+          {project.tags.map((t) => (
+            <span class="tag">{t}</span>
+          ))}
+        </div>
+      </div>
+      <span class="spotlight-card__cta btn btn-primary">
+        {ctaLabel}
+        <svg
+          class="spotlight-card__cta-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" x2="21" y1="14" y2="3"></line>
+        </svg>
+      </span>
+    </div>
+  </div>
+</a>

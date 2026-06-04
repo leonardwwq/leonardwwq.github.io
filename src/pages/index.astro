@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SpotlightProjectCard from '../components/SpotlightProjectCard.astro';
+import { getHomeSpotlights } from '../data/spotlightProjects';
 import { profile, resumePath } from '../data/profile';
 ---
 
@@ -52,6 +54,14 @@ import { profile, resumePath } from '../data/profile';
       </a>
     </div>
   </section>
+
+  {
+    getHomeSpotlights().map((project) => (
+      <section class="content-section home-spotlight home-screen home-reveal home-reveal--2b">
+        <SpotlightProjectCard layout="banner" project={project} />
+      </section>
+    ))
+  }
 
   <section class="content-section home-screen home-about home-reveal home-reveal--3">
     <div class="home-section-head">

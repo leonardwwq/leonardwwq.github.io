@@ -59,8 +59,10 @@ function onLibraryClick(event: MouseEvent) {
   const toggle = target.closest('[data-library-entry-toggle]');
   if (!toggle) return;
 
-  event.preventDefault();
   const section = toggle.closest('[data-library-category]');
+  if (section?.getAttribute('data-library-layout') === 'compact') return;
+
+  event.preventDefault();
   const entry = toggle.closest('[data-library-entry]');
   if (!section || !entry) return;
   toggleEntry(section, entry, toggle);

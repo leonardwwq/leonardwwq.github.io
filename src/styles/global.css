@@ -599,6 +599,115 @@ a:hover {
   gap: 0.35rem;
 }
 
+/* 外链置顶项目（Agent Flow 等） */
+.work-spotlight {
+  margin-top: 2.5rem;
+}
+
+.work-spotlight .spotlight-card {
+  margin-top: 0;
+}
+
+.home-spotlight {
+  margin-top: 1.25rem;
+}
+
+.spotlight-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 1.35rem 1.35rem 1.35rem 1.35rem;
+}
+
+.spotlight-card--featured {
+  padding-right: 1.35rem;
+}
+
+.spotlight-card__body {
+  width: 100%;
+}
+
+.spotlight-card__eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.spotlight-card__headline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+}
+
+.spotlight-card__copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.spotlight-card__title {
+  margin: 0 0 0.4rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.spotlight-card__desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.62;
+}
+
+.spotlight-card__meta {
+  margin-top: 0.85rem;
+  align-items: center;
+}
+
+.spotlight-card__badge {
+  font-size: 0.8rem;
+  padding: 0.28rem 0.6rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--bg2));
+  font-weight: 600;
+}
+
+.spotlight-card__cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  pointer-events: none;
+}
+
+.spotlight-card__cta-icon {
+  flex-shrink: 0;
+}
+
+.spotlight-card--banner {
+  width: 100%;
+}
+
+.spotlight-card--banner .spotlight-card__desc {
+  max-width: 42rem;
+}
+
+@media (max-width: 640px) {
+  .spotlight-card__headline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .spotlight-card__cta {
+    align-self: flex-start;
+  }
+}
+
 .embed {
   margin: 1.25rem 0;
   border-radius: var(--radius);
@@ -754,6 +863,10 @@ a:hover {
 
 .home-reveal--2 {
   animation-delay: 0.12s;
+}
+
+.home-reveal--2b {
+  animation-delay: 0.16s;
 }
 
 .home-reveal--3 {
@@ -1084,6 +1197,61 @@ a:hover {
   word-break: break-word;
 }
 
+.library-entry__external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.library-entry__external-link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.library-entry__external-link:hover .library-entry__external-icon {
+  transform: translate(1px, -1px);
+}
+
+.library-entry__external-icon {
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.library-entry__external-link span {
+  word-break: break-word;
+}
+
+.library-entry--compact .library-entry__header {
+  grid-template-columns: 1fr auto;
+}
+
+.library-entry--compact .library-entry__body {
+  display: block;
+  grid-template-rows: unset;
+}
+
+.library-entry--compact .library-entry__body > .library-entry__thoughts {
+  overflow: visible;
+}
+
+.library-entry--compact .library-entry__thoughts {
+  padding: 0 1rem 0.5rem;
+  border-top: none;
+}
+
+.library-entry--compact .library-entry__thoughts p:first-child {
+  margin-top: 0;
+}
+
+.library-entry--compact .library-entry__link-row {
+  padding: 0 1rem 1rem;
+}
+
 .library-entry__body {
   display: grid;
   grid-template-rows: 0fr;
@@ -1129,6 +1297,10 @@ a:hover {
 
   .library-entry__link-row,
   .library-entry__thoughts {
+    padding-left: 1rem;
+  }
+
+  .library-entry--compact .library-entry__thoughts {
     padding-left: 1rem;
   }
 }

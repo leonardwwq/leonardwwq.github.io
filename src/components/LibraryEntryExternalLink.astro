@@ -1,0 +1,29 @@
+---
+type Props = {
+  href: string;
+  label?: string;
+};
+
+const { href, label } = Astro.props;
+const text = label ?? '打开笔记';
+---
+
+<a class="library-entry__external-link" href={href} target="_blank" rel="noopener noreferrer">
+  <svg
+    class="library-entry__external-icon"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+    <polyline points="15 3 21 3 21 9"></polyline>
+    <line x1="10" x2="21" y1="14" y2="3"></line>
+  </svg>
+  <span>{text}</span>
+</a>

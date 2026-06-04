@@ -2,7 +2,7 @@
 
 import { libraryAssetUrls } from './libraryAssetUrls';
 
-export type LibraryCategoryId = 'user-research' | 'decision' | 'ai';
+export type LibraryCategoryId = 'user-research' | 'decision' | 'ai' | 'literature';
 
 export type LibraryEntry = {
   id: string;
@@ -28,6 +28,7 @@ export const libraryCategories: { id: LibraryCategoryId; title: string }[] = [
   { id: 'ai', title: '人工智能' },
   { id: 'user-research', title: '用户研究' },
   { id: 'decision', title: '决策研究' },
+  { id: 'literature', title: '文献笔记' },
 ];
 
 /** 每个分类默认展示条数；其余通过「展开更早」查看 */
@@ -244,6 +245,29 @@ export const libraryEntries: LibraryEntry[] = [
     thoughts:
       '微积分自学导读，用例子和直觉讲极限、导数、积分、级数这些，重在「为什么这样算」，而不是堆证明。\n\n它用更直觉的方式补上了读花书所需的数学语言，让我能跟上线性代数、概率与优化相关的章节。这是我继续深入 AI 技术阅读的前置台阶。',
     priority: 6,
+  },
+  // —— 文献笔记 ——
+  {
+    id: 'lit-ai-empathy-computation',
+    categoryId: 'literature',
+    title: '当Ai学习共情：心理学视角下共情计算的主题、场景与优化',
+    author: '阅读笔记',
+    updatedAt: '2026-06-03',
+    link: { href: 'https://www.zhixi.com/view/1fc14dc0', label: '打开笔记' },
+    thoughts:
+      '从心理学出发梳理共情计算的核心议题：共情如何被定义与测量、在哪些人机交互场景中有实际价值，以及模型侧常见的优化路径与局限。\n\n与我关注的 AI 辅助决策与用户理解相关——共情不是「说得像人」，而是能否在合适场景下识别状态、调整回应并保留可信边界。完整脉络见知犀思维导图。',
+    priority: 1,
+  },
+  {
+    id: 'lit-human-ai-collaborative-decision',
+    categoryId: 'literature',
+    title: '人机协同决策的心理学视角',
+    author: '阅读笔记',
+    updatedAt: '2026-06-03',
+    link: { href: 'https://www.zhixi.com/view/6f31e59c', label: '打开笔记' },
+    thoughts:
+      '从心理学梳理人机协同决策的关键问题：人如何分配注意力与信任、算法建议如何影响判断偏差，以及协同流程中责任与可控性的边界。\n\n与我在投放 Agent 与智能投放平台中的实践直接相关——目标不是替代人做决策，而是让系统辅助判断、保留采纳与否决空间。完整脉络见知犀思维导图。',
+    priority: 2,
   },
 ];
 

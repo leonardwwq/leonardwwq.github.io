@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SpotlightProjectCard from '../../components/SpotlightProjectCard.astro';
+import { getWorkSpotlights } from '../../data/spotlightProjects';
 import { hasWorkDemo, workCategories, workProjects } from '../../data/workProjects';
 import { workProjectIcons } from '../../data/workProjectIcons';
 ---
@@ -9,9 +11,26 @@ import { workProjectIcons } from '../../data/workProjectIcons';
     <h1 class="page-title">案例库</h1>
     <p class="page-sub">
       多数案例的原型托管于 <code>public/prototypes/</code>
-      ，详情页可站内嵌入预览；部分案例演示托管于 Axure 云，详情页提供外链打开。
+      ，详情页可站内嵌入预览；部分案例演示托管于 Axure 云，详情页提供外链打开。最近产品 Demo 见下方置顶卡片。
     </p>
   </section>
+
+  {
+    getWorkSpotlights().map((project) => (
+      <section class="work-spotlight content-section">
+        <div class="shelf-head">
+          <div>
+            <h2 class="shelf-title">最近在做</h2>
+            <p class="shelf-note">最新产品 Demo 已上线，点击下方卡片进入项目站体验。</p>
+          </div>
+          <a class="shelf-action" href="#top" data-robot-topic="top">
+            回到顶部
+          </a>
+        </div>
+        <SpotlightProjectCard layout="featured" project={project} />
+      </section>
+    ))
+  }
 
   {
     workCategories.map((cat) => {

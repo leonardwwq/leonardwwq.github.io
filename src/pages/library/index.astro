@@ -8,7 +8,7 @@ import { getEntriesForCategory, libraryCategories } from '../../data/library';
   <section class="content-section">
     <h1 class="page-title">思考库</h1>
     <p class="page-sub">
-      按主题分类沉淀阅读与思考；每类默认展示前三条，右侧可展开更早条目。每条左侧可收起/展开思考，同一分类同时只展开一条。要点以个人转述为主，材料以外链溯源。
+      前三个主题为体系化阅读思考，默认展示前三条，可展开更早条目；同一分类同时只展开一条。文献笔记收录论文与报告的精读摘要，完整笔记通过外链打开。
     </p>
   </section>
 
@@ -18,6 +18,7 @@ import { getEntriesForCategory, libraryCategories } from '../../data/library';
         categoryId={cat.id}
         title={cat.title}
         entries={getEntriesForCategory(cat.id)}
+        layout={cat.id === 'literature' ? 'compact' : 'accordion'}
       />
     ))
   }

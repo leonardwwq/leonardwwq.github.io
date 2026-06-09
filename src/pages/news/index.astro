@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="AI 资讯 · 王伟权"
+  description="追踪模型、产品与研究的重要进展，每日更新。"
+>
+  <section class="content-section page-head">
+    <p class="page-head__meta">行业动态</p>
+    <h1 class="page-title">AI 资讯</h1>
+    <p class="page-sub">追踪模型、产品与研究的重要进展，每日更新。</p>
+  </section>
+
+  <section class="content-section" data-news-root>
+    <div class="tag-row news-filters" data-news-filters hidden></div>
+    <p class="news-meta muted" data-news-updated hidden></p>
+    <div data-news-list>
+      <p class="news-state muted">正在加载资讯…</p>
+    </div>
+  </section>
+</BaseLayout>

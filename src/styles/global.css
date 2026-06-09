@@ -1775,8 +1775,133 @@ a:hover {
   .panel:hover,
   .card:hover,
   .library-entry:hover,
-  .start-list__item:hover {
+  .start-list__item:hover,
+  .news-item:hover {
     transform: none;
     box-shadow: var(--shadow);
   }
+}
+
+/* AI 资讯 */
+.news-filters {
+  margin-bottom: 1rem;
+}
+
+.news-filters .tag {
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.news-filters .tag:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.news-filters .tag.is-active {
+  color: var(--text);
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
+}
+
+.news-meta {
+  margin: 0 0 1.25rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+}
+
+.news-state {
+  margin: 2rem 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.news-date-group {
+  margin-top: 2rem;
+}
+
+.news-date-group:first-child {
+  margin-top: 0;
+}
+
+.news-date-group.is-hidden {
+  display: none;
+}
+
+.news-date-heading {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.06rem, 2vw, 1.32rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+}
+
+.news-date-group--latest .news-date-heading {
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 1.18;
+  color: var(--text);
+}
+
+.news-date-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.news-item {
+  margin: 0;
+}
+
+.news-item.is-hidden {
+  display: none;
+}
+
+.news-item__tags {
+  margin-bottom: 0.55rem;
+}
+
+.news-item__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.news-item__title a {
+  text-decoration: none;
+}
+
+.news-item__title a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.news-item__summary {
+  margin: 0 0 0.65rem;
+  line-height: 1.65;
+}
+
+.news-item__source {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.news-item__source-sep {
+  color: var(--faint);
+}
+
+.news-item__source-link {
+  font-size: inherit;
+  letter-spacing: 0.08em;
 }

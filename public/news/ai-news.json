@@ -7,7 +7,8 @@
       "title": "OpenAI 发布 GPT-5 Turbo：百万 token 上下文 + 4 倍推理加速",
       "summary": "OpenAI 正式推出 GPT-5 Turbo，上下文窗口扩展至 100 万 token，推理速度较 GPT-4 提升 4 倍。",
       "source": "TechCrunch",
-      "url": "https://techcrunch.com/2026/06/08/openai-gpt5-turbo-launch/"
+      "url": "https://techcrunch.com/2026/06/08/openai-gpt5-turbo-launch/",
+      "remark": "百万 token 意味着一次读完三体三部曲还有余量，长上下文推理的规模化瓶颈正在被系统性打破。这对 RAG 架构的影响可能是根本性的——当模型本身就能「记住」整个代码库，检索增强的价值定位需要重新思考。"
     },
     {
       "date": "2026-06-09",
@@ -15,15 +16,17 @@
       "title": "Google DeepMind 发布 Gemini 3：实时多模态，延迟仅 2 秒",
       "summary": "视频、音频、文本三模态端到端同步推理，集成至 Google 搜索和 Workspace。",
       "source": "The Verge",
-      "url": "https://www.theverge.com/2026/6/8/gemini-3-google-deepmind-ai-launch"
+      "url": "https://www.theverge.com/2026/6/8/gemini-3-google-deepmind-ai-launch",
+      "remark": "端到端多模态实时推理是通往通用智能体的关键一步。2 秒延迟意味着 AI 可以参与实时对话和决策，而非「处理完再告诉你结果」——这对人机协同决策的场景落地至关重要。"
     },
     {
       "date": "2026-06-09",
       "category": "人机协同",
       "title": "Nature 研究：人机协同诊断准确率比纯人/AI 高 23%",
-      "summary": "Human-AI Teams 在放射影像判读中准确率高出 23%，\"1+1>2\"在医疗决策领域获直接实证。",
+      "summary": "Human-AI Teams 在放射影像判读中准确率高出 23%，「1+1>2」在医疗决策领域获直接实证。",
       "source": "Nature",
-      "url": "https://www.nature.com/articles/s41586-026-07065-2"
+      "url": "https://www.nature.com/articles/s41586-026-07065-2",
+      "remark": "这是人机协同决策领域最有力的实证研究之一。23% 的提升不是 AI 替代人，也不是人用 AI 工具，而是两者在决策回路中深度协作——这正是 Human-AI Collaborative Decision Making 的核心命题。做这个方向必引。"
     },
     {
       "date": "2026-06-09",
@@ -31,7 +34,8 @@
       "title": "微软发布 Copilot for Decision Intelligence",
       "summary": "集成 Power BI 和 Azure AI，帮助分析师与 AI 协同建模评估商业决策。",
       "source": "Microsoft News",
-      "url": "https://news.microsoft.com/2026/05/04/copilot-for-decision-intelligence-now-generally-available/"
+      "url": "https://news.microsoft.com/2026/05/04/copilot-for-decision-intelligence-now-generally-available/",
+      "remark": "从 Copilot for Code 到 Copilot for Decision Intelligence，微软在正式定义「AI 辅助决策」这个品类。对你来说这是一个重要的产业信号——学术概念正在变成企业级产品。"
     },
     {
       "date": "2026-06-09",
@@ -39,7 +43,8 @@
       "title": "Stanford HAI：共享决策工具采用率同比增长 40%",
       "summary": "2026 AI Index 专章分析人机协同决策趋势，金融和医疗领域增长最快。",
       "source": "Stanford HAI",
-      "url": "https://hai.stanford.edu/ai-index/2026"
+      "url": "https://hai.stanford.edu/ai-index/2026",
+      "remark": "40% 年增长率说明人机协同决策不再是实验室概念。金融和医疗领跑不是巧合——这两个领域决策出错成本极高，恰恰最需要「AI 建议 + 人类终审」的协作模式。选方向时值得参考。"
     },
     {
       "date": "2026-06-09",
@@ -47,7 +52,8 @@
       "title": "MIT Sloan：信任校准决定人机协同决策质量",
       "summary": "战略决策场景研究聚焦人类何时该信任 AI、何时该质疑 AI。",
       "source": "MIT Sloan",
-      "url": "https://mitsloan.mit.edu/ideas-made-to-matter/human-ai-collaboration-strategic-decision-making"
+      "url": "https://mitsloan.mit.edu/ideas-made-to-matter/human-ai-collaboration-strategic-decision-making",
+      "remark": "信任校准——知道何时该信任 AI、何时该质疑——是人机协同决策的核心科学挑战。这不只是技术问题，更是认知科学和人因工程问题，也是你研究中最值得深挖的切入点之一。"
     },
     {
       "date": "2026-06-09",
@@ -55,7 +61,8 @@
       "title": "Claude 5 拿下 JPMorgan、Pfizer 等企业级大单",
       "summary": "事实准确率 99.7%，支持自主工作流执行。",
       "source": "Bloomberg",
-      "url": "https://www.bloomberg.com/news/articles/2026-06-08/anthropic-claude-5-enterprise-deals"
+      "url": "https://www.bloomberg.com/news/articles/2026-06-08/anthropic-claude-5-enterprise-deals",
+      "remark": "99.7% 事实准确率意味着 AI 正从「聊天玩具」进化为「生产工具」。金融和医药巨头买单的关键不是模型多聪明，而是可预测、可审计、不出错——可靠性才是企业级落地的第一性。"
     },
     {
       "date": "2026-06-09",
@@ -63,7 +70,8 @@
       "title": "Meta 开源 Llama 4.1（405B），性能对标 GPT-4o",
       "summary": "MMLU-Pro、HumanEval、GSM8K 达 SOTA，商用友好许可。",
       "source": "Ars Technica",
-      "url": "https://arstechnica.com/ai/2026/06/meta-llama-4-1-open-source-benchmarks/"
+      "url": "https://arstechnica.com/ai/2026/06/meta-llama-4-1-open-source-benchmarks/",
+      "remark": "开源模型追平 GPT-4o 级别，意味着中小企业也能部署接近顶尖水平的模型。Meta 的策略越来越清晰——用开源生态占领开发者心智，再用商业化平台赚钱。"
     },
     {
       "date": "2026-06-09",
@@ -71,7 +79,8 @@
       "title": "DeepSeek 发布 R1-Turbo，推理速度提升 3 倍",
       "summary": "MoE 架构 + 自研推理加速引擎，数学和代码能力接近 GPT-5。",
       "source": "机器之心",
-      "url": "https://jiqizhixin.com/articles/2026-06-03"
+      "url": "https://jiqizhixin.com/articles/2026-06-03",
+      "remark": "MoE + 推理加速正在成为国产模型的差异化路线。数学和代码接近 GPT-5 说明 DeepSeek 在 RL 推理路线上走对了——这也印证了 OpenAI o1 系列的技术方向。"
     },
     {
       "date": "2026-06-09",
@@ -79,7 +88,8 @@
       "title": "NVIDIA Blackwell Ultra GPU 正式量产",
       "summary": "5nm 制程，AI 训练性能较 Hopper 提升 10 倍。",
       "source": "Reuters",
-      "url": "https://www.reuters.com/technology/nvidia-blackwell-ultra-production-2026-06-09/"
+      "url": "https://www.reuters.com/technology/nvidia-blackwell-ultra-production-2026-06-09/",
+      "remark": "10 倍训练性能提升意味着下一代模型训练成本将大幅下降。英伟达不是在造芯片，是在印算力——GPU 迭代速度远超摩尔定律，算力本身就是最大的护城河。"
     },
     {
       "date": "2026-06-09",
@@ -87,7 +97,8 @@
       "title": "华为昇腾 910C AI 芯片正式投产",
       "summary": "4nm 制程，单卡 700 TFLOPS，已供货国内大模型公司。",
       "source": "钛媒体",
-      "url": "https://www.tmtpost.com/1234567.html"
+      "url": "https://www.tmtpost.com/1234567.html",
+      "remark": "700 TFLOPS、4nm——国产 AI 芯片在追赶。供应链自主可控对国内 AI 产业的意义不亚于算力本身，昇腾的生态建设速度决定了中国 AI 的下限。"
     },
     {
       "date": "2026-06-09",
@@ -95,7 +106,8 @@
       "title": "微软发布 Copilot Studio Pro：自然语言创建 AI Agent",
       "summary": "Agent 开发门槛从写代码降到说人话。",
       "source": "Microsoft Blog",
-      "url": "https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/announcing-copilot-studio-pro"
+      "url": "https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/announcing-copilot-studio-pro",
+      "remark": "从写代码到说人话——Agent 开发门槛被断崖式降低。这可能会引发 Agent 应用爆发，就像 WordPress 让每个人都能建网站一样。Agent 开发者和平台方的红利期已经来了。"
     }
   ]
 }

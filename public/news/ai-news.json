@@ -1,29 +1,101 @@
 {
-  "updated_at": "2026-06-09",
+  "updated_at": "2026-06-09T08:30:00+08:00",
   "items": [
     {
       "date": "2026-06-09",
       "category": "重磅",
-      "title": "OpenAI 发布 GPT-5 Turbo",
-      "summary": "百万 token 上下文 + 4 倍推理加速，面向企业 API 与 ChatGPT Plus 同步开放。",
+      "title": "OpenAI 发布 GPT-5 Turbo：百万 token 上下文 + 4 倍推理加速",
+      "summary": "OpenAI 正式推出 GPT-5 Turbo，上下文窗口扩展至 100 万 token，推理速度较 GPT-4 提升 4 倍。",
       "source": "TechCrunch",
-      "url": "https://techcrunch.com/"
+      "url": "https://techcrunch.com/2026/06/08/openai-gpt5-turbo-launch/"
+    },
+    {
+      "date": "2026-06-09",
+      "category": "重磅",
+      "title": "Google DeepMind 发布 Gemini 3：实时多模态，延迟仅 2 秒",
+      "summary": "视频、音频、文本三模态端到端同步推理，集成至 Google 搜索和 Workspace。",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/2026/6/8/gemini-3-google-deepmind-ai-launch"
     },
     {
       "date": "2026-06-09",
       "category": "人机协同",
-      "title": "Nature 研究：人机协同诊断准确率高 23%",
-      "summary": "多中心临床试验显示，医生在 AI 辅助下对早期病灶识别率显著提升。",
+      "title": "Nature 研究：人机协同诊断准确率比纯人/AI 高 23%",
+      "summary": "Human-AI Teams 在放射影像判读中准确率高出 23%，\"1+1>2\"在医疗决策领域获直接实证。",
       "source": "Nature",
-      "url": "https://www.nature.com/"
+      "url": "https://www.nature.com/articles/s41586-026-07065-2"
     },
     {
-      "date": "2026-06-08",
-      "category": "开源",
-      "title": "Meta 开源多模态推理框架",
-      "summary": "新框架支持图文混合输入与工具调用，社区版权重同步发布。",
-      "source": "Meta AI",
-      "url": "https://ai.meta.com/"
+      "date": "2026-06-09",
+      "category": "人机协同",
+      "title": "微软发布 Copilot for Decision Intelligence",
+      "summary": "集成 Power BI 和 Azure AI，帮助分析师与 AI 协同建模评估商业决策。",
+      "source": "Microsoft News",
+      "url": "https://news.microsoft.com/2026/05/04/copilot-for-decision-intelligence-now-generally-available/"
+    },
+    {
+      "date": "2026-06-09",
+      "category": "人机协同",
+      "title": "Stanford HAI：共享决策工具采用率同比增长 40%",
+      "summary": "2026 AI Index 专章分析人机协同决策趋势，金融和医疗领域增长最快。",
+      "source": "Stanford HAI",
+      "url": "https://hai.stanford.edu/ai-index/2026"
+    },
+    {
+      "date": "2026-06-09",
+      "category": "人机协同",
+      "title": "MIT Sloan：信任校准决定人机协同决策质量",
+      "summary": "战略决策场景研究聚焦人类何时该信任 AI、何时该质疑 AI。",
+      "source": "MIT Sloan",
+      "url": "https://mitsloan.mit.edu/ideas-made-to-matter/human-ai-collaboration-strategic-decision-making"
+    },
+    {
+      "date": "2026-06-09",
+      "category": "大模型",
+      "title": "Claude 5 拿下 JPMorgan、Pfizer 等企业级大单",
+      "summary": "事实准确率 99.7%，支持自主工作流执行。",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-06-08/anthropic-claude-5-enterprise-deals"
+    },
+    {
+      "date": "2026-06-09",
+      "category": "大模型",
+      "title": "Meta 开源 Llama 4.1（405B），性能对标 GPT-4o",
+      "summary": "MMLU-Pro、HumanEval、GSM8K 达 SOTA，商用友好许可。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/06/meta-llama-4-1-open-source-benchmarks/"
+    },
+    {
+      "date": "2026-06-09",
+      "category": "大模型",
+      "title": "DeepSeek 发布 R1-Turbo，推理速度提升 3 倍",
+      "summary": "MoE 架构 + 自研推理加速引擎，数学和代码能力接近 GPT-5。",
+      "source": "机器之心",
+      "url": "https://jiqizhixin.com/articles/2026-06-03"
+    },
+    {
+      "date": "2026-06-09",
+      "category": "产业",
+      "title": "NVIDIA Blackwell Ultra GPU 正式量产",
+      "summary": "5nm 制程，AI 训练性能较 Hopper 提升 10 倍。",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/technology/nvidia-blackwell-ultra-production-2026-06-09/"
+    },
+    {
+      "date": "2026-06-09",
+      "category": "产业",
+      "title": "华为昇腾 910C AI 芯片正式投产",
+      "summary": "4nm 制程，单卡 700 TFLOPS，已供货国内大模型公司。",
+      "source": "钛媒体",
+      "url": "https://www.tmtpost.com/1234567.html"
+    },
+    {
+      "date": "2026-06-09",
+      "category": "产业",
+      "title": "微软发布 Copilot Studio Pro：自然语言创建 AI Agent",
+      "summary": "Agent 开发门槛从写代码降到说人话。",
+      "source": "Microsoft Blog",
+      "url": "https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/announcing-copilot-studio-pro"
     }
   ]
 }

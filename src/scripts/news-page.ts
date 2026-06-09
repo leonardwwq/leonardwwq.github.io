@@ -7,6 +7,7 @@ type NewsItem = {
   summary: string;
   source: string;
   url: string;
+  remark?: string;
 };
 
 type NewsData = {
@@ -31,6 +32,11 @@ function formatDateHeading(iso: string): string {
   return `${y} 年 ${m} 月 ${d} 日`;
 }
 
+function formatUpdatedAt(iso: string): string {
+  const datePart = iso.split('T')[0];
+  return datePart && /^\d{4}-\d{2}-\d{2}$/.test(datePart) ? datePart : iso;
+}
+
 function isValidNewsData(data: unknown): data is NewsData {
   if (!data || typeof data !== 'object') return false;
   const record = data as Record<string, unknown>;
@@ -44,7 +50,8 @@ function isValidNewsData(data: unknown): data is NewsData {
       typeof row.title === 'string' &&
       typeof row.summary === 'string' &&
       typeof row.source === 'string' &&
-      typeof row.url === 'string'
+      typeof row.url === 'string' &&
+      (row.remark === undefined || typeof row.remark === 'string')
     );
   });
 }
@@ -75,6 +82,11 @@ function getCategories(items: NewsItem[]): string[] {
   return categories;
 }
 
+function renderRemark(remark: string | undefined): string {
+  if (!remark?.trim()) return '';
+  return `<blockquote class="news-item__remark blockquote">${escapeHtml(remark)}</blockquote>`;
+}
+
 function renderItem(item: NewsItem): string {
   const url = escapeHtml(item.url);
   return `
@@ -86,6 +98,7 @@ function renderItem(item: NewsItem): string {
         <a href="${url}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a>
       </h3>
       <p class="muted news-item__summary">${escapeHtml(item.summary)}</p>
+      ${renderRemark(item.remark)}
       <p class="news-item__source">
         <span class="muted">${escapeHtml(item.source)}</span>
         <span class="news-item__source-sep" aria-hidden="true">·</span>
@@ -192,7 +205,7 @@ async function loadNews(root: Element) {
     filtersEl.innerHTML = renderFilters(categories);
     filtersEl.hidden = false;
 
-    updatedEl.textContent = `数据更新于 ${data.updated_at}`;
+    updatedEl.textContent = `数据更新于 ${formatUpdatedAt(data.updated_at)}`;
     updatedEl.hidden = false;
 
     listEl.innerHTML = renderDateGroups(groups);

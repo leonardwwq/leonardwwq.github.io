@@ -1888,6 +1888,13 @@ a:hover {
   line-height: 1.65;
 }
 
+.news-item__remark {
+  margin: 0 0 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.68;
+  color: var(--muted);
+}
+
 .news-item__source {
   display: flex;
   flex-wrap: wrap;

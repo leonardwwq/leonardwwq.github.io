@@ -1,6 +1,114 @@
 {
-  "updated_at": "2026-06-10T08:34:36.917662+08:00",
+  "updated_at": "2026-06-11T08:35:30.310854+08:00",
   "items": [
+    {
+      "date": "2026-06-11",
+      "category": "其他",
+      "title": "新加坡AI安全峰会宣布建立全球AI风险登记册",
+      "summary": "新加坡AI安全峰会闭幕，与会各国达成共识建立全球AI风险登记册框架，要求开发者在AI系统部署前主动登记潜在风险，首批参与包括OpenAI、Google、Meta等主要AI公司。",
+      "source": "BBC",
+      "url": "https://www.bbc.com/news/technology-ai-safety-summit-singapore",
+      "remark": "全球AI风险登记册的建立标志着国际AI治理从'自愿承诺'走向'制度化登记'。对于研究人机协同的你而言，风险的透明化将直接影响AI系统设计时的安全约束选择。🌏"
+    },
+    {
+      "date": "2026-06-11",
+      "category": "人机协同",
+      "title": "欧盟正式通过《AI责任指令》 7月1日起实施罚款",
+      "summary": "欧盟正式通过《AI责任指令》，规定AI系统造成损害时由公司承担举证责任。同时EU AI Act执法机制启动，高风险AI系统不合规将面临高额罚款，7月1日起正式实施。",
+      "source": "Politico EU",
+      "url": "https://www.politico.eu/article/eu-ai-liability-directive-passed-2026/",
+      "remark": "AI责任指令确立'举证责任倒置'原则——公司需证明AI系统安全，而非受害者证明其有害。这对研究人机协同决策的你有直接影响：当人类依赖AI做决策时，法律责任如何分配？这是关键的治理问题。⚖️"
+    },
+    {
+      "date": "2026-06-11",
+      "category": "产业",
+      "title": "Amazon AWS发布Bedrock Studio 简化企业AI应用开发",
+      "summary": "AWS宣布生成式AI工具Bedrock Studio正式可用，为企业提供低代码AI应用开发平台，支持多模型编排、知识库集成和自动化工作流，简化从原型到生产的全流程。",
+      "source": "ZDNet",
+      "url": "https://www.zdnet.com/article/amazon-aws-bedrock-studio-ga-2026/",
+      "remark": "AWS Bedrock Studio的发布意味着企业AI开发的门槛正在被系统性降低——从'AI专家才能做'到'业务人员也能做'。这将对产业AI化产生深远影响。🏢"
+    },
+    {
+      "date": "2026-06-11",
+      "category": "产业",
+      "title": "微软Windows 12预览版深度集成Copilot 支持系统级AI代理",
+      "summary": "微软发布Windows 12预览版，Copilot深度集成到操作系统底层，支持系统级AI代理功能，可自主执行文件管理、系统设置和应用协作等复杂跨应用任务。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/gadgets/2026/06/windows-12-copilot-ai-preview/",
+      "remark": "Windows 12将AI代理从'对话框'升级为'操作系统级基础设施'——这意味着AI Agent将成为每个人数字生活的底层能力。✨"
+    },
+    {
+      "date": "2026-06-11",
+      "category": "产业",
+      "title": "NVIDIA推出自动驾驶AI芯片Thor Ultra",
+      "summary": "NVIDIA发布下一代自动驾驶AI芯片Thor Ultra，算力达上一代Orin的8倍，集成全新Transformer引擎，专为L4/L5级自动驾驶设计，已获多家车企订单。",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/technology/nvidia-thor-ultra-2026-06-10/",
+      "remark": "Thor Ultra的8倍算力提升意味着自动驾驶的'大脑'能力再次飞跃。AI芯片的竞争正在从通用GPU走向专用场景优化——这是AI基础设施层面的重要信号。🔧"
+    },
+    {
+      "date": "2026-06-11",
+      "category": "大模型",
+      "title": "字节跳动豆包大模型Pro 2.0上线 视频理解能力大幅提升",
+      "summary": "字节跳动发布豆包大模型Pro 2.0，在视频理解与视频生成能力上取得重大突破，支持长视频片段的语义理解和多模态内容创作。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/ai/20260610-byte-dance-doubao-pro2.html",
+      "remark": "豆包Pro 2.0在视频维度的突破值得关注——视频理解是通往通用人工智能的关键能力。国内大模型的视频多模态赛道正在加速。🎬"
+    },
+    {
+      "date": "2026-06-11",
+      "category": "大模型",
+      "title": "Google DeepMind Gemini 3在医学诊断达94.7%准确率",
+      "summary": "Google DeepMind宣布Gemini 3在医学诊断基准测试中达到94.7%准确率，整合AlphaFold级模块支持药物发现和蛋白质折叠预测，新增Verifier系统交叉校验输出。",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/2026/6/10/deepmind-gemini-3-medical",
+      "remark": "Gemini 3从'通用聊天'进化到'科学推理引擎'，94.7%的诊断准确率意味着AI辅助医疗决策进入临床应用阶段。人机协同决策中'AI推荐+人类确认'模式正在成为医疗新范式。🏥"
+    },
+    {
+      "date": "2026-06-11",
+      "category": "大模型",
+      "title": "Meta展示Llama 4多模态模型 支持实时视频理解",
+      "summary": "Meta发布Llama 4多模态版本（405B参数），支持实时视频流理解，可在开源许可下使用，多项基准超越GPT-4o。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/ai/meta-llama-4-multimodal-2026-06-10/",
+      "remark": "Llama 4加入实时视频理解能力，开源大模型在'看'的能力上追平闭源。意味着AI Agent不仅能读文字，还能实时感知物理世界——这对构建具身AI和人机协作场景影响深远。🎯"
+    },
+    {
+      "date": "2026-06-11",
+      "category": "大模型",
+      "title": "Anthropic发布Claude 4安全对齐技术白皮书",
+      "summary": "Anthropic发布Claude 4的Constitutional AI 2.0安全对齐技术白皮书，引入动态规则自适应机制，承诺更高的透明度和可审计性，为行业树立安全新标准。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/research/claude-4-alignment",
+      "remark": "Constitutional AI 2.0引入'动态规则自适应'机制，意味着AI对齐研究从静态规则走向动态环境适应。人机协同决策中AI价值观对齐问题至关重要，这份白皮书值得你细读。📄"
+    },
+    {
+      "date": "2026-06-11",
+      "category": "大模型",
+      "title": "OpenAI发布GPT-5 Lite轻量版 推理效率大幅提升",
+      "summary": "OpenAI推出GPT-5 Lite版本，在保持核心推理能力的同时大幅优化效率，API调用成本降低至标准版的40%，定位面向中小企业和开发者。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/06/10/openai-gpt-5-lite/",
+      "remark": "模型的'轻量化'和'效率优化'正成为新竞争焦点。GPT-5 Lite的推出意味着OpenAI在追求'足够好+足够便宜'的务实路线，这对研究人机交互中AI响应时效的你值得关注。⚡"
+    },
+    {
+      "date": "2026-06-11",
+      "category": "重磅",
+      "title": "Google发布AI个人健康助手HealthMind",
+      "summary": "Google正式推出AI健康助手HealthMind，深度融合Fitbit健康数据和Gemini大模型，提供个性化健康管理、症状分析和生活方式建议，已在美国上线。",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/06/11/google-healthmind-ai-health-assistant.html",
+      "remark": "Gemini的能力正在从通用对话向垂直领域渗透。HealthMind不是简单问答，而是结合穿戴设备实时数据做推理——这正是AI辅助决策在个人健康领域的经典应用场景。🏥"
+    },
+    {
+      "date": "2026-06-11",
+      "category": "重磅",
+      "title": "Anthropic以1200亿美元估值完成100亿美元F轮融资",
+      "summary": "Anthropic宣布完成100亿美元F轮融资，由Spark Capital领投，Google和Salesforce参与战略投资，估值达1200亿美元。资金将用于扩大计算基础设施和Claude的全球部署。",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/technology/anthropic-series-f-120-billion-valuation-2026-06-10/",
+      "remark": "1200亿估值意味着AI赛道的资本热度不减。Anthropic的安全对齐路线（Constitutional AI 2.0）获得了市场认可，这对于研究人机互信的你来说是个重要信号——安全AI的商业价值正在兑现。💡"
+    },
     {
       "date": "2026-06-10",
       "category": "其他",

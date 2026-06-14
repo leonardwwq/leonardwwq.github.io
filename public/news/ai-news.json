@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-06-13T08:35:46.208965+08:00",
+  "updated_at": "2026-06-14T08:41:30.636063+08:00",
   "items": [
+    {
+      "date": "2026-06-14",
+      "category": "大模型",
+      "title": "Kimi K2.7-Code：Moonshot AI开源模型减少30%思考Token，解决'过度思考'问题",
+      "summary": "Moonshot AI开源Kimi K2.7-Code，基于万亿参数MoE架构。核心改进为减少'过度思考'（overthinking），相比K2.6降低30%的thinking token消耗。代码生成方式从'包装现有库'变为'直接编写实现'，支持Rust、Go、Python。但研究者指出K2.7'更诚实但不更强大'——部分基准性能反而下降。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/technology/kimi-k2-7-code-cuts-thinking-tokens-30-practitioners-say-benchmarks-dont-check-out",
+      "remark": "减少过度思考是推理效率的关键突破，但基准争议提醒我们token效率并不等同于能力提升。对成本敏感的Agent部署场景来说仍是重要进展。"
+    },
+    {
+      "date": "2026-06-14",
+      "category": "大模型",
+      "title": "Google开源DiffusionGemma：256 tokens并行生成的自修正扩散文本模型",
+      "summary": "Google开源实验性模型DiffusionGemma，将扩散原理应用于文本生成，以256个token为块并行生成。26B MoE架构推理时仅激活3.8B参数，量化后适配RTX 4090/5090消费级硬件。在单块H100上FP8版本可达1,008 tokens/s（约5倍于自回归基线）。支持自我修正——低置信度token可在后续去噪轮次中重新评估。已获vLLM原生支持。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/technology/googles-diffusiongemma-generates-256-tokens-in-parallel-and-self-corrects-as-it-goes",
+      "remark": "扩散模型进入文本生成领域，并行生成+自我修正能力改变了AI推理范武，对实时人机交互场景有潜在变革性影响。"
+    },
+    {
+      "date": "2026-06-14",
+      "category": "学术",
+      "title": "GPT-5.5击败Claude Fable 5：Agent终极考试基准测试揭晓",
+      "summary": "UC Berkeley RDI联合300多位专家推出'智能体终极考试'(ALE)基准，涵盖55个行业领域、1,490个任务实例。GPT-5.5（通过Codex工具链）以24.0%通过率位居榜首，击败Claude Fable 5（22.0%）。ALE采用通用计算机使用智能体框架，要求同时使用视觉感知和工具调用在虚拟机中完成任务。最高难度层级通过率为0.0%。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/technology/surprise-upset-gpt-5-5-beats-claude-fable-5-on-brutal-new-agents-last-exam-benchmark",
+      "remark": "Agent需要有实际执行能力的基准测试。ALE的通用计算机使用框架与真实人机协同决策场景高度吻合，24%的通过率说明Agent还有巨大提升空间。"
+    },
+    {
+      "date": "2026-06-14",
+      "category": "学术/人机协同",
+      "title": "微软开源SkillOpt — 自动优化AI Agent技能文档，不碰模型权重",
+      "summary": "微软开源SkillOpt框架（MIT许可），用于自动优化AI Agent的技能文档（.md文件）。引入深度学习概念：编辑预算（学习率）、验证门控、动量机制，将文本视为可训练对象。流程为提出-测试循环，分离执行模型和优化模型，基于执行轨迹提出结构化编辑。在多个行业基准上显著提升GPT-5.5和Qwen的准确率。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/orchestration/microsofts-open-source-skillopt-automatically-upgrades-ai-agent-skills-without-touching-model-weights",
+      "remark": "不修改模型权重而优化Agent技能，这是人机协同决策的理想路径。SkillOpt的验证门控机制解决了Agent技能漂移这一核心痛点。"
+    },
+    {
+      "date": "2026-06-14",
+      "category": "大模型",
+      "title": "小米开源MiMo Code — 跨会话记忆系统击败Claude Code于长任务场景",
+      "summary": "小米MiMo AI团队开源MiMo Code V0.1.0（MIT许可），基于OpenCode fork，核心创新为跨会话记忆系统（SQLite FTS5），四层架构包括项目记忆、会话检查点、便签和任务进度日志。在SWE-bench Verified（82%）、Terminal Bench 2（73%）等基准上超越Claude Code。独立检查点写入子代理负责记录，主代理专注编码，解决长会话上下文遗忘问题。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/technology/xiaomis-new-open-source-agentic-ai-coding-harness-mimo-code-beats-claude-code-at-ultra-long-200-step-tasks",
+      "remark": "长任务中的记忆管理是Agent系统的核心瓶颈。MiMo Code的跨会话记忆架构对AI编码和复杂人机协同决策场景都有启发意义。"
+    },
+    {
+      "date": "2026-06-14",
+      "category": "重磅",
+      "title": "美国政府勒令Anthropic暂停Fable 5/Mythos 5访问 — 出口管制首次针对AI模型",
+      "summary": "美国政府基于国家安全权限向Anthropic发出出口管制指令，要求暂停所有外国国民访问Claude Fable 5和Mythos 5。Anthropic已全球封锁两个模型，称政府仅提供了口头越狱证据且该能力其他公开模型也具备。此次事件被视为AI出口管制的分水岭时刻。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/technology/anthropic-blocks-all-public-access-to-claude-fable-5-mythos-5-following-us-government-order-what-enterprises-should-do",
+      "remark": "AI模型首次成为出口管制对象，Anthropic纵览安全-博弈新阶段。对依赖Anthropic模型的企业和研究者影响深远，多模型供应商策略已成必需。"
+    },
     {
       "date": "2026-06-13",
       "category": "产业",

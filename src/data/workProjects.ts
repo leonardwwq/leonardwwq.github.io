@@ -76,7 +76,7 @@ export const workProjects: WorkProject[] = [
     slug: 'asa-smart-delivery',
     title: 'ASA 智能投放平台（DSP + DMP + 风控一体化）',
     description:
-      '面向 Apple Search Ads 代理商的自建 DSP + DMP + 风控一体化平台：在广告投放管理全链路中集成数据管理与财务风控能力，以规则引擎与 AI 辅助决策支撑投放策略优化，并保障客户垫资模式的资金安全。',
+      '在广告投放管理全链路中集成数据管理与财务风控能力，以规则引擎与 AI 辅助决策支撑投放策略优化，并保障客户垫资模式的资金安全。',
     tooltipSummary: 'ASA DSP + DMP + 风控一体化平台，整合投放管理、数据策略与垫资风控。',
     tagline:
       '将投放管理（DSP）、数据策略（DMP）与财务风控收口到同一平台，让运营在投放过程中不仅可获取可解释的优化建议并一键应用，还能实时掌控客户垫资消耗与信用风险，从「能投」走向「投得稳、管得住」。',
@@ -104,7 +104,7 @@ export const workProjects: WorkProject[] = [
     slug: 'asa-delivery-agent',
     title: 'ASA 投放 Agent',
     description:
-      '基于 DSP + DMP + 风控平台的三栏 Agent 工作台探索原型：账户树 + 数据工作区 + 异常预警侧栏，以监测告警驱动可解释归因与多选建议采纳，验证「看数—决策—执行」闭环。',
+      '基于DSP+DMP+风控平台的三栏Agent工作台探索原型：账户树 + 数据工作区 + 异常预警侧栏，以监测告警驱动可解释归因与多选建议采纳，验证「看数—决策—执行」闭环。',
     tooltipSummary: '基于平台数据与风控预警的投放 Agent 工作台，串联诊断分析与建议执行。',
     tagline:
       '不是独立聊天窗口，而是嵌入投放上下文的 Agent：异常先触发、数据可对照、建议可勾选、采纳仅执行选中项，强化 AI 决策说服力。基于 DSP + DMP + 风控平台的数据与策略沉淀，让 Agent 的建议有据可依。',

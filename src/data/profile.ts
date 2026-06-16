@@ -74,21 +74,21 @@ export const profile = {
     linkedin: 'https://www.linkedin.com/in/伟权-王-780885360',
   } satisfies ProfileSocial,
   tagline:
-    '5 年产品经验，聚焦广告投放与增长方向。主导智能投放平台全链路产品设计，覆盖关键词管理、批量投放、定时策略、消耗监控与效果归因；用数据丈量、用规则决策，把「看数—判断—执行—复盘」做成可复用的产品能力。',
+    '5 年产品经验，聚焦广告投放与增长方向。主导 Apple Search Ads 智能投放平台（DSP + DMP + 风控一体化）全链路产品设计，覆盖广告投放管理、数据管理及财务风控三大核心模块；用数据丈量、用规则决策，把「看数—判断—执行—复盘」做成可复用的产品能力。',
   background: {
     positioning:
-      '具备从 0 到 1 设计投放平台、投放数据分析工具及增长产品的落地能力。目前在伙伴云担任产品负责人，主导 ASA 智能投放后台与 ASO 一站式下单平台，月均管理消耗约 200 万人民币 + 220 万美元。',
+      '具备从 0 到 1 设计投放平台、投放数据分析工具及增长产品的落地能力。目前在伙伴云担任产品负责人，主导 Apple Search Ads 智能投放平台（DSP + DMP + 风控一体化）与 ASO 一站式下单平台，月均管理消耗约 200 万人民币 + 220 万美元。',
     trajectory:
-      '职业主线从金融风控业务系统（闻博大数据）到达人投放数据分析（尚诚 / TopSocial 数播），再到 ASA / ASO 增长工具矩阵——持续围绕 B 端投放与数据分析产品线演进，而非零散换赛道。',
+      '职业主线从金融风控业务系统（闻博大数据）到达人投放数据分析（尚诚 / TopSocial 数播），再到 Apple Search Ads 智能投放平台（DSP + DMP + 风控一体化）与 ASO 增长工具矩阵——风控基因延续，持续围绕 B 端投放与数据分析产品线演进，而非零散换赛道。',
     approach:
-      '习惯把投放全流程拆成可评审的实现路径，用指标、漏斗和 A/B 测试驱动迭代；将运营经验沉淀为规则化策略（关键词分类、监控告警、智能 Agent），对接 AppsFlyer / Adjust 归因数据支撑决策，探索人机协同而非黑盒替代。',
+      '习惯把投放全流程拆成可评审的实现路径，用指标、漏斗和 A/B 测试驱动迭代；将运营经验沉淀为规则化策略——DSP 端（关键词批量管理、出价策略、消耗监控）、DMP 端（多源数据整合、关键词分类与受众画像、规则引擎）、风控端（客户信用额度管理、垫资消耗监控、自动停投），对接 AppsFlyer / Adjust 归因数据支撑决策，探索人机协同而非黑盒替代。',
   } satisfies ProfileBackground,
   highlights: [
     {
-      title: 'ASA 智能投放平台',
+      title: 'ASA 智能投放平台（DSP + DMP + 风控一体化）',
       slug: 'asa-smart-delivery',
       summary:
-        '0-1 完成全链路投放后台：关键词批量管理、定时投放、出价策略、消耗监控与效果归因；支撑 1000+ 广告账户与 10+ 人投放团队日常运作。',
+        '0-1 完成 Apple Search Ads 智能投放平台，覆盖 DSP 端（关键词批量管理、出价策略、消耗监控与归因）、DMP 端（多源数据整合、关键词分类与画像、规则引擎）及风控端（客户信用额度、垫资消耗监控、自动停投）；支撑 1000+ 广告账户与 10+ 人投放团队日常运作。',
       metric: {
         label: '月均管理消耗',
         displayValue: '200 万+ / 220 万$',
@@ -98,7 +98,7 @@ export const profile = {
       title: 'ASA 投放 Agent',
       slug: 'asa-delivery-agent',
       summary:
-        '完成智能投放 Agent 方案设计：自定义规则编辑引擎，覆盖数据异常判断 → 策略推荐 → 一键采纳，为平台智能化方向提供产品储备。',
+        '基于 DSP + DMP + 风控的数据与策略沉淀，完成智能投放 Agent 方案设计：自定义规则编辑引擎，覆盖数据异常判断 → 策略推荐 → 一键采纳，为平台向 AI 驱动投放演进提供储备。',
       metric: {
         label: '规则引擎路径',
         displayValue: '闭环设计',
@@ -127,19 +127,22 @@ export const profile = {
   ] satisfies ProfileHighlight[],
   skills: {
     scenarios: [
-      'ASA 广告投放全链路',
+      'Apple Search Ads 投放全链路（DSP 投放管理）',
+      '数据管理平台（DMP：多源整合、关键词画像、规则引擎）',
+      '风控与财务结算（信用额度、垫资监控、自动停投）',
       '智能投放 Agent / 规则引擎',
       '增长与获客优化',
       'B 端投放数据分析',
     ],
     methods: [
+      'DSP + DMP + 风控一体化产品设计',
       '关键词策略与归因模型',
       '指标体系与漏斗分析',
       'A/B 测试',
       '0-1 到商业化',
       '跨角色协同',
     ],
-    tools: ['SQL', 'Python', 'AppsFlyer / Adjust', 'Google Analytics'],
+    tools: ['SQL', 'Python', 'AppsFlyer / Adjust', 'Google Analytics', 'Axure'],
   } satisfies ProfileSkills,
   education: [
     {

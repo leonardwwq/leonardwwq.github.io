@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-06-17T08:39:51.972672+08:00",
+  "updated_at": "2026-06-18T08:37:03.056150+08:00",
   "items": [
+    {
+      "date": "2026-06-18",
+      "category": "大模型",
+      "title": "AI编程Agent自主训练机器人：教机器人装GPU、剪扎带",
+      "summary": "NVIDIA的研究展示了AI编程Agent团队自主指导机器人完成复杂物理任务——包括安装GPU、剪切扎带等精细操作。多个AI Agent协作完成从代码生成到机器人执行的完整闭环。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/06/ai-coding-agents-can-autonomously-direct-robot-training/",
+      "remark": "AI Agent从数字世界走向物理世界的关键一步。多Agent协作+机器人执行=自主物理智能。这让人机协同的边界从'人在回路'拓展到'人与Agent团队+机器人团队'的三方协同，是未来人机协同决策的重要场景预演。"
+    },
+    {
+      "date": "2026-06-18",
+      "category": "人机协同",
+      "title": "AI无法复制的护城河：人类连接的价值",
+      "summary": "一篇深度分析指出，在AI无处不在的时代，真正的竞争护城河不是技术本身，而是人类之间的真实连接、信任和同理心——这些都是AI无法复制的。",
+      "source": "Ghost in the Data",
+      "url": "https://ghostinthedata.info/posts/2026/2026-06-13-human-connection-moat/",
+      "remark": "直接切中人机协同决策的核心命题。AI可以辅助决策，但最终信任的建立、情感的连接、团队的默契，这些'软性基础设施'才是不可替代的。这篇文章提供了一个重要视角：在人机协同设计中，'人的因素'不是需要优化的缺陷，而是需要被放大的价值。"
+    },
+    {
+      "date": "2026-06-18",
+      "category": "产业",
+      "title": "Anthropic暂停Claude Agent SDK按Token计费，AI Agent定价模式生变",
+      "summary": "Anthropic原计划本周一对其Claude Agent SDK改为按Token计费，将大幅增加重度用户成本。在用户强烈反弹下紧急叫停，暂停该定价方案。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/06/anthropic-pauses-token-based-billing-for-its-claude-agent-sdk/",
+      "remark": "Agent SDK的定价困境是人机协同商业化的缩影：Agent调用链路长、Token消耗大，传统按Token计费模型会让Agent应用成本失控。Anthropic的紧急回调说明行业尚未找到Agent定价的标准答案，这对整个AI Agent生态都是警示。"
+    },
+    {
+      "date": "2026-06-18",
+      "category": "产业",
+      "title": "OpenAI财务文件泄露：年亏损数十亿美元，收入增长不敌研发烧钱",
+      "summary": "泄露的审计财务文件显示，OpenAI年亏损达数十亿美元。尽管收入在快速增长，但R&D和运营支出增速更快，公司距离盈利仍有巨大差距。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/06/leaked-financial-docs-show-openai-is-losing-billions-of-dollars-a-year/",
+      "remark": "OpenAI的财务状况揭示了一个残酷现实：即使拥有最强AI产品，亏损依然深不见底。这提醒我们，AI商业化的路径仍然模糊——人机协同的价值需要被更清晰地量化，才能转化为可持续的商业模式。"
+    },
+    {
+      "date": "2026-06-18",
+      "category": "大模型",
+      "title": "GLM-5.2登顶开源模型榜首，中国智谱再突破",
+      "summary": "独立评测平台Artificial Analysis将智谱GLM-5.2评为开源权重模型第一名，综合性能超越Llama、Mistral等竞品。GLM-5.2在推理、编码和多语言任务上表现突出。",
+      "source": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index",
+      "remark": "中国开源大模型首次登顶国际权威评测，意义非凡。GLM-5.2的崛起表明，开源模型正在快速缩小与闭源模型的差距。对于人机协同决策研究而言，高质量开源模型意味着更低的部署门槛和更高的可定制性。"
+    },
+    {
+      "date": "2026-06-18",
+      "category": "重磅",
+      "title": "SpaceX 600亿美元收购Cursor，AI编程工具史上最大交易",
+      "summary": "SpaceX宣布以600亿美元收购AI编程平台Cursor，与Anthropic和OpenAI在AI编码领域正面竞争。这是AI工具领域迄今最大收购案，标志着科技巨头对AI编程生态的争夺白热化。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/06/spacex-will-acquire-coding-tool-cursor-to-compete-with-anthropic-openai/",
+      "remark": "600亿美元收购价远超市场预期。SpaceX入局AI编程工具并非仅为了'写代码更快'——马斯克真正想要的，是用AI编程工具武装工程师，构建从代码到火箭的全链路加速体系。人机协同编程正在成为科技巨头军备竞赛的核心赛道。"
+    },
     {
       "date": "2026-06-17",
       "category": "大模型",

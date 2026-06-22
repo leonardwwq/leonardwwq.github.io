@@ -74,13 +74,13 @@ export function hasWorkDemo(project: WorkProject): boolean {
 export const workProjects: WorkProject[] = [
   {
     slug: 'asa-smart-delivery',
-    title: 'ASA 智能投放平台（DSP + DMP + 风控一体化）',
+    title: 'ASA 智能投放平台（投放管理+数据管理+风控一体化）',
     description:
       '在广告投放管理全链路中集成数据管理与财务风控能力，以规则引擎与 AI 辅助决策支撑投放策略优化，并保障客户垫资模式的资金安全。',
-    tooltipSummary: 'ASA DSP + DMP + 风控一体化平台，整合投放管理、数据策略与垫资风控。',
+    tooltipSummary: 'ASA 投放管理+数据管理+风控一体化平台，整合投放管理、数据策略与垫资风控。',
     tagline:
-      '将投放管理（DSP）、数据策略（DMP）与财务风控收口到同一平台，让运营在投放过程中不仅可获取可解释的优化建议并一键应用，还能实时掌控客户垫资消耗与信用风险，从「能投」走向「投得稳、管得住」。',
-    tags: ['Apple Search Ads', 'DSP', 'DMP', '风控结算', '垫资管理', '智能投放', '用户增长'],
+      '将投放管理（投放管理）、数据策略（数据管理）与财务风控收口到同一平台，让运营在投放过程中不仅可获取可解释的优化建议并一键应用，还能实时掌控客户垫资消耗与信用风险，从「能投」走向「投得稳、管得住」。',
+    tags: ['Apple Search Ads', '投放管理', '数据管理', '风控结算', '垫资管理', '智能投放', '用户增长'],
     iconId: 'megaphone',
     categoryId: 'platform',
     demoPath: '/prototypes/ASA智能投放平台/index.html',
@@ -91,23 +91,23 @@ export const workProjects: WorkProject[] = [
     ],
     caseStudy: {
       background:
-        '作为 <strong>Apple Search Ads</strong> 代理商，公司为客户提供广告投放服务并<strong>垫付广告款（月结）</strong>。原有投放后台在<strong>网络波动</strong>与工具扩展性上存在局限，投放运营难以稳定使用自研能力。团队选择自建 <strong>DSP + DMP + 风控一体化平台</strong>，集成更灵活的<strong>投放管理工具</strong>、沉淀可复用的<strong>投放数据</strong>，并解决客户垫资模式下的<strong>资金风险</strong>问题，从「能投」走向「可优化、可风控、可复盘」。',
+        '作为 <strong>Apple Search Ads</strong> 代理商，公司为客户提供广告投放服务并<strong>垫付广告款（月结）</strong>。原有投放后台在<strong>网络波动</strong>与工具扩展性上存在局限，投放运营难以稳定使用自研能力。团队选择自建 <strong>投放管理+数据管理+风控一体化平台</strong>，集成更灵活的<strong>投放管理工具</strong>、沉淀可复用的<strong>投放数据</strong>，并解决客户垫资模式下的<strong>资金风险</strong>问题，从「能投」走向「可优化、可风控、可复盘」。',
       goals:
-        '在保留原有业务能力的前提下完成<strong>平台重构</strong>，覆盖三大核心模块：<strong>DSP 端</strong>统一账户—系列—词表—广告投放主路径的信息架构与交互视觉，补齐<strong>投放辅助工具</strong>与<strong>报告总览</strong>能力；<strong>DMP 端</strong>整合苹果广告数据、第三方归因数据及业务端转化数据，建立统一数据资产管理体系，以<strong>关键词分类与受众画像</strong>支撑差异化出价；<strong>风控端</strong>设计客户信用额度管理、实时垫资消耗监控与自动停投机制，打通资金流转闭环。引入 <strong>AI 辅助投放决策助手</strong>，基于实时数据给出调整建议并支持<strong>一键应用</strong>。',
+        '在保留原有业务能力的前提下完成<strong>平台重构</strong>，覆盖三大核心模块：<strong>投放端</strong>统一账户—系列—词表—广告投放主路径的信息架构与交互视觉，补齐<strong>投放辅助工具</strong>与<strong>报告总览</strong>能力；<strong>数据端</strong>整合苹果广告数据、第三方归因数据及业务端转化数据，建立统一数据资产管理体系，以<strong>关键词分类与受众画像</strong>支撑差异化出价；<strong>风控端</strong>设计客户信用额度管理、实时垫资消耗监控与自动停投机制，打通资金流转闭环。引入 <strong>AI 辅助投放决策助手</strong>，基于实时数据给出调整建议并支持<strong>一键应用</strong>。',
       process:
-        '作为<strong>产品负责人</strong>，负责需求分析、信息架构、Axure 原型、开发跟进、测试验收到上线发布。按 <strong>DSP / DMP / 风控</strong>三大模块组织产品设计：<strong>DSP 端</strong>覆盖账户管理、广告系列/组/关键词、搜索词与否定词、SOV/CPP、报告总览等投放全链路，纳入全局概览、智能监测、MMP 授权等配套能力；<strong>DMP 端</strong>设计多源数据整合方案、关键词多维分类规则（通用词/高竞争词/高相关词/潜力词）及规则引擎；<strong>风控端</strong>设计客户信用额度管理、实时消耗监控预警、超限自动停投及资金对账结算功能。与研发对齐数据监听、多时区统计、监控通知等规则；复杂配置以分步向导与报告页降低认知负担。',
+        '作为<strong>产品负责人</strong>，负责需求分析、信息架构、Axure 原型、开发跟进、测试验收到上线发布。按 <strong>投放管理 / 数据管理 / 风控</strong>三大模块组织产品设计：<strong>投放端</strong>覆盖账户管理、广告系列/组/关键词、搜索词与否定词、SOV/CPP、报告总览等投放全链路，纳入全局概览、智能监测、MMP 授权等配套能力；<strong>数据端</strong>设计多源数据整合方案、关键词多维分类规则（通用词/高竞争词/高相关词/潜力词）及规则引擎；<strong>风控端</strong>设计客户信用额度管理、实时消耗监控预警、超限自动停投及资金对账结算功能。与研发对齐数据监听、多时区统计、监控通知等规则；复杂配置以分步向导与报告页降低认知负担。',
       results:
-        '交付 <strong>DSP + DMP + 风控一体化投放平台</strong>，月均管理消耗约 <strong>200 万人民币 + 220 万美元</strong>，覆盖数千广告账户，支撑 10+ 人投放团队日常运作。形成从投放管理、数据策略到风控结算的完整闭环，<strong>AI 建议与一键应用</strong>缩短「看数—判断—改价」路径。基于平台数据与策略沉淀，完成<strong>智能投放 Agent 方案设计</strong>，为 AI 驱动投放演进提供储备。与波波等前序数据/投放类产品形成同一产品线上的能力递进。',
+        '交付 <strong>投放管理+数据管理+风控一体化投放平台</strong>，月均管理消耗约 <strong>200 万人民币 + 220 万美元</strong>，覆盖数千广告账户，支撑 10+ 人投放团队日常运作。形成从投放管理、数据策略到风控结算的完整闭环，<strong>AI 建议与一键应用</strong>缩短「看数—判断—改价」路径。基于平台数据与策略沉淀，完成<strong>智能投放 Agent 方案设计</strong>，为 AI 驱动投放演进提供储备。与波波等前序数据/投放类产品形成同一产品线上的能力递进。',
     },
   },
   {
     slug: 'asa-delivery-agent',
     title: 'ASA 投放 Agent',
     description:
-      '基于DSP+DMP+风控平台的三栏Agent工作台探索原型：账户树 + 数据工作区 + 异常预警侧栏，以监测告警驱动可解释归因与多选建议采纳，验证「看数—决策—执行」闭环。',
+      '基于投放管理+数据管理+风控平台的三栏Agent工作台探索原型：账户树 + 数据工作区 + 异常预警侧栏，以监测告警驱动可解释归因与多选建议采纳，验证「看数—决策—执行」闭环。',
     tooltipSummary: '基于平台数据与风控预警的投放 Agent 工作台，串联诊断分析与建议执行。',
     tagline:
-      '不是独立聊天窗口，而是嵌入投放上下文的 Agent：异常先触发、数据可对照、建议可勾选、采纳仅执行选中项，强化 AI 决策说服力。基于 DSP + DMP + 风控平台的数据与策略沉淀，让 Agent 的建议有据可依。',
+      '不是独立聊天窗口，而是嵌入投放上下文的 Agent：异常先触发、数据可对照、建议可勾选、采纳仅执行选中项，强化 AI 决策说服力。基于 投放管理+数据管理+风控平台的数据与策略沉淀，让 Agent 的建议有据可依。',
     tags: ['Apple Search Ads', 'AI Agent', '异常监测', '智能投放'],
     iconId: 'sparkles',
     categoryId: 'prototype',
@@ -116,13 +116,13 @@ export const workProjects: WorkProject[] = [
     prototypesFolder: 'ASA投放Agent',
     caseStudy: {
       background:
-        '在 <a href="/work/asa-smart-delivery">ASA 智能投放平台（DSP + DMP + 风控一体化）</a> 中，<strong>AI 辅助决策</strong>需解决两个问题：一是建议不能脱离<strong>账户/系列/组</strong>上下文悬浮；二是运营需要看到<strong>监测为何报警</strong>、<strong>依据哪些指标</strong>，才能信任并执行调价/受众等操作。基于平台 <strong>DSP + DMP + 风控</strong>的数据与策略沉淀，本探索原型将 Agent 收口为<strong>三栏工作台</strong>，与完整平台原型分离，专注验证交互与叙事。',
+        '在 <a href="/work/asa-smart-delivery">ASA 智能投放平台（投放管理+数据管理+风控一体化）</a> 中，<strong>AI 辅助决策</strong>需解决两个问题：一是建议不能脱离<strong>账户/系列/组</strong>上下文悬浮；二是运营需要看到<strong>监测为何报警</strong>、<strong>依据哪些指标</strong>，才能信任并执行调价/受众等操作。基于平台 <strong>投放管理+数据管理+风控</strong>的数据与策略沉淀，本探索原型将 Agent 收口为<strong>三栏工作台</strong>，与完整平台原型分离，专注验证交互与叙事。',
       goals:
-        '验证「<strong>异常预警 → Agent 归因解读 → 多选建议 → 忽略/采纳</strong>」主路径是否清晰可演示。基于 <strong>DSP + DMP</strong> 的投放与归因数据，让建议项与中栏广告组数据<strong>名称与指标一致</strong>；结合<strong>风控端</strong>的消耗异常预警作为触发场景；<strong>采纳</strong>仅提交已勾选项，体现可控执行而非黑盒替代。',
+        '验证「<strong>异常预警 → Agent 归因解读 → 多选建议 → 忽略/采纳</strong>」主路径是否清晰可演示。基于 <strong>投放管理+数据管理</strong> 的投放与归因数据，让建议项与中栏广告组数据<strong>名称与指标一致</strong>；结合<strong>风控端</strong>的消耗异常预警作为触发场景；<strong>采纳</strong>仅提交已勾选项，体现可控执行而非黑盒替代。',
       process:
-        '基于 ASA 投放链路与 <strong>DSP + DMP + 风控</strong>平台既有的数据与规则体系，设计<strong>左栏三级树</strong>（账户—系列—组）、<strong>中栏层级工作区</strong>（配置 + 下属组表/指标）、<strong>右栏 Agent 面板</strong>（预警摘要、可折叠分析、建议多选、底部输入）。Mock 场景预设系列 CPA 环比 +32%（DSP 消耗监控数据），归因至两个广告组的 CPT/受众（DMP 画像数据），风控消耗阈值触发告警；建议含 2 条出价 + 1 条受众调整；静态 HTML/CSS/JS 实现选中联动与采纳反馈。',
+        '基于 ASA 投放链路与 <strong>投放管理+数据管理+风控</strong>平台既有的数据与规则体系，设计<strong>左栏三级树</strong>（账户—系列—组）、<strong>中栏层级工作区</strong>（配置 + 下属组表/指标）、<strong>右栏 Agent 面板</strong>（预警摘要、可折叠分析、建议多选、底部输入）。Mock 场景预设系列 CPA 环比 +32%（投放管理 消耗监控数据），归因至两个广告组的 CPT/受众（数据管理 画像数据），风控消耗阈值触发告警；建议含 2 条出价 + 1 条受众调整；静态 HTML/CSS/JS 实现选中联动与采纳反馈。',
       results:
-        '交付可嵌入作品集的<strong>单页静态原型</strong>（<code>public/prototypes/ASA投放Agent/</code>），作为 <strong>DSP + DMP + 风控</strong>平台的<strong>探索性 Agent 形态</strong>单独展示，并在 ASA 案例页提供「更多原型」入口。后续可扩展对话记录 Tab、更多预警类型或与真实 ASA API 联调。',
+        '交付可嵌入作品集的<strong>单页静态原型</strong>（<code>public/prototypes/ASA投放Agent/</code>），作为 <strong>投放管理+数据管理+风控</strong>平台的<strong>探索性 Agent 形态</strong>单独展示，并在 ASA 案例页提供「更多原型」入口。后续可扩展对话记录 Tab、更多预警类型或与真实 ASA API 联调。',
     },
   },
   {

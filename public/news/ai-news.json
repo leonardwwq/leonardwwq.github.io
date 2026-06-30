@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-06-30T09:18:17.429683+08:00",
+  "updated_at": "2026-07-01T06:17:31.995102+08:00",
   "items": [
+    {
+      "date": "2026-07-01",
+      "category": "产业",
+      "title": "Acti将AI Agent直接嵌入智能手机键盘",
+      "summary": "初创公司Acti推出可直接在智能手机键盘中运行的AI Agent，用户无需切换应用即可通过键盘完成订餐、预订等操作，将AI助手从聊天窗口转移到输入场景。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/06/30/acti-puts-ai-agents-directly-into-your-smartphone-keyboard/",
+      "remark": "人机交互界面的演进——AI从对话框走向系统级嵌入，交互方式的改变会影响决策辅助的感知和使用频率"
+    },
+    {
+      "date": "2026-07-01",
+      "category": "安全",
+      "title": "研究者发现Claude Code用隐写术标记用户请求",
+      "summary": "安全研究人员逆向分析发现，Claude Code会在系统提示中使用不可见的Unicode字符隐写标记，用于识别API代理/转售商和地理位置。该行为被隐藏，未在文档中披露。",
+      "source": "Thereallo",
+      "url": "https://thereallo.dev/blog/claude-code-prompt-steganography",
+      "remark": "AI工具的透明度问题——当开发工具在提示中隐藏信息而不告知用户，信任的基础就被侵蚀了。这对人机信任关系的研究有重要启示"
+    },
+    {
+      "date": "2026-07-01",
+      "category": "安全",
+      "title": "研究发现AI浏览器可被诱导进入'梦境'，安全护栏失效",
+      "summary": "Ars Technica报道新的攻击方式，可让AI浏览器陷入'梦境状态'，使其安全护栏完全失效。研究揭示了AI安全机制面临的深层次脆弱性。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/security/2026/06/ai-browsers-can-be-lulled-into-a-dream-world-where-guardrails-no-longer-apply/",
+      "remark": "AI安全护栏的脆弱性再次暴露——当人机协同的场景扩展到代理自主决策时，确保AI不被操纵变得至关重要"
+    },
+    {
+      "date": "2026-07-01",
+      "category": "人机协同",
+      "title": "Anthropic推出Claude Science，以工作流而非新模型赢得科学家",
+      "summary": "Anthropic推出Claude Science，面向科研场景，强调通过工作流设计而非单纯的模型能力提升来赋能科学研究。重点在于如何将AI嵌入科学家的研究流程中。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/06/30/anthropics-claude-science-bets-on-workflow-not-a-new-model-to-win-over-scientists/",
+      "remark": "这正是人机协同决策的核心命题——不是模型更强，而是人机工作流更优。AI嵌入科学研究流程比单纯追求参数更具说服力"
+    },
+    {
+      "date": "2026-07-01",
+      "category": "大模型",
+      "title": "Anthropic发布Claude Sonnet 5，以更低成本运行AI Agent",
+      "summary": "Anthropic发布Claude Sonnet 5，定位为更便宜的方式运行AI Agent。相较于高端模型大幅降价，面向需要大量agent调用场景。这是Anthropic在agent化方向上的重要布局。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/",
+      "remark": "Agent成本下降推动人机协同落地——当AI agent的运行成本不再是瓶颈，人机协同的边界将从'能否用'转向'如何用'"
+    },
     {
       "date": "2026-06-30",
       "category": "大模型",

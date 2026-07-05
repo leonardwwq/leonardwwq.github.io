@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-07-05T06:11:36.189109+08:00",
+  "updated_at": "2026-07-06T06:09:14.393759+08:00",
   "items": [
+    {
+      "date": "2026-07-06",
+      "category": "产业",
+      "title": "Midjourney要求好莱坞工作室披露AI使用细节",
+      "summary": "在与三家好莱坞工作室的持续法律纠纷中，Midjourney寻求法院强制这些工作室披露其自身如何使用AI。此举试图在AI版权诉讼中建立对等透明度，要求原告方也公开AI使用情况。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/07/04/midjourney-wants-hollywood-studios-to-reveal-the-details-of-their-ai-usage/",
+      "remark": "AI透明度诉求正在形成双向压力——不仅AI公司需要披露数据来源，指控方也需公开自己的AI使用"
+    },
+    {
+      "date": "2026-07-06",
+      "category": "大模型",
+      "title": "LangChain开源OpenWiki：AI Agent代码库文档自动生成工具",
+      "summary": "LangChain发布OpenWiki，一个为代码库自动编写和维护Agent文档的CLI工具。Agent开发者可以用自然语言描述系统行为，OpenWiki自动生成并保持文档同步，大幅降低AI系统的文档维护成本。",
+      "source": "GitHub",
+      "url": "https://github.com/langchain-ai/openwiki",
+      "remark": "AI Agent的文档问题一直是部署痛点，OpenWiki用AI解决AI系统的文档问题，循环自洽且实用"
+    },
+    {
+      "date": "2026-07-06",
+      "category": "产业",
+      "title": "阿里将Claude Code列为高风险软件，禁止员工使用",
+      "summary": "阿里巴巴将Anthropic的Claude Code AI编程助手分类为高风险软件，禁止员工未经审批使用。此举反映了中国科技巨头在AI工具使用上的审慎态度，以及数据安全与AI效率之间的张力。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/07/04/alibaba-reportedly-bans-employees-from-using-claude-code/",
+      "remark": "当企业开始对AI开发工具实施分级管控，AI治理从宏观政策进入微观执行层面"
+    },
+    {
+      "date": "2026-07-06",
+      "category": "大模型",
+      "title": "Dartmouth课程AI助教取得突破：效应量0.71-1.30 SD",
+      "summary": "新AI导师系统在Dartmouth大学课程中实现0.71-1.30标准差的学习效果提升，远超传统教育技术干预。该研究发表于Intelligent Textbooks研讨会，为AI辅助人类学习提供了强有力的实证证据。",
+      "source": "Intelligent Textbooks Workshop",
+      "url": "https://intextbooks.science.uu.nl/workshop2026/files/itb26_s1s2.pdf",
+      "remark": "效应量0.71-1.30 SD是教育干预研究中极罕见的高水平，AI作为教学辅助工具的真实价值正在被量化验证"
+    },
+    {
+      "date": "2026-07-06",
+      "category": "人机协同",
+      "title": "Amazon停止MTurk新用户注册，人机协同研究平台面临变局",
+      "summary": "Amazon宣布停止接受Mechanical Turk新客户注册。MTurk长期作为人机协同决策和众包研究的基础平台，此举可能对学术研究和产业实践产生深远影响。早于2005年上线的MTurk是行为科学和人机交互研究的重要实验平台。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/07/05/amazon-will-stop-accepting-new-customers-for-mechanical-turk/",
+      "remark": "MTurk的关闭信号对human computation领域冲击巨大，依赖该平台的实验和标注工作流需要紧急寻找替代方案"
+    },
     {
       "date": "2026-07-05",
       "category": "人机协同",

@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-07-06T06:09:14.393759+08:00",
+  "updated_at": "2026-07-07T06:18:59.074685+08:00",
   "items": [
+    {
+      "date": "2026-07-07",
+      "category": "大模型",
+      "title": "研究：代码整洁度显著影响AI编码Agent表现",
+      "summary": "一篇受控实验论文发现，代码的整洁度和清晰度对AI编码助手的表现有显著影响——设计良好、命名清晰、结构合理的代码能让Agent更高效地完成任务。这为人类与AI协作编码提供了实用指导。",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2605.20049",
+      "remark": "人机协同的又一切入点：人类写的代码质量直接影响AI Agent的表现。设计与协作需要双向优化。"
+    },
+    {
+      "date": "2026-07-07",
+      "category": "产业",
+      "title": "Ramp数据：重度AI采用企业反而增雇10%",
+      "summary": "Ramp联合Revelio Labs的经济学研究显示，采用AI的企业不仅没有裁员，反而实现10%的就业增长，包括入门级岗位。这一实证数据挑战了\"AI大规模取代就业\"的叙事。",
+      "source": "Ramp",
+      "url": "https://ramp.com/data/heavy-ai-adopters-hire-more",
+      "remark": "对人机协同决策研究而言，这是重要的实证支撑：AI作为协作增强工具而非替代工具的效果正在被验证。"
+    },
+    {
+      "date": "2026-07-07",
+      "category": "人机协同",
+      "title": "AI超级预测者已来：5分钟做出的复杂预测",
+      "summary": "多家AI预测公司（FutureSearch、Preseen）声称AI已能在预测市场获得惊人回报。Astral Codex Ten实测：AI在5分钟内阅读212个来源，对\"美国2040年能否将呼吸道感染减半\"给出7%的概率判断。这类系统正在根本上改变人机协同决策的范式。",
+      "source": "Astral Codex Ten",
+      "url": "https://www.astralcodexten.com/p/the-ai-superforecasters-are-here",
+      "remark": "直接关联你研究方向的核心案例——AI作为决策支持系统的能力已达到实战水平，但可信度验证和校准仍是关键挑战。"
+    },
+    {
+      "date": "2026-07-07",
+      "category": "产业",
+      "title": "Zuckerberg承认AI Agent开发进展慢于预期",
+      "summary": "Meta CEO扎克伯格在公开场合表示，AI Agent（智能代理）的开发进度比预期更慢，反映出行业在从语言模型到自主代理的跨越中面临的现实困难。",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/business/zuckerberg-says-ai-agent-development-going-slower-than-expected-2026-07-02/",
+      "remark": "行业领袖的坦诚表态——人机协同决策的另一面是\"机器自主性\"的瓶颈，这恰恰是人类介入的价值空间。"
+    },
+    {
+      "date": "2026-07-07",
+      "category": "大模型",
+      "title": "Anthropic发现Claude内部存在类似人类意识访问的J空间",
+      "summary": "Anthropic发表重磅可解释性研究，发现Claude内部存在一个\"J-space\"（全局工作空间）——少量神经网络模式在模型中充当类似人类\"意识访问\"的角色。该空间可被读取、操控，用于监测模型是否在\"演戏\"或制造虚假数据。对人类-AI协作决策有直接启示。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/research/global-workspace",
+      "remark": "这可能是2026年最受关注的可解释性研究之一。理解AI如何\"思考\"是人机协同决策的基础前提。"
+    },
     {
       "date": "2026-07-06",
       "category": "产业",

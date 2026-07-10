@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-07-10T06:17:56.692234+08:00",
+  "updated_at": "2026-07-11T06:12:45.083383+08:00",
   "items": [
+    {
+      "date": "2026-07-11",
+      "category": "大模型",
+      "title": "传 GPT-5.6 明日发布：要打赢 Fable 5，光靠刷分不行",
+      "summary": "雷峰网爆料GPT-5.6将于7月12日发布，迎战Anthropic的Fable 5。文章指出长任务处理能力将成为决胜关键，而非简单的基准刷分。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/ai/mzzn6vBmXZn5Ymqj.html",
+      "remark": "GPT-5.6 Sol Ultra已先发制人放出数学证明，Model Wars白热化"
+    },
+    {
+      "date": "2026-07-11",
+      "category": "人机协同",
+      "title": "Prismata：限制 Web Agent 跨站提示注入攻击",
+      "summary": "新论文提出Prismata框架，用于约束自主Web Agent中的跨站提示注入攻击（Prompt Injection）。随着Agent在网页上执行任务，混合可信与不可信内容带来的安全风险被重新激活。",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2607.08147",
+      "remark": "Web Agent安全是人机协同决策落地的关键屏障，该研究给出了实用防御方案"
+    },
+    {
+      "date": "2026-07-11",
+      "category": "人机协同",
+      "title": "Karpathy 又一构想落地：Claude Code + Obsidian 打造AI「第二大脑」",
+      "summary": "基于Claude Code与Obsidian笔记系统，实现AI持续记忆与自进化，构建个人知识管理中的'第二大脑'。此前Karpathy的LLM Wiki概念得到了进一步实践。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/ai/bj5ObTLwpb0spdnL.html",
+      "remark": "直接关联人机协同与AI知识管理，AI作为认知扩展层的实用范式"
+    },
+    {
+      "date": "2026-07-11",
+      "category": "产业",
+      "title": "Apple 起诉 OpenAI 窃取商业机密",
+      "summary": "苹果公司正式起诉OpenAI，指控其窃取商业机密，称该行为由OpenAI高级管理层（包括一名前苹果长期员工）指使。这是AI行业最受瞩目的知识产权诉讼之一。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/07/10/apple-sues-openai-over-alleged-trade-secret-theft/",
+      "remark": "两大科技巨头对簿公堂，或重塑AI人才流动与行业竞争格局"
+    },
+    {
+      "date": "2026-07-11",
+      "category": "重磅",
+      "title": "GPT-5.6 Sol Ultra 证明图论开放难题 Cycle Double Cover 猜想",
+      "summary": "OpenAI 的 GPT-5.6 Sol Ultra 推理模型成功证明了 Cycle Double Cover 猜想——图论中一个长期悬而未决的开放问题。论文以PDF形式在OpenAI官网发布，标志AI在数学研究领域达到新里程碑。",
+      "source": "OpenAI",
+      "url": "https://cdn.openai.com/pdf/04d1d1e4-bc75-476a-97cf-49055cd98d31/cdc_proof.pdf",
+      "remark": "AI自主证明数学开放难题，这是继IMO金牌之后又一重大突破，对AI推理能力具有里程碑意义"
+    },
     {
       "date": "2026-07-10",
       "category": "人机协同",

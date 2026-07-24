@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-07-24T06:12:37.226943+08:00",
+  "updated_at": "2026-07-25T06:13:02.862864+08:00",
   "items": [
+    {
+      "date": "2026-07-25",
+      "category": "产业",
+      "title": "腾讯混元组织架构再升级：合并大语言模型和多模态团队",
+      "summary": "腾讯宣布混元多模态模型部门与大语言模型部门合并，成立基础模型部，统一由首席AI科学家姚顺雨管理。新上线的Hy3模型发布一周调用量较上一代增长68倍，混元3D模型全球下载超300万次。此架构调整旨在加速全模态模型研发协同。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/industrynews/LNHgLirIT5DvYfcV.html",
+      "remark": "大厂组织架构调整往往预示着技术路线聚焦方向的转变——全模态模型正在成为行业共识。"
+    },
+    {
+      "date": "2026-07-25",
+      "category": "人机协同",
+      "title": "对话星炽动力CTO：PULSE架构如何让具身智能更像人",
+      "summary": "星炽动力CTO李达（中科院自动化所博士）详解PULSE具身大脑架构：采用'双轨'设计——一轨跑物理环境感知推演，另一轨跑用户状态感知推演，在特征层面交叉验证。核心洞察是家庭机器人不能只理解'环境中有何物'，更要理解'人处于什么状态'。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/industrynews/VoghxG89WgJ2E9ZI.html",
+      "remark": "对人机协同决策研究非常相关——这篇文章把'理解人的状态'从加分项变成了具身智能的必要条件。"
+    },
+    {
+      "date": "2026-07-25",
+      "category": "产业",
+      "title": "花几百万买的H100在'摸鱼'？英伟达：别怪显卡，是你的模型'长得丑'",
+      "summary": "英伟达官方技术博客深度解析GPU利用率不足问题：指出模型设计中的'算术强度'过低是核心原因——GPU花90%时间在等数据搬运而非计算。给出7条硬件友好设计准则，包括维度对齐128/256/512倍数、善用NVFP4低精度通道等，强调模型结构需'从头对齐GPU运行逻辑'。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/yanxishe/wFiCjuoj6zqG5WZ7.html",
+      "remark": "这篇对做AI基础设施决策的团队极有价值——在算力成本高企的今天，模型设计效率比堆卡更重要。"
+    },
+    {
+      "date": "2026-07-25",
+      "category": "大模型",
+      "title": "领100美元免费积分，反被Claude偷设陷阱疯狂扣费",
+      "summary": "Reddit用户爆料：领取Anthropic Fable 5补偿的100美元免费积分后，被默认开通按需付费，Pro套餐5小时限额失效，超限后自动扣费50美元。事后Anthropic已悄悄修改领取流程。文章指出AI Agent'不知省钱只知完成任务'的特性让这类计费陷阱更隐蔽。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/yanxishe/QYg8NFOX1UYDWoXQ.html",
+      "remark": "对人机协同决策研究者而言，这篇报道戳中了一个核心问题：当AI Agent自主执行任务时，'预算意识'和'消费边界'的缺失可能成为信任的黑洞。"
+    },
+    {
+      "date": "2026-07-25",
+      "category": "大模型",
+      "title": "Claude Opus 5 被曝今晚发布：Fable 5 的水平，腰斩的价格",
+      "summary": "Anthropic被曝将于今晚发布Claude Opus 5，传闻性能达到Fable 5水准但价格腰斩。模型具备顶级长线推理能力，引入Honeycomb安全回落机制，将在不牺牲安全性的前提下大幅降低使用门槛。这是Anthropic应对中国开源模型（Qwen3.8、DeepSeek等）价格战的关键一步。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/yanxishe/ngOQ8jWhVY9EAqHp.html",
+      "remark": "Opus 5若以Fable 5水平、一半价格入市，将直接改变大模型定价格局——对正在做人机协同研究的团队来说，顶级推理能力的可及性提升是大利好。"
+    },
     {
       "date": "2026-07-24",
       "category": "产业",

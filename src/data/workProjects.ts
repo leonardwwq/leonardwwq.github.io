@@ -137,12 +137,9 @@ export const workProjects: WorkProject[] = [
     tags: ['AI Agent', 'MCP', 'Copilot', '人机协同', '提示词工程'],
     iconId: 'sparkles',
     categoryId: 'prototype',
-    demoPath: null,
+    demoPath: '/prototypes/ai-copilot/architecture.html',
     iframeTitle: 'AI Copilot 架构图',
     prototypesFolder: 'ai-copilot',
-    demoLinks: [
-      { label: '架构图', path: '/prototypes/ai-copilot/architecture.html' },
-    ],
     caseStudy: {
       background:
         '投放平台的日常运营涉及数据监控、异常判断、出价调整、策略优化等高频率操作，分散在不同页面。运营需在多个系统间切换拼凑信息再做决策，效率低且依赖个人经验。需要一个能"感知用户在做什么、在需要时提供建议、确认后执行"的智能助手，而非单纯的对话机器人。',

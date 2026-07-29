@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-07-29T06:14:50.228131+08:00",
+  "updated_at": "2026-07-30T06:17:47.600244+08:00",
   "items": [
+    {
+      "date": "2026-07-30",
+      "category": "大模型/产业",
+      "title": "SpaceXAI为Grok上线Build模式：一句话将创意转化为独立域名产品",
+      "summary": "马斯克旗下SpaceXAI为Grok推出Build模式，输入提示词即可将创意转化为带有独立域名的功能产品（网站、工具、互动媒体或应用）。已面向SuperGrok Heavy订阅用户（月费300美元）开放，无需编写代码即可迭代修改。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/0/982/828.htm",
+      "remark": "AI从'对话助手'进化到'应用生成器'，人机协同的边界进一步模糊。用户不再需要写代码，用自然语言就能构建可用产品，这是人机协同创作的一个里程碑。"
+    },
+    {
+      "date": "2026-07-30",
+      "category": "大模型/产业",
+      "title": "谷歌解散AlphaFold团队以专注于Gemini",
+      "summary": "谷歌宣布解散其获诺贝尔奖的AlphaFold团队，将资源集中到Gemini大模型开发。AlphaFold在蛋白质结构预测领域取得了革命性突破，其团队核心成员将转向Gemini相关工作。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/0/983/065.htm",
+      "remark": "谷歌正在将最优秀的AI科学家全部押注于Gemini大模型，即使是诺奖级团队也被整合。这一决策反映了当前AI行业'通用大模型优先'的强烈共识。"
+    },
+    {
+      "date": "2026-07-30",
+      "category": "大模型/产业",
+      "title": "AI系统'Theo Conjecture'解决35年数学难题，发现未曾预测的数学项",
+      "summary": "AI系统'Theo Conjecture'成功解决了一个困扰数学界35年的图论猜想，发现了人类数学家从未预测到的数学项。该系统通过将质数计数问题转化为图论模型，利用Havel-Hakimi算法快速计算图残差(residue)，为长期悬而未决的数学猜想提供了新的突破方向。",
+      "source": "FirstPrinciples",
+      "url": "https://firstprinciples.com/blog-article/ai-system-theo-conjecture-solves-35-year-old-math-conjecture",
+      "remark": "又一个AI在科学发现领域的里程碑案例。不同于传统的暴力搜索或模式匹配，Theo将数学问题转化为图论模型，展示了AI作为'科学协作者'而非'工具'的潜力。与人机协同决策方向高度相关。"
+    },
+    {
+      "date": "2026-07-30",
+      "category": "大模型/产业",
+      "title": "OpenAI宣布开源Codex Security CLI，支持代码扫描与漏洞追踪",
+      "summary": "OpenAI推出开源命令行安全工具Codex Security CLI，支持扫描代码仓库、发现和验证安全漏洞，并集成CI/CD流程自动化安全检查。需Node.js 22+和Python 3.10+运行。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/0/982/823.htm",
+      "remark": "AI安全工具的开源化趋势加速，OpenAI在开发者工具链上的投入进一步加深。对AI Agent来说，安全扫描能力的内置化是走向生产级的关键一步。"
+    },
+    {
+      "date": "2026-07-30",
+      "category": "大模型/产业",
+      "title": "月之暗面完成35亿美元超预期融资，投后估值达350亿美元",
+      "summary": "中国AI大模型公司月之暗面（Kimi）完成35亿美元新一轮融资，远超预期目标，投后估值达350亿美元。这轮融资规模标志着资本市场对中国AI大模型赛道的强烈信心，月之暗面是当前全球估值最高的AI独角兽之一。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/0/983/170.htm",
+      "remark": "Kimi以2.8万亿参数模型登顶全球榜单后连续获得巨额融资，中国AI大模型正在打破'美国领先'的固有认知。"
+    },
+    {
+      "date": "2026-07-30",
+      "category": "大模型/产业",
+      "title": "MCP 2026-07-28规范发布：问世以来最大更新，转向无状态核心",
+      "summary": "Anthropic发布MCP协议第5版规范，核心变化从双方向的有状态连接全面转向无状态核心，移除握手流程、引入会话ID机制，并新增版本化扩展框架和Tasks扩展，强化OAuth 2.0/OIDC企业级授权。这是MCP问世以来最系统性的颠覆式修订，直接影响AI Agent生态。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/0/983/102.htm",
+      "remark": "MCP协议是AI Agent交互的底层基础设施，无状态化变革直接提升生产环境可靠性，对Agent工具链生态影响深远。面向人机协同决策方向，这意味着Agent间通信将更标准化、更易调试。"
+    },
     {
       "date": "2026-07-29",
       "category": "大模型/产业",

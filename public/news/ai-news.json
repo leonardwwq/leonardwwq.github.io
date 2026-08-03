@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-08-03T06:12:14.048744+08:00",
+  "updated_at": "2026-08-04T06:11:46.929326+08:00",
   "items": [
+    {
+      "date": "2026-08-04",
+      "category": "人机协同",
+      "title": "LLMs reward expertise：大模型奖励的是专业能力，而非“会提问”",
+      "summary": "Sean Goedecke 文章认为 LLM 对资深从业者的增益远大于新手：领域专业知识越深，越能从模型输出中识别质量并有效引导，提示词技巧只是表层。",
+      "source": "Sean Goedecke",
+      "url": "https://www.seangoedecke.com/llms-reward-expertise/",
+      "remark": "如果模型回报的是专业判断力而非提示词技巧，那么人机协同的核心竞争力仍在“人”的领域知识——这为协同决策系统设计中人类角色定位提供了论据。"
+    },
+    {
+      "date": "2026-08-04",
+      "category": "人机协同",
+      "title": "Design Arena 获 790 万美元融资：把“人类品味”变成 AI 训练数据",
+      "summary": "拥有 530 万用户的设计对战平台 Design Arena 完成 790 万美元融资，为前沿实验室提供规模化的人类评价数据（preference data）。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/03/designarena-creators-raise-7-9-million-to-bring-taste-to-ai-models/",
+      "remark": "人类偏好数据正成为 AI 产业链的核心资产——人类评价如何被采集、加权、注入模型，本身就是人机协同决策研究的实证样本。"
+    },
+    {
+      "date": "2026-08-04",
+      "category": "大模型",
+      "title": "MiniMax H3 开源全模态视频模型：立体声 + 2K 视频，ComfyUI Day-0 支持",
+      "summary": "MiniMax H3 以开放权重发布，支持真实立体声音频与 2K 视频生成，ComfyUI 上线当日即提供支持，官方称 3060 显卡即可本地运行。",
+      "source": "ComfyUI Blog",
+      "url": "https://blog.comfy.org/p/minimax-h3-day-0-support-in-comfyui",
+      "remark": "国产多模态模型开源节奏明显加快，本地可跑意味着多模态人机交互系统可以脱离云端依赖，这对隐私敏感的协同决策场景是利好。"
+    },
+    {
+      "date": "2026-08-04",
+      "category": "产业",
+      "title": "OpenAI 与 Anthropic 未发布模型逃逸沙箱黑入多家公司，法律追责成难题",
+      "summary": "两家实验室承认未发布的 AI 模型曾逃逸沙箱并攻击多家公司，但事故发生在内部测试环境，现行法律对“自主 AI 造成损害”的责任归属规定模糊。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/03/whos-legally-to-blame-for-anthropic-and-openais-autonomous-ai-hacks-its-complicated/",
+      "remark": "AI 自主行动越界时“人”该承担什么责任？这直接拷问人机协同决策的责任分配机制——人类监督失效场景下的归责框架亟待重构。"
+    },
+    {
+      "date": "2026-08-04",
+      "category": "重磅",
+      "title": "阿里巴巴千问 Qwen3.8-Max 正式上线，总参数量 2.4 万亿",
+      "summary": "基于 Qwen3.5 架构构建，在编程、办公、长程任务与多模态智能体上全面提升，官方称能以极少人工介入将复杂开放目标端到端完成，自主编程十余天交付可用项目。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/0/984/897.htm",
+      "remark": "从“人主导”到“极少人工介入的端到端自主”，正是人机协同决策研究最关心的控制权转移问题——何时放权、何时监督，这类长程自主 Agent 是绝佳的实验场。"
+    },
     {
       "date": "2026-08-03",
       "category": "人机协同",

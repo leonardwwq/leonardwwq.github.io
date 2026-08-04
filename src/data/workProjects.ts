@@ -131,12 +131,12 @@ export const workProjects: WorkProject[] = [
     description:
       '基于MCP协议的上下文感知AI Agent产品。主导从架构设计到方案落地的全链路产品设计，实现"AI建议→人工确认→自动执行"的人机协作闭环。',
     tooltipSummary:
-      'MCP协议+上下文感知+混合交互模式的AI Copilot产品，架构设计完成、MVP开发推进中。',
+      '基于MCP协议的上下文感知AI Agent产品，产品已上线供内部投放团队使用。',
     tagline:
       '不是单纯的对话机器人，而是能感知用户在做什么、在需要时提供建议、确认后执行的嵌入式AI助手。基于MCP协议标准化工具调用，通过页面路径拼接实现上下文感知与动态工具映射，以混合交互模式（对话+UI确认组件）完成人与AI的协作决策闭环。',
     tags: ['AI Agent', 'MCP', 'Copilot', '人机协同', '提示词工程'],
     iconId: 'sparkles',
-    categoryId: 'prototype',
+    categoryId: 'platform',
     demoPath: '/prototypes/ai-copilot/architecture.html',
     iframeTitle: 'AI Copilot 架构图',
     prototypesFolder: 'ai-copilot',
@@ -146,9 +146,9 @@ export const workProjects: WorkProject[] = [
       goals:
         '设计并落地一款上下文感知的AI Copilot产品：<strong>① 工具编排框架</strong>——基于MCP协议将数据分析、策略推荐、调价等能力标准化为可注册的工具，实现统一接入与动态路由；<strong>② 上下文感知机制</strong>——通过拼接用户当前页面路径至system prompt，使Agent感知用户所处的业务场景，自动匹配可用工具集；<strong>③ 混合交互模式</strong>——Agent的tool_call返回结果渲染为可交互UI组件（确认弹窗、参数编辑表单），保留人的最终决策权；<strong>④ 提示词工程</strong>——定义Agent的角色定位、决策边界、工具选择策略与异常兜底逻辑。',
       process:
-        '作为<strong>产品负责人</strong>，主导产品架构设计与方案落地。完成MCP协议与工具调用框架的技术选型与方案设计，定义上下文注入机制与动态工具映射规则。设计混合交互流程——Agent建议以tool_call返回，前端捕获后渲染为确认弹窗/参数编辑表单等交互组件。完成系统提示词编写，定义Agent行为边界与异常兜底策略。推动开发团队完成MCP Server开发，统筹前后端协作，项目进入MVP开发阶段。',
+        '作为<strong>产品负责人</strong>，主导产品架构设计与方案落地。完成MCP协议与工具调用框架的技术选型与方案设计，定义上下文注入机制与动态工具映射规则。设计混合交互流程——Agent建议以tool_call返回，前端捕获后渲染为确认弹窗/参数编辑表单等交互组件。完成系统提示词编写，定义Agent行为边界与异常兜底策略。推动开发团队完成MCP Server开发，统筹前后端协作，产品已上线并在内部投放团队推广培训。',
       results:
-        '产品架构设计全面完成，定义了一套完整的AI Copilot产品方案。基于MCP协议的工具调用框架、上下文感知注入机制、混合交互模式等核心设计已通过技术可行性验证。项目推进中，即将进入10人内测阶段，在真实投放场景中验证人机协作闭环的效果。',
+        '产品已<strong>上线</strong>，面向内部投放团队使用，正在推广培训。上线前内测数据表现：<strong>关键词选词效率提升 75%+、单账户调优耗时缩短 67%+、运营操作量降低 87%+</strong>。基于 MCP 协议的工具调用框架、上下文感知注入机制与混合交互模式，在真实投放场景中跑通「AI 建议→人工确认→自动执行」的人机协作闭环。',
     },
   },
   {

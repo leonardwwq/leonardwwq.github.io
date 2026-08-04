@@ -1,4 +1,4 @@
-/** 站点「关于我 / 联系」个人信息；与简历 PDF 对齐。 */
+/** 站点「关于我 / 联系」个人信息；与简历 V10 对齐。 */
 
 /** 简历 PDF 所在目录（对应 public/profile/） */
 export const RESUME_DIR = '/profile';
@@ -9,7 +9,7 @@ export const RESUME_DIR = '/profile';
  * 2. 只改下面这一行文件名
  * 3. 可删除旧 PDF（可选）
  */
-export const resumeFileName = '王伟权-投放系统产品经理-V8.pdf';
+export const resumeFileName = '王伟权-AI-Agent产品经理-简历V10.pdf';
 
 export const resumePath = `${RESUME_DIR}/${resumeFileName}`;
 
@@ -60,7 +60,7 @@ export type ProfileSkills = {
 
 export const profile = {
   name: '王伟权',
-  role: '投放系统产品经理',
+  role: 'AI Agent产品经理',
   location: '北京',
   status: '在职',
   resumePath,
@@ -69,21 +69,32 @@ export const profile = {
     phone: '13502508112',
   },
   social: {
-    telegram: 'https://t.me/+8613502508112',
+    telegram: 'https://t.me/+861****8112',
     twitter: '',
     linkedin: 'https://www.linkedin.com/in/伟权-王-780885360',
   } satisfies ProfileSocial,
   tagline:
-    '5 年产品经验，聚焦广告投放与增长方向。主导 Apple Search Ads 智能投放平台（投放管理+数据管理+风控一体化）全链路产品设计，覆盖广告投放管理、数据管理及财务风控三大核心模块；用数据丈量、用规则决策，把「看数—判断—执行—复盘」做成可复用的产品能力。',
+    'AI Agent 产品经理，同时具备 Agent 工程实现能力与心理学研究背景。主导 AI Copilot 智能助手从 0 到 1 落地（MCP 协议 + 上下文感知），产品已上线供内部投放团队使用；能用 Python 手写完整 Agent 循环，也在开展人机协同决策研究——用可解释的 AI 辅助决策，提升真实场景的人机协作效率。',
   background: {
     positioning:
-      '具备从 0 到 1 设计投放平台、投放数据分析工具及增长产品的落地能力。目前在伙伴云担任产品负责人，主导 Apple Search Ads 智能投放平台（投放管理+数据管理+风控一体化）与 ASO 一站式下单平台，月均管理消耗约 200 万人民币 + 220 万美元。',
+      'AI Agent 产品经理，同时具备 Agent 工程实现能力与心理学研究背景。目前在伙伴云担任产品负责人，主导 AI Copilot 智能助手（基于 MCP 协议的上下文感知 AI Agent）从 0 到 1 的架构设计与落地，产品已上线供内部投放团队使用，选词效率提升 75%+、运营操作量降低 87%+；此前主导 ASA 智能投放平台（投放管理+数据管理+风控一体化）与 ASO 一站式下单平台。',
     trajectory:
-      '职业主线从金融风控业务系统（闻博大数据）到达人投放数据分析（尚诚 / TopSocial 数播），再到 Apple Search Ads 智能投放平台（投放管理+数据管理+风控一体化）与 ASO 增长工具矩阵——风控基因延续，持续围绕 B 端投放与数据分析产品线演进，而非零散换赛道。',
+      '职业主线从金融业务系统（闻博大数据）到达人投放数据分析（尚诚同力 · 波波），再到 AI Agent 产品与人机协同方向（伙伴云 · AI Copilot + ASA + ASO）——产品能力持续沉淀，2025 年起聚焦 AI Agent 产品化，并同步攻读应用心理学硕士（人机协同决策方向），用研究与工程双线支撑 AI 辅助决策产品设计。',
     approach:
-      '习惯把投放全流程拆成可评审的实现路径，用指标、漏斗和 A/B 测试驱动迭代；将运营经验沉淀为规则化策略——投放端（关键词批量管理、出价策略、消耗监控）、数据端（多源数据整合、关键词分类与受众画像、规则引擎）、风控端（客户信用额度管理、垫资消耗监控、自动停投），对接 AppsFlyer / Adjust 归因数据支撑决策，探索人机协同而非黑盒替代。',
+      '习惯把复杂业务拆成可评审的实现路径：Agent 侧基于 MCP 协议标准化工具编排，以「AI 建议→人工确认→自动执行」的人机协作闭环保留人的最终决策权；数据侧用指标、漏斗与 A/B 测试驱动迭代；研究侧用心理学实验与 Bootstrap 中介分析验证「AI 如何影响人的决策」，再回到产品设计。',
   } satisfies ProfileBackground,
   highlights: [
+    {
+      title: 'AI Copilot 智能助手',
+      slug: 'ai-copilot-assistant',
+      summary:
+        '基于 MCP 协议的上下文感知 AI Agent 产品，主导从架构设计到方案落地的全链路产品设计，实现「AI建议→人工确认→自动执行」的人机协作闭环；产品已上线供内部投放团队使用。',
+      metric: {
+        value: 75,
+        suffix: '%+',
+        label: '关键词选词效率提升',
+      },
+    },
     {
       title: 'ASA 智能投放平台（投放管理+数据管理+风控一体化）',
       slug: 'asa-smart-delivery',
@@ -127,29 +138,29 @@ export const profile = {
   ] satisfies ProfileHighlight[],
   skills: {
     scenarios: [
-      'Apple Search Ads 投放全链路（投放管理 投放管理）',
-      '数据管理平台（数据管理：多源整合、关键词画像、规则引擎）',
-      '风控与财务结算（信用额度、垫资监控、自动停投）',
-      '智能投放 Agent / 规则引擎',
+      'AI Agent 产品设计（MCP 协议、工具编排、上下文感知）',
+      '人机协作闭环设计（AI 建议→人工确认→自动执行）',
+      '投放管理+数据管理+风控一体化平台',
+      '心理学实验设计与数据全流程分析',
+      '数据产品商业化',
       '增长与获客优化',
-      'B 端投放数据分析',
     ],
     methods: [
-      '投放管理+数据管理+风控一体化产品设计',
-      '关键词策略与归因模型',
+      'Agent 架构设计（LLM 推理 + 工具调用 + 多轮对话）',
+      '手写 Agent 循环（Python + Tool Calling，不依赖框架）',
+      '提示词工程与行为边界定义',
+      'Bootstrap 中介分析',
       '指标体系与漏斗分析',
-      'A/B 测试',
-      '0-1 到商业化',
-      '跨角色协同',
+      'A/B 测试与 0-1 商业化',
     ],
-    tools: ['SQL', 'Python', 'AppsFlyer / Adjust', 'Google Analytics', 'Axure'],
+    tools: ['Python', 'SQL', 'DeepSeek API', 'MCP', 'Axure', 'AppsFlyer / Adjust'],
   } satisfies ProfileSkills,
   education: [
     {
       school: '中央财经大学',
-      degree: '应用心理学 · 硕士（非全日制，在读）',
+      degree: '应用心理学 · 硕士（在读）',
       period: '2026.09 – 2028.06',
-      note: '研究方向：用户决策行为、AI 辅助系统设计及数据驱动的增长策略',
+      note: '研究方向：人机协同决策、AI 辅助系统中的信任与决策行为；导师为人机协同决策方向，自 2026 年 5 月起提前进入课题组参与研究',
     },
     {
       school: '东莞理工学院',

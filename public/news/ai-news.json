@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-08-04T06:11:46.929326+08:00",
+  "updated_at": "2026-08-05T09:22:58.466112+08:00",
   "items": [
+    {
+      "date": "2026-08-05",
+      "category": "大模型",
+      "title": "华为诺亚开源MindMemOS：Agent记忆与Skill一起进化",
+      "summary": "华为诺亚方舟实验室推出面向AI Agent的可迁移、自演进记忆操作层MindMemOS，通过MindSchema预设记忆提取规则，可围绕任务与标注问答离线演化提取策略，解决Agent跨会话记忆无法迁移、需要'重新养一遍'的问题。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/08/464835.html",
+      "remark": "记忆层是Agent从'用完即忘'走向持续进化的关键基础设施，对长程协同场景（研究助手、决策支持）是实质性进展。"
+    },
+    {
+      "date": "2026-08-05",
+      "category": "人机协同",
+      "title": "北大&元空开源科研Agent OpenAI4S：复刻Claude Science思路",
+      "summary": "北京大学与元空AI Agent联合实验室正式开源科研智能体项目OpenAI4S：沿Code-as-Action思路，把Claude Science的引擎、持久内核、host-RPC协议、安全层用开源方式独立复现，内置30+项科研Skills，零依赖、MIT协议。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/08/466386.html",
+      "remark": "能自搜文献、自写代码、自跑分析、自出报告的科研Agent走向开源，AI for Science的研究范式正在平民化，值得研究者直接上手试用。"
+    },
+    {
+      "date": "2026-08-05",
+      "category": "产业",
+      "title": "DeepSeek V4 Flash低价风暴：海外平台争相倒贴",
+      "summary": "OpenCode称8月1日单日DeepSeek Flash在其平台跑了8T tokens；海外'中间商'平台在DeepSeek白菜价基础上继续叠加补贴，Nous Portal甚至给V4 Flash打一折限时7天。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/08/465814.html",
+      "remark": "推理成本被打穿后，Agent应用的边际成本趋近于零，人机协同系统的规模化实验门槛大幅降低。"
+    },
+    {
+      "date": "2026-08-05",
+      "category": "大模型",
+      "title": "阿里Qwen3.8-Max发布：2.4万亿参数，Arena榜单直逼Claude",
+      "summary": "阿里发布Qwen3.8-Max，总参数量达2.4万亿，在编程、专业工作、长程任务、多模态智能体等场景表现大幅提升；最新Arena榜单冲进全球第一梯队，编程表现甚至超过Claude Opus 5和Fable 5 High版本。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/08/465226.html",
+      "remark": "开源阵营持续逼近闭源头部，Qwen的长程任务与智能体能力提升意味着Agent落地成本进一步下降。"
+    },
+    {
+      "date": "2026-08-05",
+      "category": "产业",
+      "title": "Anthropic签下100亿美元AI云协议：押注Volta",
+      "summary": "Anthropic近几个月密集进行云合作，最新消息是与AI云创业公司Volta达成约100亿美元的合作协议。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/",
+      "remark": "头部模型厂商继续重金绑定算力，产业链话语权正在向云与模型的一体化整合集中。"
+    },
+    {
+      "date": "2026-08-05",
+      "category": "大模型",
+      "title": "开源权重模型逼近前沿，安全差距却拉大",
+      "summary": "SaferAI最新报告发现，Z.ai的开源权重模型GLM-5.2能力已逼近前沿闭源模型，但缺少关键安全缓解措施，引发'强大开源模型可能跑赢治理与防护'的担忧。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/04/open-weight-ai-models-are-catching-up-to-the-frontier-the-safety-gap-remains/",
+      "remark": "开源权重模型能力追平前沿只是时间问题，真正的瓶颈在安全评估与治理机制，这正是人机协同决策中'人类如何对黑箱系统负责'的延伸。"
+    },
+    {
+      "date": "2026-08-05",
+      "category": "人机协同",
+      "title": "数学家24小时驳回OpenAI攻破的猜想：AI证对了每句话，但已跟原猜想无关",
+      "summary": "OpenAI宣称下一代AI模型解决10个世界级难题，包括推翻Connes刚性猜想。堪萨斯大学数学家J.L. Nielsen把OpenAI公开的37000行Lean 4代码从头追到尾，给出两条互相独立的失败路径：AI每一步证明都正确，但证明对象已与原猜想无关。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/08/465792.html",
+      "remark": "人机协同决策研究的绝佳案例：形式化验证让AI推理可被人类逐行审计，但'证明对了错误命题'暴露了验证流程中问题表述环节的漏洞——人类监督的关键不在于检查符号，而在于锚定问题本身。"
+    },
     {
       "date": "2026-08-04",
       "category": "人机协同",

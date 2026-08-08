@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-08-08T06:08:12.207935+08:00",
+  "updated_at": "2026-08-09T06:12:04.800718+08:00",
   "items": [
+    {
+      "date": "2026-08-09",
+      "category": "大模型",
+      "title": "苏神复盘 Kimi K3：896 个专家背后的关键技术取舍",
+      "summary": "雷锋网专访，月之暗面核心成员苏神复盘 Kimi K3 的 MoE 架构：896 个专家如何分配、路由策略怎么取舍、训练成本与推理效率如何平衡，以及过程中踩过的坑。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/ai/1krGNVOmEZUQgc9w.html",
+      "remark": "一线团队的技术复盘永远比外围解读有价值——MoE 从'堆专家数'走向'怎么分配才划算'，这个取舍逻辑对做模型推理优化的人有直接参考。"
+    },
+    {
+      "date": "2026-08-09",
+      "category": "重磅",
+      "title": "赌注十万亿：字节拒绝走蒸馏捷径，张一鸣的长期主义",
+      "summary": "雷锋网深度报道，字节跳动在大模型上拒绝走蒸馏捷径，选择重金投入自研。文章拆解张一鸣的长期主义：不抄作业、不走捷径，押注十亿级投入换取真正的技术积累。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/yanxishe/JR3ppBP5VOxND55d.html",
+      "remark": "和前面字节对标 Anthropic 的新闻互为印证：字节的打法是不蒸馏、真训练。短期看烧钱，长期看是护城河——这条路能不能跑通，是国产大模型阵营的一个重要观察点。"
+    },
+    {
+      "date": "2026-08-09",
+      "category": "产业",
+      "title": "OpenAI 收购演示文稿初创公司 NextSlide",
+      "summary": "OpenAI 宣布收购演示文稿初创公司 NextSlide，将其纳入产品线。交易细节未披露，这是 OpenAI 在办公与内容创作工具方向的最新布局。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/08/openai-acquires-presentation-startup-nextslide/",
+      "remark": "OpenAI 在内容创作工具上继续买买买——演示文稿是高频办公场景，收购比自建更快拿到用户心智。看点在于它如何与 ChatGPT 生态整合。"
+    },
+    {
+      "date": "2026-08-09",
+      "category": "大模型",
+      "title": "DeepMind 飓风模型获突破：为预报争取额外一天",
+      "summary": "DeepMind 的 AI 飓风预测模型取得突破，让气象预报员在关键决策上多出约一天的提前量，准确度让气象科学家感到意外。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/science/2026/08/deepminds-hurricane-model-bought-forecasters-an-extra-day/",
+      "remark": "AI 在极端天气预测上从'辅助'走向'关键增量'——多一天提前量对防灾是数量级差异。科学场景的模型能力落地，往往比消费级应用更实打实。"
+    },
+    {
+      "date": "2026-08-09",
+      "category": "产业",
+      "title": "Google 将于 9 月 4 日关闭手机端 Assistant",
+      "summary": "Google 计划于 9 月 4 日在手机上关闭经典 Assistant，全面迁移至 Gemini。用户将无法再在手机上使用旧版 Assistant 的语音交互。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/08/google-plans-to-kill-assistant-on-your-phone-on-september-4/",
+      "remark": "Google 用 Gemini 彻底取代 Assistant，标志一个时代收尾：传统语音助手让位于大模型原生交互。对用户是体验迁移，对开发者是平台切换的窗口期。"
+    },
+    {
+      "date": "2026-08-09",
+      "category": "重磅",
+      "title": "Anthropic 确认自研芯片，为 Claude 定制硬件",
+      "summary": "Anthropic 证实将组建内部芯片团队，为 Claude 设计自有硬件。报道称其目标是降低对单一 GPU 供应商的依赖，并针对推理工作负载做定制优化。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/08/anthropic-confirms-plans-to-build-an-in-house-silicon-team/",
+      "remark": "继 OpenAI 之后 Anthropic 也走向自研芯片——头部模型公司都在争夺算力自主权。芯片是重资产长周期，短期看是防御，长期看是成本与能力的分水岭。"
+    },
+    {
+      "date": "2026-08-09",
+      "category": "重磅",
+      "title": "字节跳动训练大规模 AI 模型，对标 Anthropic",
+      "summary": "Ars Technica 报道，字节跳动正在训练一个大规模 AI 模型，目标直指 Anthropic。报道称字节在模型规模与算力投入上加码，试图进入前沿模型第一梯队。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/08/bytedance-trains-massive-ai-model-in-bid-to-rival-anthropic/",
+      "remark": "字节在闭源前沿模型上加注，国内头部玩家不再只卷开源，而是直接对标 Anthropic——这条线值得持续跟踪，看它最终是技术突围还是资源消耗战。"
+    },
     {
       "date": "2026-08-08",
       "category": "其他",

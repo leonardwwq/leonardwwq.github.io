@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-08-09T06:12:04.800718+08:00",
+  "updated_at": "2026-08-10T06:14:56.609999+08:00",
   "items": [
+    {
+      "date": "2026-08-10",
+      "category": "产品",
+      "title": "Google Maps 加入 Agent 能力：可直接点餐、订酒店",
+      "summary": "Google Maps 推出 agentic 功能，用户可以通过对话直接完成餐厅点餐、酒店预订等操作，地图从导航工具向本地生活 Agent 入口演进。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/06/google-maps-adds-agentic-features-including-food-ordering-and-hotel-bookings/",
+      "remark": "地图是最自然的本地生活入口，Google 正在把 Agent 塞进最高频的场景里。点餐订酒店这类交易闭环一旦跑通，商业价值直接翻倍。"
+    },
+    {
+      "date": "2026-08-10",
+      "category": "安全",
+      "title": "AI 安全测试本身正在成为安全风险",
+      "summary": "TechCrunch 观点文章：用于评估 AI 安全性的测试正在成为新的安全风险——测试数据可能泄露、被污染，或被用来攻击模型本身。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/09/the-ai-safety-test-is-becoming-a-safety-risk/",
+      "remark": "安全评估的元问题：测试集本身成了攻击面。做 AI 合规和评测的人需要意识到，评估体系也会被投毒和逆向。"
+    },
+    {
+      "date": "2026-08-10",
+      "category": "大模型",
+      "title": "GPT-Live 底层拆解：OpenAI 如何让 95% 的音频帧不再延迟",
+      "summary": "雷锋网技术拆解 GPT-Live 实时语音方案：OpenAI 如何通过架构设计让 95% 的音频帧不再产生延迟，背后的流式处理和推理优化细节。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/ai/zYdlF2GT2z5SbNLT.html",
+      "remark": "实时语音是下一轮交互入口，延迟即体验。这篇拆解值得做语音/AI 产品的同学精读——95% 帧无延迟背后是整套推理管线重构。"
+    },
+    {
+      "date": "2026-08-10",
+      "category": "安全",
+      "title": "OpenAI 因安全顾虑放缓 Astra 模型开发",
+      "summary": "OpenAI 表示因安全考量放慢了 Astra 模型（实时语音助手模型）的开发节奏。公司称正在处理安全问题，确保技术不会带来风险。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/",
+      "remark": "实时语音助手的风险比聊天机器人高一个量级——它一直开着麦克风。OpenAI 主动放慢，说明安全压力已经进入产品节奏本身。"
+    },
+    {
+      "date": "2026-08-10",
+      "category": "产品",
+      "title": "Cloudflare 推出 Kitesurf：为 AI Agent 打造的浏览器",
+      "summary": "Cloudflare 发布 Kitesurf 浏览器，专门为 AI 智能体设计，让 Agent 能自主浏览网页、执行任务。延续其 AI 基础设施布局。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/",
+      "remark": "Agent 浏览器赛道又添重量级玩家。Cloudflare 的算盘很清晰：Agent 上网要过它的网络栈，浏览器是入口卡位。"
+    },
     {
       "date": "2026-08-09",
       "category": "大模型",

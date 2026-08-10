@@ -1,4 +1,4 @@
-/** 站点「关于我 / 联系」个人信息；与简历 V10 对齐。 */
+/** 站点「关于我 / 联系」个人信息；与简历 V11 对齐。 */
 
 /** 简历 PDF 所在目录（对应 public/profile/） */
 export const RESUME_DIR = '/profile';
@@ -9,7 +9,7 @@ export const RESUME_DIR = '/profile';
  * 2. 只改下面这一行文件名
  * 3. 可删除旧 PDF（可选）
  */
-export const resumeFileName = '王伟权-AI-Agent产品经理-简历V10.pdf';
+export const resumeFileName = '王伟权-AI-Agent产品经理-简历V11.pdf';
 
 export const resumePath = `${RESUME_DIR}/${resumeFileName}`;
 
@@ -65,7 +65,7 @@ export const profile = {
   status: '在职',
   resumePath,
   contact: {
-    email: 'Oldschooldevotee@Foxmail.com',
+    email: 'leonardwangweiquan@gmail.com',
     phone: '13502508112',
   },
   social: {
@@ -101,8 +101,8 @@ export const profile = {
       summary:
         '0-1 完成 Apple Search Ads 智能投放平台，覆盖 投放端（关键词批量管理、出价策略、消耗监控与归因）、数据端（多源数据整合、关键词分类与画像、规则引擎）及风控端（客户信用额度、垫资消耗监控、自动停投）；支撑 1000+ 广告账户与 10+ 人投放团队日常运作。',
       metric: {
-        label: '月均管理消耗',
-        displayValue: '200 万+ / 220 万$',
+        label: '年均管理广告预算',
+        displayValue: '5000 万美元+',
       },
     },
     {
@@ -113,6 +113,16 @@ export const profile = {
       metric: {
         label: '规则引擎路径',
         displayValue: '闭环设计',
+      },
+    },
+    {
+      title: '人机协同决策实验平台（导师课题）',
+      slug: 'human-ai-experiment-platform',
+      summary:
+        '在导师指导下推进的心理学实验 Agent 平台——三层架构（design 实验参数结构化配置 → sim/run 多智能体模拟 → analyze Bootstrap 中介分析+可视化），以纯 Python + JSON Schema 构建，不依赖现成实验框架；支撑「焦虑→认知偏差→献血意愿」中介机制研究。',
+      metric: {
+        label: '项目阶段',
+        displayValue: '概念设计',
       },
     },
     {
@@ -158,7 +168,7 @@ export const profile = {
   education: [
     {
       school: '中央财经大学',
-      degree: '应用心理学 · 硕士（在读）',
+      degree: '应用心理学 · 硕士（非全日制，周末上课，不影响全职工作）',
       period: '2026.09 – 2028.06',
       note: '研究方向：人机协同决策、AI 辅助系统中的信任与决策行为；导师为人机协同决策方向，自 2026 年 5 月起提前进入课题组参与研究',
     },

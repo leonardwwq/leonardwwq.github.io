@@ -62,7 +62,7 @@ export const profile = {
   name: '王伟权',
   role: 'AI Agent产品经理',
   location: '北京',
-  status: '在职',
+  status: '在职 · 到岗时间 1 个月',
   resumePath,
   contact: {
     email: 'leonardwangweiquan@gmail.com',
@@ -79,7 +79,7 @@ export const profile = {
     positioning:
       'AI Agent 产品经理，同时具备 Agent 工程实现能力与心理学研究背景。目前在伙伴云担任产品负责人，主导 AI Copilot 智能助手（基于 MCP 协议的上下文感知 AI Agent）从 0 到 1 的架构设计与落地，产品已上线供内部投放团队使用，选词效率提升 75%+、运营操作量降低 87%+；此前主导 ASA 智能投放平台（投放管理+数据管理+风控一体化）与 ASO 一站式下单平台。',
     trajectory:
-      '职业主线从金融业务系统（闻博大数据）到达人投放数据分析（尚诚同力 · 波波），再到 AI Agent 产品与人机协同方向（伙伴云 · AI Copilot + ASA + ASO）——产品能力持续沉淀，2025 年起聚焦 AI Agent 产品化，并同步攻读应用心理学硕士（人机协同决策方向），用研究与工程双线支撑 AI 辅助决策产品设计。',
+      '职业主线从金融业务系统（闻博大数据）到达人投放数据分析（尚诚同力 · 波波），再到 AI Agent 产品与人机协同方向（伙伴云）——2025.03 起主导 ASA 智能投放平台与 ASO 下单平台建设，沉淀业务场景与数据基础；2026.02 起主导 AI Copilot 智能助手从 0 到 1 的产品设计与上线，并同步攻读应用心理学硕士（人机协同决策方向），用研究与工程双线支撑 AI 辅助决策产品设计。',
     approach:
       '习惯把复杂业务拆成可评审的实现路径：Agent 侧基于 MCP 协议标准化工具编排，以「AI 建议→人工确认→自动执行」的人机协作闭环保留人的最终决策权；数据侧用指标、漏斗与 A/B 测试驱动迭代；研究侧用心理学实验与 Bootstrap 中介分析验证「AI 如何影响人的决策」，再回到产品设计。',
   } satisfies ProfileBackground,

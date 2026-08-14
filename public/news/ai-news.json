@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-08-14T06:19:16.719687+08:00",
+  "updated_at": "2026-08-15T06:13:30.596362+08:00",
   "items": [
+    {
+      "date": "2026-08-15",
+      "category": "产业",
+      "title": "Jeff Dean 创业路演曝光：34 位创始人，谷歌系人才出走潮",
+      "summary": "Jeff Dean 创业路演 PPT 流出，披露 34 位创始人阵容，引发对谷歌系人才流失的讨论。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/ai/woyyD9TFUP2pnDOC.html",
+      "remark": "顶级研究人才从大厂流向创业，是技术代际切换期的典型信号。对国内团队是提醒：人才竞争会越来越激烈。"
+    },
+    {
+      "date": "2026-08-15",
+      "category": "大模型",
+      "title": "Google 三周内再发 Gemini 3.7 Flash，迭代速度拉满",
+      "summary": "谷歌在上一版 Flash 发布仅三周后推出 Gemini 3.7 Flash，模型迭代节奏明显加快。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/08/google-announces-gemini-3-7-flash-just-three-weeks-after-previous-release/",
+      "remark": "头部厂商发布周期从季度压缩到周级，模型能力差距在快速收窄。选型时别锁死版本，架构上要能平滑换模型。"
+    },
+    {
+      "date": "2026-08-15",
+      "category": "技术",
+      "title": "谷歌用同态加密把私有 AI 变成实用方案",
+      "summary": "Google 发文介绍同态加密技术进展，称已能让私有 AI（数据加密状态下完成推理）走向实用。",
+      "source": "Google Blog (via HN)",
+      "url": "https://blog.google/security/how-google-is-making-private-ai-practical-with-homomorphic-encryption/",
+      "remark": "同态加密是'数据不出域也能用 AI'的关键技术。如果真能规模化，企业私有化部署和敏感数据场景会打开新空间，但落地成本和性能仍是考验。"
+    },
+    {
+      "date": "2026-08-15",
+      "category": "大模型/产业",
+      "title": "OpenAI 与 Anthropic 打起价格战，中国 AI 厂商成变量",
+      "summary": "报道称 OpenAI 与 Anthropic 陷入价格战，背后是中国 AI 对手在成本和能力上追赶带来的压力。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/08/openai-and-anthropic-in-price-war-as-chinese-ai-rivals-gain-ground/",
+      "remark": "API 降价是模型同质化最直接的信号。对应用层开发者是利好，但意味着靠卖 token 的商业模式利润会被进一步压缩。"
+    },
+    {
+      "date": "2026-08-15",
+      "category": "大模型",
+      "title": "Qwen 3.8 27B 发布：开源大模型再更新",
+      "summary": "Qwen 3.8 系列 27B 模型发布，FP8 量化版上线 HuggingFace，延续开源路线。",
+      "source": "Hugging Face (via HN)",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-27B-FP8",
+      "remark": "Qwen 是开源模型迭代最快的系列之一，27B 级别兼顾了效果与部署成本，对中小团队自部署很友好。"
+    },
+    {
+      "date": "2026-08-15",
+      "category": "大模型",
+      "title": "智谱发布 GLM-5.3：编程能力暴涨 50%，具备网络攻防能力",
+      "summary": "智谱发布 GLM-5.3，官方称编程能力提升 50%，并展示其网络攻防（cyber）能力，底座架构延续 GLM 系列。",
+      "source": "智谱AI (via HN)",
+      "url": "https://z.ai/blog/glm-5.3",
+      "remark": "国产模型在编程和 Agent 自主能力上持续加码。'前沿编程+网络能力'的方向说明厂商开始把模型当工具型 Agent 底座来做，而不仅是聊天模型。"
+    },
     {
       "date": "2026-08-14",
       "category": "大模型",

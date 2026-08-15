@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-08-15T06:13:30.596362+08:00",
+  "updated_at": "2026-08-16T06:20:32.752431+08:00",
   "items": [
+    {
+      "date": "2026-08-16",
+      "category": "技术",
+      "title": "对抗 AI 爬虫的新武器：把网页变成乱码的字体",
+      "summary": "开发者用特殊字体让普通网页对人类正常、对 AI 爬虫变成乱码，对抗内容抓取。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/08/new-font-turns-ordinary-webpages-into-nonsense-for-ai-scrapers/",
+      "remark": "猫鼠游戏升级：视觉正常但机器难读的对抗方案。内容方与 AI 爬虫的攻防会长期存在。"
+    },
+    {
+      "date": "2026-08-16",
+      "category": "国内",
+      "title": "商汤大装置首提 TPW：重新定义 AI 基础设施效能标尺",
+      "summary": "商汤大装置提出 TPW（每瓦 token 数）指标，试图用能效重新衡量 AI 基础设施价值。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/ai/XzQc2DEYciB5M57I.html",
+      "remark": "从'算力堆量'转向'算力能效'，TPW 这类指标会越来越重要。做基础设施选型时可以多关注能耗维度。"
+    },
+    {
+      "date": "2026-08-16",
+      "category": "产品",
+      "title": "Google 允许用户移除 AI 生成的可见水印",
+      "summary": "Google 调整策略，允许用户从 AI 生成内容中移除可见水印，引发对溯源机制的讨论。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/14/google-will-now-allow-users-to-remove-visible-watermark-from-its-ai-generations/",
+      "remark": "跟 Anthropic 加文本水印形成对照：可见水印影响体验，不可见水印才是溯源正解。各家路线正在分化。"
+    },
+    {
+      "date": "2026-08-16",
+      "category": "产业",
+      "title": "微软砍掉失败 AI 功能，合并 Copilot 应用",
+      "summary": "微软关闭多个未达预期的 AI 功能，同时把分散的 Copilot 应用合并为一个统一入口。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/13/microsoft-kills-off-unsuccessful-ai-features-while-merging-its-separate-copilot-apps/",
+      "remark": "大厂开始收缩 AI 产品线、聚焦入口。'AI 功能多但没用'的阶段正在结束，产品要回到解决真实问题上。"
+    },
+    {
+      "date": "2026-08-16",
+      "category": "产业",
+      "title": "Anthropic 上市估值或达 2 万亿美元",
+      "summary": "分析师预计 Anthropic IPO 估值可能达到 2 万亿美元，仅次于少数科技巨头。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/08/anthropic-could-be-worth-2-trillion-when-it-goes-public/",
+      "remark": "2 万亿美元意味着市场把 Anthropic 放在 OpenAI 同一梯队。估值预期高，上市后的业绩兑现压力也会很大。"
+    },
+    {
+      "date": "2026-08-16",
+      "category": "产业",
+      "title": "SpaceX 正式完成 Cursor 收购",
+      "summary": "SpaceX 官方宣布完成对 AI 编程工具 Cursor 的收购交割，交易此前估值约 600 亿美元。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/15/spacex-officially-closes-its-cursor-acquisition/",
+      "remark": "从宣布到交割速度很快。AI 编程工具被巨头纳入版图，独立工具的空间在收窄，值得做工具的人警惕。"
+    },
+    {
+      "date": "2026-08-16",
+      "category": "大模型",
+      "title": "OpenAI 推出 Ultrafast 模式：GPT-5.6 Sol 提速 14 倍",
+      "summary": "OpenAI 发布 Ultrafast 新模式，让 GPT-5.6 Sol 以 14 倍速度工作，主打低延迟场景。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/",
+      "remark": "速度翻倍背后是推理架构优化。对应用层来说，延迟敏感场景（语音、实时交互）的体验会明显提升。"
+    },
     {
       "date": "2026-08-15",
       "category": "产业",

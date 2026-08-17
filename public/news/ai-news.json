@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-08-17T06:11:00.613446+08:00",
+  "updated_at": "2026-08-18T06:09:11.501690+08:00",
   "items": [
+    {
+      "date": "2026-08-18",
+      "category": "其他",
+      "title": "菲尔兹奖得主 Gowers：AI 主要靠'抬杠'突破重大数学猜想",
+      "summary": "1998 年菲尔兹奖得主 Timothy Gowers 认为，当前 AI 突破重大数学猜想主要靠'抬杠'式交互——通过不断提出反驳与质疑逼近证明，而非直接给出完整证明。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/08/474381.html",
+      "remark": "与'AI 秒证数学'的叙事不同，Gowers 强调人机对撞式推理的价值：质疑与反驳本身就是推理的关键机制，对人机协同研究很有参照意义。"
+    },
+    {
+      "date": "2026-08-18",
+      "category": "大模型",
+      "title": "共生知行发布人形机器人赛车 Demo：用卡丁车测试'全身智能'",
+      "summary": "具身智能初创公司共生知行发布双足人形机器人驾驶卡丁车的 Demo，这是其成立后首次完整展示技术方向：以高速动态场景考验全身协调与决策能力。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/08/474537.html",
+      "remark": "人形机器人开始用'会开车'证明全身智能，测试范式从静态任务走向动态驾驶场景，具身智能竞争进入新阶段。"
+    },
+    {
+      "date": "2026-08-18",
+      "category": "安全",
+      "title": "Wiz 红队 AI 攻破 Snowflake 内部 Jira：漏洞源于 GitHub Copilot 自动修复",
+      "summary": "Wiz Red Agent 利用一条 GitHub Copilot 辅助生成、Autofix 自动修复的 PR 所引入的漏洞，成功渗透 Snowflake 内部 Jira 系统。",
+      "source": "Wiz Blog (via Hacker News)",
+      "url": "https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug",
+      "remark": "AI 编码助手的'自动修复'可能自动引入新漏洞，Agent 供应链安全正在成为大模型落地必须正面回答的问题。"
+    },
+    {
+      "date": "2026-08-18",
+      "category": "产业",
+      "title": "Groq 融资 3.5 亿美元，从 AI 芯片厂转型 neocloud 云服务",
+      "summary": "Groq 以 35 亿美元估值完成 3.5 亿美元融资，正式从 AI 芯片厂商转型为 neocloud 云服务商，并扩建基于英伟达 GPU 的数据中心。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/17/groq-raises-350m-to-fuel-its-pivot-from-ai-chips-to-neocloud/",
+      "remark": "自研芯片厂商'打不过就加入'，neocloud 赛道正成为 AI 算力市场的新焦点，芯片公司集体向算力服务商迁移。"
+    },
+    {
+      "date": "2026-08-18",
+      "category": "产业",
+      "title": "英伟达投资 15 亿美元入股软银数据中心开发商，锁定 OpenAI 项目",
+      "summary": "英伟达向软银旗下数据中心开发商投资 15 亿美元，这笔投资将确保其芯片进入 OpenAI 项目的数据中心。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/17/nvidia-investing-1-5b-in-softbank-data-center-developer-behind-openai-project/",
+      "remark": "算力军备竞赛进入'绑定下游'阶段：英伟达从卖芯片转向锁定未来产能，英伟达-软银-OpenAI 的绑定关系值得持续关注。"
+    },
+    {
+      "date": "2026-08-18",
+      "category": "产业",
+      "title": "亚马逊被曝购买并销毁稀有书籍，用于训练 AI 模型",
+      "summary": "调查显示亚马逊正在购买并销毁稀有书籍用于训练 AI——这类稀缺文本在线上几乎不存在，训练价值极高。出版界的长期怀疑被实锤。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/17/amazon-once-an-online-bookseller-is-destroying-rare-books-to-train-ai-models/",
+      "remark": "数据稀缺性倒逼版权与实体书市场异动：AI 训练数据争夺战已从线上蔓延到线下实物。"
+    },
     {
       "date": "2026-08-17",
       "category": "大模型/产业",

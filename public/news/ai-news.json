@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-08-19T06:08:43.320372+08:00",
+  "updated_at": "2026-08-20T06:08:14.823069+08:00",
   "items": [
+    {
+      "date": "2026-08-20",
+      "category": "产业",
+      "title": "Cognition CEO 否认 SpaceX 试图收购该初创公司",
+      "summary": "针对近期 SpaceX 有意收购 AI 编程公司 Cognition 的报道，Cognition CEO 公开否认。此前有报道称 SpaceX 已完成对另一家 AI 编程公司 Cursor 的收购，行业整合传闻不断。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/19/cognition-ceo-denies-report-that-spacex-tried-to-acquire-the-startup/",
+      "remark": "AI 编程赛道收购传闻满天飞，辟谣与证实交替出现。传闻本身说明大厂在抢 AI 编程入口，消息真伪反而次要，战略卡位意图是明确的。"
+    },
+    {
+      "date": "2026-08-20",
+      "category": "产业",
+      "title": "Etched 估值一个月翻倍至 210 亿美元",
+      "summary": "AI 芯片公司 Etched 估值在一个月内翻倍至 210 亿美元。该公司主打 Transformer 专用芯片（Sohu），专注把大模型推理做到极致性价比，被资本追捧。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/18/etcheds-valuation-doubles-to-21b-in-a-month/",
+      "remark": "专用芯片路线开始兑现资本信心：通用 GPU 之外，'为 Transformer 而生'的定制芯片正成为新宠。估值翻倍速度说明市场在赌推理成本曲线的陡峭下降。"
+    },
+    {
+      "date": "2026-08-20",
+      "category": "安全",
+      "title": "研究人员投诉：OpenAI 撤销其受限网络战项目访问权限",
+      "summary": "TechCrunch 报道，多名外部研究人员抱怨 OpenAI 撤销了他们参与受限 cyber 项目的访问权限。该项目此前对外披露时已引发争议，OpenAI 收紧访问引发学界不满。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/19/researchers-complain-that-openai-revoked-their-access-to-limited-cyber-program/",
+      "remark": "前沿 AI 与网络安全的交叉地带，OpenAI 选择收缩：安全研究需要透明，但敏感能力又怕外泄，这个矛盾短期内没有标准答案。"
+    },
+    {
+      "date": "2026-08-20",
+      "category": "技术",
+      "title": "深度拆解 DeepSeek Harness 架构：AGI 自进化终于有了'后悔药'",
+      "summary": "雷锋网深度拆解 DeepSeek Harness 架构：通过可回滚的自我进化机制，让模型在自主迭代中保留'后悔药'，降低自进化失控风险。这是对 AGI 自进化路径的一次工程化探索。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/ai/u43j44fx6Rly10nI.html",
+      "remark": "自进化是 AGI 方向的热词，但没人敢真放开手。DeepSeek 把'可回滚'做进架构，思路是给失控兜底：先保证安全边界，再谈进化速度。"
+    },
+    {
+      "date": "2026-08-20",
+      "category": "技术",
+      "title": "YC 开源自家 Agent Harness，3 天斩获 3.9k Star",
+      "summary": "YC 开源其内部 Agent Harness（OneCLI），3 天获 3.9k Star。核心是解决 Agent 权限边界：通过沙箱隔离与 QM（权限模型）机制，让 Agent 只拿到完成任务所需的最小权限。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/ai/5fYkbR7Q1K3l0ImP.html",
+      "remark": "Agent 安全正从'能不能'走向'边界划多清'。YC 把权限治理做成可复用的开源基建，说明 Agent 工程化的下一波竞争在安全与可控性。"
+    },
+    {
+      "date": "2026-08-20",
+      "category": "产业",
+      "title": "OpenRouter 加入 Stripe：AI 模型路由基础设施被支付巨头收购",
+      "summary": "OpenRouter 官方宣布加入 Stripe。OpenRouter 是 AI 开发者常用的模型路由/API 聚合平台，接入数百个开源与闭源模型，此次被 Stripe 收购意味着 AI 基础设施与支付体系进一步融合。",
+      "source": "OpenRouter Blog",
+      "url": "https://openrouter.ai/blog/announcements/openrouter-is-joining-stripe/",
+      "remark": "AI 基础设施进入整合期：模型路由这种'中间层'生意开始被巨头收编。对开发者影响待观察，但多模型路由作为独立商业形态的窗口可能在收窄。"
+    },
     {
       "date": "2026-08-19",
       "category": "技术",

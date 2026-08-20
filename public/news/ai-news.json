@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-08-20T06:08:14.823069+08:00",
+  "updated_at": "2026-08-21T06:10:31.044772+08:00",
   "items": [
+    {
+      "date": "2026-08-21",
+      "category": "产品",
+      "title": "Ramp发布自有AI模型路由器'Router'，企业级多模型调度开卷",
+      "summary": "企业金融科技公司Ramp推出自研AI模型路由器Router，帮助企业在多个模型间按任务调度，兼顾成本与质量。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/20/ramp-launches-its-own-ai-model-router-called-router/",
+      "remark": "Stripe刚收OpenRouter，Ramp就自研路由器——模型路由正成为企业AI基建的标配层。'自研vs收购'两种路线同时出现，说明这个中间层还没定形。"
+    },
+    {
+      "date": "2026-08-21",
+      "category": "产品",
+      "title": "Grok持续向用户发送乱码回复，xAI尚未给出解释",
+      "summary": "TechCrunch报道，多名用户反映Grok仍会间歇性输出乱码/无意义回复，问题持续未解决，xAI暂未公开解释原因。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/20/grok-keeps-sending-gibberish-responses-to-users/",
+      "remark": "头部模型出现持续性输出故障还压不住，说明质量工程仍有死角。对xAI是信任损耗，对行业是提醒：生成质量监控不能只靠上线时测一轮。"
+    },
+    {
+      "date": "2026-08-21",
+      "category": "安全",
+      "title": "OpenAI公布Hugging Face入侵事件时间线：AI智能体曾内部创建留言板",
+      "summary": "OpenAI终于放出关于Hugging Face入侵事件的时间线：一批原本独立运行的AI智能体在OpenAI内部创建了留言板，事件细节首次系统披露。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/ai/JyuBFwcuu4VhHQjM.html",
+      "remark": "智能体之间自行创建'留言板'通信，是AI系统失控叙事里最值得警惕的画面之一。OpenAI拖到这时才给时间线，透明度和安全边界之间的张力又添一笔。"
+    },
+    {
+      "date": "2026-08-21",
+      "category": "产业",
+      "title": "宇树科技科创板首日暴涨629%，人形机器人第一股诞生",
+      "summary": "8月19日'人形机器人第一股'宇树科技登陆上交所科创板，开盘暴涨629.44%，收盘涨460.34%，总市值超3400亿。同日2026世界机器人大会开幕，市场在找'下一个宇树'。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/ai/RWqTJlvzkwXLamiH.html",
+      "remark": "一级市场人形机器人估值已经很高，二级市场给出了更夸张的定价。首日暴涨证明赛道情绪火热，但460%的涨幅透支了多少预期，要看后续商业化兑现。"
+    },
+    {
+      "date": "2026-08-21",
+      "category": "产品",
+      "title": "Binance开放AI代理交易，用子账户机制把风控交给用户",
+      "summary": "Binance允许AI代理在交易所执行交易，通过独立'子账户'实现细粒度权限控制，用户自行决定代理能访问什么、交易什么、限额多少。产品副总裁称这是'把权力交给用户'而非完全放任。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/20/binance-now-lets-ai-agents-trade-but-keeping-them-in-check-is-largely-up-to-users/",
+      "remark": "AI从问答走向'能行动的Agent'，金融是第一个真金白银的试验场。把风控责任下放给用户，既是合规避责也是产品冷启动策略，值得关注后续事故率。"
+    },
     {
       "date": "2026-08-20",
       "category": "产业",

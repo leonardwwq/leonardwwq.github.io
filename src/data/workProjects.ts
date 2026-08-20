@@ -3,7 +3,7 @@
 import { axureDemoUrls } from './axureDemoUrls';
 import type { WorkProjectIconId } from './workProjectIcons';
 
-export type WorkCategoryId = 'platform' | 'prototype' | 'planned';
+export type WorkCategoryId = 'platform' | 'prototype' | 'planned' | 'opensource';
 
 /** 各段可含 <strong> 标记关键词，详情页以 HTML 渲染 */
 export type WorkCaseStudy = {
@@ -64,6 +64,11 @@ export const workCategories: {
     id: 'planned',
     title: '规划中',
     intro: '目录已预留，原型接入后即可预览。',
+  },
+  {
+    id: 'opensource',
+    title: '开源项目',
+    intro: '独立开发并发布的开源项目，代码托管于 GitHub、可通过 npm 安装使用，面向开发者与 AI 用户社区。',
   },
 ];
 
@@ -369,6 +374,32 @@ export const workProjects: WorkProject[] = [
         '拆出首页、热搜查询、热榜聚焦、监控类页面及会员购买/购买记录/个人中心等模块。迭代多平台榜单与「全部平台」检索规则；将部分权限由禁用改为<strong>点击触发升级弹窗</strong>，优化非会员体验与转化路径。与波波侧能力保持数据与账号联动，原型中沉淀搜索、翻页、导出等交互说明。',
       results:
         '产品已<strong>独立上线</strong>，与波波<strong>并列售卖、能力联动</strong>，体量小于主平台但覆盖明确的单点需求。无公开经营数据可陈述。案例体现<strong>能力拆线、会员分层与多平台热搜 IA</strong>。站内保留 Axure 原型供作品集演示。',
+    },
+  },
+  {
+    slug: 'dsh-cultivation',
+    title: 'DSH 角色养成插件（dsh-cultivation）',
+    description:
+      '为 DSH（DeepSeek Harness）Web 界面打造的开源角色养成插件：每个会话绑定一个可长期养成的 AI 角色——自定义人设、好感度五阶段成长、分区记忆 + 追加日志自动归档。已发布至 npm，纯本地存储、零依赖。',
+    tooltipSummary: '开源 DSH 插件：会话级角色绑定 + 好感度五阶段成长 + 分区记忆自动归档，已发布 npm v0.2.0。',
+    tagline:
+      '让 AI 角色「记得你、在乎你、会成长」——不是一次性对话，而是跨会话累积的长期关系。用追加式日志 + 分区归档避免模型整包重写记忆造成的丢失，用系统级维护保证好感度不可被篡改，用零依赖纯 JS 做到即装即用。',
+    tags: ['DSH', 'AI Agent', '开源', 'npm', '角色养成', '记忆系统', '提示词工程'],
+    iconId: 'heart',
+    categoryId: 'opensource',
+    demoPath: null,
+    demoExternalUrl: 'https://github.com/leonardwwq/dsh-cultivation',
+    iframeTitle: 'dsh-cultivation GitHub 仓库',
+    prototypesFolder: 'dsh-cultivation',
+    caseStudy: {
+      background:
+        'DSH（DeepSeek Harness）是面向 Agent 的 Web 界面。日常使用中，每次对话都是「全新」的——没有持续的人设、没有关系积累，记忆只能靠把历史上下文硬塞给模型，<strong>成本高且容易丢失</strong>。希望 AI 陪伴有「养成感」：角色有完整背景、会随对话成长、记得彼此之间发生过什么，且<strong>数据完全本地、不上传、不浪费 token</strong>。',
+      goals:
+        '做一个可直接安装到 DSH Web 的插件，覆盖五块能力：<strong>① 会话级角色绑定</strong>——新会话选择角色后锁定（仅可开关）；<strong>② 角色档案</strong>——完整人设（成长经历/教育/职业/创伤/秘密等），内置 AI 设计助手（设计师/访谈）辅助生成；<strong>③ 好感度系统</strong>——随对话自然变化、分五阶段（冷淡 → 客气 → 熟络 → 亲密 → 依赖）、语气与称呼随阶段调整、由系统维护不可直接修改；<strong>④ 记忆系统</strong>——分区存储（长期事实/用户信息/关系状态/承诺/事件）+ 追加式日志自动归档，跨会话累积且防丢失；<strong>⑤ 资源纪律</strong>——角色段仅注入根会话、子代理不受影响，不浪费 token。',
+      process:
+        '独立完成产品设计 + 工程实现，采用 <strong>Host + Client 双半区</strong>插件架构：Host 侧负责数据持久化（按 key 合并防并发覆盖）、本地 API（load/save/chat/session-set/template-delete/avatar*）、按会话注入角色段（子代理跳过）、好感度工具 + 定期独立校准、记忆系统（分区 + 追加式日志 + 自动归档 + 日期纪律）；Client 侧负责角色库、新会话选择弹窗、编辑弹窗（表单 + AI 助手 + 预览 + 头像）、会话页角色 chip / 好感度指示 / 消息头像，复用 DSH 官方组件与设计 token 保持一致体验。实现上<strong>零依赖、纯 JavaScript、无需构建</strong>，通过 package.json 的 <code>dsh.client</code> 声明让 DSH web 插件表自动发现客户端；交付前用自研 check 脚本做语法、工具名（模型 API 限制）、零外部 import、client bundle id 一致性预检。',
+      results:
+        '已发布至 <strong>npm（v0.2.0）</strong>并在 <strong>GitHub 开源（MIT）</strong>：通过 <code>pnpm add dsh-cultivation</code> + <code>cordis.patch.yml</code> 插入块一键安装，数据版本自动迁移（v1/v2 → v3）。完成 <strong>Phase 1-4</strong>（角色档案表单、AI 设计助手、好感度养成、记忆系统 v3），Roadmap 剩余云端同步 / 更多角色模板 / 记忆可视化。案例体现从<strong>产品判断</strong>（记忆不整包重写、token 优化、防篡改）到<strong>工程实现</strong>（零依赖插件、双半区架构、数据迁移）的完整闭环，是 Agent 工程实现能力的可验证交付物。',
     },
   },
   {

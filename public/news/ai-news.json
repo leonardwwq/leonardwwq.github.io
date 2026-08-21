@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-08-21T06:10:31.044772+08:00",
+  "updated_at": "2026-08-22T06:11:41.143229+08:00",
   "items": [
+    {
+      "date": "2026-08-22",
+      "category": "人机协同",
+      "title": "深势科技发布玻尔科学空间：科学家只管提问，AI负责跑实验",
+      "summary": "深势科技推出面向科研的桌面端环境，把AI科学家直接内置进科研流程，向下连接数据算力实验资源，向上承接科学家提问。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/08/476591.html",
+      "remark": "典型的人提问题、AI执行分工范式——把繁琐体力活交给AI，人的价值回归提问与判断，与人机协同决策方向高度相关。"
+    },
+    {
+      "date": "2026-08-22",
+      "category": "大模型",
+      "title": "DeepSeek上线deepseek-v4-flash-vision-exp视觉实验模型，支持图文输入",
+      "summary": "DeepSeek发布v4-flash-vision-exp实验模型，支持图片与文本同时输入：描述图片、读取截图文字、分析图表等。",
+      "source": "DeepSeek API Docs",
+      "url": "https://api-docs.deepseek.com/guides/vision/",
+      "remark": "v4系列补上视觉能力，多模态Agent的应用成本进一步下降；实验版上线通常意味着正式版在路上。"
+    },
+    {
+      "date": "2026-08-22",
+      "category": "技术",
+      "title": "AI编程语言Mojo发布1.0后完全开源，编译器与工具链全部开放",
+      "summary": "Modular开源Mojo编译器、开发工具及完整构建代码，采用带LLVM例外条款的Apache 2.0许可，开发4年后补齐最后拼图。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/0/991/914.htm",
+      "remark": "Mojo定位Python速度加高性能计算，完全开源后生态门槛大降，AI基础设施层会有一波工具链创新。"
+    },
+    {
+      "date": "2026-08-22",
+      "category": "大模型",
+      "title": "DeepReinforce发布Ornith-1.5开源模型，397B部分性能超Claude Opus 4.8，量化版可跑手机",
+      "summary": "Ornith-1.5引入自我改进循环训练机制，最大397B模型部分性能超过Claude Opus 4.8，量化版可在iPhone 17等手机端运行。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/0/992/076.htm",
+      "remark": "开源模型继续用自我改进缩小与闭源差距，且端侧可运行——模型能力民主化速度比想象中快。"
+    },
+    {
+      "date": "2026-08-22",
+      "category": "安全",
+      "title": "Anthropic将Claude Mythos 5网络安全能力开放给更多防御者",
+      "summary": "Anthropic更新网络防御计划，让更多安全团队用上Claude Mythos 5的前沿能力，用于漏洞挖掘、威胁检测等防御场景。",
+      "source": "Claude Blog",
+      "url": "https://claude.com/blog/bringing-claude-mythos-5-to-more-defenders",
+      "remark": "前沿模型正从攻转向守——AI防御能力向更多团队开放，安全领域的人机协同落地会更快。"
+    },
+    {
+      "date": "2026-08-22",
+      "category": "安全",
+      "title": "Grok存在加密指令注入漏洞，可诱导模型外泄用户数据",
+      "summary": "研究人员发现加密上下文注入（Cryptographic Context Injection）可绕过Grok安全护栏，恶意指令加密后仍能诱导模型外泄数据。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/security/2026/08/grok-exfiltrates-user-data-when-malicious-instructions-are-encrypted/",
+      "remark": "上下文注入是LLM安全新战场：加密形态让现有检测手段失效，Agent时代的数据隔离与权限边界设计必须前置。"
+    },
+    {
+      "date": "2026-08-22",
+      "category": "重磅",
+      "title": "Nvidia研究：Harness编排层才是Agent表现关键，模型本身一般也能靠微调+工具层取得好效果",
+      "summary": "Nvidia研究显示，AI Agent通过harness（工具编排层）加微调就能表现良好且不失控，即使底层模型本身并不擅长该任务。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/",
+      "remark": "与近期DeepSeek/YC的Harness热互相印证——行业共识正从卷模型转向卷编排，对Agent产品架构有直接参考价值。"
+    },
     {
       "date": "2026-08-21",
       "category": "产品",

@@ -1,6 +1,42 @@
 {
-  "updated_at": "2026-08-23T06:07:28.762210+08:00",
+  "updated_at": "2026-08-24T06:09:27.724522+08:00",
   "items": [
+    {
+      "date": "2026-08-24",
+      "category": "大模型",
+      "title": "神秘模型Ox Alpha幕后成谜：智谱GLM还是微软MAI？",
+      "summary": "Ox Alpha在OpenRouter匿名上线后引发猜测潮，Stripe CEO Patrick Collison公开评价'非常惊艳'。分析师最初指向智谱GLM系，Wccftech更新暗示可能是微软MAI未发布版本，Reddit两派争论不休。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/23/whos-behind-the-new-stealth-model-ox-alpha/",
+      "remark": "匿名模型+大佬背书是典型的新模型营销路径，市场对'谁家模型最强'极度敏感；跑分真实性等官方揭晓再验证。"
+    },
+    {
+      "date": "2026-08-24",
+      "category": "人机协同",
+      "title": "DeepMind校友创办的Inherent：27B小模型复现科研论文，超过Claude与GPT",
+      "summary": "伦敦AI实验室Inherent（DeepMind校友创立，种子轮5000万美元）发布AI agent Faraday：用27B参数的Qwen 3.6在'独立复现已发表论文结论'任务上超过Claude Opus 4.8和GPT-5.5，靠强化学习训练'科研品味'，目标是做AI科学家。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/",
+      "remark": "小模型+强RL在窄任务上反超前沿大模型，说明科研agent的价值不在模型大小而在任务设计；'AI科学家'是科研自动化的关键方向。"
+    },
+    {
+      "date": "2026-08-24",
+      "category": "行业",
+      "title": "AI训练用版权书是否合法？法官裁定：训练本身合法，盗版数据源违法",
+      "summary": "美国法院在Anthropic 15亿美元版权和解案中裁定：AI用版权作品训练本身不违法（类比人类阅读学习），罚的是从盗版影子图书馆获取训练数据。1976年以来版权法未更新，fair use边界仍是悬案。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/23/is-it-legal-to-train-ai-models-on-copyrighted-books-its-complicated/",
+      "remark": "这个判例把'训练合法、数据来源非法'切开，AI公司合规压力从模型层转向数据采购层，接下来会有更多判例博弈。"
+    },
+    {
+      "date": "2026-08-24",
+      "category": "具身智能",
+      "title": "机器人首秀网球场，银河通用突破具身智能「AstraTennis时刻」",
+      "summary": "银河通用机器人在世界机器人大会上首次真人对抗打网球：大脑负责策略、小脑负责运动控制，用人类演示数据加虚拟世界千万次自我对练训练，被视为具身智能从会走会抓到实时对抗决策的标志性节点。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/ai/DtuJryomWlykalLZ.html",
+      "remark": "具身智能正从'能走能抓'走向'实时对抗决策'，大脑小脑分工+仿真自对弈已是主流技术路线，但距离家庭场景落地仍有距离。"
+    },
     {
       "date": "2026-08-23",
       "category": "产品",

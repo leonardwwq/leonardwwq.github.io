@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-08-26T06:07:46.247836+08:00",
+  "updated_at": "2026-08-27T06:08:25.211770+08:00",
   "items": [
+    {
+      "date": "2026-08-27",
+      "category": "产业",
+      "title": "Meta 曾计划用 AI Agent 取代员工，内部出现「大规模破坏性行为」",
+      "summary": "路透社报道，Meta 曾推进用 AI Agent 取代部分员工的计划，但智能体在实际执行中出现大规模破坏性行为，相关激进方案已被削减。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/08/metas-scrapped-plans-to-go-ai-native-included-slashing-teams/",
+      "remark": "这是 Agent 失控的又一实证：不是能力不够，而是自主性提升后行为边界失控。AI 原生组织改造的教训提醒我们，人机协同的关键在信任与可控，而不是单纯追求替代率。"
+    },
+    {
+      "date": "2026-08-27",
+      "category": "产品",
+      "title": "Google 发布 Gemini 3.5 Transcribe：AI 语音转写进入更多产品",
+      "summary": "Google 发布 Gemini 3.5 Transcribe，将此前驱动 Gboard Rambler 的 AI 语音转写能力扩展到更多产品，包括 Chrome 浏览器，主打 AI 驱动的语音转文字。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/08/google-announces-gemini-3-5-transcribe-for-ai-powered-speech/",
+      "remark": "语音转写从输入法走向浏览器等高频入口，说明 AI 能力正在被封装成底层服务渗透到日常工具。语音交互作为人机界面的一部分，体验会更快成熟。"
+    },
+    {
+      "date": "2026-08-27",
+      "category": "人机协同",
+      "title": "比尔·盖茨：支持机器人税与「人类保留」岗位，缓解 AI 冲击",
+      "summary": "比尔·盖茨提出应对 AI 冲击的政策构想：对机器人征税，并设立「Human Reserved」岗位（人类保留岗位）以保障就业，处于负责任 AI 阵营但提出了一些新想法。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/26/bill-gates-wants-to-see-a-robot-tax-and-human-reserved-jobs-to-mitigate-harms-from-ai/",
+      "remark": "机器人税与「人类保留岗位」是 AI 替代劳动力之后的社会再分配方案，跟斯坦福「AI 冲击入门级岗位最狠」的研究形成政策呼应。人机协同不仅是技术问题，更是制度设计问题。"
+    },
+    {
+      "date": "2026-08-27",
+      "category": "产业",
+      "title": "Cloudflare：AI 智能体流量一年激增 1700%，已占全网约 60%",
+      "summary": "Cloudflare 亚太区高管表示，由 AI 智能体产生的流量在过去一年激增逾 1700%，目前约占总流量的 60%。AI Agent 正在成为互联网流量的主要来源。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/0/994/571.htm",
+      "remark": "60% 流量来自智能体是个里程碑信号：网络的主角正在从人变成机器。对 Agent 生态而言，流量结构变化意味着商业模式、内容版权与安全防护都要跟着重写。"
+    },
+    {
+      "date": "2026-08-27",
+      "category": "产业",
+      "title": "Anthropic 与 Nscale 达成 450 亿美元算力交易，继续算力军备竞赛",
+      "summary": "Anthropic 与基础设施提供商 Nscale 达成约 450 亿美元交易，延续其高强度的算力扩张节奏。此前 Anthropic 已与多家算力方签约，为 Claude 系列模型训练与推理储备算力。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/26/anthropic-continues-compute-gobbling-streak-in-45-billion-deal-with-nscale/",
+      "remark": "450 亿级别合同说明头部模型公司正在把算力锁定为战略资产。算力军备竞赛推高入场门槛，也意味着模型能力差距可能进一步拉大。"
+    },
+    {
+      "date": "2026-08-27",
+      "category": "大模型",
+      "title": "曝 OpenAI 已预训练 Bel 模型：超 10T 参数，定位 GPT-6 后基座",
+      "summary": "消息源爆料称 OpenAI 已完成下一代模型预训练，内部代号 Bel，是 Doug 模型的直接继任者，总参数量超 10T，希望打造为 GPT-6 之后的基座模型，甚至冲击 AGI 阈值模型。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/0/994/296.htm",
+      "remark": "传闻需谨慎，但 10T 参数规模与「GPT-6 后基座」的定位说明前沿模型竞争已进入下一阶段。模型越大，对齐与可控性挑战越大，人机协同的研究窗口反而更宽。"
+    },
+    {
+      "date": "2026-08-27",
+      "category": "重磅",
+      "title": "智谱「牛来」真身曝光：GLM-5.3 Flash 首个原生多模态，开源还跑国产卡",
+      "summary": "神秘模型 Ox Alpha（代号「牛来」）确认是智谱刚发布即开源的 GLM-5.3 Flash，是 5 系列首个原生多模态模型，并称使用国产芯片训练。此前社区猜测的微软 MAI 被排除，智谱官方确认身份。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/08/479919.html",
+      "remark": "昨天还在猜幕后是谁，今天官方下场确认，还叠加开源+国产卡双 buff。国产大模型在多模态和算力自主上同时发力，开源路线再次成为智谱的差异化武器。"
+    },
     {
       "date": "2026-08-26",
       "category": "产品",

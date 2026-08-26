@@ -60,7 +60,7 @@ export type ProfileSkills = {
 
 export const profile = {
   name: '王伟权',
-  role: 'AI Coding 产品经理',
+  role: 'AI 产品经理',
   location: '北京',
   status: '在职 · 到岗时间 1 个月',
   resumePath,
@@ -74,10 +74,10 @@ export const profile = {
     linkedin: 'https://www.linkedin.com/in/伟权-王-780885360',
   } satisfies ProfileSocial,
   tagline:
-    'AI Coding 产品经理，具备 Agent 能力产品化落地与开发者工具交付的双重经验。主导 AI Copilot 智能助手从 0 到 1 落地（MCP 协议 + 上下文感知），产品已上线供内部投放团队使用；能用 Python 手写完整 Agent 循环，独立开发 DSH 开源插件（npm v0.3.0-beta.1），也在开展人机协同决策研究——用可解释的 AI 辅助决策，提升真实场景的人机协作效率。',
+    'AI 产品经理，具备 Agent 能力产品化落地与开发者工具交付的双重经验。主导 AI Copilot 智能助手从 0 到 1 落地（MCP 协议 + 上下文感知），产品已上线供内部投放团队使用；能用 Python 手写完整 Agent 循环，独立开发 DSH 开源插件（npm v0.3.0-beta.1），也在开展人机协同决策研究——用可解释的 AI 辅助决策，提升真实场景的人机协作效率。',
   background: {
     positioning:
-      'AI Coding 产品经理，具备 Agent 能力产品化落地与开发者工具交付的双重经验。目前在伙伴云担任产品负责人，主导 AI Copilot 智能助手（基于 MCP 协议的上下文感知 AI Agent）从 0 到 1 的架构设计与落地，产品已上线供内部投放团队使用，选词效率提升 75%+、运营操作量降低 87%+；独立开发并发布 DSH 角色养成开源插件（dsh-cultivation，npm v0.3.0-beta.1，131 测试全过），以可验证的开源交付物佐证 Agent 工程实现能力。此前主导 ASA 智能投放平台（投放管理+数据管理+风控一体化）与 ASO 一站式下单平台。',
+      'AI 产品经理，具备 Agent 能力产品化落地与开发者工具交付的双重经验。目前在伙伴云担任产品负责人，主导 AI Copilot 智能助手（基于 MCP 协议的上下文感知 AI Agent）从 0 到 1 的架构设计与落地，产品已上线供内部投放团队使用，选词效率提升 75%+、运营操作量降低 87%+；独立开发并发布 DSH 角色养成开源插件（dsh-cultivation，npm v0.3.0-beta.1，131 测试全过），以可验证的开源交付物佐证 Agent 工程实现能力。此前主导 ASA 智能投放平台（投放管理+数据管理+风控一体化）与 ASO 一站式下单平台。',
     trajectory:
       '职业主线从金融业务系统（闻博大数据）到达人投放数据分析（尚诚同力 · 波波），再到 AI Agent 产品与人机协同方向（伙伴云）——2025.03 起主导 ASA 智能投放平台与 ASO 下单平台建设，沉淀业务场景与数据基础；2026.02 起主导 AI Copilot 智能助手从 0 到 1 的产品设计与上线，并同步攻读应用心理学硕士（人机协同决策方向），用研究与工程双线支撑 AI 辅助决策产品设计。',
     approach:

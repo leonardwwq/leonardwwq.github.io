@@ -1,6 +1,42 @@
 {
-  "updated_at": "2026-08-29T06:06:08.216658+08:00",
+  "updated_at": "2026-08-30T06:07:40.969754+08:00",
   "items": [
+    {
+      "date": "2026-08-30",
+      "category": "技术",
+      "title": "GPT、Claude 遭遇\"窃听门\"：隐藏思维链被还原",
+      "summary": "研究人员发现主流 AI API 的隐藏思维链可被\"窃听\"还原——即使推理过程被加密隐藏，仍能从强模型口中套出推理内容。文章探讨了恢复内容的真实性证明、蒸馏成本变化、Agent 系统中的隐藏行为以及使用权限边界等安全议题。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/ai/SXiTNHh5eeN9ntTt.html",
+      "remark": "思维链隐私是推理模型的阿喀琉斯之踵，蒸馏与安全攻防的博弈还会继续升级。"
+    },
+    {
+      "date": "2026-08-30",
+      "category": "行业",
+      "title": "索尼音乐、华纳起诉 Anthropic：指控大规模盗版训练 Claude",
+      "summary": "索尼音乐出版、华纳查普尔等多家音乐出版商在北加州联邦法院起诉 Anthropic 及其两位创始人，指控其通过非法 torrenting、爬取等手段下载海量受版权保护作品（含歌词与乐谱）训练 Claude，称其为\"公然剽窃\"。此前 Bartz 案中 Anthropic 已被判赔 15 亿美元。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/",
+      "remark": "Bartz 案刚判完新一轮版权诉讼又起，AI 训练数据合法性的雷还在持续爆。"
+    },
+    {
+      "date": "2026-08-30",
+      "category": "技术",
+      "title": "vLLM v0.28.0 发布：584 个 commit 重点优化 Kimi-K3 推理",
+      "summary": "主流 LLM 推理引擎 vLLM 发布 v0.28.0，含 584 个 commit、270 位贡献者（76 位新人）。重点：针对 Kimi-K3 的全栈优化（Decode Context Parallel、融合 FlashKDA 内核、共享专家分片每卡省 ~17GiB），稀疏 MLA 端到端支持，K3 可运行于 ROCm；多模态推理与 RL 服务能力同步增强。",
+      "source": "GitHub",
+      "url": "https://github.com/vllm-project/vllm/releases/tag/v0.28.0",
+      "remark": "推理引擎的版本重点直接反映国产模型生态地位，Kimi-K3 已成 vLLM 的头号优化对象。"
+    },
+    {
+      "date": "2026-08-30",
+      "category": "大模型",
+      "title": "腾讯开源新一代大模型混元 Hy4 preview",
+      "summary": "腾讯发布并开源混元 Hy4 preview：770B 总参数、49B 激活参数的 MoE 模型，上下文窗口超 100 万 token，编程、办公、科研等生产力场景能力突出；API 定价极低（输入 /usr/bin/bash.834/百万 token），并首次参与自身训练与推理系统的自动化优化。",
+      "source": "腾讯官网",
+      "url": "https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/",
+      "remark": "开源大模型第一梯队再添一员，1M 上下文 + 递归自我优化是最大看点。"
+    },
     {
       "date": "2026-08-29",
       "category": "行业",

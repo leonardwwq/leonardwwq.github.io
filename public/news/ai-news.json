@@ -1,6 +1,42 @@
 {
-  "updated_at": "2026-09-01T06:08:16.689968+08:00",
+  "updated_at": "2026-09-02T06:03:52.255294+08:00",
   "items": [
+    {
+      "date": "2026-09-02",
+      "category": "技术",
+      "title": "开源项目：48GB Mac 跑 104GB 的 Qwen3.8-Flash-Next",
+      "summary": "GitHub 项目 slotstream 实现把 104GB（4-bit）的 Qwen3.8-Flash-Next MoE 模型跑在 48GB 内存 Mac 上，通过 SSD 流式加载专家权重，速度约 12 tok/s，兼容 Ollama API。",
+      "source": "GitHub",
+      "url": "https://github.com/carloslfu/slotstream",
+      "remark": "MoE 模型只加载活跃专家，配合 SSD 换页，小内存设备也能跑大模型。消费级硬件跑大模型的边界又被推远了一步。"
+    },
+    {
+      "date": "2026-09-02",
+      "category": "产品",
+      "title": "Google 发布 Gemini 3.5 Transcribe 语音转写模型",
+      "summary": "Google 推出 Gemini 3.5 Transcribe，专攻 AI 语音转文字场景，面向会议纪要、字幕生成等实时转写需求。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/08/google-announces-gemini-3-5-transcribe-for-ai-powered-speech-to-text/",
+      "remark": "语音赛道竞争升级：通用模型之外开始出现垂直优化的转写专用模型，说明大厂在抢 AI 落地的入口级场景。"
+    },
+    {
+      "date": "2026-09-02",
+      "category": "产品",
+      "title": "ChatGPT/Codex 桌面应用捆绑完整版 LibreOffice",
+      "summary": "Simon Willison 发现 OpenAI 的 ChatGPT/Codex 桌面应用内置了完整的 LibreOffice 副本，用于文档处理能力，安装包体积因此大增。",
+      "source": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Sep/1/codex-libreoffice/",
+      "remark": "本地打包办公套件意味着 Agent 要在设备端直接读写文档，不再依赖云端转换——这是 AI 办公 Agent 走向本地化的实用信号。"
+    },
+    {
+      "date": "2026-09-02",
+      "category": "模型",
+      "title": "Anthropic 发布 Claude Fable 5.1 与 Mythos 5.1 双子模型",
+      "summary": "Anthropic 推出新一代模型 Claude Fable 5.1 与 Claude Mythos 5.1，登顶 Hacker News 热榜，具体能力与定位引发社区热议。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+      "remark": "Anthropic 连续出牌：前一天立硬件标准 MHS，今天上新模型，生态+模型双线并进。Fable 与 Mythos 双型号命名延续了 Claude 系列分层打法。"
+    },
     {
       "date": "2026-09-01",
       "category": "技术",

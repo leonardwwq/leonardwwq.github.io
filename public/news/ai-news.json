@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-09-02T06:03:52.255294+08:00",
+  "updated_at": "2026-09-03T06:06:44.780915+08:00",
   "items": [
+    {
+      "date": "2026-09-03",
+      "category": "产品",
+      "title": "Mistral 澄清训练数据政策：默认参与、可随时退出",
+      "summary": "Mistral 更新帮助文档说明：用户输入输出数据在特定情况下会进入模型训练。Vibe 个人版默认参与训练、企业版默认退出；API 与 Vibe 的退出开关相互独立，均可在管理面板随时关闭。",
+      "source": "Mistral",
+      "url": "https://help.mistral.ai/en/articles/455207-can-i-opt-out-of-my-input-or-output-data-being-used-for-training",
+      "remark": "默认参与+手动退出引发 HN 344 分讨论：AI 厂商默认训练与用户数据主权的拉锯还在继续，企业接入前应先关掉训练开关。"
+    },
+    {
+      "date": "2026-09-03",
+      "category": "大模型",
+      "title": "DeepSeek V4 多模态开源，视觉链路深度拆解",
+      "summary": "DeepSeek V4 多模态版本开源，雷锋网拆解其视觉链路：图片不只被编码成向量，还直接参与 Attention、MoE 路由与 Agent 推理，视觉成本会在长程任务中被逐轮放大，V4 正把环境状态变成上下文。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/ai/Bixp8MkRrWzo3KZj.html",
+      "remark": "多模态与推理主干深度融合，区别于外挂视觉编码器的路线；开源后这套架构可以被直接研究和复用。"
+    },
+    {
+      "date": "2026-09-03",
+      "category": "产品",
+      "title": "Perplexity 上线混合计算：敏感任务本地跑，私密数据不出设备",
+      "summary": "Perplexity 为 Computer 推出 hybrid compute：单个 Agent 任务可拆分为云端前沿模型与 Mac 本地开源模型分工执行，设备端 PII 分类器（Privacy Gate）拦截敏感内容，涉密子任务全程在本机运行、token 不上云，本地推理不消耗积分。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/orchestration/your-files-stay-put-perplexitys-hybrid-ai-keeps-confidential-data-off-the-cloud",
+      "remark": "云端智能+本地隐私的动态分工，是 Agent 打进律所、PE 这类高敏客户的关键解法。隐私门思路值得所有 Agent 产品借鉴。"
+    },
+    {
+      "date": "2026-09-03",
+      "category": "模型",
+      "title": "Meta 发布 Muse Spark 1.3：面向长程 Agent 与竞赛级编程",
+      "summary": "Meta 推出 Muse Spark 1.3，针对长程 Agent 工作流训练，优化竞争性编程表现与工具调用可靠性，首轮准确率更高，支持原生多模态感知与高推理模式，可通过 Meta Model API 与 OpenRouter 调用。",
+      "source": "Meta AI",
+      "url": "https://developer.meta.com/ai/models/muse-spark/",
+      "remark": "与 Google 同节奏高频迭代，开源权重模型在 Agent/编程赛道的军备竞赛明显提速。上 HN 热榜 259 分。"
+    },
+    {
+      "date": "2026-09-03",
+      "category": "重磅",
+      "title": "Google 发布 Gemini 3.8 Flash 与 3.8 Flash Cyber",
+      "summary": "Google 推出 Gemini 3.8 Flash（最强推理/编程主力模型）与 3.8 Flash Cyber（网络安全专用），六周内第三个 Flash 版本。3.8 Flash 在长程软件工程、Agent 任务上接近旗舰表现，定价与 3.7 持平（输入 0.75 美元/百万 tokens）；Cyber 版面向漏洞检测与自动修复，通过 Fairwind 项目向可信防御方开放。",
+      "source": "Google Blog",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+      "remark": "六周三连发，Flash 已成 Google 对开源阵营的主力武器；加价不加价、还新增网络安全垂直模型，Agent 长程任务和安防是这代两大看点。HN 热榜 725 分登顶。"
+    },
     {
       "date": "2026-09-02",
       "category": "技术",

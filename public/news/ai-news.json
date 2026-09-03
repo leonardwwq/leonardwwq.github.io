@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-09-03T06:06:44.780915+08:00",
+  "updated_at": "2026-09-04T06:04:13.727742+08:00",
   "items": [
+    {
+      "date": "2026-09-04",
+      "category": "大模型",
+      "title": "GPT-6 砍掉思考 Token，Token 经济开始崩了？",
+      "summary": "雷锋网解读 GPT-6 发布：新模型砍掉传统思考 Token 的计费方式，叠加行业对 Token 定价的集体调整，文章追问 Token 经济模式是否正在瓦解。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/yanxishe/XcJ2N9YalKyDRJd8.html",
+      "remark": "GPT-6 对思考 Token 的定价改变如果坐实，直接冲击『推理越久收费越高』的行业定价逻辑——Token 经济可能从按量计费走向按结果/订阅计费，这对 Agent 应用的毛利模型是重大变量。"
+    },
+    {
+      "date": "2026-09-04",
+      "category": "技术",
+      "title": "四大主流 AI 模型罕见同时宕机，基础设施集中度风险再引关注",
+      "summary": "昨日四家主流 AI 模型服务出现罕见的重叠性宕机，多款前沿模型在同一时段内不可用，引发对 AI 基础设施可靠性的讨论。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/09/four-major-ai-models-suffer-rare-overlapping-downtime/",
+      "remark": "不同厂商的模型同时挂，指向的是共享底层依赖：算力、云、网络与供应链的单点风险。AI 服务看似各自独立，实际集中度比表面高得多，企业用 AI 也需把『多模型冗余』纳入容灾设计。"
+    },
+    {
+      "date": "2026-09-04",
+      "category": "产品",
+      "title": "Google 将 AI 语音交互带入 Gmail、Docs 与 Keep",
+      "summary": "Google 在 Gmail、Docs、Keep 上线 AI 语音功能，用户可用对话式指令搜索邮件、起草文档。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/03/google-launches-ai-voice-features-in-gmail-docs-and-keep/",
+      "remark": "AI 语音从独立模型走向办公套件原生交互：邮件与文档是最高频的办公入口，语音化之后『说话办公』会成为 Agent 场景的常见形态，入口级争夺又添一战。"
+    },
+    {
+      "date": "2026-09-04",
+      "category": "产品",
+      "title": "Meta 用约 95% 折扣换数据：用户授权使用数据可训练下一代模型",
+      "summary": "Meta 为面向编程与 Agent 场景的 Muse Spark 推出数据贡献计划：同意其交互数据用于训练未来模型的用户，可获平均约 95% 的 API 折扣。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/03/meta-is-paying-to-peek-at-how-you-use-their-latest-ai-model/",
+      "remark": "把『喂数据』变成明码标价的交易——比默认抓取透明，但也把『使用数据=训练燃料』摆上台面。对企业用户既是省钱通道，也是新的数据治理决策点：省 95% 成本还是守住数据主权。"
+    },
+    {
+      "date": "2026-09-04",
+      "category": "产业",
+      "title": "Accel 洽谈领投 Thinking Machines 10 亿美元，估值达 400 亿美元",
+      "summary": "据 TechCrunch，Accel 正洽谈领投推理模型明星公司 Thinking Machines 新一轮 10 亿美元，估值 400 亿美元；该公司年化收入已超 1 亿美元。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/03/accel-reportedly-in-talks-to-lead-1b-round-for-thinking-machines-at-40b-valuation/",
+      "remark": "传闻级融资消息（reportedly），但 400 亿估值对照刚过 1 亿美元的 ARR，市场明显在按『AGI 期权』而非收入给推理公司定价。这类高估值会成为 Agent 赛道后续融资的风向标。"
+    },
+    {
+      "date": "2026-09-04",
+      "category": "产业",
+      "title": "英伟达正式确认以 129 亿美元收购 Hugging Face",
+      "summary": "英伟达官方确认以 129 亿美元收购 Hugging Face——全球最大 AI 模型托管平台，托管超 300 万模型、服务超 1800 万开发者。8 月底的收购传闻正式落地。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/03/nvidia-confirms-it-will-buy-hugging-face-for-12-9-billion/",
+      "remark": "8/28 曾收录『拟 130 亿美元收购』传闻，此为官方确认。买下 HF = 买下开源模型分发层与开发者入口，英伟达从卖 GPU 延伸到运营 AI 生态基础设施；对开源社区而言，平台中立性风险是接下来最大的问号。"
+    },
+    {
+      "date": "2026-09-04",
+      "category": "重磅",
+      "title": "OpenAI 正式发布 GPT-6 Astra：主打计算机与浏览器操作 Agent",
+      "summary": "OpenAI 发布下一代旗舰模型 GPT-6 Astra，主打 computer and browser use，官方称其在速度、准确性与安全性上达到新高度，能自主操作电脑与浏览器完成任务。发布即登 HN 热榜 943 分。",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/gpt-6-astra/",
+      "remark": "8 月公布的 Astra 正式落地：前沿模型竞争已从『会答题』转向『会干活』，押注 Agent 直接接管终端操作。与 Google Flash 六周三连发正面撞车，两家在 Agent 主力模型上进入贴身肉搏。"
+    },
     {
       "date": "2026-09-03",
       "category": "产品",

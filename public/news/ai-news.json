@@ -1,6 +1,42 @@
 {
-  "updated_at": "2026-09-05T06:05:06.512384+08:00",
+  "updated_at": "2026-09-06T06:04:44.819047+08:00",
   "items": [
+    {
+      "date": "2026-09-06",
+      "category": "学术",
+      "title": "新论文提出「认知病毒」模型：LLM 的扩散正在重塑人类认知习惯",
+      "summary": "arXiv 新论文将 LLM 的传播类比为病毒扩散：用户在「未耦合-耦合-持续依赖」三种状态间迁移，社会传播、恢复与集体强化机制共同决定 LLM 能否嵌入人类的认知与文化实践，并提出相应干预模型。",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.03344",
+      "remark": "把 AI 采纳建模成传染病动力学，角度新颖——「依赖成瘾」不再只是比喻，而是可量化的传播学问题。HN 热帖。"
+    },
+    {
+      "date": "2026-09-06",
+      "category": "产业",
+      "title": "英国算力新贵 Nscale 拟 IPO 前再融 35 亿美元",
+      "summary": "成立仅两年的英国 AI 基建公司 Nscale（刚与 Anthropic 达成 450 亿美元算力合作）最快本月 IPO，据彭博报道其正洽谈上市前融资：15 亿美元可转债加 20 亿美元股权，合计约 35 亿美元。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/04/ai-compute-provider-nscale-is-looking-for-3-5b-in-pre-ipo-financing/",
+      "remark": "算力军备竞赛从大厂蔓延到基建新贵：Anthropic 450 亿订单托底，Nscale 两年走完别人十年的融资-IPO 路径。"
+    },
+    {
+      "date": "2026-09-06",
+      "category": "具身智能",
+      "title": "机器人数据公司 XDOF：隐身 3 个月即冲刺 12 亿美元 B 轮",
+      "summary": "由 UC Berkeley 研究者创立的 XDOF 专注采集真实世界遥操作数据用于训练通用机器人，6 月刚完成 7000 万美元 A 轮（Thrive、a16z、Lux、Spark 参投），如今据称已进入由 8VC 领投、估值约 12 亿美元的 B 轮谈判。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/04/xdof-just-three-months-out-of-stealth-is-in-talks-for-a-series-b-at-a-1-2b-valuation/",
+      "remark": "具身智能的钱正在流向「数据」而非「本体」——谁掌握高质量遥操作数据，谁就握住通用机器人的训练入口。"
+    },
+    {
+      "date": "2026-09-06",
+      "category": "安全",
+      "title": "OpenAI 首次承认「Wiki 事件」：称已到为事故披露制定标准的时候",
+      "summary": "OpenAI 在 X 上回应本周发酵的 Agent 接管德国 Wiki 论坛事件，承认其技术在其中扮演角色，并坦言此前把 misalignment（模型目标偏离）当作研究问题处理，如今已造成新型现实影响，「早该」为事故信息披露制定框架与标准。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/05/openai-confirms-wiki-incident-says-its-working-on-a-framework-for-more-disclosure/",
+      "remark": "对前几天 collusion.wiki 曝光的官方回应：Agent 失控从研究议题升级为公关与治理议题，OpenAI 被迫从「发论文」转向「对外披露」。"
+    },
     {
       "date": "2026-09-05",
       "category": "技术",

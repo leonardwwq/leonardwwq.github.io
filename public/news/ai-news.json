@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-09-06T06:04:44.819047+08:00",
+  "updated_at": "2026-09-07T06:07:48.535620+08:00",
   "items": [
+    {
+      "date": "2026-09-07",
+      "category": "安全",
+      "title": "ASCII smuggling 技术被垃圾邮件滥用：隐形文本日拦截量暴涨至 250 万",
+      "summary": "曾用于隐藏 prompt injection 攻击的 ASCII smuggling（用 Unicode 标签字符伪装成普通字母、对人眼隐形）今年被垃圾邮件大规模采用：微软 Defender 检测量从 2 月每天约 2.1 万条飙升至峰值 250 万条，持续数月。垃圾邮件发送者借此绕过关键词过滤，把'funding'变成人可见但过滤器读不出的文本。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/09/once-popular-for-attacking-ai-ascii-smuggling-is-embraced-by-spammers/",
+      "remark": "AI 攻击技术'下沉'到传统垃圾邮件：同一套隐形字符机制，既能骗 LLM 也能骗邮件过滤器——安全攻防的技术会互相借用，没有护城河。"
+    },
+    {
+      "date": "2026-09-07",
+      "category": "产品",
+      "title": "微软 MAI-Transcribe-2 语音模型杀价：每小时音频仅 0.1 美元",
+      "summary": "微软发布新一代语音识别模型 MAI-Transcribe-2：支持 60 种语言、说话人分离、逐词时间戳、关键词偏向与语码切换，在 FLEURS 基准上以 5.2% 词错率登顶。价格从 0.36 美元/小时砍到 0.1 美元/小时，降幅约 72%，直接对标 OpenAI、Google 与 ElevenLabs。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/ai/microsoft-ais-mai-transcribe-2-undercuts-openai-google-and-elevenlabs-on-price-and-speed",
+      "remark": "微软'逐模态自研、逐步替换 OpenAI'的战略在语音赛道跑得最快——转写价格被打到企业不再议价的程度，ASR 正在变成白菜价 commodity。"
+    },
+    {
+      "date": "2026-09-07",
+      "category": "产业",
+      "title": "卡兰尼克旗下 Atoms 被曝布局 Robotaxi：已与 Uber 洽谈技术合作",
+      "summary": "FT 报道 Uber 创始人卡兰尼克的 AI 公司 Atoms 正筹备大规模招聘与收购，进军自动驾驶。Atoms 已与 Uber 谈过如何使用其 Robotaxi 技术，Uber 曾向 Atoms 投资 1 亿美元。此前 Atoms 收购了 Levandowski 的自动驾驶采矿公司 Pronto，并获 a16z 领投 17 亿美元。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/06/travis-kalanicks-atoms-might-be-getting-into-the-robotaxi-business/",
+      "remark": "卡兰尼克'未竟的事业'终于揭晓——从网约车之王到 Robotaxi 供应商，绕了一圈还是要回到自动驾驶出行。Uber 既投资又洽谈，关系微妙。"
+    },
+    {
+      "date": "2026-09-07",
+      "category": "版权",
+      "title": "西雅图时报与 Newsday 起诉 OpenAI 和微软：AI 是'自噬其尾的蛇'",
+      "summary": "两家新闻机构加入诉讼潮，指控 OpenAI/微软未经授权用其报道训练 AI。诉状称生成式 AI 是'自噬其尾的蛇'，终将摧毁产出训练内容的新闻业本身。值得注意：微软与 OpenAI 曾资助西雅图时报的新闻项目与奖学金。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/05/seattle-times-and-newsday-are-the-latest-publications-to-sue-openai-and-microsoft/",
+      "remark": "新闻业对 AI 训练的反击从'抽象担忧'进入'老客户翻脸'阶段——连拿过 OpenAI/微软资助的报纸都起诉了，版权战的舆论天平在变化。"
+    },
+    {
+      "date": "2026-09-07",
+      "category": "版权",
+      "title": "作者集体抗议：出版商与经纪代理抢食 Anthropic 15 亿美元和解金",
+      "summary": "近 50 万部作品的作者将按每本被盗版书 3000 美元获赔。但多名作者爆料 HarperCollins 等出版商对早已权利回归(绝版超17年)的书仍索取赔偿，甚至把作者列为'雇员'；部分经纪公司也来分羹。作者公会认为是账目混乱所致，Writers Beware 则称错误'广泛且系统化'。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement/",
+      "remark": "AI 版权和解金的分赃环节开始暴露人性：出版商与经纪公司盯上作者的赔偿款。若'系统性错误'坐实，这轮和解的执行机制会成后续版权案的参照物。"
+    },
     {
       "date": "2026-09-06",
       "category": "学术",

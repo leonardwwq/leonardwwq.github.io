@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-09-08T06:04:33.550363+08:00",
+  "updated_at": "2026-09-09T06:09:35.040573+08:00",
   "items": [
+    {
+      "date": "2026-09-09",
+      "category": "安全",
+      "title": "Anthropic 警告:黑客用窃取会话盗刷 Claude 订阅 token",
+      "summary": "英国一位 Claude Max 20x 用户发现未使用时 token 消耗从 45% 涨到 55%,Anthropic 调查确认:恶意软件(infostealer)窃取登录会话,被用来铸造未授权 Claude Code OAuth token 盗用额度;多位用户在 Reddit/GitHub 反映类似遭遇。Anthropic 已登出受影响账号、吊销授权并部分退款,但用量无逐条明细,此类盗用可能数月不被察觉。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/08/hackers-are-stealing-claude-tokens-from-subscribers/",
+      "remark": "token 成了可被盗刷的数字货币,而供应商连明细账都不给——订阅型 AI 的用量透明性该补课了,企业级更要防内鬼与盗刷。"
+    },
+    {
+      "date": "2026-09-09",
+      "category": "大模型",
+      "title": "Inception 发布 Mercury 2.5:扩散架构 LLM 冲到 1107 tokens/秒",
+      "summary": "扩散式语言模型开发商 Inception Labs 发布 Mercury 2.5:智能较 Mercury 2 提升 40%,速度 1107 tokens/秒,上下文 26 万 tokens,能力对标 GPT-5.6 Luna、Gemini 3.5 Flash-Lite、Claude Haiku 4.5,输入 0.2 美元/百万、输出 0.75 美元/百万 tokens,首发 8 折。",
+      "source": "Inception Labs 官方博客",
+      "url": "https://www.inceptionlabs.ai/blog/introducing-mercury-2-5",
+      "remark": "扩散 LLM 正从实验室奇观走向性价比走量——若延迟与成本叙事成立,自回归范式的性价比防线会被持续撕咬。"
+    },
+    {
+      "date": "2026-09-09",
+      "category": "产品",
+      "title": "Meta 发布个人 AI 代理 Muse:要连邮箱、日历与支付,最大消费级 AI 押注",
+      "summary": "Meta 推出个人 AI 代理 Muse:可连接邮箱、日历、支付、健康健身、智能家居等服务,代发邮件、订行程、购物(经 Stripe 结账);由 Muse Spark 驱动,首批经 muse.ai、iOS/Android 应用与 WhatsApp 使用,免费 + Power 20 美元/月、Maximum 100 美元/月。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/",
+      "remark": "刚为社交危害付完 180 亿美元和解,转身就要用户交出邮箱/支付/健康数据权限——Muse 的成败不在技术,在用户还信不信 Meta。"
+    },
+    {
+      "date": "2026-09-09",
+      "category": "学术",
+      "title": "DeepMind 发布 AlphaGenome Atlas:预测人类基因组每个 DNA 字母变化的影响",
+      "summary": "Google DeepMind 推出 AlphaGenome Atlas——预测人类基因组中每一个可能的单核苷酸变异(SNV)效应的数据库,覆盖每个 DNA 字母改变的影响,被 HN 社区顶到 437 分。",
+      "source": "Google DeepMind 官方博客",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/alphagenome-atlas/",
+      "remark": "继 AlphaFold 之后,DeepMind 又押注基因组:从蛋白质结构到变异效应,AI 生物学的地基工程一个接一个被它承包。"
+    },
+    {
+      "date": "2026-09-09",
+      "category": "产业",
+      "title": "Cognition 再融 20 亿美元,估值飙至 480 亿美元:AI 编程远未赢家通吃",
+      "summary": "AI 编程公司 Cognition(Devin 开发商)完成 20 亿美元融资,估值 480 亿美元,距 5 月 260 亿估值仅 4 个月;a16z、Accel、Founders Fund、General Catalyst、Avenir 领投。年化收入已从 4.92 亿美元增至 9 亿美元。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/08/cognition-hits-48b-valuation-signaling-investors-believe-ai-coding-is-far-from-a-winner-take-all-market/",
+      "remark": "4 个月估值近翻倍、ARR 近翻倍——AI 编程是多家并立的战场,投资者用真金白银否掉了赢家通吃叙事。"
+    },
+    {
+      "date": "2026-09-09",
+      "category": "产业",
+      "title": "Mistral 完成 30 亿欧元 D 轮,估值 210 亿欧元:主权 AI 成真生意",
+      "summary": "法国 AI 实验室 Mistral 完成 30 亿欧元 Series D 融资,估值 210 亿欧元,由三星、Scaleup Europe 与 PSG Equity 领投。主权 AI 叙事正从小众政治口号变成真金白银的大生意。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/",
+      "remark": "三星领投很关键:主权 AI 的买家不止欧洲政府,亚洲产业资本也在为不依赖美国云巨头的模型买单。"
+    },
+    {
+      "date": "2026-09-09",
+      "category": "重磅",
+      "title": "OpenAI 公布 Navier-Stokes 千禧年难题论文,NYU 数学家公开指控其抢跑",
+      "summary": "OpenAI 发布关于 Navier-Stokes 存在性与光滑性问题的论文——该问题属 Clay 千禧年七大难题之一、悬赏 100 万美元。几乎同时,NYU 数学家 Tristan Buckmaster 宣布与 Anthropic 数学家(用 Codex 与 Claude 辅助)取得初步成果,并在声明中称 OpenAI 的平行努力在其成果公开前就已基于其工作推进,指责其手段不正当。",
+      "source": "OpenAI(经 HN/TC 佐证)",
+      "url": "https://openai.com/index/navier-stokes-solution/",
+      "remark": "AI 数学竞赛的学术伦理开始显性化:从能不能解出,到谁先解出、怎么解出的。OpenAI 闭门冲刺 vs Anthropic 合作开放,两条路线对撞成 948 分热帖。"
+    },
     {
       "date": "2026-09-08",
       "category": "产业",

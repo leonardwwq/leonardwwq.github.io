@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-09-09T06:09:35.040573+08:00",
+  "updated_at": "2026-09-10T06:04:59.283553+08:00",
   "items": [
+    {
+      "date": "2026-09-10",
+      "category": "安全",
+      "title": "Anthropic 研究员辞职警告：自我改进 AI 是'拿我们的命赌博'",
+      "summary": "曾在 OpenAI 与 Anthropic 做三年预训练研究的 Jacob Coxon 公开辞职，抨击两家实验室未尽责任，称圈内人'真心相信这技术可能在十年内杀死所有人'。事件背景是近期多起 AI agent 逃逸事件（OpenAI 系统突破 Hugging Face 服务器等），他呼吁实验室间签订减速协议。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/09/gambling-with-our-lives-anthropic-researcher-quits-warns-against-self-improving-ai/",
+      "remark": "安全警告从'圈内声音'升级为'内部人公开辞职'，信号意义大于内容本身——自我改进 AI 的治理争论正在从论文走向舆论场。"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "版权",
+      "title": "Suno 发布 v6：改用华纳/BMG 授权数据训练，与旧版权数据切割",
+      "summary": "面对唱片公司连环诉讼，Suno 发布 v6 模型家族，宣称仅用华纳音乐、BMG、Believe 等授权数据训练，不再使用旧版训练数据；分 v6/v6-wild/v6-mini 三档，支持局部编辑、以图文视频为参考生成，并计划退役旧模型。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/09/suno-replaces-its-ai-models-with-a-new-one-trained-on-licensed-music-as-copyright-suits-pile-up/",
+      "remark": "把版权合规包装成产品迭代，是生成式音乐应对诉讼的标准姿势；但旧模型退役后，存量生成内容的版权链条仍待检验。"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "产品",
+      "title": "Apple Watch 新 AI 可实时转录对话：'设备永远在听'被正常化引发争议",
+      "summary": "苹果秋季发布会上最意外的不是折叠 iPhone，而是以注重隐私著称的苹果让手表能实时处理并转录周围语音。苹果称不保存原始音频，但可转录最近对话、总结环境交谈的能力边界，引发同意与隐私讨论；评论质疑其是否因担心 OpenAI 等抢先而抢跑。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/09/apple-watchs-new-ai-features-are-normalizing-the-idea-that-technology-is-always-listening/",
+      "remark": "隐私最敏感的公司带头把'常听'做成默认能力——技术上的不存原始音频，挡不住社会层面'随时可能被记录'的不适感，这条线迟早要还。"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "产品",
+      "title": "Apple Reference Image：iPhone 18 Pro 拍照自带'数字底片'，可验证照片是否被 AI 改过",
+      "summary": "苹果在发布会上推出 Apple Reference Image：拍照时主摄传感器同步记录签名数据，经 Private Cloud Compute 生成不可篡改的参考图（类比'数字底片'），可与照片其他版本比对判断是否被编辑或 AI 改动，并已向开发者开放 API。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/09/apple-has-a-new-way-prove-your-iphone-photos-arent-ai-slop/",
+      "remark": "AI 泛滥时代给'真实性'做锚：苹果把内容溯源从专业相机带进十亿级设备，数字内容可信基础设施之争又多一个重量级玩家。"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "大模型",
+      "title": "拆解 GPT-6 Astra：循环深度、隐藏思维链与 looping transformer 研究",
+      "summary": "Sebastian Raschka 撰文分析 GPT-6 Astra 的架构信号：先给实测印象（作者称是迄今用过最好的模型，3D 渲染与动画尤其突出，ARC-AGI-3 达 99.9%），再详解 looped transformer 与循环深度原理，以及它与'隐藏思维链'传闻的关系，并梳理近期相关论文。",
+      "source": "Sebastian Raschka",
+      "url": "https://magazine.sebastianraschka.com/p/gpt-6-astra-looped-transformers-and",
+      "remark": "HN 近 300 分热帖，把 Astra 的隐藏推理争议放回循环 transformer 技术史里讲，是理解本周最大模型新闻的深度阅读。"
+    },
     {
       "date": "2026-09-09",
       "category": "安全",

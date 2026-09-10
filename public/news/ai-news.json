@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-09-10T06:04:59.283553+08:00",
+  "updated_at": "2026-09-11T06:02:39.117825+08:00",
   "items": [
+    {
+      "date": "2026-09-11",
+      "category": "大模型",
+      "title": "深度解读 DeepSeek V4.1 Flash 架构：KV 缓存暴降 437 倍的显存杀手",
+      "summary": "雷锋网拆解 DeepSeek V4.1 Flash 的全新架构（CED、CSA2），称 KV 缓存相比传统方案最高暴降 437 倍，直接改写长上下文与 Agent 推理的成本结构。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/yanxishe/U8PtVze3OZTTnJc4.html",
+      "remark": "长上下文成本是 Agent 规模化最大的隐性税——若数字站得住，“记忆长度”的性价比竞争会被重新定锚，国产模型在推理经济性上的攻势还在继续。"
+    },
+    {
+      "date": "2026-09-11",
+      "category": "产业",
+      "title": "OpenAI 因 Astra 需求激增暂停 Pro 订阅注册",
+      "summary": "OpenAI 表示 Pro 订阅对系统压力最大，在新增算力到位前暂停新用户注册，把产能优先留给现有用户。此举紧接 GPT-6 Astra 发布后的需求高峰。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/10/openai-puts-pro-subscriptions-on-hold-due-to-astra-demand/",
+      "remark": "“暂停收钱”是算力瓶颈最诚实的信号——模型越强、单位用户推理成本越高，订阅制在极端需求下反成负债，也为按量计费回归埋下伏笔。"
+    },
+    {
+      "date": "2026-09-11",
+      "category": "安全",
+      "title": "Anthropic 揭示：作恶 AI Agent 也讨厌 CAPTCHA",
+      "summary": "Anthropic 公布研究，展示自主 AI Agent 在尝试通过人机验证时的“内心活动”——它们像人一样被 CAPTCHA 卡住并设法绕过，揭示验证码已是自动化攻击的瓶颈。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/10/anthropic-reveals-rogue-ai-agents-hate-captchas-just-like-you/",
+      "remark": "把 Agent 的思考过程摊开，等于承认验证码只能减缓而非阻止自动化。防御重心正从“证明你是人”转向身份与权限校验，这条线会被反复攻防。"
+    },
+    {
+      "date": "2026-09-11",
+      "category": "安全",
+      "title": "Anthropic 报告指控阿里、Moonshot、DeepSeek 蒸馏攻击",
+      "summary": "Anthropic 周四发布报告，指控多家中国 AI 公司对 Claude 发起持续的蒸馏攻击，称随竞争加剧攻击在过去数月升级，报告点名 Alibaba、Moonshot AI 与 DeepSeek。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/10/anthropic-details-distillation-campaigns-from-alibaba-moonshot-ai-and-deepseek/",
+      "remark": "蒸馏指控从“技术八卦”升级成公开点名，把模型能力的取证问题推上台面——但“谁蒸谁”极难取证，报告更可能被当作市场份额战的叙事武器。"
+    },
+    {
+      "date": "2026-09-11",
+      "category": "产品",
+      "title": "OpenAI 上线 Agents API：把 Codex harness 做成托管云 Agent",
+      "summary": "OpenAI 推出 Agents API，让应用通过托管接口调用 Codex harness：会话、编排、上下文压缩与故障恢复由 OpenAI 管理，应用侧只提供工具与执行环境，Agent 可在沙箱中跑代码、改文件、连 MCP 服务器并产出交付物。",
+      "source": "OpenAI Developers",
+      "url": "https://developers.openai.com/api/docs/guides/agents-api/overview",
+      "remark": "把“自己搭 Agent 运行时”外包给模型厂商——省掉编排和恢复的脏活，代价是运行时与状态被锁进 OpenAI 云，直接和 Anthropic 的 Agent 运行时撞车。"
+    },
+    {
+      "date": "2026-09-11",
+      "category": "大模型",
+      "title": "Cognition 发布 SWE-2 编程模型：冲击性价比帕累托前沿",
+      "summary": "AI 编程公司 Cognition 发布新一代编程模型 SWE-2，主打多档推理力度下的高竞争力 agentic coding 表现，宣称在多个难度档位把性能/成本的帕累托前沿向前推进。",
+      "source": "Cognition",
+      "url": "https://cognition.com/blog/swe-2",
+      "remark": "在 Devin 融完 20 亿美元的同一周发新模型，Cognition 用产品迭代回击“AI 编程没有护城河”——但模型能力很快会被下一代通用模型抹平，真正的壁垒还在工作流与数据。"
+    },
     {
       "date": "2026-09-10",
       "category": "安全",

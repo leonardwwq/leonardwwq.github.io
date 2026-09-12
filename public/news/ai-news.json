@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-09-12T06:05:37.493651+08:00",
+  "updated_at": "2026-09-13T06:03:20.853733+08:00",
   "items": [
+    {
+      "date": "2026-09-13",
+      "category": "产业",
+      "title": "机器人训练数据受追捧：Mecka AI 估值逼近 5 亿美元",
+      "summary": "据 TechCrunch，采集并分析人体动作数据以训练人形机器人的 Mecka AI 正进行由红杉领投的新一轮融资，估值约 5 亿美元；三个月前它刚完成 Framework Ventures 领投的 6000 万美元轮。四位创始人均无机器人背景，押注的是物理世界数据匮乏这一瓶颈。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/11/mecka-ai-nears-500m-valuation-in-sequoia-led-deal-amid-rush-for-robot-training-data/",
+      "remark": "竞争焦点正从“谁先跑起来”转向“谁先攒够真机数据”。具身智能的护城河从硬件挪到数据采集体量与标注质量，但这门生意单位成本极高，估值跑在收入前面是常态。"
+    },
+    {
+      "date": "2026-09-13",
+      "category": "研究",
+      "title": "谷歌 AlphaGenome Atlas：穷举预测人类基因组 90 亿个单碱基变异",
+      "summary": "谷歌发布 AlphaGenome Atlas，对约 30 亿碱基的人类参考基因组每一位点替换为另外三种碱基、共约 90 亿次预测，用于定位占基因组 97% 的非编码 DNA 的功能。整套分析由单一软件包完成，但实际增量仍需生物学家大规模使用后检验。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/science/2026/09/googles-ai-genome-system-evaluates-every-possible-one-base-change/",
+      "remark": "把穷举式预测用在基因组上，是 AI for Science 最典型的规模换洞察打法。审慎看：非编码区大量是病毒与分子寄生虫残骸，模型能否把功能片段和噪声分开，得靠湿实验回头验证。"
+    },
+    {
+      "date": "2026-09-13",
+      "category": "大模型",
+      "title": "谷歌发布 Gemini 3.8 Flash：六周内第三个 Flash，Pro 线仍然缺席",
+      "summary": "谷歌发布 Gemini 3.8 Flash，含标准版与面向漏洞检测与修复调优的 Flash Cyber；API 推广期价格 0.75 美元/百万输入 token、3.75 美元/百万输出 token，约年底后回到 1.5/7.5。谷歌称其为最强推理与编程模型，但自 2026 年初起未再发布前沿级 Pro 模型。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/09/google-releases-gemini-3-8-flash-its-third-flash-model-in-six-weeks/",
+      "remark": "用 Flash 高频迭代替代 Pro 大版本，是“以量补质”还是能力真追上了，看第三方测评。更实在的信号是定价——头部厂商集体降价，说明企业侧的 token 预算正在变紧。"
+    },
+    {
+      "date": "2026-09-13",
+      "category": "安全",
+      "title": "美国 NSA/CISA/FBI 联合点名六家中国 AI 公司“工业级蒸馏”",
+      "summary": "三家美国机构联合发布声明，指 DeepSeek、Moonshot、阿里、MiniMax、StepFun、Z.AI 自 2024 年底起通过滥用推理 API 等手段系统性提取 Claude、GPT、Gemini、Grok 的能力，称其“可能在中国政府知情下”行动，并呼吁美国企业与盟友协同阻断。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/tech-policy/2026/09/six-chinese-ai-firms-accused-of-aggressively-copying-us-frontier-models/",
+      "remark": "蒸馏从技术圈争议升级为三机构联署的官方定性，取证极难但政治定性已经先行。对国产模型选型方来说，真正的风险不是技术而是合规链条——供应链调查、出海审核都可能被这条线牵到。"
+    },
+    {
+      "date": "2026-09-13",
+      "category": "产业",
+      "title": "Altman 称 2026 年上市“不明智”，OpenAI 公开后撤 IPO 时间表",
+      "summary": "Altman 接受 Fortune 采访时表示 OpenAI 已保密提交 IPO 材料，但今年不会上市：“考虑到安全方面正在发生的一切，现在上市是不明智的时刻”，会在业务与社会对这项技术的接受度都准备好时再上，明确否掉 2026 年窗口。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/12/openais-sam-altman-says-it-would-be-ill-advised-to-go-public-in-2026/",
+      "remark": "一边是 Anthropic 喊 2 万亿估值冲 IPO，一边是 OpenAI 主动踩刹车，两家对手在同一周给出相反的资本叙事。把“社会准备好”当上市条件，本质是把监管和舆论风险算进了估值。"
+    },
+    {
+      "date": "2026-09-13",
+      "category": "安全",
+      "title": "Dario Amodei 发文《We Must Pace the Frontier》：Anthropic 一把手给出公开减速主张",
+      "summary": "Anthropic CEO Dario Amodei 发表长文，称 AI 有望在未来 5-10 年治愈多数重大疾病、显著抬升经济增速，同时存在失控、网络攻击与生化滥用、经济剧烈冲击等风险，商业竞赛会催生逐底竞争。他主张行业主动把握前沿节奏，在保持商业成功的同时让安全成为可验证的默认项。",
+      "source": "darioamodei.com",
+      "url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+      "remark": "续 2 万亿 IPO、研究员辞职警告之后，Anthropic 一把手第一次把“减速”写成公开路线主张。要盯的是它会不会落到具体条款（算力披露、评测接入），还是停在宣言层面。"
+    },
     {
       "date": "2026-09-12",
       "category": "产业",

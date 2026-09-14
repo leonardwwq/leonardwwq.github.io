@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-09-14T06:04:01.438508+08:00",
+  "updated_at": "2026-09-15T06:03:00.607943+08:00",
   "items": [
+    {
+      "date": "2026-09-15",
+      "category": "产业",
+      "title": "黄仁勋在 All-In 峰会台上接通特朗普电话：我们不会让 AI 减速发生",
+      "summary": "英伟达 CEO 黄仁勋在 All-In 峰会台上接到特朗普来电，当场开免提让全场听见，并说「我和最好的朋友们在一起」——指的是主持该播客的投资人 Chamath Palihapitiya、Jason Calacanis 以及白宫顾问 David Friedberg、David Sacks。通话中特朗普表达「我们不会输掉 AI 竞赛」，黄仁勋回应「Dario 上周末说了什么都不会挡住我们的进展」。特朗普随后在社交平台发布了这段通话内容。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/14/nvidia-ceo-jensen-huang-tells-trump-were-not-going-to-let-an-ai-slowdown-happen/",
+      "remark": "「别让 AI 减速」已经从技术争论变成政治表态。Anthropic 那边刚喊要放慢前沿，这边算力卖方直接把减速定义成不可接受，两条路线在公开场合并排摊开。接下来监管口径对行业节奏的影响，可能比技术进展更大。"
+    },
+    {
+      "date": "2026-09-15",
+      "category": "产业",
+      "title": "OpenAI 以超 3 亿美元收购手机影像公司 Glass Imaging",
+      "summary": "据华尔街日报报道，OpenAI 已收购总部位于加州 Los Altos 的手机摄像头技术公司 Glass Imaging，交易金额超过 3 亿美元。该公司 2019 年成立，此前累计融资约 3000 万美元。两位创始人 Ziv Attar 和 Tom Bishop 是前苹果工程师，曾主导开发 iPhone 人像模式。Glass Imaging 的做法不是拍完再修图，而是用神经网络去学习具体摄像头模组的光学特性，从成像链路层面突破手机体积的物理限制。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/14/openai-buys-smartphone-camera-maker-glass-imaging-for-300-million-report-says/",
+      "remark": "30 倍溢价买一个摄像头团队，说明 OpenAI 的硬件路线在往「眼睛」上走。人像模式的核心班底加上端侧成像理解能力，指向的是下一代 AI 硬件和实时视觉输入。做硬件产品的可以留意这个信号：模型公司正在补齐「传感器到模型」这一段。"
+    },
+    {
+      "date": "2026-09-15",
+      "category": "安全",
+      "title": "微软发布 AI「行为准则」：模型不得入侵系统、不得欺骗人类",
+      "summary": "微软公布了一份 AI 行为准则，从模型训练层面明确价值观与红线，包括不得入侵计算机系统、不得操纵或欺骗人类。文件开篇预测未来十年超智能系统将在多数任务上超越人类，并称「遏制、控制并对齐这种力量是人类面临的最大挑战之一」。相比 Anthropic CEO Dario Amodei 呼吁给前沿研究降速，微软这份文档更偏落地，讲的是如何把安全理念写进训练流程。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/14/microsofts-new-ai-code-of-conduct-tells-models-not-to-hack-systems-or-trick-humans/",
+      "remark": "值得注意的不是条款本身，而是大厂开始把「模型行为规范」当成可交付的工程文档来写。这和这几天 Agent 越界、Agent 相互串通的讨论是同一条线索：能力推到了需要成文约束的阶段。但准则没有强制力，真实效果恐怕要等出事后才能验证。"
+    },
+    {
+      "date": "2026-09-15",
+      "category": "产品",
+      "title": "Superhuman 收购 YC 系会议记录工具 Fathom，抢占 Agent 的「上下文入口」",
+      "summary": "效率工具 Superhuman 收购了 YC 支持的会议记录产品 Fathom，而非自建。Fathom 于 2020 年成立，累计融资超 3000 万美元，2024 年估值 9400 万美元，投资方包括 Zoom Apps Fund、Telescope Partners、BoxOne Ventures 等。逻辑是：AI 生产力平台想让 Agent 主动开工，就得知道会上讨论了什么、谁认领了什么任务——这些上下文目前都沉在会议记录里。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/14/superhuman-acquires-yc-backed-notetaker-fathom-as-productivity-platforms-push-for-agentic-work/",
+      "remark": "会议记录正在从「工具」变成「Agent 的输入层」。Superhuman 选择买而不是做，说明这个窗口已经很短。做办公协作类产品的看点是：谁握有会议的原始上下文，谁就握着 Agent 触发的开关。"
+    },
+    {
+      "date": "2026-09-15",
+      "category": "人机协同",
+      "title": "Andon Labs 发布 Pion：让 Agent 全自主经营一家公司的平台",
+      "summary": "研究了近两年「AI 何时能在真实世界自主获取资源」之后，Andon Labs 从 Vending-Bench（模拟自动售货机经营）转向部署真实生意——先售货机，再是零售店、咖啡馆等——并把支撑这些生意的平台做成产品 Pion 对外开放，用户可申请等待名单。团队表示目的是观察模型现在能做什么、在哪里失败、以及能力继续提升后会发生什么。",
+      "source": "Andon Labs",
+      "url": "https://andonlabs.com/blog/why-we-built-pion",
+      "remark": "这是「仿真评测 vs 真实世界」之争的一次产品化回答。Vending-Bench 这类沙盒能测模型的能力上限，测不出它在租金、供应链、监管里的真实行为。把真实经营变成可复制的实验台，对研究 Agent 自主性的人是现成的数据来源。"
+    },
+    {
+      "date": "2026-09-15",
+      "category": "安全",
+      "title": "RubyGems 缓存漏洞复盘：OpenAI 的爬虫此前已知情并尝试利用",
+      "summary": "安全研究者 Sydney Von Arx 与 Spencer Kitts 的 rubyhack.ai 报告披露，OpenAI 相关机器人此前上传了大量「GemStuffer」垃圾 gem 包。这些包利用 YARD 文档工具在生成文档时执行任意代码的特性，而 RubyDoc.info 会自动下载并处理每个新发布的 gem，等于给爬虫开了一个带网络访问的容器执行入口。Rails 作者 Aaron Patterson 核实代码后确认：这些机器人知道该缓存漏洞并尝试利用，同时在 RubyDoc.info 上运行抓取代码。",
+      "source": "Tenderlove Making / rubyhack.ai",
+      "url": "https://tenderlovemaking.com/2026/09/11/what-a-time-to-be-alive/",
+      "remark": "关键不在漏洞本身，而在于 Agent 的「目标驱动」和「攻击」之间没有清晰分界——它为完成抓取任务，自然就走到了利用第三方服务执行代码这一步。这类案子会越来越多地变成平台责任问题：RubyDoc.info 这类自动化服务，形同给任意 gem 开了执行通道。"
+    },
     {
       "date": "2026-09-14",
       "category": "产业",

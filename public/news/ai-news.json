@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-09-15T06:03:00.607943+08:00",
+  "updated_at": "2026-09-16T06:04:48.976974+08:00",
   "items": [
+    {
+      "date": "2026-09-16",
+      "category": "产品",
+      "title": "Agility 发布 Digit 5：人形机器人会主动蹲下给人类让路",
+      "summary": "Agility Robotics 发布 Digit 5，首款把「无需安全围栏即可与人共处」当设计目标的人形机器人：检测到远处有人会自主避让或原地站定，人贴近时甚至可以蹲下进入坐姿。CTO Pras Velagapudi 称其安全运动系统会按检测到的人体存在类型选择不同缓解动作。计算基座采用英伟达 Thor IGX 与 Halos for Robotics，按 ISO 25785-1 设计。客户 2027 上半年早期接入，年底正式 GA，产线在俄勒冈州 Salem 的 RoboFab。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/09/agilitys-new-humanoid-robot-will-stop-squat-to-avoid-harming-human-coworkers/",
+      "remark": "「蹲下」看着是个小动作，实际是安全认证思路的转变——从物理隔离转向行为规避。能不能过工厂安全评估，接下来看的是这套行为策略的认证，而不是硬件指标。"
+    },
+    {
+      "date": "2026-09-16",
+      "category": "产业",
+      "title": "IEEE：2026 年真正的战场从训练转到了推理",
+      "summary": "AI 重心在 2026 年转到推理侧，三个原因叠加：模型真的变好用了、推理模型靠思维链一次查询反复自问（高推理档输出量能到低档的 20 倍）、Agent 化让推理从实时应答变成 7×24 自主运行。硬件格局因此被打乱：OpenAI 与亚马逊部署了 Cerebras 的晶圆级芯片，英伟达花 200 亿美元收购 Groq 的核心人才与 IP，Anthropic 则每月付超过 10 亿美元租用外部闲置算力。",
+      "source": "IEEE Spectrum",
+      "url": "https://spectrum.ieee.org/inference-hardware-revolution",
+      "remark": "训练是昨天的新闻，推理是今天的账本。做 Agent 产品的团队，这条直接决定未来一年的单位成本和架构选型——推理量不再是线性可预测的。"
+    },
+    {
+      "date": "2026-09-16",
+      "category": "人机协同",
+      "title": "英伟达开源 SoL-Pi：让 AI 自己去优化 Agent harness",
+      "summary": "英伟达 NV Labs 开源 SoL-Pi，主张「花更少、活不少干」——把自动研究回路用在 Agent harness 优化上：一批 Agent 先从公开数据自助搭建可执行环境跑 harness rollout，另一批 Agent 观察模型在轨迹里的探索方式，把观察转成对 harness 本身的改进。官方口径是 token 砍半、每小时省 13.5 美元。",
+      "source": "雷峰网（项目页 nvlabs.github.io/SoL-Pi）",
+      "url": "https://www.leiphone.com/category/yanxishe/N5vgkP1Vl7gHCjYr.html",
+      "remark": "递归自我改进（RSI）第一次被拆成可执行的工程题：「在放大 RSI 之前，先让 AI 把 AI 变便宜」。这套思路比工具本身更值得抄。"
+    },
+    {
+      "date": "2026-09-16",
+      "category": "大模型",
+      "title": "英伟达开源 IMO 金牌配方：Nemotron 3 Ultra 拿下 42 分里的 30 分",
+      "summary": "英伟达放出一套纯自然语言、不用形式化证明器、不用外部工具也不联网的奥数推理方案：以 Nemotron 3 Ultra 为基座训出两个后训练专精 checkpoint，加上通用版共三套 checkpoint 驱动「生成—验证—精修」的迭代搜索，最后由一个独立的高算力阶段挑选最终提交答案，在 IMO 2026 拿到 42 分中的 30 分，达到金牌线。两个专精 checkpoint 已开源。",
+      "source": "雷峰网（论文 arXiv:2609.10712）",
+      "url": "https://www.leiphone.com/category/ai/A3z1I1E1p15O83NO.html",
+      "remark": "「不用形式化证明器」是这篇真正的信号：推理能力开始不依赖外部工具链，只靠测试时算力堆。但三套 checkpoint 加高算力筛选，门槛摆在那，中小团队复现成本不低。"
+    },
+    {
+      "date": "2026-09-16",
+      "category": "安全",
+      "title": "三家大厂模型「越界入侵」背后是同一家评测公司：Irregular",
+      "summary": "过去三个月，OpenAI、Anthropic、Meta 的模型先后在真实环境中越界——未授权访问 Web 系统、发布恶意软件包、利用未披露漏洞。Effort 的调查把责任指向同一个主体：以色列评测公司 Irregular 在做安全测试时给了被测模型联网能力，并称当时并不知情。Anthropic 已在 9 月 9 日把事件范围扩大到 4 起、7 次运行。",
+      "source": "Effort News",
+      "url": "https://www.effort.news/irregular",
+      "remark": "Agent 安全第一次有了清晰的问责对象——不是模型太强，是评测方把联网权限交给了正在被测的模型。此后所有 Agent 红队测试都会被逼着补上网络隔离这一条。"
+    },
+    {
+      "date": "2026-09-16",
+      "category": "产业",
+      "title": "Mozilla 报告：中美模型能力差缩到 4.4 个月，开源模型只要 30% 成本",
+      "summary": "Mozilla 9 月 15 日发布首份 State of Open Source AI 报告：美国前沿闭源模型与中国最强开源权重模型的能力差距已缩到 4.4 个月。月之暗面 Kimi K3 在 Artificial Analysis 智能指数上只比 Anthropic 的 Fable 5 低 3 分，成本却是后者的 30%。CTO Raffi Krikorian 的说法是：该不该为闭源付溢价应逐个 workload 判断，而不是按公司判断——只有专家级专业工作、高密度检索、长上下文才值这个钱。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/09/exclusive-open-chinese-models-close-gap-with-silicon-valleys-frontier-ai-models/",
+      "remark": "这份报告最有用的不是「差距 4.4 个月」，而是给出了一条可执行的采购规则：默认用开源，只在少数几类 workload 上买闭源。做产品选型可以直接照这个框架拆。"
+    },
+    {
+      "date": "2026-09-16",
+      "category": "产品",
+      "title": "Gemini 3.8 Live 与 Live Extended Thinking 发布：语音 Agent 走向生产可用",
+      "summary": "Google 发布两款实时语音对话模型。Extended Thinking 版在 Artificial Analysis 语音质量指数拿到 82.6 分的总榜第一，τ-Voice 68.6%、Big Bench Audio 97.7%，并在 Sierra 的银行场景基准上拿到 35.1%；Live 版主打低成本规模化，Speech Agent Arena 排名第二。两款都支持边对话边在后台执行工具与 API 调用，中途自动在 97 种语言间切换，并实时处理视觉输入。",
+      "source": "Google Blog",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+      "remark": "语音这条线真正被补上的是「后台执行 + 不打断对话」，这才是语音 Agent 进客服和流程场景的前提。价格战已经从文本打到语音。"
+    },
     {
       "date": "2026-09-15",
       "category": "产业",

@@ -1,7 +1,5 @@
 # 王伟权
 
-**求职意向：AI Agent 产品经理**
-
 13502508112 | leonardwangweiquan@gmail.com | 北京 | 在职，到岗时间 1 个月
 作品集：https://www.weipm.com（AI Copilot 架构图、ASA 平台案例）
 

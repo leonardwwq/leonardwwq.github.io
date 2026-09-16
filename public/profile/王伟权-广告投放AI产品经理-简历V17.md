@@ -1,7 +1,6 @@
 # 王伟权
 
 13502508112 | leonardwangweiquan@gmail.com | 北京 | 在职，到岗时间 1 个月
-求职方向：AI 产品经理（广告投放 / 投放工具方向）
 作品集：https://www.weipm.com
 
 ## 个人简述

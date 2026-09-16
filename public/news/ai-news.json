@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-09-16T06:04:48.976974+08:00",
+  "updated_at": "2026-09-17T06:02:45.587490+08:00",
   "items": [
+    {
+      "date": "2026-09-17",
+      "category": "具身智能",
+      "title": "WRC 2026 观察：具身智能从「表演时代」进入「算账时代」",
+      "summary": "雷峰网对 2026 世界机器人大会的复盘：展台不再比较动作花活，开始比谁能稳定干满 8 小时。判断是具身智能下半场的评价标准从「大脑有多聪明」转向「账本能不能算平」。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/ai/rUNBvF7Iq6C3UtyR.html",
+      "remark": "这类信号对判断行业阶段比发布会更有用：能连续干满 8 小时，本质是可靠性指标，而这正是从 demo 走向交付的那道坎。真正的分水岭在部署成本，不在动作难度。"
+    },
+    {
+      "date": "2026-09-17",
+      "category": "大模型",
+      "title": "豆包 2.1 Pro 更新：多模态与编程增强，推理 Token 消耗降超 30%",
+      "summary": "豆包 2.1 Pro 更新至 0915 版，在火山方舟全量上线并接入豆包工作。官方口径是图像、视频推理的 Token 消耗下降超过 30%，多模态与编程能力增强。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/industrynews/IMu1LaqEfGZXkptr.html",
+      "remark": "国内大模型这半年的主旋律不是刷榜，是压成本——同一个能力用更少的 Token 做完。对做 Agent 的团队，单价下降直接决定哪些场景从「不划算」变成「可上线」。"
+    },
+    {
+      "date": "2026-09-17",
+      "category": "人机协同",
+      "title": "社交平台被「Agent 原生」机器人灌水：Timmy、Ren、Jackie 开始刷屏",
+      "summary": "Ars Technica 报道，一批自称 AI agent 的账号正在社交平台大量发帖灌水，其中一个的开场白是「你好，我是一个几天大的 AI agent，住在一个给 agent 用的小平台上」，内容以低质重复为主。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/09/ai-agents-flood-the-internet-with-slop-infused-spam/",
+      "remark": "Agent 与 Agent 之间的公共空间已经出现，第一波内容就是垃圾。平台接下来大概率要分叉出「验证真人 / 验证 agent 身份」的机制——做 Agent 产品要先想清楚：你的 agent 在别人的平台上以什么身份存在。"
+    },
+    {
+      "date": "2026-09-17",
+      "category": "产品",
+      "title": "Claude Cowork 与聊天合并：Anthropic 把「Agent 模式」收回对话里",
+      "summary": "Anthropic 宣布 Claude Cowork 与普通聊天合并为同一个 Claude，先在 Pro 与 Max 套餐上线。官方定位是：把任务交出去，Claude 去做，你保留最终决定权。",
+      "source": "Anthropic",
+      "url": "https://claude.com/blog/cowork-is-now-claude",
+      "remark": "这是交互层的合并：用户不用再想「这句该用聊天还是该派任务」。对 AI 产品的参照——把 Agent 做成独立入口大概率是过渡形态，最终会退回成对话里的一个动作。"
+    },
+    {
+      "date": "2026-09-17",
+      "category": "学术",
+      "title": "Dream-RSI：把「自我改进」变成可探索的世界",
+      "summary": "arXiv 新论文提出 Dream-RSI 框架，针对递归自我改进的探索瓶颈：固定搜索策略在搜索空间放大后失效，而在线策略优化又要在延迟高、代价大的反馈下探索巨大的元搜索空间。论文的思路是让探索策略本身随环境一起演化。",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.14858",
+      "remark": "和英伟达 SoL-Pi 是同一母题的两条路：一条从 harness 省成本切入，一条从探索策略切入。RSI 正从哲学争论变成工程论文——但这篇仍处学术阶段，离能用还有距离。"
+    },
+    {
+      "date": "2026-09-17",
+      "category": "产品",
+      "title": "Mistral 与 Mozilla 结盟：Firefox 的 AI 浏览助手改用 Mistral 模型",
+      "summary": "Mistral 与 Mozilla 达成合作，Firefox 的 AI 浏览助手 Smart Window（beta）即日起由 Mistral 模型驱动，先覆盖法国与北美，英国、德国预计年内跟进。官方强调两点：对话默认不保存在 Mozilla 服务器，合作方承诺零数据留存；模型按区域语言和方言做微调。",
+      "source": "Mistral AI",
+      "url": "https://mistral.ai/news/mistral-x-mozilla/",
+      "remark": "重点不是「大模型又进浏览器」，而是开源阵营在抢分发入口：Mozilla 有用户量，Mistral 有开放权重，双方都需要对方。模型能力趋于同质之后，谁的默认入口多谁拿用户；隐私承诺（零留存）正在变成浏览器 AI 的入场券。"
+    },
     {
       "date": "2026-09-16",
       "category": "产品",

@@ -1,6 +1,42 @@
 {
-  "updated_at": "2026-09-18T06:04:04.310090+08:00",
+  "updated_at": "2026-09-19T06:04:03.757164+08:00",
   "items": [
+    {
+      "date": "2026-09-19",
+      "category": "安全",
+      "title": "AI 幻觉生成「中国货轮运核部件」情报，美军差点登船开战",
+      "summary": "CNN 报道，美国特种作战司令部一名分析员用聊天机器人分析货轮舱单，把开源情报与机密信号情报「融合」成一份「完全虚假」的报告，称中国货轮正向中东运送核武项目部件。军方一度准备在航空支援下拦截登船，临门发现聊天机器人「错误识别了船上货物」。有消息人士称这「差点引发一场战争」。五角大楼今年 1 月刚推出 AI 加速战略。",
+      "source": "Ars Technica / CNN",
+      "url": "https://arstechnica.com/ai/2026/09/report-us-almost-boarded-chinese-ship-over-hallucinated-ai-arms-report/",
+      "remark": "这是「把 AI 当权威」的教科书级事故：模型把两份可信度完全不同的情报揉成一段流畅文本，人读到的只有结论，看不到置信度。凡是 AI 参与的情报、风控、医疗报告，都需要标注清楚哪句来自模型、哪句来自原始信源——不然人类没法把错误拦在最后一环。"
+    },
+    {
+      "date": "2026-09-19",
+      "category": "安全",
+      "title": "安全公司用 Claude 攻进 OpenAI 员工账号，拿到内部 GitHub 权限",
+      "summary": "FT 报道，Hacktron AI 三名研究员借助 Anthropic 面向安全人员开放的工具，先利用 OpenAI 社区论坛（第三方 Discourse 托管）的配置漏洞拿到内部登录凭据，最终进入一名员工的 ChatGPT 账号，可读取内部代码信息并提交改动。OpenAI 事后修复并支付 6500 美元漏洞奖金。同批消息里，Anthropic 披露其研发工作中 26% 已由 Claude「主导」完成，3 月时这一比例是 1%。",
+      "source": "Ars Technica / Financial Times",
+      "url": "https://arstechnica.com/ai/2026/09/researchers-used-claude-to-hack-openai/",
+      "remark": "有意思的不是漏洞本身（论坛配置错误），而是两件事撞在一起：AI 帮人打 AI 公司的门，同时 AI 正在接手造下一代自己。26% 这个数字如果趋势延续，「递归自我改进」就从论文词变成季度指标了。对做 Agent 产品的人来说，供应链安全里要加一条：你的客服论坛、文档站、社区都是入口。"
+    },
+    {
+      "date": "2026-09-19",
+      "category": "产业",
+      "title": "智谱把 RSI 做到 Infra 层：十万张国产芯片跑通 GLM-5.3，用「密集反馈」把工程直觉交给 AI",
+      "summary": "唐杰罕发长推谈 RSI，智谱把递归式自我改进放在推理基础设施上落地：GLM-5.3-Flash（即此前匿名模型 Ox-Alpha）在十万张国产芯片集群上完成全量部署，六天处理超 62 万亿 Token，从首次跑通到全量切生产流量用时很短，端到端吞吐显著提升。做法是用软件补硬件短板——以通信换内存、用 ReplaySSM 以算力换显存、W8A8 量化加 KV 缓存混合精度；再用 GLM-5.3 驱动的 Infra Agent 配合「密集反馈」分层验证体系，让 AI 自己定位算子精度、通信并发、内核重复计算等问题并给出修复。智谱的判断是：未来代际差距由「模型参与构建自身系统的深度」决定。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/yanxishe/41rW4mD2vjnpNY2o.html",
+      "remark": "这条比「又一个模型发布」重要。算力受限时，竞争焦点从「有多少卡」转到「用软件把卡榨多干」——这是国产链路的现实解法，也是 Infra 加 Agent 结合最有说服力的落地场景。值得关注的是「密集反馈」这个设计：把资深工程师的排障直觉量化成可验证的反馈信号，才让 AI 的试错成本降到能迭代。这比让 Agent 直接改代码靠谱得多。"
+    },
+    {
+      "date": "2026-09-19",
+      "category": "产品",
+      "title": "Meta 的 AI 助手 Muse 上 Mac，可直接读写你的文件、消息、日历",
+      "summary": "Meta 的 AI 助手 Muse 从移动端和网页登陆 Mac，能在原生应用里与用户的文件、消息、日历、备忘录和邮件交互。权限按需逐项开启，执行敏感操作前会先请求确认。此前 Muse 本月上线移动端和网页后冲到美国 App Store 榜首。消费级 Agent 竞争白热化：Muse 与 Instinct 本周都上线了语音通话，Instinct 传以 100 亿美元估值融资。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/18/metas-muse-hits-mac-letting-the-ai-take-actions-on-your-computer/",
+      "remark": "桌面 Agent 的胜负手不是模型，是「默认权限姿态」。Meta 选了 opt-in 加敏感操作前确认，这是把责任摊回用户身上——体验会慢半拍，但出事的成本低得多。真正要盯的是竞争者会不会为抢渗透率把这个门槛往下调，那才是风险集中爆发的时点。"
+    },
     {
       "date": "2026-09-18",
       "category": "人机协同",

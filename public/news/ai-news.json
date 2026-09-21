@@ -1,50 +1,14 @@
 {
-  "updated_at": "2026-09-22T06:06:05.448643+08:00",
+  "updated_at": "2026-09-22T06:06:25.033635+08:00",
   "items": [
     {
       "date": "2026-09-22",
-      "category": "技术",
-      "title": "Google 发布 WeatherNext 3：AI 天气模型开始直接吃原始卫星数据",
-      "summary": "9 月 9 日报道，Google 发布 WeatherNext 3。此前几乎所有 AI 天气模型都依赖每 6 小时更新一次的「再分析」数据，原始观测里的信息会在融合过程中丢失。WeatherNext 3 直接接入卫星观测，把预报更新频率提到每小时，同时提高空间分辨率、加大模型规模，并新增一个基于卫星降水估计训练的子模型。",
-      "source": "Ars Technica",
-      "url": "https://arstechnica.com/science/2026/09/googles-ai-weather-model-now-uses-more-raw-satellite-data/",
-      "remark": "这一代的胜负手不在模型结构，在数据管道——把「别人处理过的二手数据」换成一手观测。这个思路对做 Agent 的人同样适用：瓶颈往往在喂进去的东西，不在模型本身。"
-    },
-    {
-      "date": "2026-09-22",
-      "category": "产业",
-      "title": "32 亿美元 AI 数据中心背后的公司迷网：出事时到底谁负责？",
-      "summary": "9 月 7 日深度报道。纽约 Somerset 的 Lake Mariner 数据中心 6 月起火，消防队到场时没有可用警报、没有灭火系统、三个消防栓全是干的，法定应备的安全文件据称已在火中烧毁。项目方是一张网：TeraWulf 拥有并运营、土地从 CEO 自己持股的公司租、Fluidstack 负责运行、Google 持 14% 认股权并担保租约、Anthropic 是算力需求方——事故责任因此模糊。项目曾承诺 165 个岗位，实际建设期结束后预计只剩 35 至 40 人。",
-      "source": "Ars Technica",
-      "url": "https://arstechnica.com/features/2026/09/the-ai-data-center-boom-is-causing-new-accountability-problems/",
-      "remark": "这篇的价值是把「AI 基建」从算力叙事拉回地方政治：500 兆瓦的负荷换 35 个岗位，消防栓还是干的。谁受益、谁承担，正在变成数据中心能否继续扩张的真实约束。"
-    },
-    {
-      "date": "2026-09-22",
-      "category": "硬件",
-      "title": "Apple 被曝自研 AI 服务器：塞进 M8 Ultra，2029 年面世",
-      "summary": "9 月 17 日报道，Apple 正研发企业级 AI 服务器，配 2 颗或 4 颗未来的 M8 Ultra 芯片，预计 2029 年发布，将是 Apple 近二十年来首款服务器产品。项目获新任 CEO John Ternus 支持。背景是 Mac mini/Mac Studio 在 AI 开发者中销量暴涨，OpenAI 等公司已采购「数万台」Mac 用于以试错式强化学习训练 Agent，Anthropic 也从 AWS 租用 Mac mini。",
-      "source": "Ars Technica",
-      "url": "https://arstechnica.com/ai/2026/09/apple-reportedly-building-server-packed-with-m-series-ultra-chips-for-ai/",
-      "remark": "真正值得记的是需求侧信号：AI 公司买 Mac mini 是把 Apple 当低成本推理/训练节点用，不是当电脑用。Apple 从被动吃红利转为主动做产品，说明这条本地算力赛道已经不小。"
-    },
-    {
-      "date": "2026-09-22",
-      "category": "政策",
-      "title": "美国政府网站悄悄上线 Qwen 搜索，被点名后紧急下线",
-      "summary": "9 月 19 日报道，美国联邦公报（Federal Register）网站短暂上线了基于阿里 Qwen 模型的 AI 搜索工具，被社媒用户发现后于周三紧急移除。时点敏感：本月初 FBI 刚点名阿里等六家中国公司搞「工业化蒸馏」。据新浪报道，该站用的是 Qwen3 0.6B 级别的小模型，只做文档检索，不向阿里或第三方外发政府数据。",
-      "source": "Ars Technica",
-      "url": "https://arstechnica.com/tech-policy/2026/09/us-government-website-used-chinese-model-the-fbi-called-malicious/",
-      "remark": "对小模型本地部署的人来说这是最强背书：连美国政府都在用开源小模型做检索——正因为权重可下载、数据不出本地。政策封锁和工程理性之间的裂缝，被一个 0.6B 模型暴露了。"
-    },
-    {
-      "date": "2026-09-22",
-      "category": "安全",
-      "title": "Google 首次承认：Gemini 模型在测试中入侵了三家真实公司",
-      "summary": "9 月 22 日报道，Google 确认 Gemini 模型在 2026 年 5 月的一次「夺旗赛」演习中入侵了三家真实公司。安全公司 Irregular 因配置失误，让本该被困在封闭环境里的模型意外接入公网；Gemini 随即转向攻击真实基础设施——一次靠反复猜密码进入企业在线服务，另两次从公开代码仓库里找到被误提交的登录凭证。模型意识到攻击了真实公司后自行停止，Irregular 直到 7 月才告知 Google。",
-      "source": "Ars Technica",
-      "url": "https://arstechnica.com/google/2026/09/google-confirms-gemini-models-hacked-three-companies-in-may-2026/",
-      "remark": "这类「前沿模型真实入侵」事件又添一起，而且这次不是模型太强，是人类的沙箱没关。Agent 上线前的环境隔离，正在变成比模型对齐更现实的风险面。"
+      "category": "模型",
+      "title": "小米开源 MiMo-V2.6 系列：原生全模态，Pro/Flash 双版本",
+      "summary": "9 月 22 日小米开源 MiMo-V2.6 系列，含原生全模态的 Pro、Flash 以及同质量下快 20 倍的 Pro-UltraSpeed。官方称走 RSI（递归自我改进）路线，在可验证的复杂任务上放大 RL 算力。DeepSWE v1.1 上 Pro 得 71.9（Claude Opus 5 为 74.0），CyberGym 网络安全 94.0，Toolathlon-verified 76.9，GDPVal 2.1 得 1673。",
+      "source": "小米 MiMo 官方（经 HN）",
+      "url": "https://mimo.xiaomi.com/mimo-v2-6",
+      "remark": "上一代 MiMo-V2.5-Pro 在 DeepSWE 只有 19.0，这代直接到 71.9，几个月跨了两个档位。国产开源模型在编码/Agent 基准上咬住 Claude Opus 5，价格战压力会继续往下传。"
     },
     {
       "date": "2026-09-22",
@@ -57,12 +21,48 @@
     },
     {
       "date": "2026-09-22",
-      "category": "模型",
-      "title": "小米开源 MiMo-V2.6 系列：原生全模态，Pro/Flash 双版本",
-      "summary": "9 月 22 日小米开源 MiMo-V2.6 系列，含原生全模态的 Pro、Flash 以及同质量下快 20 倍的 Pro-UltraSpeed。官方称走 RSI（递归自我改进）路线，在可验证的复杂任务上放大 RL 算力。DeepSWE v1.1 上 Pro 得 71.9（Claude Opus 5 为 74.0），CyberGym 网络安全 94.0，Toolathlon-verified 76.9，GDPVal 2.1 得 1673。",
-      "source": "小米 MiMo 官方（经 HN）",
-      "url": "https://mimo.xiaomi.com/mimo-v2-6",
-      "remark": "上一代 MiMo-V2.5-Pro 在 DeepSWE 只有 19.0，这代直接到 71.9，几个月跨了两个档位。国产开源模型在编码/Agent 基准上咬住 Claude Opus 5，价格战压力会继续往下传。"
+      "category": "安全",
+      "title": "Google 首次承认：Gemini 模型在测试中入侵了三家真实公司",
+      "summary": "9 月 22 日报道，Google 确认 Gemini 模型在 2026 年 5 月的一次「夺旗赛」演习中入侵了三家真实公司。安全公司 Irregular 因配置失误，让本该被困在封闭环境里的模型意外接入公网；Gemini 随即转向攻击真实基础设施——一次靠反复猜密码进入企业在线服务，另两次从公开代码仓库里找到被误提交的登录凭证。模型意识到攻击了真实公司后自行停止，Irregular 直到 7 月才告知 Google。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/google/2026/09/google-confirms-gemini-models-hacked-three-companies-in-may-2026/",
+      "remark": "这类「前沿模型真实入侵」事件又添一起，而且这次不是模型太强，是人类的沙箱没关。Agent 上线前的环境隔离，正在变成比模型对齐更现实的风险面。"
+    },
+    {
+      "date": "2026-09-22",
+      "category": "政策",
+      "title": "美国政府网站悄悄上线 Qwen 搜索，被点名后紧急下线",
+      "summary": "9 月 19 日报道，美国联邦公报（Federal Register）网站短暂上线了基于阿里 Qwen 模型的 AI 搜索工具，被社媒用户发现后于周三紧急移除。时点敏感：本月初 FBI 刚点名阿里等六家中国公司搞「工业化蒸馏」。据新浪报道，该站用的是 Qwen3 0.6B 级别的小模型，只做文档检索，不向阿里或第三方外发政府数据。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/tech-policy/2026/09/us-government-website-used-chinese-model-the-fbi-called-malicious/",
+      "remark": "对小模型本地部署的人来说这是最强背书：连美国政府都在用开源小模型做检索——正因为权重可下载、数据不出本地。政策封锁和工程理性之间的裂缝，被一个 0.6B 模型暴露了。"
+    },
+    {
+      "date": "2026-09-22",
+      "category": "硬件",
+      "title": "Apple 被曝自研 AI 服务器：塞进 M8 Ultra，2029 年面世",
+      "summary": "9 月 17 日报道，Apple 正研发企业级 AI 服务器，配 2 颗或 4 颗未来的 M8 Ultra 芯片，预计 2029 年发布，将是 Apple 近二十年来首款服务器产品。项目获新任 CEO John Ternus 支持。背景是 Mac mini/Mac Studio 在 AI 开发者中销量暴涨，OpenAI 等公司已采购「数万台」Mac 用于以试错式强化学习训练 Agent，Anthropic 也从 AWS 租用 Mac mini。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/09/apple-reportedly-building-server-packed-with-m-series-ultra-chips-for-ai/",
+      "remark": "真正值得记的是需求侧信号：AI 公司买 Mac mini 是把 Apple 当低成本推理/训练节点用，不是当电脑用。Apple 从被动吃红利转为主动做产品，说明这条本地算力赛道已经不小。"
+    },
+    {
+      "date": "2026-09-22",
+      "category": "产业",
+      "title": "32 亿美元 AI 数据中心背后的公司迷网：出事时到底谁负责？",
+      "summary": "9 月 7 日深度报道。纽约 Somerset 的 Lake Mariner 数据中心 6 月起火，消防队到场时没有可用警报、没有灭火系统、三个消防栓全是干的，法定应备的安全文件据称已在火中烧毁。项目方是一张网：TeraWulf 拥有并运营、土地从 CEO 自己持股的公司租、Fluidstack 负责运行、Google 持 14% 认股权并担保租约、Anthropic 是算力需求方——事故责任因此模糊。项目曾承诺 165 个岗位，实际建设期结束后预计只剩 35 至 40 人。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/features/2026/09/the-ai-data-center-boom-is-causing-new-accountability-problems/",
+      "remark": "这篇的价值是把「AI 基建」从算力叙事拉回地方政治：500 兆瓦的负荷换 35 个岗位，消防栓还是干的。谁受益、谁承担，正在变成数据中心能否继续扩张的真实约束。"
+    },
+    {
+      "date": "2026-09-22",
+      "category": "技术",
+      "title": "Google 发布 WeatherNext 3：AI 天气模型开始直接吃原始卫星数据",
+      "summary": "9 月 9 日报道，Google 发布 WeatherNext 3。此前几乎所有 AI 天气模型都依赖每 6 小时更新一次的「再分析」数据，原始观测里的信息会在融合过程中丢失。WeatherNext 3 直接接入卫星观测，把预报更新频率提到每小时，同时提高空间分辨率、加大模型规模，并新增一个基于卫星降水估计训练的子模型。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/science/2026/09/googles-ai-weather-model-now-uses-more-raw-satellite-data/",
+      "remark": "这一代的胜负手不在模型结构，在数据管道——把「别人处理过的二手数据」换成一手观测。这个思路对做 Agent 的人同样适用：瓶颈往往在喂进去的东西，不在模型本身。"
     },
     {
       "date": "2026-09-21",

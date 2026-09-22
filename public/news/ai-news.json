@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-09-22T06:06:25.033635+08:00",
+  "updated_at": "2026-09-23T06:04:15.732255+08:00",
   "items": [
+    {
+      "date": "2026-09-23",
+      "category": "学术",
+      "title": "OpenAI 成立数学顾问组：自称已解决 100 多个开放问题，但顾问管不了进度",
+      "summary": "9 月 21 日宣布在普林斯顿高等研究院设立「数学与人工智能顾问组」，9 位数学家为首批成员，职责是评估成果重要性、协调发布，成员不领薪、可自主决定成员资格并公开发表看法。此前 OpenAI 突然公布 Navier-Stokes 千禧奖问题解法，并称同一内部模型已在数学大部分领域解决 100 多个开放问题。本月早些时候 25 位菲尔兹奖得主联署公开信，批评 AI 实验室靠抢解著名难题威胁数学界知识劳动。OpenAI 明确称该组不负责就「内部数学研究进度如何调节」提建议。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/21/openai-forms-math-advisory-group-as-its-ai-resolves-more-than-100-open-problems/",
+      "remark": "关键在最后那句排除条款：可以给意见，但不能碰节奏。这基本坐实了顾问组是公关与协调机制，而不是治理机制。以后看这类委员会，先看它被明确排除在什么之外——比看成员名单有用得多。"
+    },
+    {
+      "date": "2026-09-23",
+      "category": "硬件",
+      "title": "高通发布骁龙 8 Elite Gen 6 双旗舰：端侧能跑 300 亿参数 MoE",
+      "summary": "9 月 22 日骁龙峰会发布 Snapdragon 8 Elite Gen 6 与 8 Elite Extreme Gen 6。新增感知中枢可在本地运行最多 2 亿参数小模型，支持设备端个人速记与说话人区分，并能基于使用习惯建记忆。Extreme 版可在本地跑 300 亿参数混合专家（MoE）模型——作为对比，苹果 6 月 WWDC 发布的是 200 亿参数 MoE。新 CPU 提供摄像头像素级控制，Extreme 支持 8K60 与 4K240 慢动作，并启用 APV 专业视频编码。摩托罗拉同步发布搭载该芯片的 Signature 27。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/22/qualcomm-launches-two-new-smartphone-chips-with-emphasis-on-ai/",
+      "remark": "端侧可承载的参数量爬得比预期快（2 亿感知模型 + 300 亿 MoE）。「隐私敏感的个人 Agent 跑在本地」正在从概念变成硬件默认项。做 AI 应用或硬件的团队，值得重新算一遍哪些能力可以不下云、哪些必须下云。"
+    },
+    {
+      "date": "2026-09-23",
+      "category": "产业",
+      "title": "Nscale 冲击 IPO：1030 亿美元合同里 85% 押在微软和 Anthropic 身上",
+      "summary": "9 月 22 日报道，英国 neocloud 公司 Nscale 递交 IPO 文件：两年内积累超 1030 亿美元合同，约 85% 来自向微软供应算力的 438 亿美元协议，以及与 Anthropic 的 446 亿美元协议；后者以 Nscale 取得融资为前提，且 Anthropic 保留在未达「严格」里程碑时退出或取消的权利。公司拟在纽交所上市，预计估值 350 亿美元、募资 30 亿美元。截至 6 月 30 日的半年收入 1.406 亿美元（去年同期 1040 万），净亏损 10.2 亿美元。同年 9 月英伟达同意提供 10 亿美元可转债。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/22/nscales-ipo-will-test-wall-streets-appetite-for-concentrated-ai-bets-once-again/",
+      "remark": "这是 AI 基建的「客户集中度风险」第一次被摊到公开市场面前：收入靠两个客户、其中一个还能因里程碑不达标抽身，而半年净亏损是收入的 7 倍。它的定价会成为后面一批 neocloud 的参考锚，值得盯着看华尔街愿不愿意为这种结构买单。"
+    },
+    {
+      "date": "2026-09-23",
+      "category": "融资",
+      "title": "Snorkel AI 估值三倍冲到 35 亿美元：AI 训练数据成了最硬的生意",
+      "summary": "9 月 22 日宣布完成 3.5 亿美元 E 轮，估值 35 亿美元，由 Insight Partners 和 S32 领投，较 17 个月前 D 轮的 13 亿美元接近三倍，Addition、Lightspeed、Greylock、GV、富国银行等老股东跟投。公司已从数据标注工具转向「数据集即服务」，用软件与模型合成数据、配合领域专家。年化收入 3.75 亿美元，12 个月增长 18 倍。同赛道 Mercor 年化收入 20 亿、Handshake 破 10 亿、Micro1 到 5 亿。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/22/snorkel-ai-triples-valuation-to-3-5b-as-demand-for-ai-training-data-booms/",
+      "remark": "模型层在卷价格，上游高质量数据与 RL 环境的定价权反而在变强。一个值得记住的会计差别：Snorkel 卖的是数据集与环境而非人力，付给专家的钱进成本而不进收入——同一个赛道里，「数据公司」和「人力外包公司」的估值逻辑会彻底分叉。"
+    },
+    {
+      "date": "2026-09-23",
+      "category": "产品",
+      "title": "Meta 承认 Muse 就是「给普通人用的 OpenClaw」，连 SOUL.md 都几乎一样",
+      "summary": "9 月 22 日，Meta 超级智能实验室产品负责人 Nat Friedman 在 X 上回应质疑称，团队「爱上了 OpenClaw」，想让 Muse 成为「像 OpenClaw 一样、但能扩展到几十亿人」的东西。此前有开发者发现 Muse 的系统文件名与 OpenClaw 一致，SOUL.md 内容「几乎完全相同」；被问到为何连文件名都照抄时，Friedman 的回应是「我们认为 Peter 把这些做对了」。OpenClaw 作者 Peter Steinberger 今年已被 OpenAI 招走。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/22/meta-admits-muses-likeness-to-openclaw-isnt-a-coincidence/",
+      "remark": "开源项目的护城河问题又一次现场教学：SOUL 配置、工作区文件结构这类「工程细节」一旦被拿去当产品骨架，靠许可证是拦不住的。做 Agent 产品的人应该默认这一层是可被瞬间复制的公共品，把差异化放在数据、分发和记忆积累上。"
+    },
+    {
+      "date": "2026-09-23",
+      "category": "大模型",
+      "title": "Anthropic 发布 Opus 5.5：首个「主动减速」之后的模型，成本降 40%",
+      "summary": "9 月 22 日发布，Claude 5.5 家族首个模型，多数任务达到 Fable 5.1 水平，运行成本比 Opus 5 低 40%。输入/输出 $4 与 $20 每百万 token，缓存读取 $0.20（比 Opus 5 降 60%）。官方称在自动化行为审计上是有史以来最强，更不容易执行难以撤回的操作，抗提示注入优于 Opus 5；因生物与网络安全能力接近 Mythos 5.1，沿用 Fable 5.1 级别的安全护栏。Sonnet 5.5 与 Haiku 5.5 将在数周内发布。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "remark": "这是 Dario 公开呼吁「给能力进步减速」之后的第一款模型，但落在纸面上的仍然是最硬的性价比数字。说明 pace the frontier 目前主要发生在叙事层，工程层的竞争一点没慢下来。"
+    },
+    {
+      "date": "2026-09-23",
+      "category": "大模型",
+      "title": "OpenAI 发布 GPT-6 Sol 和 Luna：API 价格砍半，事实错误率减半",
+      "summary": "9 月 22 日发布。GPT-6 系列首个非 Astra 版本，Sol 面向编码等复杂任务，Luna 面向摘要、信息抽取、快问快答等高频清晰目标任务。API 价格为 5.6 系列的一半，OpenAI 归因于缓存与推理优化；官方称内部事实性评测中 Sol 的错误约为上一代的一半，以更低成本达到 Astra 级可靠性，并会陆续在 ChatGPT 应用与网页端灰度。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/",
+      "remark": "真正值得看的是「同级可靠性、一半价格」这个组合——能力战打到头，战场已经移到单位智能成本。发布时点也很说明问题：Anthropic 的 Opus 5.5 只在 90 分钟前发出，两家的发布节奏已经贴到分钟级。"
+    },
     {
       "date": "2026-09-22",
       "category": "模型",

@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-09-23T06:04:15.732255+08:00",
+  "updated_at": "2026-09-24T06:04:28.835712+08:00",
   "items": [
+    {
+      "date": "2026-09-24",
+      "category": "学术",
+      "title": "ECCV 2026 开幕：投稿与参会双破纪录，李飞飞团队获时间检验奖",
+      "summary": "欧洲计算机视觉会议 ECCV 2026 在瑞典马尔默开幕，参会人数超过 7000 人创历史新高，而当地酒店客房仅约 5000 间，出现明显住宿缺口，不少人跨境从哥本哈根通勤。本届共 93 场 Workshop，李飞飞团队获时间检验奖。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/academic/btha4kkfzuaJc41w.html",
+      "remark": "投 CV 的人可以把这条当温度计：ECCV 的体量已经逼近 CVPR/ICCV 的主场规模。会场规模背后是审稿人池子和录取率的同步变化，准备投论文或申博的人要提前算进去。"
+    },
+    {
+      "date": "2026-09-24",
+      "category": "大模型",
+      "title": "GPT-6 Sol 降价 50% 的秘密：消失的 Terra，一场模型梯队平移",
+      "summary": "雷锋网 AI 研习社拆解 OpenAI 与 Anthropic 同日的双发：Claude Opus 5.5 成本较上代降 40%，GPT-6 Sol 号称价格腰斩，每百万 token 输入 2 美元、输出 10 美元。作者指出降价实为梯队平移——原本「旗舰 Sol / 中端 Terra / 轻量 Luna」的档位里 Terra 被抹掉，整体上移一格，性能对照的锚点也换了，性价比要按新梯队重新对账。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/yanxishe/gnzWAPK52Igo0DSk.html",
+      "remark": "今天最值得读的一条中文分析。厂商拿「降价 50%」来谈的时候，第一件事是问参照的是上一代哪个型号——换锚点比真降价容易得多。"
+    },
+    {
+      "date": "2026-09-24",
+      "category": "产品",
+      "title": "ChatGPT 移动端上线语音 Agent：一句话起草文档、写邮件、汇总 Slack 消息",
+      "summary": "OpenAI 9 月 23 日把语音 Agent 能力搬到移动端，Plus 和 Pro 用户可以在手机上的 Work 标签页用语音触发工作流，包括起草文档、写邮件、汇总 Slack 消息。移动端从「问答入口」进一步变成任务执行入口。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/23/chatgpt-mobile-app-gets-voice-based-agentic-features/",
+      "remark": "语音加 Agent 的组合在手机上才真正成立：打字是瓶颈，说一句话启动一个工作流才是原生交互。对做产品的人来说，入口之争正在从「App 启动页」挪到「系统级语音按钮」。"
+    },
+    {
+      "date": "2026-09-24",
+      "category": "大模型",
+      "title": "Google 发布 Gemini 3.8 Flash TTS 与 Flash-Lite TTS：语音从预设档位变成「录音棚」",
+      "summary": "Google 在官方博客发布两款语音合成模型。Flash TTS 支持从 30 个原始音色扩展到近乎无限的音色库，可自定义角色音色、口音与情绪，并逐句控制表演方式；Flash-Lite TTS 面向更轻量的调用。两者已可接入 Google AI Studio、Gemini API、Gemini Enterprise、Gemini Notebook 和 Google Vids，定位是交互式语音 Agent 与播客、有声书、游戏配音，同时配套了防止声音滥用的安全措施。",
+      "source": "Google",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-text-to-speech/",
+      "remark": "3.8 这一代 Google 的打法很清晰：拿 Flash 当试验田，各模态轮流铺产能，Live、Live Extended Thinking、Translate、Transcribe 之后轮到 TTS。做语音 Agent 的人，成本曲线比榜单更值得看。"
+    },
+    {
+      "date": "2026-09-24",
+      "category": "研究",
+      "title": "Anthropic 用 Claude 发现新型酶系统：类 CRISPR 重复序列，科学家只给了「高层级方向」",
+      "summary": "Anthropic 9 月 23 日宣布成立生命科学研究组与实验室，主攻用 Claude 做基础生物学：在 DNA 数据集中识别未表征的蛋白家族、规模化生成假设，再进实验室验证。早期成果是 Claude 在科学家只给高层级方向的前提下，发现了一套具有类 CRISPR 特性的新型酶系统。文章同时公布了团队构成与后续实验计划。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+      "remark": "「AI 做科学发现」叙事，判断真假的关键不在模型多聪明，而在闭环有没有合上——生成假设是廉价的，湿实验验证才是稀缺资源。Anthropic 把实验室建在自己手里，就是为了握住这个闭环。后面真正值得盯的是：多久能出一篇同行评审论文。"
+    },
     {
       "date": "2026-09-23",
       "category": "学术",

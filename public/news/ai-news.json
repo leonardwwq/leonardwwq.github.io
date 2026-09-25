@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-09-25T06:04:08.189864+08:00",
+  "updated_at": "2026-09-26T06:03:33.714246+08:00",
   "items": [
+    {
+      "date": "2026-09-26",
+      "category": "技术",
+      "title": "平头哥开源 T-Head SAIL 软件栈，押注迁移成本",
+      "summary": "云栖大会后平头哥公布 AI 软件栈 T-Head SAIL 开源进展：已开源 PyTorch-for-sail 框架适配、sailify 源码迁移工具、Triton-for-sail 算子开发工具，以及 DeepGEMM-for-sail、FlashAttention-for-sail 等加速项目。真武 AI 芯片已服务 20 多个行业、650 多家客户。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/09/497108.html",
+      "remark": "国产芯片的胜负手不在峰值算力，在迁移成本。把类 CUDA 软件栈开源、让客户把业务经验沉淀进工具链，是聪明的打法——生态是攒出来的，不是发一次芯片就能有的。盯国产算力落地，这条比跑分重要。"
+    },
+    {
+      "date": "2026-09-26",
+      "category": "产品",
+      "title": "微软 Copilot 改版：新增 Autopilot agent + 按用量计费",
+      "summary": "微软推出基于 OpenClaw 的 Copilot agent「Autopilot」，应用拆成 Home / Code / Autopilot 三块。每个 Autopilot 实例有独立云电脑、工作区、存储与身份，能无人值守盯 Teams 频道、协调供应商评估、跑周期性任务，可在 Teams/Outlook/文档里 @ 唤起，离线时仍在云端运行；同时引入按用量计费。",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/microsoft-gives-copilot-another-makeover-adding-an-autopilot-agent-and-usage-based-billing/",
+      "remark": "「常驻 agent + 独立身份 + 按用量收费」凑齐，等于把 agent 从功能升级成「数字员工」，定价也从席位制转向用量制。企业软件的钱袋子要重算，这是接下来一年值得盯的结构性变化。"
+    },
+    {
+      "date": "2026-09-26",
+      "category": "产品",
+      "title": "Kimi 浏览器扩展上线：把网页操作录成可复用的 Skill",
+      "summary": "4 月的 Kimi WebBridge 改版为 Kimi 浏览器扩展，新增两处能力：侧边栏可直接对话操作当前网页；能录制用户在网页上的操作并整理成 Skill 供下次调用。官方提示网页改版或动态加载时仍可能中途卡住。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/09/497075.html",
+      "remark": "「操作网页 → 沉淀成可复用 Skill」这个动作，比单纯让 agent 点鼠标重要得多：它在把一次性流程变成资产。做 agent 产品可以抄这个思路——用户教一次、系统记住，留存和复购都从这里长出来。"
+    },
+    {
+      "date": "2026-09-26",
+      "category": "研究",
+      "title": "Google DeepMind 研究员离职：近期以超级智能为目标「本质不负责任」",
+      "summary": "DeepMind 新西兰技术专家 Robert O'Callahan 宣布离职，称 AI 当前变化速度「高得离谱」，他做的芯片设计工具让 AI 更便宜更快，如今已无法自证正当性。他判断超级智能风险「真实但不确定」，并提到认知投降、AI 诱发精神病与孤独、权力集中、经济冲击与问责缺失等问题。",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/another-google-deepmind-researcher-quits-says-building-superintelligent-ai-soon-is-inherently-irresponsible/",
+      "remark": "这类离职信最近越来越密集，该当信号看而不是八卦：一线研究者对方向本身的怀疑在加深。考虑读博或进 AI 研究的人可以问一句——这个方向的「社会正当性」十年后还站得住吗。"
+    },
+    {
+      "date": "2026-09-26",
+      "category": "产品",
+      "title": "Meta Muse 给每个用户发一台云端 Ubuntu 电脑",
+      "summary": "Meta 超级智能实验室工程 VP David Singleton 称，每个 Muse 用户都能免费获得一台完整云端电脑，跑 Ubuntu 镜像，可装软件、写代码、编译、上网，由 Muse Secure VM 做工作区隔离、Sentinel 负责威胁监控。",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/metas-muse-agent-gives-every-user-a-full-cloud-computer-running-ubuntu-linux/",
+      "remark": "agent 产品的竞争点正在从「模型多聪明」转向「给 agent 一个能干活的环境」——虚拟机、文件系统、身份、权限。谁能把沙箱做得又稳又便宜，谁就能承接更长的任务链，做 agent 产品这块是必答题。"
+    },
+    {
+      "date": "2026-09-26",
+      "category": "融资",
+      "title": "Anthropic 七年向 Akamai 支付 116 亿美元算力费",
+      "summary": "Akamai 披露，Anthropic 将在七年内向其云基础设施支付 116 亿美元，是今年 5 月两家 18 亿美元协议的六倍多。这笔承诺并非铁板钉钉，取决于 Akamai 能否满足交付与服务可用性指标。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/25/anthropic-to-pay-akamai-11-6-billion-over-seven-years-in-cloud-deal/",
+      "remark": "模型公司的钱正在大规模流向基础设施方，而且合同开始跟「交付达标」绑定——算力不是想买就能买到的标准品。看 AI 赛道别只盯模型排行榜，要盯谁的算力合同签得实。"
+    },
     {
       "date": "2026-09-25",
       "category": "学术",

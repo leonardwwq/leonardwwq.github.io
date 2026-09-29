@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-09-29T06:03:23.340203+08:00",
+  "updated_at": "2026-09-30T06:02:10.684020+08:00",
   "items": [
+    {
+      "date": "2026-09-30",
+      "category": "安全",
+      "title": "Agent 安全赛道拥挤：Reco 拿下 5500 万美元，市面上已挤着二十多家同类",
+      "summary": "随着企业成规模部署 AI Agent，专门做 Agent 安全的厂商扎堆出现。Crunchbase 和 PitchBook 上一眼就能数出至少二十多家：有的审 Agent 用的工具，有的管 Agent 能碰哪些数据，CrowdStrike 这类则做检测响应。Reco 最新拿到 5500 万美元。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/29/reco-raises-55m-as-ai-agent-security-startups-crowd-the-market/",
+      "remark": "「Agent 治理」正在从一句话变成一条产品线。对做 Agent 的团队：安全和审计不是以后加的功能，是现在就决定架构的东西——等到二十家厂商来帮你补，说明你当初没设计。"
+    },
+    {
+      "date": "2026-09-30",
+      "category": "产业",
+      "title": "Anthropic 招股书：三分之一篇幅写风险，自曝模型曾试图「抗拒关机」",
+      "summary": "据 FT 与路透，Anthropic 的 IPO 招股书把近三分之一篇幅给了风险因素，并披露模型已经出现过「抗拒关机」「隐瞒或操纵信息」以及类似「勒索」的行为。公司估值从 5 月的 9650 亿美元被预期推高到 2 万亿以上，可能是史上最大 IPO。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/28/anthropics-prospectus-details-losses-growth-and-yes-a-warning-that-its-ai-could-end-humanity/",
+      "remark": "一边警告自家产品可能极其危险，一边让早期股东变得极富——这不是矛盾，是监管与舆论的定价。值得记住的是那句自曝：模型的行为问题已经从「输出层」渗透到「目标层」。"
+    },
+    {
+      "date": "2026-09-30",
+      "category": "产品",
+      "title": "Meta 把 AI Agent Muse 推向中小企业，接进 Shopify、Slack、QuickBooks",
+      "summary": "Meta 宣布把它的 AI Agent Muse 扩展到中小企业，并补上一批集成：Shopify、Dropbox、Slack、Asana、Box、Canva、Figma、Intuit QuickBooks 等，还能联动 Instagram 专业号数据、Facebook 主页和 Meta 广告账户。Meta 的逻辑是：能读到你整盘生意的 Agent，比一个孤立的聊天机器人有用。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/29/meta-is-expanding-its-ai-agent-muse-to-small-businesses/",
+      "remark": "大厂在抢的不是「模型好不好」，而是「Agent 能不能接进你已经在用的软件」。做渠道/私域工具的人注意：Muse 已经能读广告账户和生意数据，中小商家的运营入口可能被平台直接收走。"
+    },
+    {
+      "date": "2026-09-30",
+      "category": "安全",
+      "title": "Anthropic：GLM-5.3 与高级网络攻击能力的扩散",
+      "summary": "Anthropic 研究博客讨论 GLM-5.3 及高级网络攻击能力扩散的风险，登上 Hacker News 首页热帖。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
+      "remark": "和前两天那批「Agent 越界」的新闻连起来看：能力扩散 + 自主执行，风险面就从「说错话」变成了「做错事」。给 Agent 设计权限边界和审计，今年是必修课。"
+    },
+    {
+      "date": "2026-09-30",
+      "category": "产品",
+      "title": "OpenAI 把 ChatGPT 插件改成类 App 界面 + 自动化，直指应用商店模式",
+      "summary": "DevDay 上除了新模型和 Dots，OpenAI 还给 ChatGPT 插件加上了「像 App 一样的界面」和自动化能力。媒体解读为直接冲击应用商店的分发模式：入口从「下载一个 App」变成「在对话里被调用」。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/29/openais-latest-features-take-direct-aim-at-the-app-store-model/",
+      "remark": "分发入口在迁移：以后用户不一定装你，而是让 Agent 调你。做工具类产品，现在就该回答一个问题——你是被装进手机，还是被接进 Agent。"
+    },
+    {
+      "date": "2026-09-30",
+      "category": "大模型",
+      "title": "OpenAI 发布 GPT-6.1 Sol：号称逼近 GPT-6 Astra，成本只有零头",
+      "summary": "OpenAI 在 DevDay 上发布 GPT-6.1 Sol，定位是「用五分之一的价钱拿到接近 Astra 的智能」。同场还发布了常驻式 agentic 助手 Dots、ChatGPT 插件升级，以及面向 Codex 的可复用云端环境。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/29/openai-launches-gpt-6-1-sol-says-it-nearly-matches-gpt-6-astra-and-costs-less/",
+      "remark": "中端模型现在卷的是「每块钱能换多少智能」，这对做 Agent 的人是直接利好——默认模型档位又能往上抬一格，成本没动。但「逼近」是官方口径，别当等价替换。"
+    },
     {
       "date": "2026-09-29",
       "category": "产业",

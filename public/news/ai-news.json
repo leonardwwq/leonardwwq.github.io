@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-09-30T06:02:10.684020+08:00",
+  "updated_at": "2026-10-01T06:05:39.683501+08:00",
   "items": [
+    {
+      "date": "2026-10-01",
+      "category": "产品",
+      "title": "Gemini 4 Argon 发布：谷歌把前沿模型押在编码、企业知识与网络防御",
+      "summary": "谷歌正式发布旗舰前沿模型 Gemini 4 Argon，官方定位为面向真实编码（real-world coding）、企业知识工作与网络防御。发布当天即登上 Hacker News 首页最高分（658 分）。",
+      "source": "Google Blog / Hacker News",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+      "remark": "谷歌这次把「编码+企业知识工作+网络防御」写进同一句话，说明前沿模型的卖点已从刷榜转向「能替企业干活」。做 B 端 Agent 的人要盯的正是这三个场景里的落地成本与出错率，不是跑分。"
+    },
+    {
+      "date": "2026-10-01",
+      "category": "技术",
+      "title": "OpenAI 推 Decisions API（Jev 克隆），意在管住自家「蜂群式」Agent",
+      "summary": "TechCrunch 报道，OpenAI 推出 Decisions API，被形容为 Jev 的克隆，用于让底层模型更快、更廉价地做决策，官方意图是控制其「蜂群式」多 Agent 的协同。评论指出，这印证了「快而便宜的智能」才是 Agent 规模化的关键。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/30/openais-jev-clone-could-help-the-frontier-lab-stop-its-swarming-agents/",
+      "remark": "多 Agent 的瓶颈不在单个模型多聪明，而在「决策调用」的延迟与成本。这是产品经理该追问工程团队的一句话：你的 Agent 完成一件事，背后要发起多少次模型调用？"
+    },
+    {
+      "date": "2026-10-01",
+      "category": "产业",
+      "title": "AI 语音公司 ElevenLabs 估值翻倍至 220 亿美元",
+      "summary": "ElevenLabs 完成一笔 3 亿美元的员工老股转让（tender offer），由 Wellington 和 T. Rowe Price 联合领投，公司估值较此前翻倍至 220 亿美元。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/30/ai-voice-startup-elevenlabs-doubles-valuation-to-22b/",
+      "remark": "语音是少数已跑通「按量收费」的 AI 应用层。估值翻倍说明资本认可「垂直单点做到最好」的路线，而不是再做一个大而全的 Chat。"
+    },
+    {
+      "date": "2026-10-01",
+      "category": "产业",
+      "title": "Reddit 关闭 RSS、终止公开 API，理由是 AI 爬虫",
+      "summary": "Reddit 宣布将下线 RSS 订阅功能，并终止公开 API 访问，官方理由是 AI 爬虫大量抓取用户生成内容。这是 Reddit 持续收紧内容访问权限的最新一步。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/30/reddit-is-killing-rss-feeds-ending-public-api-access-because-of-ai-bots/",
+      "remark": "内容平台正把「数据入口」当资产锁起来。依赖第三方公开数据喂养模型/Agent 的产品，要重新评估供应链风险——今天能白嫖的接口，明天可能收费或关门。"
+    },
+    {
+      "date": "2026-10-01",
+      "category": "产品",
+      "title": "DoorDash 上线一个「发短信就能点外卖」的 AI Agent",
+      "summary": "DoorDash 推出可以用短信直接点餐的 AI Agent，用户发消息即可完成下单，意图在于外卖竞争中压过 Uber Eats 与 Grubhub。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/30/doordash-launches-an-ai-agent-you-can-text-to-order-food/",
+      "remark": "又一个「把 Agent 塞进用户已有的聊天入口」的案例：短信=不用装 App、不用学新界面。做私域/电商的人注意，入口之争正从「抢装机」变成「抢对话窗口」。"
+    },
+    {
+      "date": "2026-10-01",
+      "category": "安全",
+      "title": "Meta 否认 Muse 未经许可读取用户私信",
+      "summary": "Meta 否认其 AI Agent Muse 会在未经明确许可时读取用户信息。此前一名记者称，在所需的 Mac 设置处于关闭状态时，Muse 仍读到了他的私信。Meta 坚称 Muse 无法在无明确授权时访问 Messages。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/09/30/meta-disputes-claim-that-muse-read-a-users-private-messages-without-permission/",
+      "remark": "当 Agent 拿到「能替你操作电脑」的权限，隐私边界就是产品的一等公民。给用户开权限前先想清楚：越权发生时，你能不能说清「它到底能碰什么」。"
+    },
+    {
+      "date": "2026-10-01",
+      "category": "产品",
+      "title": "Muse 爆火、dots 入场：Personal Agent 开始和互联网平台抢入口",
+      "summary": "雷峰网梳理：9 月 29 日 OpenAI 发布长期在线的个人 Agent 产品 dots，提出「always-on agents」；更早的 Meta Muse 截至 9 月下旬下载量突破 300 万，一度把 ChatGPT 挤出美国 App Store 免费榜第一。Muse 运行在独立云端虚拟电脑里，自带浏览器，可代用户开网页、填表、发邮件、订行程，退出 App 后仍能后台执行长任务。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/yanxishe/Zqcw9XvSO2Ht6FIQ.html",
+      "remark": "Personal Agent 想当「互联网的新中间层」——用户不再直接点开各家 App，而是通过 Agent 中转。对渠道/品类操盘手，最该提前想的是：如果入口被 Agent 拿走，你的商品和页面要怎样才能被它「选中并代下单」。"
+    },
     {
       "date": "2026-09-30",
       "category": "安全",

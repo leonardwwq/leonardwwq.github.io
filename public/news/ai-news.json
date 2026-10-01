@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-10-01T06:05:39.683501+08:00",
+  "updated_at": "2026-10-02T06:02:28.729148+08:00",
   "items": [
+    {
+      "date": "2026-10-02",
+      "category": "安全",
+      "title": "开发者吐槽：OpenAI 与 Anthropic 的安全护栏把日常工作也拦了",
+      "summary": "VentureBeat 在 DevDay 现场采访多名开发者，称两家前沿实验室的护栏会把航天、机器人、安全类的日常开发判定为高风险。MIT 航天系硕士生做模拟卫星的 LLM Agent 实验时，模型误以为他在做军事项目，还要求他出示并不存在的安全许可；做机器人的开发者说，连给机械臂做 UI、SSH 进另一台机器都会频繁被拒。多人表示一旦对话「回不来了」就直接换模型，有人因此退订 Anthropic。OpenAI 承认护栏可能「拖慢、暂停甚至中断合法工作」，并指向 Daybreak Access 可信准入计划；Anthropic 称 Fable 5.1 起网络安全类干预应减少约 60%。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/technology/developers-say-openai-and-anthropic-safeguards-are-flagging-routine-work-and-costing-them-time",
+      "remark": "这是能力提升的镜像成本：模型越强、护栏越厚，误伤率越高，而误伤的时间成本在模型降价之后反而更显眼。对企业选型是实打实的信号——不要把关键工作流押在单一闭源模型上，多模型可切换和开源兜底不再是「省钱选项」，而是业务连续性的一部分。"
+    },
+    {
+      "date": "2026-10-02",
+      "category": "技术",
+      "title": "DeepSeek 开源算子全家桶原生支持华为昇腾，正面拆 CUDA 的墙",
+      "summary": "DeepSeek 宣布核心算子开发产品 TileLang 原生支持昇腾，同时 DeepGEMM、DeepEP、FlashMLA、TileKernels、DeepSelect 五大计算与通信库同步推出昇腾版本，对标英伟达全套工具链。TileLang 站在 Apache TVM 之上，把「为哪块芯片生成指令」和「怎么编译运行」彻底解耦，换芯片只需新增一个目标后端；截至 2026 年 9 月仓库 7.6k stars、1992 次 commit。官方数据：H100 上基于 TileLang 的 DeepSeek V3.2 稀疏注意力 TopK 算子比原生 PyTorch 快 2–20 倍，MLA 解码性能追平英伟达官方 cuBLAS 与官方版 FlashAttention，在 AMD MI300X 上同样接近硬件极限。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/yanxishe/UUIfK7eeFE9Ws1JI.html",
+      "remark": "把「写算子」从手工作坊变成声明式编程，是这套东西的真正价值——传统 CUDA 写 GEMM 要 500 行以上，TileLang 压到 30 多行 Python。更深一层：国产算力的软件栈第一次不是「能用就行」，而是在 H100 和 MI300X 上都能跟官方实现打平。做推理成本的团队该重新算账：算力单价的下行空间，可能先来自软件而不是硬件。"
+    },
+    {
+      "date": "2026-10-02",
+      "category": "产业",
+      "title": "OpenClaw 发布企业控制平面 OCE：MIT 许可，OpenAI、红帽、英伟达背书",
+      "summary": "OpenClaw 推出 OpenClaw Enterprise（OCE），一个厂商中立、MIT 许可的控制平面，给持久化 Agent 加上多租户、细粒度权限、工作负载隔离、沙箱和审计，模型、harness、沙箱都可替换，官方自称「Agent 的 Kubernetes」。项目源自 OpenAI 内部、后捐给 OpenClaw 基金会，红帽与英伟达参与共建，OpenAI 和红帽已在内部试点。OpenAI 员工披露内部跑着一个叫 Androidclaw 的 Agent，接入代码库、Git、GitHub 和日志系统，能查坏构建、定位 PR、追问题，某些情况下直接准备并合并修复。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/orchestration/openclaw-launches-free-enterprise-control-plane-for-persistent-ai-agents-backed-by-openai-red-hat-and-nvidia",
+      "remark": "企业侧真正的堵点已经不在「模型能不能干活」，而在「敢不敢让上千个持久 Agent 碰生产系统」。OCE 抢的正是这层——注意它是开源基础设施而非 SaaS，企业仍要自己付算力和运维。把它和同期的 Dots/ChatGPT Space 对照看更清楚：OpenAI 自己走应用层，同时又把控制平面捐出去做中立底座，对做 Agent 平台的人是明确的路线信号。"
+    },
+    {
+      "date": "2026-10-02",
+      "category": "研究",
+      "title": "谷歌 WikiSkill：给 Agent 建一本「错题本」，失败经验不再塞进 prompt",
+      "summary": "谷歌研究院与弗吉尼亚理工提出 WikiSkill，在 Agent 的原始执行轨迹与可执行技能之间加了一层结构化 wiki：Raw 层存不可变轨迹，Wiki 层记录反复出现的失败模式与成功策略、变更日志和技能影响追踪，Skill 层才是真正注入模型的 SKILL.md。在数学推理、网页搜索、表格、长文档 QA、ALFWorld 五个基准上，六个被测模型平均分全部第一，比最强对手高 3.3–12 个百分点；Qwen-3.5-9B 配上技能后平均 47.4%，反超不带技能的 Qwen-3.6-27B（39.4%）。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/orchestration/googles-wikiskill-gives-ai-agents-a-memory-of-what-went-wrong-without-putting-it-in-the-prompt",
+      "remark": "对做「自进化 Agent」的团队是硬货：优化器常常改对了却把诊断过程丢掉，于是反复撞同一堵墙。WikiSkill 把「试过什么、为什么没成」单独存起来，还刻意不让推理 Agent 读到 wiki——只用精简技能，省推理成本（实测技能 45–129 行）。值得抄的不是代码，是那条分层原则：记忆要全，上线要瘦，中间隔一层。"
+    },
+    {
+      "date": "2026-10-02",
+      "category": "技术",
+      "title": "亚马逊开源 Strands Decider 2B：把「决策」从大模型里拆成专用小模型，单次前向不到 100 毫秒",
+      "summary": "AWS 在 Strands Labs 下开源 Strands Decider 2B：基于阿里 Qwen3.5-2B，去掉预测下一个词的组件，换成一个给候选答案打分的「指针」，一次前向就返回选项的概率分布。Apache 2.0 许可，权重、训练数据、脚本全部公开。AWS 称短任务本地决策只需几十毫秒，RTX 3090 上 v18 中位 106 毫秒、p95 296 毫秒；公开 JevBench 上 v19 约 72% 准确率、Brier 0.35。但官方图表没把 Jev 本身放进去，所以并没有「打赢 Jev」的直接证据。",
+      "source": "VentureBeat",
+      "url": "https://venturebeat.com/technology/amazon-unveils-a-free-fast-open-source-jev-killer-strands-decider-2b-makes-decisions-in-fractions-of-a-second",
+      "remark": "Jev 火了两周，马上冒出一批「决策模型」——这条路的价值不在刷榜，而在于把 Agent 里最高频的那类判断（要不要执行、走哪条路）做成一个 2B 小模型的专用检查点，成本结构和大模型完全不同。两个坑要注意：一是官方没给每请求运营成本，「免费下载」不等于「更便宜」；二是概率型判官天生挡不住对抗性输入，别拿它当安全边界。"
+    },
     {
       "date": "2026-10-01",
       "category": "产品",

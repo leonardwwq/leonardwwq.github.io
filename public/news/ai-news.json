@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-10-02T06:02:28.729148+08:00",
+  "updated_at": "2026-10-03T06:04:11.654957+08:00",
   "items": [
+    {
+      "date": "2026-10-03",
+      "category": "产品",
+      "title": "拆解 WorkBuddy、千问办公和豆包工作：它们其实不是同一种产品",
+      "summary": "雷锋网对比三款国内「AI 办公」产品，指出它们的定位、能力边界和目标用户并不相同，不能按同一品类来看待。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/yanxishe/d4mykzxmMYWWwHNk.html",
+      "remark": "「AI 办公」已经是个被用滥的标签——把它当品类看就容易选错工具。做产品判断时要拆到具体场景：替谁、在哪一步、省下多少时间。"
+    },
+    {
+      "date": "2026-10-03",
+      "category": "技术",
+      "title": "OpenClaw 2.0 实测：Agent 网关想重画 ToB 工作流的边界",
+      "summary": "雷峰网实测 OpenClaw 2.0，称它让 Agent 更接近一个可复盘、可协作的工作系统，但仍不是普通用户能轻松上手的工具。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/yanxishe/7bPyLlZDfncTOw5B.html",
+      "remark": "从「能跑」到「可复盘、可协作」，是 Agent 工具真正跨向企业的那一步。企业控制平面解决治理，这篇解决使用体验，两件事合起来才算摸到 ToB 的门槛。"
+    },
+    {
+      "date": "2026-10-03",
+      "category": "产业",
+      "title": "给移动 App「办葬礼」的 Photon 拿了 450 万美元，要把 App 换成 Agent",
+      "summary": "Photon 帮开发者构建能跑在 iMessage、短信/RCS、邮件等消息平台上的 AI Agent，赌的是消费者会用 Agent 而不是装 App。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/01/photon-held-a-funeral-for-mobile-apps-now-it-has-4-5m-to-help-replace-them-with-agents/",
+      "remark": "「Agent 取代 App」目前叙事多于现实，但下注方向很明确——入口正从应用商店挪到消息框。真跑起来的前提是支付、身份、信任这些基础设施跟上，否则还是玩具。"
+    },
+    {
+      "date": "2026-10-03",
+      "category": "安全",
+      "title": "传 OpenAI 与三名安全研究员解除关系",
+      "summary": "据报道，OpenAI 在一次内部调查后与三名安全研究人员分道扬镳，给出的理由是他们不当处理了公司敏感信息。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/01/openai-cuts-ties-with-three-safety-researchers-wsj-reports/",
+      "remark": "安全团队和产品节奏之间的张力本就是这家公司的老问题。这次挂上「敏感信息」的由头，外人很难分辨是治理问题还是路线分歧——对求职者，这是判断团队稳定性的一个信号。"
+    },
+    {
+      "date": "2026-10-03",
+      "category": "产品",
+      "title": "Shopify 推出 Canvas：聊着天就把整个网店建好",
+      "summary": "商家可以对着 AI 助手 Sidekick 聊天，边聊边实时看到店铺页面变化，从建站、改版到上新都靠对话完成。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/01/shopify-debuts-canvas-a-way-to-build-online-stores-by-chatting-with-ai/",
+      "remark": "电商工具的竞争正从「模板多」转向「对话即操作」。对操盘手来说门槛降了，但差异化会更难——人人都能半小时建店之后，胜负还是回到选品、内容和投放上。"
+    },
+    {
+      "date": "2026-10-03",
+      "category": "产业",
+      "title": "Airbnb CEO Chesky：AI Agent 需要一个自己的操作系统",
+      "summary": "Chesky 谈 Airbnb 如何变得对 Agent 友好、消费级 AI 的现状，以及为什么世界需要一个 AI 原生的操作系统。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/01/brian-chesky-interview-ai-agents-need-their-own-operating-system/",
+      "remark": "这是「Agent 入口之争」的另一种说法——当用户不再打开 App、而是直接对 Agent 说话，谁定义 Agent 的操作系统，谁就握住了分发权。平台要么主动适配，要么被绕开。"
+    },
+    {
+      "date": "2026-10-03",
+      "category": "安全",
+      "title": "Apple 收紧 macOS「完全磁盘访问」权限，理由是可自主体 AI 带来的新风险",
+      "summary": "Apple 宣布将围绕 macOS 的 Full Disk Access 权限新增控制，警告越来越能干的 AI 自主体一旦拿到对用户文件、信息、邮件和浏览记录的宽泛访问权，风险会被显著放大。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/02/apple-says-its-tightening-macos-full-disk-access-controls-due-to-new-risks-from-ai-agents/",
+      "remark": "权限模型是 Agent 落地最硬的那堵墙——桌面 Agent 想干活就得摸文件，摸文件就得过用户授权这关。Apple 这一步是把「信任」重新做成产品功能，而不是甩给普通用户自己判断。"
+    },
     {
       "date": "2026-10-02",
       "category": "安全",

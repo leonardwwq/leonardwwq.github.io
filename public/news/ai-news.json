@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-10-04T06:03:35.434524+08:00",
+  "updated_at": "2026-10-05T06:05:38.835300+08:00",
   "items": [
+    {
+      "date": "2026-10-05",
+      "category": "产品",
+      "title": "能住进你短信里的 AI Agent 大盘点",
+      "summary": "TechCrunch 盘点了一批跑在短信/消息框里的 AI Agent，覆盖通用助理，以及面向家庭、旅行、工作的专用 Agent。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/03/all-the-ai-agents-that-can-live-in-your-text-messages/",
+      "remark": "入口正从应用商店挪到聊天框——短信/RCS 是少数还没被巨头锁死的地盘，值得盯。"
+    },
+    {
+      "date": "2026-10-05",
+      "category": "技术",
+      "title": "实测 Qwen-3.8 与 GLM-5.3 Flash：Flash 模型开始进办公室",
+      "summary": "雷峰网实测同天发布的 Qwen3.8-Flash 与 GLM-5.3-Flash，结论是两者都能胜任办公应用开发，GLM 偏工程完整性、Qwen 偏个人工作流；Flash 正从「低价问答」转向承接高频办公工作流。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/yanxishe/Dp2FW4Pb6iLUvdhf.html",
+      "remark": "「Flash＝便宜」的刻板印象在变。低价＋长上下文＋直接产出交付物，才是现在选型的新基准。"
+    },
+    {
+      "date": "2026-10-05",
+      "category": "技术",
+      "title": "网友实测 GPT-6 Astra：神操作多，长任务翻车也快",
+      "summary": "用户实测 GPT-6 Astra，短任务表现亮眼、操作惊艳，但长任务容易中途翻车，稳定性仍是明显短板。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/yanxishe/dlrewTdG7xNo2gFo.html",
+      "remark": "「demo 惊艳、长跑拉胯」是这代模型的通病——评估模型别只看单轮效果，要看长任务稳定性。"
+    },
+    {
+      "date": "2026-10-05",
+      "category": "技术",
+      "title": "Kimi 与 DeepSeek 为何出现在同一张架构图里",
+      "summary": "雷峰网梳理大模型 Attention 路线变迁：Linear、Sparse、Full 三条曾被视为对立的路线，正在收敛为同一个架构设计空间里的不同选项。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/yanxishe/S39sSkqntdgkDuJu.html",
+      "remark": "架构在收敛，「押错路线」的风险比过去低了，技术选型可以更大胆一点。"
+    },
+    {
+      "date": "2026-10-05",
+      "category": "产业",
+      "title": "Google 因 AI 垃圾提交激增，冻结开源漏洞赏金计划",
+      "summary": "Google 暂停其开源漏洞赏金项目，原因是 AI 生成的「垃圾」提交量暴涨，审核成本被彻底淹没。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/04/google-froze-its-open-source-bug-bounty-program-due-to-a-significant-rise-in-ai-submissions/",
+      "remark": "AI 让「提交」趋于零成本，也让「筛选」成为新瓶颈——审核与评测人力的价值会被重估。"
+    },
     {
       "date": "2026-10-04",
       "category": "技术",

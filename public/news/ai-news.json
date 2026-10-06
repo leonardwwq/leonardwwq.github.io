@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-10-06T06:03:39.374780+08:00",
+  "updated_at": "2026-10-07T06:04:07.685653+08:00",
   "items": [
+    {
+      "date": "2026-10-07",
+      "category": "产品",
+      "title": "实测三个前沿模型控制同一台机器人：谁真的把活干完了",
+      "summary": "雷峰网用真实云台实测让 GPT-6 Astra、Fable 5.1 和 Sol 三个模型控制同一台机器人。结论是三个模型都能让机器人转起来，但完成的标准天差地别——演示能动与真正完成任务之间存在明显差距。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/yanxishe/hfRMbwkVyjskWX3a.html",
+      "remark": "机器人是 Agent 能力最诚实的试金石：演示都能过，落到真任务就分化。评估任何 Agent 产品，都该用「任务是否真完成」而不是「是否能动」来打分。"
+    },
+    {
+      "date": "2026-10-07",
+      "category": "技术",
+      "title": "PixVerse R2 攻克实时世界模型 Scaling：越大越强不再是 LLM 专利",
+      "summary": "雷峰网报道，PixVerse R2 在实时世界模型（world model）上解决了 Scaling 难题，验证了规模越大效果越强的规律并不只属于语言模型。文章以「AI 视频的下一战：谁能让世界保持运行」为主线，讨论实时可交互世界模型的演进方向。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/yanxishe/qrkgXZRZeLOX4viW.html",
+      "remark": "世界模型是下一代交互内容的底座。对做游戏、仿真、内容工具的人，这条值得盯——一旦实时保持状态的能力稳定，交互形态会被重写。"
+    },
+    {
+      "date": "2026-10-07",
+      "category": "产品",
+      "title": "实测 Seedance 2.5 vs 可灵 3.0：差距不只在画质，而在工作流",
+      "summary": "雷峰网实测字节 Seedance 2.5 与快手可灵 3.0 两款视频生成模型，结论是二者差距不只体现在画面质量，更在于能否把复杂需求拆成镜头、音画是否对齐、以及返工成本高低。文章认为 AI 视频模型进入 2026 年后的分水岭，落在题材合规、镜头可控、声音可用、文字可靠这些工程化能力上。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/academic/Fsil8u9HyNOPW4Du.html",
+      "remark": "视频生成已经从比惊艳，转到比能不能稳定交付。做内容/电商投放的重点看这条：选模型的标准要从单条爆款换成可复用、可返工的工作流效率。"
+    },
+    {
+      "date": "2026-10-07",
+      "category": "研究",
+      "title": "Dust：首个可无反向传播预训练 Transformer 的零阶方法",
+      "summary": "Q Labs Research 发布 Dust，称是首个能在不进行反向传播的情况下预训练 Transformer 的零阶（zeroth-order）方法。论文提出激活空间扰动、信用分配与干扰调优三部分，并给出无反向传播预训练的主实验结果，作者同时开源了代码。",
+      "source": "Q Labs Research",
+      "url": "https://qlabs.sh/research/dust",
+      "remark": "如果这条路走通，训练的内存和算力开销会被重估。现在下结论还早（论文刚出、复现待验），但值得放进观察清单——底层方法一变，上层产品格局常常跟着变。"
+    },
+    {
+      "date": "2026-10-07",
+      "category": "技术",
+      "title": "OpenTPU：一个开源的 AI 加速卡项目，除芯片外全在笔记本上跑",
+      "summary": "开源项目 OpenTPU 提供 AI 加速器的软硬件栈：除加速卡外，编译、仿真、驱动与工具链都可在普通笔记本运行。自带 otpu-chat 支持 Qwen3、LFM2.5、SmolLM3、Phi-4-mini 等小模型，otpu-smi/otpu-lens 提供功耗、带宽、利用率监控与性能剖析。",
+      "source": "GitHub / FeSens",
+      "url": "https://github.com/FeSens/openTPU",
+      "remark": "开源硬件加速的门槛在往下掉。对做推理成本核算的人是好事——多一条不依赖单一厂商的路线做对比，选型时别只盯着云上那几家。"
+    },
+    {
+      "date": "2026-10-07",
+      "category": "技术",
+      "title": "OpenAI 上线 Decisions API 公测：比 Responses 快 10 倍的结构化判断接口",
+      "summary": "OpenAI 发布 Decisions API 公测版，可对文本、图片或二者同时评估，返回布尔概率、固定选项或评分等类型化答案，官方称比 Responses API 快约 10 倍。目前仅支持 gpt-6-luna，走独立的 POST /v1/decisions 端点，预计数周内 GA。适合内容分类、请求路由与优先级排序。",
+      "source": "OpenAI 官方文档",
+      "url": "https://developers.openai.com/api/docs/guides/decisions",
+      "remark": "对做 Agent 的人是个信号：把判断/分类这类确定性需求从万能大模型里拆出来，做成又快又便宜的专用接口。你评估技术方案时，这类专用窄接口往往比堆 Prompt 更稳。"
+    },
     {
       "date": "2026-10-06",
       "category": "技术",

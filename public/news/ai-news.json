@@ -1,6 +1,42 @@
 {
-  "updated_at": "2026-10-07T06:04:07.685653+08:00",
+  "updated_at": "2026-10-08T06:02:47.042403+08:00",
   "items": [
+    {
+      "date": "2026-10-08",
+      "category": "技术",
+      "title": "AI Agent 的下一道坎：让网站放它们进来",
+      "summary": "个人 AI Agent 承诺替你购物、订票、预约，但网站的反爬和主动拦截把它们挡在门外，消费者夹在中间。一个新的标准正试图解决这个问题。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/06/the-next-hurdle-for-ai-agents-getting-websites-to-let-them-in/",
+      "remark": "这是 Agent 落地的真瓶颈——不是模型不够聪明，是「门不让进」。谁定下 Agent 访问网站的标准，谁就卡住了下一代入口。做 Agent 产品和投融资判断的，把这条放进观察清单。"
+    },
+    {
+      "date": "2026-10-08",
+      "category": "产品",
+      "title": "ChatGPT 上线全新视觉化界面",
+      "summary": "OpenAI 为 ChatGPT 推出新界面，把交互式可视化引入对话，从纯文本问答转向图文并茂的交互形态。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/07/chatgpt-is-getting-a-lot-more-visual-with-the-launch-of-a-new-interface/",
+      "remark": "对话式 AI 的下一层竞争在「怎么把结果呈现出来」。对做产品的人是提醒：光有模型能力不够，呈现方式的差异直接决定用户留不留。做 C 端工具的重点看这条。"
+    },
+    {
+      "date": "2026-10-08",
+      "category": "技术",
+      "title": "Claude Haiku 5.5：主打高并发的小模型",
+      "summary": "Anthropic 发布 Claude Haiku 5.5，称其为最快、最强的小模型，瞄准摘要、子 Agent、浏览器操作等高并发场景。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/claude-haiku-5-5",
+      "remark": "小模型这一层的竞争在往「便宜量大 + 能当子 Agent」打。做 Agent 架构时，跑量任务丢给小模型、判断和生成留给大模型，是现成的降本套路，这条正好对上。"
+    },
+    {
+      "date": "2026-10-08",
+      "category": "技术",
+      "title": "Nous Research 确认 15 亿美元估值，推出面向企业的 AI Agent",
+      "summary": "TechCrunch 报道，Hermes Agent 的开发方 Nous Research 完成 9000 万美元 B 轮融资，估值确认达 15 亿美元，并推出面向企业用户的 AI Agent 产品。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/",
+      "remark": "这是你正在用的 Hermes 背后那家公司。开源 Agent 拿到独角兽估值并转向企业客户，说明「开源做底座、企业版变现」这条路被资本认可了。对选型的人：开源内核的长期存续性多了一分底气。"
+    },
     {
       "date": "2026-10-07",
       "category": "产品",

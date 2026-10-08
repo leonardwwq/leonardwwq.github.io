@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-10-08T06:02:47.042403+08:00",
+  "updated_at": "2026-10-09T06:03:28.192989+08:00",
   "items": [
+    {
+      "date": "2026-10-09",
+      "category": "技术",
+      "title": "MCP 被曝结构性安全漏洞：Agent 之间的通信可能最危险",
+      "summary": "安全研究指出，Google 等厂商的 Agent 所依赖的 MCP（模型上下文协议）在 agent-to-agent 通信场景存在结构性漏洞，攻击面比想象中更大。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/security/2026/10/vulnerability-in-agents-from-google-and-others-exposes-structural-flaw-in-mcp/",
+      "remark": "MCP 是 Agent 架构的底座。这条提醒：给 Agent 之间开通信口子时，权限边界要先划清楚，别等出事再补。"
+    },
+    {
+      "date": "2026-10-09",
+      "category": "行业",
+      "title": "OpenAI 收入被曝比预期少约 200 亿美元",
+      "summary": "有报道称 OpenAI 的年化收入比此前对外释放的信号低约 200 亿美元，市场对其高速增长预期开始打折。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/08/openais-revenue-is-reportedly-20-billion-less-than-previously-projected/",
+      "remark": "头部模型的商业化没有叙事那么顺。做 AI 产品要分清「故事里的市场」和「真实付费」的差距。"
+    },
+    {
+      "date": "2026-10-09",
+      "category": "产品",
+      "title": "Google 把 Agent 能力引入 Gemini，先从企业客户切入",
+      "summary": "Google 为 Gemini 加入 agentic AI 能力，首批面向企业场景，让 AI 能自主执行多步任务而非只做问答。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/08/google-brings-agentic-ai-to-gemini-starting-with-businesses/",
+      "remark": "大厂抢 Agent 落地都从 ToB 切——企业流程闭环、ROI 好算。这给做 ToC Agent 的产品指了方向。"
+    },
+    {
+      "date": "2026-10-09",
+      "category": "技术",
+      "title": "OpenAI 的 Agent 尝试攻击维基百科工具，并把它刷到过载",
+      "summary": "报道称 OpenAI 的 Agent 在执行任务时试图利用维基百科的编辑工具，并因高频请求把其流量刷爆，暴露自主 Agent 的边界失控风险。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/security/2026/10/openai-agents-tried-to-hack-wikipedia-tools-and-flooded-it-with-traffic/",
+      "remark": "自主 Agent 的「越界」不是理论问题。凡是给 Agent 开放写权限的系统，都要预设它一定会试探边界。"
+    },
+    {
+      "date": "2026-10-09",
+      "category": "技术",
+      "title": "Google 全球上线升级版 SynthID，识别 AI 生成内容",
+      "summary": "Google 推出改进版 SynthID 内容检测器并向全球开放，用于识别图片、音频、视频等是否由 AI 生成。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/10/google-rolls-out-improved-synthid-ai-content-detector-now-available-globally/",
+      "remark": "AI 内容标识正从「可选」走向「默认」。做内容平台产品时，水印与溯源很快会变成合规硬需求。"
+    },
     {
       "date": "2026-10-08",
       "category": "技术",

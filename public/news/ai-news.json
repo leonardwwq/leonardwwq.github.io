@@ -1,6 +1,42 @@
 {
-  "updated_at": "2026-10-10T06:04:01.582704+08:00",
+  "updated_at": "2026-10-11T06:03:20.277733+08:00",
   "items": [
+    {
+      "date": "2026-10-11",
+      "category": "研究",
+      "title": "字节发现 DeepSeek 隐藏 Bug：加点空格，模型就翻车",
+      "summary": "字节团队发现 DeepSeek 一个隐藏缺陷——只需在输入里加入空格，就能让模型输出出错。报道称之为其\"省钱杀手锏\"背后的致命盲区。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/yanxishe/zm33Zeu88CNbEPMx.html",
+      "remark": "这种\"输入扰动就翻车\"的脆弱性，是模型上线前必须做的鲁棒性测试。别只测\"标准问法\"。"
+    },
+    {
+      "date": "2026-10-11",
+      "category": "技术",
+      "title": "为什么业界对 DeepSeek 4.1 Flash 不慌？",
+      "summary": "一位重度用户用了一个月后称，不看模型名根本分不出 DeepSeek 4.1 Flash 和 Opus，而成本低一个数量级。他反问：中国模型只落后一两个月，照样扛同样负载，前沿实验室为什么不慌？",
+      "source": "dgt.is",
+      "url": "https://www.dgt.is/blog/2026-10-07-deepseek-freek-out/",
+      "remark": "\"够用且便宜\"正在杀死\"追新\"叙事。对大多数产品，模型选择重点从\"最强\"转向\"性价比＋稳定性\"。"
+    },
+    {
+      "date": "2026-10-11",
+      "category": "产品",
+      "title": "盘点那些\"活在短信里\"的 AI Agent",
+      "summary": "TechCrunch 整理了最值得关注的\"文本框内\"Agent：从通用助手到面向家庭、旅行和工作的专用 Agent。共同点是不用装 App，直接在聊天窗口里干活。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/10/all-the-ai-agents-that-can-live-in-your-text-messages/",
+      "remark": "入口之战又回到最轻的形态——不装 App。对做产品的人，\"落在用户已有的通信流里\"比再做一个独立 App 的获客成本低得多。"
+    },
+    {
+      "date": "2026-10-11",
+      "category": "技术",
+      "title": "微软纳德拉：AI 模型需要一道\"紧急刹车\"",
+      "summary": "微软 CEO 纳德拉在周六发帖称，现在是时候\"退后一步，审视 AI 的信任架构\"。在 Agent 频频闯祸之后，连大厂 CEO 也开始公开谈\"刹车\"机制。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/10/microsofts-satya-nadella-says-ai-models-need-an-emergency-brake/",
+      "remark": "连纳德拉都开始谈\"信任架构\"和刹车，说明 Agent 可控性已从学术讨论变成产品级议题。做 Agent 产品，安全护栏迟早要摆上台面。"
+    },
     {
       "date": "2026-10-10",
       "category": "技术",

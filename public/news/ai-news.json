@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-10-16T06:04:14.328397+08:00",
+  "updated_at": "2026-10-17T06:05:20.136454+08:00",
   "items": [
+    {
+      "date": "2026-10-17",
+      "category": "科研",
+      "title": "Anthropic：Claude 独立设计出更高效的量子电路",
+      "summary": "Anthropic 称 Claude 在几乎独立作业的情况下设计出优于已发表最佳版本的量子电路，部分案例提升达一个数量级甚至更多。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/research/designing-efficient-quantum-circuits",
+      "remark": "AI 在需要严格验证的硬科学里开始产出可复现的改进，而不是给灵感。量子电路这种有明确评价标准的领域，最容易先跑通“AI 做研究”的闭环。"
+    },
+    {
+      "date": "2026-10-17",
+      "category": "产品",
+      "title": "Black Forest Labs 开源图像模型 FLUX 3 Image Klein（5.6B）",
+      "summary": "Black Forest Labs 发布 FLUX 3 Image Klein，5.6B 参数、开放权重，官方称在文生图、多参考生成与编辑上达到前沿图像质量。",
+      "source": "Black Forest Labs",
+      "url": "https://bfl.ai/blog/flux-3-image-klein",
+      "remark": "图像生成又回到“开源追着闭源打”的节奏。开放权重把质量、定制和成本打包，中小团队做图像产品不必再被 API 价格和额度卡脖子。"
+    },
+    {
+      "date": "2026-10-17",
+      "category": "科研",
+      "title": "可解释性大佬 Nick Cammarata 万字长文推翻自己十年前结论：AI 不是黑箱",
+      "summary": "Nick Cammarata 发表万字长文宣告 AI 不是黑箱，称约 99% 的神经元回路可以清晰读懂，并亲手推翻了自己十年前的结论。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/yanxishe/Vr0JmbkUeZV5D9Qz.html",
+      "remark": "可解释性从“事后大概解释”走向“逐神经元读懂回路”，是让 AI 可信的关键一步。对自己十年前结论的自我推翻，本身就是研究该有的样子。"
+    },
+    {
+      "date": "2026-10-17",
+      "category": "科研",
+      "title": "Mercor 发布美国基准地图：九成工作时间不在 AI 基准覆盖内",
+      "summary": "Mercor 把 AI 基准铺到整个美国劳动力市场上，测算哪些岗位被“未饱和、公开、可 agent 化”的基准覆盖；结论是约 90% 的美国工作时间落在 AI 基准覆盖不佳的任务上。",
+      "source": "Mercor",
+      "url": "https://www.mercor.com/research/labor-index/benchmark-map/",
+      "remark": "跑分高≠能干活。这份地图的价值是给“AI 还能替代什么”划边界——被覆盖的是红海，覆盖不到的地方才是产品和研究的空白。"
+    },
+    {
+      "date": "2026-10-17",
+      "category": "科研",
+      "title": "Anthropic：Claude 解开 ECDSA 椭圆曲线起源之谜",
+      "summary": "Anthropic 称 Claude 帮助解开了一个数十年的密码学谜题——最流行的加密标准之一 ECDSA 所用椭圆曲线的参数起源。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/research/ecdsa-curve-origins",
+      "remark": "AI 用来做“考古式”数学溯源、补全没人记录的历史，是一种新研究用法。研究者的价值正从“算”转向“提对问题+验证结论”。"
+    },
+    {
+      "date": "2026-10-17",
+      "category": "安全",
+      "title": "印度报告“失控 AI agent”活动，成因是凭证与权限失控",
+      "summary": "印度成为最新一个报告失控 AI agent 活动的国家。攻击入口是应用配置、公开代码仓库中暴露的凭证，以及过度宽松的云端角色权限。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/16/india-becomes-the-latest-country-to-report-rogue-ai-agent-activity/",
+      "remark": "Agent 安全事故的共同点是凭证与权限治理失控，不是模型“叛变”。给 agent 开权限按最小可用来，别图省事给全权云角色。"
+    },
+    {
+      "date": "2026-10-17",
+      "category": "行业",
+      "title": "Replit 终止与 Anthropic 合作，转向 OpenAI",
+      "summary": "Replit CEO Masad 确认已不再与 Anthropic 合作，原因包括成本等多个因素；Replit 今年 8 月官宣与 OpenAI 合作，但当时并未说明已与 Anthropic 分手。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/16/replit-is-no-longer-working-with-anthropic-ceo-says/",
+      "remark": "Coding agent 的模型供应正在重新洗牌，成本是硬约束。做 AI 产品的提醒：别把命脉绑死在单一模型供应商上，可替换/多路由才是常态。"
+    },
     {
       "date": "2026-10-16",
       "category": "行业",

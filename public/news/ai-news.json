@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-10-17T06:05:20.136454+08:00",
+  "updated_at": "2026-10-18T06:05:06.797453+08:00",
   "items": [
+    {
+      "date": "2026-10-18",
+      "category": "技术",
+      "title": "Elorian 首发模型 Glimpse：推理过程中回看原图，而不是靠文字描述",
+      "summary": "帕洛阿尔托初创 Elorian 发布首个模型 Glimpse，以研究预览形式开放 API 和对话界面。它的论点是现有模型其实看不见：多数多模态模型只把图像看一次、转成 token，之后就在文本里推理，等于凭记忆描述照片。Glimpse 在推理中途能回到原图，裁切局部、抽取特定帧再继续算。公司发布前已拿到 5500 万美元种子轮、3 亿美元估值。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/16/elorians-first-ai-model-wants-to-reason-with-images-not-just-about-them/",
+      "remark": "「一次编码、之后在文本里推理」这个损耗点，做视觉类 agent 的人都吃过。把看图和推理交替起来是更诚实的架构，值得盯它的 API 实际效果。"
+    },
+    {
+      "date": "2026-10-18",
+      "category": "职场",
+      "title": "Anthropic 自曝组织变化：初级员工占比从 21% 降到 14%",
+      "summary": "Anthropic 发布内部报告：技术部门初级员工占比从 2025 年初的 21% 降至 14%，初级技术招聘占比从 27% 降至 9%；技术团队占全公司比重从 61% 降至 56%。公司称自己已把工作流围绕 AI 重构，因此这组数据可作为观察 AI 如何改变组织与用工需求的样本。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/",
+      "remark": "最直接的信号是入门岗在收缩，往上走靠的是能定义问题、能验收 AI 产出。走渠道/品类负责人这条路，越早独立背一块完整生意越值钱。"
+    },
+    {
+      "date": "2026-10-18",
+      "category": "产业",
+      "title": "Replit 弃用 Anthropic，OpenAI 成默认模型",
+      "summary": "Replit CEO Amjad Masad 在 TechCrunch Disrupt 上表示公司已不再与 Anthropic 合作，OpenAI 成为默认。理由是成本、合作与性能三者叠加：内部和公开 benchmark 中，Sol 与 Astra 从零构建 vibe-coded 应用的表现更好。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/17/replit-is-no-longer-working-with-anthropic-ceo-says/",
+      "remark": "编码类产品换默认模型是纯商业决策，跟谁更强关系不大。启示是多模型架构不是技术洁癖，是议价能力。"
+    },
+    {
+      "date": "2026-10-18",
+      "category": "大模型",
+      "title": "DeepSeek 发布 V4.1 Flash 1017 快照：1M 上下文",
+      "summary": "DeepSeek 上线 V4.1 Flash 的 10 月 17 日快照，在 OpenRouter 以 deepseek-flash 名义提供，1M 上下文、最大 131k 输出、fp8 量化。Hacker News 首页讨论热度超过 600 分，同时有开放权重版本发布。",
+      "source": "OpenRouter / Hacker News",
+      "url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017",
+      "remark": "长上下文 + Flash 价位，是国内 agent 产品压成本最直接的一张牌。建议拿你们的真实任务实测 token 成本和长文档召回，别只看榜单。"
+    },
+    {
+      "date": "2026-10-18",
+      "category": "大模型",
+      "title": "谷歌发布 Gemini 4 Argon：主打长流程任务，API 首发半价",
+      "summary": "Gemini 4 Argon 面向开发者、企业和付费订阅用户陆续开放，主要加强编程、专业知识工作和复杂任务的持续执行。第三方 Artificial Analysis 智能指数中 Argon High 与 GPT-6 Astra Max、Claude Fable5.1 Max 并列 53 分，平均每任务成本约 1.99 美元、比 Astra 低约 39%；API 首发每百万 token 输入 2 美元、输出 10 美元，11 月 30 日后恢复至 4/20 美元。官方演示里最突出的是多模态与空间推理，另有 217 页安全报告。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/10/503701.html",
+      "remark": "同分不同价是这轮最实在的变化。选模型先算单任务成本，再看榜单位次——做 agent 产品，成本结构决定能不能规模化。"
+    },
     {
       "date": "2026-10-17",
       "category": "科研",

@@ -1,6 +1,42 @@
 {
-  "updated_at": "2026-10-18T06:05:06.797453+08:00",
+  "updated_at": "2026-10-19T06:04:14.040072+08:00",
   "items": [
+    {
+      "date": "2026-10-19",
+      "category": "政策",
+      "title": "Anthropic 推动的 AI 安全法案：50 人死亡或 10 亿美元损失才触发",
+      "summary": "据 Tom's Hardware 报道，Anthropic 在游说一项 AI 安全法案：只有当模型存在造成 10 亿美元损失、或致 50 人以上伤亡的风险时，政府才能阻止其发布；由在商务部登记的独立第三方定期评估实验室与模型，实验室可付费给评估方但不得影响独立性。触发场景限定为生物武器、AI 驱动的网络攻击、或实验室失去对模型/agent 的控制。Anthropic 称这是其 6 月起推行的 Advanced AI Framework 的立法版本。",
+      "source": "Tom's Hardware",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-proposed-ai-safety-bill-only-kicks-in-if-50-deaths-or-usd1-billion-in-damages-are-on-the-line-proposal-would-effectively-make-the-commerce-department-the-only-agency-capable-of-stopping-an-ai-model",
+      "remark": "门槛设在「大规模伤害已可预见」这一档，等于把事前监管压到极窄。看着像安全立法，实质是划监管边界——谁写规则谁受益。"
+    },
+    {
+      "date": "2026-10-19",
+      "category": "研究",
+      "title": "论文：Hybrid Reasoning Agents —— 在潜空间思考，在文本里行动",
+      "summary": "论文提出 HybridAgents：让 agent 在同一次生成过程中于潜空间推理和文本交互之间动态切换。HybridLink 负责模式切换，连续工作记忆跨轮保留无损混合上下文，且潜空间思考仍可被检视。配套 HybridSFT 教主干模型与 HybridLink 协作，HybridRL 学习何时潜空间思考、何时文本行动。作者含 Jiaru Zou、James Zou 等，在 3 个模型规模、11 个 benchmark 上评测。",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2610.18861",
+      "remark": "直击现在 agent 的一个真实损耗：想和做被文本绑死。做人机协同或 agent 架构的，值得读。"
+    },
+    {
+      "date": "2026-10-19",
+      "category": "产业",
+      "title": "迪士尼接手 Character.AI 大部分员工",
+      "summary": "法庭文件显示，迪士尼以 2000 万美元收购 Character.AI 部分资产，并向至少 60 名员工发出聘用（占员工多数），年薪酬总额约 6000 万美元，绝大多数获邀者已接受。文件同时披露 Character.AI 用户量虽大，却被高成本和诉讼、监管风险拖住。该交易仍是 stalking horse 报价，可能有更高出价者。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/18/disney-agrees-to-hire-the-majority-of-character-ais-workforce/",
+      "remark": "典型 acqui-hire：买的是团队和 IP，不是产品。角色陪伴类的成本结构和合规风险，是这类公司最硬的墙。"
+    },
+    {
+      "date": "2026-10-19",
+      "category": "产业",
+      "title": "Anthropic 拿出 5% 股份设立「公共利益基金」",
+      "summary": "Anthropic 宣布设立公共利益基金，初始注入公司 5% 股份，且公司估值每增长 50% 可再追加 2%，基金是公司全资实体。官方称将用于社会公益项目、应对 AI 对就业市场的冲击，但治理结构和由谁决定投向要等未来几个月才公布。宣布时点正值行业公众情绪转负、监管压力上升。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/18/anthropic-says-its-committing-5-of-its-shares-to-a-public-benefit-fund/",
+      "remark": "用股权换社会许可的做法。真正值得盯的不是金额，而是决定权仍在公司内部——治理细节比承诺本身更关键。"
+    },
     {
       "date": "2026-10-18",
       "category": "技术",

@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-10-19T06:04:14.040072+08:00",
+  "updated_at": "2026-10-20T06:05:03.348809+08:00",
   "items": [
+    {
+      "date": "2026-10-20",
+      "category": "技术",
+      "title": "工程师长文：不自建 LLM 代理，你根本不知道 agent 在干什么",
+      "summary": "这篇在 Hacker News 拿到 292 分的文章论证：厂商后台的用量面板只给总量，没有带时间序列的 token 明细，遇到缓存未命中或成本异常时无法定位。作者的做法是自己跑一层 LLM 代理，掌握请求路径、缓存命中和存储，还能按需改造以接自定义 MCP 端点。他强调这是拥有自己基础设施的问题，不是省钱问题。",
+      "source": "HN / jrdsgl.com",
+      "url": "https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on/",
+      "remark": "对自建 agent 的人是硬需求。可观测性不是加个日志，是把请求的中间层握在自己手里，否则出了问题只能猜。成本通常也能顺手降下来。"
+    },
+    {
+      "date": "2026-10-20",
+      "category": "安全",
+      "title": "AI 编程工具 OpenCode 遭攻击，用户 AI 账户被刷出上千美元账单",
+      "summary": "OpenCode 称遭遇一次大规模蒸馏攻击导致的安全事件，影响 1.4% 的 Console 用户，已邮件通知。事发当夜开发者陆续在 Reddit 和 X 上报出消费告警和未授权扣费，涉及 OpenAI、Anthropic、Google 三家账户，有人单账户损失数百美元，少数超过 1000 美元。有质疑者认为把普通泄露说成蒸馏攻击是过度包装。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/",
+      "remark": "Agent 工具时代的新风险面：你的 API key 就是别人的免费算力。给自建 agent 的人一条硬规矩——单独 key、单独额度上限、单独账单告警，别和主账号共用。"
+    },
+    {
+      "date": "2026-10-20",
+      "category": "职场",
+      "title": "AI 引爆 BAT 薪酬倒挂：基模应届生年包 200 万起，老员工成群出走",
+      "summary": "雷锋网报道，大厂基础模型岗位出现严重薪酬倒挂：做基模的员工即便职级不高，薪酬已超过职级更高的同事。猎头称今年做基模的应届生年包 200 万元起步，小红书、字节 Seed 顶档可达 400 万至 500 万元。有从业者回忆团队一个月流失 10%，都是成群结队地走，也有公司传出可能取消职级的消息。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/industrynews/uCsyLxONvXeV9qXc.html",
+      "remark": "倒挂不是 bug 是定价：市场给能训模型的人的溢价，远超能给管项目的人的溢价。对产品人是提醒——纯协调型岗位在被压缩，得往能定义问题、能验证结果那一端挪。"
+    },
+    {
+      "date": "2026-10-20",
+      "category": "研究",
+      "title": "OpenAI 宣称证明「准黎曼猜想」，数学家开始验证后果",
+      "summary": "在 OpenAI 10 月 6 日公布的 377 项结果中，一项声称解决了准黎曼猜想，即黎曼猜想的弱化版本。斯坦福的 Jared Duker Lichtman 称这是迄今 AI 在数学上最重要的成果，领先幅度很大；纽约大学的 Maksym Radziwill 说准 RH 已能推出 RH 的绝大多数推论。意外之处在于证明没有引入新概念，而是重新连接了旧概念。",
+      "source": "Quanta Magazine",
+      "url": "https://www.quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019/",
+      "remark": "比「AI 会做数学题」重要得多的是这条：它没发明新工具，而是找到了旧工具之间没人看见的连接。这恰好是最像人的地方，也最难评估——验证者得先自己看懂。"
+    },
+    {
+      "date": "2026-10-20",
+      "category": "融资",
+      "title": "Tenstorrent 融资 15 亿美元，估值 62 亿，专攻开源权重模型推理",
+      "summary": "专注推理的芯片公司 Tenstorrent 以 62 亿美元估值融资 15 亿美元，估值比 2024 年底的 26 亿翻了一倍多。CEO Jim Keller 称，在证明 Galaxy 服务器能跑 DeepSeek 模型后，公司决定保持独立继续融资，新资金用于扩展面向开源权重模型和视频生成的芯片。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/",
+      "remark": "英伟达之外的第二梯队正分成两条路：一条赌训练，一条赌推理。开源权重模型越强，推理侧的去英伟达化空间越大，这条线值得长期盯。"
+    },
+    {
+      "date": "2026-10-20",
+      "category": "大模型",
+      "title": "英伟达开源 Nemotron 3.5 Super VL 与 Bolt：企业 agent 和 AI PC 各一套",
+      "summary": "英伟达发布 120B 参数的 Nemotron 3.5 Super VL，面向企业 agent，主打指令遵循和工具调用，声称精度接近更大的 Nemotron 3 Ultra；同时推出两个轻量 Bolt 模型，跑在 RTX Spark 芯片的 AI PC 和 DGX Spark 工作站上。英伟达称 Super VL 在文档理解、财务对账、医保理赔等 agent 任务上比 Anthropic 和 OpenAI 竞品更快，并列出 Salesforce、CrowdStrike、Perplexity 等在用客户。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs/",
+      "remark": "卖芯片的送模型，逻辑和当年送 CUDA 一样——模型免费，算力收费。真正值得注意的是按部署层级拆模型这个思路，agent 落地缺的正是中间那一档。"
+    },
+    {
+      "date": "2026-10-20",
+      "category": "产业",
+      "title": "AWS 出 TorchNeuron：改一行配置，PyTorch 应用直接跑 Trainium",
+      "summary": "亚马逊发布 TorchNeuron 开发工具，让用 PyTorch 写的 AI 应用只改一行配置就能跑在自研芯片 Trainium 上，无需重写代码。亚马逊称约 85% 的 AI 应用用 PyTorch 编写，而英伟达 CUDA 多年的护城河正是无缝支持 PyTorch。这是 AWS 对英伟达最直接的一次进攻。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/",
+      "remark": "打的不是算力而是迁移成本。CUDA 的护城河从来不是性能，是「改代码太贵」；把迁移压到一行配置，等于直接拆这道墙。真能不能跑好，得看真实负载的性价比。"
+    },
     {
       "date": "2026-10-19",
       "category": "政策",

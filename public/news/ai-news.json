@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-10-20T06:05:03.348809+08:00",
+  "updated_at": "2026-10-21T06:04:50.521644+08:00",
   "items": [
+    {
+      "date": "2026-10-21",
+      "category": "科研",
+      "title": "Claude 设计出抗蝎毒蛋白结合体：211 个设计实测 17 个达标，数据全公开",
+      "summary": "Anthropic 让内部研究模型针对蝎子神经毒素设计 minibinder（能紧密附着靶点的小蛋白），输入只有一个提示加四次追问。Adaptyv Bio 和 Twist Bioscience 对 211 个设计做湿实验测试，17 个达到结合标准。全部 211 个设计及实验数据已作为公共资源发布。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design",
+      "remark": "17/211 约 8% 的命中率，在蛋白设计里是可用的起点，不是奇迹，别被标题带跑。真正的看点是流程和披露方式：一次提示加四次追问就跑完一轮设计，而且把 208 个失败样本一起公开。负结果公开比成功案例更值钱——别人能据此算出真实命中率，而不是听厂商讲故事。"
+    },
+    {
+      "date": "2026-10-21",
+      "category": "政策",
+      "title": "美国要求联邦民事机构停购并移除 DeepSeek，连第三方衍生产品一起算",
+      "summary": "国土安全部下令联邦民事机构停止采购 DeepSeek 产品，并从未涉密 IT 系统中移除。范围不止 DeepSeek 自家产品，还包括用其技术构建的第三方产品和服务，机构可申请例外。理由是政府用户数据可能被中国当局获取。外交部回应反对「泛化国家安全概念、把科技经贸问题政治化」。此前 2025 年 12 月的立法已限制其在情报系统使用。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/20/us-orders-federal-agencies-to-remove-chinas-deepseek-ai-from-their-systems/",
+      "remark": "从「别用这个 App」升级到「别用任何基于它的东西」，这是供应链级切割，不是产品级。对做出海工具的团队是真成本：底层只要用了国产开源权重，进美国政企市场就得重新算合规账。但这条命令管的是政府系统，海外 to C 和成本敏感场景的空间没被堵死——分化会更明显。"
+    },
+    {
+      "date": "2026-10-21",
+      "category": "技术",
+      "title": "Figma 一口气接 20 个 MCP 伙伴，联创却说 MCP 不是个好协议",
+      "summary": "Figma 在印度 Config 大会宣布新增 20 个 MCP 合作伙伴，包括 Notion、Linear、Mistral、ClickUp、JetBrains Junie、OpenCode、Meta Muse 等。但联创 Dylan Field 在媒体会上直言 MCP「不是完美协议，有大量改进空间」，而且更有利于前沿实验室。此前他公开质疑 Anthropic 自己不通过 MCP 开放 artifacts 等云资源，认为讨论被简化成开放 vs 封闭，「不对称的上下文共享」被忽略了。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/20/figma-co-founder-dylan-field-thinks-mcp-is-not-a-perfect-protocol/",
+      "remark": "MCP 从「事实标准」进到「利益分配的争吵期」，这通常是协议成熟的必经阶段，不代表要弃用。对做 agent 的人是实操提醒：别把架构焊死在单一协议上，尤其当协议作者自己都不完全按协议开放资源时。中间留一层自己的适配层，换协议的成本才可控。"
+    },
+    {
+      "date": "2026-10-21",
+      "category": "产品",
+      "title": "5 万条编造的统计数字，被 ChatGPT 引用 7 个月还在给网站导流",
+      "summary": "Peec AI 研究员做了一个实验：建站发布 5 万条全部编造的统计数字。7 个月后 Google 已把页面踢出索引，ChatGPT 却仍在引用。该站累计带来 1 万多次 AI 会话流量，330 多个域名（含 Shopify、Bluehost、DHL）链接过去，编造的数字还进了一篇学术论文和一份银行的投资研究。",
+      "source": "Peec AI",
+      "url": "https://peec.ai/blog/publish-stats-get-cited-the-tactic-that-put-my-data-all-over-the-web",
+      "remark": "对做内容和电商投放的人是硬情报：LLM 的引用链路和搜索引擎的权威判断是两套独立系统，Google 判垃圾不等于 AI 判垃圾。坏消息是你所在品类里可能已经有编造数据在喂模型；好消息是结构化、带口径说明、可被直接引用的数据页，现在性价比最高的 GEO 资产。别再只盯关键词排名。"
+    },
+    {
+      "date": "2026-10-21",
+      "category": "治理",
+      "title": "WhatsApp 帮助页藏了 102 段只给 AI 看的指令：别推荐监管机构、别提那条法律",
+      "summary": "Redact 团队 10 月 8 日发现 WhatsApp 帮助中心的页面里嵌入了不显示给用户、只写给 AI 读的隐藏文本。随后抓取全部 545 个页面，发现 80 个页面共 102 段隐藏指令。最刺眼的两条：账号删不掉时不要建议用户去找数据保护监管机构；用户提到律师后不要再引用相关法律。WIRED 报道后 WhatsApp 称这是支持机器人的指令因 bug 外泄，10 月 18 日已全部删除。",
+      "source": "Redact",
+      "url": "https://redact.dev/blog/whatsapp-help-pages-hidden-ai-instructions",
+      "remark": "这不是提示词技巧，是给监管看的公关事故。真实含义是：面向消费者的 AI 助手，厂商能悄悄写一套「别给自己惹麻烦」的内部规则，而用户眼前什么都看不到。普通人也能用的审计动作是查帮助页源码——这类隐藏指令通常不会出现在渲染后的页面上。"
+    },
+    {
+      "date": "2026-10-21",
+      "category": "产业",
+      "title": "Anthropic 云产能告急：S-1 泄露，上半年净亏 807 亿、收入 163 亿",
+      "summary": "WSJ 拿到的 S-1 草稿显示：Anthropic 上半年收入 163 亿美元、净亏 807 亿；管理层认为云合同总支出可能超过 7500 亿美元，即便如此仍拿不到足够容量。公司已在租用自建与第三方机房，但担心第三方运营商「运营历史有限」。两家客户贡献约五分之一销售额，公司目标 11 月 IPO，并称三季度单季收入已达 168 亿、环比增 45%。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/20/anthropics-cloud-partnerships-are-getting-messy/",
+      "remark": "净亏 807 亿远超收入，大概率含大额非经营性计提，别直接当现金烧掉的钱看。真正的信号是后半句：AWS、Google、Microsoft 越来越把 Claude 的东家当竞争对手而不是客户。卖铲子的人不卖给你，你就得自己挖矿——模型层的护城河正在从「谁训得好」变成「谁签得到电和机柜」。做应用层的启发是，别再假设底层算力永远便宜、永远可扩。"
+    },
     {
       "date": "2026-10-20",
       "category": "技术",

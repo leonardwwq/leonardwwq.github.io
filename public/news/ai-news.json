@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-10-22T06:02:59.411185+08:00",
+  "updated_at": "2026-10-23T06:03:50.292622+08:00",
   "items": [
+    {
+      "date": "2026-10-23",
+      "category": "融资",
+      "title": "DeepSeek 据报融资 150 亿美元，就在美国限制令几天之后",
+      "summary": "据 TechCrunch 报道，DeepSeek 完成 150 亿美元融资，是中国规模最大的融资轮之一。而就在几天前，美国政府以国家安全为由要求联邦机构移除其技术。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/22/deepseek-reportedly-raises-15b-days-after-us-restrictions/",
+      "remark": "一边被美国政府下令清退，一边拿到国内最大级别融资——这不是矛盾，是分叉。国内市场把它锁进\"国产替代\"采购清单，海外叙事里它变成\"安全风险\"。对做产品的人：供应链里用了海外模型的，现在该准备 B 计划；纯国内业务反而更稳。"
+    },
+    {
+      "date": "2026-10-23",
+      "category": "Agent",
+      "title": "Claude Duet 上线：Anthropic 正式押注 agent",
+      "summary": "Anthropic 推出 Claude Duet 应用，目前以 waitlist 形式面向 Pro 和 Max 订阅用户开放。外界将其解读为 Anthropic 在 agent 方向上的一次正式下注。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/22/claude-duet-app-is-anthropics-bet-on-agents/",
+      "remark": "Anthropic 过去一直卖\"模型\"，现在开始卖\"干活的界面\"。Duet 这个命名说明形态：不是聊天窗口，是双人协作。真正的分水岭在于 agent 能不能接管长流程——自己开浏览器、填表、跑完一件事再回来汇报。这个能力一旦稳定，PM 的工作方式会先被它改掉。"
+    },
+    {
+      "date": "2026-10-23",
+      "category": "安全",
+      "title": "1Password 让 AI agent 代你登录，但 agent 看不到你的密码",
+      "summary": "1Password 推出新功能，允许 AI agent 登录用户的个人账户，同时不暴露保护账户的私密凭据。解决的是 agent 代替人操作时的身份授权问题。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/",
+      "remark": "这是 agent 落地最卡的一环之一：身份。以前要么把密码交给 agent（等于交钥匙），要么每步人工介入。1Password 的做法是凭据锁在保险库，agent 拿到一次性通行证——安全模型从\"信任执行者\"转向\"信任授权方\"。这是 agent 生态真正跑起来必须补的基础设施。"
+    },
+    {
+      "date": "2026-10-23",
+      "category": "产业",
+      "title": "Uber 把全部 3 万名员工推上 ChatGPT Work",
+      "summary": "Uber 此前只做小范围试点，现在把 ChatGPT Work 全公司铺开，覆盖 3 万名员工。这是大型企业从 AI 试点走向全面部署的又一个案例。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/22/uber-puts-all-30000-employees-on-chatgpt-work/",
+      "remark": "从 pilot 到全员，信号价值大于技术价值——大厂在给\"AI 办公\"投票。对做企业级产品的：采购决策已经从\"要不要用\"变成\"怎么统一管\"，数据合规、权限、审计会是接下来真正的门槛。"
+    },
+    {
+      "date": "2026-10-23",
+      "category": "产品",
+      "title": "Canva 发布首个自研图像生成模型，向全部用户开放",
+      "summary": "Canva 推出自家首个图像生成模型，对所有用户开放，主打更强的可定制性和更低的成本。此前 Canva 主要依赖第三方模型能力。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model/",
+      "remark": "设计工具自研模型，目的通常不是\"更强\"，而是\"更便宜 + 更贴场景\"。调 API 时价格和延迟被上游卡着；自研后可以把生成塞进编辑流程的每一步，而不是当一个外挂按钮。工具类产品的模型策略多数会走这条路。"
+    },
+    {
+      "date": "2026-10-23",
+      "category": "产业",
+      "title": "Spotify 的 AI 赌注：要做\"agent 会主动选择\"的音乐服务",
+      "summary": "Spotify 联合 CEO Gustav Söderström 解释，AI agent 的崛起对音乐服务可能是好事。核心判断是：当用户不再自己打开 App，而是让 agent 代为选歌，谁能成为 agent 的默认选项谁就拿到入口。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/22/spotifys-current-ai-bet-is-about-being-the-music-service-that-agents-choose/",
+      "remark": "这条跟沃尔玛的 Agent Gateway 是同一件事的两面：大家开始抢的不是用户，是 agent 的默认选项。SEO 之后会长出 AEO（Agent Engine Optimization），做渠道的人要提前想这个位怎么占。"
+    },
     {
       "date": "2026-10-22",
       "category": "大模型",

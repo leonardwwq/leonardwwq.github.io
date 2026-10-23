@@ -34,9 +34,10 @@ export const spotlightProjects: SpotlightProject[] = [
     ctaLabel: '查看完整案例',
     badge: '年均管理 3000 万美元预算',
     iconId: 'megaphone',
-    // 案例库分类里已有完整条目，避免同一项目在 /work 出现两次；只在首页置顶
+    // 2026-10-23 起首页置顶位暂时下线（用户决定这个板块先不弄）。
+    // 需要恢复时把 showOnHome 设回 true 即可，数据都还在。
     showOnWork: false,
-    showOnHome: true,
+    showOnHome: false,
   },
 ];
 

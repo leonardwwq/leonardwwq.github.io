@@ -11,13 +11,15 @@ const { project, layout } = Astro.props;
 const ctaLabel = project.ctaLabel ?? '查看 Demo';
 const iconHtml = project.iconId ? workProjectIcons[project.iconId] : null;
 const description = layout === 'banner' ? project.homeDescription : project.description;
+/** 站内路径同窗口跳转；站外链接才开新窗口 */
+const isExternal = /^https?:\/\//i.test(project.externalUrl);
 ---
 
 <a
   class:list={['spotlight-card', 'card', `spotlight-card--${layout}`]}
   href={project.externalUrl}
-  target="_blank"
-  rel="noopener noreferrer"
+  target={isExternal ? '_blank' : undefined}
+  rel={isExternal ? 'noopener noreferrer' : undefined}
   data-robot-topic="spotlight"
 >
   {iconHtml ? <span class="card__icon" aria-hidden="true" set:html={iconHtml} /> : null}

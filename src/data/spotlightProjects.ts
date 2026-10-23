@@ -22,19 +22,20 @@ export type SpotlightProject = {
 
 export const spotlightProjects: SpotlightProject[] = [
   {
-    id: 'agentflow',
-    title: 'Agent Flow',
+    id: 'asa-smart-delivery',
+    title: 'ASA 智能投放平台',
     description:
-      '这是我最近在做的个人项目 Agent Flow——一人用多个 AI 角色协作做项目的控制台，Dashboard 可交互演示已更新至 v0.2.0。欢迎直接打开 Demo，体验角色配置、工作流与「产出经你确认再交接」的完整路径。',
+      '作为产品负责人主导的完整业务系统：投放管理、数据管理和垫资风控一体化。年均管理超 3000 万美元广告预算、覆盖 1000+ 广告账户。',
     homeDescription:
-      'Agent Flow 最新 Demo 已上线：配置 AI 角色与工作流，在 Dashboard 一眼看清项目阶段与待确认交付。',
-    homeEyebrow: '最近产品 Demo',
-    tags: ['AI Agent', '工作流', 'Demo', '个人项目'],
-    externalUrl: 'https://agentflow.weipm.com',
-    ctaLabel: '查看 Demo',
-    badge: 'Demo · v0.2.0',
-    iconId: 'sparkles',
-    showOnWork: true,
+      '我作为产品负责人从需求分析做到上线发布的完整业务系统：年均管理超 3000 万美元广告预算、覆盖 1000+ 广告账户、支撑 10+ 人投放团队。投放主链路、多源数据策略与客户垫资风控收口到同一平台，AI 建议可一键应用到投放动作，把「看数—判断—改价」压成一条线。',
+    homeEyebrow: '代表作 · 产品负责人全流程',
+    tags: ['完整业务系统', 'Apple Search Ads', '投放 + 数据 + 风控', '产品负责人'],
+    externalUrl: '/work/asa-smart-delivery',
+    ctaLabel: '查看完整案例',
+    badge: '年均管理 3000 万美元预算',
+    iconId: 'megaphone',
+    // 案例库分类里已有完整条目，避免同一项目在 /work 出现两次；只在首页置顶
+    showOnWork: false,
     showOnHome: true,
   },
 ];

@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-10-23T06:03:50.292622+08:00",
+  "updated_at": "2026-10-24T06:07:04.600334+08:00",
   "items": [
+    {
+      "date": "2026-10-24",
+      "category": "产业",
+      "title": "微软 MAI-DxO 登上《Science》：疑难病例准确率 83%，全科医生 36%",
+      "summary": "微软 AI 的诊断系统 MAI-DxO 协调多个 agent 扮演医生会诊团，向病人提问、开检查、辩论诊断。用《新英格兰医学杂志》疑难病例做模拟，正确率 83%，而单独工作的全科医生和内科医生为 36%。须注意这类复杂病例现实中通常由专科医生或医疗团队处理，而他们未参与对照。研究自身数据显示提升大部分来自底层模型更强，编排系统在上面再加一层。最佳结果用 GPT-5 和 GPT-5.5 取得。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/",
+      "remark": "83% 对 36% 很容易被误读——对手是单个全科医生加参考资料，不是专科团队。真正的信息在成本那段：单靠 GPT-5 加一句短提示就到 78.9%，编排层只多赚几个点。医疗 AI 的瓶颈已经不在怎么组织 agent，而在模型本身和谁来承担责任。"
+    },
+    {
+      "date": "2026-10-24",
+      "category": "研究",
+      "title": "MIT 把 13 个 agent 扔到虚拟荒岛 30 小时，它们自己发明了游戏",
+      "summary": "MIT 研究者让 13 个基于 Claude Opus 4.7 的 agent（代号 Eko）在模拟荒岛独处 30 小时，不给具体任务。它们开始自设挑战、发明玩法，甚至为丢掉的戒指悼念。随后给它们明确任务，例如把尽可能多的物体送上最高岩柱，玩过 30 小时的 agent 普遍打败从未上岛的对照组。论文已发在 arXiv，尚未同行评议。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/22/left-alone-with-nothing-to-do-ai-agents-started-playing/",
+      "remark": "重点不是 AI 会玩，是训练范式换了：以前由人先定义该练什么、什么算进步；现在给一个足够丰富又安全的世界，让它自己挑什么有意思。这条路径指向的正是机器人技能——真实世界里没人能事先列完所有任务。"
+    },
+    {
+      "date": "2026-10-24",
+      "category": "学术",
+      "title": "Anthropic 用 Claude 在 100 多个开源库上做形式化验证，挖出多年没被发现的 bug",
+      "summary": "Anthropic 与 Theorem 合作，用 Claude 在 RISC-V 汇编层面为 100 多个真实开源软件库证明安全性质，称这是首次把 AI 形式化验证大规模用于生产级汇编代码。过程中还发现了跑过数万亿次测试都没暴露的 bug。形式化验证过去需要专家投入数年、对多数项目不可行，Anthropic 认为 LLM 已能让它规模化。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/research/formal-verification",
+      "remark": "这条比模型跑分重要得多。当 AI 能写证明而不只是写代码，这软件有没有漏洞就从信仰问题变成数学问题。对工程师的含义：验证会像编译器一样变成基础设施，不再只是少数专家的手艺。"
+    },
+    {
+      "date": "2026-10-24",
+      "category": "技术",
+      "title": "NVIDIA 开源 OpenShell：给 agent 舰队一个私有安全运行时",
+      "summary": "OpenShell 定位为自主 AI agent 舰队的安全生产环境。agent 需要读文件、装包、调 API、用凭据才有用，OpenShell 让你逐项声明每个 agent 能碰什么，从而在不交出数据、密钥和网络全权限的前提下给它这些能力。0.1.0 已发布，含稳定发布节奏、新隔离原语、扩展接口与新 API，Rust 实现，仓库约 1856 次提交。",
+      "source": "GitHub",
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "remark": "这类项目才是 agent 真正铺开的前提。现在几乎所有 agent 演示都在回避同一个问题：你敢让它跑在自己机器上吗？权限声明加隔离层，是把玩具变成能上生产的那道门。"
+    },
+    {
+      "date": "2026-10-24",
+      "category": "融资",
+      "title": "OpenAI 传再融 300 亿美元，估值 1.25 万亿，IPO 前再走一轮私募",
+      "summary": "据 CNBC，OpenAI 正洽谈最多 300 亿美元新融资，投前估值 1.25 万亿美元，由 Coatue 与阿联酋投资方领投，UAE 部分资金可能捆绑算力合作，条款仍在谈。若落地将刷新最大私募估值纪录。此前 3 月一轮投后估值 8520 亿，6 月已递交 IPO 保密文件。CNBC 同时称 Anthropic 上市估值目标 1.5 万亿至 2 万亿美元。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/",
+      "remark": "一边喊 IPO，一边又回头做私募——说明公开市场不一定接得住这个价。真正的信号不是 1.25 万亿，是阿联酋那部分可能用算力换股权：估值靠算力堆出来，估值里也正在长出算力。"
+    },
     {
       "date": "2026-10-23",
       "category": "融资",

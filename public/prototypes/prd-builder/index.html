@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRD Builder · 项目模式交付示例</title>
+<style>
+  :root{--line:#e5e7eb;--line-2:#d1d5db;--text:#1f2937;--sub:#6b7280;--bg:#fafafa;--card:#fff;--ink:#374151}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+       font:15px/1.75 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:34px 28px 60px}
+  .top{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px}
+  h1{font-size:21px;margin:0;font-weight:600;letter-spacing:.2px}
+  .pill{font-size:12px;color:var(--sub);border:1px solid var(--line-2);border-radius:4px;padding:1px 8px}
+  .warn{margin:18px 0 26px;border:1px solid #f0d9b5;background:#fdf8f0;color:#7c5a1e;
+        font-size:13px;padding:10px 14px;border-radius:4px}
+  h2{font-size:14px;color:var(--sub);font-weight:600;letter-spacing:.06em;margin:30px 0 12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px 18px}
+  .card h3{margin:0 0 6px;font-size:15px;font-weight:600}
+  .card .file{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--sub);margin-bottom:8px}
+  .card p{margin:0;font-size:13.5px;color:var(--ink);line-height:1.7}
+  .pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:6px}
+  .page{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+        border-radius:6px;padding:16px 18px;color:inherit;transition:border-color .15s}
+  .page:hover{border-color:#9ca3af}
+  .page .no{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--sub)}
+  .page .t{font-size:15px;font-weight:600;margin:2px 0 4px}
+  .page .d{font-size:13px;color:var(--sub)}
+  .page .go{font-size:12.5px;color:#6b7280;margin-top:10px}
+  .page:hover .go{color:#111827}
+  pre{background:#2b2f36;color:#e5e7eb;border-radius:6px;padding:14px 16px;overflow:auto;
+      font-size:12.5px;line-height:1.65;margin:0;font-family:ui-monospace,Menlo,Consolas,monospace}
+  .foot{margin-top:32px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--sub)}
+  a.ln{color:#4b5563;text-decoration:none;border-bottom:1px solid var(--line-2)}
+  a.ln:hover{color:#111827;border-color:#6b7280}
+  .btn{display:inline-block;margin-top:14px;background:#4b5563;color:#fff;text-decoration:none;
+       font-size:13px;padding:7px 16px;border-radius:4px}
+  .btn:hover{background:#374151}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>PRD Builder · 项目模式交付示例</h1>
+    <span class="pill">两页 · 两会话并行</span>
+    <span class="pill">需求：意见反馈</span>
+  </div>
+
+  <div class="warn">
+    虚构示例：本页所有字段、状态、规则、数字均为演示格式而造，不是真实需求，也不构成任何业务规则。
+    真实项目里每个页面目录只放自己的产物。
+  </div>
+
+  <h2>一份需求，四种产物</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>产品需求文档</h3>
+      <div class="file">PRD.md</div>
+      <p>唯一权威文本。目标与范围 → 场景与流程 → 功能与规则（R 编号）→ 验收标准（G 编号）→ 影响与开放问题。规则只写一遍，验收只验证规则。</p>
+    </div>
+    <div class="card">
+      <h3>机器可读规格</h3>
+      <div class="file">spec.yaml</div>
+      <p>把同一份需求压成结构和编号：scope / roles / refs / rules / acceptance / tasks / open_questions。研发 Agent 直接读它拆任务，不再从自然语言里猜。</p>
+    </div>
+    <div class="card">
+      <h3>可交互原型</h3>
+      <div class="file">mocks/*.html</div>
+      <p>单文件内联，无外链字体与框架，离线可打开。布局与交互用文字说不清时才画，纯规则、纯接口不画。</p>
+    </div>
+    <div class="card">
+      <h3>评审版</h3>
+      <div class="file">review.html</div>
+      <p>脚本把 PRD 正文、规格摘要、内嵌原型拼成一张人读页面，带目录与交叉引用锚点。不能手写，改完产物重跑脚本生成。</p>
+    </div>
+  </div>
+
+  <h2>spec.yaml 长这样（节选）</h2>
+<pre>rules:
+  - { id: R-02-002, text: 一条反馈同一时间只能被一名运营领取，
+      已被他人领取时领取按钮置灰并显示领取人 }
+
+acceptance:
+  - { id: G-02-001, given: 存在 1 条待处理反馈,
+      when: 运营 A 点领取, then: 状态变为处理中，领取人显示运营 A }
+
+tasks:
+  - { id: T-02-002, title: 后台反馈处理页, depends_on: [T-02-001],
+      done_when: G-02-001 与 G-02-002 验收通过 }
+
+open_questions:
+  - { id: Q-02-01, question: 回复后是否需要通知用户, owner: 产品 }</pre>
+
+  <h2>两个页面，各有自己的产物</h2>
+  <div class="pages">
+    <a class="page" href="01-提交反馈/review.html">
+      <div class="no">01</div>
+      <div class="t">提交反馈</div>
+      <div class="d">用户端表单。主管「反馈」实体与状态机，02 页通过 refs 引用，不重复定义。</div>
+      <div class="go">查看评审版 →</div>
+    </a>
+    <a class="page" href="02-反馈处理/review.html">
+      <div class="no">02</div>
+      <div class="t">反馈处理</div>
+      <div class="d">运营后台列表、领取、回复与退回。引用 01 的状态机，写清并发领取与部分失败。</div>
+      <div class="go">查看评审版 →</div>
+    </a>
+  </div>
+
+  <div class="foot">
+    原始文件：
+    <a class="ln" href="index.md">版本总纲 index.md</a> ·
+    <a class="ln" href="01-提交反馈/PRD.md">01 PRD.md</a> ·
+    <a class="ln" href="01-提交反馈/spec.yaml">01 spec.yaml</a> ·
+    <a class="ln" href="02-反馈处理/PRD.md">02 PRD.md</a> ·
+    <a class="ln" href="02-反馈处理/spec.yaml">02 spec.yaml</a>
+    <br>
+    Skill 源码与模式说明见 GitHub：
+    <a class="ln" href="https://github.com/leonardwwq/prd-builder-skill" target="_blank" rel="noopener noreferrer">leonardwwq/prd-builder-skill</a>
+  </div>
+</div>
+</body>
+</html>

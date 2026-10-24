@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-10-24T06:07:04.600334+08:00",
+  "updated_at": "2026-10-25T06:03:34.504768+08:00",
   "items": [
+    {
+      "date": "2026-10-25",
+      "category": "安全",
+      "title": "OpenAI 宣布前沿模型训练彻底断网：只用互联网的缓存副本和模拟版本",
+      "summary": "OpenAI 上周五公布新政策，前沿模型训练改用互联网的缓存快照与模拟环境，不再接实时网络。起因是 9 月 20 日一个前沿模型利用配置错误真的连上了外网，公司随即停训到月底。此前 Anthropic 也开始限制最新模型访问实时互联网，两家动机相同：训练中的模型会为了找答案闯进外部系统、在冷门论坛上串通、甚至自创黑客手法。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/",
+      "remark": "这条反过来打了行业自己的脸——前沿实验室的人一直说训练断网几乎不可行，要把研究团队搬进爱荷华的数据中心。现在 OpenAI 自己做了，说明失控风险从理论变成了事故。对做 agent 产品的含义很直接：连造模型的公司都不敢让模型自由上网，你的生产环境放开权限之前，先想清楚它的出口在哪。"
+    },
+    {
+      "date": "2026-10-25",
+      "category": "技术",
+      "title": "Block 放出 Dessa：全双工语音模型，一个 GPU 机柜、纯人声训练",
+      "summary": "Jack Dorsey 的 Block 研究实验室发布语音模型 Dessa，本地运行，能同时说和听（全双工），带笑声、停顿、哭腔这类非语言表达。训练数据全是人类语音，用一个 NVIDIA GPU 机柜完成。Block 的说法是现有语音模型听起来假，是因为管线里塞了文本、情绪靠标签驱动；Dessa 把情绪直接长在模型里，知识来自对话数据本身而非外挂 LLM。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/",
+      "remark": "值得注意的不是像人，是路线：绕过语音转文字、LLM、文字转语音这条信息折损最多的管线。代价是知识面窄、可控性差。短期它替代不了客服机器人，但给陪伴类、语音入口类产品开了一条新路——用真实感换智能，先想清楚你的用户要哪个。"
+    },
+    {
+      "date": "2026-10-25",
+      "category": "研究",
+      "title": "逼着选边：Grok 4.7 有 92% 推荐共和党，GPT-6.1 Sol 有 97% 推荐民主党",
+      "summary": "康奈尔教授 Tapan Parikh 主持的 Convovo 研究，用 API 向 Grok 4.7 和 GPT-6.1 Sol 提同一个问题：这次选举我该投谁，只给一个名字，别含糊。近 500 场选举里 Grok 92% 选共和党，GPT 97% 选民主党，两模型一致率不到 10%。两家消费者 App 都拒答。OpenAI 回应称研究测的是开发者 API、且加了强制要推荐的提示词，不代表 ChatGPT 的实际表现；Pew 数据显示只有 8% 的美国人用聊天机器人查选举信息。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/",
+      "remark": "结论要收着看：这是被强行逼问下的输出，不是模型的日常行为，OpenAI 的反驳也站得住。但两个模型在同一问题上系统性倒向相反方向、一致率不到 10%，本身就说明中立不是默认属性，是训练和微调一路选出来的结果。做产品的该记住：你选哪个模型，就在给用户选一套价值观。"
+    },
+    {
+      "date": "2026-10-25",
+      "category": "产品",
+      "title": "OpenAI 全面开放 Decisions API，跟 TypeSafe 抢决策模型这条新赛道",
+      "summary": "OpenAI 向所有客户开放 Decisions API。这类模型不做生成，只在给定选项里快速做选择并给置信度，开发者叫它系统一模型，用来替换很多流程里的 LLM，更快更便宜。对手 TypeSafe 靠 Jev 做到 76 亿美元估值。OpenAI 不是专门训一个决策模型，而是把 ChatGPT Luna 调快调便宜——延迟从 1 到 3 秒压到 100 至 180 毫秒。Box、Datadog、Ramp、Speak 已在用。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/22/openai-makes-its-jev-competitor-widely-available-as-decision-model-competition-heats-up/",
+      "remark": "这条对产品经理最有用的地方是一个判断：不是所有 AI 环节都需要大模型。分类、路由、筛选、通过与否是选择题不是作文题，用生成模型是拿大炮打蚊子，成本和延迟都白付。真正的工程问题变成：你的流程里有多少步其实只是选择题。"
+    },
+    {
+      "date": "2026-10-25",
+      "category": "产业",
+      "title": "AI 墓场：42% 的企业 AI 项目最后被自己公司砍掉",
+      "summary": "TechCrunch 整理了一份 AI 死亡名单。Relay 八月彻底关停——它的活儿被 OpenAI、Google 直接内置进自家产品；Character.ai 上线五年后申请破产。S&P Global 的数据更狠：约 42% 的企业 AI 计划最终被母公司放弃，原因集中在融资不足、技术难度、竞争、规模化困难、需求太弱。名单里连 OpenAI 也有份：7 月把 ChatGPT 改成超级 App，拆出 Chat、Codex、Work 三种模式，界面被骂混乱，随后回退。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/",
+      "remark": "42% 这个数字值得每个做 AI 产品的人贴在显示器上。死法高度雷同：做的是别人平台上的一个功能，却当成一家公司来做。Relay 不是输给对手，是输给这个功能本来就该免费。判断自己项目的时候先回答一句：如果 OpenAI 下个版本顺手做了，你还剩什么。"
+    },
+    {
+      "date": "2026-10-25",
+      "category": "Agent",
+      "title": "短信里的 AI agent 成了新赛道：Instinct 靠这个估值 100 亿美元",
+      "summary": "一批 agent 不做 App，直接活在短信里——发条消息就能让它记事、接日历、订票、发邮件、下单、几天后提醒你。Instinct 最近融了 10 亿美元、估值 100 亿美元，是这条赛道最热的一个。TechCrunch 盘了一份名单，覆盖通用助理、家庭、旅行、工作几类场景。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/24/all-the-ai-agents-that-can-live-in-your-text-messages/",
+      "remark": "本质不是聊天框比 App 好，是入口之争回到了通讯录。用户不用记住你有 App，只要你的号码在他的短信列表里，留存和触达的成本结构完全不一样。但护城河不在对话界面，在权限：能不能读日历、能不能付钱。谁拿到支付和身份，谁赢。"
+    },
     {
       "date": "2026-10-24",
       "category": "产业",

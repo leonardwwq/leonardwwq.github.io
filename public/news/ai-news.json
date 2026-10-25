@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-10-25T06:03:34.504768+08:00",
+  "updated_at": "2026-10-26T06:07:44.308178+08:00",
   "items": [
+    {
+      "date": "2026-10-26",
+      "category": "产业",
+      "title": "四个月降价 80%：OpenAI 和 Anthropic 的价格战打到哪一步了",
+      "summary": "Max Woolf 梳理 6 月到 9 月的定价时间线：GPT-5.6 Luna 一次降 80% 到 $0.20/$1.20 每百万 token；Fable 5.1 把缓存读从 $1 砍到 $0.25；9 月 22 日同一天 GPT-6 Sol 直接半价、Opus 5.5 降 40-60%。核心机制是缓存读——agent 编码场景里缓存占总 token 支出的 96-99%，降缓存价等于整体降 70% 以上。Vercel 网关数据显示单位 token 成本已降到 4 月的 43.3%，但总支出还在涨，因为模型变强的速度快过变便宜的速度。",
+      "source": "Max Woolf's Blog",
+      "url": "https://minimaxir.com/2026/10/cheap-llms/",
+      "remark": "对做产品的人，这条的意思是：别把「模型会降价」当假设，它已经是既定事实，定价模型要按季度重算。真正的成本变量是上下文长度和 agent 轮数，不是单价。"
+    },
+    {
+      "date": "2026-10-26",
+      "category": "产业",
+      "title": "Apollo 首席经济学家：除科技业外，AI 给企业带来「零财务回报」",
+      "summary": "Apollo Global Management 首席经济学家 Torsten Slok 把标普 500 剔掉 Alphabet、Amazon、Apple、Meta、Microsoft、Nvidia、Tesla，剩下他叫的「标普 493」，发现利润率和人均营收基本走平，看不到 AI 提升生产率的证据。他的判断：把越来越便宜的智能变成营收增长很难，「AI 可能是个好计算器，但商业里智能主要是判断力」，而 AI 不懂问责、信任、文化、潜规则和公平。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/",
+      "remark": "这条要跟降价那条一起读：模型价格崩了 80%，企业侧回报还是零，说明瓶颈不在能力也不在成本，在组织怎么改流程。操盘手的含义是——先买能立刻省人力的场景，别买听起来很 AI 的战略。"
+    },
+    {
+      "date": "2026-10-26",
+      "category": "研究",
+      "title": "皮肤科医生实测：2015 年的老 CNN 看皮肤癌，比 GPT-6 和 Claude 都准",
+      "summary": "皮肤科医生 Magnus Lynch 用 MILK10k 数据集里 200 个活检确诊的病灶，让 GPT-6 Astra 和 Claude Fable 5.1 各做六选一诊断，同时对比一个 2015 年 Google 发布的 Inception v3（在公开皮肤科图像上微调约 20 分钟）。结果 CNN 命中 125 个（62%），两个前沿模型分别是 84 和 85 个（42%）。图例里那颗不到 0.8mm 的黑色素瘤，两个模型都判成良性脂溢性角化、建议让病人出院。",
+      "source": "Lynch Lab",
+      "url": "https://lynchlab.net/llm-skin-cancer",
+      "remark": "不是「LLM 不行」的证据，是「通用大模型不等于专科工具」的证据。数据少、边界窄、要问责的任务，小而专的模型还在赢。选品和渠道判断也是这个道理：通用能力不等于场景胜率。"
+    },
+    {
+      "date": "2026-10-26",
+      "category": "技术",
+      "title": "Cerebras 公开万亿参数模型怎么铺到晶圆上：跑一个 Kimi K3 要 59 张卡",
+      "summary": "Cerebras 详解如何在单片 44GB 片上内存的 WSE-3T 上跑万亿参数模型。以 3T 参数的 Kimi K3 为例（Terminal-Bench 2.1 得 88.3%，GPT-5.6 Sol 是 88.8%）：权重按 4bit 存约 1.5TB，93 层每层约 16GB，69 个线性注意力层 + 24 个稠密层，最终需要 35+24=59 张晶圆，用 RDMA over Ethernet 串成流水线，每跳约 2 微秒。关键是层能整层塞进片上 SRAM，权重全程不用搬。",
+      "source": "Cerebras Blog",
+      "url": "https://www.cerebras.ai/blog/how-we-deploy-trillion-parameter-frontier-models-on-cerebras",
+      "remark": "值得看的是它对算力护城河的另一种回答：不跟 GPU 比单卡带宽，把整个模型摊成一条装配线，用不同请求填满流水线换吞吐。代价是灵活性——模型一定，硬件布局就定了。"
+    },
+    {
+      "date": "2026-10-26",
+      "category": "Agent",
+      "title": "上下文工程的现状：难点是判断什么时候该确定、什么时候该概率",
+      "summary": "《Context Engineering Handbook》作者 Drew Breunig 在 AGNTCon 的演讲整理，主题是「上下文失效与修复」。核心论点：模型每上一个新能力，都会顺带制造新的上下文问题，得由使用方和 harness 构建者来兜。真正的工程判断是「什么时候该用确定性代码、什么时候该交给模型」，而不是把所有东西都塞进提示词。他提到这本书 2025 年 6 月立项时就被 O'Reilly 问「会不会几周就过时」。",
+      "source": "dbreunig.com",
+      "url": "https://www.dbreunig.com/2026/10/24/the-state-of-context-engineering.html",
+      "remark": "一句话概括他现在的立场：上下文工程不是写提示词，是设计「哪些环节必须可复现」。对做 agent 产品的人，这比任何 benchmark 都有用。"
+    },
+    {
+      "date": "2026-10-26",
+      "category": "产品",
+      "title": "说好的全片《奥德赛》，Grok 交了 7 分钟第一集",
+      "summary": "三个月前马斯克说 Grok 要做一版「符合历史」的完整《奥德赛》电影，10 月 23 日实际放出的是 7 分钟的「Odyssey 系列第一集」，由 Grok Imagine 联合 Wonder Studios 和导演 Dev Walker 制作。TechCrunch 的评价：没有想象中难看，有些瞬间像真演员在真海上，人物肤色符合马斯克偏好，旁白是奇幻游戏里听惯的英音；缺的是艺术性、灵感，和人的趣味。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
+      "remark": "作为能力演示它及格，作为产品它标出了 AI 视频现在的真实位置——能出「像样的素材」，出不了「有人味的作品」。做内容的人该记住这条边界在哪。"
+    },
     {
       "date": "2026-10-25",
       "category": "安全",

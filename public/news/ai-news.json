@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-10-27T06:03:28.892479+08:00",
+  "updated_at": "2026-10-28T06:10:58.460555+08:00",
   "items": [
+    {
+      "date": "2026-10-28",
+      "category": "模型",
+      "title": "Liquid AI 发布 LFM3：2B 级多模态统一骨架，权重开源",
+      "summary": "Liquid AI 10 月 27 日发布 LFM3 家族，把文本、视觉、音频、omni、决策六类 2B 级模型放在同一新骨架上（tri-hybrid 架构，22T token 预训练）。官方称 LFM3-1.7B 以少 35% 的参数超过 LFM2.5-2.6B；文本模型 4bit 量化约 1GB、256K 上下文，单卡可微调，base 与后训练权重已在 Hugging Face 开源。",
+      "source": "Liquid AI",
+      "url": "https://www.liquid.ai/blog/lfm3",
+      "remark": "边缘小模型的竞争点已经从「能跑」变成「能微调成专家」。对做端侧或私有化交付的团队，这类 2B 开源权重比再一个大模型 API 有用得多——成本结构和数据合规都能自己控。"
+    },
+    {
+      "date": "2026-10-28",
+      "category": "研究",
+      "title": "智谱 GLM-Omni 论文：图里画得对，话里问不出——统一多模态的知识调用断点",
+      "summary": "清华与智谱联合论文（唐杰通讯）披露 GLM-Omni 实验：在虚构世界 MagicWorld 中训练后，模型把指定号码画到球衣上的正确率 72%，但用文字问同一张图的球衣号码，正确率只有 2%。图像生成训练整体正确率 54%，文字问答仅 14.57%。外界把该模型与 GLM-5.5 联系起来，论文未披露版本对应关系。",
+      "source": "雷锋网（论文 arXiv:2610.21459）",
+      "url": "https://www.leiphone.com/category/ai/LjPPo6aqhHUrRMFg.html",
+      "remark": "这个数字对做多模态产品的人很关键：生成能力提升不等于理解能力提升，模型能「画对」但「说不出」。只测生成的评测会严重高估模型；统一架构的价值必须落在能被语言调用的知识上，否则只是个更贵的画图工具。"
+    },
+    {
+      "date": "2026-10-28",
+      "category": "国内",
+      "title": "蚂蚁灵光 2.0：Agent 从「执行任务」转向「管理事务」",
+      "summary": "10 月 27 日蚂蚁发布灵光 2.0，把 AI 介入的起点前移：经用户授权后主动识别需求、发起分析监测与跟进，而不是等指令。底座是跨会话记忆、长程任务调度和工具连接，靠独立云主机在用户退出对话后继续跑任务。已落地场景：授权支付宝后梳理账单找出被遗忘的自动续费、机票酒店订完后 24 小时盯价、整理钉钉班级群通知并提取待办。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/industrynews/IxG2F47VLIt3uTOW.html",
+      "remark": "产品定义这一步是对的——从「帮我做一件事」到「替我盯着一件事」才是真需求。难点不在能力在信任：主动介入意味着要权限、要常驻、要替用户判断什么值得提醒。做不好就是又一个推送机器。"
+    },
+    {
+      "date": "2026-10-28",
+      "category": "版权",
+      "title": "联邦法官裁定 Anthropic 用盗版书籍训练 Claude，150 亿美元和解仍难平作者不满",
+      "summary": "Stanford Daily 报道：2026 年 5 月的 Bartz v. Anthropic 案中，法官 Alsup 认定 Anthropic 不得再盗版图书建立永久中央库，但把合法购书用于训练判为合理使用。15 亿美元和解覆盖近 50 万部登记作品，被称作涉 AI 公司最大版权和解。Tobias Wolff 等 28 位作者认为赔偿不足，已退出集体和解并另案起诉。",
+      "source": "The Stanford Daily",
+      "url": "https://stanforddaily.com/2026/10/27/professors-books-pirated-to-train-claude/",
+      "remark": "判决把「怎么拿到书」和「拿书干什么」切开了：训练可以，盗版建库不行。这条线对整个行业的语料采购是硬约束——以后谁的训练数据来源干净，谁在诉讼上就少一个大洞。"
+    },
+    {
+      "date": "2026-10-28",
+      "category": "产业",
+      "title": "亚马逊把 Nova 大部分自研大模型降到「维持最低运转」，只留一支前沿队伍",
+      "summary": "据 Bloomberg，亚马逊正收缩 Nova 系列自研大模型的野心并重组团队：文本、图像、视频模型的多数进入 \"keep the lights on\" 状态，只保留最低资源；人力与算力集中到 Pieter Abbeel 领导的单一前沿模型方向（其机器人公司 Covariant 2024 年被亚马逊收购）。一周前亚马逊刚关掉旧金山 80 人的 AGI 研究办公室。",
+      "source": "Futurism（引 Bloomberg）",
+      "url": "https://futurism.com/artificial-intelligence/amazon-ai-division-failure-nova",
+      "remark": "这是「自研通用大模型」这条路第一次被超大厂公开降级。转向机器人/具身，等于承认在通用模型上追不上，就在自己唯一有场景的地方下注。做 AI 产品的记住这个信号：模型的护城河在场景，不在榜单。"
+    },
+    {
+      "date": "2026-10-28",
+      "category": "产品",
+      "title": "Google 放出 Genie 4 世界模型：加实时音频，模拟中途可打字改场景",
+      "summary": "DeepMind 周二发布 Genie 4 研究预览：生成的世界更接近照片级，用户可在模拟进行中打字改变场景，模型实时生成匹配的音乐、环境音与对话。发布时点恰逢世界模型赛道收拢——Fei-Fei Li 的 World Labs 被 AMD 收购、亚马逊洽购 Decart、Rivian 收下 Third Dimension 自建仿真能力。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/27/googles-genie-4-world-model-adds-audio-more-realistic-worlds-and-real-time-steering/",
+      "remark": "世界模型真正的客户不是游戏，是机器人训练和自动驾驶仿真——所以 Rivian 那笔小额收购比 Genie 4 的 demo 更有信号意义。音频进世界模型是给交互式内容铺路，短期别指望变现。"
+    },
+    {
+      "date": "2026-10-28",
+      "category": "研究",
+      "title": "OpenAI 与 Anthropic 同日宣称推翻「指数时间假设」，计算机科学界半喜半忧",
+      "summary": "OpenAI 一次性放出三个数学难题的解，其中包含对指数时间假设（ETH）的否证——ETH 是计算机科学里理解「什么算难算」的基石。Anthropic 数学家 Levent Alpöge 先质疑其建立在既有工作上，几小时后 Anthropic 也发布了自己的 ETH 反驳。OpenAI 这次按学科分头推进：数学界直接给 GitHub，计算机科学家组成工作组并要求公开证明、出资办会，物理学家另组工作组评估结果。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/27/frontier-ai-labs-say-their-models-refuted-the-exponential-time-hypothesis-what-does-that-mean/",
+      "remark": "真正值得盯的不是「AI 证了什么数学」，而是验证流程：谁审、怎么审、多久能定论。这类发布已经在倒逼学术界建一套「AI 证明接收流程」，这比结论本身更持久。"
+    },
     {
       "date": "2026-10-27",
       "category": "研究",

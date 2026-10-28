@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-10-28T06:10:58.460555+08:00",
+  "updated_at": "2026-10-29T06:05:02.877963+08:00",
   "items": [
+    {
+      "date": "2026-10-29",
+      "category": "产品",
+      "title": "Chrome 的 AI 自动填充开始读你的 Gmail：授权后帮你填表",
+      "summary": "Chrome 的 AI 自动填充更新后，可在用户授权下从 Gmail 里提取航班确认、物流单号、订单详情等信息，自动填进网页表单。谷歌强调需要用户许可，但这意味着浏览器开始把邮箱当作结构化数据库使用。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/28/chromes-ai-powered-autofill-can-now-dig-through-your-gmail-to-fill-out-forms/",
+      "remark": "体验上确实省事，代价是把「邮件内容」正式纳入了浏览器可读的数据面。这类功能的真正风险不在今天，在于权限一旦给了就很少收回——做产品的人该记住：便利和授权范围是同一笔交易。"
+    },
+    {
+      "date": "2026-10-29",
+      "category": "产业",
+      "title": "微软一个季度从 OpenAI 身上赚了 100 亿美元",
+      "summary": "微软披露，截至 9 月 30 日的季度里，从与 OpenAI 的商业安排（含收入分成）中获得 100 亿美元收入。TechCrunch 指出这组数字说明双方在财务上的相互依赖仍然巨大——OpenAI 需要微软的算力和渠道，微软的财报也需要 OpenAI 的增长。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/28/microsoft-recorded-10-billion-in-revenue-from-openai/",
+      "remark": "100 亿美元是季度数，不是累计数，这个量级已经能影响微软整体增速。看 AI 泡沫争论时别只看模型公司的亏损，这条链路里真正稳定收钱的是算力和云——这也是微软敢继续押注的底气。"
+    },
+    {
+      "date": "2026-10-29",
+      "category": "技术",
+      "title": "英伟达开源语音转写模型：支持 40 种语言，但只吃录音不做实时",
+      "summary": "英伟达发布免费开源的语音转文字模型，最多支持 40 种语言转写，但只处理已录好的音频，不支持实时流式输入。TechCrunch 判断这对会议记录、医疗转写这类离线场景是大进步，实时场景仍留给 ElevenLabs 等对手。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/28/voice-ai-in-vogue-nvidia-releases-new-open-transcription-model/",
+      "remark": "「开源但只做离线」是个聪明的切口：会议、病历、访谈这些场景对延迟不敏感、对准确率和数据不出内网极敏感，正好是开源权重的主场。实时那条线已经被云厂商和 ElevenLabs 占住了。"
+    },
+    {
+      "date": "2026-10-29",
+      "category": "产品",
+      "title": "Google 把 Gemini 和搜索开放给第三方应用，押注 Agent 时代的分发入口",
+      "summary": "Google 推出新的开发者平台，允许企业把自己的服务接入 Gemini 与搜索等 AI 体验。TechCrunch 称这可能改变消费者发现和使用 App 的方式——当 Agent 替用户跑流程，入口从「打开应用」变成「说出需求」。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/28/as-ai-agents-reshape-the-web-google-opens-gemini-and-search-to-more-apps/",
+      "remark": "对做渠道和流量的人，这是要盯的结构性变化：过去抢的是应用商店排名和搜索关键词，以后抢的是「被 Agent 选中」。服务能不能被机器调用，会变成和能不能被用户搜到一样重要。"
+    },
+    {
+      "date": "2026-10-29",
+      "category": "产业",
+      "title": "Anthropic 上线支出可视化工具：IPO 前先给企业看钱花在哪",
+      "summary": "Anthropic 在计划 IPO 前推出新工具，向企业客户展示其模型上的花费具体买到了什么，把用量与成本结构摊开给客户看。此前其招股书已披露上半年营收 163 亿美元、净亏 807 亿。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/28/anthropic-just-launched-tools-to-show-companies-what-their-ai-spending-is-buying/",
+      "remark": "这是 to B 生意的必经一步：企业客户现在最怕的不是单价贵，是账单说不清。谁能把「花了多少、省了谁的时间」量化出来，谁在续约谈判里就有主动权——顺带也为 IPO 讲故事。"
+    },
+    {
+      "date": "2026-10-29",
+      "category": "大模型",
+      "title": "蚂蚁百灵开源 Ling-3.1-flash-1019：560B MoE，专攻个人 Agent 的长程任务",
+      "summary": "10 月 28 日蚂蚁百灵开源 Ling-3.1-flash-1019 与基础模型 Ling-3.1-flash-base（BF16 权重、MIT 许可）。base 为混合线性 MoE，总参数约 560B、每 token 激活约 25B。新版本在 Artificial Analysis 智能指数 v4.3.2 拿 44 分（+3），复杂知识工作 AA-Briefcase 从约 1400 升到 1524 Elo，流程自动化 AutomationBench-AA 62%→68%，科学求解 CritPt 18%→26%；47 项 benchmark 中 32 项超过 DeepSeek-V4-Pro-Base 与 MiMo-V2.5-Pro-Base。定位与 10 月 27 日的灵光 2.0 配套。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/10/505928.html",
+      "remark": "评测口径值得注意：涨得最猛的是「多步骤流程」和「科学求解」这类要跑完才算数的指标，而不是单轮问答。个人 Agent 的竞争点已经从「答得对」变成「中途不跑偏」，这对做长任务产品的团队才是真门槛。"
+    },
     {
       "date": "2026-10-28",
       "category": "模型",

@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-10-29T06:05:02.877963+08:00",
+  "updated_at": "2026-10-30T06:04:12.341143+08:00",
   "items": [
+    {
+      "date": "2026-10-30",
+      "category": "产品",
+      "title": "Meta 悄悄上线 AI 穿搭应用 Style Sketch",
+      "summary": "Meta 在印尼、新加坡、泰国低调上线 Style Sketch：连接 Instagram 把已发照片变成「虚拟衣橱」，也可拍照/录视频手动添加单品，再由 AI 组合穿搭，并套到「匹配用户体型和肤色」的虚拟模特身上试穿。Meta 未回应是否扩大上线范围。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/29/meta-quietly-launches-an-ai-fashion-app-called-style-sketch/",
+      "remark": "先在小市场试水是 Meta 的老套路。真正的看点是「衣橱数据」——一旦用户把已有衣服数字化，导购、二手转卖、品牌投放全都接得上，这比试穿本身值钱得多。"
+    },
+    {
+      "date": "2026-10-30",
+      "category": "技术",
+      "title": "DeepSeek 开源推理引擎 DeepInfer",
+      "summary": "DeepSeek 在 GitHub 开源 DeepInfer——DeepSeek-V4.1-Flash 背后的推理引擎，包含 MoE 专家并行、异步 Batch 调度（Zero-Overhead Batch Scheduler）、定制 Kernel 与推测解码。官方披露单集群日均处理约 155 万亿 Token；目前只开放离线推理，线上 KV Cache 与跨副本负载均衡尚未完整公开。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/ai/HecXToP0EHbPjPd0.html",
+      "remark": "这是把「省钱的方法」开源，不是把模型开源。对做 Agent 的团队意义在于：延迟和成本瓶颈已明确落在 CPU 调度与 GPU 计算的错位上，而不是模型本身。"
+    },
+    {
+      "date": "2026-10-30",
+      "category": "产业",
+      "title": "Wabi 融资 5500 万美元，估值 12.5 亿美元",
+      "summary": "Replika 创始人 Eugenia Kuyda 的 Wabi 从「用提示词做小应用」转型为「个人 AI agent」，新融资 5500 万美元、估值 12.5 亿美元。Wabi 2.0 的卖点是 agent 按需即时生成你完成任务所需的界面。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/29/wabi-the-ai-agent-that-builds-mini-apps-now-valued-at-1-25b-after-latest-round/",
+      "remark": "从「造 app」退到「造 app 的入口」，本质是发现用户不想自己搭。估值跑在收入前面，这类个人 agent 真正的考题是留存，不是 demo。"
+    },
+    {
+      "date": "2026-10-30",
+      "category": "产业",
+      "title": "Deepgram 收购 Daily，Pipecat 承诺保持开源",
+      "summary": "语音 AI 公司 Deepgram 宣布收购 Daily（开源语音框架 Pipecat 的开发者），金额未披露，并承诺 Pipecat 继续开源。Daily 提供语音/视频通话托管基础设施，Pipecat 负责串联 STT、LLM、TTS 并压低端到端延迟。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/29/deepgram-acquires-pipecat-maker-daily-to-bolster-its-voice-ai-infrastructure/",
+      "remark": "语音 Agent 的竞争正从「模型好不好」转到「管道顺不顺」。收框架层是想卡开发者入口，但「承诺继续开源」在并购里通常只保质到下一轮融资。"
+    },
+    {
+      "date": "2026-10-30",
+      "category": "技术",
+      "title": "Mistral 开源万亿参数模型权重，主打网络安全",
+      "summary": "法国 Mistral 放出 Mistral Large 4（ML4，绰号 Le Chonk）的完整权重，企业和政府可自行下载部署。官方称以远低于闭源实验室的算力和资本达到 SOTA，首个重点场景选在需要对数据完全掌控的安全领域。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/",
+      "remark": "开源权重真正卖的不是「免费」，是「数据不出门」。万亿参数能下载，但跑得起的组织依然不多——护栏在算力，不在许可。"
+    },
     {
       "date": "2026-10-29",
       "category": "产品",

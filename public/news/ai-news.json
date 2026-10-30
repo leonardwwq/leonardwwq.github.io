@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-10-30T06:04:12.341143+08:00",
+  "updated_at": "2026-10-31T06:03:39.569893+08:00",
   "items": [
+    {
+      "date": "2026-10-31",
+      "category": "产品",
+      "title": "沙钢把 Agent 落进电炉复盘和变压器点检：单炉分析 30 分钟缩到 3 分钟",
+      "summary": "沙钢接入千问办公，把 Agent 用在电炉冶炼复盘、变压器状态评估和财务经营分析：单炉复盘从约 30 分钟缩短到 3 分钟；229 台变压器月度点检从 3 到 5 个工作日缩到几分钟，自动判定风险并向责任人派发整改；月度经营分析报表编制效率提升 90% 以上，每格数字可溯源。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/industrynews/mxLii4LkfIz829iH.html",
+      "remark": "这才是 Agent 的真实需求侧：不是聊天，是把散在生产系统、Excel、纸质台账里的数据串成可复核的流程。它赢在「可溯源」和「派发整改」这两个动作上，而不是模型多聪明。"
+    },
+    {
+      "date": "2026-10-31",
+      "category": "技术",
+      "title": "天数智芯天垓 300 实测对标 H200：部分场景吞吐小幅领先",
+      "summary": "天数智芯媒体开放日公布第三方测试：典型 PD 分离部署下，天垓 300 折算单卡端到端吞吐达 H200 的 1.05 倍；GLM-5.3 的 64K 长上下文 MoE 吞吐为 H200 的 1.15 倍；8K 至 128K 长上下文 Agent 场景首字延迟低约 10%。软件栈引入 Agent 与 Skills 解决部署适配和优化。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/chips/748GRHfg9VPRbp7x.html",
+      "remark": "数字好看，但「性能接近」到「持续扩容」之间隔着软件适配和稳定交付，这才是国产卡真正的战场。另一个细节：连芯片厂商都在用 Agent 包装软件栈，卖算力越来越像卖开发体验。"
+    },
+    {
+      "date": "2026-10-31",
+      "category": "产品",
+      "title": "百度 APP 四大 AI 升级：搜索「递归自我进化」，AI 搜索 API 4.9 元/千次",
+      "summary": "10 月 30 日百度 APP 升级：搜索走向「递归自我进化」，搜索 AI API 最低 4.9 元/千次；文心助手从「一次问答」转向直接交付成果物，覆盖 170 多个场景；AI 镜头支持多目标识别与动态追踪、9 种方言实时对话；结果页 GUI 互动场景提升 5 倍，接入政务、民生、央行等超 50 亿条数据资源。",
+      "source": "雷锋网",
+      "url": "https://www.leiphone.com/category/industrynews/7pQrGMmdsjx5dOSR.html",
+      "remark": "两个信号：检索层价格战正式开打；「从问答到交付物」是 Agent 产品的分水岭——谁把结果交出去，谁才占得住用户。"
+    },
+    {
+      "date": "2026-10-31",
+      "category": "产业",
+      "title": "Anthropic IPO 前预计拿到「高垃圾级」信用评级",
+      "summary": "据 TechCrunch 引用的一份报告，Anthropic 在 IPO 后很可能被信用评级机构评为「高垃圾级」，反映模型公司高投入、现金流为负的财务结构。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/30/anthropic-expected-to-receive-high-junk-rating-from-credit-agencies-following-ipo-report-says/",
+      "remark": "一级市场的估值和债券市场的评级在讲两个故事。模型公司的信用越来越像项目融资而不是软件公司，这也解释了它们为什么集体往企业订阅和长约上转。"
+    },
+    {
+      "date": "2026-10-31",
+      "category": "产品",
+      "title": "DoorDash：第三方 AI Agent 至今只下了「几百单」，日均总单量 300 万",
+      "summary": "DoorDash 三季度财报电话会上 CEO 徐迅称，来自 Muse、Instinct、Fo 等第三方 Agent 的订单合计只有「几百单」，而平台日均配送约 300 万单；用户下单仍以自营 App 为主。DoorDash 自己也已有短信下单 Agent、CLI Agent、Ask DoorDash，以及面向企业订餐的 MCP。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/30/doordash-said-its-only-received-several-hundred-orders-from-ai-agents/",
+      "remark": "今年最诚实的一个数据点：Agent 电商的叙事跑在实际用量前面两个数量级。反过来也是窗口——能真正提升转化和复购的 Agent 接入还空着，DoorDash 明说想和第三方 Agent 建关系，甚至考虑在 Agent 里投广告。"
+    },
+    {
+      "date": "2026-10-31",
+      "category": "产业",
+      "title": "AI 支出热潮出现裂缝：债务、负现金流与投资者怀疑一起发酵",
+      "summary": "大型科技公司仍在往 AI 基础设施砸数千亿美元，但债务上升、自由现金流为负、投资者质疑加剧，越来越多人开始怀疑这轮支出热潮能否持续。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/30/cracks-are-emerging-in-the-ai-spending-boom/",
+      "remark": "不是「AI 要崩」，而是资本从叙事驱动进入回报考核。对做产品的人含义很直接：明年算力更贵更难批，能证明省钱或赚钱的方案更容易过审。"
+    },
     {
       "date": "2026-10-30",
       "category": "产品",

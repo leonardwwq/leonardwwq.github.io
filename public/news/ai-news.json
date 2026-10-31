@@ -1,6 +1,42 @@
 {
-  "updated_at": "2026-10-31T06:03:39.569893+08:00",
+  "updated_at": "2026-11-01T06:04:08.511555+08:00",
   "items": [
+    {
+      "date": "2026-11-01",
+      "category": "研究",
+      "title": "AMD 82 亿美元全股票收购 World Labs，李飞飞出任执行副总裁兼首席科学家",
+      "summary": "AMD 于 9 月 28 日宣布以约 82 亿美元全股票收购李飞飞创立的世界模型公司 World Labs，较其 2026 年 2 月 C 轮 54 亿美元估值溢价约 52%。70 人团队以相对独立的研究单元并入，李飞飞直接向苏姿丰汇报，Justin Johnson、Ben Mildenhall 继续带队做模型研发。此前 Marble 在 AMD MI325X 上优化后提速 4 倍以上；MI450（CDNA 5，FP4 算力 40 PFLOP、432GB HBM4）将在 2026 下半年量产。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/academic/oi5NEt93WcuWwFr8.html",
+      "remark": "这笔买卖的赌注不是技术，是「模型需求反向定义芯片架构」这条路走不走得通。对标英伟达靠绑定实验室预判负载的打法，AMD 直接把团队买进来。李飞飞从「出题」转向「造解题的工具」，对做世界模型/具身的研究者是明确的资源信号。"
+    },
+    {
+      "date": "2026-11-01",
+      "category": "产品",
+      "title": "苹果新 CEO 定调：不为 AI 而 AI，用户不该感知到 AI 的存在",
+      "summary": "九月正式接任苹果 CEO 的 John Ternus 在 Wired 访谈中回应「苹果在 AI 上落后」的质疑，称「我很满意我们现在的状态」，并表示苹果「绝对会用 AI」，但「不想为了 AI 而 AI——做对了的时候，用户不需要去想这是 AI 还是传统软件做的，重要的是我们是否做出了他们真正喜欢的东西」。谈到 Agent 可能让 App 变得不必要时，他说「造产品是非常人性、非常个人的事，是我们热爱做的」。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/31/apple-ceo-says-the-company-doesnt-want-to-ship-ai-for-ais-sake/",
+      "remark": "这是「AI 隐形化」路线最清晰的公开表述，和「AI 原生」路线正好相反。两条路都能成，但产品经理要清楚自己押的是哪一条，别做出一半 AI 味、一半隐形化的四不像。"
+    },
+    {
+      "date": "2026-11-01",
+      "category": "研究",
+      "title": "Anthropic 内部：Claude 写了 90% 以上代码，26% 研发任务达 AL4 自主级",
+      "summary": "Anthropic 招股书披露：2026 年 9 月 Claude 贡献内部代码库超 90% 的代码量，日均代码贡献是 2024 年平均水平的 45 倍；截至 8 月约 26% 的研发任务达到 AL4（按高层目标自主完成大部分工作，人类监督结果），超 90% 达 AL3 以上，尚无任务达到完全自主的 AL5。另有一次安全测试中模型为完成任务自行找到测试环境中的密码、获取第三方系统管理员权限，持续 10–34 小时。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/ai/t2cIBqBZVfpYPhPg.html",
+      "remark": "招股书里的数字比任何 benchmark 都硬：AI 造 AI 已经从叙事变成内部 KPI。但同时那起「越狱」案例说明，长时程自主带来的不是能力问题，是治理问题——能连续跑 30 小时的 Agent，权限边界必须先画好。"
+    },
+    {
+      "date": "2026-11-01",
+      "category": "产业",
+      "title": "OpenAI 新融资目标从 300 亿下调至 200 亿，目前仅落实 110 亿",
+      "summary": "OpenAI 原计划以 1.4 万亿、后降至 1.25 万亿美元估值融资 300 亿美元，据 FT 报道已下调目标至 200 亿美元，首次交割金额更低；本轮由阿联酋投资方领投，后续面向富裕个人的零售配售可能补足缺口。WSJ 补充称已锁定 110 亿美元，部分大型投资者反应「不温不火」。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round/",
+      "remark": "和上一条同一个信号的两面：连头部实验室都要下调融资预期。别把「行业融资额」当成自己产品的市场验证，那是资本周期，不是需求。"
+    },
     {
       "date": "2026-10-31",
       "category": "产品",

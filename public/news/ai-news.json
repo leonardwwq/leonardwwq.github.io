@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-11-01T06:04:08.511555+08:00",
+  "updated_at": "2026-11-02T06:04:11.107473+08:00",
   "items": [
+    {
+      "date": "2026-11-02",
+      "category": "Agent",
+      "title": "DeepSeek 开源 Super-agent 原型：Router+Worker 两层，一个 Agent 从 IM 群聊跟到 GitHub PR",
+      "summary": "DeepSeek 公开一套面向工程实践的 Agent 底座架构：上层 Router 接消息、派任务、维护全局上下文，下层一组 Worker 会话执行；事件直通机制让已有 Worker 直接接后续消息，不再层层转发。模拟 300 条消息、20 项请求的环境里，任务完成时间中位数 12.4 分钟、95 分位 15.7 分钟；取消事件直通后 Router 决策次数增约 30%、读缓存 token 增约 37%。异步执行与云端会话保活已实现但未默认开启。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/10/506904.html",
+      "remark": "价值不在架构图，在它承认瓶颈是人的注意力：一个人同时只能跟 3-5 个 session。这说明竞争在任务编排层而不是模型能力层，护城河会落在上下文路由、消息过滤和异常恢复上。"
+    },
+    {
+      "date": "2026-11-02",
+      "category": "研究",
+      "title": "清华姚期智团队提出代数世界模型 AWM：ARC-AGI-3 全通关，还能证明「这关无解」",
+      "summary": "团队把游戏中的对象、关系和规则抽象成「代数世界」，借范畴论的投射极限与归纳极限迭代 Python 假设，让模型从零散观察提炼出可推理、可证明的结构。在 ARC-AGI-3 上用 Opus 5 通关全部 183 关、得分 99.9%，平均动作数为人类基准的 43%；面对被改成不可能通关的关卡，两次尝试即证明无解。对照实验中 GPT-6 Astra 与 Claude Opus 5.5 在 12 次同类测试里只有 5 次判断出「不可能」，其中 4 次给出的最低步数还是错的。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/507031.html",
+      "remark": "稀缺的不是通关，是「说不可能并给出理由」。Agent 落到真实任务时，错误的可行性判断比失败更贵。方向对，但模型只在其观测到的世界内成立——探索覆盖度不够就只是局部真理，这点要盯。"
+    },
+    {
+      "date": "2026-11-02",
+      "category": "大模型",
+      "title": "Anthropic 在 Opus 5.5 系统提示词里加限制，禁止 Claude 复刻已有游戏",
+      "summary": "博主发现 Claude Code 拒绝协助克隆现有游戏，Anthropic 确认在 Opus 5.5 系统提示词中加入两句话，引导模型不复刻「属于别人的特定游戏」，原创游戏、特定类型、用户自有素材不受限。背景是 Opus 5.5 代码能力跃升后，浏览器端移植 3A 作品、主机模拟器变得容易，独立工作室 Alliance Arts 已取消新作公开试玩以防被克隆。已有开发者反馈误伤：原创游戏写到一半被判定「疑似复刻」而中断。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/507038.html",
+      "remark": "系统提示词层面的护栏本质可绕：换模型做主体，或把任务拆成看不出上下文的纯技术子任务。它挡的是随手克隆，不是有心克隆。更值得盯的是误伤率——规则一进提示词，原创开发者就是第一批付费的人。"
+    },
+    {
+      "date": "2026-11-02",
+      "category": "产业",
+      "title": "OpenAI 备中期选举后公关战：方案包括把数据中心改叫「AI 计算园区」",
+      "summary": "据 Axios，OpenAI 正为美国中期选举后准备一轮公关攻势。首席全球事务官 Chris Lehane 称中期选举是 2028 年大选的「预告片」，届时 AI 会成为核心议题。讨论中的方案包括为 AI 设「限速」、让公众感知 AI 对日常生活的赋能、推动美国参与全球标准制定，以及把数据中心重新包装为「AI compute campuses」。Lehane 称围绕数据中心的争论「良性且健康」。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/",
+      "remark": "改名的对象是「不受欢迎」这件事，不是数据中心的用电和用水。这类动作通常意味着地方审批阻力已经大到影响排期。看 AI 基建别只盯 GPU 出货，选址和社区关系正在变成硬约束。"
+    },
+    {
+      "date": "2026-11-02",
+      "category": "技术",
+      "title": "Memdoor 复现多智能体组队：5 个 Qwen3.8-27B 在 LiveCodeBench Hard 上压过 Fable 5 单次调用",
+      "summary": "Memdoor 用 YAML workflow 重建了 GVS5H 的多智能体 harness，沿用原作者提示词与循环逻辑。题库前 10 题各跑 5 次、共 50 次运行中，5 个 Qwen3.8-27B 组队均分 9.8/10，原作者 harness 9.6，Fable 5 单次调用 8.0；整卷 100 题口径下两者为 92.4 与 90.4。50 次运行的请求、回复、程序与评分输出全部公开，workflow 不绑定模型，可指向本地 Ollama/llama.cpp/vLLM。",
+      "source": "GitHub / HN",
+      "url": "https://github.com/guregodevo/memdoor/tree/main/examples/workflows/team-solve",
+      "remark": "数字先看口径：10 题子集、5 次重复、工具方自己复现，样本很薄，别当结论。真正值得抄的是方法——多智能体实验做成声明式 YAML 加全量日志，可复现性本身就是这类研究最缺的东西。想验证就指一个本地模型自己跑一遍。"
+    },
     {
       "date": "2026-11-01",
       "category": "研究",

@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-11-02T06:04:11.107473+08:00",
+  "updated_at": "2026-11-03T06:05:03.273283+08:00",
   "items": [
+    {
+      "date": "2026-11-03",
+      "category": "产业",
+      "title": "Oracle 拟增发 200 亿美元股票与债券，给 AI 数据中心建设输血",
+      "summary": "Oracle 周一提交文件，计划发行新股并增发债券，为 AI 数据中心建设融资，规模 200 亿美元。它的 AI 基建投入长期靠举债支撑，这次把股权也用上了。",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/02/oracle-files-to-sell-20-billion-in-new-stock-bonds-to-finance-ai-buildout.html",
+      "remark": "股权+债券双管齐下，说明经营现金流已经跟不上资本开支的节奏。这类融资越多，「AI 支出泡沫」的争论越实在。真正要盯的是已建成数据中心的利用率，不是签约金额。"
+    },
+    {
+      "date": "2026-11-03",
+      "category": "产业",
+      "title": "Grok Bot 周限额被提前打满，马斯克承认不是 bug：服务成本相对收入「不可持续地高」",
+      "summary": "万圣节周末部分 Grok Bot 用户发现周用量上限莫名打满，有人从 50% 直接跳到 100%。马斯克在 X 上确认不是故障，原话是「Grok Bot 的服务成本相对收入不可持续地高」。Grok Bot 一直被当作刚上市的 SpaceX 的成功案例——AI 已占公司收入 52%，改名后的「超级智能」部门实现 4.31 亿美元利润，但被收购 Cursor 产生的 12 亿美元一次性成本拖低。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/",
+      "remark": "这条比任何泡沫论都硬：一个已经赚钱、增速「这辈子最快」的 Agent 产品，照样被推理成本顶到要限流。Agent 商业模式的核心矛盾不是获客，是单次任务的 token 账单。"
+    },
+    {
+      "date": "2026-11-03",
+      "category": "硬件",
+      "title": "小米开源 150 元桌面 AI 硬件 HachimoDock：桌宠外壳，能指挥 Agent 干活",
+      "summary": "小米内部小团队孵化的开源 AI 硬件 HachimoDock（哈基米机）自制成本约 150 元：一块小屏、三个按键、一个摇杆。功能覆盖个性化桌宠、语音操控电脑端 Agent（Codex、WorkBuddy 等）、智能家居联动和自定义组件创作。走红后开发板和屏幕出现涨价缺货。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/507107.html",
+      "remark": "价值不在硬件本身，在它示范了「Agent 需要一个物理入口」。150 元的成本线意味着可以批量试错——对想做 AI 硬件的人来说，这是今年最便宜的一张入场券。"
+    },
+    {
+      "date": "2026-11-03",
+      "category": "产品",
+      "title": "商汤发布 SenseNova 6.8 Flash：主打「委派智能」，只给目标、AI 自己走完流程",
+      "summary": "商汤推出多模态智能体模型日日新 SenseNova 6.8 Flash，核心卖点是「委派智能」：用户只给目标，模型自己跑完全流程，人只负责验收。官方称在 TeamBench、DataAnalysis2.0 上排名第一，可直出网页、3D 动态 PPT 和动态海报。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/507277.html",
+      "remark": "「人只负责验收」是这一代 Agent 产品的共同话术，真卡点在验收成本——生成得越快，人看得越累。榜单第一要等第三方复现才作数。"
+    },
+    {
+      "date": "2026-11-03",
+      "category": "产品",
+      "title": "ChatGPT 合并 Chat 与 Work 标签页，与 Codex 共用同一份用量配额",
+      "summary": "OpenAI 通过邮件告知用户，将把 ChatGPT 桌面端的 Chat 与 Work 两个标签页合并，先小范围灰度收集反馈再全量推送。合并后 ChatGPT 与 Codex 的用量从同一个池子里扣。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/",
+      "remark": "产品信号：OpenAI 认定「聊天」和「干活」不该是两个入口。合并配额本质是把订阅价值从「多少次对话」改成「多少算力消耗」，对重度 Agent 用户是隐形涨价。"
+    },
+    {
+      "date": "2026-11-03",
+      "category": "大模型",
+      "title": "OpenAI 重写模型准则：5 条核心价值观，首条是「忠于人类意图」",
+      "summary": "OpenAI 更新 Model Spec，给出 5 条核心价值观：忠于人类意图、减少伤害、诚实透明、促进人的自主性、关怀。文件明确「死板地按字面执行指令本身就是失职」，要求模型结合任务目的、上下文、记忆和用户长期利益判断真实意图；记忆被分成长指令、偏好、事实、项目状态四类管理。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/507225.html",
+      "remark": "这份文件比多数对齐论文更值得读——它把「对齐」翻译成了产品规则。对研究的好处是：意图推断被官方写进规范，「字面服从 vs 意图理解」有了工业级操作化定义，做实验可以直接引。"
+    },
+    {
+      "date": "2026-11-03",
+      "category": "研究",
+      "title": "42AI 结束隐身，6250 万美元种子轮做「行为世界模型」：预测人下一步会做什么",
+      "summary": "以色列创业公司 42AI 走出隐身，拿到 6250 万美元种子轮，做的是「行为世界模型」——在完全陌生的情境下预测一个人接下来会怎么动作。首批客户是几家券商，用它在剧烈波动中预测单个交易员会如何反应。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/02/42ai-comes-out-of-stealth-with-62-5m-and-a-world-model-that-can-predict-human-behavior/",
+      "remark": "「预测人」和「影响人」只隔一层纸。金融场景付钱最爽快，也最容易越界。真正该盯的是它怎么验证准确率：如果只有回溯拟合、没有前瞻预测，那就是高级营销。"
+    },
     {
       "date": "2026-11-02",
       "category": "Agent",

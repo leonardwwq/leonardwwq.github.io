@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-11-03T06:05:03.273283+08:00",
+  "updated_at": "2026-11-04T06:04:33.753082+08:00",
   "items": [
+    {
+      "date": "2026-11-04",
+      "category": "产业",
+      "title": "推理初创 Fal 一年估值翻倍到 160 亿美元：单轮融 13 亿，年化收入已超 8 亿",
+      "summary": "总部旧金山的 AI 推理公司 Fal 完成 13 亿美元新一轮融资，Bessemer 领投，英伟达、Sound Ventures、T. Rowe Price 参投，估值 160 亿美元，是上一轮 80 亿的两倍。公司同时交割 E、F 两轮，合计融资 16.5 亿美元（E 轮由红杉领投），主营托管运行视频、图像、音频模型，年化收入今年早些时候已突破 8 亿美元。同赛道的 Baseten、Fireworks、Modal 也在快速融资，但据知情人士，因买/租算力成本高，推理公司毛利率普遍偏薄。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/",
+      "remark": "推理层是这轮最确定的生意——模型开源了，跑模型的活总得有人干。但「8 亿收入 + 毛利很薄」这对组合也说明它本质是算力的二道贩子，议价权在英伟达和云厂商手里。对做 Agent 产品的人：推理价格短期还会降，但别把商业模型建在「推理会一直免费」这个假设上。"
+    },
+    {
+      "date": "2026-11-04",
+      "category": "产业",
+      "title": "Anthropic 更新招股书：单季收入 170 亿，算力成本占比反而从 48% 涨到 58%",
+      "summary": "Anthropic 更新招股材料，把财务披露期从 6 月底延长到 9 月底。新一季收入 170 亿美元（上一季 115 亿），但算力成本占收入比重从 48% 升到 58%，单季算力账单 100 亿美元。招股书里一张图显示，每花 1 美元算力换回的收入自 2025 年初起持续上升，本季一度超过 2 倍，随后回落到 1.72 倍。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/03/anthropic-is-still-grappling-with-the-economics-of-compute/",
+      "remark": "这是 IPO 前最不想让投资人看到的一张表：收入涨得飞快，毛利却在退。说明前沿实验室的增长仍然是「买」来的。真正要盯的是 1.72 倍是不是底——如果继续往下走，「规模上去毛利自然改善」这套叙事就得重写。"
+    },
+    {
+      "date": "2026-11-04",
+      "category": "产品",
+      "title": "Netflix 上线 AI Discover 标签页：不再猜你喜欢，改成让你说心情",
+      "summary": "Netflix 推出新的「AI Discover」标签页，首个实验功能按用户当下的心情、可看时长、是否合家欢等条件策展推荐，主题包括「轻松一下」「吓我一下」「家庭电影夜」「短内容」等。选定主题后可继续细化，或用「换点别的」重开。Netflix 称背后是一套能实时响应、持续学习的智能层，方向是把发现内容从无限下滑改成对话式推荐。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/03/netflixs-new-ai-discover-tab-helps-you-find-something-to-watch-based-on-your-mood/",
+      "remark": "推荐系统从「猜你喜欢」变成「让你说」。本质是把冷启动和长尾曝光的成本，从算法侧转嫁给用户的一句话描述——对订阅制内容平台，这是拉高片库利用率最便宜的办法。要观察的是：用户愿不愿意每次都说一遍自己的状态，还是试两次就回到无脑刷。"
+    },
+    {
+      "date": "2026-11-04",
+      "category": "产品",
+      "title": "Apple 新规：约会类和「性/浪漫内容」AI 陪伴应用一律 18+，11 月 16 日生效",
+      "summary": "Apple 调整 App Store 政策，要求所有提供约会或恋爱关系功能的应用、以及涉及「性内容或浪漫内容」的 AI 陪伴应用，必须标注 18+ 分级；11 月 16 日起开发者还要填写新的内容描述字段，供家长控制使用。Character.AI、Replika 这类用户偏年轻的 AI 伴侣产品受直接影响，规则同样覆盖把陪伴当作众多功能之一的应用。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/03/apple-restricts-dating-apps-and-ai-companions-to-users-18-and-up/",
+      "remark": "平台一刀把「AI 伴侣」归进了成人内容品类——这个定性比任何罚款都狠。做陪伴/情感类 Agent 的团队被迫二选一：降级成纯工具，或者放弃未成年人这块增量。两条路都砍增长曲线，区别只是砍在哪一段。"
+    },
+    {
+      "date": "2026-11-04",
+      "category": "产品",
+      "title": "Google 允许学校关掉 AI 工具，代价是连搜索一起失去",
+      "summary": "Google 宣布明年起 K-12 学生的 Gemini 等 AI 工具默认关闭，须由学校管理员显式开启。但 Google 承认「搜索与 AI 已深度集成」：选择全面禁用 AI 的学校，学生将无法使用 Google 搜索，只会看到一条学校设置的「不可用」提示。这给学校出了难题——老师可能不想让学生用 AI Overviews 写作业，但仍需要搜索引擎查资料。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/03/google-will-let-schools-disable-its-ai-tools-but-not-without-sacrificing-search/",
+      "remark": "一个产品决策把学校逼进死胡同：要么接受 AI 摘要进课堂，要么连查资料都做不了。这是「把 AI 塞进搜索」最直接的副作用——原本独立的功能被捆成不可拆的包，用户失去退出键。所有在「用 AI 改造老产品」的团队都该记一笔：改造完，一定给用户留一条退回原路径的门。"
+    },
+    {
+      "date": "2026-11-04",
+      "category": "产品",
+      "title": "量子位实测纯语音 Personal Agent「Orilo」：首响 1.08 秒，压过 GPT Realtime 和 Gemini Live",
+      "summary": "量子位连续近一周实测纯语音 Personal Agent「Orilo」：界面是一颗随手机陀螺仪滑动的水滴，全程语音交互，中途打断并派任务不会陷入尴尬沉默，需要思考时用「hmm」这类拟声词填缝。实测首响 1.08 秒，快于 GPT Realtime 的 1.50 秒和 Gemini Live 的 2.62 秒；能抓取邮件、在早报间隙插播突发信息，并主动播报行业动态附定制解读。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/507419.html",
+      "remark": "1.5 秒是「像在跟人说话」的心理红线，1.08 秒刚好压在线内——语音 Agent 的竞争已经从「能不能听懂」转到延迟和打断做得好不好。但作者自己也点出真问题：主动推送的时机和内容质量，比延迟更决定用户会不会一周后就关掉通知。"
+    },
     {
       "date": "2026-11-03",
       "category": "产业",

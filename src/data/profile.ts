@@ -1,4 +1,4 @@
-/** 站点「关于我 / 联系」个人信息；与简历 V15（AI Coding 投递版）对齐。 */
+/** 站点「关于我 / 联系」个人信息。 */
 
 /** 简历 PDF 所在目录（对应 public/profile/） */
 export const RESUME_DIR = '/profile';
@@ -62,26 +62,26 @@ export const profile = {
   name: '王伟权',
   role: 'AI 产品经理',
   location: '北京',
-  status: '在职 · 到岗时间 1 个月',
+  status: '已离职',
   resumePath,
   contact: {
     email: 'leonardwangweiquan@gmail.com',
     phone: '13502508112',
   },
   social: {
-    telegram: 'https://t.me/+861****8112',
+    telegram: '',
     twitter: '',
     linkedin: 'https://www.linkedin.com/in/伟权-王-780885360',
   } satisfies ProfileSocial,
   tagline:
-    'AI 产品经理，具备 Agent 能力产品化落地与开发者工具交付的双重经验。主导 AI Copilot 智能助手从 0 到 1 落地（MCP 协议 + 上下文感知），产品已上线供内部投放团队使用；能用 Python 手写完整 Agent 循环，独立开发 DSH 开源插件（npm v0.3.0-beta.1），也在开展人机协同决策研究——用可解释的 AI 辅助决策，提升真实场景的人机协作效率。',
+    '过去主要做数据与业务平台，最近在做 AI 助手，以及持续互动的 AI 角色。',
   background: {
     positioning:
-      'AI 产品经理，具备 Agent 能力产品化落地与开发者工具交付的双重经验。目前在伙伴云担任产品负责人，主导 AI Copilot 智能助手（基于 MCP 协议的上下文感知 AI Agent）从 0 到 1 的架构设计与落地，产品已上线供内部投放团队使用，选词效率提升 75%+、运营操作量降低 87%+；独立开发并发布 DSH 角色养成开源插件（dsh-cultivation，npm v0.3.0-beta.1，131 测试全过），以可验证的开源交付物佐证 Agent 工程实现能力。此前主导 ASA 智能投放平台（投放管理+数据管理+风控一体化）与 ASO 一站式下单平台。',
+      '我曾在伙伴云担任产品负责人，负责过 ASA 智能投放平台、ASO 下单平台，以及供内部投放团队使用的 AI Copilot。此前在闻博大数据和尚诚同力工作，做过金融业务系统和达人投放数据分析产品。',
     trajectory:
-      '职业主线从金融业务系统（闻博大数据）到达人投放数据分析（尚诚同力 · 波波），再到 AI Agent 产品与人机协同方向（伙伴云）——2025.03 起主导 ASA 智能投放平台与 ASO 下单平台建设，沉淀业务场景与数据基础；2026.02 起主导 AI Copilot 智能助手从 0 到 1 的产品设计与上线，并同步攻读应用心理学硕士（人机协同决策方向），用研究与工程双线支撑 AI 辅助决策产品设计。',
+      '我也开发了一些 AI 相关的开源项目，探索角色如何保留共同经历，以及互动如何持续下去。目前在中央财经大学攻读应用心理学硕士，关注人机协同决策，以及人们如何理解和使用 AI 的建议。',
     approach:
-      '习惯把复杂业务拆成可评审的实现路径：Agent 侧基于 MCP 协议标准化工具编排，以「AI 建议→人工确认→自动执行」的人机协作闭环保留人的最终决策权；数据侧用指标、漏斗与 A/B 测试驱动迭代；研究侧用心理学实验与 Bootstrap 中介分析验证「AI 如何影响人的决策」，再回到产品设计。',
+      '我会从具体使用场景出发，通过原型、可运行的作品和实际反馈，逐步检查设计是否解决了问题。',
   } satisfies ProfileBackground,
   highlights: [
     {
@@ -113,16 +113,6 @@ export const profile = {
       metric: {
         label: '年均管理广告预算',
         displayValue: '3000 万美元+',
-      },
-    },
-    {
-      title: 'ASA 投放 Agent',
-      slug: 'asa-delivery-agent',
-      summary:
-        '基于 投放管理+数据管理+风控的数据与策略沉淀，完成智能投放 Agent 方案设计：自定义规则编辑引擎，覆盖数据异常判断 → 策略推荐 → 一键采纳，为平台向 AI 驱动投放演进提供储备。',
-      metric: {
-        label: '规则引擎路径',
-        displayValue: '闭环设计',
       },
     },
     {
@@ -178,7 +168,7 @@ export const profile = {
   education: [
     {
       school: '中央财经大学',
-      degree: '应用心理学 · 硕士（非全日制，周末上课，不影响全职工作）',
+      degree: '应用心理学 · 硕士（非全日制）',
       period: '2026.09 – 2028.06',
       note: '研究方向：人机协同决策、AI 辅助系统中的信任与决策行为；导师为人机协同决策方向，自 2026 年 5 月起提前进入课题组参与研究',
     },

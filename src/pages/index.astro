@@ -1,100 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SpotlightProjectCard from '../components/SpotlightProjectCard.astro';
-import { getHomeSpotlights } from '../data/spotlightProjects';
-import { profile, resumePath } from '../data/profile';
+import ProjectEntry from '../components/ProjectEntry.astro';
+import { featuredProjects, homeOtherSlugs } from '../data/portfolio';
+import { workProjects, type WorkProject } from '../data/workProjects';
+
+const otherProjects = homeOtherSlugs
+  .map(slug => workProjects.find(project => project.slug === slug))
+  .filter((project): project is WorkProject => Boolean(project));
 ---
 
-<BaseLayout
-  title="王伟权 · 作品集"
-  description="王伟权的产品作品集：AI Agent 产品与人机协同方向案例、方法论与合作方式。聚焦从问题定义到结果交付。",
->
-  <section class="hero content-section home-screen home-reveal home-reveal--1">
-    <p class="eyebrow">产品经理作品集</p>
-    <h1>把复杂增长问题，拆成可执行的产品闭环。</h1>
-    <p class="lede">
-      聚焦 AI Agent 产品与人机协同方向，持续把「感知 - 建议 - 确认 - 执行」做成可复用的人机协作闭环。
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="/work" data-robot-topic="work">看我做过的项目</a>
-      <a class="btn" href="/library" data-robot-topic="library">看我的方法论</a>
-    </div>
+<BaseLayout title="王伟权 · 作品集" description="做过的数据与业务平台，以及最近的 AI 产品探索。">
+  <section class="home-intro" aria-labelledby="intro-title">
+    <h1 id="intro-title">王伟权</h1>
+    <p>过去主要做数据与业务平台，最近在做 AI 助手、工作台，以及持续互动的 AI 角色。</p>
+    <a class="text-link" href="/contact">联系我 →</a>
   </section>
 
-  <section class="content-section home-screen home-core-cases home-reveal home-reveal--2">
-    <div class="home-section-head">
-      <h2 class="home-section-title">我的核心案例</h2>
-      <p class="home-section-note">先看这三个，就能快速判断我的问题定义、推进方式和结果导向。</p>
-      <a class="shelf-action" href="/work" data-robot-topic="work">查看全部案例</a>
-    </div>
-    <div class="card-grid card-grid--compact">
-      <a class="card" href="/work/ai-copilot-assistant" style="text-decoration: none; color: inherit" data-robot-topic="work-detail">
-        <h3>AI Copilot 智能助手</h3>
-        <p>基于MCP协议的上下文感知AI Agent产品，实现"AI建议→人工确认→自动执行"的人机协作闭环。</p>
-        <div class="meta">
-          <span class="tag">AI Agent</span>
-          <span class="tag">MCP</span>
-          <span class="tag">人机协同</span>
-        </div>
-      </a>
-      <a class="card" href="/work/asa-smart-delivery" style="text-decoration: none; color: inherit" data-robot-topic="work-detail">
-        <h3>ASA 智能投放平台</h3>
-        <p>自建投放管理 + 数据管理 + 风控一体化平台，年均管理超 3000 万美元广告预算、覆盖 1000+ 广告账户。</p>
-        <div class="meta">
-          <span class="tag">完整业务系统</span>
-          <span class="tag">智能投放</span>
-        </div>
-      </a>
-      <a class="card" href="/work/bobo-weibo" style="text-decoration: none; color: inherit" data-robot-topic="work-detail">
-        <h3>波波微博数据分析平台</h3>
-        <p>从 0-1 商业化落地，运营期年均收入超过 100 万元。</p>
-        <div class="meta">
-          <span class="tag">0-1 产品</span>
-          <span class="tag">商业化验证</span>
-        </div>
-      </a>
-    </div>
+  <section id="selected" class="project-section" aria-labelledby="selected-title">
+    <h2 class="section-heading" id="selected-title">精选作品</h2>
+    {featuredProjects.map(project => <ProjectEntry project={project} featured />)}
   </section>
 
-  {
-    getHomeSpotlights().map((project) => (
-      <section class="content-section home-spotlight home-screen home-reveal home-reveal--2b">
-        <SpotlightProjectCard layout="banner" project={project} />
-      </section>
-    ))
-  }
-
-  <section class="content-section home-screen home-about home-reveal home-reveal--3">
-    <div class="home-section-head">
-      <h2 class="home-section-title">关于我</h2>
-      <p class="home-section-note">产品落地与心理研究双线并行，专注 AI Agent 产品与人机协同决策方向。</p>
+  <section class="project-section other-work-section" aria-labelledby="other-title">
+    <div class="section-head">
+      <h2 class="section-heading" id="other-title">其他作品</h2>
+      <a class="text-link" href="/work">全部作品 →</a>
     </div>
-    <p class="home-about-slogan">用数据丈量，用逻辑抽象，用规则决策，用心理加温。</p>
-    <p class="home-about-desc">{profile.background.positioning}</p>
-  </section>
-
-  <section class="content-section home-screen home-knowledge home-reveal home-reveal--4">
-    <div class="home-section-head">
-      <h2 class="home-section-title">知识储备</h2>
-      <p class="home-section-note">持续积累并交叉应用在产品实践中的三条主线。</p>
-    </div>
-    <ul class="home-knowledge-list">
-      <li>
-        <h3>人工智能</h3>
-        <p>关注 LLM 在 B 端流程中的可控落地，强调“辅助决策”而非黑盒替代。</p>
-      </li>
-      <li>
-        <h3>用户研究</h3>
-        <p>结合行为数据与场景访谈，定位真实问题并指导功能优先级。</p>
-      </li>
-      <li>
-        <h3>决策研究</h3>
-        <p>把复杂判断拆成可解释、可追踪的决策路径，提升协同与复盘效率。</p>
-      </li>
-    </ul>
-    <div class="cta-row">
-      <a class="btn" href="/about" data-robot-topic="about">查看完整背景</a>
-      <a class="btn" href={resumePath} target="_blank" rel="noopener" data-robot-topic="resume">下载简历</a>
-    </div>
+    {otherProjects.map(project => <ProjectEntry project={project} />)}
   </section>
 </BaseLayout>

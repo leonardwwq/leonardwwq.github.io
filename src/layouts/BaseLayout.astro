@@ -1,138 +1,52 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-import EngagementBubble from '../components/EngagementBubble.astro';
-import { resumePath } from '../data/profile';
+import { profile } from '../data/profile';
 import '../styles/global.css';
 
-type Props = {
-  title: string;
-  description?: string;
-};
-
-const { title, description = '产品经理作品集：案例库、思考库与关于我。' } = Astro.props;
+type Props = { title: string; description?: string };
+const { title, description = '王伟权的作品集。记录做过的产品、设计过程，以及一些持续的探索。' } = Astro.props;
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
-
 const nav = [
-  { href: '/', label: '首页', topic: 'home' },
-  { href: '/work', label: '案例库', topic: 'work' },
-  { href: '/library', label: '思考库', topic: 'library' },
-  { href: '/news', label: 'AI 资讯', topic: 'news' },
-  { href: '/about', label: '关于我', topic: 'about' },
-  { href: '/contact', label: '联系我', topic: 'contact' },
+  { href: '/work', label: '作品' },
+  { href: '/library', label: '思考' },
+  { href: '/about', label: '关于' },
+  { href: '/contact', label: '联系' },
 ];
-
 function isCurrent(href: string) {
-  if (href === '/') return pathname === '/';
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 ---
-
 <!doctype html>
 <html lang="zh-Hans">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#faf9f6" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
     <title>{title}</title>
     <ClientRouter />
   </head>
   <body>
-    <div class="app-layout">
-      <aside class="site-sidebar">
-        <a class="brand" href="/" transition:animate="fade">
-          <img
-            class="brand-avatar"
-            src="/images/avatar.webp"
-            alt=""
-            width="32"
-            height="32"
-            decoding="async"
-          />
-          王伟权 <small>作品集</small>
-        </a>
-        <nav class="nav" aria-label="主导航">
-          {
-            nav.map((item) => (
-              <a
-                href={item.href}
-                aria-current={isCurrent(item.href) ? 'page' : undefined}
-                data-robot-topic={item.topic}
-              >
-                {item.label}
-              </a>
-            ))
-          }
+    <a class="skip-link" href="#main">跳到正文</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="/" aria-label="王伟权，返回首页">王伟权</a>
+        <nav class="header-nav" aria-label="主导航">
+          {nav.map(item => <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>)}
         </nav>
-        <a
-          class="btn sidebar-resume"
-          href={resumePath}
-          target="_blank"
-          rel="noopener"
-          data-robot-topic="resume"
-        >
-          下载简历
-        </a>
-      </aside>
-
-      <div class="site-main">
-        <header class="site-header">
-          <div class="inner">
-            <a class="brand brand--mobile" href="/" transition:animate="fade">
-              <img
-                class="brand-avatar"
-                src="/images/avatar.webp"
-                alt=""
-                width="32"
-                height="32"
-                decoding="async"
-              />
-              王伟权 <small>作品集</small>
-            </a>
-            <nav class="nav nav--mobile" aria-label="主导航">
-              {
-                nav.map((item) => (
-                  <a
-                    href={item.href}
-                    aria-current={isCurrent(item.href) ? 'page' : undefined}
-                    data-robot-topic={item.topic}
-                  >
-                    {item.label}
-                  </a>
-                ))
-              }
-            </nav>
-          </div>
-        </header>
-
-        <main class="shell">
-          <slot />
-        </main>
-        <footer class="site-footer shell">
-          <div class="row">
-            <span>© {new Date().getFullYear()} 王伟权</span>
-            <span>
-              <a href="/contact" data-robot-topic="contact">联系我</a>
-              ·
-              <a href={resumePath} target="_blank" rel="noopener" data-robot-topic="resume">下载简历（PDF）</a>
-            </span>
-          </div>
-        </footer>
       </div>
-    </div>
-    <EngagementBubble />
+    </header>
+    <main id="main" class="shell" tabindex="-1"><slot /></main>
+    <footer class="site-footer shell">
+      <div class="footer-main"><span>有想进一步了解的作品，欢迎聊聊。</span><a class="text-link" href={`mailto:${profile.contact.email}`}>联系我 <span aria-hidden="true">↗</span></a></div>
+      <div class="footer-meta"><span>© {new Date().getFullYear()} 王伟权</span><div><a href="/news">AI 资讯</a><a href="/contact">联系方式</a><a href="#main">回到顶部 ↑</a></div></div>
+    </footer>
     <script>
       import '../scripts/library-page';
       import '../scripts/news-page';
-      import '../scripts/engagement-bubble';
     </script>
   </body>
 </html>

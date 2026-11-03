@@ -2,21 +2,151 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout
-  title="AI 资讯 · 王伟权"
-  description="追踪模型、产品与研究的重要进展，每日更新。"
->
-  <section class="content-section page-head">
-    <p class="page-head__meta">行业动态</p>
+<BaseLayout title="AI 资讯 · 王伟权" description="整理模型、产品与研究的相关进展。">
+  <section class="page-intro">
     <h1 class="page-title">AI 资讯</h1>
-    <p class="page-sub">追踪模型、产品与研究的重要进展，每日更新。</p>
+    <p class="page-sub">模型、产品与研究的相关进展，留作日常参考。</p>
   </section>
 
-  <section class="content-section" data-news-root>
-    <div class="tag-row news-filters" data-news-filters hidden></div>
+  <section class="content-section news-content" data-news-root aria-label="资讯列表">
+    <div class="news-filters" data-news-filters role="group" aria-label="按分类筛选资讯" hidden></div>
     <p class="news-meta muted" data-news-updated hidden></p>
     <div data-news-list>
-      <p class="news-state muted">正在加载资讯…</p>
+      <p class="news-state muted" role="status">正在加载资讯…</p>
     </div>
+    <noscript><p class="muted">请启用 JavaScript，以加载资讯和使用分类筛选。</p></noscript>
   </section>
 </BaseLayout>
+
+<style>
+  .news-content {
+    max-width: 920px;
+  }
+
+  .news-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .news-content [hidden] {
+    display: none;
+  }
+
+  .news-content :global(.news-filters .tag) {
+    min-height: 44px;
+    padding: 0.5rem 0.9rem;
+    font: inherit;
+    font-size: 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .news-content :global(.news-filters .tag:hover),
+  .news-content :global(.news-filters .tag.is-active) {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--surface);
+  }
+
+  .news-meta {
+    margin: 0 0 2rem;
+    font-size: 0.85rem;
+  }
+
+  .news-content :global(.news-state) {
+    padding-block: 2rem;
+  }
+
+  .news-content :global(.news-date-group) {
+    margin-top: 2.5rem;
+  }
+
+  .news-content :global(.news-date-group:first-child) {
+    margin-top: 0;
+  }
+
+  .news-content :global(.news-date-group.is-hidden),
+  .news-content :global(.news-item.is-hidden) {
+    display: none;
+  }
+
+  .news-content :global(.news-date-heading) {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .news-content :global(.news-item) {
+    margin: 0;
+    padding: 1.5rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .news-content :global(.news-item__tags) {
+    margin-bottom: 0.5rem;
+  }
+
+  .news-content :global(.news-item__tags .tag) {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .news-content :global(.news-item__title) {
+    margin: 0 0 0.65rem;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    font-weight: 600;
+  }
+
+  .news-content :global(.news-item__title a) {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .news-content :global(.news-item__title a:hover) {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .news-content :global(.news-item__summary) {
+    margin: 0 0 0.75rem;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+  }
+
+  .news-content :global(.news-item__remark) {
+    margin: 1rem 0;
+    padding: 0 0 0 1rem;
+    border-left: 2px solid var(--border);
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .news-content :global(.news-item__source) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.5rem;
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .news-content :global(.news-item__source-link) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+</style>

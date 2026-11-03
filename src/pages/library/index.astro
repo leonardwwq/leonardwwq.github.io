@@ -4,23 +4,265 @@ import LibraryCategory from '../../components/LibraryCategory.astro';
 import { getEntriesForCategory, libraryCategories } from '../../data/library';
 ---
 
-<BaseLayout title="思考库 · 王伟权" description="按主题整理的阅读摘录与持续思考。">
-  <section class="content-section">
-    <h1 class="page-title">思考库</h1>
-    <p class="page-sub">
-      前三个主题为体系化阅读思考，默认展示前三条，可展开更早条目；同一分类同时只展开一条。文献笔记收录论文与报告的精读摘要，完整笔记通过外链打开。
-    </p>
+<BaseLayout title="思考 · 王伟权" description="一些阅读笔记，以及关于产品、技术与人的思考。">
+  <section class="page-intro">
+    <h1 class="page-title">阅读与思考</h1>
+    <p class="page-sub">一些阅读笔记，以及关于产品、技术与人的思考。</p>
   </section>
 
-  {
-    libraryCategories.map((cat) => (
-      <LibraryCategory
-        categoryId={cat.id}
-        title={cat.title}
-        entries={getEntriesForCategory(cat.id)}
-        layout={cat.id === 'literature' ? 'compact' : 'accordion'}
-      />
-    ))
-  }
+  <div class="library-content">
+    <nav class="library-topics" aria-label="阅读主题">
+      {libraryCategories.map((cat) => (
+        <a href={`#topic-${cat.id}`}>{cat.title}</a>
+      ))}
+    </nav>
+
+    {libraryCategories.map((cat) => (
+      <div class="library-topic" id={`topic-${cat.id}`}>
+        <LibraryCategory
+          categoryId={cat.id}
+          title={cat.title}
+          entries={getEntriesForCategory(cat.id)}
+          layout={cat.id === 'literature' ? 'compact' : 'accordion'}
+        />
+      </div>
+    ))}
+  </div>
 </BaseLayout>
 
+<style>
+  .library-content {
+    max-width: 920px;
+  }
+
+  .library-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .library-topics a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .library-topics a:hover {
+    color: var(--accent);
+  }
+
+  .library-topic {
+    margin-top: 3rem;
+    scroll-margin-top: calc(var(--site-header-offset, 80px) + 1.5rem);
+  }
+
+  .library-content :global(.library-category__head) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding-block: 0.5rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .library-content :global(.library-category__head h2) {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .library-content :global(.library-category__more) {
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .library-content :global(.library-category__more:hover) {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .library-content :global(.library-category.is-archive-open .library-category__head) {
+    position: sticky;
+    top: var(--site-header-offset, 80px);
+    z-index: 5;
+    background: var(--bg0);
+  }
+
+  .library-content :global(.library-entries__archive) {
+    display: none;
+    border-top: 1px dashed var(--border);
+  }
+
+  .library-content :global(.library-category.is-archive-open .library-entries__archive) {
+    display: block;
+  }
+
+  .library-content :global(.library-entry) {
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .library-content :global(.library-entry__header) {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .library-content :global(.library-entry__toggle) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .library-content :global(.library-entry__toggle:hover) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .library-content :global(.library-entry__toggle-icon) {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+  }
+
+  .library-content :global(.library-entry.is-open .library-entry__toggle-icon) {
+    transform: rotate(45deg);
+  }
+
+  .library-content :global(.library-entry__meta) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.4rem;
+    min-width: 0;
+    line-height: 1.6;
+  }
+
+  .library-content :global(.library-entry__title) {
+    font-weight: 600;
+  }
+
+  .library-content :global(.library-entry__author),
+  .library-content :global(.library-entry__year),
+  .library-content :global(.library-entry__sep),
+  .library-content :global(.library-entry__updated) {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .library-content :global(.library-entry__updated) {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .library-content :global(.library-entry__badge) {
+    color: var(--accent);
+    font-size: 0.75rem;
+  }
+
+  .library-content :global(.library-entry__body) {
+    display: none;
+  }
+
+  .library-content :global(.library-entry.is-open .library-entry__body),
+  .library-content :global(.library-entry--compact .library-entry__body) {
+    display: block;
+  }
+
+  .library-content :global(.library-entry__thoughts),
+  .library-content :global(.library-entry__link-row) {
+    margin: 0.75rem 0 0 3.5rem;
+  }
+
+  .library-content :global(.library-entry__thoughts p) {
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+
+  .library-content :global(.library-entry__link-row) {
+    font-size: 0.85rem;
+  }
+
+  .library-content :global(.library-entry__download-link),
+  .library-content :global(.library-entry__external-link) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .library-content :global(.library-entry__download-icon),
+  .library-content :global(.library-entry__external-icon) {
+    flex-shrink: 0;
+  }
+
+  .library-content :global(.library-entry--compact .library-entry__header) {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .library-content :global(.library-entry--compact .library-entry__thoughts),
+  .library-content :global(.library-entry--compact .library-entry__link-row) {
+    margin-left: 0;
+  }
+
+  .library-content :global(.sr-only) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 640px) {
+    .library-content :global(.library-entry__header) {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .library-content :global(.library-entry__updated) {
+      grid-column: 2;
+    }
+
+    .library-content :global(.library-entry__thoughts),
+    .library-content :global(.library-entry__link-row) {
+      margin-left: 0;
+    }
+
+    .library-content :global(.library-entry--compact .library-entry__header) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .library-content :global(.library-entry--compact .library-entry__updated) {
+      grid-column: 1;
+    }
+  }
+</style>

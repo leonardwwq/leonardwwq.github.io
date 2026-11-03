@@ -39,7 +39,7 @@ export type WorkProject = {
   iframeTitle: string;
   /** 便于「规划中」条目指向磁盘路径说明 */
   prototypesFolder: string;
-  /** 详情页案例正文；未填则使用页面内模板占位 */
+  /** 历史案例材料；当前页面只展示 portfolio.ts 中已确认的两部分文案。 */
   caseStudy?: WorkCaseStudy;
   /** 详情页原型区下方的新窗口链接（不嵌入 iframe） */
   demoLinks?: WorkDemoLink[];
@@ -76,7 +76,11 @@ export function hasWorkDemo(project: WorkProject): boolean {
   return !!(project.demoPath || project.demoExternalUrl);
 }
 
+/** 原始项目材料与历史入口；最新可见文案、合并关系及顺序以 portfolio.ts 为准。 */
 export const workProjects: WorkProject[] = [
+{"slug":"codex-subscription-lite","title":"Codex Subscription 轻量版","description":"基于 WSL043 上游项目维护的非官方轻量 fork，保留订阅接入、账号管理与手机远控相关设置，减少与宿主重复的功能。","tooltipSummary":"基于 WSL043 上游项目维护的非官方轻量 fork，保留订阅接入、账号管理与手机远控相关设置，减少与宿主重复的功能。","tagline":"基于 WSL043 上游项目维护的非官方轻量 fork，保留订阅接入、账号管理与手机远控相关设置，减少与宿主重复的功能。","tags":["基于上游 fork"],"iconId":"layers","categoryId":"opensource","demoPath":null,"iframeTitle":"Codex Subscription 轻量版","prototypesFolder":"codex-subscription-lite","demoLinks":[{"label":"GitHub 源码","path":"https://github.com/leonardwwq/dsh-codex-subscription"}],"caseStudy":{"background":"基于 WSL043 上游项目维护的非官方轻量 fork，保留订阅接入、账号管理与手机远控相关设置，减少与宿主重复的功能。","goals":"探索持续互动与功能边界。","process":"保留上游归属，收敛功能范围，维护宿主兼容与回退边界。","results":"验证主要为 macOS 特定 DSH 版本上的无凭据安装、激活和状态 RPC 冒烟，不能代表真实登录、对话或手机配对验收。"}},
+{"slug":"dsh-tavern","title":"DSH Tavern","description":"以 AI 主持开放叙事，结合独立人物状态与本地存档，通过正文保存、后台记录与失败重试保持互动连续性。","tooltipSummary":"以 AI 主持开放叙事，结合独立人物状态与本地存档，通过正文保存、后台记录与失败重试保持互动连续性。","tagline":"以 AI 主持开放叙事，结合独立人物状态与本地存档，通过正文保存、后台记录与失败重试保持互动连续性。","tags":["探索原型"],"iconId":"layers","categoryId":"opensource","demoPath":null,"iframeTitle":"DSH Tavern","prototypesFolder":"dsh-tavern","demoLinks":[{"label":"GitHub 源码","path":"https://github.com/leonardwwq/dsh-tavern"}],"caseStudy":{"background":"以 AI 主持开放叙事，结合独立人物状态与本地存档，通过正文保存、后台记录与失败重试保持互动连续性。","goals":"探索持续互动与功能边界。","process":"统一主持叙事，人物分别保留状态；通过存档、去重与剧本版本快照支持恢复。关联项目：<a href=\"/work/dsh-cultivation\">DSH Cultivation</a>。","results":"当前为可运行原型，长期趣味性、成本和完整游玩仍需验证。"}},
+{"slug":"agent-lab","title":"Agent Lab","description":"将能力入口、输入表单和结果呈现组织为可配置的工作台，支持引用已有任务结果并查看请求与执行轨迹。","tooltipSummary":"将能力入口、输入表单和结果呈现组织为可配置的工作台，支持引用已有任务结果并查看请求与执行轨迹。","tagline":"将能力入口、输入表单和结果呈现组织为可配置的工作台，支持引用已有任务结果并查看请求与执行轨迹。","tags":["可交互 Mock"],"iconId":"layers","categoryId":"opensource","demoPath":null,"iframeTitle":"Agent Lab","prototypesFolder":"agent-lab","demoLinks":[{"label":"打开工作台（本地模拟）","path":"https://weipm.com/agent-workbench-demo/#/app"},{"label":"打开配置端（本地模拟）","path":"https://weipm.com/agent-workbench-demo/#/admin"},{"label":"GitHub 源码","path":"https://github.com/leonardwwq/agent-workbench-demo"}],"caseStudy":{"background":"将能力入口、输入表单和结果呈现组织为可配置的工作台，支持引用已有任务结果并查看请求与执行轨迹。","goals":"验证配置、使用与额度结算流程。","process":"配置端新增能力 → 工作台生成入口与表单 → 引用已有脚本 → 查看结果、请求与轨迹。","results":"全部执行为浏览器本地模拟，不包含真实模型、工具执行、支付、登录或跨设备同步。"}},
   {
     slug: 'asa-smart-delivery',
     title: 'ASA 智能投放平台（投放管理+数据管理+风控一体化）',
@@ -92,7 +96,7 @@ export const workProjects: WorkProject[] = [
     iframeTitle: 'ASA 智能投放平台原型预览',
     prototypesFolder: 'ASA智能投放平台',
     demoLinks: [
-      { label: 'ASA 投放 Agent（探索原型）', path: '/prototypes/ASA投放Agent/index.html' },
+      { label: 'AI Copilot 交互原型', path: '/prototypes/ASA投放Agent/index.html' },
     ],
     caseStudy: {
       background:
@@ -380,7 +384,7 @@ export const workProjects: WorkProject[] = [
     slug: 'prd-builder',
     title: 'PRD Builder Skill（prd-builder）',
     description:
-      '面向 AI Agent 的自适应 PRD 生成 Skill：按复杂度分轻量 / 标准 / 项目三档，交付 PRD.md、spec.yaml、可交互 mock 与评审版。机器可读规格与文档同源，产出可直接丢给研发 Agent 拆任务执行。已开源，附完整虚构示例工作区。',
+      '根据需求范围、状态和风险选择分析流程，PRD.md 为权威文本，其他材料按需产出；通过对照测量观察成本、耗时和文档质量。',
     tooltipSummary:
       '开源 PRD Skill：三档复杂度自适应，交付 PRD.md + spec.yaml + mock + 评审版；实测输入 token 小型任务降 89%（单次样本）。',
     tagline:
@@ -422,30 +426,7 @@ export const workProjects: WorkProject[] = [
     },
   },
   {
-    slug: 'dsh-cultivation',
-    title: 'DSH 角色养成插件（dsh-cultivation）',
-    description:
-      '为 DSH（DeepSeek Harness）Web 界面打造的开源角色养成插件：每个会话绑定一个可长期养成的 AI 角色——自定义人设、好感度五阶段成长、分区记忆 + 追加日志自动归档。已发布至 npm，纯本地存储、零依赖。',
-    tooltipSummary: '开源 DSH 插件：会话级角色绑定 + 好感度五阶段成长 + 分区记忆自动归档，已发布 npm v0.3.0-beta.1。',
-    tagline:
-      '让 AI 角色「记得你、在乎你、会成长」——不是一次性对话，而是跨会话累积的长期关系。用追加式日志 + 分区归档避免模型整包重写记忆造成的丢失，用系统级维护保证好感度不可被篡改，用零依赖纯 JS 做到即装即用。',
-    tags: ['DSH', 'AI Agent', '开源', 'npm', '角色养成', '记忆系统', '提示词工程'],
-    iconId: 'heart',
-    categoryId: 'opensource',
-    demoPath: null,
-    demoExternalUrl: 'https://github.com/leonardwwq/dsh-cultivation',
-    iframeTitle: 'dsh-cultivation GitHub 仓库',
-    prototypesFolder: 'dsh-cultivation',
-    caseStudy: {
-      background:
-        'DSH（DeepSeek Harness）是面向 Agent 的 Web 界面。日常使用中，每次对话都是「全新」的——没有持续的人设、没有关系积累，记忆只能靠把历史上下文硬塞给模型，<strong>成本高且容易丢失</strong>。希望 AI 陪伴有「养成感」：角色有完整背景、会随对话成长、记得彼此之间发生过什么，且<strong>数据完全本地、不上传、不浪费 token</strong>。',
-      goals:
-        '做一个可直接安装到 DSH Web 的插件，覆盖五块能力：<strong>① 会话级角色绑定</strong>——新会话选择角色后锁定（仅可开关）；<strong>② 角色档案</strong>——完整人设（成长经历/教育/职业/创伤/秘密等），内置 AI 设计助手（设计师/访谈）辅助生成；<strong>③ 好感度系统</strong>——随对话自然变化、分五阶段（冷淡 → 客气 → 熟络 → 亲密 → 依赖）、语气与称呼随阶段调整、由系统维护不可直接修改；<strong>④ 记忆系统</strong>——分区存储（长期事实/用户信息/关系状态/承诺/事件）+ 追加式日志自动归档，跨会话累积且防丢失；<strong>⑤ 资源纪律</strong>——角色段仅注入根会话、子代理不受影响，不浪费 token。',
-      process:
-        '独立完成产品设计 + 工程实现，采用 <strong>Host + Client 双半区</strong>插件架构：Host 侧负责数据持久化（按 key 合并防并发覆盖）、本地 API（load/save/chat/session-set/template-delete/avatar*）、按会话注入角色段（子代理跳过）、好感度工具 + 定期独立校准、记忆系统（分区 + 追加式日志 + 自动归档 + 日期纪律）；Client 侧负责角色库、新会话选择弹窗、编辑弹窗（表单 + AI 助手 + 预览 + 头像）、会话页角色 chip / 好感度指示 / 消息头像，复用 DSH 官方组件与设计 token 保持一致体验。实现上<strong>零依赖、纯 JavaScript、无需构建</strong>，通过 package.json 的 <code>dsh.client</code> 声明让 DSH web 插件表自动发现客户端；交付前用自研 check 脚本做语法、工具名（模型 API 限制）、零外部 import、client bundle id 一致性预检。',
-      results:
-        '已发布至 <strong>npm（v0.3.0-beta.1）</strong>并在 <strong>GitHub 开源（MIT）</strong>：通过 <code>pnpm add dsh-cultivation</code> + <code>cordis.patch.yml</code> 插入块一键安装，数据版本自动迁移（v1 → v6）。完成 <strong>Phase 1-4</strong>（角色档案表单、AI 设计助手、好感度养成、记忆系统 v3，131 个测试全过），Roadmap 剩余云端同步 / 更多角色模板 / 记忆可视化。案例体现从<strong>产品判断</strong>（记忆不整包重写、token 优化、防篡改）到<strong>工程实现</strong>（零依赖插件、双半区架构、数据迁移）的完整闭环，是 Agent 工程实现能力的可验证交付物。',
-    },
+    slug: 'dsh-cultivation', title: 'DSH Cultivation', description: '为 AI 角色保留共同经历、关系状态和可修正的判断，并将这些积累用于后续回复。', tagline: '通过记忆整理、状态校验与角色管理，探索持续互动中的一致性和用户控制。', tags: ['开源插件', '长期互动'], iconId: 'heart', categoryId: 'opensource', demoPath: null, iframeTitle: 'DSH Cultivation', prototypesFolder: 'dsh-cultivation', demoLinks: [{label:'GitHub 源码',path:'https://github.com/leonardwwq/dsh-cultivation'}], caseStudy: { background: '长期互动需要保留共同经历，并区分事实与角色视角的判断。', goals: '让判断可以修正，状态变化经过代码校验，并保留用户控制权。', process: '整理事实记忆、关系、心情和成长状态；可独立使用，也为 <a href="/work/dsh-tavern">Tavern</a> 提供隔离的人物发展服务。', results: '已交付开源插件；工程测试不能替代长期体验验证，尚不能据此判断留存或关系体验改善。' }
   },
   {
     slug: 'saas-community',

@@ -1,0 +1,32 @@
+---
+import { describeProject, projectLinks } from '../data/portfolio';
+import type { WorkProject } from '../data/workProjects';
+
+type Props = {
+  project: WorkProject;
+  featured?: boolean;
+  heading?: 'h2' | 'h3';
+};
+const { project, featured = false, heading = 'h3' } = Astro.props;
+const Heading = heading;
+const info = describeProject(project);
+const links = projectLinks(project).filter((link, index) =>
+  project.slug === 'agent-lab' || project.slug === 'ai-copilot-assistant' || index === 0 || /github\.com\//i.test(link.path)
+);
+---
+
+<article class:list={['project-entry', { 'featured-work': featured }]}>
+  <div class="project-entry-heading">
+    <Heading><a href={`/work/${project.slug}`}>{info.title}</a></Heading>
+    <span class="work-status">{info.status}</span>
+  </div>
+  <p class="project-entry-summary">{info.summary}</p>
+  <div class="project-entry-links" role="group" aria-label={`${info.title} 的相关入口`}>
+    {links.map(link => (
+      <a href={link.path} target="_blank" rel="noopener noreferrer">
+        {link.label}<span aria-hidden="true"> ↗</span>
+      </a>
+    ))}
+    <a class="project-entry-detail" href={`/work/${project.slug}`}>项目说明 →</a>
+  </div>
+</article>

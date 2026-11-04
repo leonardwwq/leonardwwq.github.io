@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-11-04T06:04:33.753082+08:00",
+  "updated_at": "2026-11-05T06:07:35.052239+08:00",
   "items": [
+    {
+      "date": "2026-11-05",
+      "category": "产业",
+      "title": "Uber 财报里的冷水：万圣节最忙一周，3.2 亿单里只有 4 单是 AI agent 下的",
+      "summary": "Uber 三季度财报电话会上，CFO Balaji Krishnamurthy 披露：万圣节当周 Uber 与 Uber Eats 合计约 3.2 亿单，其中通过 AI agent 下的网约车订单只有 4 单，Uber Eats 的 agent 订单约 500 单。CEO Dara Khosrowshahi 称「非常早期，牵引力非常有限，我们希望以后会更多」。DoorDash 上周财报也称至今只收到几百单来自 AI agent 的订单。同期 personal agent 赛道热度极高：Instinct 最新一轮估值 100 亿美元，Meta 的 Muse 上月登顶美国 App Store 免费榜并称用户破 1000 万。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/04/almost-no-one-uses-ai-agents-to-book-their-uber-company-says/",
+      "remark": "这是给 agent 叙事降温的一组硬数字。百亿估值的 personal agent 和 4 单真实打车之间的差距，说明卡点不在模型能力，而在授权、支付、信任，以及「用户为什么不自己点三下」。做 agent 产品的应该把这份财报当必读。"
+    },
+    {
+      "date": "2026-11-05",
+      "category": "产业",
+      "title": "Meta 收购 AI 编程初创 Conductor：买的是多 agent 编排层，不是模型",
+      "summary": "Meta 收购 Conductor，一家 2024 年成立、去年夏天才上线核心产品的 AI 编程公司。其产品让用户把多个 agent 部署到并行工作区协同推进同一个软件项目的不同模块，而这些 agent 本身来自 Anthropic 和 OpenAI，Conductor 自己不训模型。创始人 Charlie Holtz 确认加入，称明年初会有「新东西」，并提到将与 Meta 首席 AI 官 Alexandr Wang 和 Superintelligence Labs 产品负责人 Nat Friedman 合作。Conductor 云服务将于 11 月 20 日关停并随后删除云端数据，核心功能在此之前照旧。这是 Meta 继 Muse Code 之后在 coding agent 上的又一次补强。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/",
+      "remark": "值得注意的不是金额（未披露），而是 Conductor 的定位：纯编排层，卖的是多 agent 协作的工作流而不是模型能力。模型厂往下游走的时候，中间层最先被收购。云端服务两周后就关，说明买的是人和产品直觉，不是用户。"
+    },
+    {
+      "date": "2026-11-05",
+      "category": "硬件",
+      "title": "Nvidia RTX Spark 笔记本装 Linux 推理只有 Windows 的 1/5：卡在加密固件",
+      "summary": "RTX Spark 笔记本（如 MSI Prestige N16 Flip AI Plus）能装 Linux 并跑起 GPU 加速，但插电后 GPU 被锁在约 780MHz，而 Windows 下能到 2.2GHz 以上。原因是 Nvidia 平台控制器组件（Nvidia Platform Controllers and Framework）的功耗表被加密，只有 Windows 驱动能解密，Linux 没有对应实现。GPT-OSS-120B 实测：Windows 65.4 tok/s、WSL 65.1、DGX Spark 61、同机原生 Linux 只有 13.9。另外机器默认把 96GB 统一内存划给 GPU，只有 Windows 提供改这个比例的开关。当前实用折中是 WSL + vLLM。",
+      "source": "MindStudio",
+      "url": "https://www.mindstudio.ai/blog/linux-nvidia-rtx-spark-laptop",
+      "remark": "一个很具体的教训：「能跑」和「能跑得快」之间隔着厂商固件。本地推理的瓶颈已经不在显存和模型，而在功耗管理和驱动授权。做端侧部署选型时，先确认目标 OS 在厂商支持矩阵里，别只看 benchmark 上的 Windows 数字。"
+    },
+    {
+      "date": "2026-11-05",
+      "category": "安全",
+      "title": "AI 把 40 年的遗留代码债一次性翻出来：PHP2Shell 漏洞的启示",
+      "summary": "PHP2Shell 是 PHP 中一个潜伏已久的漏洞，底层是内存分配不足导致的 out-of-memory 类问题，2024 年就有人报告给 PHP 基金会但未被重视。AI 辅助的安全研究把它大规模扫出来后，在恶意利用前完成披露和修补，未造成实际损失。IEEE Spectrum 的判断是：AI 正在把过去 40 年人类写下的遗留代码里的坑一次性翻出来，攻防两侧同时加速。Tolmo 的 AI 安全研究负责人 Matt Suiche 称「现在是偿还技术债的时候」；哥伦比亚大学 Suman Jana 指出这类漏洞需要大量极细碎的推理，正是 AI 擅长的事，所以过去没人愿意看的 crash 报告现在变得有价值。",
+      "source": "IEEE Spectrum",
+      "url": "https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability",
+      "remark": "这条比大多数「AI 安全」标题扎实。它讲的是一个被低估的方向：AI 的第一波安全价值不是自动攻击，而是把没人手看的陈年 bug 报告重新变成可执行的工单。还在维护 PHP 或遗留栈的团队，你的技术债现在有对手了，也有工具了。"
+    },
+    {
+      "date": "2026-11-05",
+      "category": "产品",
+      "title": "Apple 把「全天录音摘要」做进手表：Siri Recaps 上手，实用和不安同时成立",
+      "summary": "Apple 在 iOS 27.3 / watchOS 27.3 首个开发者 beta 中放出四项 Audio Intelligence 功能：重要声音识别、识曲、Live Rewind（回听过去 15 秒）、Siri Recaps（全天音频摘要成笔记）。TechCrunch 记者上手一天后的评价是，实用价值可能压过「一直被监听」的不适感，但确实会记下不值得记的内容。隐私上 Apple 的处理是尽量端侧推理、不做说话人识别、不存原始音频、自动打码身份证号和账户等信息。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/04/i-tried-apples-siri-recaps-theyre-surprisingly-useful-and-a-little-unsettling/",
+      "remark": "这是「always-on 助手」第一个真正落到大众产品上的形态，不是 demo。真正的产品难题不是隐私争议——Apple 的工程兜底比同行做得多——而是信噪比：一天摘出十条笔记，用户第二周就会关掉。谁先把「什么不值得记」做对，谁才拿得住这个功能。"
+    },
     {
       "date": "2026-11-04",
       "category": "产业",

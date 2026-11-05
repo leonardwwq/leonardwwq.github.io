@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-11-05T06:07:35.052239+08:00",
+  "updated_at": "2026-11-06T06:04:30.024535+08:00",
   "items": [
+    {
+      "date": "2026-11-06",
+      "category": "大模型",
+      "title": "百度开源文心 5.5 Flash Base：2800 亿参数 MoE，每 token 只激活 140 亿",
+      "summary": "11 月 5 日百度开源基座模型文心 5.5 Flash Base（ERNIE 5.5 Flash Base）。MoE 架构，总参数 2800 亿、每 token 激活 140 亿，预训练用 33.5 万亿 token，预训练上下文最高 128K，微调与推理阶段支持最长 100 万 token。官方称在知识、推理、数学、代码、多语言、长上下文等多个基准上取得同尺寸 SOTA，超过 DeepSeek-V4-Flash-Base、Hy3-preview-Base、MiMo-V2.5-Base。技术上主打效率：Latent-Gated Sparse Attention 把门控投影权重参数减少 75%，Multi-Router Latent MoE 用多个独立路由器改善路由评分与专家实际效用的相关性，ECHO 训练目标复用主干最后一层而不额外加 MTP 模块。开源地址 huggingface.co/baidu/ERNIE-5.5-Flash-Base。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/507787.html",
+      "remark": "值得记的是「激活 140 亿」这个数——它决定这个模型能不能在普通卡上跑起来。国内开源模型现在拼的不是绝对能力，是同等能力下更便宜，这个方向对做产品的人更实用。"
+    },
+    {
+      "date": "2026-11-06",
+      "category": "产业",
+      "title": "Dropbox 3.5 亿美元收购 Tigris Data，要做「Agent 云存储」",
+      "summary": "Dropbox 宣布以 3.5 亿美元收购云存储公司 Tigris Data，交易预计 2026 年四季度完成，是 Dropbox 迄今最大的一笔收购。目的是支撑新的 DBX Agent Cloud——面向企业和构建 AI 模型、agent 的开发者的存储平台，初期先做独立对象存储产品，兼容 Amazon S3 生态的现有工具。Dropbox 称此次收购暂无裁员计划（上月刚裁了 9%）。产品端也在加 AI：用户可以让自己文件上的 AI 执行任务、切换模型，并把 Dropbox 内容接到 ChatGPT、Claude、Muse 等外部工具。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/05/dropbox-acquires-tigris-data-for-350m-to-bolster-its-ai-iinfrastructure/",
+      "remark": "存储厂商的焦虑写在收购价里——当 agent 需要海量读写，谁握着数据层谁就有位置。Dropbox 拿史上最大一笔收购去买基础设施，说明它判断自己的护城河已经不是同步盘，而是「agent 的数据底座」。"
+    },
+    {
+      "date": "2026-11-06",
+      "category": "产品",
+      "title": "Claude 接入银行账户：上线 Personal Finance，只读、不做投顾",
+      "summary": "Anthropic 宣布 Claude 新增 Personal Finance 工具。用户通过 Plaid 连接银行和信用卡账户后，可以直接问「这个月钱花哪了」，Claude 会汇总各账户支出并按房租水电、餐饮、购物等分类，还能追问「比平时多吗」「还漏了什么」。Anthropic 称访问是只读的，不能转账、管理或投资；能标记重复扣款、意外费用、逐月上涨的账单，也能解释 APR 这类概念。这被视为在追赶今年 5 月就上线同类功能的 ChatGPT。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/05/claude-can-now-analyze-your-spending-with-its-new-personal-finance-tool/",
+      "remark": "真正的差异点不是功能，是它明确不卖金融产品、不做广告推荐——在一个「理财助手最后都变成导流入口」的行业里，这句话比功能更值钱。但只读也意味着它只能诊断，不能执行。"
+    },
+    {
+      "date": "2026-11-06",
+      "category": "产业",
+      "title": "美国司法部据报调查 Nvidia 130 亿美元收购 Hugging Face",
+      "summary": "Tom's Hardware 报道，美国司法部正就 Nvidia 以 130 亿美元收购 Hugging Face 展开调查。报道称监管担心集中在两点：这笔交易可能让 Nvidia 控制 AI 模型分发的关键节点；以及 Nvidia 可能借此对客户施加压力。该收购此前已因金额和战略意图受到关注。",
+      "source": "Tom's Hardware",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/dept-of-justice-reportedly-probes-nvidia-over-usd13-billion-hugging-face-ai-platform-acquisition-concerns-raised-over-competition-in-ai-and-pressure-on-customers",
+      "remark": "Hugging Face 不是模型公司，是整个开源模型生态的分发入口。Nvidia 买了它，等于既卖铲子又握着矿工集合点——这才是反垄断该问的问题。"
+    },
+    {
+      "date": "2026-11-06",
+      "category": "安全",
+      "title": "OpenAI 未发布的网络安全模型挖出 Linux 内核 948 个提权漏洞，花了 120 万美元",
+      "summary": "量子位报道，OpenAI 用一个尚未发布的网络安全模型搭了自动化流水线，从发现、验证到写出 exploit，在 Linux 内核里找出 948 个可让普通用户拿到 root 权限的严重漏洞，总成本约 120 万美元，平均每个 1279 美元。流程分层：侦察兵 agent 先通读 4000 多万行代码，圈出约 280 万行（约 7%）与安全相关的高价值目标，花掉 3426 美元 API 额度；分析师 agent 再对这批代码做地毯式扫描。对比：AI 出现前顶尖人类研究员一年大约能在内核里找到 20 个同类漏洞；按 Pwn2Own 历史奖金估算，这 948 个漏洞价值约 1890 万到 6630 万美元。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/507697.html",
+      "remark": "两个数字放一起才有意义：单个漏洞发现成本 1279 美元，市场价可能是几万。安全研究的成本结构被改写了，压力接下来转到维护者——948 个补丁建议，人类根本审不过来。"
+    },
+    {
+      "date": "2026-11-06",
+      "category": "研究",
+      "title": "METR 进驻 Anthropic 两个半月：研发速度约为历史 1.9 倍，约 80% 归因于 AI",
+      "summary": "METR 在 2026 年 8 月 12 日至 10 月 29 日对 Anthropic 做了高权限评估，Anthropic 开放了预训练、强化学习、各领域训练算力、内部模型 benchmark、AI 加速分析等内部数据。按 Anthropic 自研的 AECI（对标 Epoch Capabilities Index），自 2025 年 10 月以来内部模型 benchmark 增速约为此前历史速度的 1.9 倍（95% 置信区间 1.5–2.8 倍），相当于过去一年走完了 2023 年 10 月到 2025 年 10 月两年（大致 Claude 2.1 到 Sonnet 4）的进展。METR 认为这次加速不是训练算力增长带来的，估计当前加速中约 80% 来自 AI，且没有看到未来 12 个月内会形成硬瓶颈的迹象。报告同时明确：Anthropic 删节了大部分最关键的证据，METR 团队内部对结论仍有分歧。",
+      "source": "METR",
+      "url": "https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/",
+      "remark": "这是目前最硬的一份「AI 加速 AI 研发」现场证据，同时是一份你没法自己验证的报告——最关键证据被删了。普通人能拿走两条：加速大概率是真的，原因大概率是 AI 而不是堆卡。"
+    },
+    {
+      "date": "2026-11-06",
+      "category": "大模型",
+      "title": "腾讯发布 Hy4：首次带上视觉理解和 computer-use，权重过几天放出",
+      "summary": "腾讯发布新一代大模型 Tencent Hy4，官方称已进入全球领先开源模型行列，权重和 system card 将在几天内放出。相比上一代，Hy4 首次具备视觉理解，支持细粒度图像处理、复杂图表分析和数学视觉推理；首次支持 computer-use，可操作命令行和图形界面，并针对 Blender、CAD 等专业软件做了专项训练。在腾讯办公产品 WorkBuddy 的评测中平均分 83.18、通过率 96.15%，12 个场景里 9 个国内第一；另针对基金研究、证券分析、量化投资等金融场景做了专门训练。",
+      "source": "腾讯",
+      "url": "https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/",
+      "remark": "真正值得注意的是 computer-use + 专业软件专项训练这个组合——模型厂开始往「能操作工作软件的员工」方向做，而不是只比 benchmark。但「全球领先」目前只有腾讯自己的评测口径，等权重放出来、看第三方复现才算数。"
+    },
     {
       "date": "2026-11-05",
       "category": "产业",

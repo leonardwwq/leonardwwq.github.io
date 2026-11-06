@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-11-06T06:04:30.024535+08:00",
+  "updated_at": "2026-11-07T06:03:00.637214+08:00",
   "items": [
+    {
+      "date": "2026-11-07",
+      "category": "产业",
+      "title": "Ramp 数据：AI 用量还在涨，花的钱停了",
+      "summary": "Ramp 支付数据显示，8-9 月企业 AI 支出仅增长 1.5%，而 7 月是环比 42%。token 用量继续上升但支出走平，降价与成本管控吃掉了营收增长。Ramp 首席经济学家指出，几乎所有 AI 支出都来自风投支持的高增长公司，头部 1% 重度用户的人均支出已从夏季峰值回落。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo/",
+      "remark": "今年最该盯的一条数据：用量涨、支出平，意味着 AI 正从「预算无上限」转向「要算 ROI」。Anthropic IPO 前撞上这个转折，超高速增长的叙事会难讲。对做投放和产品的人是信号：客户开始问省了多少人，而不是多酷。"
+    },
+    {
+      "date": "2026-11-07",
+      "category": "产业",
+      "title": "Palo Alto 拟 5 亿美元收购 agent 安全公司 Clutch",
+      "summary": "Palo Alto Networks 正洽谈以约 5 亿美元收购 AI agent 安全创业公司 Clutch。Clutch 上一轮估值 8500 万美元，ARR 接近 1000 万美元，若成交约为 50 倍 ARR，将是其今年第 7 笔收购。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/05/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/",
+      "remark": "50 倍 ARR 买一家 3 岁的公司，说明 agent 安全已经被单独定价。当 agent 手里握着凭证和权限，安全预算就会从 IT 挪到这一层，这个赛道明年会出现更多同类标的。"
+    },
+    {
+      "date": "2026-11-07",
+      "category": "产品",
+      "title": "Meta 为 Muse agent 推出 Spaces，把对话拆成项目空间",
+      "summary": "Meta 给 Muse agent 上线 Spaces：侧边栏可按项目开独立空间（旅行规划、婚礼筹备、礼物清单等），描述一句需求 Muse 就把空间建成跟踪表或项目板，还能接第三方应用在后台自动刷新价格、日程、进度。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/06/meta-introduces-spaces-a-new-way-to-collaborate-with-your-muse-agent/",
+      "remark": "本质是把 chat 里一条无限长的对话，拆成多个带状态的容器——agent 产品化的必经一步：记忆要靠结构，不靠上下文长度。这个信息架构国内 AI 助手可以直接借。"
+    },
+    {
+      "date": "2026-11-07",
+      "category": "大模型",
+      "title": "Underdog 发布 32MB 语音模型，浏览器里离线跑",
+      "summary": "创业公司 Underdog 发布 3100 万参数的开源语音模型 Woof，体积 31.7MB，可在浏览器和多数设备上离线运行，同时生成语音与音乐，并配了一个用它做全部旁白的复古小游戏 Demo。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/06/underdog-shows-off-a-32mb-speech-model-in-new-demo/",
+      "remark": "32MB 的意义不在参数，在端侧可分发。语音一旦降到零边际成本，车机、玩具、无障碍这些离线场景的产品形态会变。接下来看授权条款——能商用才是分水岭。"
+    },
+    {
+      "date": "2026-11-07",
+      "category": "产业",
+      "title": "李佳琦直播间半小时卖出 10 万份 Token，天猫做 AI 生意",
+      "summary": "11 月 2 日晚李佳琦直播间上架千问办公 Token 算力，开播半小时售出 10 万份个人会员月卡，累计约 2 万亿 Token。天猫 9 月已设「AI 空间站」，千问、智谱、Minimax 三家入驻，按月度/季度/年度三档售卖。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/industrynews/h454rlPtg41JIuFd.html",
+      "remark": "Token 变成货架商品，说明 AI 厂商获客开始走电商+直播这条最卷也最高效的路。转化逻辑在向快消靠：卖的不是能力，是「这个月能用多少」的确定性。"
+    },
+    {
+      "date": "2026-11-07",
+      "category": "产品",
+      "title": "豆包工作个人版取消 5 小时额度限制",
+      "summary": "11 月 6 日起豆包工作个人版取消 5 小时额度限制，个人用户不再受短周期额度约束，可在周额度范围内按实际节奏安排使用时间。此前与主流大模型一致，采用 5 小时 + 7 天双周期额度管理。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/industrynews/Ii6W43GghzJA7V1u.html",
+      "remark": "取消短周期额度是典型的降摩擦改动——真实痛点是用户不敢开长任务，怕半路被限。这类细节比模型涨几个点更能留住人，适合当产品案例复盘。"
+    },
     {
       "date": "2026-11-06",
       "category": "大模型",

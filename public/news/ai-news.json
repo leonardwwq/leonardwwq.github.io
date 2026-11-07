@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-11-07T06:03:00.637214+08:00",
+  "updated_at": "2026-11-08T06:03:36.262602+08:00",
   "items": [
+    {
+      "date": "2026-11-08",
+      "category": "产业",
+      "title": "OpenAI 新一轮已募 110 亿美元、估值 1.25 万亿，但离 300 亿目标差很远",
+      "summary": "彭博报道 OpenAI 新一轮融资已到手约 110 亿美元，估值 1.25 万亿美元，本轮尚未关闭，预计几周内完成、总额约 200 亿美元；而 9 月底的目标是募 300 亿。同日彭博称 Anthropic IPO 的潜在买家给出的估值可能低至 1.1 万亿，而一个月前投资人预期是 2 万亿。OpenAI 已推迟原定今年上市的计划。",
+      "source": "TechCrunch（引彭博）",
+      "url": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
+      "remark": "把这条和昨天的 Ramp 数据放一起看，是一个方向的三个证据：募资额低于目标、IPO 估值预期腰斩、企业 AI 支出增速从 42% 掉到 1.5%。叙事还没崩，但买方开始压价了。判断 AI 泡沫别只看股价，看「融资是否足额」和「支出是否续涨」这两个先行指标。"
+    },
+    {
+      "date": "2026-11-08",
+      "category": "技术",
+      "title": "GitHub 新 Git 存储架构 Rubicon：单仓支持 5000 个 agent 并发、7200 次 push/秒",
+      "summary": "GitHub 在 Universe 大会公布新 Git 存储架构 Rubicon：写入可处理每秒数千次、读取按需水平扩展。内部压测显示单仓可支撑 5000 个 agent 并发协作、承受每秒 7200 次代码推送。目前小范围内测，计划明年初扩大。官方判断：当研发交给 7×24 高并发的 agent，现在的「脉冲式突发写入」会变成常态高吞吐，且每次 push 会级联出大量读请求（read fan-out）。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/1/023/823.htm",
+      "remark": "这是基础设施开始为 agent 改地基的信号。今天最忙的仓库峰值也不过每秒数十次写入，GitHub 直接按 7200 设计——说明他们内部看到的 agent 负载曲线已经很陡。做 agent 产品的可以顺势想一件事：你的代码/文件协作层，是按「人一天提交几次」设计的，还是按「agent 每秒提交」设计的？"
+    },
+    {
+      "date": "2026-11-08",
+      "category": "研究",
+      "title": "Anthropic 未发布模型三天证明悬置 18 年的量子计算猜想",
+      "summary": "物理研究机构 PSI 宣布，用自研研究系统配合 Anthropic 一款尚未发布的模型，三天内完成了 2008 年提出、一直未获证明的阿伦森-安拜尼斯猜想的证明，结论是量子计算机要取得指数级加速必须依赖问题本身的结构——证实了「量子并非处处更快」的长期猜测。研究者称这是「重大成果」。",
+      "source": "IT之家（引商业内幕）",
+      "url": "https://www.ithome.com/1/023/752.htm",
+      "remark": "值得注意的不是「AI 又解了个难题」，而是流程：人搭研究系统、模型做搜索与验证、三天闭环。这类「AI 当研究执行器」的案例今年在变密（9 月 OpenAI 宣称解决纳维-斯托克斯相关问题）。对做研究的人是工具红利，对只做文献综述的人是替代压力。"
+    },
+    {
+      "date": "2026-11-08",
+      "category": "研究",
+      "title": "微软研究院 AI Frontiers 被并入 MAI：作者称「他们并不真的想要我们」",
+      "summary": "MSR 研究员撰文复盘：2023 年为应对 ChatGPT 后的竞争而组建的 AI Frontiers（约 50 人，产出 AutoGen、Fara 计算机操作 agent、Dion3、Full Bandwidth Transformer 等），今年 9 月被重组进 Microsoft AI。作者称双方哲学不兼容——MAI 前 Inflection 团队的核心是「只做 scaling、激进地不做 research」，并直言有大量证据表明对方并不想要这个团队。",
+      "source": "hunch.net（ML Theory）",
+      "url": "https://hunch.net/?p=13764006",
+      "remark": "这条对读博/进大厂研究院的人是硬信号：大厂研究组织的存在理由正在被「scaling 的回报比研究更可预测」这条商业逻辑挤压。想做研究，要么在有算力又有研究文化的少数地方，要么在高校/独立机构；把「进大厂做研究」当默认路径，风险在上升。"
+    },
+    {
+      "date": "2026-11-08",
+      "category": "安全",
+      "title": "800 多个开源 AI 渗透测试 agent 无密码暴露在公网",
+      "summary": "安全公司 Censys 扫描发现，中国开源自主渗透测试工具 Artex 有 800 多个部署实例可从公网直接访问、无需登录。Artex 自 7 月开源后被指关联多起攻击；微软曾描述它是「从侦察到数据外泄几乎无需人工介入」的 agent 系统。研究者强调并非所有实例都用于恶意目的，但这些系统本来完全不必对公网开放。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web/",
+      "remark": "这是 agent 时代最典型的翻车方式：不是模型越狱，是部署配置。过去一个漏洞扫描器暴露了危害有限，现在暴露的是一个会自己规划、自己执行、手里有凭证的 agent。给自建 agent 的第一条纪律：默认只监听内网 + 强制鉴权，别信「反正没人知道地址」。"
+    },
+    {
+      "date": "2026-11-08",
+      "category": "产业",
+      "title": "美方情报备忘录称 Megaspeed 高管被招募监视黄仁勋",
+      "summary": "一份今年在华盛顿流传的备忘录（基于美国情报）称，新加坡 Megaspeed 高管 Alice Huang 被中国国安部招募、目标是英伟达 CEO 黄仁勋，并提及两人存在私人关系；英伟达回应称黄与客户的互动「并不异常」、公司不向客户分享机密。同期 NYT 还查出获准采购英伟达高端芯片的 New Matrix，登记办公地址只是一间「空壳」办公室。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/",
+      "remark": "芯片管制的第二条战线不是关税而是渠道审计。备忘录真伪不影响结论：只要「谁能买卡」由一纸许可决定，就一定会长出空壳公司这类套利结构。对做跨境/供应链的判断是——未来一年合规成本会从「申报」走向「实地核查」。"
+    },
     {
       "date": "2026-11-07",
       "category": "产业",

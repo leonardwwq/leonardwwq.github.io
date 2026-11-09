@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-11-09T06:03:17.804829+08:00",
+  "updated_at": "2026-11-10T06:05:59.980085+08:00",
   "items": [
+    {
+      "date": "2026-11-10",
+      "category": "产品",
+      "title": "Medium 推出写作应用 TK：把 AI 塞进写作过程本身",
+      "summary": "Medium 发布写作应用 TK（名字取自编辑行话 “to come”，即待补占位符），把 AI 助手嵌进编辑器：边写边补信息、调出以前存下的素材，并带编辑反馈、标题反馈等技能，可对齐 Medium 出版物的风格指南。在出版界对 AI 写作争议升温的背景下，Medium 选择正面押注。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/09/mediums-new-tk-app-brings-ai-assistance-directly-into-the-writing-process/",
+      "remark": "命名很聪明：TK 原本就是“这里待补”，产品等于把写作中的留白当入口，而不是另开一个聊天窗。可借鉴的交互思路——AI 别做成并列的 tab，做成你正在留白的地方。"
+    },
+    {
+      "date": "2026-11-10",
+      "category": "政策",
+      "title": "Google 给学校的 AI 选择权：能关 Gemini，但拿不到不带 AI 的搜索",
+      "summary": "Google 新的 K-12 AI 政策要求学校主动选择是否启用 AI 产品，并把搜索一并算进 AI 组合。争议后 Google 澄清：可以单独关掉 Gemini 应用、保留搜索；想彻底不要 AI 也可以全关。但学校无法获得“纯网页搜索”——AI Overviews 和 AI Mode 始终留在结果里。Google 称不会修改该政策。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/11/google-schools-can-keep-search-while-skipping-gemini-but-ai-search-is-non-negotiable/",
+      "remark": "真正的信息是“不带 AI 的搜索已经不可选”被官方坐实。做产品的推论：搜索框默认形态不可逆地变了，靠纯链接列表做差异化不再是选项，价值得长在 AI 摘要之上。"
+    },
+    {
+      "date": "2026-11-10",
+      "category": "产品",
+      "title": "Automattic 出 Spacefast：给 vibe-coding 应用配齐部署底座",
+      "summary": "WordPress 母公司 Automattic 上线 Spacefast，为氛围编程生成的应用提供数据库、鉴权、文件上传、邮件、统计等基础设施，正面对标 Lovable、Emergent。可对接 ChatGPT、Claude、Cursor、Hermes 等 agent，也可直接接 Git 仓库。9 月已软启动，卖点是让用户自选 agent 而不是绑定一家。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/09/automattic-debuts-a-platform-to-deploy-vibe-coding-apps-amid-a-changing-internet/",
+      "remark": "关键在定位：不卖“帮你写代码”，卖“写完之后的运维”。生成能力越廉价，部署、鉴权、稳定性这些无聊部分越值钱——护城河正往交付链路后段移。"
+    },
+    {
+      "date": "2026-11-10",
+      "category": "安全",
+      "title": "Claude Code 配置文件把上万条密钥泄露到公开 GitHub",
+      "summary": "Apiiro 研究发现超过 10 万个 Claude Code 的 .claude/settings.local.json 被上传到公开仓库，其中约 1100 个（来自 63 个组织）含真实密钥：数据库口令、API token、私钥。成因是“Yes, and don’t ask again”会把批准过的命令写进本地设置文件，而 .gitignore 只在用户全局生效、仓库层没有，Claude Code 自己还可能把该文件提交上去。同类 bug 报告最早出现在 2025 年 8 月。",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/11/claude-code-settings-files-expose-thousands-of-secrets-on-github/",
+      "remark": "便利性默认值的经典代价。团队上 AI 编码工具，别只看能力，先看它往仓库里写了什么：权限记忆类文件必须进仓库级 .gitignore，再加一道 secret 扫描。"
+    },
+    {
+      "date": "2026-11-10",
+      "category": "大模型",
+      "title": "Meta 发 Muse Ember：agent 执行层小模型，10 美分/百万输入 token",
+      "summary": "Meta Superintelligence Lab 发布 Muse Ember，Muse 系列最轻最便宜的模型，专为 agent 每天重复做的活优化：工具调用、编码子任务、路由、信息抽取，支持文本/图像/音频输入。输入 0.1 美元/百万 token，比 Haiku、Luna 便宜，与 DeepSeek V4.1 Flash、GLM 5.3 Flash 同档。设计上与 Muse Wonder 搭配：大模型定规则，Ember 跑量。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/09/meta-releases-muse-ember-a-new-lightweight-model-for-agent-execution/",
+      "remark": "这条把 agent 架构的分工讲明了：贵模型做规划，便宜模型做执行，成本差一到两个数量级。还在用同一个模型跑完全链路的团队，这里就是可以直接抄的成本优化点。"
+    },
+    {
+      "date": "2026-11-10",
+      "category": "大模型",
+      "title": "Claude Fable 5.2 与 Mythos 5.2 发布：$8/$40 每百万 token，速度快 30%",
+      "summary": "Anthropic 发布 Fable 5.2 与 Mythos 5.2，同一底座：Fable 带更强的网络安全与生物安全护栏、面向全部用户开放，Mythos 供申请机构使用。输出速度比 5.1 快约 30%，另有 fast 模式再快 2.5 倍，定价 $8/百万输入、$40/百万输出。预发布测试中帮工程师完成原本不可行的软件迁移、从零设计出三块可工作的电子器件。",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "remark": "价格降了、速度提了，但真正的信号是“预发布阶段就拿去干工程活”——模型采购的评估口径正从跑分转向“能不能替团队啃下没人想接的脏活”。Agent 产品的成本结构会跟着再松一档。"
+    },
     {
       "date": "2026-11-09",
       "category": "产业",

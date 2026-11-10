@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-11-10T06:05:59.980085+08:00",
+  "updated_at": "2026-11-11T06:02:55.538450+08:00",
   "items": [
+    {
+      "date": "2026-11-11",
+      "category": "产业",
+      "title": "资本在撤「世界模型」：从抢额度到一 TS 难求",
+      "summary": "量子位访谈多位一线投资人与世界模型公司融资负责人：上半年热钱汹涌，连投三轮且一轮比一轮贵；下半年投资意向书（TS）门槛明显抬高，靠概念和想象空间融资的窗口收窄，能拿出技术证据、研究积累和落地进展的团队仍有人抢。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/508466.html",
+      "remark": "💬 不是赛道死了，是估值叙事失效了。同一批基金上半年出手频率创十几年新高，现在自然要收。判断标准从「想象空间」切回「证据」。对职业选择的含义：押方向不如押可验证的产出。"
+    },
+    {
+      "date": "2026-11-11",
+      "category": "产品",
+      "title": "千问办公 2.0：Agent 进工作群，支持多人同时协作",
+      "summary": "上线「协作」功能：可建团队与数字员工共同工作的协作空间，Agent 关联多个钉钉群、文档、AI 表格、AI 听记，跨群汇总信息、梳理进展、创建并跟进待办；另有「自动任务」（订阅事件+规则触发，如群里有人@说缺货就查库存并发起调货）、「人机共创」「资料空间」和三端互联。客户端全量上线。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/508694.html",
+      "remark": "💬 国内办公 Agent 开始做「团队现场」，不再只当个人助手。银泰卡券那个案例很说明问题：5 个人管 60 多个门店群，价值不在生成文本，在替人跑群。Agent 的护城河是接进多少真实工作流，不是模型多强。"
+    },
+    {
+      "date": "2026-11-11",
+      "category": "技术",
+      "title": "Adobe 全线接入 Agent，还发了自家 MCP",
+      "summary": "MAX 大会上 Adobe 给 Photoshop/Premiere/Illustrator/InDesign/Lightroom 加 AI 能力（重打光、提示词风格滑杆、视频物体移除、眨眼修正），Firefly 上线对标 Figma 的原型工具 Builder（私测），agent 改为常驻主动型；同时发布 MCP，让外部 agent 能调用 Adobe 工具。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/10/adobe-adds-more-ai-to-its-products-and-launches-an-mcp/",
+      "remark": "💬 发 MCP 比发功能重要：把自己变成「可被 agent 调用的能力节点」，是工具软件在新生态里的保命方式。护城河从「界面好用」转向「接口被接」。做 Agent 产品的直接参考——先回答别人为什么要接你。"
+    },
+    {
+      "date": "2026-11-11",
+      "category": "产品",
+      "title": "OpenAI 给商家开 Business Hub：ChatGPT 里可以认领企业主页了",
+      "summary": "企业在 Business Hub 建档案、验证并更新产品服务信息（形式上对标 Google 商家档案），可创建专属 business agent 回答用户关于业务和产品的提问，还能看到主页浏览、被提及、网站点击等曝光数据。目前 beta，验证流程细节未公开。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/10/openai-rolls-out-new-business-profiles-making-chatgpt-just-a-little-bit-more-like-google/",
+      "remark": "💬 ChatGPT 从「问答」走向「发现 + 成交」，等于把 SEO 那套生意搬进对话框。对做电商的推论：以后要争的不只是搜索排名，还有「被 AI 推荐时它怎么说你」。占坑成本现在最低。"
+    },
+    {
+      "date": "2026-11-11",
+      "category": "产品",
+      "title": "Claude 进会议室：边开会边起草方案，还配了白板和表格",
+      "summary": "Anthropic 推 Claude Meetings（Team/Enterprise 计划 beta，首发支持 Google Meet），Claude 作为可见参会者入会，边听边起草正在讨论的方案、在白板画时间线、在会议聊天里答疑、调取已连接应用里的历史数据；同步发布 Claude Whiteboards 与 Claude Sheets。有外部访客加入时自动退出。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/",
+      "remark": "💬 关键不是在会上做记录，是把「会后才开始的活」提前到会中。OpenAI 和 Anthropic 都在把助手做成办公套件，抢微软和 Google 的地盘。产品上的狠招是身份设计：自报身份、外部人在场就离场——合规先想清楚，企业才敢让它进会议室。"
+    },
+    {
+      "date": "2026-11-11",
+      "category": "产业",
+      "title": "Anthropic 敲定 IPO 定价区间：每股 70–78 美元，最高隐含估值 1.404 万亿",
+      "summary": "发行 8.25 亿股 A 类股，募资 577.5 亿至 643.5 亿美元；另向 AMD、博通、Google、美光、微软、英伟达、台积电私募 260 亿美元无投票权 N 类股，净募资最高约 937 亿美元。较此前 9650 亿估值仍是大跳，但低于数月前传的 2 万亿目标。创始人 F 类股握 50.1% 投票权。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/10/anthropic-sets-ipo-price-range-of-70-to-78-per-share-to-reach-an-implied-valuation-of-1-404-trillion/",
+      "remark": "💬 定价区间里藏着妥协：比传闻砍半，说明市场对 AI 资产的胃口在收。真正的看点是那 260 亿美元产业链入股——芯片厂成了股东，卖铲子的直接押注挖金的。上市后它必须讲收入故事：企业版会更好卖，免费额度未必更多。"
+    },
     {
       "date": "2026-11-10",
       "category": "产品",

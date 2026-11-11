@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-11-11T06:02:55.538450+08:00",
+  "updated_at": "2026-11-12T06:05:44.092551+08:00",
   "items": [
+    {
+      "date": "2026-11-12",
+      "category": "技术",
+      "title": "英伟达发 GR00T 2 世界动作模型，模型数据仿真将陆续开源",
+      "summary": "CoRL 大会上英伟达 GEAR 的朱玉可、Jim Fan 发布新一代世界动作模型 GR00T 2，同时预测未来画面和机器人动作，把「世界怎么变」和「机器人怎么动」放在一起学。官方 demo 里能裁标签、装显卡、擦火柴、切香蕉、收桌子。Jim Fan 把它定位成可本地运行、可示范教学、也能被推理模型引导的 System 1 快系统。模型、数据、仿真环境和采集硬件将陆续开源；配套的 X-Adapt 让人或手持设备的示范直接迁移给没练过该任务的机器人。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/509032.html",
+      "remark": "世界模型加动作合流是今年最确定的技术方向，GR00T 2 是第一个把它做成开源承诺的大厂产品。X-Adapt 更实用——机器人数据采集贵得要死，跨本体迁移等于把数据成本摊薄。开源承诺要盯兑现，这是英伟达抢生态标准的老套路，但这次确实是真东西。"
+    },
+    {
+      "date": "2026-11-12",
+      "category": "技术",
+      "title": "蚂蚁灵波开源触觉基础模型 LingBot-Touch",
+      "summary": "11 月 10 日蚂蚁灵波开源触觉基础模型 LingBot-Touch，基于近 5000 小时真实触觉数据预训练，覆盖磁触觉、视触觉、压阻式三类传感器，把不同信号统一成一套触觉表征。在两款灵巧手、26 项真机任务上测试，接入后 LingBot-VLA、π0.5、Diffusion Policy、T-Rex 四种动作模型成功率提升约 14 到 26 个百分点；拧瓶盖任务从 56.25% 提到 90%。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/508996.html",
+      "remark": "触觉是具身智能最后一块短板，因为视觉看不到指腹打滑。统一表征比单一传感器方案有价值——同一个模型能挂不同硬件，这才是基础模型该有的样子。90% 对 56% 这个数字比任何 demo 视频都有说服力。"
+    },
+    {
+      "date": "2026-11-12",
+      "category": "产业",
+      "title": "CoreWeave 改收预付款、缩短期合同来撑增长",
+      "summary": "CoreWeave 三季度收入 36.6 亿美元，同比增 168%，但净亏 7.09 亿、单季利息支出 8.46 亿。CEO 明确说不在当前收益率下用无担保债融资，改为让客户预付、拿具体合同做抵押借款、并考虑更短期的合约。在手订单 1325 亿美元。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/11/coreweave-turns-to-customer-prepayments-shorter-contracts-to-fund-ai-growth/",
+      "remark": "这是 AI 基建从讲故事融资切到拿现金流说话的标志。订单簿 1325 亿看着漂亮，但要靠预付款和合同抵押才能把钱铺下去，说明资本市场不再买单纯信用扩张。和「资本在撤世界模型」是同一个信号的两端。"
+    },
+    {
+      "date": "2026-11-12",
+      "category": "产业",
+      "title": "OpenAI 季度收入首次破 100 亿美元",
+      "summary": "彭博援引知情人士称，OpenAI 第三季度收入首次超过 100 亿美元，相比二季度 67 亿美元环比增近 50%，此前一二季度之间的增速约 18%。调整后经营利润率从 -150% 收窄到 -109%。同期 Anthropic 三季度收入 170 亿美元，在企业市场保持领先。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/",
+      "remark": "增速从 18% 反弹到 50%，说明新模型确实拉动了付费，不只是用户数。但 -109% 的利润率意味着每收一块钱还在亏一块多，规模效应没被证明。对比 Anthropic 的 170 亿，OpenAI 的 C 端优势在企业市场换不来同等单价。"
+    },
+    {
+      "date": "2026-11-12",
+      "category": "产业",
+      "title": "美联航禁止第三方 AI agent 代订机票",
+      "summary": "美联航周三宣布禁止第三方个人 AI agent 代客订票：把账号和支付凭证交给 AI 助手有泄露风险，agent 的操作可能造成误购、改账号、动用里程；代客值机等动作还可能违反要求本人现场确认行李的联邦规定。限制同时落在自家平台和经旅行社、聚合商进来的通道。",
+      "source": "CBS News",
+      "url": "https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/",
+      "remark": "agent 经济的第一次正面撞墙，撞在「凭证」上。不是航空公司不喜欢 AI，是它没法确认屏幕后面是人还是脚本，也没有授权协议可签。真正的解法是 agent 身份加受限授权，这块现在几乎空白——做大 agent 的人都得回答这个问题。"
+    },
+    {
+      "date": "2026-11-12",
+      "category": "产品",
+      "title": "Apple 在做 Harbor：把 Mac 变成私有 AI 推理服务器",
+      "summary": "爆料人 Aaron Perris 在系统里发现苹果新应用 Harbor，定位是把 Apple silicon 的 Mac 变成私有推理服务器：只跑开源权重模型，数据不出本机；用 Thunderbolt 5 把多台 Mac 串起来池化统一内存，跑单机带不动的大模型和更高并发。目前挂在苹果 Claris 品牌下做私有预览，公开发布时间未定。",
+      "source": "9to5Mac",
+      "url": "https://9to5mac.com/2026/11/10/apple-has-new-mac-app-coming-to-make-running-local-ai-models-easy/",
+      "remark": "苹果终于把「Mac 适合跑本地模型」变成官方产品，而不是靠用户自己折腾推理框架。池化内存这条最有意思——把「买几台 Mac mini 拼一台大机器」变成官方用法，直接对着小型推理集群的生意去。但这是爆料加私有预览，别当已发布产品看。"
+    },
     {
       "date": "2026-11-11",
       "category": "产业",

@@ -1,0 +1,32 @@
+---
+import type { CaseSection } from '../data/portfolio';
+
+type Props = { section: CaseSection; index: number; editorial?: boolean };
+const { section, index, editorial = false } = Astro.props;
+const id = index === 0 ? 'problem' : index === 1 ? 'results' : `section-${index + 1}`;
+---
+
+<section class:list={['case-section', { 'editorial-section': editorial }]} id={id} aria-labelledby={`${id}-title`}>
+  <div class="case-section-heading">
+    {editorial && <span class="case-section-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>}
+    <h2 id={`${id}-title`}>{section.title}</h2>
+  </div>
+  <div class="prose">
+    {section.paragraphs.map(paragraph => <p set:html={paragraph} />)}
+    {section.points && (
+      <ul class:list={['case-points', { 'case-principles': editorial }]}>
+        {section.points.map((point, pointIndex) => (
+          <li>
+            {editorial ? (
+              <>
+                <span class="case-principle-index" aria-hidden="true">{String(pointIndex + 1).padStart(2, '0')}</span>
+                <div><h3>{point.title}</h3><p set:html={point.text} /></div>
+              </>
+            ) : <><strong>{point.title}：</strong><span set:html={point.text} /></>}
+          </li>
+        ))}
+      </ul>
+    )}
+    {section.closing && <p class:list={{ 'case-decision': editorial }} set:html={section.closing} />}
+  </div>
+</section>

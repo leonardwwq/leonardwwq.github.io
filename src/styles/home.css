@@ -1,0 +1,68 @@
+/* Homepage-only hierarchy. Keep the work archive compact and the real links visible. */
+.home-page { line-break: strict; }
+.home-page .home-intro p,
+.home-page .featured-work .project-entry-summary { text-wrap: balance; }
+.home-page .home-intro { padding: 64px 0 48px; }
+.home-page .home-intro h1 {
+  margin-bottom: 20px;
+  font-size: clamp(32px, 4vw, 42px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+.home-page .home-intro p {
+  max-width: 34em;
+  margin-bottom: 14px;
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--text);
+}
+.home-page .project-section > .section-heading,
+.home-page .project-section > .section-head .section-heading {
+  margin-bottom: 20px;
+  letter-spacing: 0;
+}
+.home-page .featured-work { padding-block: 32px 36px; }
+.home-page .featured-work .project-entry-heading { gap: 8px 20px; }
+.home-page .featured-work .project-entry-heading h3 {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+.home-page .featured-work .work-status { font-size: 13px; }
+.home-page .featured-work .project-entry-summary {
+  max-width: 36em;
+  margin: 16px 0 12px;
+  font-size: 17px;
+  color: var(--text);
+  line-height: 1.8;
+}
+.home-page .project-entry-context { margin: 0 0 12px; font-size: 13px; }
+.home-page .project-entry-context div { display: flex; align-items: baseline; gap: 12px; }
+.home-page .project-entry-context dt { flex: none; color: var(--muted); }
+.home-page .project-entry-context dd { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
+.home-page .project-entry-note {
+  max-width: 44em;
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.home-page .featured-work .project-entry-links { gap: 2px 24px; }
+.home-page .featured-work .project-entry-links a { font-size: 14px; }
+.home-page .other-work-section { margin-top: 52px; }
+.home-page .other-work-section .project-entry { padding-block: 22px; }
+.home-page .other-work-section .project-entry-heading h3 { font-size: 20px; letter-spacing: 0; }
+@media (max-width: 640px) {
+  .home-page .home-intro { padding: 40px 0 36px; }
+  .home-page .home-intro h1 { margin-bottom: 16px; }
+  .home-page .home-intro p { font-size: 17px; }
+  .home-page .featured-work { padding-block: 26px 28px; }
+  .home-page .featured-work .project-entry-heading { gap: 6px 16px; }
+  .home-page .featured-work .project-entry-heading h3 { font-size: 26px; }
+  .home-page .featured-work .work-status { font-size: 12px; }
+  .home-page .featured-work .project-entry-summary { margin-top: 14px; font-size: 16px; }
+  .home-page .featured-work .project-entry-links { gap: 2px 18px; }
+  .home-page .other-work-section { margin-top: 36px; }
+}

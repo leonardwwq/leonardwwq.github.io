@@ -1,0 +1,98 @@
+/* Opt-in case study treatment. Keep shared navigation and other cases unchanged. */
+.case-editorial {
+  --case-reading-width: 34em;
+  line-break: strict;
+  overflow-wrap: break-word;
+}
+.case-editorial .case-head { padding-bottom: 32px; }
+.case-editorial .page-title {
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1.2;
+  letter-spacing: 0;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.case-editorial .case-summary {
+  max-width: 34em;
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.8;
+  color: var(--text);
+}
+.case-editorial .case-facts { margin-top: 28px; gap: 20px 48px; }
+.case-editorial .case-facts dd { font-size: 14px; }
+.case-editorial .case-actions { margin-top: 20px; }
+.case-editorial .embed-disclosure { margin-top: 20px; }
+.case-outline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  padding-block: 12px;
+  border-block: 1px solid var(--border);
+}
+.case-outline a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  text-decoration: none;
+  font-size: 14px;
+}
+.case-outline a span { color: var(--muted); font: 12px var(--mono); font-variant-numeric: tabular-nums; }
+.case-outline a:hover { text-decoration: underline; }
+.case-editorial .case-body { margin-top: 8px; }
+/* The root already reserves space for the sticky header; do not double the offset. */
+.case-editorial .editorial-section { border: 0; padding-block: 40px; scroll-margin-top: 0; }
+.case-section-heading { position: relative; }
+.case-editorial .case-section-heading {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.case-editorial .case-section-heading h2 { margin: 0; font-size: 24px; font-weight: 500; letter-spacing: 0; }
+.case-section-number { color: var(--muted); font: 14px var(--mono); font-variant-numeric: tabular-nums; }
+.case-editorial .prose {
+  max-width: var(--case-reading-width);
+  margin-left: 80px;
+  font-size: 17px;
+  line-height: 1.8;
+  letter-spacing: 0;
+}
+.case-editorial .prose p { color: var(--text); line-height: 1.8; margin-bottom: 1em; }
+.case-editorial .case-principles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+.case-editorial .case-principles li {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 16px;
+  padding: 24px;
+  margin: 0;
+  background: var(--bg2);
+  color: var(--text);
+}
+.case-principle-index { padding-top: 5px; color: var(--muted); font: 12px/1.8 var(--mono); font-variant-numeric: tabular-nums; }
+.case-principles h3 { margin: 0 0 8px; font-size: 17px; line-height: 1.6; font-weight: 600; }
+.case-editorial .case-principles p { margin: 0; font-size: 16px; }
+.case-editorial .prose .case-decision {
+  margin-top: 28px;
+  padding: 20px 24px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-dim);
+  color: var(--text);
+}
+.case-editorial .case-next { margin-top: 24px; }
+@media (max-width: 640px) {
+  .case-editorial .case-head { padding-bottom: 24px; }
+  .case-editorial .case-section-heading { grid-template-columns: 28px minmax(0, 1fr); gap: 12px; margin-bottom: 20px; }
+  .case-editorial .case-section-heading h2 { font-size: 22px; }
+  .case-editorial .prose { margin-left: 0; font-size: 16px; }
+  .case-editorial .editorial-section { padding-block: 28px; }
+  .case-editorial .case-principles li { padding: 20px 16px; gap: 12px; }
+  .case-editorial .prose .case-decision { padding: 18px; }
+}

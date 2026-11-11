@@ -51,6 +51,10 @@ for (const [alias, canonical] of Object.entries(aliases)) {
 const home = pages.get('/') ?? '';
 check([...home.matchAll(/class=["'][^"']*\bfeatured-work\b[^"']*["']/g)].length === 2, '首页不是恰好两件重点作品。');
 check(!/用数据理解业务|数据与评估证据|商业代表作/.test(home), '首页残留旧方案的口号或分组。');
+check(home.includes('class="home-page"'), '首页缺少独立样式范围。');
+check(home.includes('产品负责人 · 产品方案、交互设计与落地推进'), '首页未展示 Copilot 已确认的职责。');
+check(home.includes('当前为浏览器本地模拟，用于验证配置与使用流程，不代表已接入真实模型或工具。'), '首页应明确 Agent Lab 的模拟范围。');
+check((home.match(/class="project-entry-context"/g) ?? []).length === 1, '首页职责仅应展示已有确认信息，不能为无职责数据的项目补造。');
 for (const path of [
   '/prototypes/ai-copilot/architecture.html',
   '/prototypes/ASA投放Agent/index.html',
@@ -62,6 +66,7 @@ for (const path of [
 }
 
 const index = pages.get('/work') ?? '';
+check(!index.includes('project-entry-context') && !index.includes('project-entry-note'), '首页的补充信息不应改变作品索引的紧凑呈现。');
 for (const slug of slugs) {
   check(index.includes(`href="/work/${slug}"`) || index.includes(`href="/work/${slug}/"`), `作品索引遗漏 ${slug}。`);
 }
@@ -73,6 +78,16 @@ for (const phrase of ['分析复用', '灵活使用', '完整工具', '操作与
   check(copilot.includes(phrase), `Copilot缺少已确认重点：${phrase}`);
 }
 check(copilot.includes('/prototypes/ASA投放Agent/index.html'), 'Copilot没有保留合并后的交互原型。');
+// Editorial treatment is opt-in: preserve confirmed copy and keep the other cases unchanged.
+check(/class=["'][^"']*\bcase-editorial\b/.test(copilot), 'Copilot未启用案例阅读样板。');
+check((copilot.match(/class=["']case-principle-index["']/g) ?? []).length === 4, 'Copilot应保留四项方案卡片。');
+check(copilot.includes('执行环节通过 Human-in-the-loop 保留优化师的确认授权。'), 'Copilot授权说明被改写或遗漏。');
+for (const id of ['problem', 'results']) {
+  check(copilot.includes(`href="#${id}"`) && copilot.includes(`id="${id}"`), `Copilot章节锚点缺失：${id}`);
+}
+for (const slug of slugs.filter(slug => slug !== 'ai-copilot-assistant')) {
+  check(!/class=["'][^"']*\bcase-editorial\b/.test(pages.get(`/work/${slug}`) ?? ''), `${slug}: 不应提前启用样板排版。`);
+}
 const lab = pages.get('/work/agent-lab') ?? '';
 for (const path of ['https://weipm.com/agent-workbench-demo/#/app', 'https://weipm.com/agent-workbench-demo/#/admin']) {
   check(lab.includes(path), `Agent Lab 演示地址缺失或 hash 被改写：${path}`);

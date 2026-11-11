@@ -6,8 +6,9 @@ type Props = {
   project: WorkProject;
   featured?: boolean;
   heading?: 'h2' | 'h3';
+  showContext?: boolean;
 };
-const { project, featured = false, heading = 'h3' } = Astro.props;
+const { project, featured = false, heading = 'h3', showContext = false } = Astro.props;
 const Heading = heading;
 const info = describeProject(project);
 const links = projectLinks(project).filter((link, index) =>
@@ -21,6 +22,12 @@ const links = projectLinks(project).filter((link, index) =>
     <span class="work-status">{info.status}</span>
   </div>
   <p class="project-entry-summary">{info.summary}</p>
+  {showContext && info.role && (
+    <dl class="project-entry-context">
+      <div><dt>职责</dt><dd>{info.role}</dd></div>
+    </dl>
+  )}
+  {showContext && info.note && <p class="project-entry-note">{info.note}</p>}
   <div class="project-entry-links" role="group" aria-label={`${info.title} 的相关入口`}>
     {links.map(link => (
       <a href={link.path} target="_blank" rel="noopener noreferrer">

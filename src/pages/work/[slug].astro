@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseSection from '../../components/CaseSection.astro';
+import '../../styles/case-editorial.css';
 import { describeProject, orderedProjects, projectAliases, projectLinks } from '../../data/portfolio';
 import { workProjects, type WorkProject } from '../../data/workProjects';
 
@@ -13,6 +15,7 @@ const { project } = Astro.props;
 const canonicalSlug = projectAliases[project.slug];
 if (canonicalSlug) return Astro.redirect(`/work/${canonicalSlug}`, 301);
 
+const editorial = project.slug === 'ai-copilot-assistant';
 const info = describeProject(project);
 const links = projectLinks(project);
 const next = orderedProjects[(orderedProjects.findIndex(item => item.slug === project.slug) + 1) % orderedProjects.length];
@@ -20,7 +23,7 @@ const nextInfo = describeProject(next);
 ---
 
 <BaseLayout title={`${info.title} · 王伟权`} description={info.summary}>
-  <article>
+  <article class:list={{ 'case-editorial': editorial }}>
     <header class="case-head">
       <a class="breadcrumb" href="/work"><span aria-hidden="true">←</span> 全部作品</a>
       <h1 class="page-title">{info.title}</h1>
@@ -49,23 +52,18 @@ const nextInfo = describeProject(next);
       )}
     </header>
 
+    {editorial && (
+      <nav class="case-outline" aria-label="案例章节">
+        {info.sections.map((section, index) => (
+          <a href={index === 0 ? '#problem' : '#results'}>
+            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>{section.title}
+          </a>
+        ))}
+      </nav>
+    )}
+
     <div class="case-body">
-      {info.sections.map((section, index) => (
-        <section class="case-section" id={index === 0 ? 'problem' : 'results'}>
-          <h2>{section.title}</h2>
-          <div class="prose">
-            {section.paragraphs.map(paragraph => <p set:html={paragraph} />)}
-            {section.points && (
-              <ul class="case-points">
-                {section.points.map(point => (
-                  <li><strong>{point.title}：</strong><span set:html={point.text} /></li>
-                ))}
-              </ul>
-            )}
-            {section.closing && <p set:html={section.closing} />}
-          </div>
-        </section>
-      ))}
+      {info.sections.map((section, index) => <CaseSection section={section} index={index} editorial={editorial} />)}
     </div>
 
     <nav class="case-next" aria-label="继续看作品">

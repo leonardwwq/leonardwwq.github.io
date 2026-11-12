@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>规则配置 v2.1.0 · 评审版</title>
+<style>
+  :root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f9fafb;--brand:#3b82f6;--warn:#dc2626}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.75 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg)}
+  header.top{position:sticky;top:0;z-index:50;background:#111827;color:#fff;padding:12px 24px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+  header.top h1{font-size:16px;margin:0}
+  header.top .pill{font-size:12px;border:1px solid #4b5563;border-radius:99px;padding:2px 10px;color:#d1d5db}
+  .wrap{display:flex;align-items:flex-start;gap:28px;max-width:1800px;margin:0 auto;padding:24px}
+  nav{position:sticky;top:64px;width:280px;flex:0 0 280px;max-height:calc(100vh - 90px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+  nav h2{font-size:12px;color:var(--sub);margin:0 0 8px;letter-spacing:.08em}
+  nav a{display:block;text-decoration:none;color:#374151;font-size:13px;padding:5px 8px;border-radius:6px;line-height:1.4}
+  nav a:hover{background:#eff6ff;color:#1d4ed8}
+  nav a.t3{padding-left:20px;color:var(--sub);font-size:12.5px}
+  main{flex:1;min-width:0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:36px 44px 60px}
+  main h1{font-size:26px;margin:0 0 18px}
+  main h2{font-size:20px;margin:44px 0 14px;padding-bottom:8px;border-bottom:2px solid #e5e7eb}
+  main h3{font-size:16.5px;margin:30px 0 10px}
+  main h4{font-size:15px;margin:22px 0 8px;color:#374151}
+  main p{margin:10px 0}
+  main a{color:#1d4ed8}
+  main a.xref{background:#eef2ff;border-radius:4px;padding:0 4px;text-decoration:none}
+  main code{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:4px;padding:1px 5px;font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace}
+  main pre{background:#111827;color:#e5e7eb;border-radius:8px;padding:14px 16px;overflow:auto}
+  main pre code{background:none;border:0;color:inherit;padding:0}
+  main blockquote{border-left:3px solid var(--brand);background:#eff6ff;margin:12px 0;padding:10px 16px;color:#1e3a8a;border-radius:0 6px 6px 0}
+  main hr{border:0;border-top:1px dashed var(--line);margin:28px 0}
+  .tw{overflow:auto;margin:14px 0}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#f3f4f6;font-weight:600;white-space:nowrap}
+  tbody tr:nth-child(even){background:#fcfcfd}
+  ul,ol{padding-left:24px;margin:10px 0}
+  li{margin:4px 0}
+  .banner{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px 16px;margin:0 0 24px}
+  .banner b{color:var(--warn)}
+  .banner ul{margin:6px 0 0}
+  .warnbox{background:#fffbeb;border:1px dashed #f59e0b;border-radius:8px;padding:12px 16px;margin:18px 0;font-size:13.5px}
+  .warnbox li{font-size:13px}
+  figure.mock{margin:22px 0 34px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+  figure.mock figcaption{display:flex;align-items:center;gap:10px;padding:11px 16px;background:#f8fafc;border-bottom:1px solid var(--line);font-size:14px;font-weight:600}
+  figure.mock figcaption .tag{background:var(--brand);color:#fff;font-size:11px;border-radius:4px;padding:2px 8px;font-weight:600}
+  figure.mock figcaption .src{margin-left:auto;font-weight:400;color:var(--sub);font-size:12px;font-family:ui-monospace,Menlo,monospace}
+  .mock-tools{display:flex;gap:8px;padding:9px 16px;border-bottom:1px solid var(--line);background:#fff}
+  .mock-tools button{font:inherit;font-size:12.5px;padding:4px 12px;border:1px solid var(--line);background:#fff;border-radius:6px;cursor:pointer;color:#374151}
+  .mock-tools button.on{background:var(--brand);border-color:var(--brand);color:#fff}
+  .mock-frame{background:#f3f4f6;padding:0;display:flex;justify-content:center}
+  .mock-frame iframe{border:0;background:#fff;display:block}
+  figure.mock[data-mode="pc"] .mock-frame iframe{width:100%;height:760px}
+  figure.mock[data-mode="mobile"] .mock-frame iframe{width:420px;height:760px;box-shadow:0 0 0 1px var(--line)}
+  figure.mock[data-mode="full"] .mock-frame iframe{width:100%;height:1000px}
+  .mock-missing{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:8px;padding:14px 18px;margin:18px 0;font-size:14px}
+  @media (max-width:1100px){nav{display:none}.wrap{padding:14px}main{padding:22px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>规则配置</h1>
+  <span class="pill">v2.1.0</span>
+  <span class="pill">03-规则配置</span>
+  <span class="pill">ASA</span>
+  <span class="pill">状态：待评审</span>
+  <span class="pill">2026-10-21</span>
+  <span class="pill">评审版 · 由 PRD.md 自动生成，勿手改</span>
+</header>
+
+<div class="wrap">
+  <nav>
+    <h2>目录</h2>
+    <a class="t2" href="#s1">0 前置说明</a>
+<a class="t2" href="#s2">1 整体概述</a>
+<a class="t3" href="#s2-1">1.1 背景与目标</a>
+<a class="t3" href="#s2-2">1.2 本页范围</a>
+<a class="t3" href="#s2-3">1.3 角色与权限</a>
+<a class="t3" href="#s2-4">1.4 术语定义</a>
+<a class="t3" href="#s2-5">1.5 核心流程</a>
+<a class="t2" href="#s3">2 详细需求</a>
+<a class="t3" href="#s3-1">2.1 规则记录与生效判定（定义）</a>
+<a class="t3" href="#s3-2">2.2 入口与访问</a>
+<a class="t3" href="#s3-3">2.3 服务费规则</a>
+<a class="t3" href="#s3-4">2.4 比例与阶梯（服务费、返点、客情共用）</a>
+<a class="t3" href="#s3-5">2.5 税费规则</a>
+<a class="t3" href="#s3-6">2.6 返点规则</a>
+<a class="t3" href="#s3-7">2.7 客情规则</a>
+<a class="t3" href="#s3-8">2.8 备注与规则起始日期</a>
+<a class="t3" href="#s3-9">2.9 历史规则与展示格式</a>
+<a class="t3" href="#s3-10">2.10 提交审批与锁定</a>
+<a class="t3" href="#s3-11">2.11 审批结果处理</a>
+<a class="t3" href="#s3-12">2.12 规则配置审批详情 · 审批内容区</a>
+<a class="t2" href="#s4">3 变更影响面</a>
+<a class="t2" href="#s5">4 非功能与留痕</a>
+<a class="t2" href="#s6">5 开放问题与已知限制</a>
+<a class="t2" href="#s7">6 附录</a>
+<a class="t3" href="#s7-1">6.1 决策记录</a>
+<a class="t3" href="#s7-2">6.2 原型出处</a>
+    <h2 style="margin-top:16px">内嵌示意（7）</h2><a class="t3" href="#mock-1">1. 规则配置页（默认态：待关联登记表、无规则）</a><a class="t3" href="#mock-2">2. 规则配置页（填写态：相对日期两行、阶梯、客情 90 天、历史规则展开）</a><a class="t3" href="#mock-3">3. 规则配置页（校验失败：右边界、阶梯、比例、起始日期）</a><a class="t3" href="#mock-4">4. 提交审批二次确认（发起备注）</a><a class="t3" href="#mock-5">5. 规则配置页（审批中锁定）</a><a class="t3" href="#mock-6">6. 审批详情·审批内容（已关联、变更标红）</a><a class="t3" href="#mock-7">7. 审批详情·审批内容（待关联登记表、首次配置）</a>
+  </nav>
+
+  <main>
+    <div class="banner"><b>⚠ 5 项未定，先别开跑：</b><ul><li><code>Q-03-01</code> &quot;【已关闭 2026-10-20】返点阶梯落档用的金额，是扣 MAX 广告系列消耗之前的消耗，还是扣完后的返点基数（D-00-15）？结论：返点阶梯按扣 MAX 后的返点基数落档（D-07-01，用户 2026-10-19 在 07 会话定），已落 R-03-009&quot;</li><li><code>Q-03-02</code> &quot;【已关闭 2026-10-21】存量账户 / 没绑定在线登记表的账户没有规则配置，或某日早于首条规则起始日期时，05 / 06 / 07 按什么取服务费率、税率、返点？结论：没有适用规则一律按 0（D-00-57）；存量账户规则挂附件登记表（R-03-053、D-03-27）&quot;</li><li><code>Q-03-03</code> &quot;【已关闭 2026-10-21】服务费有多行时间区间时，一笔充值按哪一行的服务费率落档？结论：按提交当天是消耗首日后第几天落行，没有首日按第一行（D-00-58）&quot;</li><li><code>Q-03-04</code> &quot;【已关闭 2026-10-21】D-03-21 的文案调整是否认可？结论：2026-10-21 用户确认认可，D-03-21 转已定&quot;</li><li><code>Q-03-05</code> &quot;【已关闭 2026-10-21】规则配置页离开时要不要像 01 外链填写页（会议清单 D70）一样弹离开确认？结论：2026-10-21 用户确认不弹，按 R-03-043（D-03-28）&quot;</li></ul></div>
+    
+    <h1>规则配置 PRD</h1>
+<div class="tw"><table><thead><tr><th>项</th><th>内容</th></tr></thead><tbody><tr><td>所属产品</td><td>ASA</td></tr><tr><td>版本</td><td>v2.1.0</td></tr><tr><td>页面</td><td>03-规则配置</td></tr><tr><td>涉及功能</td><td><a href="../../../feature/客户登记/README.md" target="_blank" rel="noreferrer">客户登记</a>（规则配置挂在客户登记表上；是否单列功能由总控定）</td></tr><tr><td>编制日期</td><td>2026-10-19（2026-10-21 按会议清单 v2 修订）</td></tr><tr><td>文档状态</td><td>待评审</td></tr><tr><td>目标读者</td><td>研发、测试、AI 实现助手（本文件可直接整份投喂给 AI 作为实现依据）</td></tr><tr><td>关联文档</td><td>本目录 spec.yaml、mocks/；版本 <a href="../index.md" target="_blank" rel="noreferrer">index.md</a>；原型 <code>html/规则配置.html</code>（V2.1 注释 :2833、:2841）、<code>html/审批详情-客户登记表.html</code>（:2130–2378）、<code>html/费用管理.html</code>（:4848–4856 规则取用说明）；决策来源《财务v2.1.0_会议清单v2》</td></tr></tbody></table></div>
+<h2 id="s1">0 前置说明</h2>
+<ul><li>本页覆盖版本记录第 4 项（规则配置）和第 6 项（客户登记表审批详情，实为规则配置审批，<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">D-01-02</a>，只写「审批内容」区）。</li><li>本页<strong>主管「规则配置」实体</strong>：规则记录的字段、生效判定（当前生效 / 某日以时刻 t 为准的适用规则 / 同起始日期覆盖）、消耗首日（含冻结）、服务费时间区间、阶梯落档与按月 / 按日统计（含按条款合并）的含义、规则展示格式。04 客户详情、05 充值与余额分配、06 账单、07 返点与客情、10 逐日拆分都按本页取规则，不各自另写判定。</li><li><strong>本页不算钱</strong>：服务费、税费怎么折算在 05（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-14</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-51</a>），出账在 06，返点、客情金额在 07（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-15</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-20</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-21</a>）。本页只回答「某一天、某笔消耗该用哪条规则、哪一行、哪一档、多少比例」。</li><li>引用 01-客户登记：入口按钮、登记表状态、创建人隔离（<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-008</a>、<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-014</a>、<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-019</a>）；「已提交审批」tab 在 01（<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-033</a>～<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-036</a>），本页不重写。</li><li>引用 12-审批配置与审批中心：审批单状态机、审批人解析、会签、撤回、作废、通知、审批详情通用框架和变更高亮能力都按 12，本页只写提交参数、审批内容区和结束后的规则写入。审批通用口径见 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-75</a>（高亮基准）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>（绑定的运营）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-79</a>（执行失败 / 撤回 / 作废）。</li><li>客户数据范围按 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a>（非 sys 只能看、改自己是销售或名下账户优化师的客户）。</li><li>不动：账户上的苹果返点、客户返点、客情比例等老字段，保留不用（<a class="xref" href="../02-账户管理/review.html" title="02-账户管理">D-02-02</a>）。</li></ul>
+<h2 id="s2">1 整体概述</h2>
+<h3 id="s2-1">1.1 背景与目标</h3>
+<p>现状：服务费率、税点在客户上，返点、客情比例在账户上，各存一个值，改了就直接覆盖，既没有审批，也查不到某个月当时按什么比例算；服务费不能按投放天数分段，返点、客情不能按消耗阶梯走。</p>
+<p>目标：</p>
+<ul><li>每张客户登记表（对应一个账户）有一套规则：服务费可按「消耗首日起第几天」或日期分段、每段可固定或阶梯；税率与服务费税费承担方；返点（前 90 天）固定或阶梯；客情三种结算方式。</li><li>规则改动一律追加一条带起始日期的新记录、走审批，通过后才生效；历史记录留着，财务按「哪天适用哪条」算账，已出账的月份按出账时刻的规则冻结。</li><li>存量账户（只有历史上传文件或没有登记表）也能在页面上配置和修改规则。</li></ul>
+<p>可证伪的判定：给登记表配一条 10-01 起的规则，再提交一条 11-01 起的新规则；审批通过前本页锁定、历史规则只有 10-01 那条；通过后历史规则出现 11-01（待生效），10 月的消耗仍按 10-01 那条取比例，11-01 起按新规则取。</p>
+<h3 id="s2-2">1.2 本页范围</h3>
+<ul><li>✅ 包含：</li><li>规则配置实体（规则记录）、生效判定（含以时刻 t 为准）、消耗首日与冻结、时间区间、阶梯与统计方式（含按条款合并）的语义。</li><li>规则配置页：页头信息行、服务费规则、税费规则、返点规则、客情规则、备注、规则起始日期、历史规则。</li><li>提交「客户登记表—规则配置」审批、审批中锁定、重复提交拦截、审批结束后的规则写入。</li><li>存量账户附件登记表（04「历史上传文件」行与迁移占位行）的规则配置与上线前导入规则的承载（R-03-053）。</li><li>规则配置审批详情的「审批内容」区与变更高亮声明。</li><li>规则展示格式（历史规则、审批内容区、04 客户详情规则配置表共用）。</li><li>❌ 不包含：</li><li>登记表列表、「规则配置」按钮本身、「已提交审批」tab（归 01）。</li><li>客户列表行操作里的「规则配置」入口（原型残留，不做，<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">D-01-03</a>）；04 客户材料登记表行（含历史上传文件行）的入口按钮本身归 04（<a class="xref" href="../04-客户管理/review.html" title="04-客户管理">R-04-060</a>）。</li><li>审批通用能力（归 12）。</li><li>服务费 / 税费 / 返点 / 客情的金额计算与兑现、充值落档（归 05、06、07，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-51</a>）。</li><li>规则草稿保存、删除或作废规则（原型没有）；存量规则批量导入的执行（技术，index S-1）。</li></ul>
+<h3 id="s2-3">1.3 角色与权限</h3>
+<div class="tw"><table><thead><tr><th>角色</th><th>能做什么</th><th>不能做什么</th><th>权限来源</th></tr></thead><tbody><tr><td>登记表创建人</td><td>打开自己创建的登记表的规则配置页；提交规则配置审批；看历史规则；只读看该登记表的规则配置审批详情</td><td>—</td><td>登记表 owner_user_id（同 <a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-008</a>）；不单设权限点（D-03-16）</td></tr><tr><td>客户管理-读写用户</td><td>对数据范围内客户（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a>）的已关联登记表、附件登记表打开规则配置页（不限创建人，从 04 客户材料进入）；提交规则配置审批；看历史规则；只读看审批详情</td><td>配置还没关联客户（待关联）的他人登记表；配置数据范围外客户的登记表</td><td>现有权限点「客户管理-读写」（R-03-013、D-03-22）</td></tr><tr><td>客户管理-只读用户</td><td>只读看数据范围内客户的规则配置审批详情（R-03-050）</td><td>打开规则配置页（显示「无权限访问」）</td><td>现有权限点「客户管理-只读」（D-03-23）</td></tr><tr><td>审批人</td><td>在审批详情 / 审批中心通过、驳回</td><td>改审批内容</td><td>12 审批单快照（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-023</a>）</td></tr></tbody></table></div>
+<h3 id="s2-4">1.4 术语定义</h3>
+<div class="tw"><table><thead><tr><th>术语</th><th>释义</th></tr></thead><tbody><tr><td>规则记录</td><td>一条已通过审批（或上线前导入）的规则配置，带一个规则起始日期（R-03-001）</td></tr><tr><td>附件登记表</td><td>存量账户在 04 客户材料里的「历史上传文件」行；没有附件的账户由上线迁移补一行「上线迁移补建（无附件）」占位行；一份只对应 1 个账户（R-03-053）</td></tr><tr><td>适用规则（以时刻 t 为准）</td><td>某日 d 只看在 t 之前已写入、且在 t 之前没被覆盖的记录取出的那条（R-03-003）</td></tr><tr><td>当前生效</td><td>d 取今天（UTC0）、t 取当前时刻的适用规则（R-03-003）</td></tr><tr><td>待生效</td><td>起始日期晚于今天的记录（R-03-004）</td></tr><tr><td>已覆盖</td><td>被同起始日期的新记录替换掉的记录，不展示、不参与当前生效判定，但对被覆盖前的时刻仍参与判定（R-03-004）</td></tr><tr><td>消耗首日</td><td>登记表绑定账户按 UTC0 第一个有消耗的日子，记为第 1 天；第一次确定后冻结（R-03-005）</td></tr><tr><td>时间区间</td><td>服务费按天数（相对日期）或日期（绝对日期）分的段，每段一个服务费率设置（R-03-006）</td></tr><tr><td>阶梯</td><td>按消耗金额分档，左闭右开、不累进（R-03-009）</td></tr><tr><td>统计方式</td><td>阶梯落档用一个自然月的合计（按月统计）还是每天各自（按日统计）（R-03-010）</td></tr><tr><td>规则备注 / 发起备注</td><td>规则备注随规则存；发起备注是提交审批时确认框里填的，进审批时间线（D-03-15）</td></tr></tbody></table></div>
+<h3 id="s2-5">1.5 核心流程</h3>
+<div class="tw"><table><thead><tr><th>步骤</th><th>操作者</th><th>系统行为</th><th>产物</th></tr></thead><tbody><tr><td>1</td><td>登记表创建人 / 客户管理-读写用户</td><td>在 01 登记表列表点「规则配置」（待关联 / 待开户 / 已开户），或在 04 客户材料的绑定登记表行、历史上传文件行点「规则配置」（R-03-012）</td><td>打开本页，回填当前生效规则或默认值</td></tr><tr><td>2</td><td>登记表创建人 / 客户管理-读写用户</td><td>填服务费、税费、返点、客情、备注、规则起始日期，点「提交审批」并确认</td><td>「客户登记表—规则配置」审批单（12）；本页锁定</td></tr><tr><td>3</td><td>审批人</td><td>在审批详情看审批内容（与提交时基准比对，变更标红），通过或驳回</td><td>审批结果（12）</td></tr><tr><td>4</td><td>系统</td><td>通过 → 写入规则记录（同起始日期覆盖）；驳回 / 撤回 / 作废 → 不写入</td><td>规则记录；本页解锁</td></tr><tr><td>5</td><td>系统</td><td>按 R-03-003 判定某日适用规则（已出账月份以出账时刻为 t）；04 详情展示当前生效；05 / 06 / 07 / 10 按日取比例</td><td>下游计算口径</td></tr></tbody></table></div>
+<h2 id="s3">2 详细需求</h2>
+<h3 id="s3-1">2.1 规则记录与生效判定（定义）</h3>
+<h4>2.1.1 功能描述</h4>
+<p>定义规则记录是什么、哪天用哪条、消耗首日怎么定、服务费时间区间和阶梯怎么落、按月 / 按日统计是什么意思。本节没有界面，是 04、05、06、07、10 取规则的唯一口径。</p>
+<h4>2.1.2 核心字段</h4>
+<p>规则记录（rule_config）：</p>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>规则ID</td><td>rule_id</td><td>string</td><td>是</td><td>系统生成</td><td>—</td><td>唯一；生成方式由技术定</td></tr><tr><td>所属登记表</td><td>registration_id</td><td>关联 01 客户登记表 / 附件登记表</td><td>是</td><td>—</td><td>—</td><td>R-03-001、R-03-053</td></tr><tr><td>规则起始日期</td><td>start_date</td><td>date（UTC0）</td><td>是</td><td>≥ 提交当月 1 号（导入不限）</td><td>空</td><td>R-03-033；同一登记表内不重复（R-03-044）</td></tr><tr><td>日期口径</td><td>date_mode</td><td>enum</td><td>是</td><td>相对日期 / 绝对日期</td><td>相对日期</td><td>R-03-016，只作用于服务费时间区间</td></tr><tr><td>服务费规则</td><td>service_fee_periods</td><td>列表（服务费时间区间）</td><td>是</td><td>≥ 1 行</td><td>1 行「消耗首日 - 永久」</td><td>R-03-017～R-03-021</td></tr><tr><td>税率</td><td>tax_rate</td><td>decimal(2)，%</td><td>是</td><td>≥ 0 且 &lt; 100</td><td>空</td><td>R-03-027</td></tr><tr><td>服务费税费</td><td>service_fee_tax_bearer</td><td>enum</td><td>是</td><td>公司承担 / 客户承担</td><td>公司承担</td><td>R-03-028</td></tr><tr><td>返点规则</td><td>rebate</td><td>比例设置</td><td>是</td><td>时间区间固定 消耗首日 - 第90天</td><td>固定比例、空</td><td>R-03-029</td></tr><tr><td>客情结算方式</td><td>kq_mode</td><td>enum</td><td>是</td><td>无客情 / 首次消耗起 90 天 / 按自然月每月返还</td><td>无客情</td><td>R-03-030（D-03-11）</td></tr><tr><td>客情费用比例</td><td>kq_rate</td><td>比例设置（无统计方式）</td><td>条件</td><td>kq_mode ≠ 无客情 时必填</td><td>固定比例、空</td><td>R-03-031</td></tr><tr><td>备注</td><td>remark</td><td>text</td><td>否</td><td>长度沿用现有备注输入框</td><td>空</td><td>R-03-032</td></tr><tr><td>来源</td><td>source</td><td>enum</td><td>是</td><td>审批 / 导入</td><td>系统写入</td><td>R-03-001、R-03-053</td></tr><tr><td>来源审批单</td><td>source_approval_id</td><td>关联 12 审批单</td><td>条件</td><td>来源 = 审批时系统写入；导入为空</td><td>—</td><td>R-03-044</td></tr><tr><td>审批通过时间（写入时间）</td><td>approved_at</td><td>datetime（Asia/Shanghai，秒）</td><td>是</td><td>系统写入</td><td>—</td><td>审批单变为已通过的时刻；导入为导入时刻；R-03-003 的 t 判定用它</td></tr><tr><td>被覆盖时间</td><td>covered_at</td><td>datetime（Asia/Shanghai，秒）</td><td>否</td><td>系统写入</td><td>空</td><td>被同起始日期的新记录覆盖的时刻（R-03-004）</td></tr><tr><td>记录状态</td><td>record_state</td><td>enum</td><td>是</td><td>待生效 / 生效中 / 已结束 / 已覆盖</td><td>系统算</td><td>R-03-004</td></tr></tbody></table></div>
+<p>服务费时间区间（service_fee_period）：</p>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>行序</td><td>seq</td><td>int</td><td>是</td><td>从 1 连续</td><td>—</td><td>系统维护</td></tr><tr><td>右边界（第 N 天）</td><td>end_day</td><td>int</td><td>相对日期且非最后一行时必填</td><td>正整数，逐行严格递增</td><td>空</td><td>R-03-018；最后一行为空 = 永久</td></tr><tr><td>右边界（日期）</td><td>end_date</td><td>date（UTC0）</td><td>绝对日期且非最后一行时必填</td><td>≥ 规则起始日期，逐行严格递增</td><td>空</td><td>R-03-018；最后一行为空 = 永久</td></tr><tr><td>服务费率</td><td>rate</td><td>比例设置</td><td>是</td><td>—</td><td>固定比例</td><td>R-03-021</td></tr></tbody></table></div>
+<p>比例设置（rate_setting，服务费每行、返点、客情各一个）：</p>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>计费方式</td><td>calc_mode</td><td>enum</td><td>是</td><td>固定比例 / 阶梯比例</td><td>固定比例</td><td>R-03-021</td></tr><tr><td>固定比例</td><td>fixed_rate</td><td>decimal(2)，%</td><td>固定比例时必填</td><td>≥ 0，不设上限</td><td>空</td><td>R-03-022</td></tr><tr><td>统计方式</td><td>stat_mode</td><td>enum</td><td>服务费、返点的阶梯比例时必填</td><td>按月统计 / 按日统计</td><td>按月统计</td><td>R-03-025；客情没有</td></tr><tr><td>阶梯</td><td>tiers</td><td>列表（阶梯档）</td><td>阶梯比例时必填</td><td>≥ 1 档</td><td>1 档「0 - 不限」</td><td>R-03-023、R-03-024</td></tr></tbody></table></div>
+<p>阶梯档（tier）：</p>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>区间下限</td><td>lower</td><td>decimal(2)，账户消耗原币</td><td>是</td><td>第一档 0；其余 = 上一档上限</td><td>自动带出</td><td>R-03-023，不可改</td></tr><tr><td>区间上限</td><td>upper</td><td>decimal(2)，账户消耗原币</td><td>非最后一档必填</td><td>&gt; 下限</td><td>空</td><td>R-03-023、R-03-026；最后一档为空 = 不限</td></tr><tr><td>比例</td><td>rate</td><td>decimal(2)，%</td><td>是</td><td>≥ 0，不设上限</td><td>空</td><td>R-03-022</td></tr></tbody></table></div>
+<h4>2.1.3 业务规则</h4>
+<ul><li><strong>R-03-001</strong> 规则配置挂在客户登记表上（在线登记表，或存量账户的附件登记表，R-03-053）：一张登记表可以有多条规则记录，每条有一个规则起始日期；规则记录有两种来源——「客户登记表—规则配置」审批通过时写入（来源「审批」，R-03-044），或上线前批量导入（来源「导入」，没有来源审批单，R-03-053）；审批中、已驳回、已撤回的提交内容只留在审批单的业务单据里，不是规则记录。</li><li><strong>R-03-002</strong> 每条规则记录的生效区间 = [本条规则起始日期, 起始日期比它晚的下一条记录的起始日期前一天]；没有更晚的记录时到永久；已覆盖的记录按 R-03-004 处理；日期一律按 UTC0 自然日（D-03-09）。</li><li><strong>R-03-003</strong> 某一天 d「以时刻 t 为准」的适用规则 = 该登记表在 t 之前已写入（审批通过或导入，按 approved_at）、且在 t 之前没有被覆盖的记录里，规则起始日期 ≤ d、起始日期最大的那一条；没有符合的记录则该日没有规则，下游一律按 0 算（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>）。t 的取法：06 已出账月份的刷新、07 已出账月份的计提项、10 逐日拆分，一律以该账户该月账单的出账时刻为 t；未出账月份、页面展示、05 充值试算与提交都以当时时刻为 t（D-03-24）。「当前生效」= d 取今天（UTC0）、t 取当前时刻的适用规则（D-03-06）。</li><li><strong>R-03-004</strong> 记录状态由系统按日期计算、不能手动改：生效中 = 当前生效那条；待生效 = 起始日期晚于今天；已结束 = 起始日期早于当前生效那条；已覆盖 = 被同起始日期的新记录替换（记下被覆盖时间 covered_at），不在任何页面展示、不参与当前生效判定，但对被覆盖时间之前的 t 仍按 R-03-003 参与判定（已出账月份照旧用它）；写入它的审批单照常可查。</li><li><strong>R-03-005</strong> 消耗首日 = 登记表绑定账户（01 account_id；附件登记表为它对应的账户）按 UTC0 第一个消耗金额 &gt; 0 的自然日，记为第 1 天；该登记表的所有规则记录共用这一个消耗首日，追加新规则不重新起算（D-03-01）。消耗首日第一次确定后就冻结，并记下确定时刻：之后补报或修正出更早的消耗，也不改首日；早于首日的日子服务费落第 1 行（R-03-006），返点、「首次消耗起 90 天」客情不计提（不在第 1～90 天内）；确需改首日由技术处理并留下记录，改后未进单的计提项按 07 <a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-009</a> 重算（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-56</a>）。存量账户的消耗首日取真实首次消耗日（UTC0，按历史报表），上线迁移时写入并冻结（D-03-29）。登记表还没绑定账户或账户还没有消耗时消耗首日未确定，相对日期的区间暂不对应任何日期。</li><li><strong>R-03-006</strong> 某一天落在服务费的哪一行时间区间：相对日期 → 先算该日是第 d 天（d = 该日 − 消耗首日 + 1），取 左边界 ≤ d ≤ 右边界 的那一行，早于消耗首日的日子（d ≤ 0）落第 1 行；绝对日期 → 取 左边界日期 ≤ 该日 ≤ 右边界日期 的那一行；超过倒数第二行右边界的都落在最后一行（永久）。</li><li><strong>R-03-007</strong> 返点只适用于消耗首日起第 1～90 天（含第 90 天）；第 91 天起、以及早于消耗首日的日子，该规则不产生返点；新规则起始日期晚于第 90 天时，它的返点比例不会被用到（D-03-01），页面弱提示、不拦（R-03-051）。返点金额怎么算归 07（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-15</a>）。</li><li><strong>R-03-008</strong> 客情适用天数：无客情 → 不产生客情费用；首次消耗起 90 天 → 消耗首日起第 1～90 天（含第 90 天，早于首日不计提，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-21</a>）；按自然月每月返还 → 本条规则生效区间内的每一天。客情金额怎么算归 07（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-20</a>）。</li><li><strong>R-03-009</strong> 阶梯落档：区间左闭右开，下限 ≤ 金额 &lt; 上限即落该档，最后一档无上限；金额用账户消耗的原币（D-03-03、D-03-04），落档用<strong>未舍入的原始消耗合计</strong>，不先把每天或每段舍入到 2 位再加（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-13</a>）；返点阶梯按扣 MAX 后的返点基数落档（<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">D-07-01</a>）；不累进拆档，整段金额 × 所落那一档的比例（D-03-05）。</li><li><strong>R-03-010</strong> 统计方式：按月统计 = 以 UTC0 自然月为单位，把该月里同时落在同一段规则、同一行时间区间（返点为第 1～90 天）内的那几天消耗加总后落档（R-03-009），合计 × 档位比例；按日统计 = 每个 UTC0 自然日的消耗单独落档 × 档位比例（D-03-05、D-03-10）。「同一段规则」按条款切：同一账户同一个月里，相邻两条规则记录的某项条款完全相同时，这两段对该项合并成一段再落档——服务费看服务费规则（日期口径、各行右边界与比例设置）与税率，返点看返点比例设置，客情看客情结算方式与客情费用比例；条款不同才切开；时间区间行本身在月中切开时仍分别落档（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-55</a>、D-03-10）。客情阶梯没有统计方式，一律按自然月口径落档（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-22</a>），只取客情计提天数内的消耗（「首次消耗起 90 天」与当月取交集，见 07 <a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-003</a>、<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-005</a>、<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-006</a>）。同一结算期只有一种计费模式（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-73</a>），按月合计不按计费模式切开。统计方式不作用于充值：充值按本次到账净额落档、两档都成立取高档（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-51</a>）。</li><li><strong>R-03-011</strong> 规则变化不回算：已出的账单、已完成的充值按发生时适用的规则冻结（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-12</a>）；审批通过时刻晚于某月账单出账时刻的，该月按出账时刻适用的规则（R-03-003 以出账时刻为 t），之后该月刷新也不改用新规则，新规则只作用于还没出账的月份和之后的充值，历史规则里标「yyyy-mm 已出账，不适用」（R-03-052、D-03-08、D-03-24）；已封账 / 已冻结的账单不因补配或导入规则重算（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>）。</li></ul>
+<h4>2.1.4 状态与流转</h4>
+<p>本页<strong>定义</strong>规则记录的状态，全部由系统按日期和审批结果推动，没有人工操作：</p>
+<div class="tw"><table><thead><tr><th>当前状态</th><th>触发动作</th><th>操作者</th><th>目标状态</th><th>前置条件</th></tr></thead><tbody><tr><td>无（审批通过 / 导入写入）</td><td>写入，起始日期 &gt; 今天</td><td>系统</td><td>待生效</td><td>R-03-044、R-03-053</td></tr><tr><td>无（审批通过 / 导入写入）</td><td>写入，本条成为当前生效</td><td>系统</td><td>生效中</td><td>R-03-003</td></tr><tr><td>无（审批通过 / 导入写入）</td><td>写入，已有起始日期更晚且 ≤ 今天的记录</td><td>系统</td><td>已结束</td><td>R-03-002</td></tr><tr><td>待生效</td><td>到起始日期（UTC0 00:00）</td><td>系统</td><td>生效中</td><td>R-03-003</td></tr><tr><td>生效中</td><td>起始日期更晚的记录开始生效</td><td>系统</td><td>已结束</td><td>R-03-002</td></tr><tr><td>待生效 / 生效中 / 已结束</td><td>同起始日期的新规则审批通过</td><td>系统</td><td>已覆盖（记被覆盖时间）</td><td>R-03-044、R-03-004</td></tr></tbody></table></div>
+<p>逆向：本期没有删除或作废规则，要改只能追加新规则或用同起始日期覆盖；审批中的内容还不是规则记录，驳回 / 撤回 / 作废不产生、不改动任何记录（R-03-045）。</p>
+<h4>2.1.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>登记表还没绑定账户 / 账户还没消耗</td><td>消耗首日未确定</td><td>相对区间不对应日期；没有消耗也就不产生按消耗计的费用（R-03-005）</td><td>本页照常可配置，页头消耗首日「未确定」</td></tr><tr><td>某日早于首条规则起始日期</td><td>没有适用规则</td><td>按 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a> 一律按 0 算（R-03-003）</td><td>—</td></tr><tr><td>补报了早于消耗首日的消耗</td><td>首日已冻结</td><td>首日不变；该日服务费落第 1 行，返点、90 天客情不计提（R-03-005、R-03-006）</td><td>页头首日不变</td></tr><tr><td>新规则起始日期晚于第 90 天</td><td>返点区间已过</td><td>返点比例不会被用到（R-03-007）</td><td>日期框下弱提示，不拦（R-03-051）</td></tr><tr><td>一个月被时间区间 / 规则切换切开</td><td>按月统计</td><td>条款相同的相邻规则合并落档，条款不同或时间区间行切开的分别落档（R-03-010）</td><td>—</td></tr><tr><td>跨月才通过</td><td>起始月账单已出</td><td>该月按出账时刻适用的规则，刷新也不改（R-03-003、R-03-011）</td><td>历史规则标「yyyy-mm 已出账，不适用」</td></tr><tr><td>同日覆盖了已出账月份用过的规则</td><td>旧记录已覆盖</td><td>已出账月份仍按覆盖前的旧记录（R-03-004）</td><td>页面只显示新记录</td></tr><tr><td>返点阶梯落档基数</td><td>扣不扣 MAX 消耗</td><td>返点阶梯按扣 MAX 后的返点基数落档（<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">D-07-01</a>，R-03-009）</td><td>—</td></tr></tbody></table></div>
+<h4>2.1.6 验收标准</h4>
+<p>公共前置：登记表「星海游戏-ASA登记」（创建人 李娜，状态 已开户），关联客户「星海网络科技有限公司」（销售 张伟，计费模式 预付款），绑定账户「星海-iOS-US」（orgid 4521873，账户系统 伙伴云ASA-01，消耗币种 USD，优化师 赵敏）；该客户名下另有账户「星海-iOS-JP」（orgid 4521999，优化师 王浩）；「星海-iOS-US」UTC0 首次消耗日 2026-09-12（2026-09-13 确定）；今天 2026-10-19（UTC0）。</p>
+<ul><li><strong>G-03-001</strong> 前置：公共前置；已通过记录 A（起始 2026-09-01）、B（2026-10-01）、C（2026-11-01）。操作：查当前生效、2026-09-20 与 2026-11-01 的适用规则，展开历史规则。期望：当前生效 = B；2026-09-20 适用 A；2026-11-01 适用 C；历史规则顺序 C（待生效）、B（生效中）、A（无标签）。</li><li><strong>G-03-002</strong> 前置：G-03-001 的数据。操作：一张起始日期 2026-10-01、税率 3.00% 的新规则审批通过。期望：历史规则为 C、新记录（2026-10-01，税率 3.00%，生效中）、A 三条；原 B 不再出现；当前生效为新记录；B 的来源审批单详情照常能打开。</li><li><strong>G-03-003</strong> 前置：公共前置；当前生效规则为相对日期，第 1 行「消耗首日 - 第30天」固定 8.00%，第 2 行「第31天 - 永久」阶梯按月统计 [0, 10,000.00) 6.00%、[10,000.00, 不限) 4.00%。操作：判断 2026-10-11 与 2026-10-12 落在哪一行。期望：2026-10-11 是第 30 天，落第 1 行（固定 8.00%）；2026-10-12 是第 31 天，落第 2 行。</li><li><strong>G-03-004</strong> 前置：G-03-003 的规则；该账户 2026-10-12～10-31 消耗合计 12,000.00 USD，2026-10-01～10-11 消耗合计 3,000.00 USD。操作：按本页规则判定 10 月服务费比例（06 出账时核对）。期望：10-01～10-11 那段按固定 8.00%；10-12～10-31 那段 12,000.00 落第 2 档，整段 × 4.00%，不按 6.00% / 4.00% 拆档；第 1 行那 3,000.00 不参与第 2 行落档。</li><li><strong>G-03-005</strong> 前置：第 2 行改为阶梯按日统计 [0, 500.00) 6.00%、[500.00, 不限) 4.00%；10-12 消耗 450.00、10-13 消耗 500.00。操作：判定这两天的服务费比例。期望：10-12 落第 1 档 6.00%；10-13 等于上限 500.00，落第 2 档 4.00%（左闭右开）。</li><li><strong>G-03-006</strong> 前置：公共前置；返点固定 2.00%；客情「首次消耗起 90 天」固定 1.00%。操作：判断 2026-12-10 与 2026-12-11 是否适用返点、客情。期望：2026-12-10 是第 90 天，返点、客情都适用；2026-12-11 是第 91 天，返点、客情都不再产生。</li><li><strong>G-03-007</strong> 前置：公共前置；当前生效记录 B（起始 2026-10-01）；2026-11-01 有一条待生效记录 C。操作：到 2026-11-01 UTC0 00:00 后看历史规则。期望：C 标「生效中」，B 不再打标签；04 客户详情该账户行显示 C。</li><li><strong>G-03-035</strong> 前置：公共前置；记录 B（起始 2026-10-01）为 G-03-003 的规则；记录 B2 起始 2026-10-20，内容与 B 完全相同、只有备注不同；该账户 2026-10-12～10-19 消耗合计 5,000.00 USD、2026-10-20～10-31 合计 7,000.00 USD。操作：按本页规则判定 10 月第 2 行服务费比例（06 出账时核对）；再把 B2 的税率换成 3.00%（其余仍同 B）重新判定。期望：B、B2 服务费规则与税率都相同时，10-12～10-31 合并为一段，合计 12,000.00 落第 2 档 4.00%，不拆成 5,000.00、7,000.00 各落第 1 档；B2 税率不同时两段分开落档，各为 6.00%。</li><li><strong>G-03-036</strong> 前置：公共前置；适用规则（起始 2026-09-01）为相对日期第 1 行「消耗首日 - 第30天」固定 8.00%，返点固定 2.00%，客情「首次消耗起 90 天」固定 1.00%。操作：2026-10-20 苹果补报该账户 2026-09-10 消耗 300.00 USD。期望：消耗首日仍为 2026-09-12（页头不变）；2026-09-10 服务费落第 1 行 8.00%；2026-09-10 不产生返点、客情。</li></ul>
+<h3 id="s3-2">2.2 入口与访问</h3>
+<h4>2.2.1 功能描述</h4>
+<p>谁能进本页、什么状态的登记表能配、进来时页头和表单显示什么。</p>
+<h4>2.2.3 业务规则</h4>
+<ul><li><strong>R-03-012</strong> 入口有三个，打开的是同一个页面：①01 登记表列表的「规则配置」行操作（登记表为 待关联 / 待开户 / 已开户 时显示，<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-014</a>、<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-019</a>）；②04 客户材料「客户登记表」标签里绑定登记表行的「规则配置」（<a class="xref" href="../04-客户管理/review.html" title="04-客户管理">R-04-060</a>）；③04 客户材料里存量账户的「历史上传文件」行（含迁移补建的占位行）的「规则配置」（R-03-053、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>）。一次只配置这一张登记表；从哪个入口进来，页面内容、校验和提交都一样。面包屑和菜单高亮按入口区分：从 01 进来显示「客户登记表/规则配置」、高亮客户登记表；从 04 进来显示「客户管理/{公司名称}/规则配置」、高亮客户管理，点「{公司名称}」回到该客户的客户材料页（客户登记表标签）；直接打开页面地址时，当前用户有「客户登记管理」且是创建人、或登记表未关联客户时按 01 显示，否则按 04 显示（D-03-25）。标题下方一行信息（锁定态同样显示）：登记表名称（登记表ID）· 关联客户（未关联「暂未关联」）· 绑定账户「账户名称（orgid）」（未绑定「暂未关联」）· 计费模式（取客户当前生效值「预付款 / 后付款」，生效口径按 <a class="xref" href="../04-客户管理/review.html" title="04-客户管理">R-04-066</a>；有待生效的计费模式变更时按 <a class="xref" href="../04-客户管理/review.html" title="04-客户管理">R-04-067</a> 显示「{当前生效值}（{yyyy-mm-dd} 起改为{目标值}）」；未关联客户「-」）· 消耗首日 yyyy-mm-dd（今天 UTC0 是第 N 天；没绑账户或还没消耗显示「未确定」，R-03-005）。</li><li><strong>R-03-013</strong> 能打开本页和提交审批的人：①该登记表的创建人（附件登记表没有创建人，不适用）；②有「客户管理-读写」权限点、且登记表关联的客户在其客户数据范围内的用户（sys 看全部；非 sys 须是该客户的「销售」或其名下任一账户的「优化师」，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a>），前提是登记表已关联客户（待开户 / 已开户 / 附件登记表），不要求是创建人（D-03-22）。待关联的登记表只有创建人能配。只有「客户管理-只读」的用户不能配置。不单设新权限点（D-03-16）；其他人直接访问页面地址显示「无权限访问」，不展示任何规则内容；服务端提交时同样校验。</li><li><strong>R-03-014</strong> 登记表状态为 待填写 / 待审核 / 已过期 / 未通过 时直接访问本页，显示「该登记表当前状态不可配置规则」，不展示表单和历史规则；登记表已删除或不存在显示「登记表不存在」；服务端提交时同样拦截。附件登记表没有 01 的状态，不按本条拦截（R-03-053）。</li><li><strong>R-03-015</strong> 打开页面（没有审批中的单）时：有当前生效规则 → 表单回填它的全部内容（含备注），规则起始日期留空；没有当前生效规则（含只有待生效记录）→ 用默认值：相对日期、服务费一行「消耗首日 - 永久」固定比例空、税率空、服务费税费「公司承担」、返点固定比例空、客情「无客情」、备注空、规则起始日期空（D-03-18）。</li><li><strong>R-03-053</strong> 存量账户的附件登记表（04 客户材料「历史上传文件」行，一份历史附件只对应 1 个账户；没有附件的账户由上线迁移补一行「上线迁移补建（无附件）」占位行，<a class="xref" href="../04-客户管理/review.html" title="04-客户管理">R-04-073</a>）也能配置规则，规则挂在这条附件登记表上（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>、D-03-27）：从 04 该行的「规则配置」进入本页（R-03-012③），权限按 R-03-013②，不按 01 状态拦截（R-03-014）；页面、校验、提交、审批、写入与在线登记表一样；页头登记表名称显示附件文件名，占位行显示「上线迁移补建（无附件）」；消耗首日、本单账户取该行对应的账户。上线前批量导入的存量规则（index S-1，只支持固定比例）写在同一条附件登记表上，来源记「导入」、没有来源审批单，起始日期 = 该账户消耗首日（R-03-005）所在月的 1 日，用户另给更早日期的以用户给的为准，不受 R-03-033 下限限制，比例按 R-03-022、R-03-027 校验；导入范围包含已停止投放的账户；按账户逐条校验，校验失败的账户不导入并出清单，不整体回滚（D-03-29）。阶梯 / 分段规则上线后在本页配，必须在上线当月内提交，并在次月 2 日（UTC0）出账前审批通过；晚于这个时点的只对之后的月份生效（R-03-011），列入上线检查项（D-03-29）；已封账 / 已冻结的账单不因补配重算（R-03-011）。这类审批单不出现在 01「已提交审批」，申请人到审批中心「全部审批」查看（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-036</a>）。</li></ul>
+<h4>2.2.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>非创建人、也没有「客户管理-读写」拿到链接</td><td>直接访问</td><td>不返回规则内容（R-03-013）</td><td>「无权限访问」</td></tr><tr><td>只有「客户管理-只读」</td><td>直接访问</td><td>不能配置（R-03-013）</td><td>「无权限访问」</td></tr><tr><td>有「客户管理-读写」但客户不在数据范围</td><td>直接访问</td><td>不返回规则内容（R-03-013、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a>）</td><td>「无权限访问」</td></tr><tr><td>登记表状态不可配置</td><td>直接访问</td><td>R-03-014</td><td>「该登记表当前状态不可配置规则」</td></tr><tr><td>登记表已删除</td><td>直接访问</td><td>R-03-014</td><td>「登记表不存在」</td></tr><tr><td>有审批中的单</td><td>打开页面</td><td>进入锁定态（R-03-041）</td><td>顶部提示条（带单号）、表单禁用</td></tr><tr><td>只有待生效记录</td><td>打开页面</td><td>用默认值（R-03-015）</td><td>历史规则里能看到待生效那条</td></tr><tr><td>附件登记表 / 占位行</td><td>从 04 打开</td><td>R-03-053</td><td>页头名称为文件名或「上线迁移补建（无附件）」</td></tr></tbody></table></div>
+<h4>2.2.6 验收标准</h4>
+<ul><li><strong>G-03-008</strong> 前置：公共前置；王浩不是该登记表创建人，也没有「客户管理-读写」。操作：王浩直接打开该登记表的规则配置页地址；再用接口直接提交。期望：页面显示「无权限访问」，看不到任何规则；接口提交被拒，不产生审批单。</li><li><strong>G-03-009</strong> 前置：李娜创建的另一张登记表状态为 待审核。操作：李娜直接打开它的规则配置页地址。期望：显示「该登记表当前状态不可配置规则」，没有表单和历史规则。</li><li><strong>G-03-032</strong> 前置：登记表 X 由已离职的刘洋创建、已关联客户「星海网络科技有限公司」、状态已开户；登记表 Z 由刘洋创建、状态待关联；王浩有「客户管理-读写」、不是创建人、是该客户名下「星海-iOS-JP」的优化师；周婷有「客户管理-读写」、不是 sys，既不是该客户的销售、也不是其名下任何账户的优化师。操作：王浩从 04 客户材料点 X 的「规则配置」，填好后提交审批；王浩再直接打开 Z 的规则配置页地址；周婷直接打开 X 的规则配置页地址。期望：X 的规则配置页正常打开（与 01 入口内容一致），提交成功，申请人为王浩；Z 显示「无权限访问」；周婷看到「无权限访问」。</li><li><strong>G-03-010</strong> 前置：李娜的登记表「橙子出行-ASA登记」状态 待关联，没有任何规则记录。操作：从列表点「规则配置」。期望：相对日期；服务费一行「消耗首日 - 永久」、固定比例、空；税率空；服务费税费 公司承担；返点「消耗首日 - 第90天」固定比例空；客情 无客情且不显示客情费用比例；备注空；规则起始日期空；信息行关联客户、绑定账户都为「暂未关联」，计费模式「-」，消耗首日「未确定」；历史规则收起，展开显示「暂无历史规则」。</li><li><strong>G-03-011</strong> 前置：G-03-001 的数据，没有审批中的单。操作：李娜打开规则配置页。期望：表单回填 B 的全部内容（含备注）；规则起始日期为空。</li><li><strong>G-03-037</strong> 前置：公共前置；没有审批中的单。操作：李娜打开规则配置页；规则起始日期选 2026-12-11，客情结算方式选「首次消耗起 90 天」；再把起始日期改为 2026-12-10。期望：标题下信息行显示「星海游戏-ASA登记（{登记表ID}）」、关联客户「星海网络科技有限公司」、绑定账户「星海-iOS-US（4521873）」、计费模式「预付款」、消耗首日「2026-09-12（今天第 38 天）」；选 2026-12-11 时日期框下弱提示「该起始日期已过返点期（止于 2026-12-10），本条返点比例不会生效」和「该起始日期已过客情计提期（止于 2026-12-10），本条客情费用比例不会生效」，仍可提交；改为 2026-12-10 后两条提示消失。</li><li><strong>G-03-040</strong> 前置：公共前置；李娜有「客户登记管理」；张伟有「客户管理-读写」、不是创建人。操作：李娜从 01 点「规则配置」；张伟从 04 客户材料点同一登记表的「规则配置」，再点面包屑里的公司名称；张伟直接打开该页地址。期望：李娜看到面包屑「客户登记表/规则配置」、菜单高亮客户登记表；张伟看到「客户管理/星海网络科技有限公司/规则配置」、菜单高亮客户管理，点公司名称回到该客户的客户材料页（客户登记表标签）；张伟直接打开地址时同样按 04 显示。</li><li><strong>G-03-039</strong> 前置：公共前置中的「星海-iOS-JP」是存量账户，04 客户材料有「历史上传文件」行「星海JP-登记表.pdf」，上线前导入一条起始 2026-09-01、服务费固定 5.00% 的规则；存量账户「星海-Mac」（同属该客户）没有附件，迁移补了占位行「上线迁移补建（无附件）」；张伟有「客户管理-读写」；规则配置审批流节点 1 为「绑定的运营」。操作：张伟点「星海JP-登记表.pdf」行的「规则配置」，展开历史规则，再提交一条起始 2026-11-01 的规则；之后点占位行的「规则配置」。期望：页面正常打开，面包屑「客户管理/星海网络科技有限公司/规则配置」，信息行登记表名称「星海JP-登记表.pdf」、绑定账户「星海-iOS-JP（4521999）」；历史规则有 2026-09-01 那条（生效中），审批通过时间「-」、来源审批单「导入」；提交成功，「绑定的运营」解析为王浩；该单不出现在 01「已提交审批」，张伟在审批中心「全部审批」能看到；占位行页面正常打开，信息行登记表名称「上线迁移补建（无附件）」。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-1">
+  <figcaption><span class="tag">示意 1</span>规则配置页（默认态：待关联登记表、无规则）<span class="src">mocks/01-默认态.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="规则配置页（默认态：待关联登记表、无规则）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 规则配置 · 待关联登记表「橙子出行-ASA登记」· 无规则</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px 28px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.input{padding:5px 8px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff;width:120px;display:inline-block;min-height:30px;vertical-align:middle}
+.input.ph{color:#9ca3af}.input.w60{width:64px}.input.w90{width:96px}.input.w240{width:260px}.input.w420{width:420px}
+.input.err{border-color:var(--new);background:#fef2f2}.input.ro{background:#f3f4f6;color:var(--sub)}
+.input[disabled],.dis .input{background:#f3f4f6;color:#9ca3af}
+.err-tip{color:var(--new);font-size:12px;margin-top:2px}
+.hint{font-size:12px;color:#b45309;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.radio{margin-right:18px;font-size:13px;white-space:nowrap}
+.radio::before{content:&quot;○ &quot;;color:var(--sub)}.radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+.sec{font-size:15px;font-weight:700;margin:22px 0 12px}
+.sec:first-child{margin-top:0}
+.form{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;align-items:start;max-width:1100px}
+.form .lb{text-align:right;font-size:13px;color:var(--sub);padding-top:5px}
+.form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+.link{color:var(--brand);text-decoration:underline}
+.ops a{color:var(--brand);margin-right:10px;font-size:13px}
+.ops a.off{color:#cbd5e1}
+.circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px;margin-left:4px;vertical-align:middle}
+.circle.off{color:#d1d5db;background:#f9fafb}
+.tier{margin:6px 0;white-space:nowrap}
+.sub{font-size:12px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;padding:0 6px;border-radius:4px;margin-left:6px}
+.tag.on{background:#ecfdf5;color:#047857}.tag.wait{background:#eff6ff;color:#1d4ed8}
+.lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px;display:inline-block}
+.lock em{color:var(--brand);font-style:normal}
+.collapse{font-size:15px;font-weight:700;margin:26px 0 12px}
+.empty{padding:24px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:6px}
+.foot{text-align:right;margin-top:24px}
+.mask{background:rgba(17,24,39,.45);padding:60px 0;margin:-20px -28px}
+.confirm{width:460px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.confirm .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600}
+.confirm .mb{padding:18px 20px}.confirm .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+.confirm .mf .btn{margin-left:8px}
+textarea.input{width:100%;height:72px;resize:none}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+.kv .k,.kv2 .k{color:var(--sub)}
+.kv2{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;font-size:13px;max-width:900px}
+.red{color:var(--new)}
+.tl{display:flex;gap:40px;font-size:12px}.tl div b{display:block;font-size:13px}
+.g{color:#047857}.gray{color:var(--sub)}
+.skip{color:#9ca3af}
+</style>
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>规则配置页 · 默认态</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-03-015～R-03-017、R-03-019、R-03-030、R-03-035 / G-03-010</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户登记表/规则配置</h1><span class=&quot;state-tag&quot;>待关联登记表「橙子出行-ASA登记」· 无规则</span></div>
+<div class=&quot;bd&quot; style=&quot;padding-bottom:0&quot;><div class=&quot;changed sub&quot; data-note=&quot;6&quot; style=&quot;padding:4px 8px;display:inline-block&quot;>橙子出行-ASA登记（RF20261019001）· 关联客户：暂未关联 · 绑定账户：暂未关联 · 计费模式：- · 消耗首日：未确定</div></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;&quot;>
+<div class=&quot;sec&quot;>服务费规则</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb&quot;>日期口径</div><div><span class=&quot;&quot;><span class=&quot;radio on&quot;>相对日期</span><span class=&quot;radio&quot;>绝对日期</span></span></div>
+<div class=&quot;lb req&quot;>规则配置</div><div><div class=&quot;modified&quot; data-note=&quot;1&quot; style=&quot;padding:4px&quot;><table style=&quot;max-width:1000px&quot;><tr><th style=&quot;text-align:center&quot;>时间区间</th><th style=&quot;text-align:center&quot;>服务费率</th><th style=&quot;text-align:center&quot;>操作</th></tr><tr><td style=&quot;width:300px;text-align:center;vertical-align:middle&quot;>消耗首日 - 永久</td><td><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>固定比例</span><span class=&quot;radio&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:6px&quot;><span class=&quot;input w240 ph&quot;>请输入比例</span> %</div></td><td style=&quot;width:140px;vertical-align:middle&quot; class=&quot;ops&quot;><a>增加行</a><a class=&quot;off&quot;>删除行</a></td></tr></table></div></div>
+</div>
+<div class=&quot;sec&quot;>税费规则</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb req&quot;>税率</div><div><span class=&quot;input w240 ph&quot;>请输入税率</span> %</div>
+<div class=&quot;lb req&quot;>服务费税费</div><div><span class=&quot;&quot;><span class=&quot;radio on&quot;>公司承担</span><span class=&quot;radio&quot;>客户承担</span></span></div>
+</div>
+<div class=&quot;sec&quot;>返点规则</div>
+<div class=&quot;form&quot;><div class=&quot;lb req&quot;>规则配置</div><div><table style=&quot;max-width:860px&quot;><tr><th style=&quot;text-align:center&quot;>时间区间</th><th style=&quot;text-align:center&quot;>返点比例</th></tr><tr><td style=&quot;width:300px;text-align:center;vertical-align:middle&quot;>消耗首日 - 第90天</td><td><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>固定比例</span><span class=&quot;radio&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:6px&quot;><span class=&quot;input w240 ph&quot;>请输入比例</span> %</div></td></tr></table></div></div>
+<div class=&quot;sec&quot;>客情规则</div>
+<div class=&quot;form&quot;><div class=&quot;lb req&quot;>客情结算方式</div><div><div class=&quot;modified&quot; data-note=&quot;2&quot; style=&quot;padding:4px&quot;><span class=&quot;&quot;><span class=&quot;radio on&quot;>无客情</span><span class=&quot;radio&quot;>首次消耗起 90 天</span><span class=&quot;radio&quot;>按自然月每月返还</span></span></div></div></div>
+<div class=&quot;sec&quot;>备注与生效</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb&quot;>备注</div><div><div class=&quot;changed&quot; data-note=&quot;3&quot; style=&quot;padding:4px&quot;><span class=&quot;input w420 ph&quot;>请输入备注（规则备注）</span></div></div>
+<div class=&quot;lb req&quot;>规则起始日期</div><div><div class=&quot;changed&quot; data-note=&quot;4&quot; style=&quot;padding:4px&quot;><span class=&quot;input w240 ph&quot;>请选择日期（不早于当月 1 号）</span></div></div>
+</div>
+</div><div class=&quot;collapse changed&quot; data-note='5'>历史规则 ∧</div><div class=&quot;empty&quot;>暂无历史规则</div><div class=&quot;foot&quot;><span class=&quot;btn primary&quot;>提交审批</span></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>服务费默认 1 行「消耗首日 - 永久」、固定比例；只有 1 行时「删除行」禁用（R-03-015、R-03-019）</li><li><span class=&quot;badge&quot;>2</span>客情选项「90天一次性结清」改名「首次消耗起 90 天」；默认无客情，不显示客情费用比例（R-03-030、R-03-031）</li><li><span class=&quot;badge&quot;>3</span>新增规则备注，与提交时的发起备注分开（R-03-032）</li><li><span class=&quot;badge&quot;>4</span>规则起始日期必填，只能选当月 1 号（UTC0）及以后（R-03-033）</li><li><span class=&quot;badge&quot;>5</span>历史规则默认收起；此处为展开后无记录的样子「暂无历史规则」（R-03-035）</li><li><span class=&quot;badge&quot;>6</span>标题下信息行：登记表名称（ID）· 关联客户 · 绑定账户 · 计费模式 · 消耗首日；未关联显示「暂未关联」/「-」，未消耗显示「未确定」；面包屑按入口区分，从 04 进入为「客户管理/{公司名称}/规则配置」（R-03-012）</li></ul></div> <!-- alias-ok -->
+<div class=&quot;footbar&quot;><span>MOCK · mocks/01-默认态.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-3">2.3 服务费规则</h3>
+<h4>2.3.1 功能描述</h4>
+<p>服务费按时间区间分段，每段单独设固定比例或阶梯比例。日期口径决定区间用「第 N 天」还是日期。</p>
+<h4>2.3.3 业务规则</h4>
+<ul><li><strong>R-03-016</strong> 日期口径单选 相对日期 / 绝对日期，默认相对日期；只决定服务费时间区间用「第 N 天」还是日期，返点、客情的天数始终按消耗首日数（R-03-007、R-03-008）。</li><li><strong>R-03-017</strong> 时间区间至少 1 行：第一行左边界固定——相对日期显示「消耗首日」，绝对日期显示规则起始日期（未选时显示「规则起始日期」，D-03-02）；第 2 行起左边界 = 上一行右边界 + 1 天，自动带出、不可改（相对显示「第 N+1 天」，上一行未填时显示「第 - 天」；绝对显示日期）；最后一行右边界固定「永久」；其余行右边界可填。</li><li><strong>R-03-018</strong> 右边界校验（D-03-19）：相对日期 → 必填正整数天，第 N 天含当天，每行必须大于上一行右边界，否则提示「请输入正整数天数」「须大于上一行的天数」；绝对日期 → 必选日期（UTC0），第一行 ≥ 规则起始日期、之后每行晚于上一行右边界，否则提示「请选择日期」「不能早于规则起始日期」「须晚于上一行的结束日期」；规则起始日期未选时只提示起始日期。</li><li><strong>R-03-019</strong> 每行有「增加行」「删除行」：增加行在本行后插入一行（本行原为最后一行时，本行右边界变为空输入框，新行成为最后一行「永久」）；删除行删掉本行（删的是最后一行时，上一行成为最后一行，右边界变回「永久」、原填值丢弃）；只剩一行时「删除行」禁用；行数不设上限。</li><li><strong>R-03-020</strong> 切换日期口径时保留行数和每行的服务费率设置，清空所有行已填的右边界（D-03-19），不弹确认。</li><li><strong>R-03-021</strong> 每行单独选计费方式 固定比例 / 阶梯比例，默认固定比例：固定比例只显示一个比例输入框；阶梯比例显示统计方式和阶梯表（R-03-023～R-03-026）；两种方式切换时页面内保留各自已填的值，提交时只提交当前选中的方式。</li></ul>
+<h4>2.3.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>上一行右边界还没填</td><td>下一行左边界无法算</td><td>显示「第 - 天」/ 空日期</td><td>提交时上一行提示必填</td></tr><tr><td>右边界不递增</td><td>填了更小的值</td><td>不提交（R-03-018）</td><td>「须大于上一行的天数」/「须晚于上一行的结束日期」</td></tr><tr><td>绝对日期早于起始日期</td><td>第一行右边界 &lt; 起始日期</td><td>不提交</td><td>「不能早于规则起始日期」</td></tr><tr><td>改了规则起始日期</td><td>绝对日期第一行左边界变化</td><td>左边界跟着变，已填右边界保留并重新校验</td><td>不合格的行提示</td></tr><tr><td>切换日期口径</td><td>右边界单位不同</td><td>清空右边界（R-03-020）</td><td>右边界变空</td></tr></tbody></table></div>
+<h4>2.3.6 验收标准</h4>
+<ul><li><strong>G-03-012</strong> 前置：G-03-010 的默认表单。操作：第 1 行点「增加行」，第 1 行右边界填 30；再点第 2 行「删除行」。期望：增加后第 1 行为「消耗首日 - 第[ ]天」、第 2 行为「第 - 天 - 永久」；填 30 后第 2 行变为「第31天 - 永久」；删除后只剩「消耗首日 - 永久」，其「删除行」禁用。</li><li><strong>G-03-013</strong> 前置：相对日期三行，右边界依次填 30、20。操作：点提交审批；再把第 1 行改成 0。期望：第 2 行提示「须大于上一行的天数」，不提交；改 0 后第 1 行提示「请输入正整数天数」。</li><li><strong>G-03-014</strong> 前置：相对日期两行，第 1 行右边界 30、固定 8.00%。操作：切到绝对日期，规则起始日期选 2026-11-01，第 1 行右边界选 2026-10-31，再改为 2026-12-31。期望：切换后第 1 行右边界清空，8.00% 保留；第 1 行左边界显示 2026-11-01；选 2026-10-31 时提示「不能早于规则起始日期」；改为 2026-12-31 后第 2 行显示「2027-01-01 - 永久」。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-2">
+  <figcaption><span class="tag">示意 2</span>规则配置页（填写态：相对日期两行、阶梯、客情 90 天、历史规则展开）<span class="src">mocks/02-填写态.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="规则配置页（填写态：相对日期两行、阶梯、客情 90 天、历史规则展开）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 规则配置 · 已开户登记表「星海游戏-ASA登记」· 当前生效 2026-10-01</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px 28px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.input{padding:5px 8px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff;width:120px;display:inline-block;min-height:30px;vertical-align:middle}
+.input.ph{color:#9ca3af}.input.w60{width:64px}.input.w90{width:96px}.input.w240{width:260px}.input.w420{width:420px}
+.input.err{border-color:var(--new);background:#fef2f2}.input.ro{background:#f3f4f6;color:var(--sub)}
+.input[disabled],.dis .input{background:#f3f4f6;color:#9ca3af}
+.err-tip{color:var(--new);font-size:12px;margin-top:2px}
+.hint{font-size:12px;color:#b45309;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.radio{margin-right:18px;font-size:13px;white-space:nowrap}
+.radio::before{content:&quot;○ &quot;;color:var(--sub)}.radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+.sec{font-size:15px;font-weight:700;margin:22px 0 12px}
+.sec:first-child{margin-top:0}
+.form{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;align-items:start;max-width:1100px}
+.form .lb{text-align:right;font-size:13px;color:var(--sub);padding-top:5px}
+.form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+.link{color:var(--brand);text-decoration:underline}
+.ops a{color:var(--brand);margin-right:10px;font-size:13px}
+.ops a.off{color:#cbd5e1}
+.circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px;margin-left:4px;vertical-align:middle}
+.circle.off{color:#d1d5db;background:#f9fafb}
+.tier{margin:6px 0;white-space:nowrap}
+.sub{font-size:12px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;padding:0 6px;border-radius:4px;margin-left:6px}
+.tag.on{background:#ecfdf5;color:#047857}.tag.wait{background:#eff6ff;color:#1d4ed8}
+.lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px;display:inline-block}
+.lock em{color:var(--brand);font-style:normal}
+.collapse{font-size:15px;font-weight:700;margin:26px 0 12px}
+.empty{padding:24px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:6px}
+.foot{text-align:right;margin-top:24px}
+.mask{background:rgba(17,24,39,.45);padding:60px 0;margin:-20px -28px}
+.confirm{width:460px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.confirm .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600}
+.confirm .mb{padding:18px 20px}.confirm .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+.confirm .mf .btn{margin-left:8px}
+textarea.input{width:100%;height:72px;resize:none}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+.kv .k,.kv2 .k{color:var(--sub)}
+.kv2{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;font-size:13px;max-width:900px}
+.red{color:var(--new)}
+.tl{display:flex;gap:40px;font-size:12px}.tl div b{display:block;font-size:13px}
+.g{color:#047857}.gray{color:var(--sub)}
+.skip{color:#9ca3af}
+</style>
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>规则配置页 · 填写态</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-03-017、R-03-021、R-03-023～R-03-025、R-03-029、R-03-031、R-03-035～R-03-037 / G-03-011、G-03-012、G-03-031</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户登记表/规则配置</h1><span class=&quot;state-tag&quot;>已开户登记表「星海游戏-ASA登记」· 当前生效 2026-10-01</span></div>
+<div class=&quot;bd&quot; style=&quot;padding-bottom:0&quot;><div class=&quot;changed sub&quot; data-note=&quot;5&quot; style=&quot;padding:4px 8px;display:inline-block&quot;>星海游戏-ASA登记（RF20260905002）· 关联客户：星海网络科技有限公司 · 绑定账户：星海-iOS-US（4521873）· 计费模式：预付款 · 消耗首日：2026-09-12（今天第 38 天）</div></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;&quot;>
+<div class=&quot;sec&quot;>服务费规则</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb&quot;>日期口径</div><div><span class=&quot;&quot;><span class=&quot;radio on&quot;>相对日期</span><span class=&quot;radio&quot;>绝对日期</span></span></div>
+<div class=&quot;lb req&quot;>规则配置</div><div><div class=&quot;modified&quot; data-note=&quot;1&quot; style=&quot;padding:4px&quot;><table style=&quot;max-width:1000px&quot;><tr><th style=&quot;text-align:center&quot;>时间区间</th><th style=&quot;text-align:center&quot;>服务费率</th><th style=&quot;text-align:center&quot;>操作</th></tr><tr><td style=&quot;width:300px;text-align:center;vertical-align:middle&quot;>消耗首日 - 第 <span class=&quot;input w60&quot;>30</span> 天</td><td><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>固定比例</span><span class=&quot;radio&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:6px&quot;><span class=&quot;input w240&quot;>7.00</span> %</div></td><td style=&quot;width:140px;vertical-align:middle&quot; class=&quot;ops&quot;><a>增加行</a><a>删除行</a></td></tr><tr><td style=&quot;width:300px;text-align:center;vertical-align:middle&quot;>第31天 - 永久</td><td><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio&quot;>固定比例</span><span class=&quot;radio on&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:4px&quot;>统计方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>按月统计</span><span class=&quot;radio&quot;>按日统计</span></span></div><div class=&quot;tier&quot;><span class=&quot;input w90 ro&quot;>0.00</span> - <span class=&quot;input w90&quot;>10,000.00</span> &amp;nbsp; <span class=&quot;input w60&quot;>6.00</span> % <span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div><div class=&quot;tier&quot;><span class=&quot;input w90 ro&quot;>10,000.00</span> - <span class=&quot;input w90 ro&quot;>不限</span> &amp;nbsp; <span class=&quot;input w60&quot;>4.00</span> % <span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div></td><td style=&quot;width:140px;vertical-align:middle&quot; class=&quot;ops&quot;><a>增加行</a><a>删除行</a></td></tr></table></div></div>
+</div>
+<div class=&quot;sec&quot;>税费规则</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb req&quot;>税率</div><div><span class=&quot;input w240&quot;>6.00</span> %</div>
+<div class=&quot;lb req&quot;>服务费税费</div><div><span class=&quot;&quot;><span class=&quot;radio on&quot;>公司承担</span><span class=&quot;radio&quot;>客户承担</span></span></div>
+</div>
+<div class=&quot;sec&quot;>返点规则</div>
+<div class=&quot;form&quot;><div class=&quot;lb req&quot;>规则配置</div><div><div class=&quot;modified&quot; data-note=&quot;2&quot; style=&quot;padding:4px&quot;><table style=&quot;max-width:860px&quot;><tr><th style=&quot;text-align:center&quot;>时间区间</th><th style=&quot;text-align:center&quot;>返点比例</th></tr><tr><td style=&quot;width:300px;text-align:center;vertical-align:middle&quot;>消耗首日 - 第90天</td><td><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio&quot;>固定比例</span><span class=&quot;radio on&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:4px&quot;>统计方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>按月统计</span><span class=&quot;radio&quot;>按日统计</span></span></div><div class=&quot;tier&quot;><span class=&quot;input w90 ro&quot;>0.00</span> - <span class=&quot;input w90&quot;>20,000.00</span> &amp;nbsp; <span class=&quot;input w60&quot;>1.50</span> % <span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div><div class=&quot;tier&quot;><span class=&quot;input w90 ro&quot;>20,000.00</span> - <span class=&quot;input w90 ro&quot;>不限</span> &amp;nbsp; <span class=&quot;input w60&quot;>2.50</span> % <span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div></td></tr></table></div></div></div>
+<div class=&quot;sec&quot;>客情规则</div>
+<div class=&quot;form&quot;><div class=&quot;lb req&quot;>客情结算方式</div><div><span class=&quot;&quot;><span class=&quot;radio&quot;>无客情</span><span class=&quot;radio on&quot;>首次消耗起 90 天</span><span class=&quot;radio&quot;>按自然月每月返还</span></span></div><div class=&quot;lb req&quot;>客情费用比例</div><div><div class=&quot;changed&quot; data-note=&quot;3&quot; style=&quot;padding:4px&quot;><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>固定比例</span><span class=&quot;radio&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:6px&quot;><span class=&quot;input w240&quot;>1.00</span> %</div></div></div></div>
+<div class=&quot;sec&quot;>备注与生效</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb&quot;>备注</div><div><span class=&quot;input w420&quot;>11 月起服务费下调</span></div>
+<div class=&quot;lb req&quot;>规则起始日期</div><div><span class=&quot;input w240&quot;>2026-11-01</span></div>
+</div>
+</div><div class=&quot;changed&quot; data-note=&quot;4&quot; style=&quot;padding:4px&quot;><div class=&quot;collapse &quot; >历史规则 ∧</div><table><tr><th>规则起始日期</th><th>服务费规则</th><th>税率</th><th>服务费税费</th><th>返点规则</th><th>客情结算方式</th><th>客情费用比例</th><th>备注</th><th>审批通过时间</th><th>来源审批单</th></tr><tr><td>2026-10-01 <span class=&quot;tag on&quot;>生效中</span></td><td>消耗首日 - 第30天：固定 8.00%<br>第31天 - 永久：阶梯（按月统计）<br>[0.00, 10,000.00) 6.00%<br>[10,000.00, 不限) 4.00%</td><td>6.00%</td><td>公司承担</td><td>消耗首日 - 第90天：阶梯（按月统计）<br>[0.00, 20,000.00) 1.50%<br>[20,000.00, 不限) 2.50%</td><td>首次消耗起 90 天</td><td>1.00%</td><td>10 月起按消耗阶梯计费</td><td>2026-09-28 11:02:15</td><td><span class=&quot;link&quot;>SP2026092800031</span></td></tr><tr><td>2026-09-01</td><td>消耗首日 - 第30天：固定 9.00%<br>第31天 - 永久：固定 7.00%</td><td>6.00%</td><td>公司承担</td><td>消耗首日 - 第90天：固定 2.00%</td><td>无客情</td><td>-</td><td>-</td><td>2026-08-28 10:15:00</td><td><span class=&quot;link&quot;>SP2026082800088</span></td></tr></table></div><div class=&quot;foot&quot;><span class=&quot;btn primary&quot;>提交审批</span></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>时间区间：第 2 行左边界 = 上一行右边界 + 1 天（第31天），自动带出；最后一行固定「永久」；每行单独选固定 / 阶梯，阶梯带统计方式（R-03-017、R-03-021、R-03-025）</li><li><span class=&quot;badge&quot;>2</span>返点区间固定「消耗首日 - 第90天」；阶梯左闭右开，第二档下限 = 第一档上限（灰底不可改），最后一档「不限」（R-03-023、R-03-029）</li><li><span class=&quot;badge&quot;>3</span>客情选「首次消耗起 90 天」后出现客情费用比例；阶梯时没有统计方式（R-03-031）</li><li><span class=&quot;badge&quot;>4</span>历史规则展开：按起始日期降序，生效中 / 待生效打标签；列名「返点规则」；格式按 R-03-037（R-03-035～R-03-037）</li><li><span class=&quot;badge&quot;>5</span>标题下信息行含计费模式（客户当前）与消耗首日（今天第 N 天）；历史规则末尾加「审批通过时间」「来源审批单」两列，单号可点，导入的记录显示「-」「导入」；跨月通过的记录起始日期旁标「yyyy-mm 已出账，不适用」（R-03-012、R-03-036、R-03-052）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/02-填写态.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-4">2.4 比例与阶梯（服务费、返点、客情共用）</h3>
+<h4>2.4.1 功能描述</h4>
+<p>所有比例输入和阶梯表的统一交互与校验。服务费每行、返点、客情各用一套。</p>
+<h4>2.4.3 业务规则</h4>
+<ul><li><strong>R-03-022</strong> 服务费率、返点比例、客情费用比例（含阶梯各档比例）都是百分比：必填，≥ 0，最多 2 位小数，不设上限（D-03-07、D-03-12）；输入框后显示「%」；不合格时提示「请输入不小于 0、最多 2 位小数的数字」；没有返点 / 不收服务费就填 0。税率另有上限，见 R-03-027。</li><li><strong>R-03-023</strong> 阶梯表每档一行「下限 - 上限 比例%」：第一档下限固定 0；之后每档下限 = 上一档上限，自动带出不可改；最后一档上限固定显示「不限」；其余档上限必填，≥ 0、最多 2 位小数；金额是账户消耗原币，输入框不显示币种（D-03-03、D-03-04）；切到阶梯比例时默认 1 档「0 - 不限」。</li><li><strong>R-03-024</strong> 每档右侧「+」在本档后插入一档（本档原为最后一档时，本档上限变为空输入框，新档成为最后一档「不限」），「−」删掉本档（删的是最后一档时上一档上限变回「不限」）；只剩一档时「−」禁用；档数不设上限。</li><li><strong>R-03-025</strong> 服务费、返点的阶梯比例要选统计方式 按月统计 / 按日统计，默认按月统计（含义见 R-03-010）；统计方式旁有问号，悬浮说明「统计方式用于后付出账和返点；预付充值按单笔充值余额落档，不看统计方式（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-51</a>）」；客情费用比例的阶梯不显示统计方式。</li><li><strong>R-03-026</strong> 阶梯校验：上限必须大于本档下限，否则提示「区间上限须大于下限」；上限、比例为空时提示「请输入区间」「请输入比例」。</li></ul>
+<h4>2.4.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>比例负数 / 超过 2 位小数</td><td>输入 -1、5.123</td><td>不提交（R-03-022）</td><td>「请输入不小于 0、最多 2 位小数的数字」</td></tr><tr><td>服务费率 / 返点 / 客情比例很大</td><td>输入 150</td><td>允许（D-03-12）</td><td>正常</td></tr><tr><td>税率 ≥ 100</td><td>输入 100、150</td><td>不提交（R-03-027）</td><td>「税率须小于 100%」</td></tr><tr><td>中间档上限 ≤ 下限</td><td>改小了上一档上限</td><td>不提交（R-03-026）</td><td>「区间上限须大于下限」</td></tr><tr><td>改上一档上限</td><td>下一档下限跟着变</td><td>自动带出（R-03-023）</td><td>下一档下限刷新</td></tr><tr><td>只剩一档</td><td>点「−」</td><td>禁用（R-03-024）</td><td>按钮置灰</td></tr></tbody></table></div>
+<h4>2.4.6 验收标准</h4>
+<ul><li><strong>G-03-015</strong> 前置：服务费第 1 行切到阶梯比例。操作：看默认档；在第 1 档点「+」，第 1 档上限填 10,000，第 2 档点「+」后把第 2 档上限填 8,000。期望：默认 1 档「0 - 不限」、统计方式默认按月统计且旁边有问号说明、只有 1 档时「−」禁用；加档后第 2 档下限自动为 10,000.00 不可改；第 2 档上限 8,000 提示「区间上限须大于下限」。</li><li><strong>G-03-016</strong> 前置：服务费率、返点比例、客情费用比例任一输入框。操作：分别填 -1、5.123、0、150。期望：-1 和 5.123 提示「请输入不小于 0、最多 2 位小数的数字」；0 和 150 都通过。</li><li><strong>G-03-017</strong> 前置：G-03-010 的默认表单不填任何内容。操作：点提交审批。期望：服务费率、税率、返点比例、规则起始日期下方分别提示；不弹确认框、不产生审批单。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-3">
+  <figcaption><span class="tag">示意 3</span>规则配置页（校验失败：右边界、阶梯、比例、起始日期）<span class="src">mocks/03-校验失败.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="规则配置页（校验失败：右边界、阶梯、比例、起始日期）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 规则配置 · 点「提交审批」后校验不通过</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px 28px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.input{padding:5px 8px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff;width:120px;display:inline-block;min-height:30px;vertical-align:middle}
+.input.ph{color:#9ca3af}.input.w60{width:64px}.input.w90{width:96px}.input.w240{width:260px}.input.w420{width:420px}
+.input.err{border-color:var(--new);background:#fef2f2}.input.ro{background:#f3f4f6;color:var(--sub)}
+.input[disabled],.dis .input{background:#f3f4f6;color:#9ca3af}
+.err-tip{color:var(--new);font-size:12px;margin-top:2px}
+.hint{font-size:12px;color:#b45309;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.radio{margin-right:18px;font-size:13px;white-space:nowrap}
+.radio::before{content:&quot;○ &quot;;color:var(--sub)}.radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+.sec{font-size:15px;font-weight:700;margin:22px 0 12px}
+.sec:first-child{margin-top:0}
+.form{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;align-items:start;max-width:1100px}
+.form .lb{text-align:right;font-size:13px;color:var(--sub);padding-top:5px}
+.form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+.link{color:var(--brand);text-decoration:underline}
+.ops a{color:var(--brand);margin-right:10px;font-size:13px}
+.ops a.off{color:#cbd5e1}
+.circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px;margin-left:4px;vertical-align:middle}
+.circle.off{color:#d1d5db;background:#f9fafb}
+.tier{margin:6px 0;white-space:nowrap}
+.sub{font-size:12px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;padding:0 6px;border-radius:4px;margin-left:6px}
+.tag.on{background:#ecfdf5;color:#047857}.tag.wait{background:#eff6ff;color:#1d4ed8}
+.lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px;display:inline-block}
+.lock em{color:var(--brand);font-style:normal}
+.collapse{font-size:15px;font-weight:700;margin:26px 0 12px}
+.empty{padding:24px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:6px}
+.foot{text-align:right;margin-top:24px}
+.mask{background:rgba(17,24,39,.45);padding:60px 0;margin:-20px -28px}
+.confirm{width:460px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.confirm .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600}
+.confirm .mb{padding:18px 20px}.confirm .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+.confirm .mf .btn{margin-left:8px}
+textarea.input{width:100%;height:72px;resize:none}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+.kv .k,.kv2 .k{color:var(--sub)}
+.kv2{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;font-size:13px;max-width:900px}
+.red{color:var(--new)}
+.tl{display:flex;gap:40px;font-size:12px}.tl div b{display:block;font-size:13px}
+.g{color:#047857}.gray{color:var(--sub)}
+.skip{color:#9ca3af}
+</style>
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>规则配置页 · 校验失败</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-03-017、R-03-018、R-03-022、R-03-026、R-03-027 / G-03-013～G-03-017</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户登记表/规则配置</h1><span class=&quot;state-tag&quot;>点「提交审批」后校验不通过</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;&quot;>
+<div class=&quot;sec&quot;>服务费规则</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb&quot;>日期口径</div><div><div class=&quot;modified&quot; data-note=&quot;1&quot; style=&quot;padding:4px&quot;><span class=&quot;&quot;><span class=&quot;radio&quot;>相对日期</span><span class=&quot;radio on&quot;>绝对日期</span></span></div></div>
+<div class=&quot;lb req&quot;>规则配置</div><div><div class=&quot;changed&quot; data-note=&quot;2&quot; style=&quot;padding:4px&quot;><table style=&quot;max-width:1000px&quot;><tr><th style=&quot;text-align:center&quot;>时间区间</th><th style=&quot;text-align:center&quot;>服务费率</th><th style=&quot;text-align:center&quot;>操作</th></tr><tr><td style=&quot;width:300px;text-align:center;vertical-align:middle&quot;>2026-11-01 - <span class=&quot;input w120&quot;>2026-10-31</span><div class=&quot;err-tip&quot;>不能早于规则起始日期</div></td><td><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>固定比例</span><span class=&quot;radio&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:6px&quot;><span class=&quot;input w240 err&quot;>5.123</span> %<div class=&quot;err-tip&quot;>请输入不小于 0、最多 2 位小数的数字</div></div></td><td style=&quot;width:140px;vertical-align:middle&quot; class=&quot;ops&quot;><a>增加行</a><a>删除行</a></td></tr><tr><td style=&quot;width:300px;text-align:center;vertical-align:middle&quot;>2026-11-01 - 永久</td><td><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio&quot;>固定比例</span><span class=&quot;radio on&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:4px&quot;>统计方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>按月统计</span><span class=&quot;radio&quot;>按日统计</span></span></div><div class=&quot;tier&quot;><span class=&quot;input w90 ro&quot;>0.00</span> - <span class=&quot;input w90&quot;>8,000.00</span> &amp;nbsp; <span class=&quot;input w60&quot;>6.00</span> % <span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div><div class=&quot;tier&quot;><span class=&quot;input w90 ro&quot;>8,000.00</span> - <span class=&quot;input w90 err&quot;>5,000.00</span> &amp;nbsp; <span class=&quot;input w60&quot;>5.00</span> % <span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div><div class=&quot;err-tip&quot;>区间上限须大于下限</div><div class=&quot;tier&quot;><span class=&quot;input w90 ro&quot;>5,000.00</span> - <span class=&quot;input w90 ro&quot;>不限</span> &amp;nbsp; <span class=&quot;input w60 ph err&quot;>请输入比例</span> % <span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div><div class=&quot;err-tip&quot;>请输入比例</div></td><td style=&quot;width:140px;vertical-align:middle&quot; class=&quot;ops&quot;><a>增加行</a><a>删除行</a></td></tr></table></div></div>
+</div>
+<div class=&quot;sec&quot;>税费规则</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb req&quot;>税率</div><div><span class=&quot;input w240 ph err&quot;>请输入税率</span> %<div class=&quot;err-tip&quot;>请输入税率</div></div>
+<div class=&quot;lb req&quot;>服务费税费</div><div><span class=&quot;&quot;><span class=&quot;radio&quot;>公司承担</span><span class=&quot;radio on&quot;>客户承担</span></span></div>
+</div>
+<div class=&quot;sec&quot;>返点规则</div>
+<div class=&quot;form&quot;><div class=&quot;lb req&quot;>规则配置</div><div><table style=&quot;max-width:860px&quot;><tr><th style=&quot;text-align:center&quot;>时间区间</th><th style=&quot;text-align:center&quot;>返点比例</th></tr><tr><td style=&quot;width:300px;text-align:center;vertical-align:middle&quot;>消耗首日 - 第90天</td><td><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>固定比例</span><span class=&quot;radio&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:6px&quot;><span class=&quot;input w240 err&quot;>-1</span> %<div class=&quot;err-tip&quot;>请输入不小于 0、最多 2 位小数的数字</div></div></td></tr></table></div></div>
+<div class=&quot;sec&quot;>客情规则</div>
+<div class=&quot;form&quot;><div class=&quot;lb req&quot;>客情结算方式</div><div><span class=&quot;&quot;><span class=&quot;radio on&quot;>无客情</span><span class=&quot;radio&quot;>首次消耗起 90 天</span><span class=&quot;radio&quot;>按自然月每月返还</span></span></div></div>
+<div class=&quot;sec&quot;>备注与生效</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb&quot;>备注</div><div><span class=&quot;input w420 ph&quot;>请输入备注（规则备注）</span></div>
+<div class=&quot;lb req&quot;>规则起始日期</div><div><span class=&quot;input w240&quot;>2026-11-01</span></div>
+</div>
+</div><div class=&quot;collapse &quot; >历史规则 ∨</div><div class=&quot;foot&quot;><span class=&quot;btn primary&quot;>提交审批</span></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>切到绝对日期：第一行左边界显示规则起始日期 2026-11-01；切换时各行右边界已清空，重新选择（R-03-017、R-03-020）</li><li><span class=&quot;badge&quot;>2</span>右边界早于起始日期、比例超过 2 位小数或为负、阶梯上限 ≤ 下限、必填为空，都在对应位置提示，不弹确认框（R-03-018、R-03-022、R-03-026、R-03-038）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/03-校验失败.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-5">2.5 税费规则</h3>
+<h4>2.5.1 功能描述</h4>
+<p>税率和服务费税费承担方，供 05 折算充值时用。</p>
+<h4>2.5.3 业务规则</h4>
+<ul><li><strong>R-03-027</strong> 税率一个输入框：必填，≥ 0 且 &lt; 100，最多 2 位小数，输入框后显示「%」；为空提示「请输入税率」，负数或超过 2 位小数提示「请输入不小于 0、最多 2 位小数的数字」，≥ 100 提示「税率须小于 100%」；服务端提交时同样校验，上线前导入的规则也按此校验（D-03-12）。</li><li><strong>R-03-028</strong> 服务费税费单选 公司承担 / 客户承担，默认公司承担；客户承担时充值、取出的折算公式含「服务费率 × 税率」，公司承担时不含（费用管理.html:4848 §4.2.2），计算在 05。</li></ul>
+<h4>2.5.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>税率为空</td><td>点提交</td><td>不提交</td><td>「请输入税率」</td></tr><tr><td>税率 ≥ 100</td><td>填 100</td><td>不提交，服务端同样拦截（R-03-027）</td><td>「税率须小于 100%」</td></tr><tr><td>不收税</td><td>填 0</td><td>允许（R-03-027）</td><td>正常</td></tr></tbody></table></div>
+<h4>2.5.6 验收标准</h4>
+<ul><li><strong>G-03-033</strong> 前置：默认表单其余项已填好。操作：税率分别填 0、99.99、100、150、-1；再在税率 150 时绕过页面用接口直接提交。期望：0、99.99 通过；100、150 提示「税率须小于 100%」；-1 提示「请输入不小于 0、最多 2 位小数的数字」；接口提交被拒，不产生审批单。</li></ul>
+<h3 id="s3-6">2.6 返点规则</h3>
+<h4>2.6.1 功能描述</h4>
+<p>返点只有消耗首日起前 90 天一段，比例可固定或阶梯。返点计算（扣 MAX 消耗等）在 07。</p>
+<h4>2.6.3 业务规则</h4>
+<ul><li><strong>R-03-029</strong> 返点只有一行，时间区间固定显示「消耗首日 - 第90天」，不能增删、不能改；返点比例的计费方式、固定比例、阶梯、统计方式按 R-03-021～R-03-026，必填。</li></ul>
+<h4>2.6.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>客户没有返点</td><td>不想配返点</td><td>填固定 0%（R-03-022）</td><td>正常</td></tr><tr><td>第 91 天以后</td><td>有消耗</td><td>不产生返点（R-03-007）</td><td>—</td></tr></tbody></table></div>
+<h3 id="s3-7">2.7 客情规则</h3>
+<h4>2.7.1 功能描述</h4>
+<p>客情结算方式三选一，选了有客情的两项才填客情费用比例。</p>
+<h4>2.7.3 业务规则</h4>
+<ul><li><strong>R-03-030</strong> 客情结算方式必填单选：无客情 / 首次消耗起 90 天 / 按自然月每月返还，默认无客情（原型的「90天一次性结清」改名，D-03-11）。</li><li><strong>R-03-031</strong> 选无客情时不显示客情费用比例，也不提交；选另外两项时显示客情费用比例，计费方式 固定比例 / 阶梯比例（默认固定比例），必填，按 R-03-022～R-03-024、R-03-026，没有统计方式。</li></ul>
+<h4>2.7.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>填了比例又切回无客情</td><td>比例隐藏</td><td>提交内容里没有客情费用比例（R-03-031）</td><td>比例区消失</td></tr><tr><td>切回有客情</td><td>再显示</td><td>页面内保留之前填的值</td><td>原值回来</td></tr></tbody></table></div>
+<h4>2.7.6 验收标准</h4>
+<ul><li><strong>G-03-018</strong> 前置：默认表单。操作：客情结算方式依次选 首次消耗起 90 天、按自然月每月返还、无客情，第一次时切到阶梯比例。期望：选前两项时出现客情费用比例（固定 / 阶梯），阶梯下没有统计方式；选回无客情后客情费用比例隐藏，提交内容里没有客情费用比例。</li></ul>
+<h3 id="s3-8">2.8 备注与规则起始日期</h3>
+<h4>2.8.1 功能描述</h4>
+<p>规则备注随规则保存；规则起始日期决定这条规则从哪天起用。</p>
+<h4>2.8.3 业务规则</h4>
+<ul><li><strong>R-03-032</strong> 备注为规则备注：多行输入框、选填，长度上限沿用现有备注输入框；随规则写入、在历史规则和审批内容区展示；它不是审批发起备注，发起备注在提交确认框里另填（D-03-15）。</li><li><strong>R-03-033</strong> 规则起始日期必填，日期选择器只能选「当月 1 号」及以后（当月按 UTC0 今天所在月），不设最晚日期；为空提示「请选择规则起始日期」；服务端提交时复核，早于当月 1 号提示「规则起始日期不能早于当月 1 号」。上线前导入的规则不受这条下限限制（R-03-053）。</li><li><strong>R-03-034</strong> 选的起始日期与某条未覆盖的记录相同时，日期框下方提示「该起始日期已有规则，审批通过后将覆盖原规则」，不拦提交（D-03-21）。</li><li><strong>R-03-051</strong> 消耗首日已确定（R-03-005）、所选规则起始日期晚于消耗首日起第 90 天的日期时，日期框下方弱提示（不拦提交）：「该起始日期已过返点期（止于 yyyy-mm-dd），本条返点比例不会生效」；客情结算方式为「首次消耗起 90 天」时再提示「该起始日期已过客情计提期（止于 yyyy-mm-dd），本条客情费用比例不会生效」；yyyy-mm-dd = 第 90 天的日期；消耗首日未确定时不提示；与 R-03-034 的提示可同时出现（D-03-25）。</li></ul>
+<h4>2.8.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>月底打开、月初才提交</td><td>页面上选了上月日期</td><td>服务端按提交当天复核（R-03-033）</td><td>「规则起始日期不能早于当月 1 号」</td></tr><tr><td>起始日期与已有记录相同</td><td>选中</td><td>提示会覆盖（R-03-034）</td><td>日期框下提示</td></tr><tr><td>起始日期晚于第 90 天</td><td>选中</td><td>弱提示，不拦（R-03-051）</td><td>日期框下返点期（及客情期）提示</td></tr><tr><td>起始日期在很远的未来</td><td>选中</td><td>允许，通过后为待生效</td><td>正常</td></tr></tbody></table></div>
+<h4>2.8.6 验收标准</h4>
+<ul><li><strong>G-03-019</strong> 前置：公共前置；已有记录 B（起始 2026-10-01）。操作：打开规则起始日期选择器，选 2026-10-01。期望：2026-09-30 及以前不可选，2026-10-01 及以后可选；选 2026-10-01 后日期框下提示「该起始日期已有规则，审批通过后将覆盖原规则」，仍可提交。</li></ul>
+<h3 id="s3-9">2.9 历史规则与展示格式</h3>
+<h4>2.9.1 功能描述</h4>
+<p>表单下方列出该登记表全部规则记录。本节的展示格式同时给审批内容区（2.12）和 04 客户详情规则配置表（<a class="xref" href="../04-客户管理/review.html" title="04-客户管理">R-04-051</a>）用。</p>
+<h4>2.9.2 核心字段</h4>
+<div class="tw"><table><thead><tr><th>列</th><th>取值</th><th>格式</th></tr></thead><tbody><tr><td>规则起始日期</td><td>start_date；旁边打「生效中」「待生效」标签，已出账月份加灰字标注（R-03-052）</td><td>yyyy-mm-dd</td></tr><tr><td>服务费规则</td><td>service_fee_periods + date_mode</td><td>R-03-037</td></tr><tr><td>税率</td><td>tax_rate</td><td>x.xx%</td></tr><tr><td>服务费税费</td><td>service_fee_tax_bearer</td><td>选项文字</td></tr><tr><td>返点规则</td><td>rebate</td><td>R-03-037</td></tr><tr><td>客情结算方式</td><td>kq_mode</td><td>选项文字</td></tr><tr><td>客情费用比例</td><td>kq_rate</td><td>R-03-037</td></tr><tr><td>备注</td><td>remark</td><td>空为「-」</td></tr><tr><td>审批通过时间</td><td>approved_at</td><td>yyyy-mm-dd hh:mm:ss（Asia/Shanghai）；导入为「-」</td></tr><tr><td>来源审批单</td><td>source_approval_id</td><td>单号，链接；导入为「导入」</td></tr></tbody></table></div>
+<h4>2.9.3 业务规则</h4>
+<ul><li><strong>R-03-035</strong> 表单下方「历史规则」区默认收起，点标题展开 / 收起；列出该登记表全部未覆盖的记录（审批写入与导入），按规则起始日期降序；生效中、待生效的记录在起始日期旁打标签「生效中」「待生效」，已结束的不打标签；没有记录时展开显示「暂无历史规则」（D-03-13）。</li><li><strong>R-03-036</strong> 历史规则表列：规则起始日期、服务费规则、税率、服务费税费、返点规则、客情结算方式、客情费用比例、备注、审批通过时间、来源审批单（原型列名「规则配置」改为「返点规则」，D-03-21）；规则各列格式按 R-03-037；审批通过时间 yyyy-mm-dd hh:mm:ss（Asia/Shanghai），导入的记录显示「-」；来源审批单显示单号，点击新页打开 12 审批详情，导入的记录显示「导入」纯文本（D-03-26）。</li><li><strong>R-03-037</strong> 规则展示格式（历史规则、审批内容区、04 客户详情共用）：服务费规则每行时间区间一段，「区间：固定 x.xx%」或「区间：阶梯（按月统计 / 按日统计）」下面每档一行「[下限, 上限) x.xx%」、最后一档「[下限, 不限) x.xx%」；区间相对日期写「消耗首日 - 第30天」「第31天 - 永久」，绝对日期写「2026-11-01 - 2026-12-31」「2027-01-01 - 永久」；返点规则写「消耗首日 - 第90天：」加同样的固定 / 阶梯写法；税率「x.xx%」；服务费税费、客情结算方式写选项文字；客情费用比例无客情时「-」，固定「x.xx%」，阶梯「阶梯（按自然月）」加档位；金额千分位、2 位小数、不带币种；备注为空「-」；规则起始日期 yyyy-mm-dd。</li><li><strong>R-03-052</strong> 已出账标注：对一条来源为「审批」的记录，从它的起始日期所在月起，凡该账户该月账单（06）的出账时刻早于本条审批通过时刻的月份，本条不适用于该月（R-03-003、R-03-011），在起始日期旁灰字标「yyyy-mm 已出账，不适用」，连续多个月写「yyyy-mm～yyyy-mm 已出账，不适用」，与生效中 / 待生效标签并列；没有这种月份、导入的记录、登记表未绑定账户时不标（D-03-24）。</li></ul>
+<h4>2.9.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>没有记录</td><td>展开</td><td>—</td><td>「暂无历史规则」</td></tr><tr><td>被覆盖的记录</td><td>—</td><td>不列出（R-03-035）</td><td>只看到新那条</td></tr><tr><td>审批中 / 驳回 / 撤回的单</td><td>—</td><td>不列出</td><td>到 01「已提交审批」（本人创建的登记表）或审批中心「全部审批」看</td></tr><tr><td>跨月才通过</td><td>起始月已出账</td><td>R-03-052</td><td>起始日期旁「yyyy-mm 已出账，不适用」</td></tr><tr><td>阶梯档很多</td><td>单元格变高</td><td>每档一行全部展示，不折叠</td><td>行高随内容</td></tr></tbody></table></div>
+<h4>2.9.6 验收标准</h4>
+<ul><li><strong>G-03-031</strong> 前置：记录 A（相对，第 1 行「消耗首日 - 第30天」固定 8.00%、第 2 行阶梯按月 [0, 10,000.00) 6.00% / [10,000.00, 不限) 4.00%；返点固定 2.00%；无客情；备注空；由审批单 SP2026082800088 于 2026-08-28 10:15:00 通过写入）。操作：展开历史规则，点 A 的来源审批单。期望：服务费规则显示「消耗首日 - 第30天：固定 8.00%」「第31天 - 永久：阶梯（按月统计）」及两行「[0.00, 10,000.00) 6.00%」「[10,000.00, 不限) 4.00%」；返点规则「消耗首日 - 第90天：固定 2.00%」；客情费用比例「-」；备注「-」；审批通过时间「2026-08-28 10:15:00」；来源审批单「SP2026082800088」，点击新页打开该单审批详情；列名为「返点规则」而非「规则配置」。</li></ul>
+<h3 id="s3-10">2.10 提交审批与锁定</h3>
+<h4>2.10.1 功能描述</h4>
+<p>点「提交审批」→ 校验 → 二次确认填发起备注 → 交给 12。审批中本页锁定。</p>
+<div class="tw"><table><thead><tr><th>审批类型（12 预置）</th><th>从哪里提交</th><th>业务单据（提交内容）</th><th>操作对象客户</th><th>本单涉及账户</th></tr></thead><tbody><tr><td>客户登记表—规则配置</td><td>本页「提交审批」</td><td>登记表 ID + 表单全部内容快照</td><td>登记表当前关联的客户；待关联时不传</td><td>登记表当前绑定的账户（附件登记表为其对应账户）；未绑定时不传</td></tr></tbody></table></div>
+<h4>2.10.3 业务规则</h4>
+<ul><li><strong>R-03-038</strong> 页面底部「提交审批」：点击时校验全部必填和格式（R-03-018、R-03-022、R-03-026、R-03-027、R-03-029、R-03-031、R-03-033），任一不通过不提交，在对应输入框下方提示。</li><li><strong>R-03-039</strong> 校验通过后二次确认：「规则配置需进行审批，是否提交审批单？」+ 备注（发起备注，多行，选填）+ 取消 / 确定；确定后提交「客户登记表—规则配置」审批（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-001</a>）：操作对象客户 = 登记表当前关联的客户，未关联（待关联）时不传；本单涉及账户 = 登记表当前绑定的账户（附件登记表为其对应账户），未绑定时不传（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>）；审批流里「绑定的销售」按操作对象客户的销售解析（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-50</a>），「绑定的运营」按本单账户的优化师解析（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>），解析口径按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-016</a>，解析为空的节点按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-016</a>、<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-017</a> 跳过；业务单据 = 登记表 ID + 本次表单全部内容快照；发起备注 = 确认框里的备注。提交成功后的弱提示按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-018</a>（审批中「已提交审批」，免审直接通过「提交成功，无需审批，已生效」），本页不另写；审批中时页面刷新为锁定态（R-03-041）。</li><li><strong>R-03-040</strong> 提交内容与当前生效规则或同起始日期的记录完全一样时也允许提交，不拦（D-03-14）。</li><li><strong>R-03-041</strong> 同一张登记表同时最多 1 张审批中的规则配置单（D-03-17）；有审批中单时打开本页：顶部提示条按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-047</a> 在途单统一句式，本页 {对象} = 登记表、{审批类型} = 规则配置，句末补一句页面状态：「该登记表已有审批中的规则配置（审批单号 {SPxxxx}，申请人 {姓名}），请等审批结束或撤回后再操作。此处展示当前生效中的信息。」；单号可点、新页打开审批详情（没有查看资格的按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-043</a> 显示「无权限查看」），提示条不自动消失；申请人已禁用时显示「姓名（已禁用）」（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-049</a>）；申请人可在审批详情撤回（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-031</a>）；表单展示当前生效规则（没有则显示默认值）且全部禁用，「提交审批」隐藏；页头信息行与历史规则照常显示、可展开。</li><li><strong>R-03-042</strong> 服务端提交时复核：当前用户有配置权限（R-03-013）、登记表状态可配置（R-03-014）、税率 &lt; 100（R-03-027）、规则起始日期不早于当月 1 号（R-03-033）、该登记表没有审批中的规则配置单；最后一项不满足时不创建审批单，按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-047</a> 用提示框（按钮「知道了」）提示「该登记表已有审批中的规则配置（审批单号 {SPxxxx}，申请人 {姓名}），请等审批结束或撤回后再操作」，单号可点。</li><li><strong>R-03-043</strong> 本页没有保存草稿；未提交的修改离开或刷新页面即丢失，不弹确认（原型只有「提交审批」按钮；不加离开确认，D-03-28）。</li></ul>
+<h4>2.10.4 状态与流转</h4>
+<p>本节<strong>引用</strong> 12 的「审批单」状态机（审批中 / 已通过 / 已驳回 / 已撤回），不抄状态清单。审批中 → 本页锁定；结束后按 2.11 处理并解锁。</p>
+<h4>2.10.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>两个标签页重复提交</td><td>第二次提交</td><td>服务端拦截（R-03-042）</td><td>提示框「该登记表已有审批中的规则配置（审批单号 …，申请人 …），请等审批结束或撤回后再操作」</td></tr><tr><td>连点「确定」</td><td>同一次提交多次请求</td><td>只产生 1 张审批单（同 R-03-042 判定）</td><td>后续请求同上提示</td></tr><tr><td>登记表待关联</td><td>没有客户、没有账户</td><td>「绑定的销售」「绑定的运营」都跳过（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-017</a>）</td><td>时间线「已跳过（未找到审批人）」</td></tr><tr><td>登记表待开户</td><td>有客户、没有账户</td><td>「绑定的运营」跳过（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>）</td><td>时间线「已跳过（未找到审批人）」</td></tr><tr><td>审批流 0 节点 / 全部跳过</td><td>提交即通过</td><td>立即写入（R-03-044）</td><td>「提交成功，无需审批，已生效」，不进锁定态</td></tr><tr><td>提交失败（网络）</td><td>请求失败</td><td>不产生审批单，表单内容保留</td><td>弱提示失败，可重试</td></tr></tbody></table></div>
+<h4>2.10.6 验收标准</h4>
+<ul><li><strong>G-03-020</strong> 前置：公共前置；当前生效记录 B（起始 2026-10-01）；规则配置审批流节点 1 为「绑定的销售」；表单已填好，起始日期 2026-11-01。操作：点提交审批，确认框备注填「11 月起服务费下调」后确定。期望：确认框文案「规则配置需进行审批，是否提交审批单？」；提交后弱提示「已提交审批」，页面变为锁定态；01「已提交审批」tab 出现该单；审批流节点 1 为 张伟；时间线发起记录备注为「11 月起服务费下调」；审批内容区备注为表单里填的规则备注。</li><li><strong>G-03-021</strong> 前置：G-03-010 的待关联登记表；审批流节点 1「绑定的销售」、节点 2 指定用户 陈思远。操作：填好提交。期望：节点 1 显示「已跳过（未找到审批人）」，当前节点为陈思远。</li><li><strong>G-03-034</strong> 前置：公共前置；规则配置审批流节点 1「绑定的运营」、节点 2 指定用户 陈思远；李娜另有一张待开户登记表「星海游戏-安卓登记」（已关联星海网络科技有限公司、未绑账户）。操作：分别对「星海游戏-ASA登记」和「星海游戏-安卓登记」提交规则配置审批。期望：前者节点 1 为赵敏（「星海-iOS-US」的优化师）；后者节点 1 显示「已跳过（未找到审批人）」，当前节点为陈思远。</li><li><strong>G-03-022</strong> 前置：G-03-020 的单（单号 SP2026101900123）审批中；李娜另一个标签页还停在提交前的表单。操作：刷新本页，点提示条里的单号；在旧标签页再点提交审批并确定。期望：刷新后顶部提示条「该登记表已有审批中的规则配置（审批单号 SP2026101900123，申请人 李娜），请等审批结束或撤回后再操作。此处展示当前生效中的信息。」，点单号新页打开该审批详情；表单为 B 的内容且全部禁用，没有提交审批按钮，历史规则可展开；旧标签页弹出提示框「该登记表已有审批中的规则配置（审批单号 SP2026101900123，申请人 李娜），请等审批结束或撤回后再操作」，点「知道了」关闭，不产生第二张单。</li><li><strong>G-03-023</strong> 前置：表单内容与当前生效 B 完全一样，起始日期选 2026-10-01。操作：提交审批。期望：允许提交，产生审批单。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-4">
+  <figcaption><span class="tag">示意 4</span>提交审批二次确认（发起备注）<span class="src">mocks/04-提交确认.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="提交审批二次确认（发起备注）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 规则配置 · 校验通过后</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px 28px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.input{padding:5px 8px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff;width:120px;display:inline-block;min-height:30px;vertical-align:middle}
+.input.ph{color:#9ca3af}.input.w60{width:64px}.input.w90{width:96px}.input.w240{width:260px}.input.w420{width:420px}
+.input.err{border-color:var(--new);background:#fef2f2}.input.ro{background:#f3f4f6;color:var(--sub)}
+.input[disabled],.dis .input{background:#f3f4f6;color:#9ca3af}
+.err-tip{color:var(--new);font-size:12px;margin-top:2px}
+.hint{font-size:12px;color:#b45309;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.radio{margin-right:18px;font-size:13px;white-space:nowrap}
+.radio::before{content:&quot;○ &quot;;color:var(--sub)}.radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+.sec{font-size:15px;font-weight:700;margin:22px 0 12px}
+.sec:first-child{margin-top:0}
+.form{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;align-items:start;max-width:1100px}
+.form .lb{text-align:right;font-size:13px;color:var(--sub);padding-top:5px}
+.form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+.link{color:var(--brand);text-decoration:underline}
+.ops a{color:var(--brand);margin-right:10px;font-size:13px}
+.ops a.off{color:#cbd5e1}
+.circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px;margin-left:4px;vertical-align:middle}
+.circle.off{color:#d1d5db;background:#f9fafb}
+.tier{margin:6px 0;white-space:nowrap}
+.sub{font-size:12px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;padding:0 6px;border-radius:4px;margin-left:6px}
+.tag.on{background:#ecfdf5;color:#047857}.tag.wait{background:#eff6ff;color:#1d4ed8}
+.lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px;display:inline-block}
+.lock em{color:var(--brand);font-style:normal}
+.collapse{font-size:15px;font-weight:700;margin:26px 0 12px}
+.empty{padding:24px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:6px}
+.foot{text-align:right;margin-top:24px}
+.mask{background:rgba(17,24,39,.45);padding:60px 0;margin:-20px -28px}
+.confirm{width:460px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.confirm .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600}
+.confirm .mb{padding:18px 20px}.confirm .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+.confirm .mf .btn{margin-left:8px}
+textarea.input{width:100%;height:72px;resize:none}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+.kv .k,.kv2 .k{color:var(--sub)}
+.kv2{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;font-size:13px;max-width:900px}
+.red{color:var(--new)}
+.tl{display:flex;gap:40px;font-size:12px}.tl div b{display:block;font-size:13px}
+.g{color:#047857}.gray{color:var(--sub)}
+.skip{color:#9ca3af}
+</style>
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>提交审批 · 二次确认</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-03-039 / G-03-020</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户登记表/规则配置</h1><span class=&quot;state-tag&quot;>校验通过后</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;mask&quot;><div class=&quot;confirm changed&quot; data-note=&quot;1&quot;><div class=&quot;mh&quot;>提示</div><div class=&quot;mb&quot;><p style=&quot;margin-bottom:12px&quot;>规则配置需进行审批，是否提交审批单？</p><div class=&quot;sub&quot; style=&quot;margin-bottom:6px&quot;>备注</div><span class=&quot;input&quot; style=&quot;width:100%;height:72px&quot;>11 月起服务费下调，已与客户确认</span></div><div class=&quot;mf&quot;><span class=&quot;btn&quot;>取消</span><span class=&quot;btn primary&quot;>确定</span></div></div></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>确认框里的备注是审批发起备注（选填），进审批时间线「发起」记录；与表单里的规则备注不是同一个（R-03-039、D-03-15）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/04-提交确认.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<figure class="mock" data-mode="pc" id="mock-5">
+  <figcaption><span class="tag">示意 5</span>规则配置页（审批中锁定）<span class="src">mocks/05-审批中锁定.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="规则配置页（审批中锁定）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 规则配置 · 有审批中的规则配置单</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px 28px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.input{padding:5px 8px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff;width:120px;display:inline-block;min-height:30px;vertical-align:middle}
+.input.ph{color:#9ca3af}.input.w60{width:64px}.input.w90{width:96px}.input.w240{width:260px}.input.w420{width:420px}
+.input.err{border-color:var(--new);background:#fef2f2}.input.ro{background:#f3f4f6;color:var(--sub)}
+.input[disabled],.dis .input{background:#f3f4f6;color:#9ca3af}
+.err-tip{color:var(--new);font-size:12px;margin-top:2px}
+.hint{font-size:12px;color:#b45309;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.radio{margin-right:18px;font-size:13px;white-space:nowrap}
+.radio::before{content:&quot;○ &quot;;color:var(--sub)}.radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+.sec{font-size:15px;font-weight:700;margin:22px 0 12px}
+.sec:first-child{margin-top:0}
+.form{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;align-items:start;max-width:1100px}
+.form .lb{text-align:right;font-size:13px;color:var(--sub);padding-top:5px}
+.form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+.link{color:var(--brand);text-decoration:underline}
+.ops a{color:var(--brand);margin-right:10px;font-size:13px}
+.ops a.off{color:#cbd5e1}
+.circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px;margin-left:4px;vertical-align:middle}
+.circle.off{color:#d1d5db;background:#f9fafb}
+.tier{margin:6px 0;white-space:nowrap}
+.sub{font-size:12px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;padding:0 6px;border-radius:4px;margin-left:6px}
+.tag.on{background:#ecfdf5;color:#047857}.tag.wait{background:#eff6ff;color:#1d4ed8}
+.lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px;display:inline-block}
+.lock em{color:var(--brand);font-style:normal}
+.collapse{font-size:15px;font-weight:700;margin:26px 0 12px}
+.empty{padding:24px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:6px}
+.foot{text-align:right;margin-top:24px}
+.mask{background:rgba(17,24,39,.45);padding:60px 0;margin:-20px -28px}
+.confirm{width:460px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.confirm .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600}
+.confirm .mb{padding:18px 20px}.confirm .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+.confirm .mf .btn{margin-left:8px}
+textarea.input{width:100%;height:72px;resize:none}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+.kv .k,.kv2 .k{color:var(--sub)}
+.kv2{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;font-size:13px;max-width:900px}
+.red{color:var(--new)}
+.tl{display:flex;gap:40px;font-size:12px}.tl div b{display:block;font-size:13px}
+.g{color:#047857}.gray{color:var(--sub)}
+.skip{color:#9ca3af}
+</style>
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>规则配置页 · 审批中锁定</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-03-041、R-03-042 / G-03-022</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户登记表/规则配置</h1><span class=&quot;state-tag&quot;>有审批中的规则配置单</span></div>
+<div class=&quot;bd&quot; style=&quot;padding-bottom:0&quot;><div class=&quot;changed sub&quot; data-note=&quot;4&quot; style=&quot;padding:4px 8px;display:inline-block&quot;>星海游戏-ASA登记（RF20260905002）· 关联客户：星海网络科技有限公司 · 绑定账户：星海-iOS-US（4521873）· 计费模式：预付款 · 消耗首日：2026-09-12（今天第 38 天）</div></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;lock changed&quot; data-note=&quot;1&quot;>该登记表已有<em>审批中</em>的规则配置（审批单号 <span class=&quot;link&quot;>SP2026101900123</span>，申请人 李娜），请等审批结束或撤回后再操作。此处展示当前生效中的信息。</div><div class=&quot;modified&quot; data-note=&quot;2&quot; style=&quot;padding:6px&quot;><div class=&quot;dis&quot;>
+<div class=&quot;sec&quot;>服务费规则</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb&quot;>日期口径</div><div><span class=&quot;&quot;><span class=&quot;radio on&quot;>相对日期</span><span class=&quot;radio&quot;>绝对日期</span></span></div>
+<div class=&quot;lb req&quot;>规则配置</div><div><table style=&quot;max-width:1000px&quot;><tr><th style=&quot;text-align:center&quot;>时间区间</th><th style=&quot;text-align:center&quot;>服务费率</th><th style=&quot;text-align:center&quot;>操作</th></tr><tr><td style=&quot;width:300px;text-align:center;vertical-align:middle&quot;>消耗首日 - 第 <span class=&quot;input w60&quot;>30</span> 天</td><td><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>固定比例</span><span class=&quot;radio&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:6px&quot;><span class=&quot;input w240&quot;>8.00</span> %</div></td><td style=&quot;width:140px;vertical-align:middle&quot; class=&quot;ops&quot;><a class=&quot;off&quot;>增加行</a><a class=&quot;off&quot;>删除行</a></td></tr><tr><td style=&quot;width:300px;text-align:center;vertical-align:middle&quot;>第31天 - 永久</td><td><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio&quot;>固定比例</span><span class=&quot;radio on&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:4px&quot;>统计方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>按月统计</span><span class=&quot;radio&quot;>按日统计</span></span></div><div class=&quot;tier&quot;><span class=&quot;input w90 ro&quot;>0.00</span> - <span class=&quot;input w90&quot;>10,000.00</span> &amp;nbsp; <span class=&quot;input w60&quot;>6.00</span> % <span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div><div class=&quot;tier&quot;><span class=&quot;input w90 ro&quot;>10,000.00</span> - <span class=&quot;input w90 ro&quot;>不限</span> &amp;nbsp; <span class=&quot;input w60&quot;>4.00</span> % <span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div></td><td style=&quot;width:140px;vertical-align:middle&quot; class=&quot;ops&quot;><a class=&quot;off&quot;>增加行</a><a class=&quot;off&quot;>删除行</a></td></tr></table></div>
+</div>
+<div class=&quot;sec&quot;>税费规则</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb req&quot;>税率</div><div><span class=&quot;input w240&quot;>6.00</span> %</div>
+<div class=&quot;lb req&quot;>服务费税费</div><div><span class=&quot;&quot;><span class=&quot;radio on&quot;>公司承担</span><span class=&quot;radio&quot;>客户承担</span></span></div>
+</div>
+<div class=&quot;sec&quot;>返点规则</div>
+<div class=&quot;form&quot;><div class=&quot;lb req&quot;>规则配置</div><div><table style=&quot;max-width:860px&quot;><tr><th style=&quot;text-align:center&quot;>时间区间</th><th style=&quot;text-align:center&quot;>返点比例</th></tr><tr><td style=&quot;width:300px;text-align:center;vertical-align:middle&quot;>消耗首日 - 第90天</td><td><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio&quot;>固定比例</span><span class=&quot;radio on&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:4px&quot;>统计方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>按月统计</span><span class=&quot;radio&quot;>按日统计</span></span></div><div class=&quot;tier&quot;><span class=&quot;input w90 ro&quot;>0.00</span> - <span class=&quot;input w90&quot;>20,000.00</span> &amp;nbsp; <span class=&quot;input w60&quot;>1.50</span> % <span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div><div class=&quot;tier&quot;><span class=&quot;input w90 ro&quot;>20,000.00</span> - <span class=&quot;input w90 ro&quot;>不限</span> &amp;nbsp; <span class=&quot;input w60&quot;>2.50</span> % <span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div></td></tr></table></div></div>
+<div class=&quot;sec&quot;>客情规则</div>
+<div class=&quot;form&quot;><div class=&quot;lb req&quot;>客情结算方式</div><div><span class=&quot;&quot;><span class=&quot;radio&quot;>无客情</span><span class=&quot;radio on&quot;>首次消耗起 90 天</span><span class=&quot;radio&quot;>按自然月每月返还</span></span></div><div class=&quot;lb req&quot;>客情费用比例</div><div><div>计费方式：<span class=&quot;&quot;><span class=&quot;radio on&quot;>固定比例</span><span class=&quot;radio&quot;>阶梯比例</span></span></div><div style=&quot;margin-top:6px&quot;><span class=&quot;input w240&quot;>1.00</span> %</div></div></div>
+<div class=&quot;sec&quot;>备注与生效</div>
+<div class=&quot;form&quot;>
+<div class=&quot;lb&quot;>备注</div><div><span class=&quot;input w420&quot;>10 月起按消耗阶梯计费</span></div>
+<div class=&quot;lb req&quot;>规则起始日期</div><div><span class=&quot;input w240 ph&quot;>—</span></div>
+</div>
+</div></div><div class=&quot;changed&quot; data-note=&quot;3&quot; style=&quot;padding:4px&quot;><div class=&quot;collapse &quot; >历史规则 ∧</div><table><tr><th>规则起始日期</th><th>服务费规则</th><th>税率</th><th>服务费税费</th><th>返点规则</th><th>客情结算方式</th><th>客情费用比例</th><th>备注</th><th>审批通过时间</th><th>来源审批单</th></tr><tr><td>2026-10-01 <span class=&quot;tag on&quot;>生效中</span></td><td>消耗首日 - 第30天：固定 8.00%<br>第31天 - 永久：阶梯（按月统计）<br>[0.00, 10,000.00) 6.00%<br>[10,000.00, 不限) 4.00%</td><td>6.00%</td><td>公司承担</td><td>消耗首日 - 第90天：阶梯（按月统计）<br>[0.00, 20,000.00) 1.50%<br>[20,000.00, 不限) 2.50%</td><td>首次消耗起 90 天</td><td>1.00%</td><td>10 月起按消耗阶梯计费</td><td>2026-09-28 11:02:15</td><td><span class=&quot;link&quot;>SP2026092800031</span></td></tr><tr><td>2026-09-01</td><td>消耗首日 - 第30天：固定 9.00%<br>第31天 - 永久：固定 7.00%</td><td>6.00%</td><td>公司承担</td><td>消耗首日 - 第90天：固定 2.00%</td><td>无客情</td><td>-</td><td>-</td><td>2026-08-28 10:15:00</td><td><span class=&quot;link&quot;>SP2026082800088</span></td></tr></table></div><div class=&quot;foot sub&quot;>（「提交审批」按钮隐藏）</div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>顶部提示条按 12 在途单统一句式（R-12-047），对象「登记表」、类型「规则配置」，句末补「此处展示当前生效中的信息。」（R-03-041、D-03-17）</li><li><span class=&quot;badge&quot;>2</span>表单展示当前生效规则（2026-10-01 那条）且全部禁用，增删行、+ / − 不可用；「提交审批」隐藏；服务端同样拦截重复提交（R-03-041、R-03-042）</li><li><span class=&quot;badge&quot;>3</span>历史规则照常可展开；审批中的单不进历史规则（R-03-035）</li><li><span class=&quot;badge&quot;>4</span>锁定态同样显示信息行；提示条里的单号可点、新页打开审批详情，提示条不自动消失（R-03-041）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/05-审批中锁定.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-11">2.11 审批结果处理</h3>
+<h4>2.11.1 功能描述</h4>
+<p>审批单结束后（12 回调，<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-025</a>）规则怎么变。</p>
+<h4>2.11.3 业务规则</h4>
+<ul><li><strong>R-03-044</strong> 审批单变为已通过（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-025</a>）：按业务单据快照写入一条规则记录，来源「审批」，记下审批通过时刻（approved_at）与来源审批单；该登记表已有同起始日期的未覆盖记录时，新记录替换它，旧记录变为已覆盖并记下被覆盖时间（R-03-004）；写入后按 R-03-002～R-03-004 重新计算各记录状态，本页解除锁定。0 节点或全部节点被跳过时提交即通过、立即写入（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-018</a>）（D-03-20）。最后一个审批人通过时本页不做业务复核，本审批类型没有算作业务执行失败的情形（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-045</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-79</a>①），免审提交同样不会因业务原因失败；写入时的技术异常按 2.11.5 重试，保证最终写入。</li><li><strong>R-03-045</strong> 审批单变为已驳回或已撤回（含持「审批配置」权限点的人作废，审批单为「已撤回」，按撤回处理，<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-046</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-79</a>③）：不写入、不改动任何规则记录，本页解除锁定；撤回只校验申请人本人且单据审批中，不校验本页配置权限（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-79</a>②）；原单不能修改重提，要再申请需在本页重新填写提交（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-034</a>、D-03-20）。</li><li><strong>R-03-046</strong> 写入时不再校验规则起始日期是否早于当月 1 号：跨月才通过的照常按快照里的起始日期写入，已出账月份按 R-03-011 不重算、按出账时刻的规则（D-03-08、D-03-24）。</li></ul>
+<h4>2.11.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>结束回调处理失败</td><td>审批已通过、规则没写入</td><td>由技术沿用现有重试方案，保证最终写入</td><td>短时间内本页仍锁定</td></tr><tr><td>写入的起始日期早于当前生效那条</td><td>例：已有 10-15，新写 10-01</td><td>新记录直接为已结束（R-03-004）</td><td>历史规则里排在 10-15 后面</td></tr><tr><td>驳回后想再提</td><td>原单已驳回</td><td>不提供原单重提</td><td>本页重新填写</td></tr><tr><td>申请人已失去配置权限</td><td>撤回</td><td>照常可撤回（R-03-045）</td><td>审批详情撤回按钮</td></tr></tbody></table></div>
+<h4>2.11.6 验收标准</h4>
+<ul><li><strong>G-03-024</strong> 前置：G-03-020 的单。操作：张伟审批通过。期望：历史规则新增 2026-11-01 一条，标「待生效」，审批通过时间为通过时刻、来源审批单为该单号；B 仍为生效中；本页解锁，回填 B。</li><li><strong>G-03-025</strong> 前置：G-03-020 的单。操作：张伟驳回（或李娜撤回，或持「审批配置」权限点的人作废）。期望：历史规则不变；本页解锁；01 已提交审批里这张单为已驳回（撤回、作废均为已撤回，<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-046</a>），没有重新提交入口。</li><li><strong>G-03-026</strong> 前置：公共前置；当前生效 B（起始 2026-10-01，服务费固定 8.00%）；2026-10-30 李娜提交起始日期 2026-10-01、服务费固定 7.00%、其余同 B 的规则 B'；该账户 10 月账单已于 2026-11-02 出账。操作：2026-11-03 审批通过；2026-11-10 该账户 10 月消耗修正触发 10 月账单刷新（06 核对）。期望：照常写入，B' 覆盖 B；历史规则只显示 B'，起始日期 2026-10-01 旁标「2026-10 已出账，不适用」，审批通过时间为 2026-11-03 的通过时刻；10 月账单刷新后服务费仍按 8.00%（10 月出账时刻适用 B）；11 月起按 7.00%。</li><li><strong>G-03-027</strong> 前置：规则配置审批流 0 节点。操作：提交审批。期望：弱提示「提交成功，无需审批，已生效」；审批单直接已通过，规则立即写入历史规则，本页不进入锁定态。</li></ul>
+<h3 id="s3-12">2.12 规则配置审批详情 · 审批内容区</h3>
+<h4>2.12.1 功能描述</h4>
+<p>审批详情页的标题、审批信息、审批流时间线、按钮按 12（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-026</a>～<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-031</a>）。本节只定义「审批内容」区展示什么、哪些项做变更高亮、谁能只读查看。</p>
+<h4>2.12.2 核心字段</h4>
+<div class="tw"><table><thead><tr><th>展示项</th><th>取值</th><th>参与高亮</th></tr></thead><tbody><tr><td>公司名称</td><td>登记表当前关联客户，链接客户详情；未关联「暂未关联」</td><td>否</td></tr><tr><td>所属账户系统</td><td>登记表当前绑定账户的账户系统；未绑定「暂未关联」</td><td>否</td></tr><tr><td>关联账户</td><td>「账户名称（orgid）」；未绑定「暂未关联」</td><td>否</td></tr><tr><td>计费模式</td><td>查看时客户当前计费模式；未关联「-」</td><td>否</td></tr><tr><td>服务费规则</td><td>本单快照，R-03-037</td><td>是</td></tr><tr><td>服务费税费</td><td>本单快照</td><td>是</td></tr><tr><td>税率</td><td>本单快照</td><td>是</td></tr><tr><td>返点规则</td><td>本单快照，R-03-037</td><td>是</td></tr><tr><td>客情结算方式</td><td>本单快照</td><td>是</td></tr><tr><td>客情费用比例</td><td>本单快照，R-03-037</td><td>是</td></tr><tr><td>规则起始日期</td><td>本单快照；同日覆盖时旁注「将覆盖 yyyy-mm-dd 起的规则」</td><td>否</td></tr><tr><td>备注</td><td>本单快照（规则备注）</td><td>是</td></tr></tbody></table></div>
+<h4>2.12.3 业务规则</h4>
+<ul><li><strong>R-03-047</strong> 审批信息区按 12（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-026</a>），审批事项「客户登记表」、审批类型「规则配置」；审批内容区依次展示：公司名称、所属账户系统、关联账户、计费模式、服务费规则、服务费税费、税率、返点规则、客情结算方式、客情费用比例、规则起始日期、备注；规则相关各项取本单业务单据快照，格式按 R-03-037（原型「规则起始时间」统一为「规则起始日期」，D-03-21）。</li><li><strong>R-03-048</strong> 公司名称 = 登记表当前关联的客户名称，超链接，新页打开该客户的客户详情（<a class="xref" href="../04-客户管理/review.html" title="04-客户管理">R-04-050</a>），未关联显示「暂未关联」纯文本；所属账户系统、关联账户「账户名称（orgid）」取登记表当前绑定的账户，未绑定都显示「暂未关联」；计费模式取查看时客户的当前计费模式（写法同 R-03-012 信息行，按 <a class="xref" href="../04-客户管理/review.html" title="04-客户管理">R-04-067</a>），未关联显示「-」；这四项取查看时登记表的关联情况，不存进审批单快照。登记表已删除（<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-017</a>）的审批单：公司名称、所属账户系统、关联账户显示「暂未关联」，计费模式按未关联显示「-」（D-03-30）。</li><li><strong>R-03-049</strong> 启用 12 的变更高亮（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-030</a>，口径 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-75</a>）：本页声明的对象为「登记表规则」，比对基准 = 提交那一刻、新规则起始日期前一天适用的规则记录（按 R-03-003，t 取提交时刻），由本页提交时交给 12、随审批单快照保存，审批中和审批结束后回看都按这份基准比，所有查看者一致；参与比对 7 项：服务费规则、服务费税费、税率、返点规则、客情结算方式、客情费用比例、备注，按整项比对，不同的整项标红，标红格下方灰字「原：{原值}」（原值按 R-03-037 格式）；基准为空（新起始日期前一天没有适用规则）时都不标红、不显示「原」；规则起始日期、公司名称、所属账户系统、关联账户、计费模式不参与比对。提交时该登记表已有起始日期相同的未覆盖记录的，规则起始日期旁显示「将覆盖 yyyy-mm-dd 起的规则」（是否同日在提交时判定、随基准保存，回看一致）。审批中，若以当前时刻计、新起始日期前一天适用的规则已与基准不同，内容区顶部提示「提交后该登记表规则已有变更，当前生效值与本单比对基准不同」，审批结束后不显示（D-03-20）。</li><li><strong>R-03-050</strong> 审批详情第②类只读查看范围（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-043</a>、<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-044</a>）：本页向 12 提供的「能否查看这张业务单据」判断 = 当前用户是该登记表的创建人，或有「客户管理-只读」「客户管理-读写」任一权限点、且登记表当前关联的客户在其客户数据范围内（sys 看全部；非 sys 须是该客户的销售或其名下任一账户的优化师，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a>；登记表未关联客户时只有创建人）（D-03-23）；登记表已删除的，创建人按删除时判断（D-03-30）。</li></ul>
+<h4>2.12.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>审批时登记表还没关联客户</td><td>待关联</td><td>R-03-048</td><td>三项「暂未关联」，计费模式「-」</td></tr><tr><td>审批期间登记表关联了客户</td><td>查看时已关联</td><td>取查看时的值</td><td>显示客户名称链接</td></tr><tr><td>登记表已删除</td><td>回看已结束的单</td><td>R-03-048、R-03-050</td><td>公司名称、所属账户系统、关联账户「暂未关联」，计费模式「-」；创建人按删除时判断能否查看</td></tr><tr><td>新起始日期前一天没有适用规则</td><td>首次配置</td><td>基准为空，不标红（R-03-049）</td><td>全部正常颜色</td></tr><tr><td>与已有记录同起始日期</td><td>覆盖</td><td>起始日期不标红，旁注覆盖（R-03-049）</td><td>「将覆盖 yyyy-mm-dd 起的规则」</td></tr><tr><td>审批结束后回看</td><td>当前生效已变</td><td>仍按提交时基准比对（R-03-049）</td><td>标红与原值不变</td></tr><tr><td>审批中对象已变</td><td>基准前一天的适用规则已不同</td><td>R-03-049</td><td>内容区顶部提示</td></tr><tr><td>不在审批流、无查看权限或客户不在数据范围</td><td>打开链接</td><td><a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-043</a>、R-03-050</td><td>「无权限查看」</td></tr></tbody></table></div>
+<h4>2.12.6 验收标准</h4>
+<ul><li><strong>G-03-028</strong> 前置：当前生效 B（起始 2026-10-01）：税率 6.00%、服务费第 1 行固定 8.00%；新单：税率 6.00%、服务费第 1 行固定 7.00%、起始 2026-11-01，其余（含备注）与 B 相同。操作：审批人打开审批详情。期望：审批事项「客户登记表」、审批类型「规则配置」；公司名称「星海网络科技有限公司」为链接，新页打开其客户详情；关联账户「星海-iOS-US（4521873）」；计费模式「预付款」，不标红；服务费规则标红，下方灰字「原：」后为 B 的服务费规则（第 1 行「固定 8.00%」）；规则起始日期、备注、税率等其余项不标红；格式按 R-03-037。</li><li><strong>G-03-029</strong> 前置：G-03-021 的单（待关联登记表、无任何规则记录）。操作：打开审批详情。期望：公司名称、所属账户系统、关联账户都显示「暂未关联」，公司名称不是链接；计费模式「-」；所有规则项都不标红，没有「原：」。</li><li><strong>G-03-038</strong> 前置：G-03-001 的数据，A 与 B 只有税率不同（A 5.00%、B 6.00%）；李娜提交起始日期 2026-10-01、税率 6.00%、其余与 B 相同的新单。操作：审批人打开审批详情；审批通过后，李娜再打开这张单。期望：比对基准为 A（2026-09-30 适用的那条）：税率标红，下方灰字「原：5.00%」，其余规则项不标红；规则起始日期不标红，旁显示「将覆盖 2026-10-01 起的规则」；审批通过后回看，标红、原值与覆盖提示都不变。</li><li><strong>G-03-030</strong> 前置：G-03-020 的单；王浩、周婷、孙磊都不在审批流里、不是登记表创建人；王浩有「客户管理-只读」（是该客户名下「星海-iOS-JP」的优化师）；周婷有「客户管理-读写」、不是 sys，与该客户没有销售 / 优化师关系；孙磊两个客户管理权限点都没有。操作：李娜（申请人兼创建人）、王浩、周婷、孙磊分别打开审批详情链接。期望：李娜能看到审批信息和审批内容；王浩能只读查看，没有任何操作按钮；周婷、孙磊看到「无权限查看」。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-6">
+  <figcaption><span class="tag">示意 6</span>审批详情·审批内容（已关联、变更标红）<span class="src">mocks/06-审批内容-已关联.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="审批详情·审批内容（已关联、变更标红）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 规则配置 · 已关联、变更标红</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px 28px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.input{padding:5px 8px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff;width:120px;display:inline-block;min-height:30px;vertical-align:middle}
+.input.ph{color:#9ca3af}.input.w60{width:64px}.input.w90{width:96px}.input.w240{width:260px}.input.w420{width:420px}
+.input.err{border-color:var(--new);background:#fef2f2}.input.ro{background:#f3f4f6;color:var(--sub)}
+.input[disabled],.dis .input{background:#f3f4f6;color:#9ca3af}
+.err-tip{color:var(--new);font-size:12px;margin-top:2px}
+.hint{font-size:12px;color:#b45309;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.radio{margin-right:18px;font-size:13px;white-space:nowrap}
+.radio::before{content:&quot;○ &quot;;color:var(--sub)}.radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+.sec{font-size:15px;font-weight:700;margin:22px 0 12px}
+.sec:first-child{margin-top:0}
+.form{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;align-items:start;max-width:1100px}
+.form .lb{text-align:right;font-size:13px;color:var(--sub);padding-top:5px}
+.form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+.link{color:var(--brand);text-decoration:underline}
+.ops a{color:var(--brand);margin-right:10px;font-size:13px}
+.ops a.off{color:#cbd5e1}
+.circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px;margin-left:4px;vertical-align:middle}
+.circle.off{color:#d1d5db;background:#f9fafb}
+.tier{margin:6px 0;white-space:nowrap}
+.sub{font-size:12px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;padding:0 6px;border-radius:4px;margin-left:6px}
+.tag.on{background:#ecfdf5;color:#047857}.tag.wait{background:#eff6ff;color:#1d4ed8}
+.lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px;display:inline-block}
+.lock em{color:var(--brand);font-style:normal}
+.collapse{font-size:15px;font-weight:700;margin:26px 0 12px}
+.empty{padding:24px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:6px}
+.foot{text-align:right;margin-top:24px}
+.mask{background:rgba(17,24,39,.45);padding:60px 0;margin:-20px -28px}
+.confirm{width:460px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.confirm .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600}
+.confirm .mb{padding:18px 20px}.confirm .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+.confirm .mf .btn{margin-left:8px}
+textarea.input{width:100%;height:72px;resize:none}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+.kv .k,.kv2 .k{color:var(--sub)}
+.kv2{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;font-size:13px;max-width:900px}
+.red{color:var(--new)}
+.tl{display:flex;gap:40px;font-size:12px}.tl div b{display:block;font-size:13px}
+.g{color:#047857}.gray{color:var(--sub)}
+.skip{color:#9ca3af}
+</style>
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>规则配置审批详情 · 已关联、变更标红</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-03-047～R-03-049 / G-03-028</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户登记表/审批详情</h1><span class=&quot;state-tag&quot;>已关联、变更标红</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;sec&quot;>审批信息</div>
+<div class=&quot;kv&quot;><div class=&quot;k&quot;>审批单号：</div><div>SP2026101900123</div><div class=&quot;k&quot;>审批状态：</div><div>审批中</div>
+<div class=&quot;k&quot;>申请人：</div><div>李娜</div><div class=&quot;k&quot;>申请时间：</div><div>2026-10-19 15:42:08</div>
+<div class=&quot;k&quot;>审批事项：</div><div>客户登记表</div><div class=&quot;k&quot;>审批类型：</div><div>规则配置</div>
+<div class=&quot;k&quot;>审批流：</div><div style=&quot;grid-column:span 3&quot;><div class=&quot;tl&quot;><div><b>李娜</b><span class=&quot;g&quot;>· 发起</span> 2026-10-19 15:42<br>11 月起服务费下调，已与客户确认</div><div><b>张伟</b><span class=&quot;gray&quot;>· 待审批</span></div><div><b>陈思远</b><span class=&quot;skip&quot;>· 未开始</span></div></div></div></div><div class=&quot;sec&quot;>审批内容</div><div class=&quot;changed&quot; data-note=&quot;1&quot; style=&quot;padding:6px&quot;><div class=&quot;kv2&quot;><div class=&quot;k&quot;>公司名称：</div><div><span class=&quot;link&quot;>星海网络科技有限公司</span></div><div class=&quot;k&quot;>所属账户系统：</div><div>伙伴云ASA-01</div><div class=&quot;k&quot;>关联账户：</div><div>星海-iOS-US（4521873）</div><div class=&quot;k&quot;>计费模式：</div><div>预付款</div><div class=&quot;k red&quot;>服务费规则：</div><div class=&quot;red&quot;>消耗首日 - 第30天：固定 7.00%<br>第31天 - 永久：阶梯（按月统计）<br>[0.00, 10,000.00) 6.00%<br>[10,000.00, 不限) 4.00%<div class=&quot;sub&quot;>原：消耗首日 - 第30天：固定 8.00%<br>第31天 - 永久：阶梯（按月统计）<br>[0.00, 10,000.00) 6.00%<br>[10,000.00, 不限) 4.00%</div></div><div class=&quot;k&quot;>服务费税费：</div><div class=&quot;&quot;>公司承担</div><div class=&quot;k&quot;>税率：</div><div class=&quot;&quot;>6.00%</div><div class=&quot;k&quot;>返点规则：</div><div class=&quot;&quot;>消耗首日 - 第90天：阶梯（按月统计）<br>[0.00, 20,000.00) 1.50%<br>[20,000.00, 不限) 2.50%</div><div class=&quot;k&quot;>客情结算方式：</div><div class=&quot;&quot;>首次消耗起 90 天</div><div class=&quot;k&quot;>客情费用比例：</div><div class=&quot;&quot;>1.00%</div><div class=&quot;k&quot;>规则起始日期：</div><div>2026-11-01</div><div class=&quot;k&quot;>备注：</div><div>10 月起按消耗阶梯计费</div></div></div><div class=&quot;foot&quot; style=&quot;text-align:left;margin-left:136px&quot;><span class=&quot;btn primary&quot;>驳回</span> &amp;nbsp; <span class=&quot;btn primary&quot;>审批通过</span></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>审批内容区：公司名称链接客户详情；关联账户「账户名称（orgid）」；规则各项格式按 R-03-037；比对基准 = 提交时新起始日期前一天（2026-10-31）适用的规则（2026-10-01 那条），随审批单保存；7 项参与比对，不同的整项标红并在下方灰字「原：」：本例只有服务费规则；规则起始日期不参与标红，备注与基准相同不标红；计费模式取客户当前值、不参与比对（R-03-049、D-00-75）；原型「规则起始时间」改为「规则起始日期」（R-03-047～R-03-049）</li></ul></div> <!-- alias-ok -->
+<div class=&quot;footbar&quot;><span>MOCK · mocks/06-审批内容-已关联.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<figure class="mock" data-mode="pc" id="mock-7">
+  <figcaption><span class="tag">示意 7</span>审批详情·审批内容（待关联登记表、首次配置）<span class="src">mocks/07-审批内容-暂未关联.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="审批详情·审批内容（待关联登记表、首次配置）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 规则配置 · 待关联、首次配置</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px 28px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.input{padding:5px 8px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff;width:120px;display:inline-block;min-height:30px;vertical-align:middle}
+.input.ph{color:#9ca3af}.input.w60{width:64px}.input.w90{width:96px}.input.w240{width:260px}.input.w420{width:420px}
+.input.err{border-color:var(--new);background:#fef2f2}.input.ro{background:#f3f4f6;color:var(--sub)}
+.input[disabled],.dis .input{background:#f3f4f6;color:#9ca3af}
+.err-tip{color:var(--new);font-size:12px;margin-top:2px}
+.hint{font-size:12px;color:#b45309;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.radio{margin-right:18px;font-size:13px;white-space:nowrap}
+.radio::before{content:&quot;○ &quot;;color:var(--sub)}.radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+.sec{font-size:15px;font-weight:700;margin:22px 0 12px}
+.sec:first-child{margin-top:0}
+.form{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;align-items:start;max-width:1100px}
+.form .lb{text-align:right;font-size:13px;color:var(--sub);padding-top:5px}
+.form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+.link{color:var(--brand);text-decoration:underline}
+.ops a{color:var(--brand);margin-right:10px;font-size:13px}
+.ops a.off{color:#cbd5e1}
+.circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px;margin-left:4px;vertical-align:middle}
+.circle.off{color:#d1d5db;background:#f9fafb}
+.tier{margin:6px 0;white-space:nowrap}
+.sub{font-size:12px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;padding:0 6px;border-radius:4px;margin-left:6px}
+.tag.on{background:#ecfdf5;color:#047857}.tag.wait{background:#eff6ff;color:#1d4ed8}
+.lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px;display:inline-block}
+.lock em{color:var(--brand);font-style:normal}
+.collapse{font-size:15px;font-weight:700;margin:26px 0 12px}
+.empty{padding:24px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:6px}
+.foot{text-align:right;margin-top:24px}
+.mask{background:rgba(17,24,39,.45);padding:60px 0;margin:-20px -28px}
+.confirm{width:460px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.confirm .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600}
+.confirm .mb{padding:18px 20px}.confirm .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+.confirm .mf .btn{margin-left:8px}
+textarea.input{width:100%;height:72px;resize:none}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+.kv .k,.kv2 .k{color:var(--sub)}
+.kv2{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;font-size:13px;max-width:900px}
+.red{color:var(--new)}
+.tl{display:flex;gap:40px;font-size:12px}.tl div b{display:block;font-size:13px}
+.g{color:#047857}.gray{color:var(--sub)}
+.skip{color:#9ca3af}
+</style>
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>规则配置审批详情 · 待关联、首次配置</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-03-048、R-03-049 / G-03-021、G-03-029</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户登记表/审批详情</h1><span class=&quot;state-tag&quot;>待关联、首次配置</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;sec&quot;>审批信息</div>
+<div class=&quot;kv&quot;><div class=&quot;k&quot;>审批单号：</div><div>SP2026101900123</div><div class=&quot;k&quot;>审批状态：</div><div>审批中</div>
+<div class=&quot;k&quot;>申请人：</div><div>李娜</div><div class=&quot;k&quot;>申请时间：</div><div>2026-10-19 15:42:08</div>
+<div class=&quot;k&quot;>审批事项：</div><div>客户登记表</div><div class=&quot;k&quot;>审批类型：</div><div>规则配置</div>
+<div class=&quot;k&quot;>审批流：</div><div style=&quot;grid-column:span 3&quot;><div class=&quot;tl&quot;><div><b>李娜</b><span class=&quot;g&quot;>· 发起</span> 2026-10-19 16:05</div><div><b>—</b><span class=&quot;skip&quot;>· 已跳过（未找到审批人）</span></div><div><b>陈思远</b><span class=&quot;gray&quot;>· 待审批</span></div></div></div></div><div class=&quot;sec&quot;>审批内容</div><div class=&quot;changed&quot; data-note=&quot;1&quot; style=&quot;padding:6px&quot;><div class=&quot;kv2&quot;><div class=&quot;k&quot;>公司名称：</div><div>暂未关联</div><div class=&quot;k&quot;>所属账户系统：</div><div>暂未关联</div><div class=&quot;k&quot;>关联账户：</div><div>暂未关联</div><div class=&quot;k&quot;>计费模式：</div><div>-</div><div class=&quot;k&quot;>服务费规则：</div><div class=&quot;&quot;>消耗首日 - 永久：固定 8.00%</div><div class=&quot;k&quot;>服务费税费：</div><div class=&quot;&quot;>客户承担</div><div class=&quot;k&quot;>税率：</div><div class=&quot;&quot;>6.00%</div><div class=&quot;k&quot;>返点规则：</div><div class=&quot;&quot;>消耗首日 - 第90天：固定 0.00%</div><div class=&quot;k&quot;>客情结算方式：</div><div class=&quot;&quot;>无客情</div><div class=&quot;k&quot;>客情费用比例：</div><div class=&quot;&quot;>-</div><div class=&quot;k&quot;>规则起始日期：</div><div class=&quot;&quot;>2026-10-20</div><div class=&quot;k&quot;>备注：</div><div class=&quot;&quot;>-</div></div></div><div class=&quot;foot&quot; style=&quot;text-align:left;margin-left:136px&quot;><span class=&quot;btn primary&quot;>驳回</span> &amp;nbsp; <span class=&quot;btn primary&quot;>审批通过</span></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>登记表待关联：公司名称、所属账户系统、关联账户都显示「暂未关联」，公司名称不是链接，计费模式「-」；新起始日期前一天没有适用规则（基准为空），所有项都不标红；「绑定的销售」节点因没有操作对象客户而跳过（R-03-039、R-03-048、R-03-049）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/07-审批内容-暂未关联.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h2 id="s4">3 变更影响面</h2>
+<div class="tw"><table><thead><tr><th>被影响对象</th><th>影响方式</th><th>处理动作</th><th>负责人</th></tr></thead><tbody><tr><td>01-客户登记</td><td>「规则配置」入口跳本页；「已提交审批」tab 列本页审批单（附件登记表的单不在 01）；未关联登记表可删、有审批中规则配置单的不能删（会议清单 D24）</td><td>01 自己落删除口径；本页无改动</td><td>01</td></tr><tr><td>04-客户管理</td><td>客户详情规则配置表取「当前生效」、列名「返点规则」、格式 R-03-037；客户材料「历史上传文件」行（含迁移占位行）加「规则配置」入口（R-03-053）；入口面包屑见 R-03-012；待生效计费模式写法 <a class="xref" href="../04-客户管理/review.html" title="04-客户管理">R-04-067</a>、迁移占位行 <a class="xref" href="../04-客户管理/review.html" title="04-客户管理">R-04-073</a></td><td>04 已定义；本页引用</td><td>04</td></tr><tr><td>05-费用管理</td><td>充值 / 余额分配取规则以提交时刻为 t（R-03-003、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-58</a>）；没有适用规则按 0（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>）</td><td>已由 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-58</a> 收口</td><td>05</td></tr><tr><td>06-账单与结算单</td><td>已出账月份刷新以出账时刻为 t（R-03-003）；按月阶梯按条款合并（R-03-010、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-55</a>）；落档用原始消耗合计（R-03-009）</td><td>06 <a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-008</a>、<a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-019</a> 同步</td><td>总控 → 06</td></tr><tr><td>07-返点管理</td><td>已出账计提项以出账时刻为 t；<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-003</a> 分段改为按条款；消耗首日冻结与「首次确定」（R-03-005）</td><td>07 <a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-003</a>、<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-009</a> 同步</td><td>总控 → 07</td></tr><tr><td>10-利润中心</td><td>逐日拆分以该月出账时刻为 t（R-03-003）</td><td>10 <a class="xref" href="../10-利润中心/review.html" title="10-利润中心">R-10-012</a> 同步</td><td>总控 → 10</td></tr><tr><td>12-审批配置与审批中心</td><td>高亮基准按提交时快照、原值灰字（R-03-049、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-75</a>）；提交传账户、「绑定的运营」按账户优化师（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-016</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>）；提交提示按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-018</a>；在途单提示按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-047</a>；最终通过执行失败 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-045</a>（本页无失败情形）；作废 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-046</a></td><td>12 已定义；本页引用</td><td>12</td></tr><tr><td>存量账户</td><td>上线前导入固定比例规则挂在附件登记表 / 占位行，起始日期 = 消耗首日所在月 1 日（用户给更早日期的从其值），含已停止投放账户，逐条校验、失败出清单不整体回滚；存量消耗首日取真实首次消耗日、迁移时写入并冻结（R-03-005）；阶梯 / 分段上线后本页配，上线当月内提交、次月 2 日（UTC0）出账前通过，列入上线检查项（R-03-053、D-03-29）</td><td>index S-1；技术导入、用户核对</td><td>总控 / 技术</td></tr><tr><td>账户 / 客户老字段</td><td>苹果返点、客户返点、客情比例、服务费率、税点不再录入</td><td>保留不用（<a class="xref" href="../02-账户管理/review.html" title="02-账户管理">D-02-02</a>），下游改从本页取；返点 / 客情计算已不读老字段（技术答复 T20），旧「账户金额」接口及导出本期下线（02 <a class="xref" href="../02-账户管理/review.html" title="02-账户管理">D-02-16</a>）</td><td>02 / 技术</td></tr><tr><td>13-导航与权限</td><td>本页不新增权限点（D-03-16）；客户数据范围按 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a></td><td>13 汇总时登记「无」</td><td>13</td></tr></tbody></table></div>
+<h2 id="s5">4 非功能与留痕</h2>
+<ul><li>权限：本页访问、提交在服务端按 R-03-013、R-03-014、R-03-027、R-03-042 校验，前端隐藏按钮不算权限控制。</li><li>留痕：规则记录只追加或按同起始日期覆盖，被覆盖的记录标为已覆盖、记下被覆盖时间、保留不删；每条记录能追溯到写入它的审批单（source_approval_id）或标为导入；消耗首日记下确定时刻，技术改首日须留记录（R-03-005）；提交、审批过程以 12 的审批记录为留痕。</li><li>一致性：04、05、06、07、10 一律按 R-03-003 取某日适用规则，不各自另写判定（T-03-002）。</li></ul>
+<h2 id="s6">5 开放问题与已知限制</h2>
+<div class="tw"><table><thead><tr><th>编号</th><th>问题</th><th>卡谁</th><th>期望结论时间</th></tr></thead><tbody><tr><td>Q-03-01</td><td>【已关闭 2026-10-20】返点阶梯落档用扣 MAX 前的消耗还是扣后的返点基数（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-15</a>）。结论：返点阶梯按扣 MAX 后的返点基数落档（<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">D-07-01</a>，已落 R-03-009）</td><td>—</td><td>已关闭</td></tr><tr><td>Q-03-02</td><td>【已关闭 2026-10-21】存量账户 / 早于首条规则的日子，下游按什么取费率。结论：没有适用规则一律按 0（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>）；存量账户规则挂附件登记表（R-03-053）</td><td>—</td><td>已关闭</td></tr><tr><td>Q-03-03</td><td>【已关闭 2026-10-21】服务费多行时间区间时，充值落哪一行。结论：按提交当天是第几天落行，没有首日按第一行（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-58</a>）</td><td>—</td><td>已关闭</td></tr><tr><td>Q-03-04</td><td>【已关闭 2026-10-21】D-03-21 文案调整是否认可。结论：认可，D-03-21 转已定</td><td>—</td><td>已关闭</td></tr><tr><td>Q-03-05</td><td>【已关闭 2026-10-21】规则配置页离开时要不要像 01 外链填写页（会议清单 D70）一样弹离开确认。结论：不弹，按 R-03-043（D-03-28）</td><td>—</td><td>已关闭</td></tr></tbody></table></div>
+<p>已知限制：</p>
+<ul><li>存量账户上线前月份只有导入的固定比例规则；阶梯 / 分段规则只能从当月 1 号起在本页配（R-03-033），上线当月要用的须在上线当月内提交、次月 2 日（UTC0）出账前通过，晚于这个时点的只对之后的月份生效；已封账 / 已冻结的账单不重算（R-03-053）。</li><li>消耗首日冻结后，补报更早消耗的日子拿不到返点和 90 天客情；改首日只能由技术处理（R-03-005）。</li><li>一张规则配置单只涉及一个账户，「绑定的运营」最多解析出一人，本审批类型不会出现会签（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-43</a>）。</li></ul>
+<h2 id="s7">6 附录</h2>
+<h3 id="s7-1">6.1 决策记录</h3>
+<div class="tw"><table><thead><tr><th>编号</th><th>决策点</th><th>结论</th><th>状态</th></tr></thead><tbody><tr><td>D-03-01</td><td>消耗首日</td><td>绑定账户第一次有消耗那天（UTC0），所有规则共用；首次确定后冻结，早于首日的日子服务费落第 1 行、返点 / 90 天客情不计提（2026-10-21 用户定，会议清单 D95）</td><td>已定</td></tr><tr><td>D-03-02</td><td>绝对日期第一行左边界</td><td>= 规则起始日期</td><td>已定</td></tr><tr><td>D-03-03</td><td>阶梯区间</td><td>左闭右开、自动衔接，三类阶梯共用</td><td>已定</td></tr><tr><td>D-03-04</td><td>阶梯金额币种</td><td>账户消耗原币</td><td>已定</td></tr><tr><td>D-03-05</td><td>按月 / 按日统计</td><td>按月合计落档、按日每天落档，都不累进，不作用于充值</td><td>已定</td></tr><tr><td>D-03-06</td><td>当前生效</td><td>起始日期 ≤ 今天里最大的那条</td><td>已定</td></tr><tr><td>D-03-07</td><td>必填与 0</td><td>各块必填，比例允许 0，备注选填</td><td>已定</td></tr><tr><td>D-03-08</td><td>跨月才通过</td><td>照常按申请的起始日期生效；已出账月份按出账时刻的规则，不回改（2026-10-21 用户定，会议清单 D08）</td><td>已定</td></tr><tr><td>D-03-09</td><td>时区</td><td>一律 UTC0</td><td>已定</td></tr><tr><td>D-03-10</td><td>被区间切开的月</td><td>只用该月落在区间内那几天落档；相邻规则条款相同时合并落档（2026-10-21 用户定，会议清单 D93）</td><td>已定</td></tr><tr><td>D-03-11</td><td>客情选项文案</td><td>「首次消耗起 90 天」</td><td>已定</td></tr><tr><td>D-03-12</td><td>比例上限</td><td>税率 ≥ 0 且 &lt; 100，其余比例不设上限（2026-10-21 用户定，会议清单 D25）</td><td>已定</td></tr><tr><td>D-03-13</td><td>历史规则表</td><td>全部未覆盖记录，标生效中 / 待生效</td><td>已定</td></tr><tr><td>D-03-14</td><td>内容没改能否提交</td><td>不拦</td><td>已定</td></tr><tr><td>D-03-15</td><td>规则备注与发起备注</td><td>两回事</td><td>已定</td></tr><tr><td>D-03-16</td><td>权限点</td><td>不单设新权限点；已关联客户的登记表另允许「客户管理-读写」配置</td><td>已定</td></tr><tr><td>D-03-17</td><td>审批中并发与展示</td><td>最多 1 张审批中，锁定；锁定提示条与重复提交提示框按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-047</a> 统一句式，带单号与申请人（2026-10-21 用户定，会议清单 D40）</td><td>已定</td></tr><tr><td>D-03-18</td><td>打开页面回填</td><td>当前生效，起始日期留空；无则默认值</td><td>已定</td></tr><tr><td>D-03-19</td><td>右边界校验与切换口径</td><td>逐行递增；切口径清空</td><td>已定</td></tr><tr><td>D-03-20</td><td>审批结果与高亮</td><td>通过写入（同日覆盖），驳回 / 撤回不写；高亮基准 = 提交时新起始日期前一天适用的规则，随单保存；起始日期不标红（2026-10-21 用户定，会议清单 D27、D77）</td><td>已定</td></tr><tr><td>D-03-21</td><td>文案统一</td><td>规则起始日期、返点规则列名等（锁定提示 2026-10-21 起改按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-047</a>；2026-10-21 用户确认）</td><td>已定</td></tr><tr><td>D-03-22</td><td>非创建人能否配置</td><td>能：已关联客户、且客户在其数据范围内的「客户管理-读写」用户（2026-10-21 用户定，会议清单 D21）</td><td>已定</td></tr><tr><td>D-03-23</td><td>规则配置审批详情谁能只读看</td><td>登记表创建人，或有客户管理权限点且客户在其数据范围内的人（2026-10-21 用户定，会议清单 D21）</td><td>已定</td></tr><tr><td>D-03-24</td><td>以时刻 t 为准的适用规则</td><td>已出账月份以出账时刻为 t；已覆盖记录对覆盖前时刻仍有效；历史规则标「已出账，不适用」（2026-10-21 用户定，会议清单 D08）</td><td>已定</td></tr><tr><td>D-03-25</td><td>页头信息行、面包屑、过 90 天提示</td><td>信息行含登记表、客户、账户、计费模式、消耗首日；面包屑按入口；起始日期过返点期弱提示（2026-10-21 用户定，会议清单 D74、D76、D94）</td><td>已定</td></tr><tr><td>D-03-26</td><td>历史规则显示来源</td><td>加「审批通过时间」「来源审批单」两列，导入显示「导入」（2026-10-21 用户定，会议清单 D75、D08）</td><td>已定</td></tr><tr><td>D-03-27</td><td>存量账户规则承载</td><td>规则挂 04 历史上传文件行（无附件补占位行），同页同审批；上线前导入固定比例（2026-10-21 用户定，会议清单 D20；阶梯 / 分段配置截止点 2026-10-22 改按 D-03-29）</td><td>已定</td></tr><tr><td>D-03-28</td><td>离开页面是否确认</td><td>不弹离开确认，未提交的修改离开或刷新即丢失（R-03-043）（2026-10-21 用户确认）</td><td>已定</td></tr><tr><td>D-03-29</td><td>存量导入与上线月阶梯 / 分段截止点</td><td>存量消耗首日取真实首次消耗日（UTC0，历史报表），迁移写入并冻结；导入起始日期 = 消耗首日所在月 1 日（用户给更早日期从其值）；含已停止投放账户；逐条校验、失败出清单、不整体回滚；阶梯 / 分段须上线当月内提交、次月 2 日（UTC0）出账前通过，晚于此只对之后月份生效，列入上线检查项（2026-10-22 用户与技术确认，闭环清单 A13、A14）</td><td>已定</td></tr><tr><td>D-03-30</td><td>已删除登记表的审批单</td><td>公司、所属账户系统、关联账户「暂未关联」；查看范围的创建人按删除时判断（2026-10-22 用户与技术确认，闭环清单 B19）</td><td>已定</td></tr></tbody></table></div>
+<h3 id="s7-2">6.2 原型出处</h3>
+<ul><li>规则配置页结构与 V2.1 注释：<code>html/规则配置.html:1828–2833</code>（页面）、<code>:2841</code>（注释，第七节原文未写完）。</li><li>审批详情（#6）：<code>html/审批详情-客户登记表.html:1828–2378</code>。</li><li>规则被 05 取用的说明：<code>html/费用管理.html:4848</code>（§4.2.2 服务费税费含义）、<code>:4856</code>（§4.7 取值于登记表规则配置）。</li></ul>
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('figure.mock').forEach(function (fig) {
+  fig.querySelectorAll('[data-w]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      fig.dataset.mode = btn.dataset.w;
+      fig.querySelectorAll('[data-w]').forEach(function (b) { b.classList.toggle('on', b === btn); });
+    });
+  });
+  var open = fig.querySelector('[data-open]');
+  if (open) open.addEventListener('click', function () {
+    var src = fig.querySelector('iframe').getAttribute('srcdoc');
+    var w = window.open('about:blank');
+    w.document.open(); w.document.write(src); w.document.close();
+  });
+});
+</script>
+</body>
+</html>

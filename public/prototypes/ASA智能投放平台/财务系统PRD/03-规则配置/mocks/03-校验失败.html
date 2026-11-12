@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MOCK · 规则配置 · 点「提交审批」后校验不通过</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px 28px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.input{padding:5px 8px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff;width:120px;display:inline-block;min-height:30px;vertical-align:middle}
+.input.ph{color:#9ca3af}.input.w60{width:64px}.input.w90{width:96px}.input.w240{width:260px}.input.w420{width:420px}
+.input.err{border-color:var(--new);background:#fef2f2}.input.ro{background:#f3f4f6;color:var(--sub)}
+.input[disabled],.dis .input{background:#f3f4f6;color:#9ca3af}
+.err-tip{color:var(--new);font-size:12px;margin-top:2px}
+.hint{font-size:12px;color:#b45309;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.radio{margin-right:18px;font-size:13px;white-space:nowrap}
+.radio::before{content:"○ ";color:var(--sub)}.radio.on::before{content:"◉ ";color:var(--brand)}
+.sec{font-size:15px;font-weight:700;margin:22px 0 12px}
+.sec:first-child{margin-top:0}
+.form{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;align-items:start;max-width:1100px}
+.form .lb{text-align:right;font-size:13px;color:var(--sub);padding-top:5px}
+.form .lb.req::before{content:"*";color:var(--new);margin-right:2px}
+.link{color:var(--brand);text-decoration:underline}
+.ops a{color:var(--brand);margin-right:10px;font-size:13px}
+.ops a.off{color:#cbd5e1}
+.circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px;margin-left:4px;vertical-align:middle}
+.circle.off{color:#d1d5db;background:#f9fafb}
+.tier{margin:6px 0;white-space:nowrap}
+.sub{font-size:12px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;padding:0 6px;border-radius:4px;margin-left:6px}
+.tag.on{background:#ecfdf5;color:#047857}.tag.wait{background:#eff6ff;color:#1d4ed8}
+.lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px;display:inline-block}
+.lock em{color:var(--brand);font-style:normal}
+.collapse{font-size:15px;font-weight:700;margin:26px 0 12px}
+.empty{padding:24px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:6px}
+.foot{text-align:right;margin-top:24px}
+.mask{background:rgba(17,24,39,.45);padding:60px 0;margin:-20px -28px}
+.confirm{width:460px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.confirm .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600}
+.confirm .mb{padding:18px 20px}.confirm .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+.confirm .mf .btn{margin-left:8px}
+textarea.input{width:100%;height:72px;resize:none}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+.kv .k,.kv2 .k{color:var(--sub)}
+.kv2{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;font-size:13px;max-width:900px}
+.red{color:var(--new)}
+.tl{display:flex;gap:40px;font-size:12px}.tl div b{display:block;font-size:13px}
+.g{color:#047857}.gray{color:var(--sub)}
+.skip{color:#9ca3af}
+</style>
+</head>
+<body>
+<div class="docbar"><b>规则配置页 · 校验失败</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-03-017、R-03-018、R-03-022、R-03-026、R-03-027 / G-03-013～G-03-017</span></div>
+<div class="canvas pc">
+<div class="hd"><h1>客户登记表/规则配置</h1><span class="state-tag">点「提交审批」后校验不通过</span></div>
+<div class="bd">
+<div class="">
+<div class="sec">服务费规则</div>
+<div class="form">
+<div class="lb">日期口径</div><div><div class="modified" data-note="1" style="padding:4px"><span class=""><span class="radio">相对日期</span><span class="radio on">绝对日期</span></span></div></div>
+<div class="lb req">规则配置</div><div><div class="changed" data-note="2" style="padding:4px"><table style="max-width:1000px"><tr><th style="text-align:center">时间区间</th><th style="text-align:center">服务费率</th><th style="text-align:center">操作</th></tr><tr><td style="width:300px;text-align:center;vertical-align:middle">2026-11-01 - <span class="input w120">2026-10-31</span><div class="err-tip">不能早于规则起始日期</div></td><td><div>计费方式：<span class=""><span class="radio on">固定比例</span><span class="radio">阶梯比例</span></span></div><div style="margin-top:6px"><span class="input w240 err">5.123</span> %<div class="err-tip">请输入不小于 0、最多 2 位小数的数字</div></div></td><td style="width:140px;vertical-align:middle" class="ops"><a>增加行</a><a>删除行</a></td></tr><tr><td style="width:300px;text-align:center;vertical-align:middle">2026-11-01 - 永久</td><td><div>计费方式：<span class=""><span class="radio">固定比例</span><span class="radio on">阶梯比例</span></span></div><div style="margin-top:4px">统计方式：<span class=""><span class="radio on">按月统计</span><span class="radio">按日统计</span></span></div><div class="tier"><span class="input w90 ro">0.00</span> - <span class="input w90">8,000.00</span> &nbsp; <span class="input w60">6.00</span> % <span class="circle">+</span><span class="circle">−</span></div><div class="tier"><span class="input w90 ro">8,000.00</span> - <span class="input w90 err">5,000.00</span> &nbsp; <span class="input w60">5.00</span> % <span class="circle">+</span><span class="circle">−</span></div><div class="err-tip">区间上限须大于下限</div><div class="tier"><span class="input w90 ro">5,000.00</span> - <span class="input w90 ro">不限</span> &nbsp; <span class="input w60 ph err">请输入比例</span> % <span class="circle">+</span><span class="circle">−</span></div><div class="err-tip">请输入比例</div></td><td style="width:140px;vertical-align:middle" class="ops"><a>增加行</a><a>删除行</a></td></tr></table></div></div>
+</div>
+<div class="sec">税费规则</div>
+<div class="form">
+<div class="lb req">税率</div><div><span class="input w240 ph err">请输入税率</span> %<div class="err-tip">请输入税率</div></div>
+<div class="lb req">服务费税费</div><div><span class=""><span class="radio">公司承担</span><span class="radio on">客户承担</span></span></div>
+</div>
+<div class="sec">返点规则</div>
+<div class="form"><div class="lb req">规则配置</div><div><table style="max-width:860px"><tr><th style="text-align:center">时间区间</th><th style="text-align:center">返点比例</th></tr><tr><td style="width:300px;text-align:center;vertical-align:middle">消耗首日 - 第90天</td><td><div>计费方式：<span class=""><span class="radio on">固定比例</span><span class="radio">阶梯比例</span></span></div><div style="margin-top:6px"><span class="input w240 err">-1</span> %<div class="err-tip">请输入不小于 0、最多 2 位小数的数字</div></div></td></tr></table></div></div>
+<div class="sec">客情规则</div>
+<div class="form"><div class="lb req">客情结算方式</div><div><span class=""><span class="radio on">无客情</span><span class="radio">首次消耗起 90 天</span><span class="radio">按自然月每月返还</span></span></div></div>
+<div class="sec">备注与生效</div>
+<div class="form">
+<div class="lb">备注</div><div><span class="input w420 ph">请输入备注（规则备注）</span></div>
+<div class="lb req">规则起始日期</div><div><span class="input w240">2026-11-01</span></div>
+</div>
+</div><div class="collapse " >历史规则 ∨</div><div class="foot"><span class="btn primary">提交审批</span></div>
+</div>
+</div>
+<div class="legend"><h2>改动点说明</h2><ul><li><span class="badge">1</span>切到绝对日期：第一行左边界显示规则起始日期 2026-11-01；切换时各行右边界已清空，重新选择（R-03-017、R-03-020）</li><li><span class="badge">2</span>右边界早于起始日期、比例超过 2 位小数或为负、阶梯上限 ≤ 下限、必填为空，都在对应位置提示，不弹确认框（R-03-018、R-03-022、R-03-026、R-03-038）</li></ul></div>
+<div class="footbar"><span>MOCK · mocks/03-校验失败.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>

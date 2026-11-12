@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>利润中心 v2.1.0 · 评审版</title>
+<style>
+  :root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f9fafb;--brand:#3b82f6;--warn:#dc2626}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.75 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg)}
+  header.top{position:sticky;top:0;z-index:50;background:#111827;color:#fff;padding:12px 24px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+  header.top h1{font-size:16px;margin:0}
+  header.top .pill{font-size:12px;border:1px solid #4b5563;border-radius:99px;padding:2px 10px;color:#d1d5db}
+  .wrap{display:flex;align-items:flex-start;gap:28px;max-width:1800px;margin:0 auto;padding:24px}
+  nav{position:sticky;top:64px;width:280px;flex:0 0 280px;max-height:calc(100vh - 90px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+  nav h2{font-size:12px;color:var(--sub);margin:0 0 8px;letter-spacing:.08em}
+  nav a{display:block;text-decoration:none;color:#374151;font-size:13px;padding:5px 8px;border-radius:6px;line-height:1.4}
+  nav a:hover{background:#eff6ff;color:#1d4ed8}
+  nav a.t3{padding-left:20px;color:var(--sub);font-size:12.5px}
+  main{flex:1;min-width:0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:36px 44px 60px}
+  main h1{font-size:26px;margin:0 0 18px}
+  main h2{font-size:20px;margin:44px 0 14px;padding-bottom:8px;border-bottom:2px solid #e5e7eb}
+  main h3{font-size:16.5px;margin:30px 0 10px}
+  main h4{font-size:15px;margin:22px 0 8px;color:#374151}
+  main p{margin:10px 0}
+  main a{color:#1d4ed8}
+  main a.xref{background:#eef2ff;border-radius:4px;padding:0 4px;text-decoration:none}
+  main code{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:4px;padding:1px 5px;font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace}
+  main pre{background:#111827;color:#e5e7eb;border-radius:8px;padding:14px 16px;overflow:auto}
+  main pre code{background:none;border:0;color:inherit;padding:0}
+  main blockquote{border-left:3px solid var(--brand);background:#eff6ff;margin:12px 0;padding:10px 16px;color:#1e3a8a;border-radius:0 6px 6px 0}
+  main hr{border:0;border-top:1px dashed var(--line);margin:28px 0}
+  .tw{overflow:auto;margin:14px 0}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#f3f4f6;font-weight:600;white-space:nowrap}
+  tbody tr:nth-child(even){background:#fcfcfd}
+  ul,ol{padding-left:24px;margin:10px 0}
+  li{margin:4px 0}
+  .banner{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px 16px;margin:0 0 24px}
+  .banner b{color:var(--warn)}
+  .banner ul{margin:6px 0 0}
+  .warnbox{background:#fffbeb;border:1px dashed #f59e0b;border-radius:8px;padding:12px 16px;margin:18px 0;font-size:13.5px}
+  .warnbox li{font-size:13px}
+  figure.mock{margin:22px 0 34px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+  figure.mock figcaption{display:flex;align-items:center;gap:10px;padding:11px 16px;background:#f8fafc;border-bottom:1px solid var(--line);font-size:14px;font-weight:600}
+  figure.mock figcaption .tag{background:var(--brand);color:#fff;font-size:11px;border-radius:4px;padding:2px 8px;font-weight:600}
+  figure.mock figcaption .src{margin-left:auto;font-weight:400;color:var(--sub);font-size:12px;font-family:ui-monospace,Menlo,monospace}
+  .mock-tools{display:flex;gap:8px;padding:9px 16px;border-bottom:1px solid var(--line);background:#fff}
+  .mock-tools button{font:inherit;font-size:12.5px;padding:4px 12px;border:1px solid var(--line);background:#fff;border-radius:6px;cursor:pointer;color:#374151}
+  .mock-tools button.on{background:var(--brand);border-color:var(--brand);color:#fff}
+  .mock-frame{background:#f3f4f6;padding:0;display:flex;justify-content:center}
+  .mock-frame iframe{border:0;background:#fff;display:block}
+  figure.mock[data-mode="pc"] .mock-frame iframe{width:100%;height:760px}
+  figure.mock[data-mode="mobile"] .mock-frame iframe{width:420px;height:760px;box-shadow:0 0 0 1px var(--line)}
+  figure.mock[data-mode="full"] .mock-frame iframe{width:100%;height:1000px}
+  .mock-missing{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:8px;padding:14px 18px;margin:18px 0;font-size:14px}
+  @media (max-width:1100px){nav{display:none}.wrap{padding:14px}main{padding:22px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>利润中心</h1>
+  <span class="pill">v2.1.0</span>
+  <span class="pill">10-利润中心</span>
+  <span class="pill">ASA</span>
+  <span class="pill">状态：待评审</span>
+  <span class="pill">2026-10-21</span>
+  <span class="pill">评审版 · 由 PRD.md 自动生成，勿手改</span>
+</header>
+
+<div class="wrap">
+  <nav>
+    <h2>目录</h2>
+    <a class="t2" href="#s1">0 前置说明</a>
+<a class="t2" href="#s2">1 整体概述</a>
+<a class="t3" href="#s2-1">1.1 背景与目标</a>
+<a class="t3" href="#s2-2">1.2 本页范围</a>
+<a class="t3" href="#s2-3">1.3 角色与权限</a>
+<a class="t3" href="#s2-4">1.4 术语定义</a>
+<a class="t3" href="#s2-5">1.5 核心流程</a>
+<a class="t2" href="#s3">2 详细需求</a>
+<a class="t3" href="#s3-1">2.1 毛利口径（定义）</a>
+<a class="t3" href="#s3-2">2.2 人民币折算（定义）</a>
+<a class="t3" href="#s3-3">2.3 算没算完（定义）</a>
+<a class="t3" href="#s3-4">2.4 利润列表</a>
+<a class="t3" href="#s3-5">2.5 数据概览</a>
+<a class="t3" href="#s3-6">2.6 详情</a>
+<a class="t3" href="#s3-7">2.7 权限</a>
+<a class="t3" href="#s3-8">2.8 对外接口</a>
+<a class="t2" href="#s4">3 验收标准</a>
+<a class="t3" href="#s4-1">3.1 毛利口径与折算</a>
+<a class="t3" href="#s4-2">3.2 算没算完</a>
+<a class="t3" href="#s4-3">3.3 列表与概览</a>
+<a class="t3" href="#s4-4">3.4 详情、权限与接口</a>
+<a class="t2" href="#s5">4 变更影响面</a>
+<a class="t2" href="#s6">5 非功能与埋点</a>
+<a class="t2" href="#s7">6 开放问题</a>
+<a class="t2" href="#s8">7 附录</a>
+<a class="t3" href="#s8-1">7.1 已定决策</a>
+<a class="t3" href="#s8-2">7.2 原型对照</a>
+    <h2 style="margin-top:16px">内嵌示意（3）</h2><a class="t3" href="#mock-1">1. 利润中心列表（数据概览、计算中还差项、渠道「-」、缺汇率）</a><a class="t3" href="#mock-2">2. 利润中心列表（空态）</a><a class="t3" href="#mock-3">3. 利润详情抽屉（汇总、按日明细、手续费、共享订单分摊、完成情况）</a>
+  </nav>
+
+  <main>
+    <div class="banner"><b>⚠ 5 项未定，先别开跑：</b><ul><li><code>Q-10-01</code> &quot;【已关闭 2026-10-21 → D-00-74、R-10-010：日汇率 = 当天 UTC 00:17 取的那一次价格，存 10 位，有 USDT→人民币，缺当天取之前最近一天（技术答复 T12）】原问题：日汇率数据源、接口、存储；是否覆盖 USDT→人民币；精度&quot;</li><li><code>Q-10-02</code> &quot;【已关闭 2026-10-21 → D-10-08、R-10-001：上线前月份不出行；上线月 = 第一个在系统里付渠道款的结算期，与 08 / 11 共用，具体月份上线前定（会议清单 D60）】原问题：上线前月份放开时机、上线月是哪个月&quot;</li><li><code>Q-10-03</code> &quot;【已关闭 2026-10-21 → D-10-22、R-10-035：本页维持当前值，列头与筛选栏注明与 11 口径不同（会议清单 D92-10）】原问题：销售、优化师取当前值，11 按历史归属时本页要不要对齐&quot;</li><li><code>Q-10-04</code> &quot;【已关闭 2026-10-21：D-10-09～D-10-18 用户已确认代定清单，按会议清单附 2 G4 收口为已定】原问题：评审确认由我代定的 D-10-09～D-10-18&quot;</li><li><code>Q-10-05</code> &quot;财务确认：① 公司承担的服务费税费计入成本（R-10-008，会议清单 D17 的前提）；② 自接苹果的「税费」是我方要缴的销项税还是代收，要缴的话是否同额计入成本。确认前按 R-10-008 执行&quot;</li></ul></div>
+    
+    <h1>利润中心 PRD</h1>
+<div class="tw"><table><thead><tr><th>项</th><th>内容</th></tr></thead><tbody><tr><td>所属产品</td><td>ASA</td></tr><tr><td>版本</td><td>v2.1.0</td></tr><tr><td>页面</td><td>10-利润中心</td></tr><tr><td>涉及功能</td><td>利润中心（feature 台账由总控登记）</td></tr><tr><td>编制日期</td><td>2026-10-20（2026-10-21 总控代改：按《会议清单 v2》回写；2026-10-22 总控代改：按《闭环问题清单》回写）</td></tr><tr><td>文档状态</td><td>待评审</td></tr><tr><td>目标读者</td><td>研发、测试、AI 实现助手（本文件可直接整份投喂给 AI 作为实现依据）</td></tr><tr><td>关联文档</td><td>本目录 spec.yaml、mocks/；版本 <a href="../index.md" target="_blank" rel="noreferrer">index.md</a>；原型 <code>html/利润中心.html</code>（无 V2.1 注释，只有 UI，规则来自版本级决策与用户确认）</td></tr></tbody></table></div>
+<h2 id="s1">0 前置说明</h2>
+<ul><li>本页覆盖版本记录第 23 项（利润中心）。</li><li>本页<strong>主管</strong>：利润记录（账户 × UTC0 自然月）及其「算没算完」状态、利润日明细（账户 × UTC0 自然日）、利润变化记录；日汇率在利润里的取用口径；利润中心页面；给 11 的数据（含提成用当日毛利）。</li><li>本页<strong>不产生业务</strong>，只读别的页面的数据来算钱，不回写任何来源（R-10-071）：</li><li>06-账单与结算单：账单账户行的消耗、服务费、税费、服务费税费，以及账单状态、结算单的默认应付与审批通过的应付（<a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-005</a>～<a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-011</a>、<a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-020</a>、<a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-044</a>）。</li><li>07-返点管理：客户返点、客情费用计提项的金额与完成口径（<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-017</a>、<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-018</a>）。</li><li>08-渠道对账：渠道统计金额、渠道返点，渠道付完判定，变化通知（<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-015</a>、<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-091</a>、<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-024</a>）。</li><li>09-收付款中心：已完成收款单的手续费按账户分摊（<a class="xref" href="../09-收付款中心/review.html" title="09-收付款中心">R-09-074</a>）。</li><li>引用 02（账户的销售、优化师、账户系统，<a class="xref" href="../02-账户管理/review.html" title="02-账户管理">R-02-015</a>）、04（客户名称、销售，<a class="xref" href="../04-客户管理/review.html" title="04-客户管理">R-04-004</a>）、05（账户消耗币种，<a class="xref" href="../05-费用管理/review.html" title="05-费用管理">R-05-002</a>）。</li><li>版本级口径：<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-08</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-13</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-26</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-34</a>（毛利公式）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-35</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-74</a>（日汇率）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-36</a>（只展示人民币）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-42</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-45</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-63</a>～<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-66</a>（算没算完）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-73</a>（后付余额抵扣与上期预付欠费）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-78</a>（权限）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-80</a>（0 元单）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-81</a>（结转额）。</li><li>原型只有画面：主表、筛选、数据概览可用；「货币展示」切换、隐藏的「汇率配置」、信息展示里隐藏的「审批」「草稿」两个状态都不做（R-10-010、R-10-036）。</li></ul>
+<h2 id="s2">1 整体概述</h2>
+<h3 id="s2-1">1.1 背景与目标</h3>
+<p>现状：账单、返点、渠道、收付款各自在自己页面里，币种也不一样（人民币 / USD / USDT），公司没有地方看每个账户每个月到底赚了多少、这个数算没算准。</p>
+<p>目标：</p>
+<ul><li>每个账户每个月一行，按 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-34</a> 算出毛利润，统一折成人民币。</li><li>每行明确告诉大家「算完了没有」，没算完的写清还差哪件事；算完以后数据又变了，自动退回重算并留下记录。</li><li>详情里能看到每一项的原币、所用汇率和来源，财务能对着来源页核对；手续费拆成「手续费（09）」「改应付差额」两行，分别对得上 09 和 06。</li><li>给 11 提成中心提供按日的毛利（含提成用当日毛利）与服务费。</li></ul>
+<p>可证伪的判定：公共前置（spec.yaml 头部）下，橙子-iOS-CN 2026-09 毛利润 32,804.57 人民币（渠道统计金额按共享订单分摊为 17,000.00 USD，手续费 315.83 = 手续费（09）-62.67 + 改应付差额 378.50）；苹果ASA 2026-09 渠道付款单到账后，这一行从「计算中 · 渠道未付完」变「已算完」。</p>
+<h3 id="s2-2">1.2 本页范围</h3>
+<ul><li>✅ 包含：利润记录的口径与计算（含公司承担服务费税费、改应付差额）；人民币折算与已算完时的汇率锁定；算没算完的判断、退回重算与变化记录；利润中心页（搜索筛选、列表、数据概览、详情抽屉）；「利润中心」权限点；给 11 的数据。</li><li>❌ 不包含：</li><li>原币展示切换、汇率配置、汇率审核（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-35</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-36</a>）。</li><li>日汇率的数据源、接口、存储（技术；口径见 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-74</a>）。</li><li>付款单汇出 / 到账金额与应付的差额（不进毛利，D-10-05）；汇兑损益（结算单锁定汇率与本页逐日汇率之差）不单列。</li><li>通用关账（月结后第 N 个月锁定）：本期不做，只锁汇率（D-10-21）。</li><li>上线前月份（D-10-08）。</li><li>导出、通知、人工确认「已算完」。</li><li>提成计算与展示（11）；菜单位置与权限点汇总（13）。</li></ul>
+<h3 id="s2-3">1.3 角色与权限</h3>
+<div class="tw"><table><thead><tr><th>角色</th><th>能做什么</th><th>不能做什么</th><th>数据范围 / 权限来源</th></tr></thead><tbody><tr><td>有「利润中心」权限点的用户</td><td>进入利润中心；看列表、概览、详情</td><td>修改任何金额或状态</td><td>全部账户，不按账户查看权限过滤、不受客户数据范围隔离（R-10-061）；页面查看权限点（R-10-060）</td></tr><tr><td>系统</td><td>计算、折算、判断状态、重算、记变化记录、给 11 提供数据</td><td>回写来源单据</td><td>R-10-001～R-10-024、R-10-070～R-10-072</td></tr></tbody></table></div>
+<h3 id="s2-4">1.4 术语定义</h3>
+<div class="tw"><table><thead><tr><th>术语</th><th>释义</th></tr></thead><tbody><tr><td>利润记录</td><td>一个账户一个 UTC0 自然月的一行利润（R-10-001）</td></tr><tr><td>利润日明细</td><td>利润记录拆到每个 UTC0 自然日后的金额，用于逐日折算和给 11（R-10-012）</td></tr><tr><td>原币</td><td>账户消耗币种（<a class="xref" href="../05-费用管理/review.html" title="05-费用管理">R-05-002</a>）；手续费、改应付差额的原币是收款单 / 结算单币种</td></tr><tr><td>业务发生日</td><td>折人民币时取汇率的那一天（R-10-011）</td></tr><tr><td>算没算完</td><td>计算中 / 已算完，按四件事自动判断（R-10-021）</td></tr><tr><td>共享订单</td><td>自接苹果的账户系统里同一个订单号挂在多个账户下（R-10-006）</td></tr><tr><td>公司承担服务费税费</td><td>服务费税费承担方为公司的那部分，06 记 0，本页补算并计入成本（R-10-008）</td></tr><tr><td>改应付差额</td><td>结算单默认应付（改前应收）与审批通过的应付之差，并入本页手续费（R-10-009）</td></tr><tr><td>提成用当日毛利</td><td>渠道统计金额与手续费按当月消耗占比拆到各天后的当日毛利，只给 11（R-10-072）</td></tr></tbody></table></div>
+<h3 id="s2-5">1.5 核心流程</h3>
+<div class="tw"><table><thead><tr><th>步骤</th><th>操作者</th><th>系统行为</th><th>产物</th></tr></thead><tbody><tr><td>1</td><td>系统</td><td>账户当月有消耗（或渠道统计金额、手续费）→ 生成利润记录，计算中（R-10-001）</td><td>利润记录</td></tr><tr><td>2</td><td>系统</td><td>从 06 / 07 / 08 / 09 取原币金额，补算公司承担服务费税费、改应付差额，共享订单分摊、手续费归月（R-10-003～R-10-009）</td><td>—</td></tr><tr><td>3</td><td>系统</td><td>按业务发生日逐日折人民币，算毛利润（R-10-011～R-10-013）</td><td>利润日明细</td></tr><tr><td>4</td><td>系统</td><td>来源数据变化时重算，四件事都完成 → 已算完并锁定汇率（R-10-010、R-10-021、R-10-023）</td><td>状态</td></tr><tr><td>5</td><td>系统</td><td>已算完以后又变了 → 退回重算，记变化记录（R-10-024）</td><td>变化记录</td></tr><tr><td>6</td><td>有「利润中心」的用户</td><td>看列表、概览、详情（R-10-030～R-10-056）</td><td>—</td></tr><tr><td>7</td><td>系统（11）</td><td>读账户 × 日的提成用当日毛利、服务费与账户 × 月状态（R-10-070、R-10-072）</td><td>—</td></tr></tbody></table></div>
+<h2 id="s3">2 详细需求</h2>
+<h3 id="s3-1">2.1 毛利口径（定义）</h3>
+<h4>2.1.1 功能描述</h4>
+<p>定义一条利润记录什么时候有、每一项原币金额从哪来。人民币怎么折见 2.2。</p>
+<h4>2.1.2 核心字段（利润记录）</h4>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>账户</td><td>account_id</td><td>关联对象</td><td>是</td><td>02 账户</td><td>—</td><td>—</td></tr><tr><td>结算期</td><td>period</td><td>string(7)</td><td>是</td><td>yyyy-mm（UTC0），≥ 上线月</td><td>—</td><td>R-10-001</td></tr><tr><td>原币</td><td>currency</td><td>enum</td><td>是</td><td>人民币 / USD / USDT</td><td>—</td><td>账户消耗币种</td></tr><tr><td>消耗 / 服务费 / 税费</td><td>consumption / fee / tax</td><td>decimal(2) 人民币</td><td>是</td><td>—</td><td>—</td><td>R-10-003</td></tr><tr><td>服务费税费</td><td>fee_tax</td><td>decimal(2) 人民币</td><td>是</td><td>—</td><td>—</td><td>客户承担部分，只展示（R-10-002）</td></tr><tr><td>公司承担服务费税费</td><td>company_fee_tax</td><td>decimal(2) 人民币</td><td>是</td><td>≥ 0</td><td>0.00</td><td>计入成本（R-10-008）</td></tr><tr><td>客户返点 / 客情费用</td><td>rebate / care_fee</td><td>decimal(2) 人民币</td><td>是</td><td>≥ 0</td><td>—</td><td>R-10-004</td></tr><tr><td>渠道统计金额</td><td>channel_amount</td><td>decimal(2) 人民币</td><td>否</td><td>没有数据为空</td><td>—</td><td>R-10-005、R-10-006</td></tr><tr><td>渠道返点</td><td>channel_rebate</td><td>decimal(2) 人民币</td><td>否</td><td>系统抓取为空</td><td>—</td><td>只展示（R-10-002）</td></tr><tr><td>手续费（09）</td><td>handling_fee_09</td><td>decimal(2) 人民币</td><td>是</td><td>可为负</td><td>0.00</td><td>R-10-007</td></tr><tr><td>改应付差额</td><td>adjust_diff</td><td>decimal(2) 人民币</td><td>是</td><td>可为负</td><td>0.00</td><td>R-10-009</td></tr><tr><td>手续费</td><td>handling_fee</td><td>decimal(2) 人民币</td><td>是</td><td>可为负</td><td>0.00</td><td>= 上两项之和（R-10-007）</td></tr><tr><td>毛利润</td><td>gross_profit</td><td>decimal(2) 人民币</td><td>否</td><td>缺汇率为空</td><td>—</td><td>R-10-002、R-10-015</td></tr><tr><td>状态</td><td>status</td><td>enum</td><td>是</td><td>计算中 / 已算完</td><td>计算中</td><td>2.3</td></tr><tr><td>还差</td><td>missing</td><td>列表</td><td>否</td><td>客户未收完 / 返点或客情未结完 / 渠道未付完 / 缺少汇率</td><td>—</td><td>R-10-022</td></tr><tr><td>汇率已锁定</td><td>fx_locked</td><td>布尔</td><td>是</td><td>是 / 否</td><td>否</td><td>R-10-010</td></tr><tr><td>计算时间</td><td>updated_at</td><td>datetime(Asia/Shanghai，秒)</td><td>是</td><td>系统</td><td>—</td><td>详情展示</td></tr></tbody></table></div>
+<p>利润日明细、利润变化记录的字段见 spec.yaml entities。</p>
+<h4>2.1.3 业务规则</h4>
+<ul><li><strong>R-10-001</strong> 利润记录按「账户 × UTC0 自然月」一条；结算期 ≥ 上线月，且该账户该月有消耗、或有渠道统计金额、或有手续费（≠ 0）任一项时才有这条记录；当月也有，金额随数据变化。上线月 = 第一个在系统里付渠道款的结算期（index S-18）；06 出账单、07 计提、08 渠道、10 利润、11 提成从同一个上线月起算，共用一个配置，具体月份上线前定（D-10-08、D-10-26）。</li><li><strong>R-10-002</strong> 毛利润 = 消耗 + 服务费 + 税费 − 客情费用 − 客户返点 − 手续费 − 渠道统计金额 − 公司承担服务费税费（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-34</a>）。手续费含改应付差额（R-10-007、R-10-009，D-10-02）；服务费税费（06 账户行，客户承担部分）只展示、不进毛利，公司承担服务费税费计入成本（R-10-008，D-10-01）；渠道返点只展示、不再扣（已含在渠道统计金额里，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-26</a>）。各项都先折成人民币，再按此计算（R-10-013）。</li><li><strong>R-10-003</strong> 消耗、服务费、税费、服务费税费取 06 该账户该月的账单账户行（<a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-005</a>～<a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-009</a>、<a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-011</a>）。账单锁定或冻结后取快照（<a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-020</a>），之后的消耗修正不影响利润。预付客户同样按消耗出账的金额算，不按充值算。该账户该月在 06 没有账户行时，这四项为 0；其中结算期 ≥ 上线月、该账户该月有消耗却没有 06 账户行的，状态按 R-10-021① 兜底处理为「客户未收完」（D-10-26）。06 账单里的返点抵扣、余额抵扣、上期预付欠费、结转额不是本账户本月的收入，不计入：余额抵扣是客户之前已付的钱，上期预付欠费的消耗已在其所属月份计入（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-73</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-81</a>）。</li><li><strong>R-10-004</strong> 客户返点、客情费用取 07 该账户该月的计提项（<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-001</a>）：已进单用实际金额，其余用系统计算金额（<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-018</a>）。按计提项所属的消耗月份计，不按后付抵扣到哪张账单；没有计提项为 0；后付返点抵扣超出账单产生的结转额（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-81</a>）不改变本页客户返点。</li><li><strong>R-10-005</strong> 渠道统计金额、渠道返点取 08 该账户该结算期的总计、渠道返点（<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-015</a>、<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-017</a>、<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-018</a>），共享订单按 R-10-006 拆分。08 为「-」时本页也显示「-」，计算毛利时渠道统计金额按 0，毛利润旁灰字「未含渠道成本」，状态按 R-10-021 停在计算中。例外：系统抓取的账户系统该结算期行已完成后，本期有消耗但没有任何订单的账户视为渠道付完（R-10-021③），渠道统计金额仍显示「-」、按 0 计，不标「未含渠道成本」。系统抓取的渠道返点为「-」。</li><li><strong>R-10-006</strong> 自接苹果（系统抓取）共享订单分摊（D-10-03）：同一结算期同一订单号挂在多个账户下时，订单总计按这些账户本结算期的消耗占比分摊；消耗取 06 该账户该月账户行的消耗金额，账单锁定后取快照，与收入同源（R-10-003，D-10-24）；四舍五入到 2 位，尾差给消耗最大的账户（并列取账户名称升序第一个）；这些账户消耗都为 0 时，整笔给账户名称升序第一个。只挂一个账户的订单整笔归该账户。账户渠道统计金额 = 本账户各订单分到的金额之和，所以各账户相加 = 按订单号去重后的总数；06、08 的展示不变。</li><li><strong>R-10-007</strong> 手续费 = 手续费（09）+ 改应付差额（R-10-009）= 改前应收 − 实收（D-10-02）。手续费（09）取 09 已完成收款单按账户的分摊（<a class="xref" href="../09-收付款中心/review.html" title="09-收付款中心">R-09-034</a>、<a class="xref" href="../09-收付款中心/review.html" title="09-收付款中心">R-09-036</a>、<a class="xref" href="../09-收付款中心/review.html" title="09-收付款中心">R-09-074</a>），原币 = 收款单币种。结算单支付 → 计入对应账单的结算期；账户充值 → 计入收款单完成时间（换算成 UTC0）所在的月（D-10-04）。同一账户月有多张收款单时相加；没完成的收款单不计。付款单汇出 / 到账金额与应付的差额不进毛利（D-10-05、<a class="xref" href="../09-收付款中心/review.html" title="09-收付款中心">D-09-06</a>）。</li><li><strong>R-10-008</strong> 公司承担服务费税费 = 06 按 <a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-007</a> / <a class="xref" href="../06-账单与结算单/review.html" title="06-账单与结算单">R-06-008</a> 计算服务费税费时、承担方为公司而记为 0 的那部分：后付日子 = 服务费 × 该段规则税率，预付日子 = 分桶扣减金额 × 快照服务费率 × 快照税率；原币按 06 的分段口径各段四舍五入 2 位后相加，按 R-10-012 拆到每天、按 R-10-013 折人民币；客户承担的日子为 0；计入成本（D-10-01）。自接苹果账户系统的「税费」照 R-10-003 计入收入；它是我方要缴的销项税还是代收、要不要同额计入成本，与本条一起待财务确认（Q-10-05），确认前按本条执行。</li><li><strong>R-10-009</strong> 改应付差额 = 生成结算单时系统给出的默认应付（改前应收，已扣返点抵扣、余额抵扣，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-73</a>）− 审批通过的应付，应付改大时为负；按该结算单账户行应收占比拆到账户（算法同 <a class="xref" href="../09-收付款中心/review.html" title="09-收付款中心">R-09-034</a>），原币 = 结算单结算币种。在该结算单变「已结算」时计入对应账单的结算期：有收款单的随收款单完成，落日与汇率同该笔结算单支付手续费（R-10-011）；应付为 0.00、审批通过即已结算的不生成收款单（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-80</a>），汇率取审批通过日（UTC0），人工把正数应付改成 0 时差额 = 默认应付全额；可结算应收 &lt; 0、应付固定 0.00 的结转情形（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-81</a>）默认应付为 0，不产生改应付差额。</li></ul>
+<h4>2.1.4 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>渠道数据还没到</td><td>08 为「-」</td><td>毛利按渠道 0 算，状态计算中（R-10-005）</td><td>渠道统计金额「-」，毛利润旁「未含渠道成本」，「渠道未付完」</td></tr><tr><td>系统抓取、本期无订单</td><td>08 行已完成，账户为「-」</td><td>视为付完、按 0 计（R-10-005、R-10-021）</td><td>「-」，不标「未含渠道成本」</td></tr><tr><td>共享订单</td><td>同一订单挂 C、D</td><td>按消耗占比分摊（R-10-006）</td><td>本页 C + D = 08 第一层，与 08 账户行不同</td></tr><tr><td>结算单改过应付</td><td>默认 249,603.94 → 249,000.00</td><td>差额 603.94 按账户拆进手续费（R-10-009）</td><td>详情两行「手续费（09）」「改应付差额」</td></tr><tr><td>应付为 0 的结算单</td><td>返点 / 余额抵满或人工改 0</td><td>审批通过即已结算，没有手续费（09）；人工改 0 的差额进手续费（R-10-009）</td><td>客户收完 ✓</td></tr><tr><td>服务费税费公司承担</td><td>06 记 0</td><td>本页补算计入成本（R-10-008）</td><td>「公司承担服务费税费」有值</td></tr><tr><td>账单已锁定后消耗修正</td><td>06 不变</td><td>按快照（R-10-003、R-10-006）</td><td>利润不变；详情顶部提示（R-10-050）</td></tr><tr><td>只有手续费的月份</td><td>预付充值到账，该月无消耗</td><td>照样出行（R-10-001）</td><td>毛利润为负</td></tr><tr><td>上线前月份</td><td>—</td><td>不出行（R-10-001）</td><td>结算期下拉没有这些月</td></tr></tbody></table></div>
+<h3 id="s3-2">2.2 人民币折算（定义）</h3>
+<h4>2.2.1 功能描述</h4>
+<p>所有金额按业务发生日的日汇率折人民币（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-74</a>）；按日保留 2 位后再汇总（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-35</a>）。页面只展示人民币，原币和汇率只在详情里辅助展示（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-36</a>）。</p>
+<h4>2.2.2 业务规则</h4>
+<ul><li><strong>R-10-010</strong> 汇率用日汇率（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-74</a>，1 原币 = x 人民币），按 UTC0 自然日取；当天没有，向前取最近一天；原币为人民币时汇率 = 1；计算用日汇率完整精度，详情里显示 4 位并注「按完整汇率计算，与显示汇率相乘可能相差 0.01」。利润记录第一次判为已算完时，锁定它所用的每一天汇率：之后补录或修订汇率只对计算中的记录生效，已锁定的记录即使因其他原因退回计算中也仍用锁定的汇率（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-66</a> 例外，D-10-21）；汇率锁定后才出现的业务日，按重算当时的日汇率取，下次判为已算完时一起锁定（D-10-21）。本页不提供汇率配置，原型隐藏的「汇率配置」按钮与弹窗不做（D-10-10）。</li><li><strong>R-10-011</strong> 业务发生日（D-10-06）：消耗、服务费、税费、服务费税费、公司承担服务费税费、客户返点、客情费用按每个 UTC0 自然日；渠道统计金额、渠道返点按结算期最后一天；手续费（09）按收款单完成日（UTC0），其中结算单支付的手续费在日明细里落在结算期最后一天，汇率仍取完成日；改应付差额同结算单支付手续费（R-10-009）。</li><li><strong>R-10-012</strong> 按日拆分（D-10-14）：每项的原币月合计以来源为准（R-10-003～R-10-009）。按来源的逐日金额占比拆到每天（06：当天消耗 × 当天适用费率或分桶快照，已出账月份的费率按出账时刻适用的规则取（<a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-003</a>，<a class="xref" href="../03-规则配置/review.html" title="03-规则配置">D-03-24</a>），公司承担服务费税费同理；07：当天按 <a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-004</a> / <a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-006</a> 算出的金额），每天四舍五入到 2 位，尾差放在该月最后一个有逐日金额的日子。07 实际金额被人改过的，也按系统逐日金额占比拆。逐日金额全为 0 而月合计不为 0 时，整笔落在该月最后一个有消耗的日子；没有消耗则落在结算期最后一天。</li><li><strong>R-10-013</strong> 每天每项人民币 = 当天原币金额 × 当天汇率，四舍五入到 2 位；月人民币 = 各天之和；毛利润用月人民币各项按 R-10-002 计算。不先把原币按月加总再折算。</li><li><strong>R-10-015</strong> 某天向前也取不到任何汇率时，用到这天汇率的项人民币为空，页面显示「-」，该行毛利润也显示「-」，状态按 R-10-021④ 为计算中、还差「缺少汇率」；详情里标「未取到 {原币}→人民币 汇率」；汇率补上后自动重算。</li></ul>
+<h4>2.2.3 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>触发</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>当天没有汇率</td><td>汇率表缺当天</td><td>向前取最近一天（R-10-010）</td><td>详情按日明细显示所用汇率</td></tr><tr><td>完全取不到汇率</td><td>上线后第一次取到汇率之前</td><td>R-10-015</td><td>「-」，概览提示未计入；还差「缺少汇率」</td></tr><tr><td>已算完后汇率被修订</td><td>技术补录 / 修订历史汇率</td><td>已锁定的记录不重算（R-10-010）</td><td>金额、状态不变，无变化记录</td></tr><tr><td>实际金额改了</td><td>07 进单时改金额</td><td>按系统逐日占比拆（R-10-012）</td><td>尾差在最后一天</td></tr><tr><td>原币是人民币</td><td>—</td><td>汇率 1</td><td>—</td></tr></tbody></table></div>
+<h3 id="s3-3">2.3 算没算完（定义）</h3>
+<h4>2.3.1 功能描述</h4>
+<p>每条利润记录自动判断「计算中 / 已算完」；数据变了自动退回重算；已算完的记录变化要留痕（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-63</a>～<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-66</a>）。</p>
+<h4>2.3.2 业务规则</h4>
+<ul><li><strong>R-10-020</strong> 状态只有 计算中 / 已算完，系统自动判断，没有人工确认、退回按钮（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-63</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-64</a>）；新出现的利润记录为计算中。</li><li><strong>R-10-021</strong> 四件事都完成才「已算完」（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-65</a>）：</li><li>① 客户收完：该账户在该月账单里有账户行时，账单为「已结算」（含应付 0.00 审批通过即已结算 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-80</a>、欠费转入后付账单后随承接账单已结算 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-73</a>）；没有账户行时，到了次月 2 日（UTC0）视为完成；兜底：结算期 ≥ 上线月、该账户该月有消耗却没有 06 账户行时，不适用前一句，按「客户未收完」处理，不判已算完（D-10-26）。</li><li>② 返点或客情结完：该账户该月客户返点、客情费用计提项都完成（<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-017</a>）；没有计提项视为完成。</li><li>③ 渠道付完：该账户该月有消耗或有渠道统计金额时按 <a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-091</a>：渠道统计金额不是「-」，且所属账户系统该结算期行已完成；付款后才有值或金额变化的账户同样算付完；系统抓取的账户系统行已完成后，本期有消耗、无订单的账户视为付完（R-10-005）；总计为 0.00 的行在结算期结束后视为已完成（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-80</a>）。都没有视为完成。</li><li>④ 汇率齐全：该月用到的每一天都取得到汇率（R-10-015）。</li><li><strong>R-10-022</strong> 计算中时，状态下方灰字列出还差的，按 ①②③④ 顺序用「、」连接：客户未收完、返点或客情未结完、渠道未付完、缺少汇率。当月（结算期未结束）的「计算中」旁加悬浮提示「金额为实时预估，随消耗数据更新，数据截至 yyyy-mm-dd hh:mm（UTC0）」，截至时间取消耗数据最近一次同步的时间，技术取不到时去掉这半句。</li><li><strong>R-10-023</strong> 任一来源数据变化（06 账单金额或状态、07 计提项金额或状态、08 渠道统计金额变化通知 <a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-024</a>、09 收款单完成、结算单 0 元已结算）时，受影响的利润记录重算金额并重判状态。以下三种完成条件变化同样触发重算，变化记录原因统一记「完成条件变化」（D-10-27）：08 第一层行状态变化（<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-054</a>、<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-056</a>，由 08 按 <a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-024</a> 通知）；08 总计为 0.00 的行在结算期结束后视为已完成（R-10-021③）；没有账户行的账户月到次月 2 日（UTC0）视为客户收完（R-10-021①）。汇率补录或修订只触发计算中记录的重算（R-10-010）。已算完的记录在重算期间视为计算中，重算后四件事仍都完成就回到已算完，否则停在计算中（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-66</a>）。</li><li><strong>R-10-024</strong> 已算完的利润记录每次因 R-10-023 被重算，且毛利润有变化或状态退回时，记一条变化记录：时间、原因、触发单据、变化前后毛利润、变化前后状态；只追加，不能删改。计算中的记录变化不记。</li></ul>
+<h4>2.3.3 状态与流转（本页定义：利润记录）</h4>
+<div class="tw"><table><thead><tr><th>当前状态</th><th>触发动作</th><th>操作者</th><th>目标状态</th><th>前置条件</th></tr></thead><tbody><tr><td>无</td><td>该账户该月满足出行条件</td><td>系统</td><td>计算中</td><td>R-10-001</td></tr><tr><td>计算中</td><td>四件事都完成</td><td>系统</td><td>已算完</td><td>R-10-021；首次已算完时锁定汇率（R-10-010）</td></tr><tr><td>已算完</td><td>来源数据变化后重算，四件事有一件不再完成</td><td>系统</td><td>计算中</td><td>R-10-023，记变化记录 R-10-024；汇率修订不触发</td></tr></tbody></table></div>
+<p>逆向：没有人工确认或退回（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-64</a>）；退回只由数据变化触发。08 付款后金额变化时 08 行状态不变（<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">D-08-08</a>），这类账户同样算付完（R-10-021③），重算后马上回到已算完，只留一条变化记录；被修正文件清成「-」的账户退回计算中，直到 08 再给出数值。</p>
+<h4>2.3.4 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>触发</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>付款单只确认了汇款</td><td>09 待完成</td><td>不算渠道付完（<a class="xref" href="../09-收付款中心/review.html" title="09-收付款中心">R-09-072</a>）</td><td>「渠道未付完」</td></tr><tr><td>已算完后订单数据变了</td><td>08 行仍已完成</td><td>重算，仍已算完，记一条（R-10-024）</td><td>毛利变化；详情变化记录</td></tr><tr><td>修正文件让账户变「-」</td><td>08 整批替换</td><td>退回计算中（R-10-023）</td><td>「渠道未付完」</td></tr><tr><td>计提项从无返点变待结算</td><td>消耗修正（<a class="xref" href="../07-返点管理/review.html" title="07-返点管理">R-07-014</a>）</td><td>退回计算中</td><td>「返点或客情未结完」</td></tr><tr><td>客户一直不付</td><td>09 不作废（<a class="xref" href="../09-收付款中心/review.html" title="09-收付款中心">D-09-02</a>）</td><td>一直计算中</td><td>「客户未收完」</td></tr><tr><td>08 行总计为 0.00</td><td>结算期结束</td><td>视为已完成（R-10-021③）</td><td>渠道付完 ✓</td></tr><tr><td>08 行总计 &lt; 0</td><td>08 不能发起渠道付款，行保持待完成（<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-056</a>）</td><td>一直计算中（R-10-021③）</td><td>「渠道未付完」；11 提成一直「-」（index §2.9）</td></tr></tbody></table></div>
+<h3 id="s3-4">2.4 利润列表</h3>
+<h4>2.4.1 功能描述</h4>
+<p>页面顶部搜索与筛选，中间数据概览，下面是利润记录列表，每行一个账户一个月，行操作「详情」。</p>
+<h4>2.4.2 业务规则</h4>
+<ul><li><strong>R-10-030</strong> 页面标题「利润中心」，菜单位置由 13 定（原型在财务中心下）；页面数据不跟随顶栏「账户系统」切换，只用页内筛选（同 08、09）。</li><li><strong>R-10-031</strong> 列依次：账户名称（左固定）、客户名称、销售（当前）、优化师（当前）、消耗、税费、服务费税费、公司承担服务费税费、服务费、渠道统计金额、客情费用、客户返点、手续费、毛利润、状态、账户系统、结算期、操作（右固定，「详情」）。手续费列为两项之和（R-10-007），拆分在详情看；毛利润格按 R-10-005 带灰字「未含渠道成本」；状态格按 R-10-022；结算期显示「yyyy-mm-01 至 yyyy-mm-最后一天」。</li><li><strong>R-10-032</strong> 金额一律人民币，千分位、2 位小数，不带币种后缀，表头上方注明「金额单位：人民币」；负数前加「-」，不标红；没有值显示「-」。</li><li><strong>R-10-033</strong> 搜索框按账户名称、账户ID（orgid）、客户名称包含匹配。筛选：账户系统 单选（全部 + 现有账户系统）、结算期 单选（全部 + 有利润记录的月份，降序）、销售 单选、优化师 单选、状态 单选（全部 / 计算中 / 已算完）。销售、优化师候选 = 全部 + 全部启用用户 + 本页记录里出现的已禁用用户（显示「姓名（已禁用）」，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-83</a>、<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-049</a>，排在启用用户后面），不随其他筛选条件变化，可搜索。筛选栏下灰字「按当前归属筛选；提成按历史归属，以提成中心为准」。默认都是全部，各条件同时生效；原型销售、优化师选项里的「待结算 / 已结算」不做。</li><li><strong>R-10-034</strong> 排序：结算期降序，同结算期按客户名称升序、再按账户名称升序。分页 10 / 50 / 100 / 300 条每页，默认 10，显示「共 N 条」；没有任何记录显示「暂无数据」；筛选后没有结果显示「没有符合条件的利润记录」。</li><li><strong>R-10-035</strong> 销售、优化师、账户系统都取当前值：销售 = 账户所属客户当前的销售（<a class="xref" href="../02-账户管理/review.html" title="02-账户管理">R-02-015</a>），优化师 = 账户当前的优化师；历史月份也显示当前值，筛选同样按当前值。与 11 口径不同：11 按业务日的历史归属算提成（<a class="xref" href="../11-提成中心/review.html" title="11-提成中心">R-11-003</a>），两页按人对数时以 11 为准（D-10-22）。</li><li><strong>R-10-036</strong> 原型「货币展示」（人民币 / 美元）切换不做，只展示人民币（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-36</a>）；原型信息展示里的「审批」「草稿」两个隐藏状态是复制残留，不做。</li></ul>
+<h4>2.4.3 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>空态</td><td>没有任何利润记录</td><td>—</td><td>「暂无数据」</td></tr><tr><td>筛选无结果</td><td>—</td><td>—</td><td>「没有符合条件的利润记录」</td></tr><tr><td>列表加载失败</td><td>接口报错 / 超时</td><td>沿用现有列表的加载失败处理</td><td>现有失败提示与重试</td></tr><tr><td>缺汇率的行</td><td>R-10-015</td><td>金额「-」</td><td>毛利润「-」，还差「缺少汇率」</td></tr><tr><td>渠道未到的行</td><td>R-10-005</td><td>按 0 计</td><td>毛利润旁「未含渠道成本」</td></tr><tr><td>账户名称很长</td><td>—</td><td>超长省略，悬浮显示全称（沿用）</td><td>—</td></tr><tr><td>无权限</td><td>没有「利润中心」</td><td>R-10-060、<a class="xref" href="../13-导航与权限/review.html" title="13-导航与权限">R-13-005</a></td><td>菜单不显示；直接访问时内容区「无权限访问」，地址不变</td></tr><tr><td>权限加载失败</td><td>权限 / 菜单接口失败（非登录失效）</td><td><a class="xref" href="../13-导航与权限/review.html" title="13-导航与权限">R-13-006</a>，不跳登录</td><td>「加载失败，请刷新」与「重新加载」</td></tr></tbody></table></div>
+<figure class="mock" data-mode="pc" id="mock-1">
+  <figcaption><span class="tag">示意 1</span>利润中心列表（数据概览、计算中还差项、渠道「-」、缺汇率）<span class="src">mocks/01-利润列表.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="利润中心列表（数据概览、计算中还差项、渠道「-」、缺汇率）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 利润中心 · 默认态</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:visible}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.dis{background:#e5e7eb;border-color:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+.field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+.input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+.err-tip{color:var(--new);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;white-space:nowrap}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+td.num,th.num{text-align:right}
+.empty{padding:48px;text-align:center;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.tabs{display:flex;gap:0;margin-bottom:14px}.tabs span{padding:6px 18px;border:1px solid var(--line);font-size:13px}
+.tabs span.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.toolbar .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;min-width:150px;background:#fff}
+.toolbar .grow{flex:1}
+.link{color:var(--brand);cursor:pointer}
+.muted{color:#9ca3af}
+.l2 td:first-child{padding-left:28px}.l2{background:#fafafa}
+.l3{background:#f5f7fb}.l3 td:first-child{padding-left:48px}
+.flag{display:inline-block;font-size:12px;color:#b45309;background:#fffbeb;border:1px solid #fcd34d;border-radius:4px;padding:0 6px;margin-left:6px}
+.tip{position:absolute;z-index:20;background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap}
+.warnbar{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:6px;padding:8px 12px;font-size:13px;margin-bottom:14px}
+.infobar{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:6px;padding:8px 12px;font-size:13px;margin:12px 0}
+.modal{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:inline-block;vertical-align:top}
+.modal .mh{padding:12px 18px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+.modal .mb{padding:16px 18px}.modal .mf{padding:12px 18px;border-top:1px solid var(--line);text-align:right}
+.modal .mf .btn{margin-left:8px}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:8px 12px;font-size:13px;margin-bottom:12px}
+.kv .k{color:var(--sub)}
+.row{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.sec{font-weight:600;margin:14px 0 8px}
+.scroll{max-height:180px;overflow:auto}
+.hover{display:inline-block;position:relative}.tipbox{background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap;margin-top:6px;display:inline-block}
+.wide{overflow:auto}.st-wait{color:#b45309}.st-done{color:#16a34a}.gray{color:#6b7280;font-size:12px;margin-top:4px}
+.file{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:2px 8px;margin:2px 6px 2px 0;font-size:12px;background:#f9fafb}
+.upload{display:inline-block;border:1px dashed #9ca3af;border-radius:6px;padding:6px 14px;font-size:12px;color:var(--sub)}
+</style>
+
+<style>
+.ov{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:10px}
+.ov div{border:1px solid var(--line);border-radius:6px;padding:8px 12px}
+.ov .k{color:var(--sub);font-size:12px}.ov .v{font-size:16px;font-weight:600}
+.unit{font-size:12px;color:var(--sub);margin:6px 0}
+.miss{color:#6b7280;font-size:12px}
+.drawer{margin-left:auto;width:980px;border-left:1px solid var(--line);box-shadow:-8px 0 24px rgba(0,0,0,.08);background:#fff}
+.drawer .dh{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-weight:600}
+.drawer .db{padding:14px 18px}
+.two{line-height:1.3}.two .o{color:#9ca3af;font-size:12px}
+.ok{color:#16a34a}.no{color:#dc2626}
+.tag{font-size:12px;color:#6b7280;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin-left:6px}
+</style>
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>利润中心 · 默认态</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-10-030～R-10-041 / G-10-001、G-10-015、G-10-018</span></div>
+<div class=&quot;canvas pc&quot;>
+  <div class=&quot;hd&quot;><h1>利润中心</h1><span class=&quot;state-tag&quot;>默认态</span></div>
+  <div class=&quot;bd&quot;>
+<div class=&quot;toolbar modified&quot; data-note=&quot;1&quot;>
+  <span class=&quot;sel&quot; style=&quot;min-width:260px&quot;>🔍 账户名称 / 账户ID / 客户名称</span>
+  <span>账户系统：</span><span class=&quot;sel&quot;>全部</span>
+  <span>结算期：</span><span class=&quot;sel&quot;>2026-09-01 至 2026-09-30</span>
+  <span>销售（当前）：</span><span class=&quot;sel&quot;>全部</span>
+  <span>优化师（当前）：</span><span class=&quot;sel&quot;>全部</span>
+  <span class=&quot;changed&quot; data-note=&quot;2&quot; style=&quot;padding:2px 4px&quot;>状态：<span class=&quot;sel&quot; style=&quot;min-width:110px&quot;>全部</span></span>
+  <span class=&quot;removed&quot;>货币展示：人民币 / 美元</span><span class=&quot;removed&quot;>汇率配置</span> <!-- alias-ok -->
+</div><div class=&quot;gray&quot; style=&quot;margin:-8px 0 12px&quot;>按当前归属筛选；提成按历史归属，以提成中心为准</div><div class=&quot;changed&quot; data-note=&quot;3&quot; style=&quot;padding:8px&quot;>
+<div class=&quot;ov&quot;>
+<div><div class=&quot;k&quot;>消耗</div><div class=&quot;v&quot;>236,305.30</div></div>
+<div><div class=&quot;k&quot;>税费</div><div class=&quot;v&quot;>13,653.60</div></div>
+<div><div class=&quot;k&quot;>毛利润</div><div class=&quot;v&quot;>84,094.35</div></div>
+<div><div class=&quot;k&quot;>渠道统计金额</div><div class=&quot;v&quot;>171,120.00</div></div>
+<div><div class=&quot;k&quot;>服务费</div><div class=&quot;v&quot;>10,108.87</div></div>
+<div><div class=&quot;k&quot;>渠道返点</div><div class=&quot;v&quot;>-</div></div>
+<div><div class=&quot;k&quot;>客情费用</div><div class=&quot;v&quot;>1,422.40</div></div>
+<div><div class=&quot;k&quot;>客户返点</div><div class=&quot;v&quot;>2,773.50</div></div>
+<div><div class=&quot;k&quot;>手续费</div><div class=&quot;v&quot;>503.94</div></div>
+<div><div class=&quot;k&quot;>公司承担服务费税费</div><div class=&quot;v&quot;>153.58</div></div>
+<div><div class=&quot;k&quot;>算没算完</div><div class=&quot;v&quot;>共 4 个账户月，已算完 0 个</div></div>
+</div>
+<div class=&quot;warnbar&quot; style=&quot;margin:0&quot;>有 1 条记录缺少汇率，未计入概览<br>有 1 条记录渠道统计金额未到，毛利润未扣渠道成本</div>
+</div><div class=&quot;unit&quot;>金额单位：人民币</div>
+<div class=&quot;wide&quot;><table><thead><tr><th>账户名称</th><th>客户名称</th><th>销售（当前）</th><th>优化师（当前）</th><th class=num>消耗</th><th class=num>税费</th><th class=num>服务费税费</th><th class=num>公司承担服务费税费</th><th class=num>服务费</th><th class=num>渠道统计金额</th><th class=num>客情费用</th><th class=num>客户返点</th><th class=num>手续费</th><th class=num>毛利润</th><th class=&quot;changed&quot; data-note=&quot;4&quot;>状态</th><th>账户系统</th><th>结算期</th><th class=&quot;changed&quot; data-note=&quot;5&quot;>操作</th></tr></thead><tbody>
+<tr><td>橙子-iOS-CN</td><td>橙子出行科技有限公司</td><td>李娜</td><td>陈思远</td><td class=&quot;num&quot;>142,240.00</td><td class=&quot;num&quot;>8,534.40</td><td class=&quot;num&quot;>426.72</td><td class=&quot;num&quot;>0.00</td><td class=&quot;num&quot;>7,112.00</td><td class=&quot;num&quot;>121,210.00</td><td class=&quot;num&quot;>1,422.40</td><td class=&quot;num&quot;>2,133.60</td><td class=&quot;num&quot;>315.83</td><td class=&quot;num&quot;>32,804.57</td><td>计算中<div class=&quot;miss&quot;>渠道未付完</div></td><td>苹果ASA</td><td>2026-09-01 至 2026-09-30</td><td><span class=&quot;link&quot;>详情</span></td></tr><tr><td>橙子-iOS-HK</td><td>橙子出行科技有限公司</td><td>李娜</td><td>周宁</td><td class=&quot;num&quot;>85,320.00</td><td class=&quot;num&quot;>5,119.20</td><td class=&quot;num&quot;>0.00</td><td class=&quot;num&quot;>153.58</td><td class=&quot;num&quot;>2,559.60</td><td class=&quot;num&quot;>49,910.00</td><td class=&quot;num&quot;>0.00</td><td class=&quot;num&quot;>639.90</td><td class=&quot;num&quot;>188.11</td><td class=&quot;num&quot;>42,107.21</td><td>计算中<div class=&quot;miss&quot;>返点或客情未结完、渠道未付完</div></td><td>苹果ASA</td><td>2026-09-01 至 2026-09-30</td><td><span class=&quot;link&quot;>详情</span></td></tr><tr><td>蓝帆-iOS-SG</td><td>蓝帆科技有限公司</td><td>张伟</td><td>周宁</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>0.00</td><td class=&quot;num&quot;>-</td><td>计算中<div class=&quot;miss&quot;>客户未收完、渠道未付完、缺少汇率</div></td><td>苹果ASA</td><td>2026-09-01 至 2026-09-30</td><td><span class=&quot;link&quot;>详情</span></td></tr><tr><td>OfferGo</td><td>Kredi 科技有限公司</td><td>王敏</td><td>陈思远</td><td class=&quot;num&quot;>8,745.30</td><td class=&quot;num&quot;>0.00</td><td class=&quot;num&quot;>0.00</td><td class=&quot;num&quot;>0.00</td><td class=&quot;num&quot;>437.27</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>0.00</td><td class=&quot;num&quot;>0.00</td><td class=&quot;num&quot;>0.00</td><td class=&quot;num&quot;>9,182.57<div class=&quot;miss&quot;>未含渠道成本</div></td><td>计算中<div class=&quot;miss&quot;>渠道未付完</div></td><td>亨利-出海</td><td>2026-09-01 至 2026-09-30</td><td><span class=&quot;link&quot;>详情</span></td></tr>
+</tbody></table></div>
+<div style=&quot;text-align:right;margin-top:10px;font-size:13px;color:var(--sub)&quot;>共 4 条　10条/每页 ▾　‹ 1 ›</div>
+  </div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul>
+<li><span class=&quot;badge&quot;>1</span>搜索按账户名称 / 账户ID / 客户名称；筛选 账户系统、结算期、销售、优化师（现有用户，不再有「待结算 / 已结算」）；不跟顶栏账户系统切换；去掉「货币展示」和「汇率配置」，只展示人民币（R-10-030、R-10-033、R-10-035、R-10-036、R-10-010）</li>
+<li><span class=&quot;badge&quot;>2</span>新增「状态」筛选：全部 / 计算中 / 已算完（R-10-033）</li>
+<li><span class=&quot;badge&quot;>3</span>数据概览按全部筛选结果汇总 10 项（人民币，含公司承担服务费税费），「-」不计；加「共 N 个账户月，已算完 M 个」；缺汇率的记录不计入并提示；渠道未到的照常计入并提示（R-10-040、R-10-041、R-10-015）</li>
+<li><span class=&quot;badge&quot;>4</span>状态 计算中 / 已算完，系统自动判断；计算中下方灰字列还差的（含「缺少汇率」）；当月行「计算中」旁悬浮实时预估提示（R-10-021、R-10-022）</li>
+<li><span class=&quot;badge&quot;>5</span>新增右固定「详情」，打开详情抽屉（R-10-050）</li>
+<li>列头「销售（当前）」「优化师（当前）」，筛选栏下注明与 11 口径不同（R-10-031、R-10-033、R-10-035）；手续费 = 手续费（09）+ 改应付差额（R-10-007）；OfferGo 毛利润旁「未含渠道成本」（R-10-005）</li>
+<li>示例数据：橙子两行同 G-10-001、G-10-002（渠道统计金额已按共享订单分摊，R-10-006）；蓝帆-iOS-SG 是 USDT 账户、取不到汇率显示「-」（G-10-008）；OfferGo 渠道统计金额「-」、毛利按 0（G-10-013）</li>
+</ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/01-利润列表.html</span><span>v2.1.0 · 2026-10-21</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<figure class="mock" data-mode="pc" id="mock-2">
+  <figcaption><span class="tag">示意 2</span>利润中心列表（空态）<span class="src">mocks/02-空态.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="利润中心列表（空态）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 利润中心 · 空态</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:visible}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.dis{background:#e5e7eb;border-color:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+.field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+.input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+.err-tip{color:var(--new);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;white-space:nowrap}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+td.num,th.num{text-align:right}
+.empty{padding:48px;text-align:center;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.tabs{display:flex;gap:0;margin-bottom:14px}.tabs span{padding:6px 18px;border:1px solid var(--line);font-size:13px}
+.tabs span.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.toolbar .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;min-width:150px;background:#fff}
+.toolbar .grow{flex:1}
+.link{color:var(--brand);cursor:pointer}
+.muted{color:#9ca3af}
+.l2 td:first-child{padding-left:28px}.l2{background:#fafafa}
+.l3{background:#f5f7fb}.l3 td:first-child{padding-left:48px}
+.flag{display:inline-block;font-size:12px;color:#b45309;background:#fffbeb;border:1px solid #fcd34d;border-radius:4px;padding:0 6px;margin-left:6px}
+.tip{position:absolute;z-index:20;background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap}
+.warnbar{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:6px;padding:8px 12px;font-size:13px;margin-bottom:14px}
+.infobar{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:6px;padding:8px 12px;font-size:13px;margin:12px 0}
+.modal{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:inline-block;vertical-align:top}
+.modal .mh{padding:12px 18px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+.modal .mb{padding:16px 18px}.modal .mf{padding:12px 18px;border-top:1px solid var(--line);text-align:right}
+.modal .mf .btn{margin-left:8px}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:8px 12px;font-size:13px;margin-bottom:12px}
+.kv .k{color:var(--sub)}
+.row{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.sec{font-weight:600;margin:14px 0 8px}
+.scroll{max-height:180px;overflow:auto}
+.hover{display:inline-block;position:relative}.tipbox{background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap;margin-top:6px;display:inline-block}
+.wide{overflow:auto}.st-wait{color:#b45309}.st-done{color:#16a34a}.gray{color:#6b7280;font-size:12px;margin-top:4px}
+.file{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:2px 8px;margin:2px 6px 2px 0;font-size:12px;background:#f9fafb}
+.upload{display:inline-block;border:1px dashed #9ca3af;border-radius:6px;padding:6px 14px;font-size:12px;color:var(--sub)}
+</style>
+
+<style>
+.ov{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:10px}
+.ov div{border:1px solid var(--line);border-radius:6px;padding:8px 12px}
+.ov .k{color:var(--sub);font-size:12px}.ov .v{font-size:16px;font-weight:600}
+.unit{font-size:12px;color:var(--sub);margin:6px 0}
+.miss{color:#6b7280;font-size:12px}
+.drawer{margin-left:auto;width:980px;border-left:1px solid var(--line);box-shadow:-8px 0 24px rgba(0,0,0,.08);background:#fff}
+.drawer .dh{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-weight:600}
+.drawer .db{padding:14px 18px}
+.two{line-height:1.3}.two .o{color:#9ca3af;font-size:12px}
+.ok{color:#16a34a}.no{color:#dc2626}
+.tag{font-size:12px;color:#6b7280;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin-left:6px}
+</style>
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>利润中心 · 空态</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-10-001、R-10-034 / G-10-017</span></div>
+<div class=&quot;canvas pc&quot;>
+  <div class=&quot;hd&quot;><h1>利润中心</h1><span class=&quot;state-tag&quot;>空态</span></div>
+  <div class=&quot;bd&quot;>
+<div class=&quot;toolbar modified&quot; data-note=&quot;1&quot;>
+  <span class=&quot;sel&quot; style=&quot;min-width:260px&quot;>🔍 账户名称 / 账户ID / 客户名称</span>
+  <span>账户系统：</span><span class=&quot;sel&quot;>全部</span>
+  <span>结算期：</span><span class=&quot;sel&quot;>全部</span>
+  <span>销售（当前）：</span><span class=&quot;sel&quot;>全部</span>
+  <span>优化师（当前）：</span><span class=&quot;sel&quot;>全部</span>
+  <span class=&quot;changed&quot; data-note=&quot;2&quot; style=&quot;padding:2px 4px&quot;>状态：<span class=&quot;sel&quot; style=&quot;min-width:110px&quot;>全部</span></span>
+  <span class=&quot;removed&quot;>货币展示：人民币 / 美元</span><span class=&quot;removed&quot;>汇率配置</span> <!-- alias-ok -->
+</div>
+<div class=&quot;ov&quot;><div><div class=&quot;k&quot;>消耗</div><div class=&quot;v&quot;>-</div></div><div><div class=&quot;k&quot;>税费</div><div class=&quot;v&quot;>-</div></div><div><div class=&quot;k&quot;>毛利润</div><div class=&quot;v&quot;>-</div></div><div><div class=&quot;k&quot;>渠道统计金额</div><div class=&quot;v&quot;>-</div></div><div><div class=&quot;k&quot;>服务费</div><div class=&quot;v&quot;>-</div></div><div><div class=&quot;k&quot;>渠道返点</div><div class=&quot;v&quot;>-</div></div><div><div class=&quot;k&quot;>客情费用</div><div class=&quot;v&quot;>-</div></div><div><div class=&quot;k&quot;>客户返点</div><div class=&quot;v&quot;>-</div></div><div><div class=&quot;k&quot;>手续费</div><div class=&quot;v&quot;>-</div></div><div><div class=&quot;k&quot;>公司承担服务费税费</div><div class=&quot;v&quot;>-</div></div><div><div class=&quot;k&quot;>算没算完</div><div class=&quot;v&quot;>共 0 个账户月，已算完 0 个</div></div></div>
+<div class=&quot;unit&quot;>金额单位：人民币</div>
+<table><thead><tr><th>账户名称</th><th>客户名称</th><th>销售（当前）</th><th>优化师（当前）</th><th>消耗</th><th>税费</th><th>服务费税费</th><th>公司承担服务费税费</th><th>服务费</th><th>渠道统计金额</th><th>客情费用</th><th>客户返点</th><th>手续费</th><th>毛利润</th><th>状态</th><th>账户系统</th><th>结算期</th><th>操作</th></tr></thead></table>
+<div class=&quot;empty changed&quot; data-note=&quot;1&quot;>暂无数据</div>
+  </div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul>
+<li><span class=&quot;badge&quot;>1</span>没有任何利润记录显示「暂无数据」；筛选后没有结果显示「没有符合条件的利润记录」；上线前月份不出行（R-10-034、R-10-001、G-10-017）</li>
+</ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/02-空态.html</span><span>v2.1.0 · 2026-10-20</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-5">2.5 数据概览</h3>
+<h4>2.5.1 业务规则</h4>
+<ul><li><strong>R-10-040</strong> 列表上方数据概览，对当前搜索筛选结果的全部记录（不只本页）汇总：消耗、税费、毛利润、渠道统计金额、服务费、渠道返点、客情费用、客户返点、手续费、公司承担服务费税费，人民币，格式同 R-10-032。「-」不计入，某项全部为「-」时显示「-」；毛利润为「-」的记录不计入任何一项，概览下方提示「有 K 条记录缺少汇率，未计入概览」；渠道统计金额为「-」且标「未含渠道成本」的记录照常计入，概览下方提示「有 K 条记录渠道统计金额未到，毛利润未扣渠道成本」；K = 0 时对应提示不显示。</li><li><strong>R-10-041</strong> 概览显示「共 N 个账户月，已算完 M 个」，N = 当前筛选结果的记录数，M = 其中已算完的（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-63</a>）。按客户搜索时，这句话就是这个客户的汇总。</li></ul>
+<h3 id="s3-6">2.6 详情</h3>
+<h4>2.6.1 功能描述</h4>
+<p>点行操作「详情」，右侧打开抽屉，看这一行的原币、汇率、来源、按日明细、手续费、共享订单分摊、完成情况和变化记录。只读。</p>
+<h4>2.6.2 业务规则</h4>
+<ul><li><strong>R-10-050</strong> 点行操作「详情」从右侧打开详情抽屉，标题「{账户名称} · {yyyy-mm} 利润详情」；顶部：客户名称、账户系统、原币、状态（计算中时带还差项）、计算时间（yyyy-mm-dd hh:mm:ss，Asia/Shanghai）；06 账单已锁定且之后该账户该月消耗有修正时，顶部灰字「账单已锁定，之后的消耗修正不计入收入；未进单的返点、客情按最新消耗计」（D-10-24）；抽屉只读。</li><li><strong>R-10-051</strong> 汇总表每项一行：项目、原币金额（带币种）、汇率口径（按日 / 结算期最后一天 {日期} 1 {原币} = x 人民币 / 收款完成日 / 审批通过日；汇率显示 4 位并注「按完整汇率计算」）、人民币、来源。项目依次：消耗、服务费、税费、服务费税费（标「不计入毛利」）、公司承担服务费税费（标「计入毛利」）、客户返点、客情费用、渠道统计金额、渠道返点（标「只展示」）、手续费（09）、改应付差额、毛利润；手续费（09）+ 改应付差额 = 列表手续费。来源（D-10-25）：</li><li>06 账单状态；07 计提项状态与是否实际金额；09 财务ID；改应付差额写「06 结算单 · 默认应付 x → 应付 y」；这些为纯文本。</li><li>08「系统抓取」或「上传 · {审批单号}」，审批单号可点、新页打开该审批单的审批详情唯一地址（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-026</a>）；能否查看按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-043</a> / <a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-082</a>，无权时由 12 审批详情页显示「无权限查看」；不做置灰。</li><li>08 该行有「金额有变化」时来源后加灰字「付款后有变化，已付快照 {08 账户快照值}」；系统抓取本期无订单视为付完的写「08 系统抓取 · 本期无订单，按 0 计」。</li><li><strong>R-10-052</strong> 按日明细表：只列该月有金额的日子，列 日期、汇率、消耗、服务费、税费、服务费税费、公司承担服务费税费、客户返点、客情费用、渠道统计金额、手续费、当日毛利润；每个金额格上行人民币、下行灰字原币；渠道统计金额、手续费出现在 R-10-011 规定落的那一天，手续费格 = 手续费（09）+ 改应付差额，人民币按各自汇率（汇率列显示当天所用汇率，当天没有、向前取最近一天时汇率后加灰字「（yyyy-mm-dd）」为实际取到的那天，同 06 / 07 / 08；手续费以手续费明细为准）；各天当日毛利润相加 = 月毛利润。给 11 的提成用当日毛利（R-10-072）不在这里展示。</li><li><strong>R-10-053</strong> 手续费明细：每张计入本月的已完成收款单一行，列 财务ID、交易类型、完成时间、本账户分摊（收款单币种）、汇率（完成日）、人民币；每个计入本月的改应付差额一行，交易类型「改应付差额」、财务ID 位显示结算单审批单号与「默认应付 x → 应付 y」、时间为已结算时间，其余列同上；表下合计「手续费（09）{x}」「改应付差额 {y}」「手续费 {x + y}」；都没有显示「本月没有手续费」。</li><li><strong>R-10-054</strong> 共享订单分摊：自接苹果的账户本月有共享订单时显示，每个共享订单一行：订单号、订单总计、挂的账户及其本月消耗（R-10-006 的消耗口径）、本账户分到的金额；表下注明「08 账户行合计 {x}，分摊后 {y}」；没有共享订单不显示这一块。</li><li><strong>R-10-055</strong> 完成情况：四行分别显示 客户收完 / 返点或客情结完 / 渠道付完 / 汇率齐全 的 ✓ 或 ✗ 与依据（账单状态；返点、客情计提项状态；渠道统计金额与账户系统行状态；缺汇率的日期与「原币→人民币」）。</li><li><strong>R-10-056</strong> 变化记录：按时间倒序列本记录的变化记录（R-10-024），列 时间、原因、触发单据、毛利润（变化前 → 变化后）、状态（变化前 → 变化后）；没有显示「暂无变化记录」。</li></ul>
+<h4>2.6.3 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>缺汇率</td><td>R-10-015</td><td>对应格「-」</td><td>顶部「未取到 USDT→人民币 汇率」；完成情况「汇率齐全」✗</td></tr><tr><td>没有手续费 / 没有共享订单</td><td>—</td><td>—</td><td>「本月没有手续费」/ 不显示分摊块</td></tr><tr><td>点来源审批单号但无查看资格</td><td><a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-043</a></td><td>新页打开审批详情唯一地址，由 12 处理（R-10-051）</td><td>审批详情页「无权限查看」</td></tr><tr><td>抽屉打开期间数据重算</td><td>—</td><td>不自动刷新，重新打开看最新（计算时间可对照）</td><td>计算时间</td></tr><tr><td>详情加载失败</td><td>—</td><td>沿用现有失败处理</td><td>现有失败提示与重试</td></tr></tbody></table></div>
+<figure class="mock" data-mode="pc" id="mock-3">
+  <figcaption><span class="tag">示意 3</span>利润详情抽屉（汇总、按日明细、手续费、共享订单分摊、完成情况）<span class="src">mocks/03-详情抽屉.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="利润详情抽屉（汇总、按日明细、手续费、共享订单分摊、完成情况）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 利润中心 · 详情抽屉</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:visible}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.dis{background:#e5e7eb;border-color:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+.field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+.input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+.err-tip{color:var(--new);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;white-space:nowrap}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+td.num,th.num{text-align:right}
+.empty{padding:48px;text-align:center;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.tabs{display:flex;gap:0;margin-bottom:14px}.tabs span{padding:6px 18px;border:1px solid var(--line);font-size:13px}
+.tabs span.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.toolbar .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;min-width:150px;background:#fff}
+.toolbar .grow{flex:1}
+.link{color:var(--brand);cursor:pointer}
+.muted{color:#9ca3af}
+.l2 td:first-child{padding-left:28px}.l2{background:#fafafa}
+.l3{background:#f5f7fb}.l3 td:first-child{padding-left:48px}
+.flag{display:inline-block;font-size:12px;color:#b45309;background:#fffbeb;border:1px solid #fcd34d;border-radius:4px;padding:0 6px;margin-left:6px}
+.tip{position:absolute;z-index:20;background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap}
+.warnbar{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:6px;padding:8px 12px;font-size:13px;margin-bottom:14px}
+.infobar{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:6px;padding:8px 12px;font-size:13px;margin:12px 0}
+.modal{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:inline-block;vertical-align:top}
+.modal .mh{padding:12px 18px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+.modal .mb{padding:16px 18px}.modal .mf{padding:12px 18px;border-top:1px solid var(--line);text-align:right}
+.modal .mf .btn{margin-left:8px}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:8px 12px;font-size:13px;margin-bottom:12px}
+.kv .k{color:var(--sub)}
+.row{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.sec{font-weight:600;margin:14px 0 8px}
+.scroll{max-height:180px;overflow:auto}
+.hover{display:inline-block;position:relative}.tipbox{background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap;margin-top:6px;display:inline-block}
+.wide{overflow:auto}.st-wait{color:#b45309}.st-done{color:#16a34a}.gray{color:#6b7280;font-size:12px;margin-top:4px}
+.file{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:2px 8px;margin:2px 6px 2px 0;font-size:12px;background:#f9fafb}
+.upload{display:inline-block;border:1px dashed #9ca3af;border-radius:6px;padding:6px 14px;font-size:12px;color:var(--sub)}
+</style>
+
+<style>
+.ov{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:10px}
+.ov div{border:1px solid var(--line);border-radius:6px;padding:8px 12px}
+.ov .k{color:var(--sub);font-size:12px}.ov .v{font-size:16px;font-weight:600}
+.unit{font-size:12px;color:var(--sub);margin:6px 0}
+.miss{color:#6b7280;font-size:12px}
+.drawer{margin-left:auto;width:980px;border-left:1px solid var(--line);box-shadow:-8px 0 24px rgba(0,0,0,.08);background:#fff}
+.drawer .dh{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-weight:600}
+.drawer .db{padding:14px 18px}
+.two{line-height:1.3}.two .o{color:#9ca3af;font-size:12px}
+.ok{color:#16a34a}.no{color:#dc2626}
+.tag{font-size:12px;color:#6b7280;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin-left:6px}
+</style>
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>利润中心 · 详情抽屉</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-10-050～R-10-056 / G-10-003、G-10-019</span></div>
+<div class=&quot;canvas pc&quot;>
+  <div class=&quot;hd&quot;><h1>利润中心</h1><span class=&quot;state-tag&quot;>详情抽屉</span></div>
+  <div class=&quot;bd&quot;>
+<div style=&quot;display:flex&quot;><div class=&quot;drawer changed&quot; data-note=&quot;1&quot;>
+<div class=&quot;dh&quot;><span>橙子-iOS-CN · 2026-09 利润详情</span><span>✕</span></div>
+<div class=&quot;db&quot;>
+<div class=&quot;kv&quot;><div class=&quot;k&quot;>客户名称</div><div>橙子出行科技有限公司</div><div class=&quot;k&quot;>账户系统</div><div>苹果ASA</div>
+<div class=&quot;k&quot;>原币</div><div>USD</div><div class=&quot;k&quot;>状态</div><div>计算中 <span class=&quot;miss&quot;>渠道未付完</span></div>
+<div class=&quot;k&quot;>计算时间</div><div>2026-10-26 09:12:05</div></div>
+<div class=&quot;sec changed&quot; data-note=&quot;2&quot; style=&quot;padding:2px 4px;display:inline-block&quot;>汇总</div>
+<div class=&quot;gray&quot;>汇率显示 4 位，按完整汇率计算，与显示汇率相乘可能相差 0.01</div>
+<table><thead><tr><th>项目</th><th class=&quot;num&quot;>原币金额</th><th>汇率口径</th><th class=&quot;num&quot;>人民币</th><th>来源</th></tr></thead><tbody>
+<tr><td>消耗</td><td class=&quot;num&quot;>20,000.00 USD</td><td>按日</td><td class=&quot;num&quot;>142,240.00</td><td>06 账单 2026-09 · 已结算</td></tr>
+<tr><td>服务费</td><td class=&quot;num&quot;>1,000.00 USD</td><td>按日</td><td class=&quot;num&quot;>7,112.00</td><td>06 账单 2026-09 · 已结算</td></tr>
+<tr><td>税费</td><td class=&quot;num&quot;>1,200.00 USD</td><td>按日</td><td class=&quot;num&quot;>8,534.40</td><td>06 账单 2026-09 · 已结算</td></tr>
+<tr><td>服务费税费<span class=&quot;tag&quot;>不计入毛利</span></td><td class=&quot;num&quot;>60.00 USD</td><td>按日</td><td class=&quot;num&quot;>426.72</td><td>06 账单 2026-09 · 已结算</td></tr>
+<tr class=&quot;changed&quot; data-note=&quot;8&quot;><td>公司承担服务费税费<span class=&quot;tag&quot;>计入毛利</span></td><td class=&quot;num&quot;>0.00 USD</td><td>按日</td><td class=&quot;num&quot;>0.00</td><td>06 规则 · 客户承担</td></tr>
+<tr><td>客户返点</td><td class=&quot;num&quot;>300.00 USD</td><td>按日</td><td class=&quot;num&quot;>2,133.60</td><td>07 已结算 · 实际金额</td></tr>
+<tr><td>客情费用</td><td class=&quot;num&quot;>200.00 USD</td><td>按日</td><td class=&quot;num&quot;>1,422.40</td><td>07 已结算 · 实际金额</td></tr>
+<tr><td>渠道统计金额</td><td class=&quot;num&quot;>17,000.00 USD</td><td>结算期最后一天 2026-09-30 1 USD = 7.1300 人民币</td><td class=&quot;num&quot;>121,210.00</td><td>08 系统抓取</td></tr>
+<tr><td>渠道返点<span class=&quot;tag&quot;>只展示</span></td><td class=&quot;num&quot;>-</td><td>-</td><td class=&quot;num&quot;>-</td><td>08 系统抓取</td></tr>
+<tr class=&quot;changed&quot; data-note=&quot;9&quot;><td>手续费（09）</td><td class=&quot;num&quot;>-62.67 人民币</td><td>收款完成日</td><td class=&quot;num&quot;>-62.67</td><td>09 SK-B</td></tr>
+<tr><td>改应付差额</td><td class=&quot;num&quot;>378.50 人民币</td><td>收款完成日</td><td class=&quot;num&quot;>378.50</td><td>06 结算单 · 默认应付 249,603.94 → 应付 249,000.00</td></tr>
+<tr><td><b>毛利润</b></td><td class=&quot;num&quot;>-</td><td>-</td><td class=&quot;num&quot;><b>32,804.57</b></td><td>D-00-34</td></tr>
+</tbody></table>
+<div class=&quot;sec changed&quot; data-note=&quot;3&quot; style=&quot;padding:2px 4px;display:inline-block&quot;>按日明细</div>
+<table><thead><tr><th>日期</th><th>汇率</th><th class=&quot;num&quot;>消耗</th><th class=&quot;num&quot;>服务费</th><th class=&quot;num&quot;>税费</th><th class=&quot;num&quot;>服务费税费</th><th class=&quot;num&quot;>公司承担服务费税费</th><th class=&quot;num&quot;>客户返点</th><th class=&quot;num&quot;>客情费用</th><th class=&quot;num&quot;>渠道统计金额</th><th class=&quot;num&quot;>手续费</th><th class=&quot;num&quot;>当日毛利润</th></tr></thead><tbody>
+<tr><td>2026-09-10</td><td>7.1000</td><td class=&quot;num&quot;><div class=&quot;two&quot;>56,800.00<div class=&quot;o&quot;>8,000.00 USD</div></div></td><td class=&quot;num&quot;><div class=&quot;two&quot;>2,840.00<div class=&quot;o&quot;>400.00 USD</div></div></td><td class=&quot;num&quot;><div class=&quot;two&quot;>3,408.00<div class=&quot;o&quot;>480.00 USD</div></div></td><td class=&quot;num&quot;><div class=&quot;two&quot;>170.40<div class=&quot;o&quot;>24.00 USD</div></div></td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;><div class=&quot;two&quot;>852.00<div class=&quot;o&quot;>120.00 USD</div></div></td><td class=&quot;num&quot;><div class=&quot;two&quot;>568.00<div class=&quot;o&quot;>80.00 USD</div></div></td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>61,628.00</td></tr>
+<tr><td>2026-09-20</td><td>7.1200</td><td class=&quot;num&quot;><div class=&quot;two&quot;>85,440.00<div class=&quot;o&quot;>12,000.00 USD</div></div></td><td class=&quot;num&quot;><div class=&quot;two&quot;>4,272.00<div class=&quot;o&quot;>600.00 USD</div></div></td><td class=&quot;num&quot;><div class=&quot;two&quot;>5,126.40<div class=&quot;o&quot;>720.00 USD</div></div></td><td class=&quot;num&quot;><div class=&quot;two&quot;>256.32<div class=&quot;o&quot;>36.00 USD</div></div></td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;><div class=&quot;two&quot;>1,281.60<div class=&quot;o&quot;>180.00 USD</div></div></td><td class=&quot;num&quot;><div class=&quot;two&quot;>854.40<div class=&quot;o&quot;>120.00 USD</div></div></td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>92,702.40</td></tr>
+<tr><td>2026-09-30</td><td>7.1300</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;>-</td><td class=&quot;num&quot;><div class=&quot;two&quot;>121,210.00<div class=&quot;o&quot;>17,000.00 USD</div></div></td><td class=&quot;num&quot;><div class=&quot;two&quot;>315.83<div class=&quot;o&quot;>315.83 人民币</div></div></td><td class=&quot;num&quot;>-121,525.83</td></tr>
+</tbody></table>
+<div class=&quot;sec changed&quot; data-note=&quot;4&quot; style=&quot;padding:2px 4px;display:inline-block&quot;>手续费明细</div>
+<table><thead><tr><th>财务ID</th><th>交易类型</th><th>完成时间</th><th class=&quot;num&quot;>本账户分摊</th><th>汇率（完成日）</th><th class=&quot;num&quot;>人民币</th></tr></thead><tbody>
+<tr><td>SK-B</td><td>结算单支付</td><td>2026-10-20 14:32:10</td><td class=&quot;num&quot;>-62.67 人民币</td><td>1</td><td class=&quot;num&quot;>-62.67</td></tr>
+<tr><td>SP-0920 · 默认应付 249,603.94 → 应付 249,000.00</td><td>改应付差额</td><td>2026-10-20 14:32:10</td><td class=&quot;num&quot;>378.50 人民币</td><td>1</td><td class=&quot;num&quot;>378.50</td></tr></tbody></table>
+<div class=&quot;gray&quot;>手续费（09）-62.67　改应付差额 378.50　手续费 315.83</div>
+<div class=&quot;sec changed&quot; data-note=&quot;5&quot; style=&quot;padding:2px 4px;display:inline-block&quot;>共享订单分摊</div>
+<table><thead><tr><th>订单号</th><th class=&quot;num&quot;>订单总计</th><th>挂的账户（本月消耗）</th><th class=&quot;num&quot;>本账户分到</th></tr></thead><tbody>
+<tr><td>PR-0902</td><td class=&quot;num&quot;>8,000.00 USD</td><td>橙子-iOS-CN 20,000.00；橙子-iOS-HK 12,000.00</td><td class=&quot;num&quot;>5,000.00 USD</td></tr></tbody></table>
+<div class=&quot;gray&quot;>08 账户行合计 20,000.00 USD，分摊后 17,000.00 USD</div>
+<div class=&quot;sec changed&quot; data-note=&quot;6&quot; style=&quot;padding:2px 4px;display:inline-block&quot;>完成情况</div>
+<table><tbody>
+<tr><td class=&quot;ok&quot;>✓ 客户收完</td><td>账单 2026-09 已结算</td></tr>
+<tr><td class=&quot;ok&quot;>✓ 返点或客情结完</td><td>客户返点 已结算；客情费用 已结算</td></tr>
+<tr><td class=&quot;no&quot;>✗ 渠道未付完</td><td>渠道统计金额 17,000.00 USD；苹果ASA 2026-09 行 待完成</td></tr>
+<tr><td class=&quot;ok&quot;>✓ 汇率齐全</td><td>该月用到的日子都取到 USD→人民币 汇率</td></tr></tbody></table>
+<div class=&quot;sec changed&quot; data-note=&quot;7&quot; style=&quot;padding:2px 4px;display:inline-block&quot;>变化记录</div>
+<div class=&quot;empty&quot; style=&quot;padding:16px&quot;>暂无变化记录</div>
+</div></div></div>
+  </div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul>
+<li><span class=&quot;badge&quot;>1</span>行操作「详情」从右侧打开抽屉，只读；顶部客户、账户系统、原币、状态（带还差项）、计算时间（R-10-050）</li>
+<li><span class=&quot;badge&quot;>2</span>汇总：每项原币、汇率口径、人民币、来源；服务费税费标「不计入毛利」、渠道返点标「只展示」（R-10-051、R-10-002）</li>
+<li><span class=&quot;badge&quot;>3</span>按日明细：只列有金额的日子，上行人民币、下行原币；渠道统计金额落在结算期最后一天、手续费落在规定的那天，各天相加 = 月毛利润（R-10-052、R-10-011～R-10-013）</li>
+<li><span class=&quot;badge&quot;>4</span>手续费明细：按收款单逐笔，汇率取完成日（R-10-053、R-10-007）</li>
+<li><span class=&quot;badge&quot;>5</span>共享订单分摊：按挂该订单的账户本月消耗占比，表下对照 08 账户行合计（R-10-054、R-10-006）</li>
+<li><span class=&quot;badge&quot;>6</span>完成情况：四件事 ✓ / ✗ 与依据，含「汇率齐全」（R-10-055、R-10-021）</li>
+<li><span class=&quot;badge&quot;>7</span>变化记录：已算完以后的重算留痕，倒序（R-10-056、R-10-024）</li>
+<li><span class=&quot;badge&quot;>8</span>新增「公司承担服务费税费」，计入毛利；C 为客户承担，0.00（R-10-008）</li>
+<li><span class=&quot;badge&quot;>9</span>手续费拆两行「手续费（09）」「改应付差额」，两者之和 = 列表手续费；手续费明细多一行改应付差额并带合计（R-10-007、R-10-009、R-10-051、R-10-053）。审批单号 SP-0920 仅示意；08 来源里的审批单号可点（R-10-051）</li>
+</ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/03-详情抽屉.html</span><span>v2.1.0 · 2026-10-21</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-7">2.7 权限</h3>
+<ul><li><strong>R-10-060</strong> 页面查看权限点「利润中心」（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-45</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-78</a>）：有才看得到菜单、能进入页面与详情；没有时菜单不显示，直接访问页面地址时在主布局内容区显示「无权限访问」，保留当前地址、侧栏与顶栏（<a class="xref" href="../13-导航与权限/review.html" title="13-导航与权限">R-13-005</a>）；权限 / 菜单加载失败（非登录失效）时内容区显示「加载失败，请刷新」和「重新加载」，不按全开放展示、不跳登录页（<a class="xref" href="../13-导航与权限/review.html" title="13-导航与权限">R-13-006</a>）；查询接口服务端同样校验；上线给角色配好后用户须重新登录才生效（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-78</a>）。</li><li><strong>R-10-061</strong> 数据范围：有「利润中心」即看全部账户，不按账户查看权限过滤，也不受客户数据范围隔离（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a>）限制（D-10-07，同 <a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-081</a>、<a class="xref" href="../09-收付款中心/review.html" title="09-收付款中心">R-09-061</a>）。</li></ul>
+<h3 id="s3-8">2.8 对外接口</h3>
+<ul><li><strong>R-10-070</strong> 给 11：按账户 × UTC0 自然日提供利润日明细的人民币各项、当日毛利润、提成用当日毛利（R-10-072）、当日服务费（不含税）；按账户 × 月提供利润记录的毛利润与状态（计算中 / 已算完），并同时提供计算中时还差哪几件（R-10-022，含缺少汇率）以及该月缺少数据的日期与缺的是什么（取不到汇率 R-10-015、来源没有该日数据），供 11 判断与展示（<a class="xref" href="../11-提成中心/review.html" title="11-提成中心">R-11-011</a>、<a class="xref" href="../11-提成中心/review.html" title="11-提成中心">R-11-031</a>）；数据变化按 R-10-023 重算后，11 取到的是新数（D-10-18）。</li><li><strong>R-10-071</strong> 本页只读，不回写任何来源单据，不生成任何单据。</li><li><strong>R-10-072</strong> 提成用当日毛利（只给 11，D-10-19）：在当日毛利润基础上，渠道统计金额与手续费（含改应付差额）不落在 R-10-011 规定的那一天，而是把该项该账户该月的人民币金额按该账户当月各日原币消耗占比拆到各天，每天四舍五入到 2 位，尾差落在最后一个有消耗的日子；当月没有消耗时仍落 R-10-011 规定的那一天；其余各项与当日毛利润相同；各天提成用当日毛利相加 = 月毛利润。本页列表与详情的展示、汇率口径不变。</li></ul>
+<h2 id="s4">3 验收标准</h2>
+<p>公共前置见 spec.yaml 文件头：上线月 2026-09；今天 2026-10-26；日汇率 9-10 7.1000、9-15 7.1100、9-20 7.1200、9-30 7.1300（1 USD = x 人民币）；橙子 C 9-10 消耗 8,000.00、9-20 消耗 12,000.00（服务费税费客户承担），D 9-15 消耗 12,000.00（服务费税费公司承担，税率 6.00%）；06 账单已结算，SK-B 默认应付 249,603.94 改为 249,000.00、实收 249,100.00，09 手续费 C -62.67、D -37.33；07 C 返点、客情已结算，D 返点待结算；苹果ASA 2026-09 渠道未付款。</p>
+<h3 id="s4-1">3.1 毛利口径与折算</h3>
+<ul><li><strong>G-10-001</strong>（验证 R-10-002、R-10-003、R-10-004、R-10-006～R-10-009、R-10-011～R-10-013）前置：公共前置。操作：王敏筛选结算期 2026-09，查看 C 行。期望：消耗 142,240.00、税费 8,534.40、服务费税费 426.72、公司承担服务费税费 0.00、服务费 7,112.00、渠道统计金额 121,210.00、客情费用 1,422.40、客户返点 2,133.60、手续费 315.83（手续费（09）-62.67 + 改应付差额 378.50）、毛利润 32,804.57（服务费税费没进毛利）。</li><li><strong>G-10-002</strong>（验证 R-10-002～R-10-004、R-10-006、R-10-008、R-10-013）前置：公共前置。操作：查看 D 行。期望：消耗 85,320.00、税费 5,119.20、服务费税费 0.00、公司承担服务费税费 153.58（9-15 服务费 360.00 × 6.00% = 21.60 USD × 7.1100）、服务费 2,559.60、渠道统计金额 49,910.00、客情费用 0.00、客户返点 639.90、手续费 188.11（-37.33 + 225.44）、毛利润 42,107.21。</li><li><strong>G-10-003</strong>（验证 R-10-006、R-10-011、R-10-054）前置：公共前置。操作：打开 C、D 2026-09 的详情，看渠道统计金额。期望：C 原币 17,000.00 USD（PR-0901 12,000.00 + PR-0902 分到 5,000.00），D 7,000.00 USD（PR-0902 分到 3,000.00 + PR-0903 4,000.00），两者相加 24,000.00 = 08 第一层；C 的共享订单分摊表一行 PR-0902：总计 8,000.00，C 20,000.00、D 12,000.00，本账户 5,000.00，注明「08 账户行合计 20,000.00，分摊后 17,000.00」；汇率口径「结算期最后一天 2026-09-30 1 USD = 7.1300 人民币」。</li><li><strong>G-10-004</strong>（验证 R-10-007、R-10-009）前置：公共前置（SK-B 默认应付 249,603.94 改成 249,000.00、实收 249,100.00）；另：苹果ASA 2026-09 渠道付款应付 24,000.00 USD，付款单到账金额 23,980.00 USD。操作：查看 C、D 2026-09 的手续费与渠道统计金额。期望：手续费（09）C -62.67、D -37.33；改应付差额 603.94 按账户行应收 21,960.00 : 13,080.00 拆为 D 225.44、C 378.50（应收最大的 C 取尾差）；手续费 C 315.83、D 188.11，合计 503.94 = 改前应收 249,603.94 − 实收 249,100.00；渠道统计金额仍为 121,210.00 / 49,910.00，到账少的 20.00 USD 不进毛利。</li><li><strong>G-10-005</strong>（验证 R-10-007、R-10-010）前置：星海账户充值收款单 SK-A 完成时间 2026-11-01 07:30:00（Asia/Shanghai），分摊 星海-iOS-US 17.03、星海-iOS-JP 10.57 人民币。操作：查看星海-iOS-US 的 2026-10、2026-11 行。期望：17.03 计入 2026-10 的手续费（UTC0 为 2026-10-31），2026-11 不含这笔；汇率 1（人民币）；改应付差额 0.00。</li><li><strong>G-10-006</strong>（验证 R-10-004、R-10-012、R-10-013）前置：公共前置；C 2026-09 客情费用进单时实际金额改为 199.99（系统计算 200.00：9-10 80.00、9-20 120.00）。操作：查看 C 行与详情按日明细。期望：客情费用 9-10 原币 80.00 / 人民币 568.00，9-20 原币 119.99（尾差在最后一天）/ 人民币 854.33；月客情费用 1,422.33；毛利润 32,804.64。</li><li><strong>G-10-007</strong>（验证 R-10-010、R-10-013）前置：公共前置；C 9-10 当天的汇率缺失，最近的是 9-08 的 7.0900。操作：查看 C 详情按日明细。期望：9-10 行汇率显示 7.0900，消耗人民币 56,720.00（8,000.00 × 7.0900）；月消耗 142,160.00。</li><li><strong>G-10-008</strong>（验证 R-10-015、R-10-021、R-10-040）前置：USDT 账户 U「蓝帆-iOS-SG」2026-09 只有 9-15 消耗 1,000.00 USDT，日汇率表里没有任何 USDT→人民币 汇率。操作：查看 U 行、概览与详情；之后技术补上 9-15 汇率 7.0500。期望：U 行消耗、服务费、税费、服务费税费、公司承担服务费税费、客户返点、客情费用、毛利润都为「-」；状态计算中，还差项含「缺少汇率」，详情完成情况「汇率齐全」✗ 2026-09-15 USDT→人民币；概览不计入 U，下方提示「有 1 条记录缺少汇率，未计入概览」；详情标「未取到 USDT→人民币 汇率」；补汇率后自动重算，消耗 7,050.00，提示消失，还差项不再有「缺少汇率」。</li><li><strong>G-10-024</strong>（验证 R-10-010、R-10-023）前置：接 G-10-010（C 2026-09 已算完、汇率已锁定；D 2026-09 计算中）。操作：2026-10-29 技术修订日汇率：9-15 7.1100 → 7.1150、9-20 7.1200 → 7.1250。期望：C 2026-09 不重算：9-20 汇率仍显示 7.1200，毛利润仍 32,804.57，状态仍已算完，没有新变化记录；D 2026-09 按新汇率重算：消耗 85,380.00、毛利润 42,172.06，仍计算中。</li></ul>
+<h3 id="s4-2">3.2 算没算完</h3>
+<ul><li><strong>G-10-009</strong>（验证 R-10-020～R-10-022）前置：公共前置。操作：查看 C、D 的 2026-09 与 C 的 2026-10 行状态；鼠标移到 C 2026-10 的「计算中」。期望：C 2026-09 计算中「渠道未付完」；D 2026-09 计算中「返点或客情未结完、渠道未付完」；C 2026-10 计算中「客户未收完、返点或客情未结完、渠道未付完」，悬浮「金额为实时预估，随消耗数据更新，数据截至 yyyy-mm-dd hh:mm（UTC0）」；2026-09 的「计算中」没有这条悬浮；没有任何手动确认按钮。</li><li><strong>G-10-010</strong>（验证 R-10-021、R-10-023、R-10-055）前置：公共前置。操作：08 苹果ASA 2026-09 发起渠道付款并审批通过，09 付款单确认汇款；再确认到账。期望：确认汇款后 C 仍计算中「渠道未付完」；确认到账后 C 2026-09 变已算完，详情完成情况四行都是 ✓；D 2026-09 仍计算中「返点或客情未结完」。</li><li><strong>G-10-011</strong>（验证 R-10-023、R-10-024、R-10-056）前置：接 G-10-010（C 2026-09 已算完）。操作：2026-10-28 苹果订单数据更新，PR-0901 总计 12,000.00 → 12,100.00。期望：C 渠道统计金额变 121,923.00、毛利润 32,091.57，状态仍已算完；详情变化记录 1 条：原因「渠道统计金额变化」、触发单据「订单数据更新」、毛利润 32,804.57 → 32,091.57、状态 已算完 → 已算完。</li><li><strong>G-10-012</strong>（验证 R-10-005、R-10-023、R-10-024）前置：Kredi Plus（亨利-出海，orgid 8527001）2026-09 已算完，渠道统计金额 17,526.76 USD。操作：08 修正文件 SP-0905（不含 8527001）审批通过入账。期望：Kredi Plus 渠道统计金额显示「-」、按 0 计，毛利润增加 124,965.80（17,526.76 × 7.1300），毛利润旁灰字「未含渠道成本」；状态退回计算中「渠道未付完」；变化记录：原因「渠道统计金额变化」、触发单据 SP-0905、状态 已算完 → 计算中。</li><li><strong>G-10-013</strong>（验证 R-10-005、R-10-021、R-10-040）前置：08 亨利-出海（上传类）2026-09 行已完成；OfferGo（8527002）2026-09 有消耗，渠道统计金额「-」。操作：查看 OfferGo 2026-09 行；搜索「OfferGo」看概览。期望：渠道统计金额「-」，毛利润按渠道统计金额 0 计算并带灰字「未含渠道成本」；状态计算中「渠道未付完」（其余三件已完成时也一样）；概览照常计入，下方提示「有 1 条记录渠道统计金额未到，毛利润未扣渠道成本」。</li><li><strong>G-10-014</strong>（验证 R-10-001、R-10-021）前置：SK-A 于 2026-10-20 10:00:00（Asia/Shanghai）完成；星海-iOS-JP 2026-10 没有消耗、没有渠道统计金额，只有 SK-A 分到的手续费 10.57（计入 2026-10）。操作：2026-10-26 查看；2026-11-02 出账后再看。期望：10-26 有这一行，手续费 10.57、毛利润 -10.57，计算中「客户未收完」；11-02 起变已算完（没有账户行、没有计提项、没有消耗和渠道数据，都视为完成；人民币汇率为 1）。</li><li><strong>G-10-023</strong>（验证 R-10-005、R-10-021、R-10-024、R-10-051）前置：苹果ASA（系统抓取）2026-09 行已完成（接 G-10-010）；账户 E「青柠-iOS-TH」（苹果ASA，USD）2026-09 只有 9-12 消耗 1,000.00，没有任何订单，所在账单已结算，没有计提项。操作：查看 E 2026-09 行与详情；2026-10-28 一张只挂 E 的订单 PR-0911 总计 500.00 入账后再看。期望：订单到之前：渠道统计金额「-」、按 0 计，毛利润旁不显示「未含渠道成本」；状态已算完；详情完成情况渠道付完 ✓，来源「08 系统抓取 · 本期无订单，按 0 计」。订单到之后：渠道统计金额 3,565.00（500.00 × 7.1300），毛利润减少 3,565.00，状态仍已算完，变化记录 1 条（原因「渠道统计金额变化」、状态 已算完 → 已算完）。</li></ul>
+<h3 id="s4-3">3.3 列表与概览</h3>
+<ul><li><strong>G-10-015</strong>（验证 R-10-030～R-10-032、R-10-034、R-10-036）前置：公共前置；另有 G-10-014 的星海-iOS-JP 2026-10。操作：王敏进入利润中心，结算期选 2026-09，搜索「橙子」；再把结算期改 2026-10、搜索「星海-iOS-JP」。期望：两行按 橙子-iOS-CN、橙子-iOS-HK 排；列顺序同 R-10-031，列头为「销售（当前）」「优化师（当前）」，账户名称左固定、操作「详情」右固定；表头上方「金额单位：人民币」，金额不带币种；结算期「2026-09-01 至 2026-09-30」；星海-iOS-JP 毛利润「-10.57」不标红；页面没有「货币展示」切换和「汇率配置」按钮；顶栏账户系统切换后列表不变。</li><li><strong>G-10-016</strong>（验证 R-10-033、R-10-035）前置：公共前置；2026-10-26 橙子的销售由李娜改为张伟；优化师周宁的账号已禁用（仍是 D 的当前优化师）。操作：看筛选栏；筛选销售 张伟；再筛选优化师 周宁；再筛选状态 已算完。期望：筛选栏下灰字「按当前归属筛选；提成按历史归属，以提成中心为准」；优化师下拉在启用用户后面有「周宁（已禁用）」，选了别的条件后候选不变；销售 张伟 时出现 C、D 的 2026-09 与 2026-10 行，销售列显示张伟（历史月份也是当前值）；优化师 周宁 时只有 D 的行；状态 已算完 时显示「没有符合条件的利润记录」；销售、优化师下拉没有「待结算 / 已结算」。</li><li><strong>G-10-017</strong>（验证 R-10-001、R-10-034）前置：上线月 2026-09；C 2026-08 有消耗 4,000.00；另一新环境没有任何利润记录。操作：查看结算期下拉与列表；打开新环境。期望：结算期下拉没有 2026-08，列表没有 C 2026-08 行；新环境显示「暂无数据」。</li><li><strong>G-10-018</strong>（验证 R-10-040、R-10-041）前置：公共前置；结算期 2026-09，搜索「橙子」。操作：查看数据概览。期望：消耗 227,560.00、税费 13,653.60、毛利润 74,911.78、渠道统计金额 171,120.00、服务费 9,671.60、渠道返点「-」、客情费用 1,422.40、客户返点 2,773.50、手续费 503.94、公司承担服务费税费 153.58；「共 2 个账户月，已算完 0 个」；没有「缺少汇率」「渠道统计金额未到」提示；每页条数改成 10 以外的值，概览不变。</li></ul>
+<h3 id="s4-4">3.4 详情、权限与接口</h3>
+<ul><li><strong>G-10-019</strong>（验证 R-10-050～R-10-053、R-10-055、R-10-056）前置：公共前置。操作：点 C 2026-09 的「详情」。期望：抽屉标题「橙子-iOS-CN · 2026-09 利润详情」；汇总表消耗 20,000.00 USD / 按日 / 142,240.00，服务费税费标「不计入毛利」，公司承担服务费税费 0.00 标「计入毛利」，渠道返点「-」标「只展示」，手续费（09）-62.67 来源 SK-B 的财务ID，改应付差额 378.50 来源「06 结算单 · 默认应付 249,603.94 → 应付 249,000.00」；汇率显示 4 位并注「按完整汇率计算」；按日明细 3 行：9-10 汇率 7.1000、消耗 56,800.00（8,000.00 USD）、当日毛利润 61,628.00，9-20 汇率 7.1200、当日毛利润 92,702.40，9-30 汇率 7.1300、渠道统计金额 121,210.00（17,000.00 USD）、手续费 315.83、当日毛利润 -121,525.83；手续费明细 2 行：SK-B 结算单支付 -62.67、改应付差额 378.50，表下「手续费（09）-62.67」「改应付差额 378.50」「手续费 315.83」；完成情况 ✓ ✓ ✗ ✓；变化记录「暂无变化记录」。</li><li><strong>G-10-025</strong>（验证 R-10-006、R-10-050）前置：公共前置（06 橙子 2026-09 账单已结算、已锁定）。操作：2026-10-27 C 9-20 消耗修正 12,000.00 → 12,500.00；查看 C、D 2026-09 行与 C 详情。期望：C 消耗仍 142,240.00，PR-0902 仍按 20,000.00 : 12,000.00 分摊（C 5,000.00、D 3,000.00）；C 详情顶部灰字「账单已锁定，之后的消耗修正不计入收入；未进单的返点、客情按最新消耗计」；D 详情没有这句。</li><li><strong>G-10-026</strong>（验证 R-10-051）前置：接 G-10-011（C 2026-09 付款后订单有变化，08 该行「金额有变化」）与 G-10-012（Kredi Plus 来源 SP-0905）；赵磊不是 SP-0905 的申请人 / 审批人，也没有该单查看资格。操作：赵磊打开 C、Kredi Plus 2026-09 详情，点 SP-0905；王敏（SP-0905 的审批人）打开同一详情点 SP-0905。期望：C 渠道统计金额来源「08 系统抓取」后灰字「付款后有变化，已付快照 20,000.00 USD」；Kredi Plus 来源「08 上传 · SP-0905」，SP-0905 可点，赵磊点后新页进入该单审批详情唯一地址，页面显示「无权限查看」；王敏点后可正常查看审批详情；06 账单、07 计提项、09 财务ID 都不是链接。</li><li><strong>G-10-020</strong>（验证 R-10-060、R-10-061）前置：公共前置。操作：钱磊进入利润中心；孙婷直接访问页面地址、直接调查询接口。期望：钱磊能看到 C、D 两行和全部金额（不按账户查看权限过滤）；孙婷菜单没有利润中心，直接访问时内容区显示「无权限访问」、地址栏仍是利润中心地址、侧栏与顶栏保留，接口被拒。</li><li><strong>G-10-021</strong>（验证 R-10-011、R-10-070、R-10-072）前置：公共前置。操作：11 取 C 2026-09 的日数据。期望：当日毛利润：9-10 61,628.00、9-20 92,702.40、9-30 -121,525.83（渠道统计金额 121,210.00、手续费 315.83 落在结算期最后一天，对当日毛利影响 -121,210.00、-315.83）；提成用当日毛利：渠道统计金额按消耗 8,000.00 : 12,000.00 拆为 48,484.00 / 72,726.00、手续费拆为 126.33 / 189.50（尾差在 9-20），9-10 13,017.67、9-20 19,786.90、9-30 0.00；服务费 9-10 2,840.00、9-20 4,272.00；两组各自相加都 = 月毛利润 32,804.57。</li><li><strong>G-10-022</strong>（验证 R-10-015、R-10-022、R-10-070）前置：公共前置；另有 G-10-008 的 U「蓝帆-iOS-SG」2026-09（只有 9-15 消耗 1,000.00 USDT，日汇率表里没有任何 USDT→人民币 汇率）。操作：11 取 C、U 2026-09 的账户 × 月数据；之后技术补上 9-15 汇率 7.0500，11 再取 U。期望：C 状态计算中、还差「渠道未付完」、缺少数据的日期为空；U 状态计算中、还差项含「缺少汇率」，毛利润为空，缺少数据的日期 2026-09-15、缺的是「USDT→人民币 汇率」；补汇率后 U 还差项不再有「缺少汇率」、缺少数据的日期为空、毛利润有值。</li></ul>
+<h2 id="s5">4 变更影响面</h2>
+<div class="tw"><table><thead><tr><th>被影响对象</th><th>影响方式</th><th>处理动作</th><th>负责人</th></tr></thead><tbody><tr><td>06 账单</td><td>本页读账户行、状态、结算单默认应付与审批通过的应付；改应付差额并入本页手续费（D-10-02 改，2026-10-21）</td><td>06 需能给出每张结算单的默认应付（改前应收）与审批通过应付、各账户行应收；返点抵扣 / 余额抵扣 / 上期预付欠费 / 结转额行要能与账户行收入区分</td><td>06 / 技术</td></tr><tr><td>07 返点</td><td>本页读计提项金额与完成口径</td><td>无需改 07</td><td>—</td></tr><tr><td>08 渠道</td><td>本页读渠道统计金额与变化通知；共享订单在本页分摊；付完判定按 <a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-091</a>（含无订单、0.00 行）；详情要 08 账户已付快照值；行状态变化（<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-054</a>、<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-056</a>）触发本页重算（R-10-023）</td><td>08 <a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-091</a> 按 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-65</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-80</a> 改写后本页引用即可；08 <a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-024</a> 补「行状态变化（<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-054</a>、<a class="xref" href="../08-渠道对账/review.html" title="08-渠道对账">R-08-056</a>）也要通知 10」（闭环清单 B01，08 改）</td><td>08</td></tr><tr><td>09 收付款</td><td>手续费归月、付款差额不进毛利；09 手续费 ≠ 10 手续费（差改应付差额）是有意的</td><td>无需改 09</td><td>—</td></tr><tr><td>11 提成</td><td>读本页账户 × 日数据（含提成用当日毛利 R-10-072）与月状态（R-10-070）</td><td>11 <a class="xref" href="../11-提成中心/review.html" title="11-提成中心">R-11-010</a>、<a class="xref" href="../11-提成中心/review.html" title="11-提成中心">R-11-012</a> 已改引用</td><td>11（已同步）</td></tr><tr><td>13 权限</td><td>「利润中心」页面查看权限点（R-10-060，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-78</a>）</td><td>汇总</td><td>13</td></tr><tr><td>版本级</td><td><a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-34</a>（公式）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-65</a>（四件事）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-66</a>（汇率锁定例外）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-74</a>（日汇率）、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-80</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-81</a></td><td>index 子任务改写</td><td>总控</td></tr><tr><td>存量</td><td>上线前月份不出行；上线月 = 第一个在系统里付渠道款的结算期，06 / 07 / 08 / 10 / 11 共用（D-10-08、D-10-26，index S-18）</td><td>上线前定具体月份</td><td>用户 / 总控</td></tr></tbody></table></div>
+<p>假设：</p>
+<ul><li>06 / 07 能按日给出各自金额的逐日拆分（用户确认「技术的最细账单都是按日来的，返点、客情也都有日数据」），具体接口由技术核对。</li><li>公司承担服务费税费在预付日子要按分桶快照拆（R-10-008），技术评估为中等工作量（技术答复 T23）。</li><li>列表加载失败、超长文本省略沿用现有列表组件，由技术沿用现有方案。</li></ul>
+<h2 id="s6">5 非功能与埋点</h2>
+<ul><li>安全：查询接口服务端校验「利润中心」权限点（R-10-060）。</li><li>审计：变化记录只追加（R-10-024）。</li><li>性能：重算延迟、刷新频率由技术评估，不设数字。</li><li>埋点：本期无。</li><li>实现任务：T-10-001～T-10-008，见 spec.yaml。</li></ul>
+<h2 id="s7">6 开放问题</h2>
+<div class="tw"><table><thead><tr><th>编号</th><th>问题</th><th>卡谁 / 影响哪条</th><th>需谁回答</th><th>期望结论时间</th></tr></thead><tbody><tr><td>Q-10-01</td><td>【已关闭 2026-10-21 → <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-74</a>、R-10-010】日汇率数据源、USDT 覆盖、精度</td><td>—</td><td>技术（已答 T12）</td><td>—</td></tr><tr><td>Q-10-02</td><td>【已关闭 2026-10-21 → D-10-08、R-10-001】上线前月份、上线月是哪个月</td><td>—</td><td>用户（已定 D60）</td><td>—</td></tr><tr><td>Q-10-03</td><td>【已关闭 2026-10-21 → D-10-22、R-10-035】销售 / 优化师取当前值还是按归属</td><td>—</td><td>用户（已定 D92-10）</td><td>—</td></tr><tr><td>Q-10-04</td><td>【已关闭 2026-10-21】D-10-09～D-10-18 代定项已确认</td><td>—</td><td>用户</td><td>—</td></tr><tr><td>Q-10-05</td><td>财务确认：① 公司承担的服务费税费计入成本（会议清单 D17 的前提）；② 自接苹果的「税费」是我方要缴的销项税还是代收，要缴的话是否同额计入成本</td><td>R-10-008；不阻塞（确认前按 R-10-008）</td><td>财务（经总控）</td><td>上线前</td></tr></tbody></table></div>
+<h2 id="s8">7 附录</h2>
+<h3 id="s8-1">7.1 已定决策</h3>
+<div class="tw"><table><thead><tr><th>编号</th><th>决策点</th><th>结论</th><th>状态</th></tr></thead><tbody><tr><td>D-10-01</td><td>服务费税费与公司承担服务费税费</td><td>06 的服务费税费（客户承担）只展示；公司承担服务费税费计入成本</td><td>2026-10-21 用户定，会议清单 D17（前提财务确认，Q-10-05）</td></tr><tr><td>D-10-02</td><td>结算单应付改动差额</td><td>并入手续费：10 手续费 = 改前应收 − 实收，展示拆「手续费（09）」「改应付差额」两行</td><td>2026-10-21 用户定，会议清单 D16</td></tr><tr><td>D-10-03</td><td>共享订单</td><td>按消耗占比分摊，尾差给消耗最大的</td><td>已定（用户）</td></tr><tr><td>D-10-04</td><td>手续费归月</td><td>结算单支付 → 账单月；账户充值 → 收款完成月（UTC0）</td><td>已定（用户）</td></tr><tr><td>D-10-05</td><td>付款差额</td><td>不进毛利；汇兑损益不单列</td><td>已定（用户）</td></tr><tr><td>D-10-06</td><td>汇率取哪天</td><td>六项按日；渠道两项取结算期最后一天；手续费取完成日</td><td>已定（用户）</td></tr><tr><td>D-10-07</td><td>数据范围</td><td>「利润中心」权限点，看全部</td><td>已定（用户）</td></tr><tr><td>D-10-08</td><td>上线前月份</td><td>不出行；上线月 = 第一个在系统里付渠道款的结算期</td><td>已定（用户）；上线月定义 2026-10-21 会议清单 D60；共用范围见 D-10-26</td></tr><tr><td>D-10-09～D-10-18</td><td>粒度、列、筛选、概览、状态边界、逐日拆分、缺数据、详情、排序、给 11</td><td>见 spec.yaml decisions</td><td>由我代定，用户已确认（2026-10-21 Q-10-04 关闭，算已定）</td></tr><tr><td>D-10-19</td><td>11 截 0 的对象</td><td>给 11 的当日毛利里，渠道统计金额与手续费按当月各日消耗占比拆到各天</td><td>2026-10-21 用户定，会议清单 D15</td></tr><tr><td>D-10-20</td><td>已算完看不看汇率</td><td>加第四件事「汇率齐全」</td><td>2026-10-21 用户定，会议清单 D61</td></tr><tr><td>D-10-21</td><td>关账</td><td>不做通用关账；已算完时锁定汇率；锁定后才出现的业务日按重算当时的日汇率取，下次判为已算完时一起锁定</td><td>2026-10-21 用户定，会议清单 D110；锁定后新业务日 2026-10-22 用户与技术确认，闭环清单 B15</td></tr><tr><td>D-10-22</td><td>销售 / 优化师口径</td><td>维持当前值，列头标「（当前）」，注明与 11 不同</td><td>2026-10-21 用户定，会议清单 D92-10</td></tr><tr><td>D-10-23</td><td>渠道「-」与无订单账户</td><td>「未含渠道成本」与概览提示；系统抓取无订单视为付完</td><td>2026-10-21 会议清单 D108、D12-无订单账户；显示方式由我代定</td></tr><tr><td>D-10-24</td><td>账单锁定后的消耗修正</td><td>分摊消耗取快照；详情顶部提示</td><td>2026-10-21 会议清单 D109</td></tr><tr><td>D-10-25</td><td>详情来源</td><td>08 审批单号可点；已付快照灰字</td><td>2026-10-21 会议清单 D62、D12-来源展示</td></tr><tr><td>D-10-26</td><td>上线月对齐与没有账户行兜底</td><td>06 出账单、07 计提、08、10、11 从同一个上线月（index S-18）起算，共用一个配置；结算期 ≥ 上线月、该账户该月有消耗却没有 06 账户行时按「客户未收完」处理，不判已算完</td><td>2026-10-22 用户与技术确认，闭环清单 A01</td></tr><tr><td>D-10-27</td><td>重算触发补完成条件变化</td><td>08 行状态变化、0.00 行结算期结束后视为已完成、没有账户行次月 2 日视为客户收完，三者都触发重算，原因记「完成条件变化」</td><td>2026-10-22 用户与技术确认，闭环清单 B01</td></tr></tbody></table></div>
+<h3 id="s8-2">7.2 原型对照</h3>
+<div class="tw"><table><thead><tr><th>原型</th><th>本页处理</th></tr></thead><tbody><tr><td>利润中心.html:1955–1966「货币展示」人民币 / 美元</td><td>不做，只展示人民币（R-10-036）</td><td></td></tr><tr><td>利润中心.html:1974、3505 隐藏的「汇率配置」按钮与弹窗（结算期 / 对美汇率）</td><td>不做，用日汇率（R-10-010）</td></tr><tr><td>利润中心.html:1911–1943 销售、优化师选项「待结算 / 已结算」</td><td>残留，改为启用用户 + 已禁用用户（R-10-033）</td></tr><tr><td>利润中心.html:2335、2642 信息展示「审批」「草稿」两个隐藏状态</td><td>残留，不做（R-10-036）</td></tr><tr><td>利润中心.html:2054–2323 主表列</td><td>沿用，加「公司承担服务费税费」与操作「详情」（R-10-031）</td></tr><tr><td>利润中心.html:3338–3492 数据概览（毛利润等带「$」）</td><td>沿用 9 项 + 公司承担服务费税费，只人民币，加算完计数（R-10-040、R-10-041）</td></tr><tr><td>原型没有详情、没有状态说明</td><td>新增详情抽屉与还差项（R-10-022、R-10-050）</td></tr></tbody></table></div>
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('figure.mock').forEach(function (fig) {
+  fig.querySelectorAll('[data-w]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      fig.dataset.mode = btn.dataset.w;
+      fig.querySelectorAll('[data-w]').forEach(function (b) { b.classList.toggle('on', b === btn); });
+    });
+  });
+  var open = fig.querySelector('[data-open]');
+  if (open) open.addEventListener('click', function () {
+    var src = fig.querySelector('iframe').getAttribute('srcdoc');
+    var w = window.open('about:blank');
+    w.document.open(); w.document.write(src); w.document.close();
+  });
+});
+</script>
+</body>
+</html>

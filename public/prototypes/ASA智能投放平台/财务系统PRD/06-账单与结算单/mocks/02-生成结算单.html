@@ -1,0 +1,30 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>MOCK · 生成结算单弹窗 · 换币种 + 应付已改</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font:13px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#111827;background:#f3f4f6;padding-bottom:48px}
+.docbar{position:sticky;top:0;z-index:9;background:#3b82f6;color:#fff;padding:8px 20px;display:flex;gap:16px;flex-wrap:wrap}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:16px auto;width:1440px;max-width:calc(100% - 32px);border:1px solid #e5e7eb;border-radius:8px}
+.hd{padding:12px 20px;border-bottom:1px solid #e5e7eb;display:flex;gap:20px;align-items:center}.hd h1{font-size:16px}.tab{padding:2px 0;color:#6b7280}.tab.on{color:#3b82f6;border-bottom:2px solid #3b82f6}
+.bd{padding:16px 20px}.bar{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}.in{border:1px solid #e5e7eb;border-radius:6px;padding:5px 10px;min-width:150px;color:#6b7280}
+table{width:100%;border-collapse:collapse}th,td{border:1px solid #e5e7eb;padding:6px 8px;text-align:right;white-space:nowrap}th{background:#f9fafb;color:#6b7280;font-weight:600}td.l,th.l{text-align:left}
+tr.l2 td{background:#fafbff}tr.l3 td{background:#fcfcfc;color:#4b5563;font-size:12px}a{color:#2563eb;text-decoration:none}.tag{padding:1px 8px;border-radius:99px;font-size:12px}
+.t1{background:#f3f4f6}.t2{background:#fef3c7}.t4{background:#dcfce7}.warn{color:#b45309;font-size:12px}.mute{color:#9ca3af}
+.changed{position:relative;outline:2px dashed #dc2626;outline-offset:2px}.modified{position:relative;outline:2px dashed #2563eb;outline-offset:2px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-10px;left:-10px;width:18px;height:18px;border-radius:50%;background:#f59e0b;color:#fff;font-size:11px;line-height:18px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 32px);margin:12px auto;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:12px 20px}.legend li{list-style:none;padding:3px 0}
+.b{display:inline-block;width:18px;height:18px;border-radius:50%;background:#f59e0b;color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:6px}
+.foot{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:6px 20px}
+.dlg{width:980px;margin:0 auto;border:1px solid #d1d5db;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12)}.dlg .hd{justify-content:space-between}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 24px;margin-bottom:14px}.kv label{display:block;color:#6b7280;font-size:12px}.kv .v{padding:5px 10px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px}
+.kv .e{padding:5px 10px;border:1px solid #93c5fd;border-radius:6px;background:#fff}.req::after{content:"*";color:#dc2626;margin-left:3px}.btn{padding:6px 16px;border-radius:6px;border:1px solid #e5e7eb;background:#fff}.btn.p{background:#3b82f6;color:#fff;border-color:#3b82f6}
+</style></head><body>
+<div class="docbar"><b>生成结算单弹窗 · 换币种 + 应付已改</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-06-041～R-06-049 / G-06-016～G-06-018</span></div>
+<div class="canvas"><div class="bd" style="background:#6b728022;padding:28px"><div class="dlg" style="background:#fff"><div class="hd"><h1>生成结算单</h1><span class="mute">✕</span></div><div class="bd">
+<div class="grid"><div class="kv"><label>公司名称</label><div class="v">橙子出行科技有限公司</div></div><div class="kv"><label>结算期</label><div class="v">2026-09-01 至 2026-09-30</div></div><div class="kv"><label>预估应收金额</label><div class="v">35,040.00 USD</div></div>
+<div class="kv"><label>消耗金额</label><div class="v">32,000.00 USD</div></div><div class="kv"><label>服务费</label><div class="v">1,360.00 USD</div></div><div class="kv"><label>税费</label><div class="v">1,920.00 USD</div></div>
+<div class="kv"><label>服务费税费</label><div class="v">60.00 USD</div></div><div class="kv"><label>返点抵扣</label><div class="v">300.00 USD</div></div><div></div>
+<div class="kv modified" data-note="1"><label class="req">结算币种</label><div class="e">人民币 ▾</div><div class="mute" style="font-size:12px">汇率：1 USD = 7.1234 人民币（2026-10-05）</div></div>
+<div class="kv modified" data-note="2"><label class="req">应付金额</label><div class="e">249,000.00 人民币</div><div class="mute" style="font-size:12px">默认 249,603.94 人民币 · 已调整 -603.94</div></div>
+<div class="kv"><label class="req">付款主体</label><div class="e">橙子出行科技有限公司 ▾</div><div style="font-size:12px"><a>+ 新增付款主体</a></div></div>
+<div class="kv" style="grid-column:1/4"><label class="req">备注</label><div class="e" style="height:48px">客户协商抹零</div></div></div>
+<table><tr><th class="l">账户名称</th><th>消耗金额</th><th>服务费</th><th>税费</th><th>服务费税费</th><th>渠道统计金额</th><th>消耗差额</th><th>客户返点</th><th>应收金额</th><th class="l">返点时间范围</th></tr>
+<tr><td class="l">橙子-iOS-CN</td><td>20,000.00</td><td>1,000.00</td><td>1,200.00</td><td>60.00</td><td>20,000.00</td><td>0.00</td><td>300.00</td><td>21,960.00</td><td class="l">2026-09-01 至 2026-09-30</td></tr>
+<tr><td class="l">橙子-iOS-HK</td><td>12,000.00</td><td>360.00</td><td>720.00</td><td>0.00</td><td>12,000.00</td><td>0.00</td><td>-</td><td>13,080.00</td><td class="l">-</td></tr></table>
+<div style="text-align:right;margin-top:14px"><span class="btn p">提交审批</span></div></div></div></div></div><div class="legend"><b>图例</b><ul><li><span class="b">1</span>结算币种默认客户币种，与账单币种不同时显示当天日汇率（4 位，带取数日期），提交时按提交当天锁定（R-06-042、R-06-043，D-00-74）</li><li><span class="b">2</span>应付金额默认 = 预估应收 × 汇率，可改、≥ 0、2 位小数，改了须填备注；原型其他金额只读（R-06-041、R-06-044、R-06-046）</li></ul></div><div class="foot">06-账单与结算单/mocks/02-生成结算单.html · v2.1.0 · 2026-10-19</div></body></html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MOCK · 渠道对账 · 弹窗（换结算币种、有缺数据账户）</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:visible}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.dis{background:#e5e7eb;border-color:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+.field .req::after{content:"*";color:var(--new);margin-left:4px}
+.input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+.err-tip{color:var(--new);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;white-space:nowrap}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+td.num,th.num{text-align:right}
+.empty{padding:48px;text-align:center;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.tabs{display:flex;gap:0;margin-bottom:14px}.tabs span{padding:6px 18px;border:1px solid var(--line);font-size:13px}
+.tabs span.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.toolbar .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;min-width:150px;background:#fff}
+.toolbar .grow{flex:1}
+.link{color:var(--brand);cursor:pointer}
+.muted{color:#9ca3af}
+.l2 td:first-child{padding-left:28px}.l2{background:#fafafa}
+.l3{background:#f5f7fb}.l3 td:first-child{padding-left:48px}
+.flag{display:inline-block;font-size:12px;color:#b45309;background:#fffbeb;border:1px solid #fcd34d;border-radius:4px;padding:0 6px;margin-left:6px}
+.tip{position:absolute;z-index:20;background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap}
+.warnbar{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:6px;padding:8px 12px;font-size:13px;margin-bottom:14px}
+.infobar{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:6px;padding:8px 12px;font-size:13px;margin:12px 0}
+.modal{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:inline-block;vertical-align:top}
+.modal .mh{padding:12px 18px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+.modal .mb{padding:16px 18px}.modal .mf{padding:12px 18px;border-top:1px solid var(--line);text-align:right}
+.modal .mf .btn{margin-left:8px}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:8px 12px;font-size:13px;margin-bottom:12px}
+.kv .k{color:var(--sub)}
+.row{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.sec{font-weight:600;margin:14px 0 8px}
+.scroll{max-height:180px;overflow:auto}
+</style>
+</head>
+<body>
+<div class="docbar"><b>渠道对账中心 · 弹窗（换结算币种、有缺数据账户）</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-08-040～R-08-046 / G-08-016～G-08-019</span></div>
+<div class="canvas pc">
+  <div class="hd"><h1>渠道付款</h1><span class="state-tag">弹窗（换结算币种、有缺数据账户）</span></div>
+  <div class="bd">
+<div class="modal" style="width:900px">
+  <div class="mh"><span>渠道付款</span><span>✕</span></div>
+  <div class="mb">
+    <div class="warnbar changed" data-note="1">本结算期有 2 个有消耗的账户还没有渠道统计金额，应付金额不含这些账户</div>
+    <div class="kv">
+      <span class="k">结算期</span><span>2026-09-01 至 2026-09-30</span><span class="k">账户系统</span><span>亨利-出海</span>
+      <span class="k">小计</span><span>20,145.70 USD</span><span class="k">税费</span><span>0.00 USD</span>
+      <span class="k">渠道返点</span><span>2,618.94 USD</span><span class="k">总计</span><span>17,526.76 USD</span>
+      <span class="k">应付金额</span><span class="modified" data-note="2"><b>17,526.76 USD</b>（= 总计，不可改）</span><span class="k"><span class="removed">充值金额</span></span><span></span>
+    </div>
+    <div class="field changed" data-note="3" style="max-width:640px"><label class="req">结算币种</label><span class="input" style="display:block">人民币　▾（人民币 / USD / USDT，默认本行币种 USD）</span>
+      <div class="infobar">汇率：1 USD = 7.1234 人民币（2026-10-20）　日汇率四舍五入 4 位，提交时锁定<br>换算后应付金额：<b>124,850.12 人民币</b></div></div>
+    <div class="sec">账户明细</div>
+    <table><thead><tr><th>账户名称</th><th>orgid</th><th class="num">小计</th><th class="num">税费</th><th class="num">渠道返点</th><th class="num">总计</th></tr></thead>
+    <tbody>
+      <tr><td>Kredi Plus</td><td>8527001</td><td class="num">20,145.70 USD</td><td class="num">0.00 USD</td><td class="num">2,618.94 USD</td><td class="num">17,526.76 USD</td></tr>
+      <tr><td>Moma Live</td><td>8527003</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>
+      <tr><td>OfferGo</td><td>8527002</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>
+    </tbody></table>
+    <div class="field" style="margin-top:14px"><label>备注</label><span class="input" style="display:block;height:54px">请于 10 月底前付款</span></div>
+    <div class="err-tip">（取不到汇率时：未取到 USD→USDT 汇率，请稍后再试）</div>
+  </div>
+  <div class="mf"><span class="btn">取消</span><span class="btn primary">提交审批</span></div>
+</div>
+<p style="margin-top:14px;font-size:13px;color:var(--sub)">二次确认：「渠道付款需进行审批，是否提交审批单？」（取消 / 确定）。弹窗打开期间数据变化：不建单、弹窗不关，就地重载并标黄变化值，顶部「数据已更新，请核对后重新提交」（R-08-045）。</p>
+
+  </div>
+</div>
+<div class="legend"><h2>改动点说明</h2><ul>
+<li><span class="badge">1</span>新增缺数据提示：有消耗但没有渠道统计金额的账户数，不拦提交（R-08-043）</li>
+<li><span class="badge">2</span>应付金额 = 总计、不可改；原型「充值金额」去掉（R-08-041，D-08-06）</li>
+<li><span class="badge">3</span>新增结算币种；币种不同时显示汇率与换算后应付，汇率按提交当天锁定（R-08-042，D-00-62）</li>
+</ul></div>
+<div class="footbar"><span>MOCK · mocks/04-渠道付款.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>

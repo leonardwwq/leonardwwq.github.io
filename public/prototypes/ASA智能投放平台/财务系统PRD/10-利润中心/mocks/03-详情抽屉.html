@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MOCK · 利润中心 · 详情抽屉</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:visible}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.dis{background:#e5e7eb;border-color:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+.field .req::after{content:"*";color:var(--new);margin-left:4px}
+.input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+.err-tip{color:var(--new);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;white-space:nowrap}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+td.num,th.num{text-align:right}
+.empty{padding:48px;text-align:center;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.tabs{display:flex;gap:0;margin-bottom:14px}.tabs span{padding:6px 18px;border:1px solid var(--line);font-size:13px}
+.tabs span.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.toolbar .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;min-width:150px;background:#fff}
+.toolbar .grow{flex:1}
+.link{color:var(--brand);cursor:pointer}
+.muted{color:#9ca3af}
+.l2 td:first-child{padding-left:28px}.l2{background:#fafafa}
+.l3{background:#f5f7fb}.l3 td:first-child{padding-left:48px}
+.flag{display:inline-block;font-size:12px;color:#b45309;background:#fffbeb;border:1px solid #fcd34d;border-radius:4px;padding:0 6px;margin-left:6px}
+.tip{position:absolute;z-index:20;background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap}
+.warnbar{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:6px;padding:8px 12px;font-size:13px;margin-bottom:14px}
+.infobar{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:6px;padding:8px 12px;font-size:13px;margin:12px 0}
+.modal{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:inline-block;vertical-align:top}
+.modal .mh{padding:12px 18px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+.modal .mb{padding:16px 18px}.modal .mf{padding:12px 18px;border-top:1px solid var(--line);text-align:right}
+.modal .mf .btn{margin-left:8px}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:8px 12px;font-size:13px;margin-bottom:12px}
+.kv .k{color:var(--sub)}
+.row{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.sec{font-weight:600;margin:14px 0 8px}
+.scroll{max-height:180px;overflow:auto}
+.hover{display:inline-block;position:relative}.tipbox{background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap;margin-top:6px;display:inline-block}
+.wide{overflow:auto}.st-wait{color:#b45309}.st-done{color:#16a34a}.gray{color:#6b7280;font-size:12px;margin-top:4px}
+.file{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:2px 8px;margin:2px 6px 2px 0;font-size:12px;background:#f9fafb}
+.upload{display:inline-block;border:1px dashed #9ca3af;border-radius:6px;padding:6px 14px;font-size:12px;color:var(--sub)}
+</style>
+
+<style>
+.ov{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:10px}
+.ov div{border:1px solid var(--line);border-radius:6px;padding:8px 12px}
+.ov .k{color:var(--sub);font-size:12px}.ov .v{font-size:16px;font-weight:600}
+.unit{font-size:12px;color:var(--sub);margin:6px 0}
+.miss{color:#6b7280;font-size:12px}
+.drawer{margin-left:auto;width:980px;border-left:1px solid var(--line);box-shadow:-8px 0 24px rgba(0,0,0,.08);background:#fff}
+.drawer .dh{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-weight:600}
+.drawer .db{padding:14px 18px}
+.two{line-height:1.3}.two .o{color:#9ca3af;font-size:12px}
+.ok{color:#16a34a}.no{color:#dc2626}
+.tag{font-size:12px;color:#6b7280;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="docbar"><b>利润中心 · 详情抽屉</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-10-050～R-10-056 / G-10-003、G-10-019</span></div>
+<div class="canvas pc">
+  <div class="hd"><h1>利润中心</h1><span class="state-tag">详情抽屉</span></div>
+  <div class="bd">
+<div style="display:flex"><div class="drawer changed" data-note="1">
+<div class="dh"><span>橙子-iOS-CN · 2026-09 利润详情</span><span>✕</span></div>
+<div class="db">
+<div class="kv"><div class="k">客户名称</div><div>橙子出行科技有限公司</div><div class="k">账户系统</div><div>苹果ASA</div>
+<div class="k">原币</div><div>USD</div><div class="k">状态</div><div>计算中 <span class="miss">渠道未付完</span></div>
+<div class="k">计算时间</div><div>2026-10-26 09:12:05</div></div>
+<div class="sec changed" data-note="2" style="padding:2px 4px;display:inline-block">汇总</div>
+<div class="gray">汇率显示 4 位，按完整汇率计算，与显示汇率相乘可能相差 0.01</div>
+<table><thead><tr><th>项目</th><th class="num">原币金额</th><th>汇率口径</th><th class="num">人民币</th><th>来源</th></tr></thead><tbody>
+<tr><td>消耗</td><td class="num">20,000.00 USD</td><td>按日</td><td class="num">142,240.00</td><td>06 账单 2026-09 · 已结算</td></tr>
+<tr><td>服务费</td><td class="num">1,000.00 USD</td><td>按日</td><td class="num">7,112.00</td><td>06 账单 2026-09 · 已结算</td></tr>
+<tr><td>税费</td><td class="num">1,200.00 USD</td><td>按日</td><td class="num">8,534.40</td><td>06 账单 2026-09 · 已结算</td></tr>
+<tr><td>服务费税费<span class="tag">不计入毛利</span></td><td class="num">60.00 USD</td><td>按日</td><td class="num">426.72</td><td>06 账单 2026-09 · 已结算</td></tr>
+<tr class="changed" data-note="8"><td>公司承担服务费税费<span class="tag">计入毛利</span></td><td class="num">0.00 USD</td><td>按日</td><td class="num">0.00</td><td>06 规则 · 客户承担</td></tr>
+<tr><td>客户返点</td><td class="num">300.00 USD</td><td>按日</td><td class="num">2,133.60</td><td>07 已结算 · 实际金额</td></tr>
+<tr><td>客情费用</td><td class="num">200.00 USD</td><td>按日</td><td class="num">1,422.40</td><td>07 已结算 · 实际金额</td></tr>
+<tr><td>渠道统计金额</td><td class="num">17,000.00 USD</td><td>结算期最后一天 2026-09-30 1 USD = 7.1300 人民币</td><td class="num">121,210.00</td><td>08 系统抓取</td></tr>
+<tr><td>渠道返点<span class="tag">只展示</span></td><td class="num">-</td><td>-</td><td class="num">-</td><td>08 系统抓取</td></tr>
+<tr class="changed" data-note="9"><td>手续费（09）</td><td class="num">-62.67 人民币</td><td>收款完成日</td><td class="num">-62.67</td><td>09 SK-B</td></tr>
+<tr><td>改应付差额</td><td class="num">378.50 人民币</td><td>收款完成日</td><td class="num">378.50</td><td>06 结算单 · 默认应付 249,603.94 → 应付 249,000.00</td></tr>
+<tr><td><b>毛利润</b></td><td class="num">-</td><td>-</td><td class="num"><b>32,804.57</b></td><td>D-00-34</td></tr>
+</tbody></table>
+<div class="sec changed" data-note="3" style="padding:2px 4px;display:inline-block">按日明细</div>
+<table><thead><tr><th>日期</th><th>汇率</th><th class="num">消耗</th><th class="num">服务费</th><th class="num">税费</th><th class="num">服务费税费</th><th class="num">公司承担服务费税费</th><th class="num">客户返点</th><th class="num">客情费用</th><th class="num">渠道统计金额</th><th class="num">手续费</th><th class="num">当日毛利润</th></tr></thead><tbody>
+<tr><td>2026-09-10</td><td>7.1000</td><td class="num"><div class="two">56,800.00<div class="o">8,000.00 USD</div></div></td><td class="num"><div class="two">2,840.00<div class="o">400.00 USD</div></div></td><td class="num"><div class="two">3,408.00<div class="o">480.00 USD</div></div></td><td class="num"><div class="two">170.40<div class="o">24.00 USD</div></div></td><td class="num">-</td><td class="num"><div class="two">852.00<div class="o">120.00 USD</div></div></td><td class="num"><div class="two">568.00<div class="o">80.00 USD</div></div></td><td class="num">-</td><td class="num">-</td><td class="num">61,628.00</td></tr>
+<tr><td>2026-09-20</td><td>7.1200</td><td class="num"><div class="two">85,440.00<div class="o">12,000.00 USD</div></div></td><td class="num"><div class="two">4,272.00<div class="o">600.00 USD</div></div></td><td class="num"><div class="two">5,126.40<div class="o">720.00 USD</div></div></td><td class="num"><div class="two">256.32<div class="o">36.00 USD</div></div></td><td class="num">-</td><td class="num"><div class="two">1,281.60<div class="o">180.00 USD</div></div></td><td class="num"><div class="two">854.40<div class="o">120.00 USD</div></div></td><td class="num">-</td><td class="num">-</td><td class="num">92,702.40</td></tr>
+<tr><td>2026-09-30</td><td>7.1300</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num"><div class="two">121,210.00<div class="o">17,000.00 USD</div></div></td><td class="num"><div class="two">315.83<div class="o">315.83 人民币</div></div></td><td class="num">-121,525.83</td></tr>
+</tbody></table>
+<div class="sec changed" data-note="4" style="padding:2px 4px;display:inline-block">手续费明细</div>
+<table><thead><tr><th>财务ID</th><th>交易类型</th><th>完成时间</th><th class="num">本账户分摊</th><th>汇率（完成日）</th><th class="num">人民币</th></tr></thead><tbody>
+<tr><td>SK-B</td><td>结算单支付</td><td>2026-10-20 14:32:10</td><td class="num">-62.67 人民币</td><td>1</td><td class="num">-62.67</td></tr>
+<tr><td>SP-0920 · 默认应付 249,603.94 → 应付 249,000.00</td><td>改应付差额</td><td>2026-10-20 14:32:10</td><td class="num">378.50 人民币</td><td>1</td><td class="num">378.50</td></tr></tbody></table>
+<div class="gray">手续费（09）-62.67　改应付差额 378.50　手续费 315.83</div>
+<div class="sec changed" data-note="5" style="padding:2px 4px;display:inline-block">共享订单分摊</div>
+<table><thead><tr><th>订单号</th><th class="num">订单总计</th><th>挂的账户（本月消耗）</th><th class="num">本账户分到</th></tr></thead><tbody>
+<tr><td>PR-0902</td><td class="num">8,000.00 USD</td><td>橙子-iOS-CN 20,000.00；橙子-iOS-HK 12,000.00</td><td class="num">5,000.00 USD</td></tr></tbody></table>
+<div class="gray">08 账户行合计 20,000.00 USD，分摊后 17,000.00 USD</div>
+<div class="sec changed" data-note="6" style="padding:2px 4px;display:inline-block">完成情况</div>
+<table><tbody>
+<tr><td class="ok">✓ 客户收完</td><td>账单 2026-09 已结算</td></tr>
+<tr><td class="ok">✓ 返点或客情结完</td><td>客户返点 已结算；客情费用 已结算</td></tr>
+<tr><td class="no">✗ 渠道未付完</td><td>渠道统计金额 17,000.00 USD；苹果ASA 2026-09 行 待完成</td></tr>
+<tr><td class="ok">✓ 汇率齐全</td><td>该月用到的日子都取到 USD→人民币 汇率</td></tr></tbody></table>
+<div class="sec changed" data-note="7" style="padding:2px 4px;display:inline-block">变化记录</div>
+<div class="empty" style="padding:16px">暂无变化记录</div>
+</div></div></div>
+  </div>
+</div>
+<div class="legend"><h2>改动点说明</h2><ul>
+<li><span class="badge">1</span>行操作「详情」从右侧打开抽屉，只读；顶部客户、账户系统、原币、状态（带还差项）、计算时间（R-10-050）</li>
+<li><span class="badge">2</span>汇总：每项原币、汇率口径、人民币、来源；服务费税费标「不计入毛利」、渠道返点标「只展示」（R-10-051、R-10-002）</li>
+<li><span class="badge">3</span>按日明细：只列有金额的日子，上行人民币、下行原币；渠道统计金额落在结算期最后一天、手续费落在规定的那天，各天相加 = 月毛利润（R-10-052、R-10-011～R-10-013）</li>
+<li><span class="badge">4</span>手续费明细：按收款单逐笔，汇率取完成日（R-10-053、R-10-007）</li>
+<li><span class="badge">5</span>共享订单分摊：按挂该订单的账户本月消耗占比，表下对照 08 账户行合计（R-10-054、R-10-006）</li>
+<li><span class="badge">6</span>完成情况：四件事 ✓ / ✗ 与依据，含「汇率齐全」（R-10-055、R-10-021）</li>
+<li><span class="badge">7</span>变化记录：已算完以后的重算留痕，倒序（R-10-056、R-10-024）</li>
+<li><span class="badge">8</span>新增「公司承担服务费税费」，计入毛利；C 为客户承担，0.00（R-10-008）</li>
+<li><span class="badge">9</span>手续费拆两行「手续费（09）」「改应付差额」，两者之和 = 列表手续费；手续费明细多一行改应付差额并带合计（R-10-007、R-10-009、R-10-051、R-10-053）。审批单号 SP-0920 仅示意；08 来源里的审批单号可点（R-10-051）</li>
+</ul></div>
+<div class="footbar"><span>MOCK · mocks/03-详情抽屉.html</span><span>v2.1.0 · 2026-10-21</span></div>
+</body>
+</html>

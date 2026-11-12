@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MOCK · 利润中心 · 默认态</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:visible}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.dis{background:#e5e7eb;border-color:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+.field .req::after{content:"*";color:var(--new);margin-left:4px}
+.input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+.err-tip{color:var(--new);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;white-space:nowrap}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+td.num,th.num{text-align:right}
+.empty{padding:48px;text-align:center;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.tabs{display:flex;gap:0;margin-bottom:14px}.tabs span{padding:6px 18px;border:1px solid var(--line);font-size:13px}
+.tabs span.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.toolbar .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;min-width:150px;background:#fff}
+.toolbar .grow{flex:1}
+.link{color:var(--brand);cursor:pointer}
+.muted{color:#9ca3af}
+.l2 td:first-child{padding-left:28px}.l2{background:#fafafa}
+.l3{background:#f5f7fb}.l3 td:first-child{padding-left:48px}
+.flag{display:inline-block;font-size:12px;color:#b45309;background:#fffbeb;border:1px solid #fcd34d;border-radius:4px;padding:0 6px;margin-left:6px}
+.tip{position:absolute;z-index:20;background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap}
+.warnbar{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:6px;padding:8px 12px;font-size:13px;margin-bottom:14px}
+.infobar{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:6px;padding:8px 12px;font-size:13px;margin:12px 0}
+.modal{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:inline-block;vertical-align:top}
+.modal .mh{padding:12px 18px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+.modal .mb{padding:16px 18px}.modal .mf{padding:12px 18px;border-top:1px solid var(--line);text-align:right}
+.modal .mf .btn{margin-left:8px}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:8px 12px;font-size:13px;margin-bottom:12px}
+.kv .k{color:var(--sub)}
+.row{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.sec{font-weight:600;margin:14px 0 8px}
+.scroll{max-height:180px;overflow:auto}
+.hover{display:inline-block;position:relative}.tipbox{background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap;margin-top:6px;display:inline-block}
+.wide{overflow:auto}.st-wait{color:#b45309}.st-done{color:#16a34a}.gray{color:#6b7280;font-size:12px;margin-top:4px}
+.file{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:2px 8px;margin:2px 6px 2px 0;font-size:12px;background:#f9fafb}
+.upload{display:inline-block;border:1px dashed #9ca3af;border-radius:6px;padding:6px 14px;font-size:12px;color:var(--sub)}
+</style>
+
+<style>
+.ov{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:10px}
+.ov div{border:1px solid var(--line);border-radius:6px;padding:8px 12px}
+.ov .k{color:var(--sub);font-size:12px}.ov .v{font-size:16px;font-weight:600}
+.unit{font-size:12px;color:var(--sub);margin:6px 0}
+.miss{color:#6b7280;font-size:12px}
+.drawer{margin-left:auto;width:980px;border-left:1px solid var(--line);box-shadow:-8px 0 24px rgba(0,0,0,.08);background:#fff}
+.drawer .dh{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-weight:600}
+.drawer .db{padding:14px 18px}
+.two{line-height:1.3}.two .o{color:#9ca3af;font-size:12px}
+.ok{color:#16a34a}.no{color:#dc2626}
+.tag{font-size:12px;color:#6b7280;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="docbar"><b>利润中心 · 默认态</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-10-030～R-10-041 / G-10-001、G-10-015、G-10-018</span></div>
+<div class="canvas pc">
+  <div class="hd"><h1>利润中心</h1><span class="state-tag">默认态</span></div>
+  <div class="bd">
+<div class="toolbar modified" data-note="1">
+  <span class="sel" style="min-width:260px">🔍 账户名称 / 账户ID / 客户名称</span>
+  <span>账户系统：</span><span class="sel">全部</span>
+  <span>结算期：</span><span class="sel">2026-09-01 至 2026-09-30</span>
+  <span>销售（当前）：</span><span class="sel">全部</span>
+  <span>优化师（当前）：</span><span class="sel">全部</span>
+  <span class="changed" data-note="2" style="padding:2px 4px">状态：<span class="sel" style="min-width:110px">全部</span></span>
+  <span class="removed">货币展示：人民币 / 美元</span><span class="removed">汇率配置</span> <!-- alias-ok -->
+</div><div class="gray" style="margin:-8px 0 12px">按当前归属筛选；提成按历史归属，以提成中心为准</div><div class="changed" data-note="3" style="padding:8px">
+<div class="ov">
+<div><div class="k">消耗</div><div class="v">236,305.30</div></div>
+<div><div class="k">税费</div><div class="v">13,653.60</div></div>
+<div><div class="k">毛利润</div><div class="v">84,094.35</div></div>
+<div><div class="k">渠道统计金额</div><div class="v">171,120.00</div></div>
+<div><div class="k">服务费</div><div class="v">10,108.87</div></div>
+<div><div class="k">渠道返点</div><div class="v">-</div></div>
+<div><div class="k">客情费用</div><div class="v">1,422.40</div></div>
+<div><div class="k">客户返点</div><div class="v">2,773.50</div></div>
+<div><div class="k">手续费</div><div class="v">503.94</div></div>
+<div><div class="k">公司承担服务费税费</div><div class="v">153.58</div></div>
+<div><div class="k">算没算完</div><div class="v">共 4 个账户月，已算完 0 个</div></div>
+</div>
+<div class="warnbar" style="margin:0">有 1 条记录缺少汇率，未计入概览<br>有 1 条记录渠道统计金额未到，毛利润未扣渠道成本</div>
+</div><div class="unit">金额单位：人民币</div>
+<div class="wide"><table><thead><tr><th>账户名称</th><th>客户名称</th><th>销售（当前）</th><th>优化师（当前）</th><th class=num>消耗</th><th class=num>税费</th><th class=num>服务费税费</th><th class=num>公司承担服务费税费</th><th class=num>服务费</th><th class=num>渠道统计金额</th><th class=num>客情费用</th><th class=num>客户返点</th><th class=num>手续费</th><th class=num>毛利润</th><th class="changed" data-note="4">状态</th><th>账户系统</th><th>结算期</th><th class="changed" data-note="5">操作</th></tr></thead><tbody>
+<tr><td>橙子-iOS-CN</td><td>橙子出行科技有限公司</td><td>李娜</td><td>陈思远</td><td class="num">142,240.00</td><td class="num">8,534.40</td><td class="num">426.72</td><td class="num">0.00</td><td class="num">7,112.00</td><td class="num">121,210.00</td><td class="num">1,422.40</td><td class="num">2,133.60</td><td class="num">315.83</td><td class="num">32,804.57</td><td>计算中<div class="miss">渠道未付完</div></td><td>苹果ASA</td><td>2026-09-01 至 2026-09-30</td><td><span class="link">详情</span></td></tr><tr><td>橙子-iOS-HK</td><td>橙子出行科技有限公司</td><td>李娜</td><td>周宁</td><td class="num">85,320.00</td><td class="num">5,119.20</td><td class="num">0.00</td><td class="num">153.58</td><td class="num">2,559.60</td><td class="num">49,910.00</td><td class="num">0.00</td><td class="num">639.90</td><td class="num">188.11</td><td class="num">42,107.21</td><td>计算中<div class="miss">返点或客情未结完、渠道未付完</div></td><td>苹果ASA</td><td>2026-09-01 至 2026-09-30</td><td><span class="link">详情</span></td></tr><tr><td>蓝帆-iOS-SG</td><td>蓝帆科技有限公司</td><td>张伟</td><td>周宁</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">0.00</td><td class="num">-</td><td>计算中<div class="miss">客户未收完、渠道未付完、缺少汇率</div></td><td>苹果ASA</td><td>2026-09-01 至 2026-09-30</td><td><span class="link">详情</span></td></tr><tr><td>OfferGo</td><td>Kredi 科技有限公司</td><td>王敏</td><td>陈思远</td><td class="num">8,745.30</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">437.27</td><td class="num">-</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">9,182.57<div class="miss">未含渠道成本</div></td><td>计算中<div class="miss">渠道未付完</div></td><td>亨利-出海</td><td>2026-09-01 至 2026-09-30</td><td><span class="link">详情</span></td></tr>
+</tbody></table></div>
+<div style="text-align:right;margin-top:10px;font-size:13px;color:var(--sub)">共 4 条　10条/每页 ▾　‹ 1 ›</div>
+  </div>
+</div>
+<div class="legend"><h2>改动点说明</h2><ul>
+<li><span class="badge">1</span>搜索按账户名称 / 账户ID / 客户名称；筛选 账户系统、结算期、销售、优化师（现有用户，不再有「待结算 / 已结算」）；不跟顶栏账户系统切换；去掉「货币展示」和「汇率配置」，只展示人民币（R-10-030、R-10-033、R-10-035、R-10-036、R-10-010）</li>
+<li><span class="badge">2</span>新增「状态」筛选：全部 / 计算中 / 已算完（R-10-033）</li>
+<li><span class="badge">3</span>数据概览按全部筛选结果汇总 10 项（人民币，含公司承担服务费税费），「-」不计；加「共 N 个账户月，已算完 M 个」；缺汇率的记录不计入并提示；渠道未到的照常计入并提示（R-10-040、R-10-041、R-10-015）</li>
+<li><span class="badge">4</span>状态 计算中 / 已算完，系统自动判断；计算中下方灰字列还差的（含「缺少汇率」）；当月行「计算中」旁悬浮实时预估提示（R-10-021、R-10-022）</li>
+<li><span class="badge">5</span>新增右固定「详情」，打开详情抽屉（R-10-050）</li>
+<li>列头「销售（当前）」「优化师（当前）」，筛选栏下注明与 11 口径不同（R-10-031、R-10-033、R-10-035）；手续费 = 手续费（09）+ 改应付差额（R-10-007）；OfferGo 毛利润旁「未含渠道成本」（R-10-005）</li>
+<li>示例数据：橙子两行同 G-10-001、G-10-002（渠道统计金额已按共享订单分摊，R-10-006）；蓝帆-iOS-SG 是 USDT 账户、取不到汇率显示「-」（G-10-008）；OfferGo 渠道统计金额「-」、毛利按 0（G-10-013）</li>
+</ul></div>
+<div class="footbar"><span>MOCK · mocks/01-利润列表.html</span><span>v2.1.0 · 2026-10-21</span></div>
+</body>
+</html>

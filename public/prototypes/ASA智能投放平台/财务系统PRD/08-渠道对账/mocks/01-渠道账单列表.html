@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MOCK · 渠道对账 · 默认态（展开）</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:visible}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.dis{background:#e5e7eb;border-color:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+.field .req::after{content:"*";color:var(--new);margin-left:4px}
+.input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+.err-tip{color:var(--new);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;white-space:nowrap}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+td.num,th.num{text-align:right}
+.empty{padding:48px;text-align:center;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.tabs{display:flex;gap:0;margin-bottom:14px}.tabs span{padding:6px 18px;border:1px solid var(--line);font-size:13px}
+.tabs span.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.toolbar .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;min-width:150px;background:#fff}
+.toolbar .grow{flex:1}
+.link{color:var(--brand);cursor:pointer}
+.muted{color:#9ca3af}
+.l2 td:first-child{padding-left:28px}.l2{background:#fafafa}
+.l3{background:#f5f7fb}.l3 td:first-child{padding-left:48px}
+.flag{display:inline-block;font-size:12px;color:#b45309;background:#fffbeb;border:1px solid #fcd34d;border-radius:4px;padding:0 6px;margin-left:6px}
+.tip{position:absolute;z-index:20;background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap}
+.warnbar{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:6px;padding:8px 12px;font-size:13px;margin-bottom:14px}
+.infobar{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:6px;padding:8px 12px;font-size:13px;margin:12px 0}
+.modal{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:inline-block;vertical-align:top}
+.modal .mh{padding:12px 18px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+.modal .mb{padding:16px 18px}.modal .mf{padding:12px 18px;border-top:1px solid var(--line);text-align:right}
+.modal .mf .btn{margin-left:8px}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:8px 12px;font-size:13px;margin-bottom:12px}
+.kv .k{color:var(--sub)}
+.row{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.sec{font-weight:600;margin:14px 0 8px}
+.scroll{max-height:180px;overflow:auto}
+</style>
+</head>
+<body>
+<div class="docbar"><b>渠道对账中心 · 默认态（展开）</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-08-001～R-08-011、R-08-019、R-08-025 / G-08-001～G-08-004、G-08-022</span></div>
+<div class="canvas pc">
+  <div class="hd"><h1>渠道对账中心</h1><span class="state-tag">默认态（展开）</span></div>
+  <div class="bd">
+<div class="tabs"><span class="on">渠道账单</span><span>已提交审批</span></div>
+<div class="toolbar">
+  <span class="sel" style="min-width:220px">🔍 账户名称 / orgid</span>
+  <span>账户系统：</span><span class="sel">全部</span>
+  <span>结算期：</span><span class="sel">全部</span>
+  <span>状态：</span><span class="sel modified" data-note="2">全部 / 待完成 / 已完成</span>
+  <span class="grow"></span>
+  <span class="btn primary">导入渠道账单</span>
+</div>
+<table>
+<thead><tr><th>结算期</th><th>账户系统</th><th class="changed" data-note="1">数据来源</th><th class="num">小计</th><th class="num">MAX消耗</th><th class="num">税费</th><th class="num">渠道返点</th><th class="num">总计</th><th>状态</th><th>操作</th></tr></thead>
+<tbody>
+<tr><td>▾ 2026-09-01 至 2026-09-30</td><td>苹果ASA（自接苹果）</td><td>系统抓取</td><td class="num">24,000.00 USD</td><td class="num">0.00 USD</td><td class="num">-</td><td class="num">-</td><td class="num">24,000.00 USD</td><td>待完成</td><td><span class="link">渠道付款</span>　<span class="link">变化记录</span></td></tr>
+<tr class="l2"><th>账户名称</th><th class="changed" data-note="3">orgid</th><th></th><th class="num">小计</th><th class="num">MAX消耗</th><th class="num">税费</th><th class="num">渠道返点</th><th class="num">总计</th><th colspan="2"></th></tr>
+<tr class="l2"><td>▾ 橙子-iOS-CN</td><td>5130021</td><td></td><td class="num">20,000.00 USD</td><td class="num">0.00 USD</td><td class="num">-</td><td class="num">-</td><td class="num">20,000.00 USD</td><td colspan="2"></td></tr>
+<tr class="l3"><td colspan="10">订单号 ｜ 付款参考编号 ｜ 账单 ｜ 账单类型 ｜ 产品或广告主 ｜ 描述 ｜ 发票 ｜ 截止日期 ｜ 小计 ｜ 税费 ｜ 总计（沿用现有苹果订单数据，同 06 第三层）</td></tr>
+<tr class="l3"><td colspan="10">PR-0901 ｜ <span class="link">PRF-77120（下载）</span> ｜ <span class="link">INV-0901（下载）</span> ｜ Invoice ｜ 橙子出行 ｜ Apple Ads 2026-09 ｜ <span class="link">查看发票</span> ｜ 2026-10-30 ｜ 12,000.00 ｜ - ｜ 12,000.00</td></tr>
+<tr class="l3"><td colspan="10">PR-0902（与 橙子-iOS-HK 共享，各账户全额列示，第一层只算一次） ｜ <span class="link">PRF-77121（下载）</span> ｜ <span class="link">INV-0902（下载）</span> ｜ Invoice ｜ 橙子出行 ｜ Apple Ads 2026-09 ｜ <span class="link">查看发票</span> ｜ 2026-10-30 ｜ 8,000.00 ｜ - ｜ 8,000.00</td></tr>
+<tr class="l2"><td>▸ 橙子-iOS-HK</td><td>5130048</td><td></td><td class="num">12,000.00 USD</td><td class="num">0.00 USD</td><td class="num">-</td><td class="num">-</td><td class="num">12,000.00 USD</td><td colspan="2"></td></tr>
+<tr><td>2026-09-01 至 2026-09-30</td><td>亨利-出海</td><td><span class="link">上传 · AP202610050008</span></td><td class="num">20,145.70 USD</td><td class="num">0.00 USD</td><td class="num">0.00 USD</td><td class="num">2,618.94 USD</td><td class="num">17,526.76 USD</td><td>待完成</td><td><span class="muted modified" data-note="4">付款中</span>　<span class="link">变化记录</span></td></tr>
+<tr><td>▾ 2026-09-01 至 2026-09-30</td><td>亨利-国内</td><td><span class="link">上传 · AP202610030012</span></td><td class="num">28,533.98 人民币</td><td class="num">2,000.00 人民币</td><td class="num">1,712.05 人民币</td><td class="num">500.00 人民币</td><td class="num">29,746.02 人民币</td><td style="position:relative">已完成<span class="flag changed" data-note="5">金额有变化</span>
+<div class="tip" style="top:30px;right:0">已付 29,500.00 人民币，现总计 29,746.02 人民币，差额 246.02 人民币</div></td><td><span class="link changed" data-note="6">变化记录</span></td></tr>
+<tr class="l2"><td>青柠-iOS-CN</td><td>8630011</td><td></td><td class="num">16,277.43 人民币</td><td class="num">2,000.00 人民币</td><td class="num">976.65 人民币</td><td class="num">0.00 人民币</td><td class="num">17,254.07 人民币</td><td colspan="2"></td></tr>
+<tr class="l2"><td>木棉记账</td><td>8630013</td><td></td><td class="num">6,774.44 人民币</td><td class="num">0.00 人民币</td><td class="num">406.47 人民币</td><td class="num">500.00 人民币</td><td class="num">6,680.91 人民币</td><td colspan="2"></td></tr>
+<tr class="l2"><td>青柠-iOS-TW</td><td>8630012</td><td></td><td class="num">5,482.11 人民币</td><td class="num">0.00 人民币</td><td class="num">328.93 人民币</td><td class="num">0.00 人民币</td><td class="num">5,811.04 人民币</td><td colspan="2"></td></tr>
+<tr><td>2026-10-01 至 2026-10-31</td><td>亨利-国内</td><td class="muted">未上传</td><td class="num">-</td><td class="num">1,350.00 人民币</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td>待完成</td><td></td></tr>
+</tbody></table>
+<div style="margin-top:12px;text-align:right;font-size:13px;color:var(--sub)">共 4 条　10 条/每页　‹ 1 ›</div>
+
+<div class="row" style="margin-top:28px">
+<div class="modal changed" data-note="7" style="width:760px">
+  <div class="mh"><span>变化记录 · 亨利-国内 · 2026-09-01 至 2026-09-30</span><span>✕</span></div>
+  <div class="mb"><table>
+    <thead><tr><th>时间</th><th>账户</th><th class="num">变化前总计</th><th class="num">变化后总计</th><th>来源</th></tr></thead>
+    <tbody>
+      <tr><td>2026-10-16 14:20:05</td><td>青柠-iOS-CN（8630011）</td><td class="num">17,008.05 人民币</td><td class="num">17,254.07 人民币</td><td><span class="link">渠道对账 AP202610030012</span></td></tr>
+    </tbody></table></div>
+</div>
+</div>
+
+  </div>
+</div>
+<div class="legend"><h2>改动点说明</h2><ul>
+<li><span class="badge">1</span>第一层新增「数据来源」列：系统抓取 / 上传 · 审批单号（可点开审批详情）/ 未上传（R-08-004）</li>
+<li><span class="badge">2</span>状态筛选改为 全部 / 待完成 / 已完成，原型「待结算 / 已结算」是残留（R-08-008、R-08-009）</li>
+<li><span class="badge">3</span>第二层新增 orgid 列；没有渠道统计金额的账户显示「-」并排最后；抓取的账户系统才有第三层订单（R-08-005、R-08-006）</li>
+<li><span class="badge">4</span>有在途渠道付款单时操作列显示灰字「付款中」（R-08-011、R-08-040）</li>
+<li><span class="badge">5</span>已完成后金额又变了：状态不变，旁边标「金额有变化」，悬浮显示已付 / 现总计 / 差额（R-08-025）</li>
+<li><span class="badge">6</span>操作列「变化记录」入口（R-08-011、R-08-025）</li>
+<li><span class="badge">7</span>变化记录弹窗：按时间倒序列付款完成后的变化日志（R-08-023）。页面不跟随顶栏账户系统（R-08-001）；苹果第一层 24,000.00 小于账户行之和 32,000.00，因按订单号去重（R-08-019）</li>
+</ul></div>
+<div class="footbar"><span>MOCK · mocks/01-渠道账单列表.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>

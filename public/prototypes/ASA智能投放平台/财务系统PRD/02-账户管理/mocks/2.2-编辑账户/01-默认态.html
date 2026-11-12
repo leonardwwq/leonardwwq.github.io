@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MOCK · 编辑账户信息弹窗 · 默认态</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:"*";color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .form{max-width:760px;margin:8px auto}
+  .row{display:flex;align-items:flex-start;margin-bottom:16px}
+  .row>.lb{width:130px;flex:none;text-align:right;padding:7px 12px 0 0;font-size:13px;color:#374151}
+  .row>.lb.req::before{content:"*";color:var(--new);margin-right:2px}
+  .row>.ct{flex:1;min-width:0}
+  .sel{width:360px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff;display:flex;justify-content:space-between;align-items:center}
+  .sel::after{content:"▾";color:var(--sub);margin-left:8px}
+  .sel.ph{color:#9ca3af}
+  .sel.dis{background:#f3f4f6;color:#9ca3af}
+  .sel.err,.input.err{border-color:var(--new)}
+  .dd{width:360px;border:1px solid var(--line);border-radius:6px;box-shadow:0 6px 16px rgba(0,0,0,.08);margin-top:4px;background:#fff;font-size:13px}
+  .dd div{padding:7px 10px}
+  .dd .on{background:#eff6ff;color:var(--brand)}
+  .dd .none{color:var(--sub);text-align:center;padding:14px}
+  .radio{display:inline-flex;align-items:center;margin-right:28px;font-size:13px;padding-top:7px}
+  .radio i{width:14px;height:14px;border:1px solid #9ca3af;border-radius:50%;display:inline-block;margin-right:6px;position:relative}
+  .radio.on i{border-color:var(--brand)}
+  .radio.on i::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--brand)}
+  .tip{font-size:12px;color:var(--sub);margin-top:4px}
+  .pill{display:inline-block;background:#eef2ff;border-radius:4px;padding:1px 8px;margin:0 4px 4px 0;font-size:12px}
+  .actions{display:flex;justify-content:flex-end;gap:12px;border-top:1px solid var(--line);padding:14px 20px}
+  .crumb{font-weight:600}
+  .removed-box{max-width:760px;margin:20px auto 0;border:1px dashed #fca5a5;background:#fff7f7;border-radius:6px;padding:10px 14px;font-size:12px;color:#6b7280}
+  .removed-box .removed{margin:0 4px 4px 0;display:inline-block}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .dlg{background:#fff;border-radius:8px;width:820px;margin:0 auto;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+  .dlg .t{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .dlg .b{padding:20px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .grid2 .row>.lb{width:96px}
+  .grid2 .sel,.grid2 .input{width:250px}
+  .ro{background:#f3f4f6;color:#6b7280}
+  .link{color:var(--brand);cursor:pointer;margin-right:12px}
+  .toast{display:inline-block;background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;border-radius:6px;padding:8px 14px;font-size:13px;margin-bottom:16px}
+  .kv{display:grid;grid-template-columns:140px 1fr;border-top:1px solid var(--line);font-size:13px}
+  .kv div{padding:8px 10px;border-bottom:1px solid var(--line)}
+  .kv div:nth-child(odd){background:#f9fafb;color:var(--sub)}
+</style>
+</head>
+<body>
+
+<div class="docbar">
+  <b>编辑账户信息弹窗 · 默认态</b>
+  <span>本示意仅表达改动点，非最终视觉</span>
+  <span>关联：R-02-017 / R-02-018 / R-02-020 / R-02-021 / G-02-014 / G-02-015</span>
+</div>
+
+<div class="canvas pc"><div class="hd"><h1>账户管理 · 编辑账户信息</h1><span class="state-tag">默认态</span></div>
+<div class="mask"><div class="dlg">
+  <div class="t">编辑账户信息<span>✕</span></div>
+  <div class="b"><div class="grid2">
+    <div class="row"><div class="lb">账户ID</div><div class="ct"><input class="input ro" value="4398201" disabled></div></div>
+    <div class="row"><div class="lb req">账户名称</div><div class="ct"><input class="input" value="Starriver_ASA_01"></div></div>
+    <div class="row"><div class="lb">所属客户</div><div class="ct"><div class="sel dis">星河互娱（上海）网络科技有限公司</div></div></div>
+    <div class="row modified" data-note="2"><div class="lb">登记表</div><div class="ct" style="padding-top:7px"><span>星河消除-国内投放登记</span> <span class="link">预览</span></div></div>
+    <div class="row"><div class="lb req">产品分类</div><div class="ct"><div class="sel">游戏 / 休闲消除</div></div></div>
+    <div class="row modified" data-note="3"><div class="lb req">投放类型</div><div class="ct"><span class="radio on"><i></i>代投</span><span class="radio"><i></i>自投</span></div></div>
+    <div class="row"><div class="lb req">优化师</div><div class="ct"><div class="sel">陈思远</div></div></div>
+  </div>
+  <div class="removed-box changed" data-note="1" style="margin:12px 0 0">本次移除（弹窗不再展示，库里老值保留不动）：<span class="removed">销售</span><span class="removed">授信额度</span><span class="removed">苹果返点</span><span class="removed">客户返点</span><span class="removed">新品截止日期</span><span class="removed">客情比例</span><span class="removed">公司/产品名称</span><span class="removed">订单号</span><span class="removed">主要联系人姓名</span><span class="removed">主要联系人邮箱</span><span class="removed">结算联系人邮箱</span>；合作者、观察者仍在「授权」弹窗里改</div>
+  </div>
+  <div class="actions"><span class="btn">关闭</span><span class="btn primary">确认</span></div>
+</div></div></div>
+
+<div class="legend">
+  <h2>改动点说明</h2>
+  <ul>
+    <li><span class="badge">1</span>移除 11 个字段；保存时不修改、不清空这些字段的库内老值（R-02-017、R-02-020、D-02-02）</li>
+    <li><span class="badge">2</span>登记表只读：在线登记表显示名称 + 预览；历史上传文件显示文件名 + 预览；没有登记表显示「-」（R-02-021）</li>
+    <li><span class="badge">3</span>投放类型可改，保存直接生效，不走审批、不回写登记表（R-02-018、D-02-01）</li>
+  </ul>
+</div>
+
+<div class="footbar">
+  <span>MOCK · mocks/2.2-编辑账户/01-默认态.html</span>
+  <span>ASA v2.1.0 · 02-账户管理 · 2026-10-19</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2046 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>客户管理 v2.1.0 · 评审版</title>
+<style>
+  :root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f9fafb;--brand:#3b82f6;--warn:#dc2626}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.75 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg)}
+  header.top{position:sticky;top:0;z-index:50;background:#111827;color:#fff;padding:12px 24px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+  header.top h1{font-size:16px;margin:0}
+  header.top .pill{font-size:12px;border:1px solid #4b5563;border-radius:99px;padding:2px 10px;color:#d1d5db}
+  .wrap{display:flex;align-items:flex-start;gap:28px;max-width:1800px;margin:0 auto;padding:24px}
+  nav{position:sticky;top:64px;width:280px;flex:0 0 280px;max-height:calc(100vh - 90px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+  nav h2{font-size:12px;color:var(--sub);margin:0 0 8px;letter-spacing:.08em}
+  nav a{display:block;text-decoration:none;color:#374151;font-size:13px;padding:5px 8px;border-radius:6px;line-height:1.4}
+  nav a:hover{background:#eff6ff;color:#1d4ed8}
+  nav a.t3{padding-left:20px;color:var(--sub);font-size:12.5px}
+  main{flex:1;min-width:0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:36px 44px 60px}
+  main h1{font-size:26px;margin:0 0 18px}
+  main h2{font-size:20px;margin:44px 0 14px;padding-bottom:8px;border-bottom:2px solid #e5e7eb}
+  main h3{font-size:16.5px;margin:30px 0 10px}
+  main h4{font-size:15px;margin:22px 0 8px;color:#374151}
+  main p{margin:10px 0}
+  main a{color:#1d4ed8}
+  main a.xref{background:#eef2ff;border-radius:4px;padding:0 4px;text-decoration:none}
+  main code{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:4px;padding:1px 5px;font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace}
+  main pre{background:#111827;color:#e5e7eb;border-radius:8px;padding:14px 16px;overflow:auto}
+  main pre code{background:none;border:0;color:inherit;padding:0}
+  main blockquote{border-left:3px solid var(--brand);background:#eff6ff;margin:12px 0;padding:10px 16px;color:#1e3a8a;border-radius:0 6px 6px 0}
+  main hr{border:0;border-top:1px dashed var(--line);margin:28px 0}
+  .tw{overflow:auto;margin:14px 0}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#f3f4f6;font-weight:600;white-space:nowrap}
+  tbody tr:nth-child(even){background:#fcfcfd}
+  ul,ol{padding-left:24px;margin:10px 0}
+  li{margin:4px 0}
+  .banner{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px 16px;margin:0 0 24px}
+  .banner b{color:var(--warn)}
+  .banner ul{margin:6px 0 0}
+  .warnbox{background:#fffbeb;border:1px dashed #f59e0b;border-radius:8px;padding:12px 16px;margin:18px 0;font-size:13.5px}
+  .warnbox li{font-size:13px}
+  figure.mock{margin:22px 0 34px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+  figure.mock figcaption{display:flex;align-items:center;gap:10px;padding:11px 16px;background:#f8fafc;border-bottom:1px solid var(--line);font-size:14px;font-weight:600}
+  figure.mock figcaption .tag{background:var(--brand);color:#fff;font-size:11px;border-radius:4px;padding:2px 8px;font-weight:600}
+  figure.mock figcaption .src{margin-left:auto;font-weight:400;color:var(--sub);font-size:12px;font-family:ui-monospace,Menlo,monospace}
+  .mock-tools{display:flex;gap:8px;padding:9px 16px;border-bottom:1px solid var(--line);background:#fff}
+  .mock-tools button{font:inherit;font-size:12.5px;padding:4px 12px;border:1px solid var(--line);background:#fff;border-radius:6px;cursor:pointer;color:#374151}
+  .mock-tools button.on{background:var(--brand);border-color:var(--brand);color:#fff}
+  .mock-frame{background:#f3f4f6;padding:0;display:flex;justify-content:center}
+  .mock-frame iframe{border:0;background:#fff;display:block}
+  figure.mock[data-mode="pc"] .mock-frame iframe{width:100%;height:760px}
+  figure.mock[data-mode="mobile"] .mock-frame iframe{width:420px;height:760px;box-shadow:0 0 0 1px var(--line)}
+  figure.mock[data-mode="full"] .mock-frame iframe{width:100%;height:1000px}
+  .mock-missing{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:8px;padding:14px 18px;margin:18px 0;font-size:14px}
+  @media (max-width:1100px){nav{display:none}.wrap{padding:14px}main{padding:22px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>客户管理</h1>
+  <span class="pill">v2.1.0</span>
+  <span class="pill">04-客户管理</span>
+  <span class="pill">ASA</span>
+  <span class="pill">状态：待评审</span>
+  <span class="pill">2026-10-22</span>
+  <span class="pill">评审版 · 由 PRD.md 自动生成，勿手改</span>
+</header>
+
+<div class="wrap">
+  <nav>
+    <h2>目录</h2>
+    <a class="t2" href="#s1">0 前置说明</a>
+<a class="t2" href="#s2">1 整体概述</a>
+<a class="t3" href="#s2-1">1.1 背景与目标</a>
+<a class="t3" href="#s2-2">1.2 本页范围</a>
+<a class="t3" href="#s2-3">1.3 角色与权限</a>
+<a class="t3" href="#s2-4">1.4 术语定义</a>
+<a class="t3" href="#s2-5">1.5 核心流程</a>
+<a class="t2" href="#s3">2 详细需求</a>
+<a class="t3" href="#s3-1">2.1 客户实体与客户状态（定义）</a>
+<a class="t3" href="#s3-2">2.2 客户列表</a>
+<a class="t3" href="#s3-3">2.3 添加客户</a>
+<a class="t3" href="#s3-4">2.4 编辑客户</a>
+<a class="t3" href="#s3-5">2.5 付款主体弹窗</a>
+<a class="t3" href="#s3-6">2.6 审批提交与结果处理</a>
+<a class="t3" href="#s3-7">2.7 客户管理审批详情 · 审批内容区</a>
+<a class="t3" href="#s3-8">2.8 已提交审批 tab</a>
+<a class="t3" href="#s3-9">2.9 客户详情</a>
+<a class="t3" href="#s3-10">2.10 客户材料</a>
+<a class="t3" href="#s3-11">2.11 权限</a>
+<a class="t2" href="#s4">3 变更影响面</a>
+<a class="t2" href="#s5">4 非功能与留痕</a>
+<a class="t2" href="#s6">5 开放问题与已知限制</a>
+    <h2 style="margin-top:16px">内嵌示意（12）</h2><a class="t3" href="#mock-1">1. 客户列表（默认态，新增列与行操作）</a><a class="t3" href="#mock-2">2. 添加客户（后付款，提交审批二次确认）</a><a class="t3" href="#mock-3">3. 编辑客户（预付款改后付款，按钮变提交审批）</a><a class="t3" href="#mock-4">4. 编辑客户（有审批中的客户信息变更，锁定）</a><a class="t3" href="#mock-5">5. 付款主体弹窗（编辑中，重复校验失败）</a><a class="t3" href="#mock-6">6. 付款主体弹窗（有审批中的付款主体变更，锁定）</a><a class="t3" href="#mock-7">7. 审批详情·客户信息变更（差异高亮）</a><a class="t3" href="#mock-8">8. 审批详情·付款主体变更（新增标红、删除划线）</a><a class="t3" href="#mock-9">9. 已提交审批 tab（默认态）</a><a class="t3" href="#mock-10">10. 客户详情（默认态）</a><a class="t3" href="#mock-11">11. 客户材料·客户登记表标签（历史文件与绑定登记表并存）</a><a class="t3" href="#mock-12">12. 添加登记表弹窗（绑定在线登记表）</a>
+  </nav>
+
+  <main>
+    
+    
+    <h1>客户管理 PRD</h1>
+<div class="tw"><table><thead><tr><th>项</th><th>内容</th></tr></thead><tbody><tr><td>所属产品</td><td>ASA</td></tr><tr><td>版本</td><td>v2.1.0</td></tr><tr><td>页面</td><td>04-客户管理</td></tr><tr><td>涉及功能</td><td><a href="../../../feature/客户管理/README.md" target="_blank" rel="noreferrer">客户管理</a></td></tr><tr><td>编制日期</td><td>2026-10-19（2026-10-21 按会议清单 v2 回写；2026-10-22 按闭环问题清单回写）</td></tr><tr><td>文档状态</td><td>待评审</td></tr><tr><td>目标读者</td><td>研发、测试、AI 实现助手（本文件可直接整份投喂给 AI 作为实现依据）</td></tr><tr><td>关联文档</td><td>本目录 spec.yaml、mocks/；版本 <a href="../index.md" target="_blank" rel="noreferrer">index.md</a>；原型 <code>html/客户管理.html</code>、<code>html/客户详情.html</code>、<code>html/添加客户.html</code>、<code>html/编辑客户.html</code>、<code>html/客户材料.html</code>、<code>html/审批详情-客户管理.html</code></td></tr></tbody></table></div>
+<h2 id="s1">0 前置说明</h2>
+<ul><li>本页是流程包，覆盖版本记录第 7 项（客户管理）、第 8 项（客户详情）、第 9 项（添加客户）、第 10 项（编辑客户）、第 11 项（客户材料，版本级约定并入本包）、第 12 项（客户管理审批详情，只写「审批内容」区）。合并理由：六个页面共用同一个「客户」实体和三类客户审批，拆开会把状态和审批结果处理写散。</li><li>本页<strong>主管「客户」实体和客户状态机</strong>。02-账户管理只触发「待开户 → 待投放」，状态清单以本页 2.1 为准。</li><li>引用 01-客户登记：客户材料里的「绑定登记表」触发登记表「待关联 → 待开户」，guard 由本页 R-04-058 定义；绑定行的详情内容复用 <a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-010</a>。</li><li>引用 12-审批配置与审批中心：审批单状态机、审批人解析与会签、撤回、作废、通知、审批详情通用框架全部按 12，本页只写三类客户审批的提交参数、审批内容区和结束后的客户数据处理。</li><li>版本级口径：计费模式次月生效（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-73</a>）、客户状态按消耗判定（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-07</a>）、「运营」= 账户优化师（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>）、客户数据范围隔离（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a>）、审批变更高亮基准（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-75</a>）、撤回与执行失败（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-79</a>）、存量规则挂历史上传文件行（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>）。本页只写这些口径在客户管理里的落法，不复述。</li><li>沿用不动：客户列表的搜索与搜索历史、「显示合同即将到期客户」、客户材料的「合同」标签、销售下拉组件。这些由技术按现有实现复用。</li><li>不做：客户列表行操作里的「规则配置」入口（原型残留，<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">D-01-03</a>）；规则配置入口放在客户材料的登记表行（R-04-060）。</li></ul>
+<h2 id="s2">1 整体概述</h2>
+<h3 id="s2-1">1.1 背景与目标</h3>
+<p>现状：客户只有一个「开启投放」字段（现有系统已无对应状态机），商务看不出客户卡在哪一步；后付款客户、付款主体改动没有任何审批；登记表只能以文件上传方式挂在客户下面，和在线登记表接不上。</p>
+<p>目标：</p>
+<ul><li>客户状态分成 待开户 / 待投放 / 投放中 / 停止投放，投放中与停止投放按消耗自动判定，商务一眼能看出客户卡在哪一步。</li><li>新建后付款客户、预付改后付、付款主体变更都要走审批，审批通过前不生效；计费模式变更从次月 1 日起生效。</li><li>客户材料里直接绑定在线登记表，绑定后登记表自动进入「待开户」，后面在账户管理开户；存量账户在历史上传文件行配置规则。</li></ul>
+<p>可证伪的判定：建一个预付款客户 → 客户材料绑定一张待关联登记表（登记表变待开户）→ 账户管理用这张登记表开户（客户变待投放）→ 账户产生消耗后次日（UTC0）客户变投放中；把客户改成后付款提交审批，审批通过前列表仍显示预付款，通过后显示「预付款（次月 1 日起改为后付款）」，次月 1 日（UTC0）起才是后付款。</p>
+<h3 id="s2-2">1.2 本页范围</h3>
+<ul><li>✅ 包含：</li><li>客户实体字段调整（含去掉「运营」字段）、客户状态机定义、存量兼容；客户「销售」变更记录（R-04-064，无展示界面）。</li><li>客户列表、添加客户、编辑客户（独立页面）、付款主体弹窗；计费模式待生效的展示与编辑口径。</li><li>三类客户审批（新建客户 / 客户信息变更 / 付款主体变更）的提交、审批内容区、结束后处理。</li><li>「已提交审批」tab。</li><li>客户详情页。</li><li>客户材料的客户登记表标签（绑定在线登记表、历史文件兼容、绑定行与历史文件行的「规则配置」入口、迁移占位行）。</li><li>两个现有权限点的功能边界与客户数据范围。</li><li>❌ 不包含：</li><li>客户列表行操作里的「规则配置」入口（残留，<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">D-01-03</a>）；规则配置页本身与规则配置审批内容（归 03，本页只放客户材料里的入口）。</li><li>审批通用能力（归 12）；添加账户动作本身、账户优化师字段与销售的账户数据授权规则（归 02）。</li><li>计费模式切换后的余额抵扣、上期预付欠费（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-73</a>，归 05、06）。</li><li>解绑登记表 / 账户、客户状态回到待开户或待投放（本期没有，<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">D-01-16</a>、D-04-17）；删除客户（原型没有）。</li><li>内部编辑登记表同步到客户（不同步，<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">D-01-06</a>）。</li><li>客户材料「合同」标签（本期不改）。</li><li>新增权限点、把权限点分配给角色（版本级约定：只出权限点，不预设角色）。</li></ul>
+<h3 id="s2-3">1.3 角色与权限</h3>
+<div class="tw"><table><thead><tr><th>角色</th><th>能做什么</th><th>不能做什么</th><th>数据范围</th><th>权限来源</th></tr></thead><tbody><tr><td>持「客户管理-只读」的用户</td><td>看客户列表、客户详情、客户材料（列表、预览、下载、登记表详情）、已提交审批 tab；只读看三类客户审批详情；撤回自己提交的审批中单</td><td>添加、编辑、提交付款主体、客户材料增删改与规则配置</td><td>R-04-061</td><td>现有权限点（R-04-062）</td></tr><tr><td>持「客户管理-读写」的用户</td><td>只读能做的全部；添加客户、编辑客户、提交付款主体变更、客户材料增删改、规则配置入口</td><td>撤回他人的单</td><td>R-04-061</td><td>现有权限点（R-04-063）</td></tr><tr><td>sys 账号</td><td>同其所持权限点</td><td>同上</td><td>全部客户</td><td><a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a></td></tr><tr><td>审批人</td><td>在审批详情 / 审批中心审批</td><td>—</td><td>审批单快照</td><td>12（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-023</a>）</td></tr><tr><td>持「审批配置」的用户</td><td>作废审批中的单（12 定义）</td><td>—</td><td>—</td><td><a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-79</a>③</td></tr></tbody></table></div>
+<p>客户数据按客户范围隔离（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a>，R-04-061），不再沿用 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">D-12-26</a>「现有权限不隔离」的前提；本页不新增权限点。撤回只看申请人本人与单据状态，不看本页权限点（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-79</a>②）。</p>
+<h3 id="s2-4">1.4 术语定义</h3>
+<div class="tw"><table><thead><tr><th>术语</th><th>释义</th></tr></thead><tbody><tr><td>当前生效值</td><td>客户此刻真正在用的数据。审批中的修改、待生效的计费模式都不算，生效后才变成生效值。</td></tr><tr><td>待生效计费模式</td><td>已确定、但要到次月 1 日（UTC0）才生效的计费模式变更（R-04-066）。</td></tr><tr><td>销售</td><td>客户上的负责人字段，原来叫「商务」，是同一个字段（D-04-10）。12 审批流的「绑定的销售」（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-50</a>）解析的就是它。</td></tr><tr><td>运营</td><td>即账户上的「优化师」（02 字段），客户上不再有「运营」字段（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>）。12 的「绑定的运营」解析本单涉及账户的优化师。</td></tr><tr><td>数据范围</td><td>非 sys 用户能看、能改的客户：自己是该客户的销售，或是其名下任一账户的优化师（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a>）。</td></tr><tr><td>绑定登记表</td><td>在客户材料里把一张 01 的在线登记表挂到客户下面。只能绑定，不能解绑。</td></tr><tr><td>历史上传文件</td><td>v2.1 之前以文件上传方式挂在客户下的登记表，保留，照旧可以预览、编辑、删除；有对应账户的可配规则（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>）。</td></tr><tr><td>迁移占位行</td><td>上线迁移给没有历史上传文件的存量账户补的一行「上线迁移补建（无附件）」，只用来挂规则（R-04-073）。</td></tr></tbody></table></div>
+<h3 id="s2-5">1.5 核心流程</h3>
+<div class="tw"><table><thead><tr><th>步骤</th><th>操作者</th><th>系统行为</th><th>产物 / 状态</th></tr></thead><tbody><tr><td>1a</td><td>商务（读写）</td><td>添加客户，预付款 → 点添加</td><td>客户【待开户】</td></tr><tr><td>1b</td><td>商务（读写）</td><td>添加客户，后付款 → 提交审批</td><td>新建客户审批单；通过后客户【待开户】，驳回 / 撤回不生成客户</td></tr><tr><td>2</td><td>商务（读写）</td><td>客户材料 → 添加登记表，选可绑定的待关联登记表（R-04-057）</td><td>登记表【待关联 → 待开户】（01）</td></tr><tr><td>3</td><td>商务</td><td>在 02-账户管理添加账户，选该客户和登记表</td><td>登记表【已开户】（01）；客户【待开户 → 待投放】</td></tr><tr><td>4</td><td>系统</td><td>每天 UTC0 日结后按名下账户消耗判定（R-04-008）</td><td>客户【投放中】/【停止投放】</td></tr><tr><td>支线</td><td>商务（读写）</td><td>编辑客户：预付改后付 → 提交审批；其他改动直接保存</td><td>客户信息变更审批单；通过后其他字段立即生效，计费模式次月 1 日生效（R-04-066）</td></tr><tr><td>支线</td><td>商务（读写）</td><td>付款主体弹窗修改 → 提交审批</td><td>付款主体变更审批单；通过后整体替换</td></tr></tbody></table></div>
+<h2 id="s3">2 详细需求</h2>
+<h3 id="s3-1">2.1 客户实体与客户状态（定义）</h3>
+<h4>2.1.1 功能描述</h4>
+<p>定义客户字段的变化和客户状态机。02-账户管理、12-审批配置与审批中心引用这里的字段和状态，不另写。</p>
+<h4>2.1.2 核心字段</h4>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>客户ID</td><td>customer_id</td><td>string</td><td>是</td><td>系统生成</td><td>—</td><td>沿用现有；01 登记表列表的「客户ID」</td></tr><tr><td>计费模式</td><td>billing_mode</td><td>enum</td><td>是</td><td>预付款 / 后付款</td><td>沿用现有</td><td>切换规则见 R-04-021、R-04-023、R-04-024；变更次月生效 R-04-066</td></tr><tr><td>待生效计费模式</td><td>pending_billing_mode</td><td>enum + date</td><td>否</td><td>预付款 / 后付款 + 生效日</td><td>—</td><td><strong>新增</strong>，R-04-066、R-04-067</td></tr><tr><td>账期</td><td>payment_term_days</td><td>int（天）</td><td>后付款时是</td><td>正整数</td><td>—</td><td>R-04-003</td></tr><tr><td>公司名称</td><td>company_name</td><td>string</td><td>是</td><td>长度沿用现有</td><td>—</td><td>重名规则 R-04-068</td></tr><tr><td>公司别名</td><td>company_alias</td><td>string</td><td>否</td><td>沿用现有</td><td>—</td><td>—</td></tr><tr><td>伙伴云签约主体</td><td>our_contract_entity</td><td>enum</td><td>是</td><td>伙伴云 / clic</td><td>无</td><td><strong>新增</strong>，R-04-002；本期只做客户档案，05～11 不读取（R-04-011）；与 01 登记表的「签约主体名称」（自由文本）不是同一字段</td></tr><tr><td>币种</td><td>currency</td><td>enum</td><td>是</td><td>人民币 / USD / USDT</td><td>无</td><td><strong>新增</strong>，R-04-002</td></tr><tr><td>销售</td><td>sales_user_id</td><td>关联用户</td><td>否</td><td>启用用户，下拉可搜索</td><td>—</td><td>原「商务」，R-04-004；已禁用的显示 R-04-069；变更记录 R-04-064</td></tr><tr><td>合同起始时间</td><td>contract_start</td><td>date</td><td>否</td><td>—</td><td>—</td><td>表单里叫「起始时间」，沿用现有</td></tr><tr><td>合同终止时间</td><td>contract_end</td><td>date</td><td>否</td><td>—</td><td>—</td><td>表单里叫「终止时间」，先后校验沿用现有</td></tr><tr><td>客户来源</td><td>source</td><td>string</td><td>否</td><td>不限格式</td><td>—</td><td><strong>新增</strong>，列表不展示</td></tr><tr><td>备注</td><td>remark</td><td>text</td><td>否</td><td>沿用现有</td><td>—</td><td>—</td></tr><tr><td>付款主体</td><td>payers</td><td>列表（string）</td><td>否</td><td>保持录入顺序，顺序仅影响展示</td><td>—</td><td><strong>新增</strong>，只能走审批修改（2.5）</td></tr><tr><td>客户状态</td><td>status</td><td>enum</td><td>是</td><td>待开户 / 待投放 / 投放中 / 停止投放</td><td>待开户</td><td><strong>新增</strong>，取代原「开启投放」，见 2.1.4</td></tr><tr><td>创建时间</td><td>created_at</td><td>datetime（Asia/Shanghai，秒）</td><td>是</td><td>系统生成</td><td>—</td><td>后付款新建客户为审批通过时刻</td></tr></tbody></table></div>
+<p>删除字段：银行账号、所属银行、服务费率、税点（库表 v67 已删这 4 列）；运营（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>，R-04-001）。</p>
+<h4>2.1.3 业务规则</h4>
+<ul><li><strong>R-04-001</strong> 客户基础信息新增 伙伴云签约主体、币种、账期、客户来源 4 个字段；删除 银行账号、所属银行、服务费率、税点 4 个字段：添加、编辑、列表、详情、审批详情都不再展示，也不能录入（库表 v67 已删这 4 列，历史值不可恢复，无计算依赖）。新增「客户状态」，取代原「开启投放」字段。客户上的「运营」字段停用：列表、添加 / 编辑、详情、审批内容区都不再有，存量值不迁移（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>，S-24）；运营即名下账户的优化师（02）。</li><li><strong>R-04-002</strong> 伙伴云签约主体为必填单选：伙伴云 / clic（D-04-08）；币种为必填单选：人民币 / USD / USDT（版本级约定）。两者都没有默认值。</li><li><strong>R-04-003</strong> 账期在计费模式为后付款（含待生效的后付款，R-04-066）时显示且必填，只能填正整数，单位「天」。表单里计费模式切到预付款时账期输入框隐藏；预付改后付的账期随审批通过立即保存，计费模式生效前客户仍为预付款、不使用账期（R-04-036、D-04-33）；后付改预付的变更生效时账期清空，生效前保留（D-04-15）。</li><li><strong>R-04-004</strong> 原「商务」字段统一改叫「销售」，是同一个字段：客户列表列名、添加 / 编辑表单、客户详情、审批详情都写「销售」（D-04-10）。12 审批流动态选项「绑定的销售」解析客户的销售字段（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-50</a>）；「绑定的运营」解析本单涉及账户的优化师（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>），本页传哪些账户见 R-04-034。</li><li><strong>R-04-005</strong> 客户状态只有 待开户 / 待投放 / 投放中 / 停止投放 四个，只由系统按 2.1.4 流转，所有页面都不能手动改。客户列表展示该字段，添加、编辑客户页面不展示。</li><li><strong>R-04-006</strong> 客户在两种情况下产生，初始状态都是待开户：预付款添加成功（R-04-019）；后付款「新建客户」审批已通过（R-04-035）。新建客户审批中的客户视为不存在：不出现在客户列表、不能在 02 添加账户里被选为所属客户、不能被绑定登记表（D-04-12）；但它的公司名称算占用（R-04-068）。</li><li><strong>R-04-007</strong> 02-账户管理添加账户成功、且所属客户状态为待开户时，客户状态变为待投放，与 02 的建账户动作同成同败。客户已是待投放 / 投放中 / 停止投放时再添加账户，状态不变。</li><li><strong>R-04-008</strong> 待投放 → 投放中、投放中 ⇄ 停止投放由系统按名下账户的消耗判定（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-07</a>）：每天 UTC0 日结后判定一次，用判定时已同步的消耗数据，看最近 30 个完整自然日（UTC0，截至前一日）。窗口内名下任一账户有某日消耗 &gt; 0 → 投放中（待投放、停止投放都转入，投放中保持）；当前为投放中、且窗口内名下全部账户每天消耗都为 0（即连续 30 个完整自然日无消耗）→ 停止投放；待投放且窗口内无消耗 → 保持待投放。05 余额不足停投（<a class="xref" href="../05-费用管理/review.html" title="05-费用管理">R-05-014</a>）、账户暂停投放都不直接改客户状态，只按本条的消耗结果变化。</li><li><strong>R-04-009</strong> 本期客户状态不回到待开户或待投放：没有解绑账户的操作；名下账户增减、停投，都只按 R-04-008 的消耗判定，不另改状态（D-04-17）。</li><li><strong>R-04-010</strong> 上线时存量客户的客户状态按历史消耗推导一次，取代原「开启投放」映射（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-07</a>，S-8）：名下没有账户 → 待开户；有账户、上线前最近 30 个完整自然日（UTC0）内有消耗 → 投放中；有账户、曾有过消耗但这 30 天都无消耗 → 停止投放；有账户、从没有过消耗 → 待投放。上线后按 R-04-008 每日判定（D-04-16）。</li><li><strong>R-04-011</strong> 存量客户的伙伴云签约主体、币种原为自由文本：上线前能明确映射成枚举的映射为枚举，映射不了的置空，原值另存备查、界面不展示（映射表由技术导出两列去重取值、用户逐项确认，S-9）。所有页面（列表、详情、编辑、审批详情）一律按枚举显示，没有枚举值显示「-」，不显示原文；清洗在上线前完成，不设过渡态。后付款存量客户的账期为空时同样显示「-」。下次编辑客户时，这些必填项为空的必须补齐才能保存或提交；只补齐这些字段、计费模式不是预付改后付时，直接保存生效、不走审批（D-04-07、D-04-30）。伙伴云签约主体本期只做客户档案，05～11 不读取，为空不拦截任何财务操作（D-04-30）。</li><li><strong>R-04-064</strong> 客户「销售」每次变化都记录一条：变更前的值、变更后的值、生效时间（销售改为空或从空改为有值也算变化）。生效时间取销售真正生效的时刻：①新建客户以客户生效时刻记初始值（变更前为空）：预付款为添加成功时刻（R-04-019），后付款为新建客户审批通过、客户创建的时刻（R-04-035）；②编辑客户直接保存（R-04-024）且改了销售的，以保存成功时刻为准；③客户信息变更审批（R-04-023）里改了销售的，以审批通过、新信息生效的时刻为准（R-04-036）。审批中的修改不算变更（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-09</a>），审批被驳回 / 撤回、保存失败、销售没变（含已禁用销售原样保留，R-04-069）时都不记录。变更当天（UTC0）起归新销售；上线前不回填历史，上线前的日子一律按上线时的销售（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-72</a>）。记录供 11 按业务日取当日销售（<a class="xref" href="../11-提成中心/review.html" title="11-提成中心">R-11-003</a>），本页不新增展示界面；同一生效时刻按 R-04-072 / <a class="xref" href="../02-账户管理/review.html" title="02-账户管理">R-02-027</a> 同步销售的账户数据授权。</li><li><strong>R-04-069</strong> 客户的销售是已禁用账号时，列表、详情、审批内容区、编辑页下拉回显都显示「姓名（已禁用）」，不显示用户 ID；编辑保存时原值原样保留，不算一次销售变更；用户主动改选时候选只有启用用户，改掉以后不能再选回这个已禁用的人（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-83</a>、D-04-29）。「绑定的销售」解析到已禁用账号时按 12 解析为空、该节点跳过（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-016</a>）；审批详情里的显示按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-049</a>。</li><li><strong>R-04-072</strong> 客户销售变更生效时（生效时刻同 R-04-064 ②③），同步销售对该客户名下账户的数据授权：新销售获得名下全部账户的数据权限，旧销售因「客户销售」身份获得的授权收回（他同时是这些账户的优化师 / 合作者 / 观察者的保留）。授权规则与上线补授权（S-22）按 <a class="xref" href="../02-账户管理/review.html" title="02-账户管理">R-02-027</a>，本页只提供触发时点；授权失败不影响销售变更本身，由技术沿用现有重试方案补齐。</li></ul>
+<h4>2.1.4 状态与流转</h4>
+<p>本页<strong>定义</strong>「客户」状态机。状态清单：待开户 / 待投放 / 投放中 / 停止投放。初始状态：待开户。</p>
+<div class="tw"><table><thead><tr><th>当前状态</th><th>触发动作</th><th>操作者</th><th>目标状态</th><th>前置条件</th></tr></thead><tbody><tr><td>（新客户）</td><td>预付款添加成功</td><td>内部用户（读写）</td><td>待开户</td><td>R-04-018、R-04-019</td></tr><tr><td>（新客户）</td><td>新建客户审批已通过</td><td>系统（12 结束回调）</td><td>待开户</td><td>R-04-035</td></tr><tr><td>待开户</td><td>添加账户，所属客户为本客户</td><td>内部用户（在 02-账户管理）</td><td>待投放</td><td>R-04-007：与 02 建账户同成同败</td></tr><tr><td>待投放</td><td>最近 30 个完整自然日内名下任一账户有消耗 &gt; 0</td><td>系统（每日 UTC0 日结后判定）</td><td>投放中</td><td>R-04-008</td></tr><tr><td>投放中</td><td>名下全部账户连续 30 个完整自然日（UTC0）消耗都为 0</td><td>系统（每日 UTC0 日结后判定）</td><td>停止投放</td><td>R-04-008</td></tr><tr><td>停止投放</td><td>最近 30 个完整自然日内名下任一账户有消耗 &gt; 0</td><td>系统（每日 UTC0 日结后判定）</td><td>投放中</td><td>R-04-008</td></tr></tbody></table></div>
+<p>逆向操作：本期没有解绑账户、没有回到待开户 / 待投放（R-04-009）；没有删除客户。</p>
+<h4>2.1.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>02 建账户失败</td><td>账户没建成</td><td>客户状态不变（同成同败）</td><td>02 的失败提示</td></tr><tr><td>已是投放中的客户再加账户</td><td>—</td><td>状态不变</td><td>仍为投放中</td></tr><tr><td>账户被 05 停投</td><td>当天之后没有消耗</td><td>不直接改客户状态；连续 30 天无消耗后按 R-04-008 变停止投放</td><td>停投后 30 天内仍为投放中</td></tr><tr><td>消耗数据晚到</td><td>判定时某日消耗还没同步</td><td>下一次判定按最新数据看同一个 30 天窗口</td><td>状态最多晚一天变化</td></tr><tr><td>存量客户必填字段为空</td><td>打开编辑</td><td>回显为空</td><td>保存时对应字段提示必填（R-04-011）</td></tr><tr><td>存量签约主体 / 币种原值映射不了</td><td>上线清洗</td><td>置空，原值另存</td><td>显示「-」（R-04-011）</td></tr><tr><td>销售账号已禁用</td><td>打开列表 / 编辑</td><td>保留原值</td><td>「姓名（已禁用）」（R-04-069）</td></tr></tbody></table></div>
+<h4>2.1.6 验收标准</h4>
+<ul><li><strong>G-04-001</strong> 前置：读写用户；客户「橙子出行科技有限公司」不存在。操作：添加客户，计费模式预付款、伙伴云签约主体 伙伴云、币种 人民币，销售选自己，点添加。期望：提示「添加成功」；列表出现该客户，客户状态待开户；列表没有账期、客户来源、运营列。</li><li><strong>G-04-002</strong> 前置：客户「橙子出行」待开户；登记表「橙子出行 开户登记」「橙子出行 二期登记」都已关联该客户、状态待开户。操作：在 02 添加账户，所属客户选「橙子出行」、登记表选第一张，添加成功；再用第二张登记表给它加第二个账户。期望：第一次后客户状态待投放；第二次后仍是待投放。</li><li><strong>G-04-003</strong> 前置：上线日 2026-11-01；存量客户 A 名下账户 2026-10-20（UTC0）有消耗，签约主体原值「伙伴云科技」、币种原值「美元」，映射表把两者分别映射为 伙伴云、USD；B 名下账户 2026-08 有过消耗、2026-10-02～2026-10-31 每天都为 0，签约主体原值「某某主体」不在映射表；C 有 1 个账户、从没有过消耗；D 没有账户，签约主体、币种原值为空。操作：上线后打开客户列表和 B 的编辑页。期望：A 投放中、B 停止投放、C 待投放、D 待开户；A 显示 伙伴云、USD；B 的签约主体、C 和 D 的签约主体与币种都显示「-」，列表、编辑页都不出现「某某主体」原文。</li><li><strong>G-04-004</strong> 前置：存量预付款客户 D 的伙伴云签约主体、币种为空。操作：编辑 D，只改备注点确定；再补选 clic、USD 点确定。期望：第一次伙伴云签约主体、币种下方提示必填，不保存；第二次直接保存，提示「保存成功」，不生成审批单。</li><li><strong>G-04-034</strong> 前置：上线后添加的预付款客户 A、B，销售都是张三；客户信息变更审批流 节点1 指定用户周婷。操作：①2026-10-12 编辑 A，计费模式改后付款、账期 30、销售改李四，提交审批并确定；2026-10-15（UTC0）审批通过。②2026-10-15（UTC0）编辑 B，计费模式不变、只把销售改为李四，点确定。期望：A 审批中期间查不到销售变更记录；通过后记一条：变更前张三、变更后李四、生效时间为审批通过、新信息生效的时刻；B 记一条张三 → 李四，生效时间为保存成功时刻（技术查库核验）；11-提成中心里 A、B 的 2026-10-14 及以前归张三、2026-10-15 起归李四（<a class="xref" href="../11-提成中心/review.html" title="11-提成中心">R-11-003</a>）；李四能在 02 看到 A、B 名下全部账户，张三（不是这些账户的优化师 / 合作者 / 观察者）看不到（R-04-072）。</li><li><strong>G-04-035</strong> 前置：客户 E 投放中，名下账户 E1、E2 最后一次消耗都在 2026-09-10（UTC0）；E1 在 2026-09-11 因余额不足被 05 停投；2026-10-15 E2 又有消耗。操作：分别查看 2026-09-12、2026-10-10、2026-10-11、2026-10-16 各日 UTC0 日结判定后的客户状态。期望：2026-09-12、2026-10-10 仍为投放中（05 停投不改客户状态；10-10 的窗口 09-10～10-09 含 09-10 的消耗）；2026-10-11 变为停止投放（窗口 09-11～10-10 全为 0）；2026-10-16 回到投放中。</li><li><strong>G-04-036</strong> 前置：客户 F 待投放，名下 1 个账户从没有过消耗；该账户 2026-10-12（UTC0）首次消耗 120.00。操作：2026-10-12 白天、2026-10-13 日结判定后分别查看客户列表，并把鼠标放到「客户状态」列头。期望：2026-10-12 白天 F 仍是待投放；2026-10-13 判定后变投放中；列头悬浮提示「投放中：近 30 天有消耗；停止投放：已连续 30 天无消耗」。</li><li><strong>G-04-039</strong> 前置：客户 A 的销售张三账号已禁用。操作：打开列表与客户详情；编辑 A 只改备注点确定；再打开编辑页销售下拉；改选李四保存后再次打开下拉。期望：列表、详情、编辑页回显「张三（已禁用）」，不显示用户 ID；第一次保存后销售仍是张三，没有新增销售变更记录（技术查库）；下拉候选里没有张三；改为李四后记一条变更记录，下拉里仍选不到张三。</li></ul>
+<h3 id="s3-2">2.2 客户列表</h3>
+<h4>2.2.1 功能描述</h4>
+<p>导航「客户管理」进入，顶部「客户信息 / 已提交审批」两个切换（已提交审批见 2.8）。本次改的是列表字段、行操作和数据范围。</p>
+<h4>2.2.2 核心字段</h4>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>公司名称</td><td>company_name</td><td>string</td><td>是</td><td>过长悬浮展示</td><td>—</td><td>旁边提醒 icon 见 R-04-015</td></tr><tr><td>伙伴云签约主体</td><td>our_contract_entity</td><td>enum</td><td>是</td><td>伙伴云 / clic</td><td>—</td><td><strong>新增列</strong>，在所属账户系统左侧</td></tr><tr><td>所属账户系统</td><td>—</td><td>列表</td><td>否</td><td>沿用现有</td><td>—</td><td>—</td></tr><tr><td>币种</td><td>currency</td><td>enum</td><td>是</td><td>人民币 / USD / USDT</td><td>—</td><td><strong>新增列</strong>，在所属账户系统右侧</td></tr><tr><td>计费模式</td><td>billing_mode</td><td>enum</td><td>是</td><td>预付款 / 后付款</td><td>—</td><td>有待生效变更时按 R-04-067</td></tr><tr><td>客户别名</td><td>company_alias</td><td>string</td><td>否</td><td>—</td><td>—</td><td>沿用</td></tr><tr><td>销售</td><td>sales_user_id</td><td>关联用户</td><td>否</td><td>—</td><td>—</td><td>R-04-004、R-04-069</td></tr><tr><td>账户列表</td><td>—</td><td>列表</td><td>否</td><td>沿用现有</td><td>—</td><td>—</td></tr><tr><td>客户状态</td><td>status</td><td>enum</td><td>是</td><td>见 2.1.4</td><td>—</td><td><strong>新增列</strong>，取代原开启投放；列头提示 R-04-065</td></tr><tr><td>合同起始时间 / 合同终止时间</td><td>contract_start / contract_end</td><td>date</td><td>否</td><td>yyyy-mm-dd</td><td>—</td><td>标红规则 R-04-013</td></tr><tr><td>备注</td><td>remark</td><td>text</td><td>否</td><td>—</td><td>—</td><td>沿用</td></tr></tbody></table></div>
+<h4>2.2.3 业务规则</h4>
+<ul><li><strong>R-04-012</strong> 客户管理页顶部有「客户信息 / 已提交审批」两个切换，默认客户信息。客户信息页的搜索框（含搜索历史）、「显示合同即将到期客户」勾选、「添加客户」按钮沿用现有。列表只列当前用户数据范围内的客户（R-04-061）。</li><li><strong>R-04-013</strong> 列表字段依次为：公司名称、伙伴云签约主体、所属账户系统、币种、计费模式、客户别名、销售、账户列表、客户状态、合同起始时间、合同终止时间、备注、操作（没有「运营」列，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>）。公司名称列和操作列固定；账期、客户来源不在列表展示；空值显示「-」。合同终止时间只在命中「即将到期」（与「显示合同即将到期客户」勾选同一口径，天数沿用现有）或已过期时标红，其余正常显示；公司名称后不加「（点击查看详情）」，详情走行操作（D-04-32）。</li><li><strong>R-04-014</strong> 行操作为 详情、客户材料、编辑、付款主体，所有客户状态都显示：详情 = 新页打开客户详情（2.9）；客户材料 = 进入客户材料页（2.10），取代原来的「合同」「客户登记表」两个入口；编辑 = 编辑客户（2.4）；付款主体 = 打开付款主体弹窗（2.5）。客户列表不放「规则配置」入口（<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">D-01-03</a>），规则配置入口在客户材料的登记表行（R-04-060）。</li><li><strong>R-04-015</strong> 公司名称旁的提醒 icon 沿用 v2.0：没有任何合同时提示「未上传合同」；客户登记表数量（历史上传文件 + 绑定的在线登记表合计，迁移占位行不计，R-04-073）为 0 时提示「未上传客户登记表」。</li><li><strong>R-04-016</strong> 排序沿用现有；分页 10 / 50 / 100 / 300 条每页，展示总条数。</li><li><strong>R-04-065</strong> 「客户状态」列头带问号，悬浮提示「投放中：近 30 天有消耗；停止投放：已连续 30 天无消耗」（R-04-008）。</li></ul>
+<h4>2.2.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>没有客户 / 搜索无结果</td><td>列表为空</td><td>—</td><td>空态「暂无数据」</td></tr><tr><td>列表加载失败</td><td>请求失败</td><td>不清空搜索条件</td><td>失败提示，可重试</td></tr><tr><td>只读用户</td><td>—</td><td>写操作按钮不渲染</td><td>只有详情、客户材料（R-04-062）</td></tr><tr><td>新建客户审批中</td><td>—</td><td>不进列表（R-04-006）</td><td>在已提交审批里能看到这张单</td></tr><tr><td>客户不在本人数据范围</td><td>—</td><td>不进列表（R-04-061）</td><td>看不到该客户</td></tr></tbody></table></div>
+<h4>2.2.6 验收标准</h4>
+<ul><li><strong>G-04-005</strong> 前置：只读用户，是客户 A、B 的销售；A 有 1 个合同、0 个历史上传登记表、1 个绑定登记表，合同终止时间 2027-09-30（不在即将到期范围）；B 的合同终止时间 2026-02-28（已过期）。操作：打开客户列表。期望：列按 R-04-013 排列，没有运营列；行操作只有详情、客户材料；没有添加客户按钮；A 的公司名称旁既不提示「未上传客户登记表」，也不提示「未上传合同」；A 的合同终止时间正常显示，B 的标红；公司名称后没有「（点击查看详情）」。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-1">
+  <figcaption><span class="tag">示意 1</span>客户列表（默认态，新增列与行操作）<span class="src">mocks/2.2-客户列表/01-默认态.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="客户列表（默认态，新增列与行操作）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 客户列表 · 默认态</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>客户列表 · 默认态</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-012～R-04-016 / G-04-005</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理</h1><span class=&quot;state-tag&quot;>默认态（读写用户）</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;tabs&quot;><a class=&quot;on&quot;>客户信息</a><a>已提交审批</a></div>
+<div class=&quot;bar&quot;><input class=&quot;input&quot; placeholder=&quot;请输入搜索内容&quot;><label class=&quot;hint&quot;>☐ 显示合同即将到期客户</label><span style=&quot;flex:1&quot;></span><span class=&quot;btn primary&quot;>添加客户</span></div>
+<table><thead><tr><th>公司名称</th><th class=&quot;changed&quot; data-note=&quot;1&quot;>伙伴云签约主体</th><th>所属账户系统</th><th class=&quot;changed&quot; data-note=&quot;2&quot;>币种</th><th>计费模式</th><th>客户别名</th><th class=&quot;modified&quot; data-note=&quot;3&quot;>销售</th><th>账户列表</th><th class=&quot;changed&quot; data-note=&quot;4&quot;>客户状态</th><th>合同起始时间</th><th>合同终止时间</th><th>备注</th><th>操作</th></tr></thead>
+<tbody><tr><td>麦芽音乐（深圳）有限公司</td><td>伙伴云</td><td>伙伴云</td><td>人民币</td><td>预付款</td><td>麦芽</td><td>陈思远</td><td>Maiya-ASA-01</td><td><span class=&quot;st ok&quot;>投放中</span></td><td>2026-01-01</td><td>2026-12-31</td><td>年框</td><td class=&quot;ops&quot;><a>详情</a><a>客户材料</a><a>编辑</a><a>付款主体</a></td></tr><tr><td>橙子出行科技有限公司</td><td>clic</td><td>-</td><td>USD</td><td>后付款</td><td>橙子</td><td>张三</td><td>-</td><td><span class=&quot;st wait&quot;>待开户</span></td><td>2026-10-01</td><td>2027-09-30</td><td>-</td><td class=&quot;ops&quot;><a>详情</a><a>客户材料</a><a>编辑</a><a>付款主体</a></td></tr><tr><td>北辰健康管理有限公司</td><td>伙伴云</td><td>伙伴云</td><td>USDT</td><td>预付款</td><td>北辰</td><td>李四</td><td>BC-ASA-01、BC-ASA-02</td><td><span class=&quot;st wait&quot;>待投放</span></td><td>2026-09-15</td><td>2027-09-14</td><td>-</td><td class=&quot;ops&quot;><a>详情</a><a>客户材料</a><a>编辑</a><a>付款主体</a></td></tr><tr><td>青柠记账（存量）<span class=&quot;ic-warn&quot; title=&quot;未上传客户登记表&quot;>⚠</span></td><td>-</td><td>伙伴云</td><td>-</td><td>预付款</td><td>青柠</td><td>陈思远</td><td>QN-ASA-01</td><td><span class=&quot;st end&quot;>停止投放</span></td><td>2025-03-01</td><td>2026-02-28</td><td>-</td><td class=&quot;ops&quot;><a>详情</a><a>客户材料</a><a>编辑</a><a>付款主体</a></td></tr></tbody></table>
+<div class=&quot;bar&quot; style=&quot;margin-top:12px;justify-content:flex-end&quot;><span class=&quot;hint&quot;>共 4 条</span><span class=&quot;sel&quot;>10条/每页 ▾</span></div>
+<div class=&quot;modified&quot; data-note=&quot;5&quot; style=&quot;display:inline-block;margin-top:8px;padding:6px 10px&quot;><span class=&quot;hint&quot;>行操作：详情（新页）/ 客户材料（合并原「合同」「客户登记表」）/ 编辑 / 付款主体；不再有「规则配置」「开启投放」；已删除 银行账号、所属银行、服务费率、税点</span></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>新增「伙伴云签约主体」列，在所属账户系统左侧；存量为空显示「-」（R-04-013、R-04-011）</li><li><span class=&quot;badge&quot;>2</span>新增「币种」列，在所属账户系统右侧；人民币 / USD / USDT（R-04-002）</li><li><span class=&quot;badge&quot;>3</span>「商务」统一叫「销售」（R-04-004）；客户「运营」列去掉，运营 = 账户优化师（D-00-76）</li><li><span class=&quot;badge&quot;>4</span>新增「客户状态」列，取代原开启投放（R-04-005、R-04-010）</li><li><span class=&quot;badge&quot;>5</span>行操作调整；公司名称旁提醒 icon 沿用，登记表数量含绑定的（R-04-014、R-04-015）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.2-客户列表/01-默认态.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-3">2.3 添加客户</h3>
+<h4>2.3.1 功能描述</h4>
+<p>列表「添加客户」进入独立页面，面包屑「客户管理/添加客户」（D-04-27）。预付款直接添加；后付款要先审批。</p>
+<h4>2.3.2 核心字段</h4>
+<p>字段及类型同 2.1.2，表单顺序见 R-04-017。</p>
+<h4>2.3.3 业务规则</h4>
+<ul><li><strong>R-04-017</strong> 添加客户为独立页面，面包屑「客户管理/添加客户」；点「返回」回到客户列表，不保存已填内容，不弹离开确认（D-04-27）。字段顺序：计费模式、账期（仅后付款）、公司名称、公司别名、伙伴云签约主体、币种、销售、起始时间、终止时间、客户来源、备注；按钮 返回 / 添加（后付款时为「提交审批」）。</li><li><strong>R-04-018</strong> 点添加或提交审批时校验：计费模式、公司名称、伙伴云签约主体、币种必填；后付款时账期必填且为正整数（R-04-003）；公司名称不能重名（R-04-068）；其余字段的长度和格式沿用现有。不通过就不提交，在对应字段下方提示。</li><li><strong>R-04-019</strong> 计费模式为预付款时按钮为「添加」，校验通过后直接创建客户（状态待开户），弱提示「添加成功」，返回客户列表，新客户出现在列表里（不在本人数据范围的除外，R-04-061）。</li><li><strong>R-04-020</strong> 计费模式为后付款时按钮变为「提交审批」，校验通过后二次确认：「后付款客户需进行审批，是否提交审批单？」+ 备注（多行输入框，选填）+ 取消 / 确定。确定后提交「客户管理—新建客户」审批（R-04-033），按 12 返回的审批单状态弱提示（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-018</a>：审批中为「已提交审批」，免审通过为「提交成功，无需审批，已生效」），返回客户列表；审批中不创建客户（R-04-006）。</li><li><strong>R-04-021</strong> 在添加页切换计费模式时，按钮文字在「添加」和「提交审批」之间实时切换，账期按 R-04-003 显隐。新客户的计费模式在客户创建时即生效，不适用 R-04-066 的次月生效。</li><li><strong>R-04-068</strong> 公司名称重名校验（D-04-25）：添加客户（添加、提交审批）和编辑客户（确定、提交审批）时，公司名称为新填或与当前生效值不同才校验；与同租户全部客户的公司名称、以及审批中的新建客户单里的公司名称按原文全等比较（区分大小写，不去掉空格），相同即重名，不提交，公司名称下方提示「公司名称已存在」；服务端同样校验。同一公司在不同账户系统开两个客户时，公司名称须加后缀区分。存量客户里已经重名的不强制改名，公司名称不改时照常保存。客户信息变更里改的公司名称在审批中不算占用，最后通过时若已重名按 R-04-071 处理。</li></ul>
+<h4>2.3.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>必填为空 / 账期格式错</td><td>点添加 / 提交审批</td><td>不提交</td><td>字段下方提示</td></tr><tr><td>公司名称重名（含审批中的新建客户）</td><td>点添加 / 提交审批</td><td>不提交（R-04-068）</td><td>「公司名称已存在」</td></tr><tr><td>二次确认点取消</td><td>—</td><td>不提交，留在添加页</td><td>已填内容保留</td></tr><tr><td>点返回</td><td>—</td><td>不保存，不弹确认</td><td>回到客户列表</td></tr><tr><td>连点添加或确定</td><td>多次请求</td><td>只生成 1 个客户 / 1 张审批单，由技术沿用现有防重复方案</td><td>一条成功提示</td></tr><tr><td>提交失败（网络 / 服务异常）</td><td>接口报错</td><td>不生成客户、不生成审批单</td><td>「操作失败，请重试」，已填内容保留</td></tr><tr><td>销售没选本人、本人也不是 sys</td><td>预付款添加成功</td><td>客户不在本人数据范围（新客户还没有账户）</td><td>提示「添加成功」，列表里看不到该客户</td></tr></tbody></table></div>
+<h4>2.3.6 验收标准</h4>
+<ul><li><strong>G-04-006</strong> 前置：读写用户打开添加客户。操作：选后付款不填账期点提交审批；账期分别填 0、1.5、30；再切回预付款；最后点返回。期望：页面面包屑为「客户管理/添加客户」；不填时提示必填；0、1.5 提示格式错误；30 通过；切回预付款后账期输入框消失，按钮文字变回「添加」；点返回直接回到客户列表、不弹确认、不生成客户。</li><li><strong>G-04-007</strong> 前置：新建客户审批流为 节点1 绑定的销售、节点2 指定用户周婷；读写用户。操作：添加客户选后付款、账期 30、销售选陈思远，点提交审批，确认框备注填「年框客户」并确定。期望：确认框文案为「后付款客户需进行审批，是否提交审批单？」；提示「已提交审批」；客户列表没有这个客户；已提交审批出现一条 新建客户·审批中；审批详情节点 1 为陈思远、节点 2 为周婷，发起记录备注「年框客户」。</li><li><strong>G-04-008</strong> 前置：①同 G-04-007，但销售不选；②新建客户审批流为 0 节点。操作：分别提交审批。期望：①节点 1 显示「已跳过（未找到审批人）」，审批从节点 2 周婷开始，提示「已提交审批」；②提交即通过，提示「提交成功，无需审批，已生效」，客户马上出现在列表（销售为本人时）、状态待开户，已提交审批里这张单为已通过。</li><li><strong>G-04-010</strong> 前置：新建客户「云帆教育」审批中。操作：在 02 添加账户的所属客户下拉里搜「云帆」。期望：搜不到。</li><li><strong>G-04-038</strong> 前置：已有客户「星海网络科技有限公司」「Starfish Media」；审批中的新建客户单公司名称「云帆教育科技（杭州）有限公司」；存量客户 X、Y 都叫「伙伴云」（不同账户系统）。操作：①添加预付款客户「星海网络科技有限公司」；②添加「starfish media」；③添加「云帆教育科技（杭州）有限公司」；④编辑 X 只改备注点确定；⑤编辑 X 把公司名称改为「星海网络科技有限公司」点确定。期望：①③⑤公司名称下方提示「公司名称已存在」，不保存、不提交；②添加成功（区分大小写）；④保存成功。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-2">
+  <figcaption><span class="tag">示意 2</span>添加客户（后付款，提交审批二次确认）<span class="src">mocks/2.3-添加客户/01-后付款提交审批.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="添加客户（后付款，提交审批二次确认）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 添加客户 · 后付款提交审批</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>添加客户 · 后付款提交审批</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-017～R-04-021 / G-04-006～G-04-008</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理 / 添加客户</h1><span class=&quot;state-tag&quot;>后付款 · 二次确认</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;mask&quot;><div class=&quot;modal wide&quot;><div class=&quot;mh&quot;>添加客户<span>✕</span></div><div class=&quot;mb&quot;>
+<div class=&quot;form&quot;>
+<div class=&quot;lb req&quot;>计费模式</div><div><span class=&quot;&quot;  style=&quot;display:inline-block;padding:2px 6px&quot;><span class=&quot;radio&quot;>预付款</span><span class=&quot;radio on&quot;>后付款</span></span></div>
+<div class=&quot;lb req&quot;>账期</div><div><span class=&quot;changed&quot; data-note=&quot;1&quot; style=&quot;display:inline-block&quot;><input class=&quot;input&quot; style=&quot;width:200px&quot; value=&quot;30&quot; placeholder=&quot;请输入天数&quot;> 天</span></div>
+<div class=&quot;lb req&quot;>公司名称</div><div><input class=&quot;input&quot; value=&quot;云帆教育科技（杭州）有限公司&quot; placeholder=&quot;请输入客户名称&quot;></div>
+<div class=&quot;lb&quot;>公司别名</div><div><input class=&quot;input&quot; value=&quot;云帆&quot; placeholder=&quot;请输入客户别名&quot;></div>
+<div class=&quot;lb req&quot;>伙伴云签约主体</div><div><span class=&quot;changed&quot; data-note=&quot;2&quot; style=&quot;display:inline-block;padding:2px 6px&quot;><span class=&quot;radio on&quot;>伙伴云</span><span class=&quot;radio&quot;>clic</span></span></div>
+<div class=&quot;lb req&quot;>币种</div><div><span class=&quot;changed&quot; data-note=&quot;3&quot; style=&quot;display:inline-block;padding:2px 6px&quot;><span class=&quot;radio on&quot;>人民币</span><span class=&quot;radio&quot;>USD</span><span class=&quot;radio&quot;>USDT</span></span></div>
+<div class=&quot;lb&quot;>销售</div><div><span class=&quot;sel&quot;>陈思远 ▾</span></div>
+<div class=&quot;lb&quot;>起始时间</div><div><input class=&quot;input&quot; value=&quot;2026-11-01&quot; placeholder=&quot;请选择开始时间&quot;></div>
+<div class=&quot;lb&quot;>终止时间</div><div><input class=&quot;input&quot; value=&quot;2027-10-31&quot; placeholder=&quot;请选择终止时间&quot;></div>
+<div class=&quot;lb&quot;>客户来源</div><div><input class=&quot;input&quot; value=&quot;老客户转介绍&quot; placeholder=&quot;请输入客户来源&quot;></div>
+<div class=&quot;lb&quot;>备注</div><div><textarea class=&quot;input&quot; placeholder=&quot;请输入备注&quot;></textarea></div>
+</div>
+</div><div class=&quot;mf&quot;><span class=&quot;btn&quot;>返回</span><span class=&quot;btn primary modified&quot; data-note=&quot;4&quot;>提交审批</span></div></div>
+<div class=&quot;confirm changed&quot; data-note=&quot;5&quot;><div class=&quot;mh&quot; style=&quot;padding:12px 20px;border-bottom:1px solid var(--line);font-weight:600&quot;>提示</div><div class=&quot;mb&quot;>后付款客户需进行审批，是否提交审批单？<div class=&quot;field&quot; style=&quot;margin-top:12px&quot;><label>备注</label><textarea class=&quot;input&quot;>年框客户，合同已签</textarea></div></div><div class=&quot;mf&quot; style=&quot;padding:12px 20px;text-align:right;border-top:1px solid var(--line)&quot;><span class=&quot;btn&quot;>取消</span> <span class=&quot;btn primary&quot;>确定</span></div></div></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>新增「账期」：仅后付款显示、必填、正整数天（R-04-003）</li><li><span class=&quot;badge&quot;>2</span>新增「伙伴云签约主体」：伙伴云 / clic，必填（R-04-002）</li><li><span class=&quot;badge&quot;>3</span>新增「币种」：人民币 / USD / USDT，必填（R-04-002）；另新增「客户来源」选填；删除银行账号等 4 个字段</li><li><span class=&quot;badge&quot;>4</span>后付款时按钮从「添加」变为「提交审批」（R-04-020、R-04-021）</li><li><span class=&quot;badge&quot;>5</span>提交审批二次确认 + 选填备注；确定后不生成客户，审批通过才生成（R-04-020、R-04-035）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.3-添加客户/01-后付款提交审批.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-4">2.4 编辑客户</h3>
+<h4>2.4.1 功能描述</h4>
+<p>列表行操作「编辑」进入独立页面，面包屑「客户管理/编辑客户」（D-04-27）。只有「预付款 → 后付款」要审批，其他改动直接保存；计费模式变更次月 1 日（UTC0）生效。</p>
+<h4>2.4.2 核心字段</h4>
+<p>字段及类型同 2.1.2，顺序同 R-04-017。</p>
+<h4>2.4.3 业务规则</h4>
+<ul><li><strong>R-04-022</strong> 编辑客户为独立页面，面包屑「客户管理/编辑客户」，返回规则同 R-04-017；字段和顺序同 R-04-017，打开时回显客户当前生效的值（计费模式有待生效变更时回显待生效的目标值，R-04-066）；按钮 返回 / 确定（预付改后付时为「提交审批」）；校验同 R-04-018。</li><li><strong>R-04-023</strong> 客户当前生效的计费模式为预付款、本次改为后付款时：按钮变为「提交审批」，计费模式旁提示「审批通过后的次月 1 日（UTC0）起生效」。点后二次确认「变更为后付款客户需进行审批，是否提交审批单？」+ 备注（选填）+ 取消 / 确定。确定后提交「客户管理—客户信息变更」审批，本次页面上的全部修改随单一起审，审批通过前都不生效；按 12 返回的审批单状态弱提示（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-018</a>）并返回列表（D-04-02）。通过后的生效方式见 R-04-036。</li><li><strong>R-04-024</strong> 不属于 R-04-023 的保存（后付改预付、取消待生效变更、计费模式没改）：按钮为「确定」，校验通过后直接保存，不走审批，弱提示「保存成功」（D-04-02）。计费模式以外的字段保存即生效；后付改预付的计费模式按 R-04-066 次月生效，计费模式旁提示「保存后 {次月 1 日 yyyy-mm-dd}（UTC0）起生效」。币种、伙伴云签约主体修改后立即生效，本期不影响任何财务单据与计算。</li><li><strong>R-04-025</strong> 同一客户的基础信息同一时间最多只有 1 张审批中的「客户信息变更」单。有审批中单时打开编辑客户：页面顶部提示条按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-047</a>：「该客户已有审批中的客户信息变更（审批单号 {审批单号}，申请人 {姓名}），请等审批结束或撤回后再操作」，单号可点、新页打开审批详情（没有查看资格按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-043</a> 显示「无权限查看」）；展示当前生效值，所有输入框禁用，「确定 / 提交审批」按钮隐藏，只留返回。</li><li><strong>R-04-026</strong> 提交或保存时服务端再判一次：该客户已有审批中的同类单（基础信息看客户信息变更，付款主体看付款主体变更）时，拒绝本次保存或提交，不生成第二张单，弹提示框「该客户已有审批中的{客户信息变更 / 付款主体变更}（审批单号 {审批单号}，申请人 {姓名}），请等审批结束或撤回后再操作」，按钮「知道了」，单号可点（句式按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-047</a>，本页对象为「该客户」，审批类型取客户信息变更 / 付款主体变更）。</li><li><strong>R-04-027</strong> 基础信息（客户信息变更）和付款主体（付款主体变更）两类审批互不影响：一类有审批中单时，另一类照常可以编辑和提交（D-04-13）。</li><li><strong>R-04-066</strong> 计费模式变更从确定时刻的次月 1 日 00:00（UTC0）起生效（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-73</a>）：预付改后付以审批通过时刻为准（例：2026-10-25 提交、2026-11-03 通过 → 2026-12-01 起后付款），后付改预付以保存成功时刻为准。生效前客户仍按原计费模式，同一结算期只有一种计费模式；到生效时刻由系统自动切换，账期按 R-04-003 处理；生效后的余额、欠费处理按 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-73</a>（05、06 定义）。同一客户同时最多一条待生效的计费模式变更：编辑页计费模式回显待生效的目标值；本次保存的计费模式与回显值相同视为没改，待生效变更保留；改回当前生效值时直接保存并取消待生效变更（计费模式旁提示「保存后取消 {yyyy-mm-dd} 起改为{目标值}的变更」）；当前生效值为预付款、没有待生效变更、本次改为后付款时走 R-04-023（D-04-26）。</li><li><strong>R-04-067</strong> 有待生效计费模式时：客户列表计费模式列、客户详情显示「{当前生效值}（{yyyy-mm-dd} 起改为{目标值}）」；编辑页计费模式旁提示「{yyyy-mm-dd}（UTC0）起生效」；客户信息变更审批内容区的计费模式旁，审批中显示「审批通过后的次月 1 日（UTC0）起生效」，已通过显示「生效月：yyyy-mm」（按通过时刻算），已驳回 / 已撤回不显示。05、07 等其他页面怎么显示客户计费模式按各页规则。</li></ul>
+<h4>2.4.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>编辑期间别人提交了客户信息变更</td><td>我点确定 / 提交审批</td><td>拒绝（R-04-026）</td><td>提示框，带审批单号、申请人</td></tr><tr><td>编辑期间别人直接保存了</td><td>我点确定</td><td>后保存的覆盖先保存的，由技术沿用现有方案</td><td>「保存成功」</td></tr><tr><td>改成后付款又改回预付款</td><td>—</td><td>按钮变回「确定」，提示文字消失</td><td>直接保存</td></tr><tr><td>已有待生效变更，只改备注</td><td>点确定</td><td>待生效变更保留（R-04-066）</td><td>「保存成功」</td></tr><tr><td>生效时刻前后打开编辑</td><td>跨过次月 1 日</td><td>生效后回显新的生效值，不再有待生效提示</td><td>—</td></tr><tr><td>只读用户 / 客户不在数据范围</td><td>—</td><td>看不到编辑入口；直接访问显示「无权限访问」，调接口服务端拒绝</td><td>「无权限访问」/「无权限操作」</td></tr></tbody></table></div>
+<h4>2.4.6 验收标准</h4>
+<ul><li><strong>G-04-011</strong> 前置：预付款客户 A，销售张三；客户信息变更审批流为 节点1 绑定的销售、节点2 指定用户周婷。操作：2026-10-12 编辑 A，计费模式改后付款、账期 45、销售改李四、公司别名改「橙子」，点提交审批并确定。期望：改计费模式时旁边出现「审批通过后的次月 1 日（UTC0）起生效」、按钮变「提交审批」；确认框文案「变更为后付款客户需进行审批，是否提交审批单？」；审批节点 1 是张三；客户列表里 A 仍显示预付款、销售张三、原别名。</li><li><strong>G-04-012</strong> 前置：G-04-011 的单审批中。操作：再次打开编辑 A，点提示条里的审批单号。期望：顶部提示条「该客户已有审批中的客户信息变更（审批单号 {G-04-011 的单号}，申请人 {申请人姓名}），请等审批结束或撤回后再操作」；显示预付款等旧值；所有输入框禁用；只有返回按钮；点单号新页打开这张单的审批详情。</li><li><strong>G-04-015</strong> 前置：后付款客户 B（账期 30）；另一后付款客户 C。操作：2026-10-20 编辑 B 改为预付款点确定；编辑 C 只改备注点确定。期望：B 计费模式旁提示「保存后 2026-11-01（UTC0）起生效」，提示「保存成功」，列表显示「后付款（2026-11-01 起改为预付款）」，账期 30 保留到生效前；2026-11-01（UTC0）起 B 显示预付款、账期清空；C 直接保存；都不生成审批单。</li><li><strong>G-04-016</strong> 前置：预付款客户 A 没有审批中单；同一用户开了两个标签页编辑 A。操作：两个标签页都改成后付款，先后点提交审批并确定。期望：第一次成功；第二次弹提示框「该客户已有审批中的客户信息变更（审批单号 {第一张单号}，申请人 {姓名}），请等审批结束或撤回后再操作」，按钮「知道了」；只生成 1 张客户信息变更单。</li><li><strong>G-04-017</strong> 前置：客户 A 有审批中的客户信息变更单。操作：打开 A 的付款主体弹窗修改并提交审批。期望：能正常编辑、提交，生成付款主体变更单。</li><li><strong>G-04-037</strong> 前置：G-04-015 之后，B 有待生效变更（2026-11-01 起改为预付款）；预付款客户 D 的客户信息变更审批流 节点1 指定用户周婷。操作：①2026-10-25 编辑 B，只改备注点确定；②再编辑 B，把计费模式改回后付款点确定；③2026-10-25 编辑 D 改为后付款、账期 15 提交审批，2026-11-03 周婷通过。期望：①编辑页计费模式回显预付款并提示「2026-11-01（UTC0）起生效」，保存后待生效变更不变；②按钮为「确定」、不走审批，提示「保存成功」，待生效变更取消，列表显示后付款，账期 30 保留；③审批中审批内容区计费模式旁显示「审批通过后的次月 1 日（UTC0）起生效」；通过后列表显示「预付款（2026-12-01 起改为后付款）」，审批内容区显示「生效月：2026-12」；2026-12-01（UTC0）起 D 显示后付款、账期 15 天。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-3">
+  <figcaption><span class="tag">示意 3</span>编辑客户（预付款改后付款，按钮变提交审批）<span class="src">mocks/2.4-编辑客户/01-预付改后付.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="编辑客户（预付款改后付款，按钮变提交审批）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 编辑客户 · 预付款改后付款</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>编辑客户 · 预付款改后付款</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-022～R-04-024 / G-04-011</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理 / 编辑客户</h1><span class=&quot;state-tag&quot;>原预付款 → 选后付款</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;mask&quot;><div class=&quot;modal wide&quot;><div class=&quot;mh&quot;>编辑客户<span>✕</span></div><div class=&quot;mb&quot;>
+<div class=&quot;form&quot;>
+<div class=&quot;lb req&quot;>计费模式</div><div><span class=&quot;modified&quot; data-note=&quot;1&quot; style=&quot;display:inline-block;padding:2px 6px&quot;><span class=&quot;radio&quot;>预付款</span><span class=&quot;radio on&quot;>后付款</span></span><span class=&quot;red&quot; style=&quot;margin-left:12px;font-size:12px&quot;>审批通过后的次月 1 日（UTC0）起生效</span></div>
+<div class=&quot;lb req&quot;>账期</div><div><span class=&quot;changed&quot; data-note=&quot;2&quot; style=&quot;display:inline-block&quot;><input class=&quot;input&quot; style=&quot;width:200px&quot; value=&quot;45&quot; placeholder=&quot;请输入天数&quot;> 天</span></div>
+<div class=&quot;lb req&quot;>公司名称</div><div><input class=&quot;input&quot; value=&quot;橙子出行科技有限公司&quot; placeholder=&quot;请输入客户名称&quot;></div>
+<div class=&quot;lb&quot;>公司别名</div><div><input class=&quot;input&quot; value=&quot;橙子&quot; placeholder=&quot;请输入客户别名&quot;></div>
+<div class=&quot;lb req&quot;>伙伴云签约主体</div><div><span class=&quot;changed&quot; data-note=&quot;3&quot; style=&quot;display:inline-block;padding:2px 6px&quot;><span class=&quot;radio&quot;>伙伴云</span><span class=&quot;radio on&quot;>clic</span></span></div>
+<div class=&quot;lb req&quot;>币种</div><div><span class=&quot;changed&quot; data-note=&quot;4&quot; style=&quot;display:inline-block;padding:2px 6px&quot;><span class=&quot;radio&quot;>人民币</span><span class=&quot;radio on&quot;>USD</span><span class=&quot;radio&quot;>USDT</span></span></div>
+<div class=&quot;lb&quot;>销售</div><div><span class=&quot;sel&quot;>李四 ▾</span></div>
+<div class=&quot;lb&quot;>起始时间</div><div><input class=&quot;input&quot; value=&quot;2026-10-01&quot; placeholder=&quot;请选择开始时间&quot;></div>
+<div class=&quot;lb&quot;>终止时间</div><div><input class=&quot;input&quot; value=&quot;2027-09-30&quot; placeholder=&quot;请选择终止时间&quot;></div>
+<div class=&quot;lb&quot;>客户来源</div><div><input class=&quot;input&quot; value=&quot;展会&quot; placeholder=&quot;请输入客户来源&quot;></div>
+<div class=&quot;lb&quot;>备注</div><div><textarea class=&quot;input&quot; placeholder=&quot;请输入备注&quot;></textarea></div>
+</div>
+</div><div class=&quot;mf&quot;><span class=&quot;btn&quot;>返回</span><span class=&quot;btn primary modified&quot; data-note=&quot;5&quot;>提交审批</span></div></div></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>当前生效为预付款、本次改后付款：旁边提示「审批通过后的次月 1 日（UTC0）起生效」（R-04-023、R-04-066）</li><li><span class=&quot;badge&quot;>2</span>账期随后付款出现，必填（R-04-003）</li><li><span class=&quot;badge&quot;>3</span>伙伴云签约主体，存量为空时必须补齐才能保存（R-04-011）</li><li><span class=&quot;badge&quot;>4</span>币种，存量为空时必须补齐（R-04-011）</li><li><span class=&quot;badge&quot;>5</span>按钮变「提交审批」，二次确认「变更为后付款客户需进行审批，是否提交审批单？」；本页全部改动随单审，通过前不生效（R-04-023）；后付改预付或计费模式不变时为「确定」直接保存（R-04-024）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.4-编辑客户/01-预付改后付.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<figure class="mock" data-mode="pc" id="mock-4">
+  <figcaption><span class="tag">示意 4</span>编辑客户（有审批中的客户信息变更，锁定）<span class="src">mocks/2.4-编辑客户/02-审批中锁定.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="编辑客户（有审批中的客户信息变更，锁定）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 编辑客户 · 审批中锁定</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>编辑客户 · 审批中锁定</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-025、R-04-026 / G-04-012</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理 / 编辑客户</h1><span class=&quot;state-tag&quot;>有审批中的客户信息变更</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;mask&quot;><div class=&quot;modal wide&quot;><div class=&quot;mh&quot;>编辑客户<span>✕</span></div><div class=&quot;mb&quot;>
+<div class=&quot;lock changed&quot; data-note=&quot;1&quot;>该客户<em>基础信息配置</em>有状态为<em>审批中</em>的修改未通过，此处展示当前生效中的信息。（审批单号 <span class=&quot;link&quot;>AP202610190012</span>，申请人 刘佳）</div>
+<div class=&quot;modified&quot; data-note=&quot;2&quot; style=&quot;padding:4px&quot;><div class=&quot;form&quot;>
+<div class=&quot;lb req&quot;>计费模式</div><div><span class=&quot;&quot;  style=&quot;display:inline-block;padding:2px 6px&quot;><span class=&quot;radio on&quot;>预付款</span><span class=&quot;radio&quot;>后付款</span></span></div>
+
+<div class=&quot;lb req&quot;>公司名称</div><div><input class=&quot;input&quot; disabled value=&quot;橙子出行科技有限公司&quot; placeholder=&quot;请输入客户名称&quot;></div>
+<div class=&quot;lb&quot;>公司别名</div><div><input class=&quot;input&quot; disabled value=&quot;橙子出行&quot; placeholder=&quot;请输入客户别名&quot;></div>
+<div class=&quot;lb req&quot;>伙伴云签约主体</div><div><span class=&quot;&quot;  style=&quot;display:inline-block;padding:2px 6px&quot;><span class=&quot;radio&quot;>伙伴云</span><span class=&quot;radio on&quot;>clic</span></span></div>
+<div class=&quot;lb req&quot;>币种</div><div><span class=&quot;&quot;  style=&quot;display:inline-block;padding:2px 6px&quot;><span class=&quot;radio&quot;>人民币</span><span class=&quot;radio on&quot;>USD</span><span class=&quot;radio&quot;>USDT</span></span></div>
+<div class=&quot;lb&quot;>销售</div><div><span class=&quot;sel dis&quot;>张三 ▾</span></div>
+<div class=&quot;lb&quot;>起始时间</div><div><input class=&quot;input&quot; disabled value=&quot;2026-10-01&quot; placeholder=&quot;请选择开始时间&quot;></div>
+<div class=&quot;lb&quot;>终止时间</div><div><input class=&quot;input&quot; disabled value=&quot;2027-09-30&quot; placeholder=&quot;请选择终止时间&quot;></div>
+<div class=&quot;lb&quot;>客户来源</div><div><input class=&quot;input&quot; disabled value=&quot;展会&quot; placeholder=&quot;请输入客户来源&quot;></div>
+<div class=&quot;lb&quot;>备注</div><div><textarea class=&quot;input&quot; disabled placeholder=&quot;请输入备注&quot;></textarea></div>
+</div></div>
+</div><div class=&quot;mf&quot;><span class=&quot;btn&quot;>返回</span></div></div></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>顶部提示审批中、展示当前生效值（R-04-025）</li><li><span class=&quot;badge&quot;>2</span>所有输入框禁用；确定 / 提交审批按钮隐藏，只留返回；服务端同样拦截重复提交（R-04-025、R-04-026）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.4-编辑客户/02-审批中锁定.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-5">2.5 付款主体弹窗</h3>
+<h4>2.5.1 功能描述</h4>
+<p>列表行操作「付款主体」打开。维护客户的付款主体列表，任何改动都要走「付款主体变更」审批。</p>
+<h4>2.5.2 核心字段</h4>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>付款主体</td><td>payers</td><td>列表（string）</td><td>是（至少 1 条）</td><td>不限格式，长度沿用默认；顺序仅影响展示</td><td>当前生效值</td><td>R-04-028～R-04-030</td></tr><tr><td>备注</td><td>—</td><td>text</td><td>否</td><td>—</td><td>—</td><td>二次确认框里填，作为审批发起备注</td></tr></tbody></table></div>
+<h4>2.5.3 业务规则</h4>
+<ul><li><strong>R-04-028</strong> 付款主体弹窗回显客户当前生效的付款主体，每条一行输入框，按生效顺序排列；没有付款主体时显示一个空行。每行右侧「+」在这一行下方插入一个空行，「−」删除这一行，只剩一行时「−」不可用。输入不限格式，长度沿用默认。</li><li><strong>R-04-029</strong> 点「提交审批」时校验：去掉首尾空格后至少有 1 条非空；有空行时，该行提示「请输入付款主体名称」；去掉首尾空格后两条完全相同视为重复，提示「付款主体重复」。重复只在本客户内校验，不同客户之间不校验（D-04-14）。</li><li><strong>R-04-030</strong> 去掉首尾空格后，提交的付款主体集合和当前生效的相同（不看顺序）时不能提交，提示「付款主体未修改」；有增删改时，按提交顺序整体替换（R-04-037）（D-04-14）。</li><li><strong>R-04-031</strong> 校验通过后二次确认「变更付款主体需进行审批，是否提交审批单？」+ 备注（选填）+ 取消 / 确定。确定后提交「客户管理—付款主体变更」审批（R-04-033），内容为提交后的完整付款主体列表；按 12 返回的审批单状态弱提示（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-018</a>），关闭弹窗。付款主体的任何改动都必须走审批，没有直接保存（D-04-02）。</li><li><strong>R-04-032</strong> 该客户有审批中的付款主体变更单时打开弹窗：顶部提示条按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-047</a>：「该客户已有审批中的付款主体变更（审批单号 {审批单号}，申请人 {姓名}），请等审批结束或撤回后再操作」，单号可点、新页打开审批详情（没有查看资格按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-043</a> 显示「无权限查看」）；输入框禁用，「+」「−」和「提交审批」隐藏。</li><li><strong>R-04-070</strong> 付款主体的删除、改名只影响之后新提交单据的选项；已提交和已完成的单据（05、06、07、09 等）按各自提交时的快照显示，不受影响。</li></ul>
+<h4>2.5.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>弹窗打开期间别人提交了付款主体变更</td><td>我点确定</td><td>拒绝（R-04-026）</td><td>提示框，带审批单号、申请人</td></tr><tr><td>关闭弹窗没提交</td><td>—</td><td>丢弃修改</td><td>下次打开仍是生效值</td></tr><tr><td>只调顺序</td><td>点提交审批</td><td>不提交（R-04-030）</td><td>「付款主体未修改」</td></tr><tr><td>只读用户</td><td>—</td><td>看不到付款主体入口</td><td>—</td></tr></tbody></table></div>
+<h4>2.5.6 验收标准</h4>
+<ul><li><strong>G-04-018</strong> 前置：客户 A 当前生效付款主体 Starfish Ltd、星海网络科技有限公司。操作：①加第 3 行留空点提交审批；②第 3 行填「 Starfish Ltd 」点提交审批；③删掉第 3 行、不做其他修改点提交审批；④把两行顺序对调点提交审批。期望：①第 3 行提示「请输入付款主体名称」；②提示「付款主体重复」；③④提示「付款主体未修改」；四次都不弹确认框。</li><li><strong>G-04-019</strong> 前置：客户 A 付款主体为 Starfish Ltd、星海网络科技有限公司；客户 B 已有付款主体 Starfish Ltd。操作：把 A 第 2 行改为「Starfish HK Ltd」，点提交审批并确定，再打开 A 的付款主体弹窗。期望：B 的同名不算重复，提交成功，确认框文案为「变更付款主体需进行审批，是否提交审批单？」；再打开时顶部提示条「该客户已有审批中的付款主体变更（审批单号 {本单单号}，申请人 {姓名}），请等审批结束或撤回后再操作」，显示原来两条，输入框禁用，没有 +、−、提交审批；客户详情的付款主体仍是原来两条。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-5">
+  <figcaption><span class="tag">示意 5</span>付款主体弹窗（编辑中，重复校验失败）<span class="src">mocks/2.5-付款主体/01-编辑校验失败.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="付款主体弹窗（编辑中，重复校验失败）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 付款主体弹窗 · 编辑校验失败</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>付款主体弹窗 · 编辑校验失败</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-028～R-04-031 / G-04-018、G-04-019</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理 / 付款主体</h1><span class=&quot;state-tag&quot;>编辑中 · 重复</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;mask&quot;><div class=&quot;modal&quot;><div class=&quot;mh&quot;>付款主体 · 橙子出行科技有限公司<span>✕</span></div><div class=&quot;mb&quot;>
+<div class=&quot;form&quot; style=&quot;grid-template-columns:90px 1fr;align-items:start&quot;><div class=&quot;lb req&quot; style=&quot;padding-top:6px&quot;>付款主体</div><div class=&quot;changed&quot; data-note=&quot;1&quot; style=&quot;padding:6px&quot;>
+<div class=&quot;row-ops&quot; style=&quot;margin-bottom:10px&quot;><input class=&quot;input&quot; value=&quot;Starfish Ltd&quot; placeholder=&quot;请输入付款主体名称&quot; style=&quot;width:360px&quot;><span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div><div class=&quot;row-ops&quot; style=&quot;margin-bottom:10px&quot;><input class=&quot;input&quot; value=&quot;星海网络科技有限公司&quot; placeholder=&quot;请输入付款主体名称&quot; style=&quot;width:360px&quot;><span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div><div class=&quot;row-ops&quot; style=&quot;margin-bottom:10px&quot;><input class=&quot;input err&quot; value=&quot; Starfish Ltd &quot; placeholder=&quot;请输入付款主体名称&quot; style=&quot;width:360px&quot;><span class=&quot;circle&quot;>+</span><span class=&quot;circle&quot;>−</span></div><div class=&quot;err-tip&quot; style=&quot;margin:-6px 0 10px&quot;>付款主体重复</div>
+</div></div>
+</div><div class=&quot;mf&quot;><span class=&quot;btn primary modified&quot; data-note=&quot;2&quot;>提交审批</span></div></div>
+<div class=&quot;confirm&quot;><div class=&quot;mh&quot; style=&quot;padding:12px 20px;border-bottom:1px solid var(--line);font-weight:600&quot;>提示（校验通过后才弹出）</div><div class=&quot;mb&quot;>变更付款主体需进行审批，是否提交审批单？<div class=&quot;field&quot; style=&quot;margin-top:12px&quot;><label>备注</label><textarea class=&quot;input&quot; placeholder=&quot;选填&quot;></textarea></div></div><div class=&quot;mf&quot; style=&quot;padding:12px 20px;text-align:right;border-top:1px solid var(--line)&quot;><span class=&quot;btn&quot;>取消</span> <span class=&quot;btn primary&quot;>确定</span></div></div></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>新增付款主体弹窗：每条一行，+ 在下方插入、− 删除（只剩一行不可删）；去首尾空格后相同提示「付款主体重复」；空行提示「请输入付款主体名称」；只在本客户内判重（R-04-028、R-04-029）</li><li><span class=&quot;badge&quot;>2</span>没有直接保存，只能提交审批；与生效内容完全一致时提示「付款主体未修改」；通过后整体替换（R-04-030、R-04-031、R-04-037）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.5-付款主体/01-编辑校验失败.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<figure class="mock" data-mode="pc" id="mock-6">
+  <figcaption><span class="tag">示意 6</span>付款主体弹窗（有审批中的付款主体变更，锁定）<span class="src">mocks/2.5-付款主体/02-审批中锁定.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="付款主体弹窗（有审批中的付款主体变更，锁定）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 付款主体弹窗 · 审批中锁定</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>付款主体弹窗 · 审批中锁定</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-032 / G-04-019</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理 / 付款主体</h1><span class=&quot;state-tag&quot;>有审批中的付款主体变更</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;mask&quot;><div class=&quot;modal&quot;><div class=&quot;mh&quot;>付款主体 · 橙子出行科技有限公司<span>✕</span></div><div class=&quot;mb&quot;>
+<div class=&quot;lock changed&quot; data-note=&quot;1&quot;>该客户<em>付款主体</em>有状态为<em>审批中</em>的修改未通过，此处展示当前生效中的信息。（审批单号 <span class=&quot;link&quot;>AP202610190021</span>，申请人 刘佳）</div>
+<div class=&quot;form modified&quot; data-note=&quot;2&quot; style=&quot;grid-template-columns:90px 1fr;align-items:start;padding:6px&quot;><div class=&quot;lb req&quot; style=&quot;padding-top:6px&quot;>付款主体</div><div><div class=&quot;row-ops&quot; style=&quot;margin-bottom:10px&quot;><input class=&quot;input&quot; disabled value=&quot;Starfish Ltd&quot; placeholder=&quot;请输入付款主体名称&quot; style=&quot;width:360px&quot;></div><div class=&quot;row-ops&quot; style=&quot;margin-bottom:10px&quot;><input class=&quot;input&quot; disabled value=&quot;星海网络科技有限公司&quot; placeholder=&quot;请输入付款主体名称&quot; style=&quot;width:360px&quot;></div></div></div>
+</div><div class=&quot;mf&quot; style=&quot;height:56px&quot;></div></div></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>顶部提示审批中，展示当前生效值（R-04-032）</li><li><span class=&quot;badge&quot;>2</span>输入框禁用；+、− 和「提交审批」隐藏（R-04-032）；基础信息的审批不影响这里（R-04-027）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.5-付款主体/02-审批中锁定.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-6">2.6 审批提交与结果处理</h3>
+<h4>2.6.1 功能描述</h4>
+<p>三类客户审批怎么交给 12、审批结束后客户数据怎么变。审批单状态机、会签、撤回、作废、通知都按 12，这里不重写。本节没有独立页面。</p>
+<div class="tw"><table><thead><tr><th>审批类型（12 预置）</th><th>从哪里提交</th><th>业务单据（提交内容）</th><th>操作对象客户</th><th>本单涉及账户</th></tr></thead><tbody><tr><td>客户管理—新建客户</td><td>添加客户，后付款（R-04-020）</td><td>全部基础信息</td><td>申请中的新客户，销售取表单（R-04-034）</td><td>无</td></tr><tr><td>客户管理—客户信息变更</td><td>编辑客户，预付改后付（R-04-023）</td><td>全部基础信息</td><td>本客户，取提交时生效的销售</td><td>提交时客户名下全部账户</td></tr><tr><td>客户管理—付款主体变更</td><td>付款主体弹窗（R-04-031）</td><td>完整付款主体列表</td><td>本客户，取提交时生效的销售</td><td>提交时客户名下全部账户</td></tr></tbody></table></div>
+<h4>2.6.3 业务规则</h4>
+<ul><li><strong>R-04-033</strong> 三类审批提交时传给 12：审批类型（客户管理—新建客户 / 客户信息变更 / 付款主体变更）、操作对象客户（R-04-034）、本单涉及账户（R-04-034）、业务单据 = 本次提交的完整内容快照（新建客户和客户信息变更为全部基础信息字段，付款主体变更为完整付款主体列表）、发起备注 = 二次确认框里填的备注。</li><li><strong>R-04-034</strong> 审批人解析参数：新建客户 = 申请中的这个新客户，「绑定的销售」按提交表单里选的销售解析，表单没选的，该动态节点按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-017</a> 跳过（D-04-05）；本单没有账户，「绑定的运营」解析为空、该节点跳过（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>）。客户信息变更、付款主体变更 = 本客户，「绑定的销售」按提交那一刻客户当前生效的销售解析，即使这张单正在改销售，也由修改前的销售审批（D-04-22）；本单涉及账户 = 提交那一刻客户名下全部账户，「绑定的运营」解析这些账户的优化师（去重、只取启用用户，没有账户时为空跳过），解析出多人按 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-43</a> 会签。新建客户时客户还没生效：提交时把表单里的销售作为审批解析参数，不建临时客户（闭环清单 B12）。</li><li><strong>R-04-035</strong> 新建客户审批结束（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-025</a>）：已通过 → 按提交内容创建客户，状态待开户，出现在客户列表；已驳回 / 已撤回（含被作废，R-04-071）→ 不创建客户，提交内容只留在审批单里；要重新申请，需回添加客户重新填写，表单不预填（D-04-01）。命中 0 节点或全部节点被跳过时，提交即通过，客户立即创建（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-018</a>）。</li><li><strong>R-04-036</strong> 客户信息变更审批结束：已通过 → 用提交内容整体覆盖客户当前生效的基础信息，计费模式按 R-04-066 以通过时刻的次月 1 日（UTC0）生效，账期与其余字段通过即生效（账期随审批通过立即保存，计费模式生效前客户仍为预付款、不使用账期，R-04-003、D-04-33），编辑页解除锁定；已驳回 / 已撤回（含被作废）→ 客户基础信息保持不变，编辑页解除锁定。原单不能修改重提，需要在编辑客户重新改完，再提交新单（D-04-01）。</li><li><strong>R-04-037</strong> 付款主体变更审批结束：已通过 → 用提交的完整列表整体替换当前生效的付款主体，弹窗解除锁定；已驳回 / 已撤回（含被作废）→ 付款主体保持不变，弹窗解除锁定。原单不能修改重提，需要重新编辑再提交新单（D-04-01）。</li><li><strong>R-04-071</strong> 最后一个审批人通过时按 R-04-035～R-04-037 执行；执行失败按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-045</a> 回滚（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-79</a>①：审批单保持审批中、这次通过不记录、确认框显示原因）。本页算执行失败的情形只有一种：新建客户、或客户信息变更改了公司名称，通过那一刻公司名称已与其他客户重名（R-04-068），原因「公司名称「{名称}」已存在，请驳回后重新提交」。其余变化（审批期间名下账户、优化师、销售变化等）都不算失败，照常执行。持「审批配置」权限点的人作废本页审批中的单时（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-046</a>），客户数据按「已撤回」处理（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-79</a>③）。</li></ul>
+<h4>2.6.4 状态与流转</h4>
+<p>本节<strong>引用</strong> 12 的「审批单」状态机（审批中 / 已通过 / 已驳回 / 已撤回，作废效果同撤回），不抄状态清单；只定义结束后对客户的处理（R-04-035～R-04-037）。新建客户审批通过触发客户状态机「（新客户）→ 待开户」（2.1.4）。</p>
+<h4>2.6.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>审批流 0 节点 / 全部跳过</td><td>提交即通过</td><td>立即按 R-04-035～R-04-037 生效（计费模式仍次月生效）</td><td>「提交成功，无需审批，已生效」（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-018</a>）</td></tr><tr><td>最后通过时公司名称已重名</td><td>执行失败</td><td>回滚，审批单仍审批中（R-04-071、<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-045</a>）</td><td>确认框显示原因；审批详情记「最近一次通过未执行」</td></tr><tr><td>结束回调处理失败（系统异常）</td><td>审批单已通过但客户数据没变</td><td>由技术沿用现有重试方案，保证最终生效</td><td>短时间内编辑页仍锁定</td></tr><tr><td>驳回后想再提</td><td>原单已驳回</td><td>不提供原单重提</td><td>已提交审批里只有详情</td></tr></tbody></table></div>
+<h4>2.6.6 验收标准</h4>
+<ul><li><strong>G-04-009</strong> 前置：G-04-007 的新建客户审批单。操作：陈思远、周婷依次通过；另一张同样提交的单被驳回。期望：通过的那张，客户出现在列表，状态待开户，字段和提交内容一致；驳回的那张，列表没有这个客户，重新打开添加客户表单是空的。</li><li><strong>G-04-013</strong> 前置：G-04-011 的单。操作：2026-10-15 张三、周婷依次通过。期望：A 的销售李四、别名「橙子」立即生效，账期 45 天随审批通过立即保存（2026-11-01 前 A 仍为预付款、不使用账期）；列表计费模式显示「预付款（2026-11-01 起改为后付款）」；2026-11-01（UTC0）起 A 显示后付款；编辑页解锁；02 里 A 名下账户的销售显示李四。</li><li><strong>G-04-014</strong> 前置：G-04-011 的单。操作：张三驳回（或申请人撤回）。期望：A 的基础信息不变；编辑页解锁；已提交审批里这张单为已驳回（已撤回），没有撤回、重新提交入口。</li><li><strong>G-04-020</strong> 前置：G-04-019 的单。操作：审批通过。期望：客户详情付款主体变为 Starfish Ltd、Starfish HK Ltd；弹窗解锁。</li><li><strong>G-04-040</strong> 前置：付款主体变更审批流 节点1 绑定的运营、节点2 指定用户周婷；新建客户审批流 节点1 绑定的运营、节点2 指定用户周婷；客户 A 名下账户 A1（优化师王敏）、A2（优化师赵磊）、A3（优化师王敏）。操作：提交 A 的付款主体变更；另添加一个后付款客户提交审批。期望：付款主体变更单节点 1 为会签，名单王敏、赵磊（去重），两人都通过才进入节点 2；新建客户单节点 1「已跳过（未找到审批人）」，从节点 2 周婷开始；添加、编辑客户页面、列表、详情、审批内容区都没有「运营」字段。</li><li><strong>G-04-045</strong> 前置：客户 A 的客户信息变更审批中，本单把公司名称改为「青柠科技有限公司」（提交时没有重名），最后一个节点是周婷；之后有人添加了预付款客户「青柠科技有限公司」并成功。操作：周婷点通过并确定。期望：确认框显示「公司名称「青柠科技有限公司」已存在，请驳回后重新提交」，审批单仍为审批中，周婷这次通过不记录；A 的基础信息不变、编辑页仍锁定；审批详情审批信息区出现「最近一次通过未执行」记录。</li></ul>
+<h3 id="s3-7">2.7 客户管理审批详情 · 审批内容区</h3>
+<h4>2.7.1 功能描述</h4>
+<p>审批详情页的标题、审批信息、审批流时间线、按钮按 12（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-026</a>～<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-031</a>）。本节只定义三类客户审批「审批内容」区展示什么、哪些字段做差异高亮、谁能只读查看。</p>
+<h4>2.7.2 核心字段</h4>
+<div class="tw"><table><thead><tr><th>审批类型</th><th>展示字段</th><th>公司名称链接</th><th>差异高亮</th></tr></thead><tbody><tr><td>新建客户</td><td>全部基础信息（R-04-038）</td><td>否</td><td>不启用</td></tr><tr><td>客户信息变更</td><td>全部基础信息（R-04-038）</td><td>是</td><td>启用，比对全部基础信息字段（R-04-041）</td></tr><tr><td>付款主体变更</td><td>公司名称、付款主体（R-04-039）</td><td>是</td><td>按条目比对（R-04-042）</td></tr></tbody></table></div>
+<h4>2.7.3 业务规则</h4>
+<ul><li><strong>R-04-038</strong> 新建客户、客户信息变更的审批内容区展示本单提交的全部基础信息，两列排布：公司名称、公司别名、伙伴云签约主体、币种、计费模式（客户信息变更旁另显示生效说明，R-04-067）、账期（后付款时显示，单位天）、销售、起始时间、终止时间、客户来源、备注；空值显示「-」；没有「运营」（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>）。</li><li><strong>R-04-039</strong> 付款主体变更的审批内容区展示 公司名称、付款主体（按提交顺序每条一行）。</li><li><strong>R-04-040</strong> 客户信息变更、付款主体变更的「公司名称」是超链接，新页打开这个客户的客户详情（展示当前生效内容，R-04-050）；新建客户的公司名称是纯文本，不做链接。</li><li><strong>R-04-041</strong> 客户信息变更启用 12 的变更高亮，比对 R-04-038 列出的全部基础信息字段，基准 = 提交那一刻客户的生效值，随审批单快照保存、由后端统一给出（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-75</a>）：与基准不同的字段值标红，标红格下方灰字「原：{原值}」；基准为空的不标红，也不显示「原」；审批中、审批结束后回看一致（D-04-23）。审批中客户的生效值已与基准不同时，内容区顶部按 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-75</a> 提示。新建客户不启用高亮。</li><li><strong>R-04-042</strong> 付款主体变更按条目比对提交那一刻生效的付款主体（基准同 R-04-041）：提交列表里新增的条目标红；基准有、提交里没有的条目，在列表末尾以灰色删除线列出；没变的条目正常显示（D-04-11）。审批结束后回看照样（D-04-23）。</li><li><strong>R-04-043</strong> 三类客户审批详情的第②类只读查看范围（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-043</a>）：有「客户管理-只读」或「客户管理-读写」任一权限点，且该客户在本人数据范围内（R-04-061）；新建客户单的客户还不存在，按本单提交内容里的销售是否为本人判断；sys 看全部。本页向 12 提供的「能否查看这张业务单据」判断只看这两条。</li></ul>
+<h4>2.7.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>存量客户原值为空</td><td>本单补了值</td><td>不标红（R-04-041）</td><td>正常显示</td></tr><tr><td>审批已结束再回看</td><td>生效值已变</td><td>按提交时快照比对（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-75</a>）</td><td>标红、删除线、「原：」与审批中一致</td></tr><tr><td>公司名称链接对应的客户无权查看</td><td>点链接</td><td>按 R-04-052</td><td>「无权限访问」</td></tr></tbody></table></div>
+<h4>2.7.6 验收标准</h4>
+<ul><li><strong>G-04-021</strong> 前置：客户 A 当前付款主体 Starfish Ltd、星海网络科技有限公司；审批中的付款主体变更提交为 Starfish Ltd、Starfish HK Ltd。操作：审批人打开审批详情。期望：审批内容区显示公司名称（链接）和付款主体：Starfish Ltd 正常、Starfish HK Ltd 标红、星海网络科技有限公司在末尾灰色删除线；点公司名称新页打开 A 的客户详情。</li><li><strong>G-04-022</strong> 前置：存量客户 D 币种为空（映射不了已置空）、预付款；提交了客户信息变更：币种 USD、计费模式后付款、账期 30。操作：审批人打开审批详情；审批通过后再打开。期望：计费模式「后付款」标红，下方灰字「原：预付款」，旁边显示「审批通过后的次月 1 日（UTC0）起生效」；账期「30」、币种「USD」不标红（原值为空），也没有「原：」；没改的字段正常显示；通过后回看，标红和「原：预付款」不变，计费模式旁改为「生效月：yyyy-mm」。</li><li><strong>G-04-023</strong> 前置：一张审批中的新建客户单。操作：打开审批详情。期望：审批内容区展示全部基础信息、没有运营；公司名称不是链接；没有任何标红。</li><li><strong>G-04-024</strong> 前置：孙磊、吴迪、周婷都不在某张客户 A 的客户信息变更单的审批流里；孙磊只有「客户管理-只读」且是 A 的销售；吴迪只有「客户管理-只读」，既不是 A 的销售、也不是其名下账户的优化师；周婷两个客户管理权限点都没有。操作：三人分别打开这张审批详情链接。期望：孙磊能看到审批信息和审批内容，没有任何操作按钮；吴迪、周婷看到「无权限查看」。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-7">
+  <figcaption><span class="tag">示意 7</span>审批详情·客户信息变更（差异高亮）<span class="src">mocks/2.7-审批内容/01-客户信息变更.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="审批详情·客户信息变更（差异高亮）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 审批详情 · 客户信息变更</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>审批详情 · 客户信息变更</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-038、R-04-040、R-04-041 / G-04-022</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理/审批详情</h1><span class=&quot;state-tag&quot;>审批中 · 当前用户为待审批人</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;sec&quot;>审批信息</div>
+<div class=&quot;kv&quot;><span class=&quot;k&quot;>审批单号：</span><span>AP202610190012</span><span class=&quot;k&quot;>审批状态：</span><span><span class=&quot;st wait&quot;>审批中</span></span>
+<span class=&quot;k&quot;>申请人：</span><span>刘佳</span><span class=&quot;k&quot;>申请时间：</span><span>2026-10-19 10:42:18</span>
+<span class=&quot;k&quot;>审批事项：</span><span>客户管理</span><span class=&quot;k&quot;>审批类型：</span><span>客户信息变更</span></div>
+<div class=&quot;kv&quot; style=&quot;grid-template-columns:110px 1fr&quot;><span class=&quot;k&quot;>审批流：</span><div class=&quot;tl&quot;><div><b>刘佳</b><span class=&quot;g&quot;>· 发起</span> 2026-10-19 10:42<br><span class=&quot;gray&quot;>客户转后付，年框合同已签</span></div><div><b>张三</b><span class=&quot;gray&quot;>· 待审批</span></div><div><b>王敏</b><span class=&quot;gray&quot;>· 未开始</span></div></div></div>
+<div class=&quot;hint&quot; style=&quot;margin-bottom:6px&quot;>↑ 审批信息与审批流按 12-审批配置与审批中心（R-12-026～R-12-031），本页不改</div>
+<div class=&quot;sec changed&quot; data-note=&quot;1&quot; style=&quot;display:inline-block;padding:0 6px&quot;>审批内容</div>
+<div class=&quot;kv&quot;>
+<span class=&quot;k&quot;>公司名称：</span><span class=&quot;link modified&quot; data-note=&quot;2&quot; style=&quot;display:inline-block&quot;>橙子出行科技有限公司</span><span class=&quot;k&quot;>公司别名：</span><span><span class=&quot;red&quot;>橙子</span><br><span class=&quot;gray&quot; style=&quot;font-size:12px&quot;>原：橙子出行</span></span>
+<span class=&quot;k&quot;>伙伴云签约主体：</span><span>clic</span><span class=&quot;k&quot;>币种：</span><span>USD</span>
+<span class=&quot;k&quot;>计费模式：</span><span><span class=&quot;red modified&quot; data-note=&quot;3&quot; style=&quot;display:inline-block&quot;>后付款</span> <span class=&quot;gray&quot; style=&quot;font-size:12px&quot;>审批通过后的次月 1 日（UTC0）起生效</span><br><span class=&quot;gray&quot; style=&quot;font-size:12px&quot;>原：预付款</span></span><span class=&quot;k&quot;>账期：</span><span>45 天</span>
+<span class=&quot;k&quot;>销售：</span><span><span class=&quot;red&quot;>李四</span><br><span class=&quot;gray&quot; style=&quot;font-size:12px&quot;>原：张三</span></span><span></span><span></span>
+<span class=&quot;k&quot;>起始时间：</span><span>2026-10-01</span><span class=&quot;k&quot;>终止时间：</span><span>2027-09-30</span>
+<span class=&quot;k&quot;>客户来源：</span><span>展会</span><span class=&quot;k&quot;>备注：</span><span>-</span>
+</div>
+<div class=&quot;bar&quot; style=&quot;justify-content:center;margin-top:20px&quot;><span class=&quot;btn&quot;>驳回</span><span class=&quot;btn primary&quot;>审批通过</span></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>审批内容区展示全部基础信息，两列；新建客户字段相同（R-04-038）</li><li><span class=&quot;badge&quot;>2</span>公司名称为链接，新页打开客户详情（当前生效内容）；新建客户不做链接（R-04-040）</li><li><span class=&quot;badge&quot;>3</span>与提交时生效值（快照基准）不同的标红，下方灰字「原：{原值}」；原值为空的不标红（如存量客户首次补的账期、币种）；审批结束后回看一致（R-04-041、D-00-75）；没有运营（D-00-76）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.7-审批内容/01-客户信息变更.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<figure class="mock" data-mode="pc" id="mock-8">
+  <figcaption><span class="tag">示意 8</span>审批详情·付款主体变更（新增标红、删除划线）<span class="src">mocks/2.7-审批内容/02-付款主体变更.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="审批详情·付款主体变更（新增标红、删除划线）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 审批详情 · 付款主体变更</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>审批详情 · 付款主体变更</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-039、R-04-040、R-04-042 / G-04-021</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理/审批详情</h1><span class=&quot;state-tag&quot;>审批中</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;sec&quot;>审批信息</div>
+<div class=&quot;kv&quot;><span class=&quot;k&quot;>审批单号：</span><span>AP202610190012</span><span class=&quot;k&quot;>审批状态：</span><span><span class=&quot;st wait&quot;>审批中</span></span>
+<span class=&quot;k&quot;>申请人：</span><span>刘佳</span><span class=&quot;k&quot;>申请时间：</span><span>2026-10-19 10:42:18</span>
+<span class=&quot;k&quot;>审批事项：</span><span>客户管理</span><span class=&quot;k&quot;>审批类型：</span><span>付款主体变更</span></div>
+<div class=&quot;kv&quot; style=&quot;grid-template-columns:110px 1fr&quot;><span class=&quot;k&quot;>审批流：</span><div class=&quot;tl&quot;><div><b>刘佳</b><span class=&quot;g&quot;>· 发起</span> 2026-10-19 10:42<br><span class=&quot;gray&quot;>新增香港付款主体</span></div><div><b>张三</b><span class=&quot;gray&quot;>· 待审批</span></div><div><b>王敏</b><span class=&quot;gray&quot;>· 未开始</span></div></div></div>
+<div class=&quot;hint&quot; style=&quot;margin-bottom:6px&quot;>↑ 审批信息与审批流按 12-审批配置与审批中心（R-12-026～R-12-031），本页不改</div>
+<div class=&quot;sec&quot;>审批内容</div>
+<div class=&quot;kv&quot; style=&quot;grid-template-columns:110px 1fr&quot;><span class=&quot;k&quot;>公司名称：</span><span class=&quot;link&quot;>橙子出行科技有限公司</span>
+<span class=&quot;k&quot;>付款主体：</span><div class=&quot;changed&quot; data-note=&quot;1&quot; style=&quot;display:inline-block;padding:4px 8px&quot;>Starfish Ltd<br><span class=&quot;red&quot;>Starfish HK Ltd</span><br><span class=&quot;del&quot;>星海网络科技有限公司</span></div></div>
+<div class=&quot;bar&quot; style=&quot;justify-content:center;margin-top:20px&quot;><span class=&quot;btn&quot;>驳回</span><span class=&quot;btn primary&quot;>审批通过</span></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>按条目比对当前生效付款主体：新增的标红；被删的在末尾灰色删除线列出；未变的正常显示（R-04-042、D-04-11）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.7-审批内容/02-付款主体变更.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-8">2.8 已提交审批 tab</h3>
+<h4>2.8.1 功能描述</h4>
+<p>客户管理页顶部切到「已提交审批」，列出当前账号提交的客户审批单。撤回按 12 §2.4。</p>
+<h4>2.8.2 核心字段</h4>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>审批单号</td><td>approval_no</td><td>string</td><td>是</td><td>12 生成</td><td>—</td><td>搜索项</td></tr><tr><td>操作对象</td><td>type</td><td>enum</td><td>是</td><td>新建客户 / 客户信息变更 / 付款主体变更</td><td>—</td><td>R-04-046</td></tr><tr><td>操作客户</td><td>—</td><td>string</td><td>是</td><td>本单提交内容里的公司名称</td><td>—</td><td>搜索项</td></tr><tr><td>所属账户系统</td><td>—</td><td>列表</td><td>否</td><td>客户当前的</td><td>「-」</td><td>新建客户为「-」</td></tr><tr><td>申请人</td><td>applicant_id</td><td>关联用户</td><td>是</td><td>—</td><td>—</td><td>—</td></tr><tr><td>申请时间</td><td>submitted_at</td><td>datetime（Asia/Shanghai，秒）</td><td>是</td><td>yyyy-mm-dd hh:mm:ss</td><td>—</td><td>排序依据</td></tr><tr><td>审批状态</td><td>status</td><td>enum</td><td>是</td><td>审批中 / 已通过 / 已驳回 / 已撤回</td><td>—</td><td>状态机见 12</td></tr></tbody></table></div>
+<h4>2.8.3 业务规则</h4>
+<ul><li><strong>R-04-044</strong> 已提交审批只展示当前登录账号提交的三类客户审批单（新建客户、客户信息变更、付款主体变更），含免审直接通过的单（状态已通过）；不按客户数据范围过滤。</li><li><strong>R-04-045</strong> 搜索框按审批单号、客户名称包含匹配；状态筛选 全部 / 审批中 / 已通过 / 已驳回 / 已撤回，默认全部。</li><li><strong>R-04-046</strong> 列表字段：审批单号、操作对象、操作客户、所属账户系统、申请人、申请时间（yyyy-mm-dd hh:mm:ss）、审批状态、操作。操作对象显示审批类型名 新建客户 / 客户信息变更 / 付款主体变更（原型的「基础信息配置」「付款主体」「规则配置」不用，D-04-20）；操作客户显示本单提交内容里的公司名称；所属账户系统取客户当前的，新建客户显示「-」。</li><li><strong>R-04-047</strong> 排序：审批中置顶，其余按申请时间降序；分页 10 / 50 / 100 / 300 条每页。</li><li><strong>R-04-048</strong> 行操作：所有状态都有「详情」，新页打开这张单的审批详情（D-04-09）；审批中的单都有「撤回」，只校验申请人本人 + 单据审批中，不看客户管理权限点（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-79</a>②、D-04-21）；撤回的确认文案、后果和通知按 12 §2.4（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-032</a>～<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-035</a>），撤回后客户数据按 R-04-035～R-04-037 处理。</li></ul>
+<h4>2.8.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>没提交过审批</td><td>列表为空</td><td>—</td><td>空态「暂无数据」</td></tr><tr><td>点撤回时单子已结束</td><td>状态已不是审批中</td><td>不撤回（12）</td><td>「该审批单状态已变化，请刷新」并刷新</td></tr><tr><td>申请人被降为只读</td><td>点撤回</td><td>照常撤回（R-04-048）</td><td>「已撤回」</td></tr><tr><td>申请人两个客户管理权限点都没有</td><td>进不了本页</td><td>—</td><td>在审批详情页撤回（<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-031</a>）</td></tr></tbody></table></div>
+<h4>2.8.6 验收标准</h4>
+<ul><li><strong>G-04-025</strong> 前置：当前账号提交过 新建客户（已通过）、客户信息变更（审批中）、付款主体变更（已驳回）、免审直接通过的付款主体变更各一张；另一账号提交过一张。操作：切到已提交审批。期望：只有本账号的 4 张，免审那张为已通过；审批中那张排第一；操作对象依次显示类型名；只有审批中那张有撤回；都有详情，点详情新页打开审批详情；按客户名称搜索能筛出对应的单。</li><li><strong>G-04-026</strong> 前置：当前账号一张审批中的付款主体变更单。操作：点撤回并确定。期望：确认文案按 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-033</a>；状态变为已撤回；这个客户的付款主体不变，弹窗解锁。</li><li><strong>G-04-042</strong> 前置：刘佳提交了客户 A 的付款主体变更（审批中）后被收回「客户管理-读写」，只剩「客户管理-只读」；刘佳另有一张客户 B 的客户信息变更单（审批中）。操作：①刘佳在已提交审批 tab 撤回 A 的单；②持「审批配置」的周婷在审批详情作废 B 的单（原因「重复提交」）。期望：①撤回按钮照常显示，撤回成功，A 的付款主体不变；②B 的基础信息不变、编辑页解锁，刘佳的已提交审批里这张单不再是审批中、没有撤回按钮。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-9">
+  <figcaption><span class="tag">示意 9</span>已提交审批 tab（默认态）<span class="src">mocks/2.8-已提交审批/01-默认态.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="已提交审批 tab（默认态）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 已提交审批 tab · 默认态</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>已提交审批 tab · 默认态</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-044～R-04-048 / G-04-025</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理</h1><span class=&quot;state-tag&quot;>已提交审批</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;tabs&quot;><a>客户信息</a><a class=&quot;on&quot;>已提交审批</a></div>
+<div class=&quot;bar&quot;><input class=&quot;input&quot; placeholder=&quot;搜索审批单号 / 客户名称&quot;><span class=&quot;sel&quot;>状态：全部 ▾</span></div>
+<table><thead><tr><th>审批单号</th><th class=&quot;modified&quot; data-note=&quot;1&quot;>操作对象</th><th>操作客户</th><th>所属账户系统</th><th>申请人</th><th>申请时间</th><th>审批状态</th><th>操作</th></tr></thead>
+<tbody><tr><td>AP202610190012</td><td>客户信息变更</td><td>橙子出行科技有限公司</td><td>-</td><td>刘佳</td><td>2026-10-19 10:42:18</td><td><span class=&quot;st wait&quot;>审批中</span></td><td class=&quot;ops&quot;><a>详情</a><a>撤回</a></td></tr><tr><td>AP202610180031</td><td>付款主体变更</td><td>北辰健康管理有限公司</td><td>伙伴云</td><td>刘佳</td><td>2026-10-18 16:05:40</td><td><span class=&quot;st bad&quot;>已驳回</span></td><td class=&quot;ops&quot;><a>详情</a></td></tr><tr><td>AP202610170008</td><td>新建客户</td><td>云帆教育科技（杭州）有限公司</td><td>-</td><td>刘佳</td><td>2026-10-17 09:20:11</td><td><span class=&quot;st ok&quot;>已通过</span></td><td class=&quot;ops&quot;><a>详情</a></td></tr><tr><td>AP202610150022</td><td>付款主体变更</td><td>麦芽音乐（深圳）有限公司</td><td>伙伴云</td><td>刘佳</td><td>2026-10-15 14:33:02</td><td><span class=&quot;st end&quot;>已撤回</span></td><td class=&quot;ops&quot;><a>详情</a></td></tr></tbody></table>
+<div class=&quot;modified&quot; data-note=&quot;2&quot; style=&quot;display:inline-block;margin-top:12px;padding:6px 10px&quot;><span class=&quot;hint&quot;>只看本账号提交的；审批中置顶，其余申请时间降序；详情 = 新页打开审批详情；撤回只在审批中，规则按 12 §2.4</span></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>操作对象显示审批类型名 新建客户 / 客户信息变更 / 付款主体变更，原型的「规则配置」去掉（R-04-046、D-04-20）</li><li><span class=&quot;badge&quot;>2</span>排序、详情打开审批详情、撤回按 12（R-04-047、R-04-048、D-04-09）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.8-已提交审批/01-默认态.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-9">2.9 客户详情</h3>
+<h4>2.9.1 功能描述</h4>
+<p>新增页面，只读展示客户当前生效的全部信息，含每个账户当前生效的规则配置。</p>
+<h4>2.9.2 核心字段</h4>
+<p>规则配置表（每个账户一行）：</p>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>账户名称</td><td>—</td><td>string</td><td>是</td><td>客户名下账户</td><td>—</td><td>—</td></tr><tr><td>规则起始日期 / 服务费规则 / 税率 / 服务费税费 / 返点规则 / 客情结算方式 / 客情费用比例 / 备注</td><td>—</td><td>引用 03</td><td>否</td><td>格式按 <a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-037</a></td><td>「-」</td><td>R-04-051</td></tr></tbody></table></div>
+<p>基础信息、付款主体字段同 2.1.2。</p>
+<h4>2.9.3 业务规则</h4>
+<ul><li><strong>R-04-049</strong> 客户详情一律新页打开，入口：客户列表「详情」、客户审批详情里的公司名称链接。标题「客户管理/客户详情」；页面只读，没有操作按钮。</li><li><strong>R-04-050</strong> 客户详情只展示客户当前生效的内容，审批中的修改不展示；有待生效计费模式时按 R-04-067 显示。分三块：基础信息（字段同 R-04-038，另加客户状态）、规则配置（R-04-051）、付款主体（按生效顺序每条一行，没有就显示「-」）。</li><li><strong>R-04-051</strong> 规则配置表：客户名下每个账户一行，列为 账户名称、规则起始日期、服务费规则、税率、服务费税费、返点规则、客情结算方式、客情费用比例、备注。取值为这个账户对应登记表（绑定的在线登记表、对应该账户的历史上传文件行或迁移占位行，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>）的<strong>当前生效</strong>规则，判定按 <a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-003</a>（已通过、规则起始日期 ≤ 今天 UTC0 里起始日期最大的那条）；起始日期在未来的待生效规则、审批中的提交都不展示（D-04-06）；各列格式按 <a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-037</a>。账户对应的登记表没有当前生效规则（含只有待生效记录）时，账户名称以外各列显示「-」；客户没有账户时表格显示「暂无账户」。</li><li><strong>R-04-052</strong> 打开的客户不存在（例如新建客户被驳回后没有客户）时显示「客户不存在」；没有任一客户管理权限点、或客户不在本人数据范围（R-04-061）时显示「无权限访问」。</li></ul>
+<h4>2.9.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>客户有审批中的修改</td><td>—</td><td>只展示生效值</td><td>不显示审批中的内容</td></tr><tr><td>账户很多</td><td>规则配置表很长</td><td>不分页，全部展示</td><td>表格纵向滚动</td></tr><tr><td>加载失败</td><td>请求失败</td><td>—</td><td>失败提示，可重试</td></tr></tbody></table></div>
+<h4>2.9.6 验收标准</h4>
+<ul><li><strong>G-04-027</strong> 前置：今天 2026-10-19；客户 A 有 3 个账户：账户 1 绑定登记表 X，X 有三条已通过的规则（起始 2026-09-01、2026-10-01、2026-11-01）和一张审批中的规则配置单；账户 2 是老账户，对应的历史上传文件行挂着上线导入的一条规则（起始 2026-01-01）；账户 3 绑定登记表 Y，Y 只有一条已通过、起始 2026-12-01 的规则。A 有审批中的客户信息变更。操作：从列表点详情。期望：新页打开；基础信息是当前生效值（不含审批中的修改、没有运营）；规则配置 3 行：账户 1 显示起始 2026-10-01 那条（不显示 2026-11-01 的待生效规则，也不显示审批中的），列名为「返点规则」，各列格式按 <a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-037</a>；账户 2 显示起始 2026-01-01 那条；账户 3 除账户名称外都显示「-」。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-10">
+  <figcaption><span class="tag">示意 10</span>客户详情（默认态）<span class="src">mocks/2.9-客户详情/01-默认态.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="客户详情（默认态）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 客户详情 · 默认态</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>客户详情 · 默认态</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-049～R-04-052 / G-04-027</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理/客户详情</h1><span class=&quot;state-tag&quot;>新页打开 · 只读</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;sec&quot;>基础信息</div>
+<div class=&quot;kv changed&quot; data-note=&quot;1&quot; style=&quot;padding:6px&quot;>
+<span class=&quot;k&quot;>公司名称：</span><span>橙子出行科技有限公司</span><span class=&quot;k&quot;>公司别名：</span><span>橙子出行</span>
+<span class=&quot;k&quot;>伙伴云签约主体：</span><span>clic</span><span class=&quot;k&quot;>币种：</span><span>USD</span>
+<span class=&quot;k&quot;>计费模式：</span><span>后付款</span><span class=&quot;k&quot;>账期：</span><span>45 天</span>
+<span class=&quot;k&quot;>销售：</span><span>张三</span><span></span><span></span>
+<span class=&quot;k&quot;>起始时间：</span><span>2026-10-01</span><span class=&quot;k&quot;>终止时间：</span><span>2027-09-30</span>
+<span class=&quot;k&quot;>客户来源：</span><span>展会</span><span class=&quot;k&quot;>备注：</span><span>-</span>
+<span class=&quot;k&quot;>客户状态：</span><span><span class=&quot;st ok&quot;>投放中</span></span><span></span><span></span>
+</div>
+<div class=&quot;sec&quot;>规则配置</div>
+<div class=&quot;changed&quot; data-note=&quot;2&quot; style=&quot;padding:4px&quot;><table><thead><tr><th>账户名称</th><th>规则起始日期</th><th>服务费规则</th><th>税率</th><th>服务费税费</th><th class=&quot;modified&quot; data-note=&quot;3&quot;>返点规则</th><th>客情结算方式</th><th>客情费用比例</th><th>备注</th></tr></thead>
+<tbody><tr><td>CZ-ASA-01</td><td>2026-10-01</td><td>消耗首日 - 第90天：固定 5.00%<br>第91天 - 永久：阶梯（按月统计）<br>[0.00, 50,000.00) 5.00%<br>[50,000.00, 不限) 3.00%</td><td>6.00%</td><td>客户承担</td><td>消耗首日 - 第90天：阶梯（按月统计）<br>[0.00, 100,000.00) 2.00%<br>[100,000.00, 不限) 3.00%</td><td>按自然月每月返还</td><td>1.00%</td><td>-</td></tr>
+<tr><td>CZ-ASA-02（老账户）</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
+<div class=&quot;hint&quot;>只显示当前生效规则（R-03-003）：待生效、审批中的不显示；各列格式按 R-03-037</div>
+<div class=&quot;sec&quot;>付款主体</div>
+<div class=&quot;kv&quot; style=&quot;grid-template-columns:110px 1fr&quot;><span class=&quot;k&quot;>付款主体：</span><span>Starfish Ltd<br>星海网络科技有限公司</span></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>新增客户详情页，新页打开，只读，只展示当前生效值（审批中的修改不显示）（R-04-049、R-04-050）</li><li><span class=&quot;badge&quot;>2</span>规则配置：每个账户一行，取绑定登记表的当前生效规则（R-03-003），待生效、审批中的不显示；老账户取历史上传文件行 / 迁移占位行上的规则；没有当前生效规则的显示「-」（R-04-051、D-04-06、D-00-57）</li><li><span class=&quot;badge&quot;>3</span>原型列名「规则配置」改为「返点规则」，各列格式按 R-03-037</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.9-客户详情/01-默认态.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-10">2.10 客户材料</h3>
+<h4>2.10.1 功能描述</h4>
+<p>列表行操作「客户材料」进入。「合同」标签不变；「客户登记表」标签以后只能绑定在线登记表，历史上传的文件保留，有对应账户的历史文件行和迁移占位行可配规则。绑定动作触发 01 登记表「待关联 → 待开户」。</p>
+<h4>2.10.2 核心字段</h4>
+<p>客户登记表标签列表：</p>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>登记表名称</td><td>—</td><td>string</td><td>是</td><td>历史文件 = 原文件名；绑定 = 登记表当前名称；占位行 = 「上线迁移补建（无附件）」</td><td>—</td><td>原「文件名称」改名</td></tr><tr><td>创建时间</td><td>—</td><td>datetime（Asia/Shanghai，秒）</td><td>是</td><td>历史文件沿用；绑定取登记表创建时间；占位行取迁移时间</td><td>—</td><td>R-04-059、R-04-073</td></tr><tr><td>上次修改时间</td><td>—</td><td>datetime（Asia/Shanghai，秒）</td><td>否</td><td>历史文件沿用；绑定取登记表编辑时间</td><td>「-」</td><td>R-04-059</td></tr><tr><td>对应账户</td><td>—</td><td>关联对象</td><td>否</td><td>历史文件沿用；绑定取 02 绑定的账户；占位行为该账户</td><td>「-」</td><td>R-04-059</td></tr></tbody></table></div>
+<p>添加登记表弹窗：</p>
+<div class="tw"><table><thead><tr><th>字段名</th><th>key</th><th>类型</th><th>必填</th><th>枚举/取值</th><th>默认值</th><th>规则说明</th></tr></thead><tbody><tr><td>绑定登记表</td><td>registration_id</td><td>关联登记表</td><td>是</td><td>R-04-057</td><td>—</td><td>R-04-057</td></tr><tr><td>对应合同</td><td>—</td><td>关联合同</td><td>否</td><td>沿用现有组件与范围</td><td>—</td><td>—</td></tr></tbody></table></div>
+<h4>2.10.3 业务规则</h4>
+<ul><li><strong>R-04-053</strong> 客户材料页标题「客户管理/{公司名称}」，有「合同」「客户登记表」两个标签，默认合同；合同标签本期不改，沿用现有。</li><li><strong>R-04-054</strong> 客户登记表标签：搜索框按登记表名称包含匹配；列表字段 登记表名称、创建时间、上次修改时间、对应账户、操作；不再展示文件类型、文件大小；排序沿用现有；分页 10 / 50 / 100 / 300 条每页。</li><li><strong>R-04-055</strong> 历史上传的登记表文件保留：登记表名称显示原文件名（旁边的下载 icon 沿用），创建时间、上次修改时间、对应账户沿用原值，行操作 预览 / 编辑 / 删除 和原来一致，编辑可以重新上传替换文件、修改对应合同（D-04-03；现有实现沿用）；有对应账户的行另有「规则配置」（R-04-060）。挂着规则的行（有已通过的规则或审批中的规则配置单）不能删除：「删除」置灰，悬浮提示「该登记表已配置规则，不能删除」（D-04-28）。</li><li><strong>R-04-056</strong> 「添加登记表」改为绑定在线登记表，不再支持上传：弹窗字段 *绑定登记表（单选下拉，可搜索）、对应合同（选填，组件和可选范围沿用现有）；按钮 确定。</li><li><strong>R-04-057</strong> 绑定登记表下拉只列状态为待关联、还没关联客户的登记表，且满足其一：当前登录账号创建的（D-04-18）；创建人账号已禁用，或创建人当前没有「客户管理-读写」的（D-04-18 例外，会议清单 D24；2026-10-22 扩大，D-04-34）。选项显示「登记表名称（登记表ID）」，创建人已禁用的显示「登记表名称（登记表ID）· {创建人}（已禁用）」；可按名称或 ID 搜索。没有可选项时，下拉显示「暂无可绑定的登记表（仅本账号创建、或创建人已禁用 / 没有「客户管理-读写」的待关联登记表可绑定）」。</li><li><strong>R-04-058</strong> 点确定时服务端校验 guard：登记表仍为待关联、还没关联任何客户、创建人是当前账号，或创建人账号已禁用、或创建人当前没有「客户管理-读写」（D-04-34），当前账号有「客户管理-读写」，且本客户是已生效客户、在本人数据范围内。通过后以下动作同成同败：①在登记表上写入关联客户（customer_id）；②登记表状态 待关联 → 待开户（01 流转）；③本客户的登记表标签新增一行；弱提示「添加成功」并关闭弹窗。guard 不满足时不绑定，提示「该登记表状态已变化，请重新选择」并刷新下拉。</li><li><strong>R-04-059</strong> 绑定方式的行：登记表名称取这张登记表的当前名称（01 改名后跟着变），创建时间取自这张登记表；上次修改时间取登记表的编辑时间（= 01 的 edited_at，仅内部编辑 / 审核保存，不含客户在填写页的保存），从没编辑过显示「-」；对应账户为 02 添加账户时绑定的账户名称，没绑定显示「-」（D-04-19）。</li><li><strong>R-04-060</strong> 绑定方式的行操作为「详情」「编辑」「规则配置」，没有删除和解绑（D-04-04、<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">D-01-16</a>）。详情 = 只读弹窗，内容与展示格式同 01 登记表详情（<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-010</a>），能进本客户材料页的人都能看，不受登记表创建人隔离（<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-008</a> 只管 01 列表）。编辑 = 弹窗里登记表只读显示「登记表名称（登记表ID）」、不能换，只能改对应合同，点确定保存。规则配置 = 打开这张登记表的规则配置页，和 01 登记表列表的「规则配置」是同一个页面（<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-019</a>），页面内容、校验、提交审批全按 03（<a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-012</a>），从本页进入时面包屑与菜单高亮也按 <a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-012</a>（客户管理/{公司名称}/规则配置）。有对应账户的历史上传文件行、迁移占位行同样有「规则配置」，打开同一个页面、走同样的审批，规则挂在这一行上（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>、<a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-053</a>）；没有对应账户的历史上传文件行没有「规则配置」。显示条件：有「客户管理-读写」且客户在本人数据范围内，不要求是登记表创建人（<a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-013</a>、D-04-24）。</li><li><strong>R-04-073</strong> 上线迁移时，没有历史上传文件的存量账户各补一行迁移占位行（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>）：登记表名称「上线迁移补建（无附件）」，创建时间为迁移时间，上次修改时间「-」，对应账户为该账户；行操作只有「规则配置」（没有文件，不提供预览、编辑、删除）；不计入 R-04-015 的登记表数量。上线前批量导入的固定比例规则（S-1）挂在该账户的历史上传文件行或占位行上，阶梯 / 分段规则上线后从这里配，须在上线当月内提交，并在次月 2 日（UTC0）出账前审批通过；晚于此的只作用于之后的月份（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>，闭环清单 A14）。</li></ul>
+<h4>2.10.4 状态与流转</h4>
+<p>本节<strong>引用</strong> 01 的「客户登记表」状态机，只触发一条：待关联 → 待开户（动作「关联客户」，guard = R-04-058）。</p>
+<h4>2.10.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>没有可绑定的登记表</td><td>展开下拉</td><td>—</td><td>R-04-057 的提示文案</td></tr><tr><td>两个标签页把同一张登记表绑给两个客户</td><td>后点确定的那次</td><td>guard 不过（R-04-058）</td><td>「该登记表状态已变化，请重新选择」</td></tr><tr><td>登记表在 01 被内部编辑</td><td>—</td><td>不同步到客户（<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">D-01-06</a>）</td><td>绑定行上次修改时间更新，详情显示登记表最新内容</td></tr><tr><td>删除历史上传文件</td><td>二次确认</td><td>沿用现有（v2.0：标题「删除确认」，内容「删除操作行为不可逆，请确认。」）</td><td>行消失；合计为 0 时列表出现提醒 icon（R-04-015）</td></tr><tr><td>删除挂着规则的历史文件行</td><td>—</td><td>不允许（R-04-055）</td><td>删除置灰，悬浮提示</td></tr></tbody></table></div>
+<h4>2.10.6 验收标准</h4>
+<ul><li><strong>G-04-028</strong> 前置：当前账号创建的登记表 P（待关联）、Q（待开户）、R（待审核）；别的启用账号（持「客户管理-读写」）创建的 S（待关联）。操作：在客户 A 的客户材料 → 客户登记表点添加登记表，展开绑定登记表下拉。期望：只有 P；弹窗没有上传入口。</li><li><strong>G-04-029</strong> 前置：同 G-04-028。操作：选 P、对应合同选一份合同，点确定。期望：提示「添加成功」；列表新增一行 P，创建时间为 P 的创建时间、上次修改时间「-」、对应账户「-」，操作为详情、编辑、规则配置；01 登记表列表里 P 变为待开户，关联客户显示 A。</li><li><strong>G-04-030</strong> 前置：同一账号在两个标签页分别打开客户 A、客户 B 的添加登记表，都选了 P。操作：先在 A 点确定，再在 B 点确定。期望：A 绑定成功；B 提示「该登记表状态已变化，请重新选择」，下拉刷新后没有 P。</li><li><strong>G-04-031</strong> 前置：客户 A 的登记表标签有历史上传文件 F（对应账户 CZ-ASA-02，没有规则）和绑定登记表 P（P 由另一账号创建，状态已开户）。操作：用另一个读写账号（A 的销售）打开，分别看 F、P 的操作，点 P 的详情、编辑、规则配置。期望：F 有预览、编辑、删除、规则配置；P 有详情、编辑、规则配置；P 详情只读展示登记内容；P 的编辑弹窗里登记表不能换，只能改对应合同；点 P 的规则配置打开 P 的规则配置页（同 01 入口），面包屑「客户管理/{A 的公司名称}/规则配置」，能看到表单并提交审批；列表没有文件类型、文件大小列。</li><li><strong>G-04-033</strong> 前置：登记表 P 由已离职同事刘洋创建（账号已禁用），已关联客户 A、状态已开户；王浩有「客户管理-读写」，是 A 名下账户的优化师，没有「客户登记管理」。操作：王浩进客户 A 的客户材料 → 客户登记表，点 P 的「规则配置」，填好后提交审批并确定，再从通知链接或审批中心「全部审批」打开这张单。期望：打开 P 的规则配置页，提交成功，审批单申请人为王浩；王浩在审批详情页能看到这张单并可撤回；审批通过后客户 A 详情里该账户的规则配置变为新规则（R-04-051）。</li><li><strong>G-04-043</strong> 前置：客户 A：历史文件 F（对应账户 CZ-ASA-02，挂着上线导入的规则）、历史文件 H（没有对应账户）；账户 CZ-ASA-03 没有附件，迁移补了占位行；客户 B 名下只有一个迁移占位行；读写用户是 A、B 的销售。操作：看 A 的三行操作；点 F 的规则配置提交一条新规则；把鼠标放到 F 的删除上；看 B 在客户列表的提醒 icon。期望：F 有预览、编辑、规则配置，删除置灰并悬浮「该登记表已配置规则，不能删除」；H 有预览、编辑、删除，没有规则配置；占位行名称「上线迁移补建（无附件）」、对应账户 CZ-ASA-03，只有规则配置；F 的规则配置打开 03 同一页面并提交规则配置审批；B 的公司名称旁提示「未上传客户登记表」。</li><li><strong>G-04-044</strong> 前置：刘洋（账号已禁用）创建的待关联登记表 L；张敏（启用，持「客户管理-读写」）创建的待关联登记表 S；赵琳（启用，没有「客户管理-读写」）创建的待关联登记表 M；王浩有「客户管理-读写」，是客户 A 的销售。操作：王浩在 A 的添加登记表下拉里查看，选 L 点确定。期望：下拉里有「L 的名称（L 的 ID）· 刘洋（已禁用）」和「M 的名称（M 的 ID）」，没有 S；绑定成功，L 变为待开户、关联客户 A。</li></ul>
+<figure class="mock" data-mode="pc" id="mock-11">
+  <figcaption><span class="tag">示意 11</span>客户材料·客户登记表标签（历史文件与绑定登记表并存）<span class="src">mocks/2.10-客户材料/01-客户登记表标签.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="客户材料·客户登记表标签（历史文件与绑定登记表并存）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 客户材料 · 客户登记表标签</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>客户材料 · 客户登记表标签</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-053～R-04-060 / G-04-029、G-04-031</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理/橙子出行科技有限公司</h1><span class=&quot;state-tag&quot;>客户登记表标签</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;tabs&quot;><a>合同</a><a class=&quot;on&quot;>客户登记表</a></div>
+<div class=&quot;bar&quot;><input class=&quot;input&quot; placeholder=&quot;请输入登记表名称&quot;><span style=&quot;flex:1&quot;></span><span class=&quot;btn primary modified&quot; data-note=&quot;1&quot;>添加登记表</span></div>
+<table><thead><tr><th class=&quot;modified&quot; data-note=&quot;2&quot;>登记表名称</th><th>创建时间</th><th>上次修改时间</th><th>对应账户</th><th>操作</th></tr></thead>
+<tbody>
+<tr><td class=&quot;changed&quot; data-note=&quot;3&quot;>橙子出行 开户登记（DJ20261013001）</td><td>2026-10-13 10:02:11</td><td>2026-10-15 09:30:47</td><td>CZ-ASA-01</td><td class=&quot;ops&quot;><a>详情</a><a>编辑</a><a class=&quot;changed&quot; data-note=&quot;5&quot; style=&quot;display:inline-block&quot;>规则配置</a></td></tr>
+<tr><td>橙子出行 二期产品登记（DJ20261018002）</td><td>2026-10-18 15:11:09</td><td>-</td><td>-</td><td class=&quot;ops&quot;><a>详情</a><a>编辑</a><a>规则配置</a></td></tr>
+<tr><td><span class=&quot;link&quot;>橙子出行-登记表-2025.xlsx</span> ⤓</td><td>2025-06-02 11:20:33</td><td>2025-06-05 17:42:10</td><td>CZ-ASA-02</td><td class=&quot;ops modified&quot; data-note=&quot;4&quot;><a>预览</a><a>编辑</a><a>删除</a><a>规则配置</a></td></tr>
+</tbody></table>
+<div class=&quot;hint&quot; style=&quot;margin-top:8px&quot;>已去掉 <span class=&quot;removed&quot;>文件类型</span> <span class=&quot;removed&quot;>文件大小</span> 两列</div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>「添加登记表」改为绑定在线登记表，不再上传（R-04-056）</li><li><span class=&quot;badge&quot;>2</span>「文件名称」改为「登记表名称」；去掉文件类型、文件大小（R-04-054）</li><li><span class=&quot;badge&quot;>3</span>绑定的登记表：名称、创建时间、上次修改时间取自登记表，对应账户取 02 绑定；操作为 详情、编辑、规则配置，没有删除 / 解绑（R-04-059、R-04-060）</li><li><span class=&quot;badge&quot;>4</span>历史上传文件保留，预览 / 编辑 / 删除原样沿用；有对应账户的行另有「规则配置」，挂着规则的不能删除（R-04-055、D-04-03、D-04-28）</li><li><span class=&quot;badge&quot;>5</span>绑定的登记表行新增「规则配置」：打开该登记表的规则配置页（同 01 入口，内容归 03）；有「客户管理-读写」就显示，不要求是登记表创建人；有对应账户的历史上传文件行、迁移占位行也有（R-04-060、D-04-24、D-00-57）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.10-客户材料/01-客户登记表标签.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<figure class="mock" data-mode="pc" id="mock-12">
+  <figcaption><span class="tag">示意 12</span>添加登记表弹窗（绑定在线登记表）<span class="src">mocks/2.10-客户材料/02-添加登记表.html</span></figcaption>
+  <div class="mock-tools">
+    <button data-w="pc" class="on">PC 1440</button>
+    <button data-w="mobile">移动 375</button>
+    <button data-w="full">全宽长图</button>
+    <button data-open>新窗口打开</button>
+  </div>
+  <div class="mock-frame"><iframe title="添加登记表弹窗（绑定在线登记表）" srcdoc="<!doctype html>
+<html lang=&quot;zh-CN&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;>
+<title>MOCK · 客户材料 · 添加登记表弹窗</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:&quot;*&quot;;color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:&quot;○ &quot;;color:var(--sub)}
+  .radio.on::before{content:&quot;◉ &quot;;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:&quot;*&quot;;color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class=&quot;docbar&quot;><b>客户材料 · 添加登记表弹窗</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-056～R-04-058 / G-04-028、G-04-030</span></div>
+<div class=&quot;canvas pc&quot;>
+<div class=&quot;hd&quot;><h1>客户管理/橙子出行科技有限公司</h1><span class=&quot;state-tag&quot;>添加登记表 · 下拉展开</span></div>
+<div class=&quot;bd&quot;>
+<div class=&quot;mask&quot;><div class=&quot;modal&quot;><div class=&quot;mh&quot;>添加登记表<span>✕</span></div><div class=&quot;mb&quot;>
+<div class=&quot;form&quot; style=&quot;grid-template-columns:100px 1fr;align-items:start&quot;>
+<div class=&quot;lb req&quot; style=&quot;padding-top:6px&quot;>绑定登记表</div><div class=&quot;changed&quot; data-note=&quot;1&quot; style=&quot;padding:4px&quot;><input class=&quot;input&quot; value=&quot;橙子&quot; placeholder=&quot;搜索登记表名称 / 登记表ID&quot;>
+<div style=&quot;border:1px solid var(--line);border-radius:6px;margin-top:4px;max-width:420px;font-size:13px&quot;><div style=&quot;padding:6px 10px;background:#eff6ff&quot;>橙子出行 二期产品登记（DJ20261018002）</div><div style=&quot;padding:6px 10px&quot;>橙子出行 海外版登记（DJ20261019001）</div></div>
+<div class=&quot;hint&quot;>只列本账号创建、状态为待关联的登记表；没有时显示「暂无可绑定的登记表（仅本账号创建、状态为待关联的登记表可绑定）」</div></div>
+<div class=&quot;lb&quot; style=&quot;padding-top:6px&quot;>对应合同</div><div><span class=&quot;sel&quot;>请选择 ▾</span></div>
+</div>
+</div><div class=&quot;mf&quot;><span class=&quot;btn primary modified&quot; data-note=&quot;2&quot;>确定</span></div></div></div>
+</div>
+</div>
+<div class=&quot;legend&quot;><h2>改动点说明</h2><ul><li><span class=&quot;badge&quot;>1</span>绑定登记表：单选、可搜索，选项「登记表名称（登记表ID）」（R-04-057、D-04-18）</li><li><span class=&quot;badge&quot;>2</span>确定时校验 guard，通过后登记表 待关联 → 待开户、写入关联客户、列表新增一行，同成同败；不满足提示「该登记表状态已变化，请重新选择」（R-04-058）</li></ul></div>
+<div class=&quot;footbar&quot;><span>MOCK · mocks/2.10-客户材料/02-添加登记表.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>
+"></iframe></div>
+</figure>
+<h3 id="s3-11">2.11 权限</h3>
+<h4>2.11.1 功能描述</h4>
+<p>客户管理沿用现有两个权限点，本页写它们管到哪些按钮和接口，以及客户数据范围。权限点汇总交 13-导航与权限。</p>
+<h4>2.11.3 业务规则</h4>
+<ul><li><strong>R-04-061</strong> 客户管理只用现有两个权限点「客户管理-只读」「客户管理-读写」，本页不新增权限点（版本级约定：只出权限点）。数据按客户范围隔离（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a>，D-04-31）：非 sys 用户在客户列表、客户详情、客户材料、编辑客户、付款主体、规则配置入口、客户审批详情第②类查看（R-04-043）里，只能看、改自己是该客户「销售」、或是其名下任一账户「优化师」的客户；sys 看全部。范围按当前的销售、优化师实时判断，变了随之变。两个权限点都没有的用户不能进入客户管理、客户详情、客户材料，直接访问显示「无权限访问」；有权限点但客户不在范围内时，列表不出现，直接打开该客户的客户详情、客户材料、编辑地址显示「无权限访问」，写接口服务端拒绝。离职人员名下的客户由 sys 改销售（本页编辑客户）或改账户优化师（02）后交接给新人。依赖客户可见性的其他页面（03、05、12）按各页规则引用本条；02 所属客户下拉不受客户数据范围限制（<a class="xref" href="../02-账户管理/review.html" title="02-账户管理">R-02-004</a>，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a> 例外）。</li><li><strong>R-04-062</strong> 只有「客户管理-只读」时：可以看客户列表、客户详情、客户材料（列表、历史文件预览和下载、绑定登记表详情）、已提交审批 tab、三类客户审批详情（均在数据范围内）；不显示 添加客户、编辑、付款主体、添加登记表、客户材料里的编辑、删除与「规则配置」、合同的增删改按钮（D-04-21）。</li><li><strong>R-04-063</strong> 有「客户管理-读写」时：只读能做的全部，再加上 添加客户、编辑客户、付款主体提交、客户材料的添加 / 编辑 / 删除 / 规则配置、合同增删改（均在数据范围内）。以上写操作服务端同样按权限点和数据范围校验（规则配置页的服务端校验见 <a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-013</a>、<a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-042</a>）。撤回不看这两个权限点（R-04-048）。现状读接口比 R-04-062 宽的，随 19 个权限点一起按 R-04-062、R-04-063 收紧。</li></ul>
+<h4>2.11.5 异常与边界</h4>
+<div class="tw"><table><thead><tr><th>场景</th><th>现象</th><th>系统行为</th><th>用户看到</th></tr></thead><tbody><tr><td>只读用户直接调写接口</td><td>—</td><td>服务端拒绝</td><td>「无权限操作」</td></tr><tr><td>客户不在数据范围，直接打开客户页面地址</td><td>—</td><td>不返回数据</td><td>「无权限访问」</td></tr><tr><td>销售离职（账号已禁用），名下客户没人能维护</td><td>—</td><td>sys 改销售 / 优化师后交接（R-04-061）</td><td>改后新销售可见</td></tr></tbody></table></div>
+<h4>2.11.6 验收标准</h4>
+<ul><li><strong>G-04-032</strong> 前置：用户只有「客户管理-只读」，是客户 A 的销售。操作：进客户 A 的客户材料；再直接调用添加登记表接口；再直接打开 P 的规则配置页地址。期望：看不到添加登记表、编辑、删除、规则配置按钮（含历史文件行），能预览 F、看 P 的详情；接口返回无权限；规则配置页显示「无权限访问」（<a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-013</a>）。</li><li><strong>G-04-041</strong> 前置：非 sys 用户刘佳有「客户管理-读写」；客户 A 销售刘佳；客户 B 销售张三、名下账户 B1 优化师刘佳；客户 C 销售张三、名下账户优化师王敏；sys 账号有「客户管理-只读」。操作：刘佳打开客户列表；直接打开 C 的客户详情、客户材料地址；直接调用 C 的编辑接口；sys 打开客户列表；之后把 C 的账户优化师改为刘佳（02），刘佳刷新列表。期望：刘佳列表只有 A、B；C 的客户详情、客户材料显示「无权限访问」；编辑接口返回无权限；sys 看到 A、B、C；优化师改为刘佳后刘佳能看到 C。</li></ul>
+<h2 id="s4">3 变更影响面</h2>
+<div class="tw"><table><thead><tr><th>被影响对象</th><th>影响方式</th><th>处理动作</th><th>负责人</th></tr></thead><tbody><tr><td>02-账户管理</td><td>添加账户触发客户「待开户 → 待投放」（R-04-007）；新建审批中的客户不能被选为所属客户（R-04-006）；账户销售取客户的销售字段（R-04-004）；客户「运营」= 账户优化师（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>），优化师变化影响客户数据范围（R-04-061）；所属客户下拉不受客户数据范围限制（<a class="xref" href="../02-账户管理/review.html" title="02-账户管理">R-02-004</a>，<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-77</a> 例外）；销售变更时同步账户数据授权（R-04-072，规则归 02）</td><td>02 补销售授权规则与 S-22；所属客户下拉按 <a class="xref" href="../02-账户管理/review.html" title="02-账户管理">R-02-004</a></td><td>02 包</td></tr><tr><td>01-客户登记</td><td>客户材料绑定登记表触发「待关联 → 待开户」并写 customer_id（R-04-058）；创建人已禁用的待关联表可被读写用户绑定（R-04-057）；绑定行详情复用 <a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-010</a>，名称取当前名称</td><td>01 补 D24 相关规则后核对与 R-04-057 一致</td><td>01 包</td></tr><tr><td>12-审批配置与审批中心</td><td>三类审批的操作对象、本单涉及账户、审批内容、高亮基准、执行失败情形、结果处理按本页；「绑定的运营」按账户优化师解析（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-76</a>）；第②类查看范围加数据范围（R-04-043）</td><td>12 改 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-016</a>、<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-030</a>、<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-043</a> 映射；本页引用 <a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-018</a>（提交提示）、<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-045</a>（执行失败）、<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-046</a>（作废）、<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-047</a>（在途单提示）、<a class="xref" href="../12-审批配置与审批中心/review.html" title="12-审批配置与审批中心">R-12-049</a>（已禁用显示）</td><td>12 包</td></tr><tr><td>03-规则配置</td><td>客户详情规则配置表按 <a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-003</a> 取当前生效规则、按 <a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-037</a> 展示；规则配置入口扩到历史上传文件行和迁移占位行（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-57</a>）；入口与配置页权限加客户数据范围（R-04-061）；从 04 进入的面包屑按 <a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-012</a></td><td>03 支持对历史文件行 / 占位行配置规则；<a class="xref" href="../03-规则配置/review.html" title="03-规则配置">R-03-013</a> 加数据范围</td><td>03 包</td></tr><tr><td>05、06</td><td>计费模式次月 1 日生效、同一结算期一种模式（<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-73</a>）；切换后余额抵扣、上期预付欠费归 05 / 06</td><td>05 / 06 按 <a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-73</a> 定义</td><td>05、06 包</td></tr><tr><td>13-导航与权限</td><td>沿用「客户管理-只读 / 读写」两个权限点，不新增；撤回不看权限点</td><td>汇总时照抄 R-04-061～R-04-063</td><td>13 包</td></tr><tr><td>财务链（05～11）</td><td>客户新增币种、伙伴云签约主体；签约主体 05～11 不读取（R-04-011）</td><td>各包用到币种时对空值兜底</td><td>各包</td></tr><tr><td>11-提成中心</td><td>本页记录客户销售的每次变更与生效时间（R-04-064）</td><td>11 按业务日取当日销售（<a class="xref" href="../11-提成中心/review.html" title="11-提成中心">R-11-003</a>、<a class="xref" href="../index.md" title="版本总纲 · 版本级决策">D-00-72</a>）</td><td>11 包</td></tr><tr><td>数据迁移</td><td>存量客户状态按历史消耗推导（R-04-010，S-8）；签约主体 / 币种映射（R-04-011，S-9）；迁移占位行与规则导入（R-04-073，S-1）；「运营」字段停用不迁移（S-24）；删除的 4 个字段（库表 v67 已删）</td><td>技术出迁移脚本；映射表用户确认</td><td>技术 / 用户</td></tr></tbody></table></div>
+<h2 id="s5">4 非功能与留痕</h2>
+<ul><li>权限：添加、编辑、付款主体提交、绑定登记表、客户材料删除都在服务端按 R-04-061～R-04-063（含数据范围）校验，前端隐藏按钮不算权限控制。</li><li>锁定（R-04-025、R-04-032）和重复审批单拦截（R-04-026）、公司名称重名（R-04-068）以服务端判断为准。</li><li>客户状态每日 UTC0 日结后由系统判定（R-04-008），计费模式在生效时刻由系统切换（R-04-066），都不需要人工操作。</li><li>留痕：直接保存的基础信息修改沿用现有操作日志；走审批的修改以 12 的审批记录为留痕；销售变更另记变更记录（R-04-064）。</li><li>通知：三类审批的待审批 / 通过 / 驳回 / 撤回 / 作废通知全部按 12，本页不新增通知。</li><li>量级：原型没给数据量，不设性能指标，由技术沿用现有列表方案。</li></ul>
+<h2 id="s6">5 开放问题与已知限制</h2>
+<p>本页暂无开放问题。</p>
+<p>已关闭：原「开启投放取值与触发」问题（客户状态改按消耗判定，D-04-16）、原「公司名称重名规则」问题（D-04-25）。2026-10-22 按闭环问题清单 E 组关闭（技术答复，用户确认）：</p>
+<ul><li>原「删除 4 个字段的库表与下游」问题：v67 已删 6 列（含电话、邮箱），历史值不可恢复，无计算依赖（R-04-001）。</li><li>原「历史上传登记表文件现有实现能否沿用」问题：历史文件的预览、下载、替换上传、删除沿用现有实现；技术侧收紧：绑定行不能改名 / 换客户，挂着规则的不能删（R-04-055）。</li><li>原「新建客户审批『绑定的销售』怎么按表单解析」问题：见闭环清单 B12，提交时把表单里的销售作为审批解析参数，不建临时客户（R-04-034、R-04-043）。</li><li>原「两个客户管理权限点现有覆盖范围」问题：现状写接口 = 客户管理读写，读接口比 R-04-062 宽（X_PE03、X_PE10 也能读）；随 19 个权限点一起按本页收紧（R-04-063）。</li></ul>
+<p>已知限制：</p>
+<ul><li>销售离职后，名下客户要等 sys 改销售或改账户优化师，其他人才看得到、改得了（R-04-061）。</li><li>新建客户单没有账户，「绑定的运营」节点总是跳过（R-04-034）。</li><li>存量里已重名的客户不强制改名（R-04-068）。</li><li>账户在添加前已有、超过 30 天的消耗不会让待投放客户变投放中（R-04-008 只看最近 30 天）。</li><li>创建人被收回「客户登记管理」后，删不了自己创建的登记表（<a class="xref" href="../01-客户登记/review.html" title="01-客户登记">R-01-037</a>、D-04-34）。</li></ul>
+<p>已定决策 D-04-01～D-04-34 见 spec.yaml decisions；D-04-25～D-04-32 为 2026-10-21 按会议清单 v2 新增，D-04-33、D-04-34 为 2026-10-22 按闭环问题清单新增。</p>
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('figure.mock').forEach(function (fig) {
+  fig.querySelectorAll('[data-w]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      fig.dataset.mode = btn.dataset.w;
+      fig.querySelectorAll('[data-w]').forEach(function (b) { b.classList.toggle('on', b === btn); });
+    });
+  });
+  var open = fig.querySelector('[data-open]');
+  if (open) open.addEventListener('click', function () {
+    var src = fig.querySelector('iframe').getAttribute('srcdoc');
+    var w = window.open('about:blank');
+    w.document.open(); w.document.write(src); w.document.close();
+  });
+});
+</script>
+</body>
+</html>

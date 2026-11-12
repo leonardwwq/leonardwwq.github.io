@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MOCK · 返点管理 · 返点信息 · 默认态</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:"*";color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:0;margin-bottom:12px}.tabs span{padding:6px 18px;border:1px solid var(--line);font-size:13px}.tabs .on{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap}.bar .input{width:220px}
+  select.input{width:160px}
+  td.num,th.num{text-align:right;white-space:nowrap}
+  tr.l1 td{background:#fff;font-weight:600}tr.l2 td{background:#f9fafb}tr.l2 td:first-child{padding-left:28px}tr.l3 td{background:#fcfcfd;font-size:12px}tr.l3 td:first-child{padding-left:48px}
+  .tag{display:inline-block;font-size:12px;padding:0 8px;border-radius:99px;border:1px solid var(--line);white-space:nowrap}
+  .t-wait{color:#b45309;border-color:#fcd34d;background:#fffbeb}.t-ing{color:#1d4ed8;border-color:#93c5fd;background:#eff6ff}.t-done{color:#047857;border-color:#6ee7b7;background:#ecfdf5}.t-none{color:#6b7280}.t-pre{color:#6b7280;border-style:dashed}
+  .link{color:var(--brand);cursor:pointer;margin-right:12px}.link.dis{color:#9ca3af;cursor:not-allowed}
+  .modal{border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  .modal .mh{padding:12px 16px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:16px}.modal .mf{padding:12px 16px;border-top:1px solid var(--line);text-align:right}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 24px;margin-bottom:16px}
+  .kv{display:flex;gap:8px;align-items:center;font-size:13px}.kv b{color:var(--sub);font-weight:400;min-width:96px}
+  .kv .input{max-width:240px}
+  .kv select.input{width:320px;max-width:320px}
+  .adj{color:var(--warn);font-size:12px;margin-left:6px}
+  .red{color:var(--new);font-weight:600}
+  .hint{font-size:12px;color:var(--sub)}
+  input.cell{width:110px;padding:3px 6px;border:1px solid var(--line);border-radius:4px;text-align:right}
+  input.cell.err{border-color:var(--new)}
+</style>
+</head>
+<body>
+<div class="docbar"><b>返点管理 · 返点信息 · 默认态</b><span>本示意仅表达改动点，非最终视觉；数据为 spec.yaml 公共前置</span><span>关联：R-07-020～R-07-029 / G-07-020</span></div>
+<div class="canvas pc"><div class="hd"><h1>返点管理</h1><span class="state-tag">返点信息 · 默认态</span></div><div class="bd">
+<div class="tabs modified" data-note="1"><span class="on">返点信息</span><span>已提交审批</span></div>
+<div class="bar modified" data-note="2"><input class="input" placeholder="搜索公司名称 / 客户别名"><label class="hint">所属账户系统</label><select class="input"><option>全部</option><option>苹果ASA（自接苹果）</option></select><label class="hint">计费模式</label><select class="input"><option>全部</option><option>预付款</option><option>后付款</option></select><span class="removed">导出</span></div>
+<table>
+<thead><tr><th>公司名称</th><th>所属账户系统</th><th>计费模式</th><th>客户别名</th><th>销售</th><th class="num">累计客户返点金额</th><th class="num">待结算客户返点金额</th><th class="num">累计客情费用</th><th class="num">待结算客情费用</th><th>操作</th></tr></thead>
+<tbody>
+<tr class="l1"><td>▾ 橙子出行科技有限公司</td><td>苹果ASA（自接苹果）</td><td>后付款</td><td>橙子出行</td><td>李娜</td><td class="num">0.00 USD</td><td class="num changed" data-note="3">390.00 USD</td><td class="num">0.00 USD</td><td class="num">200.00 USD</td><td class="changed" data-note="4"><span class="link">客户返点</span><span class="link">客情费用</span></td></tr>
+<tr class="l1"><td>▸ 星海网络科技有限公司</td><td>苹果ASA（自接苹果）</td><td>预付款</td><td>星海</td><td>张伟</td><td class="num">0.00 USD</td><td class="num">24.00 USD</td><td class="num">0.00 USD</td><td class="num">10.00 USD</td><td><span class="link">客户返点</span><span class="link">客情费用</span></td></tr>
+</tbody></table>
+<p class="hint" style="margin:14px 0 6px">展开橙子 → 结算期（降序）→ 账户：</p>
+<table>
+<thead><tr><th>结算期 / 账户名称</th><th class="num">消耗金额</th><th class="num">MAX消耗</th><th>返点时间范围</th><th class="num">返点时间内消耗金额</th><th class="num">客户返点</th><th>客情时间范围</th><th class="num">客情时间内消耗金额</th><th class="num">客情费用</th><th>客户返点状态</th><th>客情费用状态</th></tr></thead>
+<tbody>
+<tr class="l2"><td>▸ 2026-10-01 至 2026-10-31</td><td class="num">12,000.00</td><td class="num">1,000.00</td><td></td><td></td><td class="num">188.00</td><td></td><td></td><td class="num">50.00</td><td></td><td></td></tr>
+<tr class="l2"><td>▾ 2026-09-01 至 2026-09-30</td><td class="num">32,000.00</td><td class="num">8,000.00</td><td></td><td></td><td class="num">390.00</td><td></td><td></td><td class="num">200.00</td><td></td><td></td></tr>
+<tr class="l3"><td>橙子-iOS-CN</td><td class="num">20,000.00</td><td class="num">5,000.00</td><td>2026-09-01 至 2026-09-30</td><td class="num">20,000.00</td><td class="num">300.00</td><td>2026-09-01 至 2026-09-30</td><td class="num">20,000.00</td><td class="num">200.00</td><td class="changed" data-note="5"><span class="tag t-wait">待结算</span></td><td><span class="tag t-wait">待结算</span></td></tr>
+<tr class="l3"><td>橙子-iOS-HK</td><td class="num">12,000.00</td><td class="num">3,000.00</td><td>2026-09-01 至 2026-09-30</td><td class="num">12,000.00</td><td class="num">90.00</td><td>-</td><td class="num">0.00</td><td class="num">0.00</td><td><span class="tag t-wait">待结算</span></td><td><span class="tag t-none">无客情</span></td></tr>
+<tr class="l2"><td>▸ 2026-08-01 至 2026-08-31</td><td class="num">4,000.00</td><td class="num">500.00</td><td></td><td></td><td class="num">0.00</td><td></td><td></td><td class="num">0.00</td><td></td><td></td></tr>
+</tbody></table>
+<p class="hint" style="margin-top:8px">2026-10 行为「未出账」预估（截至 10-05），状态列显示 <span class="tag t-pre">未出账</span>；2026-08 两项均为 <span class="tag t-none">无返点</span> / <span class="tag t-none">无客情</span>（9-01 前无规则，按 0）。</p>
+</div></div>
+<div class="legend"><h2>改动点说明</h2><ul><li><span class="badge">1</span>标题改「返点管理」，tab「费用信息」改「返点信息」（R-07-020、D-07-22）</li><li><span class="badge">2</span>搜索公司名称 / 客户别名；筛选所属账户系统（现有列表）、计费模式；第二个同名下拉与「导出」不做（R-07-022、R-07-029）</li><li><span class="badge">3</span>待结算金额只算状态为待结算的系统金额；累计 = 已结算实际金额；只算可见账户；金额带币种（R-07-023、R-07-024）</li><li><span class="badge">4</span>按权限点显示；无待结算计提项时置灰并悬浮提示（R-07-028）</li><li><span class="badge">5</span>账户行状态：未出账 / 待结算 / 无返点 / 无客情 / 审批中 / 待打款 / 已结算（R-07-013～R-07-019）</li></ul></div>
+<div class="footbar"><span>MOCK · mocks/01-返点信息列表.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body></html>

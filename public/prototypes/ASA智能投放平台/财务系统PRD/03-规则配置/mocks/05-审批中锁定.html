@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MOCK · 规则配置 · 有审批中的规则配置单</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px 28px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.input{padding:5px 8px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff;width:120px;display:inline-block;min-height:30px;vertical-align:middle}
+.input.ph{color:#9ca3af}.input.w60{width:64px}.input.w90{width:96px}.input.w240{width:260px}.input.w420{width:420px}
+.input.err{border-color:var(--new);background:#fef2f2}.input.ro{background:#f3f4f6;color:var(--sub)}
+.input[disabled],.dis .input{background:#f3f4f6;color:#9ca3af}
+.err-tip{color:var(--new);font-size:12px;margin-top:2px}
+.hint{font-size:12px;color:#b45309;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.radio{margin-right:18px;font-size:13px;white-space:nowrap}
+.radio::before{content:"○ ";color:var(--sub)}.radio.on::before{content:"◉ ";color:var(--brand)}
+.sec{font-size:15px;font-weight:700;margin:22px 0 12px}
+.sec:first-child{margin-top:0}
+.form{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;align-items:start;max-width:1100px}
+.form .lb{text-align:right;font-size:13px;color:var(--sub);padding-top:5px}
+.form .lb.req::before{content:"*";color:var(--new);margin-right:2px}
+.link{color:var(--brand);text-decoration:underline}
+.ops a{color:var(--brand);margin-right:10px;font-size:13px}
+.ops a.off{color:#cbd5e1}
+.circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px;margin-left:4px;vertical-align:middle}
+.circle.off{color:#d1d5db;background:#f9fafb}
+.tier{margin:6px 0;white-space:nowrap}
+.sub{font-size:12px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;padding:0 6px;border-radius:4px;margin-left:6px}
+.tag.on{background:#ecfdf5;color:#047857}.tag.wait{background:#eff6ff;color:#1d4ed8}
+.lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px;display:inline-block}
+.lock em{color:var(--brand);font-style:normal}
+.collapse{font-size:15px;font-weight:700;margin:26px 0 12px}
+.empty{padding:24px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:6px}
+.foot{text-align:right;margin-top:24px}
+.mask{background:rgba(17,24,39,.45);padding:60px 0;margin:-20px -28px}
+.confirm{width:460px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.confirm .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600}
+.confirm .mb{padding:18px 20px}.confirm .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+.confirm .mf .btn{margin-left:8px}
+textarea.input{width:100%;height:72px;resize:none}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+.kv .k,.kv2 .k{color:var(--sub)}
+.kv2{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;font-size:13px;max-width:900px}
+.red{color:var(--new)}
+.tl{display:flex;gap:40px;font-size:12px}.tl div b{display:block;font-size:13px}
+.g{color:#047857}.gray{color:var(--sub)}
+.skip{color:#9ca3af}
+</style>
+</head>
+<body>
+<div class="docbar"><b>规则配置页 · 审批中锁定</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-03-041、R-03-042 / G-03-022</span></div>
+<div class="canvas pc">
+<div class="hd"><h1>客户登记表/规则配置</h1><span class="state-tag">有审批中的规则配置单</span></div>
+<div class="bd" style="padding-bottom:0"><div class="changed sub" data-note="4" style="padding:4px 8px;display:inline-block">星海游戏-ASA登记（RF20260905002）· 关联客户：星海网络科技有限公司 · 绑定账户：星海-iOS-US（4521873）· 计费模式：预付款 · 消耗首日：2026-09-12（今天第 38 天）</div></div>
+<div class="bd">
+<div class="lock changed" data-note="1">该登记表已有<em>审批中</em>的规则配置（审批单号 <span class="link">SP2026101900123</span>，申请人 李娜），请等审批结束或撤回后再操作。此处展示当前生效中的信息。</div><div class="modified" data-note="2" style="padding:6px"><div class="dis">
+<div class="sec">服务费规则</div>
+<div class="form">
+<div class="lb">日期口径</div><div><span class=""><span class="radio on">相对日期</span><span class="radio">绝对日期</span></span></div>
+<div class="lb req">规则配置</div><div><table style="max-width:1000px"><tr><th style="text-align:center">时间区间</th><th style="text-align:center">服务费率</th><th style="text-align:center">操作</th></tr><tr><td style="width:300px;text-align:center;vertical-align:middle">消耗首日 - 第 <span class="input w60">30</span> 天</td><td><div>计费方式：<span class=""><span class="radio on">固定比例</span><span class="radio">阶梯比例</span></span></div><div style="margin-top:6px"><span class="input w240">8.00</span> %</div></td><td style="width:140px;vertical-align:middle" class="ops"><a class="off">增加行</a><a class="off">删除行</a></td></tr><tr><td style="width:300px;text-align:center;vertical-align:middle">第31天 - 永久</td><td><div>计费方式：<span class=""><span class="radio">固定比例</span><span class="radio on">阶梯比例</span></span></div><div style="margin-top:4px">统计方式：<span class=""><span class="radio on">按月统计</span><span class="radio">按日统计</span></span></div><div class="tier"><span class="input w90 ro">0.00</span> - <span class="input w90">10,000.00</span> &nbsp; <span class="input w60">6.00</span> % <span class="circle">+</span><span class="circle">−</span></div><div class="tier"><span class="input w90 ro">10,000.00</span> - <span class="input w90 ro">不限</span> &nbsp; <span class="input w60">4.00</span> % <span class="circle">+</span><span class="circle">−</span></div></td><td style="width:140px;vertical-align:middle" class="ops"><a class="off">增加行</a><a class="off">删除行</a></td></tr></table></div>
+</div>
+<div class="sec">税费规则</div>
+<div class="form">
+<div class="lb req">税率</div><div><span class="input w240">6.00</span> %</div>
+<div class="lb req">服务费税费</div><div><span class=""><span class="radio on">公司承担</span><span class="radio">客户承担</span></span></div>
+</div>
+<div class="sec">返点规则</div>
+<div class="form"><div class="lb req">规则配置</div><div><table style="max-width:860px"><tr><th style="text-align:center">时间区间</th><th style="text-align:center">返点比例</th></tr><tr><td style="width:300px;text-align:center;vertical-align:middle">消耗首日 - 第90天</td><td><div>计费方式：<span class=""><span class="radio">固定比例</span><span class="radio on">阶梯比例</span></span></div><div style="margin-top:4px">统计方式：<span class=""><span class="radio on">按月统计</span><span class="radio">按日统计</span></span></div><div class="tier"><span class="input w90 ro">0.00</span> - <span class="input w90">20,000.00</span> &nbsp; <span class="input w60">1.50</span> % <span class="circle">+</span><span class="circle">−</span></div><div class="tier"><span class="input w90 ro">20,000.00</span> - <span class="input w90 ro">不限</span> &nbsp; <span class="input w60">2.50</span> % <span class="circle">+</span><span class="circle">−</span></div></td></tr></table></div></div>
+<div class="sec">客情规则</div>
+<div class="form"><div class="lb req">客情结算方式</div><div><span class=""><span class="radio">无客情</span><span class="radio on">首次消耗起 90 天</span><span class="radio">按自然月每月返还</span></span></div><div class="lb req">客情费用比例</div><div><div>计费方式：<span class=""><span class="radio on">固定比例</span><span class="radio">阶梯比例</span></span></div><div style="margin-top:6px"><span class="input w240">1.00</span> %</div></div></div>
+<div class="sec">备注与生效</div>
+<div class="form">
+<div class="lb">备注</div><div><span class="input w420">10 月起按消耗阶梯计费</span></div>
+<div class="lb req">规则起始日期</div><div><span class="input w240 ph">—</span></div>
+</div>
+</div></div><div class="changed" data-note="3" style="padding:4px"><div class="collapse " >历史规则 ∧</div><table><tr><th>规则起始日期</th><th>服务费规则</th><th>税率</th><th>服务费税费</th><th>返点规则</th><th>客情结算方式</th><th>客情费用比例</th><th>备注</th><th>审批通过时间</th><th>来源审批单</th></tr><tr><td>2026-10-01 <span class="tag on">生效中</span></td><td>消耗首日 - 第30天：固定 8.00%<br>第31天 - 永久：阶梯（按月统计）<br>[0.00, 10,000.00) 6.00%<br>[10,000.00, 不限) 4.00%</td><td>6.00%</td><td>公司承担</td><td>消耗首日 - 第90天：阶梯（按月统计）<br>[0.00, 20,000.00) 1.50%<br>[20,000.00, 不限) 2.50%</td><td>首次消耗起 90 天</td><td>1.00%</td><td>10 月起按消耗阶梯计费</td><td>2026-09-28 11:02:15</td><td><span class="link">SP2026092800031</span></td></tr><tr><td>2026-09-01</td><td>消耗首日 - 第30天：固定 9.00%<br>第31天 - 永久：固定 7.00%</td><td>6.00%</td><td>公司承担</td><td>消耗首日 - 第90天：固定 2.00%</td><td>无客情</td><td>-</td><td>-</td><td>2026-08-28 10:15:00</td><td><span class="link">SP2026082800088</span></td></tr></table></div><div class="foot sub">（「提交审批」按钮隐藏）</div>
+</div>
+</div>
+<div class="legend"><h2>改动点说明</h2><ul><li><span class="badge">1</span>顶部提示条按 12 在途单统一句式（R-12-047），对象「登记表」、类型「规则配置」，句末补「此处展示当前生效中的信息。」（R-03-041、D-03-17）</li><li><span class="badge">2</span>表单展示当前生效规则（2026-10-01 那条）且全部禁用，增删行、+ / − 不可用；「提交审批」隐藏；服务端同样拦截重复提交（R-03-041、R-03-042）</li><li><span class="badge">3</span>历史规则照常可展开；审批中的单不进历史规则（R-03-035）</li><li><span class="badge">4</span>锁定态同样显示信息行；提示条里的单号可点、新页打开审批详情，提示条不自动消失（R-03-041）</li></ul></div>
+<div class="footbar"><span>MOCK · mocks/05-审批中锁定.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>

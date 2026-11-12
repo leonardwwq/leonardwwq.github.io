@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MOCK · 渠道对账 · 已提交审批</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:visible}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.dis{background:#e5e7eb;border-color:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+.field .req::after{content:"*";color:var(--new);margin-left:4px}
+.input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+.err-tip{color:var(--new);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;white-space:nowrap}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+td.num,th.num{text-align:right}
+.empty{padding:48px;text-align:center;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.tabs{display:flex;gap:0;margin-bottom:14px}.tabs span{padding:6px 18px;border:1px solid var(--line);font-size:13px}
+.tabs span.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.toolbar .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;min-width:150px;background:#fff}
+.toolbar .grow{flex:1}
+.link{color:var(--brand);cursor:pointer}
+.muted{color:#9ca3af}
+.l2 td:first-child{padding-left:28px}.l2{background:#fafafa}
+.l3{background:#f5f7fb}.l3 td:first-child{padding-left:48px}
+.flag{display:inline-block;font-size:12px;color:#b45309;background:#fffbeb;border:1px solid #fcd34d;border-radius:4px;padding:0 6px;margin-left:6px}
+.tip{position:absolute;z-index:20;background:#111827;color:#fff;font-size:12px;padding:8px 10px;border-radius:6px;white-space:nowrap}
+.warnbar{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:6px;padding:8px 12px;font-size:13px;margin-bottom:14px}
+.infobar{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:6px;padding:8px 12px;font-size:13px;margin:12px 0}
+.modal{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:inline-block;vertical-align:top}
+.modal .mh{padding:12px 18px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+.modal .mb{padding:16px 18px}.modal .mf{padding:12px 18px;border-top:1px solid var(--line);text-align:right}
+.modal .mf .btn{margin-left:8px}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:8px 12px;font-size:13px;margin-bottom:12px}
+.kv .k{color:var(--sub)}
+.row{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.sec{font-weight:600;margin:14px 0 8px}
+.scroll{max-height:180px;overflow:auto}
+</style>
+</head>
+<body>
+<div class="docbar"><b>渠道对账中心 · 已提交审批</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-08-060～R-08-062 / G-08-023</span></div>
+<div class="canvas pc">
+  <div class="hd"><h1>渠道对账中心</h1><span class="state-tag">已提交审批</span></div>
+  <div class="bd">
+<div class="tabs"><span>渠道账单</span><span class="on">已提交审批</span></div>
+<div class="toolbar"><span class="sel" style="min-width:220px">🔍 审批单号</span><span>审批类型：</span><span class="sel changed" data-note="1">全部 / 渠道对账 / 渠道付款</span><span>审批状态：</span><span class="sel">全部</span></div>
+<table><thead><tr><th>审批单号</th><th class="modified" data-note="2">审批类型</th><th class="changed" data-note="3">结算期</th><th class="changed" data-note="3">账户系统</th><th>申请人</th><th>申请时间</th><th>审批状态</th><th>操作</th></tr></thead>
+<tbody>
+<tr><td>AP202610200031</td><td>渠道对账</td><td>2026-09</td><td title="亨利-国内、亨利-出海">亨利-国内、亨利-出海</td><td>王敏</td><td>2026-10-20 15:02:11</td><td>审批中</td><td><span class="link">详情</span>　<span class="link">撤回</span></td></tr>
+<tr><td>AP202610200017</td><td>渠道付款</td><td>2026-09</td><td>亨利-出海</td><td>王敏</td><td>2026-10-20 10:41:37</td><td>已通过</td><td><span class="link">详情</span></td></tr>
+<tr><td>AP202610030012</td><td>渠道对账</td><td>2026-09</td><td>亨利-国内</td><td>王敏</td><td>2026-10-03 09:12:50</td><td>已通过</td><td><span class="link">详情</span></td></tr>
+<tr><td>AP202610020004</td><td>渠道对账</td><td>2026-09</td><td>亨利-国内</td><td>王敏</td><td>2026-10-02 18:30:02</td><td>已驳回</td><td><span class="link">详情</span></td></tr>
+</tbody></table>
+<div style="margin-top:12px;text-align:right;font-size:13px;color:var(--sub)">共 4 条　10 条/每页　‹ 1 ›</div>
+<p style="margin-top:8px;font-size:13px;color:var(--sub)">只列当前登录账号提交的两种渠道审批单；审批中置顶，其余按申请时间降序。</p>
+
+  </div>
+</div>
+<div class="legend"><h2>改动点说明</h2><ul>
+<li><span class="badge">1</span>新增审批类型筛选（R-08-060）</li>
+<li><span class="badge">2</span>原型「操作对象」列改为「审批类型」（R-08-061，D-08-25）</li>
+<li><span class="badge">3</span>新增结算期、账户系统列；渠道对账含多个账户系统时用「、」连接（R-08-061）</li>
+</ul></div>
+<div class="footbar"><span>MOCK · mocks/05-已提交审批.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MOCK · 客户材料 · 添加登记表弹窗</title>
+<style>
+  :root{
+    --line:#e5e7eb; --text:#111827; --sub:#6b7280; --bg:#f3f4f6;
+    --new:#dc2626; --mod:#2563eb; --warn:#f59e0b; --brand:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+
+  /* 顶部说明条：每个 mock 必须有 */
+  .docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .docbar b{font-size:15px}
+  .docbar span{opacity:.85;font-size:12px}
+
+  /* 画布：PC 1440 / 移动 375，按需选一个或多个 */
+  .canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+  .canvas.mobile{width:375px;border-radius:20px;border:8px solid #111827}
+
+  .canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .canvas .hd h1{font-size:16px}
+  .canvas .bd{padding:20px}
+  .state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+
+  /* 通用控件，够用就行，别在这里造设计系统 */
+  .btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+  .field .req::after{content:"*";color:var(--new);margin-left:4px}
+  .input{width:100%;max-width:420px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+  .input.err{border-color:var(--new)}
+  .err-tip{color:var(--new);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb;font-weight:600;color:var(--sub)}
+  .empty{padding:48px;text-align:center;color:var(--sub)}
+
+  /* 改动标注 */
+  .changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+  .modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+  .removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+  [data-note]::before{
+    content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;
+    width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;
+    font-size:12px;line-height:20px;text-align:center;font-weight:700;
+  }
+
+  /* 图例：标注必须逐条解释 */
+  .legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+  .legend h2{font-size:14px;margin-bottom:10px}
+  .legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .legend li:last-child{border:0}
+  .badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+
+  .footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+
+  .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .tabs a{padding:8px 0;color:var(--sub);text-decoration:none}
+  .tabs a.on{color:var(--brand);border-bottom:2px solid var(--brand);font-weight:600}
+  .bar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .bar .input{width:260px}
+  .sel{padding:6px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#fff}
+  .ops a{color:var(--brand);margin-right:10px;text-decoration:none;font-size:13px}
+  .st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:#f3f4f6}
+  .st.wait{background:#fff7ed;color:#c2410c}.st.ok{background:#ecfdf5;color:#047857}.st.end{background:#f3f4f6;color:#6b7280}.st.bad{background:#fef2f2;color:#b91c1c}.st.link{color:var(--brand);text-decoration:underline;cursor:pointer;background:#eff6ff}
+  .mask{background:rgba(17,24,39,.45);padding:40px 0}
+  .modal{width:640px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden}
+  .modal.wide{width:880px}
+  .modal .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+  .modal .mb{padding:20px}
+  .modal .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+  .modal .mf .btn{margin-left:8px}
+  .radio{margin-right:18px;font-size:13px}
+  .radio::before{content:"○ ";color:var(--sub)}
+  .radio.on::before{content:"◉ ";color:var(--brand)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;background:#f9fafb}
+  .chip i{color:var(--sub);font-style:normal;margin-left:6px}
+  textarea.input{height:72px;max-width:100%;resize:none}
+  .page{max-width:760px;margin:0 auto}
+  .saved{font-size:12px;color:var(--sub)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .done{padding:120px 20px;text-align:center}
+  .done .ic{width:56px;height:56px;border-radius:50%;background:#ecfdf5;color:#047857;font-size:30px;line-height:56px;margin:0 auto 16px}
+  .err .input{border-color:var(--new)}
+  .btn.danger{color:#b91c1c;border-color:#fecaca}
+
+  .lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px}
+  .lock em{color:var(--brand);font-style:normal}
+  .form{display:grid;grid-template-columns:140px 1fr;gap:12px 16px;align-items:center;max-width:760px}
+  .form .lb{text-align:right;font-size:13px;color:var(--sub)}
+  .form .lb.req::before{content:"*";color:var(--new);margin-right:2px}
+  .input[disabled],.sel.dis{background:#f3f4f6;color:#9ca3af}
+  .red{color:var(--new)}
+  .del{text-decoration:line-through;color:#9ca3af}
+  .kv{display:grid;grid-template-columns:110px 1fr 110px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+  .kv .k{color:var(--sub)}
+  .sec{font-size:15px;font-weight:600;margin:18px 0 10px}
+  .link{color:var(--brand);text-decoration:underline;cursor:pointer}
+  .confirm{width:420px;margin:24px auto 0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .confirm .mb{padding:18px 20px}
+  .ic-warn{color:var(--new);font-weight:700;margin-left:6px}
+  .row-ops{display:flex;gap:6px;align-items:center}
+  .circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px}
+  .tl{display:flex;gap:28px;font-size:12px}
+  .tl div b{display:block;font-size:13px}
+  .g{color:#047857}.gray{color:var(--sub)}
+</style>
+
+</head>
+<body>
+<div class="docbar"><b>客户材料 · 添加登记表弹窗</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-04-056～R-04-058 / G-04-028、G-04-030</span></div>
+<div class="canvas pc">
+<div class="hd"><h1>客户管理/橙子出行科技有限公司</h1><span class="state-tag">添加登记表 · 下拉展开</span></div>
+<div class="bd">
+<div class="mask"><div class="modal"><div class="mh">添加登记表<span>✕</span></div><div class="mb">
+<div class="form" style="grid-template-columns:100px 1fr;align-items:start">
+<div class="lb req" style="padding-top:6px">绑定登记表</div><div class="changed" data-note="1" style="padding:4px"><input class="input" value="橙子" placeholder="搜索登记表名称 / 登记表ID">
+<div style="border:1px solid var(--line);border-radius:6px;margin-top:4px;max-width:420px;font-size:13px"><div style="padding:6px 10px;background:#eff6ff">橙子出行 二期产品登记（DJ20261018002）</div><div style="padding:6px 10px">橙子出行 海外版登记（DJ20261019001）</div></div>
+<div class="hint">只列本账号创建、状态为待关联的登记表；没有时显示「暂无可绑定的登记表（仅本账号创建、状态为待关联的登记表可绑定）」</div></div>
+<div class="lb" style="padding-top:6px">对应合同</div><div><span class="sel">请选择 ▾</span></div>
+</div>
+</div><div class="mf"><span class="btn primary modified" data-note="2">确定</span></div></div></div>
+</div>
+</div>
+<div class="legend"><h2>改动点说明</h2><ul><li><span class="badge">1</span>绑定登记表：单选、可搜索，选项「登记表名称（登记表ID）」（R-04-057、D-04-18）</li><li><span class="badge">2</span>确定时校验 guard，通过后登记表 待关联 → 待开户、写入关联客户、列表新增一行，同成同败；不满足提示「该登记表状态已变化，请重新选择」（R-04-058）</li></ul></div>
+<div class="footbar"><span>MOCK · mocks/2.10-客户材料/02-添加登记表.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>

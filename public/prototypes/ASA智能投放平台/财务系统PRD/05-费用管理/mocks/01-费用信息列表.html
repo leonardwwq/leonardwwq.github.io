@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MOCK · 费用管理 · 费用信息列表</title>
+<style>
+:root{--line:#e5e7eb;--text:#111827;--sub:#6b7280;--bg:#f3f4f6;--new:#dc2626;--mod:#2563eb;--warn:#f59e0b;--brand:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);padding:0 0 64px}
+.docbar{position:sticky;top:0;z-index:99;background:var(--brand);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.docbar b{font-size:15px}.docbar span{opacity:.85;font-size:12px}
+.canvas{background:#fff;margin:20px auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.canvas.pc{width:1440px;max-width:calc(100% - 40px)}
+.canvas .hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.canvas .hd h1{font-size:16px}.canvas .bd{padding:20px 28px}
+.state-tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.btn{display:inline-block;padding:6px 16px;border-radius:6px;border:1px solid var(--line);background:#fff;font-size:13px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.input{padding:5px 8px;border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);background:#fff;width:120px;display:inline-block;min-height:30px;vertical-align:middle}
+.input.ph{color:#9ca3af}.input.w60{width:64px}.input.w90{width:96px}.input.w240{width:260px}.input.w420{width:420px}
+.input.err{border-color:var(--new);background:#fef2f2}.input.ro{background:#f3f4f6;color:var(--sub)}
+.input[disabled],.dis .input{background:#f3f4f6;color:#9ca3af}
+.err-tip{color:var(--new);font-size:12px;margin-top:2px}
+.hint{font-size:12px;color:#b45309;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-weight:600;color:var(--sub)}
+.changed{position:relative;outline:2px dashed var(--new);outline-offset:3px;border-radius:4px}
+.modified{position:relative;outline:2px dashed var(--mod);outline-offset:3px;border-radius:4px}
+.removed{text-decoration:line-through;color:#9ca3af;background:#fef2f2;padding:0 4px;border-radius:3px}
+[data-note]::before{content:attr(data-note);position:absolute;top:-11px;left:-11px;z-index:5;width:20px;height:20px;border-radius:50%;background:var(--warn);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.legend{width:1440px;max-width:calc(100% - 40px);margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px}
+.legend h2{font-size:14px;margin-bottom:10px}
+.legend li{list-style:none;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.legend li:last-child{border:0}
+.badge{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-right:8px;font-weight:700}
+.footbar{position:fixed;left:0;right:0;bottom:0;background:#111827;color:#d1d5db;font-size:12px;padding:8px 20px;display:flex;justify-content:space-between}
+.radio{margin-right:18px;font-size:13px;white-space:nowrap}
+.radio::before{content:"○ ";color:var(--sub)}.radio.on::before{content:"◉ ";color:var(--brand)}
+.sec{font-size:15px;font-weight:700;margin:22px 0 12px}
+.sec:first-child{margin-top:0}
+.form{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;align-items:start;max-width:1100px}
+.form .lb{text-align:right;font-size:13px;color:var(--sub);padding-top:5px}
+.form .lb.req::before{content:"*";color:var(--new);margin-right:2px}
+.link{color:var(--brand);text-decoration:underline}
+.ops a{color:var(--brand);margin-right:10px;font-size:13px}
+.ops a.off{color:#cbd5e1}
+.circle{display:inline-block;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;text-align:center;line-height:20px;color:var(--sub);font-size:14px;margin-left:4px;vertical-align:middle}
+.circle.off{color:#d1d5db;background:#f9fafb}
+.tier{margin:6px 0;white-space:nowrap}
+.sub{font-size:12px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;padding:0 6px;border-radius:4px;margin-left:6px}
+.tag.on{background:#ecfdf5;color:#047857}.tag.wait{background:#eff6ff;color:#1d4ed8}
+.lock{background:#f3f4f6;border:1px solid var(--line);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:16px;display:inline-block}
+.lock em{color:var(--brand);font-style:normal}
+.collapse{font-size:15px;font-weight:700;margin:26px 0 12px}
+.empty{padding:24px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:6px}
+.foot{text-align:right;margin-top:24px}
+.mask{background:rgba(17,24,39,.45);padding:60px 0;margin:-20px -28px}
+.confirm{width:460px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.confirm .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600}
+.confirm .mb{padding:18px 20px}.confirm .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+.confirm .mf .btn{margin-left:8px}
+textarea.input{width:100%;height:72px;resize:none}
+.kv{display:grid;grid-template-columns:120px 1fr 120px 1fr;gap:10px 16px;font-size:13px;margin-bottom:12px}
+.kv .k,.kv2 .k{color:var(--sub)}
+.kv2{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;font-size:13px;max-width:900px}
+.red{color:var(--new)}
+.tl{display:flex;gap:40px;font-size:12px}.tl div b{display:block;font-size:13px}
+.g{color:#047857}.gray{color:var(--sub)}
+.skip{color:#9ca3af}
+
+.dlg{width:1100px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.dlg .mh{padding:14px 20px;border-bottom:1px solid var(--line);font-weight:600;display:flex;justify-content:space-between}
+.dlg .mb{padding:18px 24px}.dlg .mf{padding:12px 20px;border-top:1px solid var(--line);text-align:right}
+td.num,th.num{text-align:right;white-space:nowrap}
+.neg{color:var(--new)}
+.tabs span{display:inline-block;padding:6px 18px;border:1px solid var(--line);font-size:13px}
+.tabs span.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.bar{display:flex;gap:16px;align-items:center;margin:14px 0}
+.row-tip{color:var(--new);font-size:12px}
+.qmark{display:inline-block;width:18px;height:18px;border-radius:50%;border:1px solid var(--sub);text-align:center;line-height:16px;font-size:12px;color:var(--sub);margin-left:6px}
+.toast{display:inline-block;background:#111827;color:#fff;padding:8px 16px;border-radius:6px;font-size:13px}
+.sel{position:relative}
+.dd{border:1px solid var(--line);border-radius:6px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);width:260px;font-size:13px;margin-top:4px}
+.dd div{padding:6px 10px}.dd .add{color:var(--brand);border-top:1px solid var(--line)}
+
+</style>
+</head>
+<body>
+<div class="docbar"><b>费用管理 · 费用信息列表</b><span>本示意仅表达改动点，非最终视觉</span><span>关联：R-05-030～R-05-040、R-05-013、R-05-033 / G-05-008、G-05-018～G-05-021</span></div>
+<div class="canvas pc">
+<div class="hd"><h1>费用管理</h1><span class="state-tag">王敏（有两个权限点）· 2026-10-19 UTC0</span></div>
+<div class="bd">
+<div class="tabs"><span class="on">费用信息</span><span>已提交审批</span></div>
+<div class="bar"><span class="input w240 ph">搜索公司名称 / 账户名称</span><span>所属账户系统：<span class="input">全部</span></span><span>计费模式：<span class="input">全部</span></span><span class="removed">导出</span></div>
+<div class="modified" data-note="1" style="padding:4px"><table><tr><th>公司名称</th><th>所属账户系统</th><th class="num">计费模式</th><th>客户别名</th><th>销售</th><th>账户列表</th><th class="num">授信额度</th><th class="num">剩余额度</th><th class="num">账户余额</th><th>投放类型</th><th>投放状态</th><th class="num">昨日消耗</th><th class="num">今日消耗</th><th class="num">本月消耗</th><th class="num">累计花费</th><th>操作</th></tr><tr><td>星海网络科技有限公司</td><td>伙伴云ASA-01</td><td>预付款</td><td>星海</td><td>张伟</td><td>星海-iOS-US</td><td class="num">5,000.00 USD</td><td class="num">3,800.00 USD</td><td class="num"><span class="neg">-1,200.00 USD</span></td><td>代投</td><td>开启</td><td class="num">1,200.00 USD</td><td class="num">430.15 USD</td><td class="num">21,860.40 USD</td><td class="num">58,903.27 USD</td><td><div class="ops"><a>费用明细</a><a>余额分配</a><a>充值</a><a>退款</a><a>调整额度</a><a>提成规则配置</a></div></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>星海-iOS-JP</td><td class="num">0.00 USD</td><td class="num">0.00 USD</td><td class="num">6,412.88 USD</td><td>自投</td><td>开启</td><td class="num">800.00 USD</td><td class="num">211.60 USD</td><td class="num">9,020.00 USD</td><td class="num">20,118.42 USD</td><td></td></tr><tr><td>橙子出行科技有限公司</td><td>伙伴云ASA-01</td><td>后付款</td><td>橙子</td><td>陈思远</td><td>橙子-iOS-CN</td><td class="num">100,000.00 人民币</td><td class="num">2,000.00 人民币</td><td class="num">-</td><td>代投</td><td>开启</td><td class="num">300.00 人民币</td><td class="num">96.30 人民币</td><td class="num">38,000.00 人民币</td><td class="num">412,560.00 人民币</td><td><div class="ops"><a>费用明细</a><a>调整额度</a><a>提成规则配置</a></div></td></tr></table></div>
+<div class="bar" style="justify-content:flex-end"><span class="sub">共 2 条</span><span class="input">10 条/页</span></div>
+</div>
+</div>
+<div class="legend"><h2>改动点说明</h2><ul><li><span class="badge">1</span>客户一条、下嵌账户；按可见账户昨日消耗合计降序（星海 2,000.00 > 橙子 300.00，不折算）；金额带账户消耗币种；欠费余额标红；后付款余额「-」、剩余额度 = 额度 − 未结清消耗；后付款不显示充值 / 退款 / 余额分配；「导出」本期不做（R-05-031～R-05-038、R-05-013）</li></ul></div>
+<div class="footbar"><span>MOCK · mocks/01-费用信息列表.html</span><span>v2.1.0 · 2026-10-19</span></div>
+</body>
+</html>

@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-11-12T06:05:44.092551+08:00",
+  "updated_at": "2026-11-13T06:03:59.316061+08:00",
   "items": [
+    {
+      "date": "2026-11-13",
+      "category": "产业",
+      "title": "黄仁勋辞任英伟达 CEO，CFO 接任临时掌门",
+      "summary": "英伟达周四上午宣布，联合创始人、执掌 33 年的黄仁勋辞去总裁、CEO 及董事职务，即刻生效。导火索是同时曝出的两段关系：一名疑似中国间谍，以及一名英伟达直属下属。公司由 CFO 兼执行副总裁 Colette Kress 出任临时 CEO，开始寻找正式继任者，英伟达当前市值约 3.8 万亿美元。Kress 2013 年 9 月加入英伟达，此前在思科做 SVP 兼 CFO、在微软待了 13 年，其中 4 年任服务器与工具部门 CFO。公司下周二发布季报。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/12/jensen-huang-is-out-at-nvidia-who-is-colette-kress-his-interim-replacement/",
+      "remark": "黄仁勋一个人就是英伟达的全部叙事，人退场后市场得重新给「制度化的英伟达」定价，这个折价过程不会温和。对国内算力链是变量，对开源权重阵营更是——他一直是放开权重的主要推手之一，换人之后这条线会不会收，是接下来最该盯的事。"
+    },
+    {
+      "date": "2026-11-13",
+      "category": "技术",
+      "title": "Google 把 Gemini 4 Hydrogen 塞进搜索：快 2.5 倍，单项超过旗舰",
+      "summary": "Google 发布 Gemini 4 Hydrogen，定位不是最强而是最快：比上一代快速模型 Gemini 3.8 Flash 快 2.5 倍，却在一个综合智能基准上超过了更强的 Gemini 4 Argon。搜索端随之升级——对多段问题、极度具体的请求和错别字理解更好，fan-out 能把一个提问拆成多个子查询去捞漏掉的网页，AI Mode 里会出现更多图片、对比表格和自定义小工具。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/12/googles-latest-search-upgrade-promises-better-answers-to-your-most-complicated-questions/",
+      "remark": "模型分层开始按「贵不贵、快不快」切，不是一个大模型打天下。搜索是 Gemini 最大的分发口，这一步等于把 agent 执行能力直接从 C 端铺开——比发个 API 影响大得多。"
+    },
+    {
+      "date": "2026-11-13",
+      "category": "安全",
+      "title": "Anthropic 玻璃翼计划被质疑：3.8 万候补漏洞只修了 217 条",
+      "summary": "VulnCheck 发布追踪报告：截至 11 月初，Anthropic 玻璃翼计划的候选漏洞发现累计 37966 条，但漏洞披露台账里修好的只有 217 条，同期撤回 419 条、重复 1654 条，近两个月候选量暴增近 1.2 万条而修复几乎没动。Anthropic 官方口径是 6376 条经外部专家审核、6009 条有效、5087 条已报给维护者、629 条拿到上游补丁。curl 维护者 Daniel Stenberg 公开表示已被报告淹没，34 份公开报告里 19 份压根不构成漏洞。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/509291.html",
+      "remark": "AI 找漏洞的能力已经远超人审和修复能力。发现变便宜之后，瓶颈全移到分诊和修——这才是安全类 AI 落地的真问题，不是模型不够强。"
+    },
+    {
+      "date": "2026-11-13",
+      "category": "大模型",
+      "title": "MiniMax 开源 H3-Image：原生 4K，一张两毛",
+      "summary": "继开源视频模型 H3 之后，MiniMax 又开源 SOTA 级生图模型 H3-Image，原生 4K 输出，单张成本约两毛钱。实测亮点不止画质：给它一张产品外观图能自动推演出标准正交三视图，机械拆解能按装配逻辑分层画爆炸图并标注引线，复杂积分公式和学术排版不出乱码，角色一致性和长分镜连续性也明显改善。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/509440.html",
+      "remark": "垂直模型这条路被低估了——文生图这种任务拿文本模型硬顶是浪费算力。通用模型串联垂直模型、总效用更高的架构正在成为主流，对做电商素材和内容生产的是直接降本。"
+    },
+    {
+      "date": "2026-11-13",
+      "category": "产业",
+      "title": "Nebius 押 400 亿美元建算力，靠客户预付款撑",
+      "summary": "neocloud 公司 Nebius 在财报电话会上给出 2027 年 400 亿美元的支出计划，远超华尔街预期。钱主要靠客户预付款和以客户合同为抵押的贷款——拿数据中心的未来价值去融资建今天的数据中心。最大客户之一是微软，合同最高 194 亿美元，但新泽西 Vineland 数据中心已延期数月，年底只能交付略超一半产能。CEO Arkady Volozh 原话：这个规模的建设很难，延期是当下行业的一部分，我们不免疫。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/12/nebius-tests-the-neocloud-playbook-with-40-billion-in-planned-spending/",
+      "remark": "把未来现金流贴现到现在花，交付一延期，成本往上、收入往下，两头反向。和 CoreWeave 改收预付款是同一个信号：AI 基建的钱正在变贵，讲故事融资那一套到期了。"
+    },
+    {
+      "date": "2026-11-13",
+      "category": "产品",
+      "title": "CodeRabbit ARR 破 1 亿美元：AI 代码审查独立成品类",
+      "summary": "CodeRabbit 年化经常性收入突破 1 亿美元，服务 2 万多家客户、12 万日活开发者、30 万多个开源项目、连接 850 多万个代码仓库。现在每周有 300 多万个 PR 过它的审查，累计检出 1 亿多个问题。CEO Harjot Gill 的说法是：agent 批量产出代码后没人能逐行读 PR，审查层不能是写代码的那个 agent。",
+      "source": "CodeRabbit",
+      "url": "https://www.coderabbit.ai/newsroom/coderabbit-tops-100m-arr-governance-agentic-software-development",
+      "remark": "AI 让写代码变便宜，信任变贵，于是审查单独长成一个品类。agent 时代最稳的套利位往往不是替人干活，是给干活的 agent 做质检。"
+    },
+    {
+      "date": "2026-11-13",
+      "category": "技术",
+      "title": "同一任务实测：MCP 比 CLI 多烧 40 倍上下文",
+      "summary": "OpenRouter 用同一个 GitHub 任务对比三种工具接入方式，Sonnet 5.5 上三者都答对，但输入 token 差得离谱：CLI 1421、skill 3315、MCP 59417。GitHub MCP 的 46 个默认工具每次请求固定加 19436 token，而单个 release 对象的返回体就要约 20400 token，比全部工具定义还贵。Tool Search 把 46 个工具的初始开销压到 600 token 以内，整任务成本减半。",
+      "source": "OpenRouter",
+      "url": "https://openrouter.ai/blog/insights/mcp-vs-cli-vs-skills/",
+      "remark": "选工具链的硬数据：MCP 不是默认答案，工具定义和返回体是隐藏账单。上下文预算该按任务算，不该按能接多少 server 算——这条对做 Agent 产品的人比任何架构图都有用。"
+    },
     {
       "date": "2026-11-12",
       "category": "技术",

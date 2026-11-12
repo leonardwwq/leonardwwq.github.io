@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const base = '/prototypes/ASA智能投放平台/财务系统PRD';
+const modules = [
+  ['01-客户登记', '客户登记', '登记表、外链填写、材料审核与开户衔接。'],
+  ['02-账户管理', '账户管理', '账户创建与编辑、登记表关联及账户归属。'],
+  ['03-规则配置', '规则配置', '服务费、税费、返点与客情规则，生效日期及历史版本。'],
+  ['04-客户管理', '客户管理', '客户资料、计费模式、付款主体及材料管理。'],
+  ['05-费用管理', '费用管理', '充值、退款、余额分配、授信额度与提成规则。'],
+  ['06-账单与结算单', '账单与结算单', '预付与后付账单、生成结算单、余额抵扣与状态流转。'],
+  ['07-返点管理', '返点管理', '客户返点、客情费用及余额抵扣与现金兑现。'],
+  ['08-渠道对账', '渠道对账', '渠道数据匹配、文件导入校验、审批入账与渠道付款。'],
+  ['09-收付款中心', '收付款中心', '收款确认、汇款与到账、手续费及来源单据回写。'],
+  ['10-利润中心', '利润中心', '按账户与月份核算毛利，追溯来源、汇率及计算完成状态。'],
+  ['11-提成中心', '提成中心', '销售与优化师提成、历史归属与规则变更后的计算。'],
+  ['12-审批配置与审批中心', '审批配置与审批中心', '审批节点、会签、撤回与作废，以及业务审批详情。'],
+  ['13-导航与权限', '导航与权限', '页面与动作权限、数据可见范围及导航入口。'],
+];
+const summary = '使用 PRD Builder Skill 完成的实际业务需求产出，覆盖 ASA 财务系统 13 个模块的 PRD、机器可读规格与评审材料。';
+---
+
+<BaseLayout title="ASA 财务系统 PRD · PRD Builder 实际产出 · 王伟权" description={summary}>
+  <article>
+    <header class="case-head">
+      <a class="breadcrumb" href="/work/prd-builder">← PRD Builder 项目说明</a>
+      <h1 class="page-title">ASA 财务系统 PRD</h1>
+      <p class="case-summary">{summary}</p>
+      <dl class="case-facts">
+        <div><dt>材料性质</dt><dd>真实业务需求 · Skill 实际产出</dd></div>
+        <div><dt>业务范围</dt><dd>客户与账户 → 财务结算 → 利润与提成</dd></div>
+        <div><dt>交付结构</dt><dd>PRD + spec.yaml + 评审版 + 配套原型</dd></div>
+      </dl>
+      <div class="project-entry-links case-actions">
+        <a href="/work/asa-smart-delivery">ASA 平台项目说明 →</a>
+        <a href="/prototypes/ASA智能投放平台/index.html#p=费用管理" target="_blank" rel="noopener noreferrer">打开财务业务原型 ↗</a>
+        <a href={`${base}/index.md`} target="_blank" rel="noopener noreferrer">版本总纲 · 原始文档 ↗</a>
+      </div>
+      <p class="case-note">这是实际项目中使用 PRD Builder Skill 完成的需求材料，不是虚构演示。原文保留编制时的评审状态与已知限制；这里展示需求交付，不提供在线财务业务操作。</p>
+    </header>
+
+    <section class="case-section" aria-labelledby="reading-title">
+      <h2 id="reading-title">建议先看</h2>
+      <div class="prose">
+        <p>想看业务复杂度，可以先打开「费用管理」「账单与结算单」和「利润中心」的评审版：从一笔充值和规则快照，到结算单、收款，再到毛利核算，查看同一套规则如何跨模块衔接。</p>
+        <p>想看 Skill 的交付方式，可以在同一模块中对照 PRD、规格与评审版。文档按编号引用规则、决策和验收要求；版本总纲记录公共口径，各模块维护自己负责的业务范围。</p>
+      </div>
+      <div class="project-entry-links">
+        {[['05-费用管理', '费用管理'], ['06-账单与结算单', '账单与结算单'], ['10-利润中心', '利润中心']].map(([folder, title]) => (
+          <a href={`${base}/${folder}/review.html`} target="_blank" rel="noopener noreferrer">{title} · 评审版 ↗</a>
+        ))}
+      </div>
+    </section>
+
+    <section class="case-section" aria-labelledby="modules-title">
+      <h2 id="modules-title">13 个模块的交付材料</h2>
+      <p class="module-intro">评审版适合直接阅读，包含配套原型；PRD 与规格保留原始文件，便于对照需求与实现约束。</p>
+      <ol class="deliverable-grid">
+        {modules.map(([folder, title, description]) => (
+          <li>
+            <span class="module-number" aria-hidden="true">{folder.slice(0, 2)}</span>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <div class="project-entry-links" role="group" aria-label={`${title}交付材料`}>
+              <a href={`${base}/${folder}/review.html`} target="_blank" rel="noopener noreferrer">评审版 ↗</a>
+              <a href={`${base}/${folder}/PRD.md`} target="_blank" rel="noopener noreferrer">PRD 原文 ↗</a>
+              <a href={`${base}/${folder}/spec.yaml`} target="_blank" rel="noopener noreferrer">规格 ↗</a>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+    <nav class="case-next" aria-label="相关项目">
+      <div><span>使用的工具</span><a href="/work/prd-builder">PRD Builder →</a></div>
+      <div><span>所属业务项目</span><a href="/work/asa-smart-delivery">ASA 智能投放平台 →</a></div>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .module-intro { color: var(--muted); font-size: 14px; max-width: 760px; }
+  .deliverable-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; list-style: none; padding: 0; margin: 24px 0 0; }
+  .deliverable-grid li { border-top: 1px solid var(--border); padding: 24px 0; min-width: 0; }
+  .module-number { color: var(--faint); font: 12px var(--mono); }
+  .deliverable-grid h3 { margin: 8px 0; font-size: 18px; font-weight: 600; }
+  .deliverable-grid p { color: var(--muted); font-size: 14px; margin: 0 0 14px; line-height: 1.85; }
+  @media (max-width: 640px) { .deliverable-grid { grid-template-columns: 1fr; } }
+</style>

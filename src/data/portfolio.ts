@@ -55,7 +55,8 @@ const presentation: Record<string, ProjectPresentation> = {
     summary: '基于 Human-in-the-loop 授权机制，内置投放平台、代办投放全流程操作的 AI 助手。',
     status: '内部上线',
     role: '产品负责人 · 产品方案、交互设计与落地推进',
-    demoLabel: '查看架构图',
+    demoLabel: '打开 Copilot 原型（ASA 内）',
+    note: '与 ASA 智能投放平台共用一套原型。进入导航栏页面后，点击顶部「召唤小伙」打开助手；原型展示前端交互，工具调用与人机协作机制可结合架构图查看。',
     sections: details(
       '传统投放依赖优化师反复试错，得到结果前难以判断策略优劣。人工看数的范围、深度和频率有限，调价响应也受精力限制；试错积累又依赖个人，难以持续复用。',
       [
@@ -125,7 +126,8 @@ const presentation: Record<string, ProjectPresentation> = {
         ['以投放流程组织业务', '围绕账户、广告系列和关键词统一日常操作，将分散的管理工作集中到同一平台。'],
         ['用统一数据支撑策略', '整合广告、归因与业务转化数据，统一指标口径，通过关键词分类与策略规则复用投放判断。'],
         ['让资金约束进入投放流程', '将客户信用额度与实际消耗关联，配合预警、超限停投及对账结算，在持续投放过程中控制垫资风险。'],
-        ['为 AI Copilot 提供基础', '统一业务数据与指标口径，提供可调用的投放工具，为 AI 分析和执行操作提供基础。'],
+        ['财务规则与核算', '覆盖费用、账单、返点、渠道对账、收付款、利润与提成，明确计算口径、历史规则及跨模块状态衔接。使用 <a href="/work/prd-builder">PRD Builder Skill</a> 完成了配套需求材料，见 <a href="/work/prd-builder/asa-finance/">财务系统 PRD 实际产出</a>。'],
+        ['为 AI Copilot 提供基础', '统一业务数据与指标口径，提供可调用的投放工具，为 <a href="/work/ai-copilot-assistant">AI Copilot</a> 的分析和执行操作提供基础。Copilot 已包含在同一套平台原型中。'],
       ],
     ),
   },
@@ -133,8 +135,8 @@ const presentation: Record<string, ProjectPresentation> = {
     title: 'PRD Builder',
     summary: '按需求复杂度组织分析流程、用于指导 AI 编写产品需求文档的 Skill。',
     status: '开源工具',
-    demoLabel: '查看交付示例',
-    note: '站内示例使用虚构需求，仅用于展示交付形式。',
+    demoLabel: '查看实际产出 · ASA 财务 PRD',
+    note: 'ASA 财务系统材料是使用本 Skill 完成、可用于需求评审与研发对齐的实际业务产出，不是虚构示例；另保留反馈需求示例展示交付形式。',
     sections: details(
       '用同一套流程处理所有需求，小改动容易分析过度、交付冗余；复杂项目又容易遗漏状态、权限和异常。文档看似完整，却未必足以指导实际开发，还会消耗不必要的时间与上下文。',
       [
@@ -142,6 +144,7 @@ const presentation: Record<string, ProjectPresentation> = {
         ['按需分析与交付', '只加载当前任务需要的材料，按实际需要产出规格、原型和评审文件，避免小需求走完整套重流程。'],
         ['保持交付一致', '以 PRD 为统一依据，让文档、规格和原型描述同一套需求。'],
         ['检查能否落地', '明确状态变化、权限、异常处理与验收要求，减少表面完整、实际无法执行的说明。'],
+        ['用于真实业务', '使用该 Skill 完成 <a href="/work/prd-builder/asa-finance/">ASA 财务系统 13 个模块的需求材料</a>，将结算、金额精度、历史规则、权限及跨模块依赖落实到 PRD、规格与评审文件中。'],
       ],
     ),
   },
@@ -299,10 +302,6 @@ export function projectLinks(project: WorkProject) {
     path: project.demoExternalUrl,
   });
   links.push(...(project.demoLinks ?? []));
-  if (project.slug === 'ai-copilot-assistant') {
-    const prototype = workProjects.find(item => item.slug === 'asa-delivery-agent');
-    if (prototype?.demoPath) links.push({ label: '打开交互原型', path: prototype.demoPath });
-  }
   const seen = new Set<string>();
   return links.filter(link => {
     if (seen.has(link.path)) return false;

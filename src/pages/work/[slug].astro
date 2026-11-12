@@ -44,7 +44,7 @@ const nextInfo = describeProject(next);
       {info.note && <p class="case-note">{info.note}</p>}
       {project.demoPath && (
         <details class="embed-disclosure">
-          <summary>站内预览 · {project.slug === 'ai-copilot-assistant' ? '架构图' : '交互原型'}</summary>
+          <summary>站内预览 · {project.slug === 'prd-builder' ? '实际业务产出' : '交互原型'}</summary>
           <div class="embed">
             <iframe src={project.demoPath} title={project.iframeTitle} loading="lazy"></iframe>
           </div>

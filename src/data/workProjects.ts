@@ -96,7 +96,9 @@ export const workProjects: WorkProject[] = [
     iframeTitle: 'ASA 智能投放平台原型预览',
     prototypesFolder: 'ASA智能投放平台',
     demoLinks: [
-      { label: 'AI Copilot 交互原型', path: '/prototypes/ASA投放Agent/index.html' },
+      { label: 'AI Copilot 原型（同一平台）', path: '/prototypes/ASA智能投放平台/index.html#p=导航栏' },
+      { label: '财务系统 PRD · 实际业务产出', path: '/work/prd-builder/asa-finance/' },
+      { label: 'AI Copilot 项目说明', path: '/work/ai-copilot-assistant' },
     ],
     caseStudy: {
       background:
@@ -146,9 +148,13 @@ export const workProjects: WorkProject[] = [
     tags: ['AI Agent', 'MCP', 'Copilot', '人机协同', '提示词工程'],
     iconId: 'sparkles',
     categoryId: 'platform',
-    demoPath: '/prototypes/ai-copilot/architecture.html',
-    iframeTitle: 'AI Copilot 架构图',
-    prototypesFolder: 'ai-copilot',
+    demoPath: '/prototypes/ASA智能投放平台/index.html#p=导航栏',
+    iframeTitle: 'AI Copilot · ASA 平台内交互原型',
+    prototypesFolder: 'ASA智能投放平台',
+    demoLinks: [
+      { label: '查看架构图', path: '/prototypes/ai-copilot/architecture.html' },
+      { label: 'ASA 平台项目说明', path: '/work/asa-smart-delivery' },
+    ],
     caseStudy: {
       background:
         '投放平台的日常运营涉及数据监控、异常判断、出价调整、策略优化等高频率操作，分散在不同页面。运营需在多个系统间切换拼凑信息再做决策，效率低且依赖个人经验。需要一个能"感知用户在做什么、在需要时提供建议、确认后执行"的智能助手，而非单纯的对话机器人。',
@@ -392,13 +398,13 @@ export const workProjects: WorkProject[] = [
     tags: ['AI Agent', 'Skill', 'PRD', '需求分析', '开源', 'Token 优化'],
     iconId: 'layers',
     categoryId: 'opensource',
-    demoPath: '/prototypes/prd-builder/02-反馈处理/review.html',
+    demoPath: '/work/prd-builder/asa-finance/',
     demoExternalUrl: 'https://github.com/leonardwwq/prd-builder-skill',
-    iframeTitle: 'PRD Builder 项目模式交付示例（评审版）',
+    iframeTitle: 'PRD Builder 实际产出 · ASA 财务系统需求交付',
     prototypesFolder: 'prd-builder',
     demoLinks: [
       {
-        label: '示例导览 · 一份需求四种产物（建议先看这个）',
+        label: '虚构示例导览 · 一份需求四种产物',
         path: '/prototypes/prd-builder/index.html',
       },
       {
@@ -422,7 +428,7 @@ export const workProjects: WorkProject[] = [
       process:
         '先解决「怎么定档」：按依赖关系、业务状态、风险、协作规模、维护周期判断，<strong>不按需求文字长短</strong>，取命中的最高一档，拿不准先低档开工、出现信号再升级并说明原因。再压体积：主入口文件从约 <strong>18.7 KB 精简到 12.9 KB</strong>，把角色机制（需求总控 + 页面 PRD 两角色）、工作区规范、模板、示例全部拆成按需加载的 references，只在这一步真正用到时才读。质量侧留一份清单，专盯最容易导致返工的地方：<strong>状态机的逆向操作</strong>（撤回 / 驳回 / 作废 / 回滚）、权限与数据范围、批量操作的部分失败与重试幂等（服务端也要校验）、改默认值对现有用法的回归影响。工程侧配两个脚本：<code>validate.mjs</code> 查编号、空话与跨页引用，<code>build_review.mjs</code> 生成评审版（明确禁止手写，避免文档与产物脱节）。验证方式是同模型、同虚构材料、同提示词，只换 Skill 版本，各跑一次对比。',
       results:
-        '三种任务规模各测一次，属<strong>初步结果</strong>：输入 token 小型 <strong>−89%</strong>、中型 −81%、大型 −20%，输出 token −83% / −63% / −7%，执行时间 −80% / −56% / −12%；产物盲评小型 8.5 → 8、中型 6.5 → 8.5、大型 6 → 9。小型任务掉分暴露了默认值变更后的回归检查缺失，已补进质量清单——<strong>轻量化确实会用「漏细节」换成本，这条不能省</strong>。需要说明的边界：单次样本、评审评分有波动、节省幅度依赖模型与 Agent 实现，<strong>不能当作普遍性能保证</strong>。当前我自己的原型产出已全走这条链：<code>mock + spec.yaml + prd.md</code> 一起交付，技术侧 Agent 直接照着拆任务开发。站内嵌入的是示例工作区的评审版，虚构内容，仅演示格式。',
+        '三种任务规模各测一次，属<strong>初步结果</strong>：输入 token 小型 <strong>−89%</strong>、中型 −81%、大型 −20%，输出 token −83% / −63% / −7%，执行时间 −80% / −56% / −12%；产物盲评小型 8.5 → 8、中型 6.5 → 8.5、大型 6 → 9。小型任务掉分暴露了默认值变更后的回归检查缺失，已补进质量清单——<strong>轻量化确实会用「漏细节」换成本，这条不能省</strong>。需要说明的边界：单次样本、评审评分有波动、节省幅度依赖模型与 Agent 实现，<strong>不能当作普遍性能保证</strong>。当前我自己的原型产出已全走这条链：<code>mock + spec.yaml + prd.md</code> 一起交付，技术侧 Agent 直接照着拆任务开发。站内新增 <a href="/work/prd-builder/asa-finance/">ASA 财务系统实际业务产出</a>，展示使用本 Skill 完成的 13 个模块的 PRD、规格与评审材料；另保留虚构反馈需求示例，仅用于演示交付形式。',
     },
   },
   {

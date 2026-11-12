@@ -15,7 +15,8 @@ const slugs = rawSlugs.filter(slug => !Object.hasOwn(aliases, slug));
 check(slugs.length === 16, '确认后的作品数量应为16件，ASA投放Agent不应独立计数。');
 check(rawSlugs.length === new Set(rawSlugs).size, '原项目数据包含重复 slug。');
 
-const routes = ['/', '/work', '/library', '/about', '/contact', '/news', ...slugs.map(slug => `/work/${slug}`)];
+const financeRoute = '/work/prd-builder/asa-finance';
+const routes = ['/', '/work', '/library', '/about', '/contact', '/news', financeRoute, ...slugs.map(slug => `/work/${slug}`)];
 const pages = new Map();
 for (const route of routes) {
   try {
@@ -27,7 +28,7 @@ for (const route of routes) {
     check(!/class=["'][^"']*\b(?:robot-assistant|engagement-float)\b/.test(html), `${route}: 残留悬浮机器人。`);
     check(html.includes('跳到正文'), `${route}: 缺少跳到正文入口。`);
     check(!/class=["'][^"']*\b(?:project-visual|visual-window|mock-assistant|mock-nav|lab-output)\b/.test(html), `${route}: 残留根据描述绘制的替代产品界面。`);
-    if (route.startsWith('/work/')) {
+    if (route.startsWith('/work/') && route !== financeRoute) {
       const headings = [...html.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/g)]
         .map(match => match[1].replace(/<[^>]*>/g, '').trim());
       check(JSON.stringify(headings) === JSON.stringify(['核心问题', '产品方案']), `${route}: 项目正文必须仅包含“核心问题”和“产品方案”两部分。`);
@@ -57,7 +58,7 @@ check(home.includes('当前为浏览器本地模拟，用于验证配置与使�
 check((home.match(/class="project-entry-context"/g) ?? []).length === 1, '首页职责仅应展示已有确认信息，不能为无职责数据的项目补造。');
 for (const path of [
   '/prototypes/ai-copilot/architecture.html',
-  '/prototypes/ASA投放Agent/index.html',
+  '/prototypes/ASA智能投放平台/index.html#p=导航栏',
   'https://weipm.com/agent-workbench-demo/#/app',
   'https://weipm.com/agent-workbench-demo/#/admin',
   'https://github.com/leonardwwq/agent-workbench-demo',
@@ -77,7 +78,27 @@ const copilot = pages.get('/work/ai-copilot-assistant') ?? '';
 for (const phrase of ['分析复用', '灵活使用', '完整工具', '操作与效果关联', 'Human-in-the-loop']) {
   check(copilot.includes(phrase), `Copilot缺少已确认重点：${phrase}`);
 }
-check(copilot.includes('/prototypes/ASA投放Agent/index.html'), 'Copilot没有保留合并后的交互原型。');
+const copilotPrototype = '/prototypes/ASA智能投放平台/index.html#p=导航栏';
+check(copilot.includes(copilotPrototype), 'Copilot没有指向ASA同一套原型中的助手入口。');
+check(!copilot.includes('/prototypes/ASA投放Agent/index.html'), 'Copilot仍将早期独立探索稿作为当前原型。');
+check(copilot.includes('召唤小伙') && copilot.includes('前端交互'), 'Copilot缺少入口说明或原型范围说明。');
+try {
+  const navigation = await readFile(join(dist, 'prototypes/ASA智能投放平台/导航栏.html'), 'utf8');
+  check(navigation.includes('召唤小伙') && navigation.includes('data-label="对话框"'), 'ASA导航栏没有对应的助手入口及对话面板。');
+} catch {
+  errors.push('Copilot链接指向的ASA导航栏页面不存在。');
+}
+const asa = pages.get('/work/asa-smart-delivery') ?? '';
+const builder = pages.get('/work/prd-builder') ?? '';
+const finance = pages.get(financeRoute) ?? '';
+check(asa.includes(copilotPrototype), 'ASA项目缺少同平台内的Copilot入口。');
+for (const [name, html] of [['ASA', asa], ['PRD Builder', builder]]) {
+  check(html.includes(`${financeRoute}/`), `${name}缺少财务PRD实际产出入口。`);
+}
+check(builder.includes('实际业务产出') && !builder.includes('站内示例使用虚构需求，仅用于展示交付形式。'), 'PRD Builder未区分真实业务产出与虚构示例。');
+check(finance.includes('真实业务需求') && finance.includes('PRD Builder Skill'), '财务材料未明确真实业务与Skill产出的关系。');
+const reviewLinks = [...finance.matchAll(/href="([^"]+\/review\.html)"/g)].map(match => match[1]);
+check(new Set(reviewLinks).size === 13, '财务产出导览应覆盖13个模块的评审版。');
 // Editorial treatment is opt-in: preserve confirmed copy and keep the other cases unchanged.
 check(/class=["'][^"']*\bcase-editorial\b/.test(copilot), 'Copilot未启用案例阅读样板。');
 check((copilot.match(/class=["']case-principle-index["']/g) ?? []).length === 4, 'Copilot应保留四项方案卡片。');

@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-11-14T06:09:17.969291+08:00",
+  "updated_at": "2026-11-15T06:07:40.176832+08:00",
   "items": [
+    {
+      "date": "2026-11-15",
+      "category": "产品",
+      "title": "Meta 的 Muse 开始替你打电话：有线客服、车管所、订位都接",
+      "summary": "9 月小范围测试后，Muse 的美国付费订阅用户现在可以让它代打商家电话。Meta 称 Muse 用户已超 1000 万，首席 AI 官 Alexandr Wang 举的场景是「你不想打的那类电话」：有线电视客服、DMV、不接受线上订位的餐厅。免费用户暂时没有。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/12/muse-can-now-place-calls-to-u-s-businesses-if-you-pay/",
+      "remark": "电话代打是 agent 里最脏的活：对面是真人、有口音、会打断、会反问，前面还常常横着一层 IVR 菜单。Meta 敢把它放到付费墙后面，说明至少部分场景跑通了。但真正的产品难题是责任边界——它替你答应了什么、报错信息算谁的，这条稿子没讲，Meta 大概也还没想清楚。"
+    },
+    {
+      "date": "2026-11-15",
+      "category": "技术",
+      "title": "ggml 发布 1.0.0：清掉废弃 API，CUDA/Metal/Vulkan/SYCL 全线提速",
+      "summary": "这个三年多的底层项目第一次打 1.0.0。删除废弃公共 API 和 DIAG_MASK 旧算子，RPC 协议升级、会拒绝不兼容的对端；新增 YaRN 截断控制和 FP8 支持；CUDA/Metal 上做 few-row 量化矩阵乘和 MoE 融合，Vulkan 加了 prefill FlashAttention 路径，SYCL 上了设备端 MoE 调度器，OpenCL 拆解 Adreno FlashAttention，WebGPU 新增 kernel，调度器还避免上传无用输入。",
+      "source": "GitHub",
+      "url": "https://github.com/ggml-org/ggml/releases/tag/v1.0.0",
+      "remark": "llama.cpp 的地基正式进 1.0，意味着本地推理这一层的 API 开始稳了，写工具的人可以放心依赖。但注意 RPC 协议不兼容——跨版本混跑会直接连不上，自己搭多机推理的记得全量一起升。"
+    },
+    {
+      "date": "2026-11-15",
+      "category": "技术",
+      "title": "单卡装不下 GLM-5.3：两块 DGX 用 vLLM 拼 TP=2，跑到 607.8 tok/s",
+      "summary": "GLM-5.3 NVFP4 是 753B 总参、40B 激活的 MoE，约需 464 GB 显存，超过单块 GB300 的 252 GB HBM3e。两块 DGX Station 用 ConnectX-8 RDMA 互联，vLLM 起分布式服务做张量并行（TP=2），配多 token 预测、FP8 KV cache 和前缀缓存。SPEED-Bench Coding 上并发 16 时输出吞吐峰值 607.8 tok/s；并发升到 32 反而降到 385 tok/s，平均请求延迟 453.5 秒。",
+      "source": "NVIDIA Technical Blog",
+      "url": "https://developer.nvidia.com/blog/when-one-gpu-isnt-enough-serving-glm-5-3-across-two-nvidia-dgx-stations-with-vllm/",
+      "remark": "数字里信息量最大的不是 607，而是并发 32 时吞吐反降、延迟 453 秒——说明这套双机 TP 配置的甜点区很窄，压测过不了 16 就别硬上。部署大 MoE 记住：「能跑起来」和「能扛并发」是两件事，先找到拐点再谈扩容。"
+    },
+    {
+      "date": "2026-11-15",
+      "category": "技术",
+      "title": "Anthropic 嫌 Git 太重，7 个人 5 个月造了 Scion 把主仓迁走",
+      "summary": "合并量从 5 月每天约 2500 次涨到 9 月超 3 万次，CI 每天约 2500 万次检出；主分支历史近 100 GB，全量检出理论流量超 600 PB。Scion 把提交、合并、变基、历史查询挪到中心服务，客户端只按需取缺失的 tree 和 blob，用预写日志式 changeset 替代 packfile，引用更新走 Spanner 单行 compare-and-swap。迁移后 CPU/内存需求约缩小 200 倍，缓存命中率超 99%，CI 释放约 25% CPU 容量，检出从分钟级降到秒级。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/ai/wHcf2tZUiQkXGM0i.html",
+      "remark": "「200 倍」是基础设施资源占用，不是 Git 操作整体变快，别误读成 Git 被优化了。真正要记的是那个判断：Git 的离线自治是为人类节奏设计的，而 agent 沙箱活几分钟就销毁，为它准备完整仓库纯属浪费。工具链会因为使用者从人变成 agent 而重构——这是今年最该盯的主线之一。"
+    },
+    {
+      "date": "2026-11-15",
+      "category": "研究",
+      "title": "谷歌 PLE 评测：单项约束满足 91%，完整可交付只有 41.3%",
+      "summary": "Google 与 Mercor 发布 Physical-Engineering's Last Exam（PLE），85 项机械/电气/土木/结构任务、累计 5170 份文件（含作废版本）。Claude Opus 5.5 配 Claude Code 在 56 项隐藏测试得 48.3%；在 41 项人机共同创作任务里，平均满足 91% 的单项约束，但只有 41.3% 的设计项通过全部硬性安全与可行性要求。评分用硬约束门控：违反一条硬约束就直接拿不到成本优化分。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/ai/YZ0bP2vh94KY45RG.html",
+      "remark": "对做 agent 的人最值钱的一点：剩下那 9% 不是靠更强模型能补的，缺的是可行域搜索 + 带依赖关系的设计状态——改一个变量，哪些检查要失效、哪些要重算。软件工程有现成依赖图，工程设计没有。谁能把「状态失效传播」做成通用能力，谁就吃到下一段。"
+    },
+    {
+      "date": "2026-11-15",
+      "category": "安全",
+      "title": "Lovable 15.9 万个项目实测：护照照片和 20 万条私信不用登录就能看",
+      "summary": "德国 Crissy Field 与《商报》联合调查，扫描了 159,041 个用 Lovable 生成的项目，发现大量应用的 Supabase 数据库没配行级权限（RLS），未登录即可直接读取。最严重的个案牵出护照扫描件和 20 多万条私信。Lovable 的条款把数据安全责任全推给用户，但它的核心卖点恰恰是「不需要懂技术」。",
+      "source": "Crissy Field",
+      "url": "https://www.crissyfield.de/research/lovable-en/",
+      "remark": "这是 vibe coding 第一次被系统性地量出安全债。用户不需要懂技术就能建站，也就意味着没有人会去配 RLS——默认配置成了默认漏洞。产品经理记一句：凡是让用户「不用管」的环节，最后都会变成事故点。"
+    },
     {
       "date": "2026-11-14",
       "category": "研究",

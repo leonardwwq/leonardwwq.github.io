@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-11-15T06:07:40.176832+08:00",
+  "updated_at": "2026-11-16T06:05:33.433733+08:00",
   "items": [
+    {
+      "date": "2026-11-16",
+      "category": "观点",
+      "title": "「AI 生成的代码都该开源」：一条在 HN 拿到 969 分的观点",
+      "summary": "作者给了两条理由：模型是在开源代码和 CC 协议的 Stack Overflow 上训出来的，产出闭源代码等于洗许可；纯 AI 生成物没有人类作者，按 monkey selfie 判例不该享有版权，应显式以开源或 CC0 释出。",
+      "source": "Jakub T. Jankiewicz",
+      "url": "https://jakub.jankiewicz.org/blog/ai-code-open-source/",
+      "remark": "法理上第二条站得住，第一条更多是道德账。真正会改变行为的是采购和合规——以后「这行代码谁写的」会变成合同条款，而不只是博客主张。"
+    },
+    {
+      "date": "2026-11-16",
+      "category": "研究",
+      "title": "姚期智与杨植麟联手出题：TCSExam 用 100 道科研任务考 AI",
+      "summary": "论文把理论计算机科学的科研拆成定理证明（Lean 4）、Solver 工程、数学构造、开放猜想四条轨道共 100 项任务，用研究证书加 Checkpoint 区分局部推进与完整证明。GPT-6 Astra 完成 20 项研究级定理中的 14 项，并把一个有限域矩阵猜想从 8 维推到 9 维；Kimi K3 在 124 点禁三角形/四边形的构造题上做出 630 条边，超过 629 的参考纪录。",
+      "source": "arXiv / TCSExam",
+      "url": "https://arxiv.org/abs/2611.07962",
+      "remark": "重点不是刷榜，是他们先定义了什么叫「做出来了」：形式化验证、查循环依赖、拒绝把 87.5% 的中间进展算成证明。这套评分口径比那些分数值钱得多。"
+    },
+    {
+      "date": "2026-11-16",
+      "category": "开源",
+      "title": "190 行纯 JAX 重写 DeepSeek V3，在 MacBook Air 上真跑了一遍",
+      "summary": "纯 JAX 实现 MLA、DeepSeekMoE、aux-loss-free 负载均衡和 MTP，36.2M 参数、21.7M token、2.6 小时训完，验证 loss 5.02 降到 3.51；均衡 bias 把专家负载从 0.09–18.6% 拉平到 5.7–6.9%，loss 基本不变。",
+      "source": "GitHub / Vaibhaav Tiwari",
+      "url": "https://github.com/Vaibhaav-Tiwari/deepseek-v3-jax",
+      "remark": "学架构的正确姿势不是读论文，是把论文压到能一口气读完的 190 行，再在小机器上跑出可复现数字。作者自己也说了，这是架构 demo，别当语言模型用。"
+    },
+    {
+      "date": "2026-11-16",
+      "category": "技术",
+      "title": "Raschka 把位置编码讲透：从正弦到 RoPE，附 2026 开源模型对照",
+      "summary": "从绝对/正弦编码的老问题讲到 RoPE 的旋转思路、解耦 RoPE，再对照 2026 年主流开源权重模型各自的选择——包括部分新架构干脆不用显式位置编码。全文带可视化和小段 PyTorch 实现。",
+      "source": "Sebastian Raschka",
+      "url": "https://magazine.sebastianraschka.com/p/understanding-positional-embeddings",
+      "remark": "位置编码最容易被跳过，却最影响长上下文表现。这篇真正的价值在最后那张 2026 模型对照表：一眼看出大家都在改哪一层。"
+    },
+    {
+      "date": "2026-11-16",
+      "category": "研究",
+      "title": "模型权重里的硬件指纹：六款国产模型读出 Blackwell 特征",
+      "summary": "对公开权重的取证分析显示，DeepSeek-V4-Flash/Pro、Kimi K3/K3.1-Pro、MiniMax-M3、蚂蚁 Ling-3.1-flash 六款模型的初始化痕迹与 Blackwell 的 SM 数（148/152）吻合，其中两款已在真机上复现。",
+      "source": "Unemployment Labs",
+      "url": "https://unemploymentlabs.com/checkpoint-forensics",
+      "remark": "报告自己写得很清楚：支持但不证明，也无法确定芯片在哪、怎么拿到的。真正值得看的是方法——从权重反推硬件配置，这是一种全新的合规取证路子。"
+    },
     {
       "date": "2026-11-15",
       "category": "产品",

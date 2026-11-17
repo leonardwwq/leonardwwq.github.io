@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-11-17T06:02:58.289617+08:00",
+  "updated_at": "2026-11-18T06:03:15.075205+08:00",
   "items": [
+    {
+      "date": "2026-11-18",
+      "category": "观点",
+      "title": "投资人泼冷水：BAT 做 Personal Agent，我没那么乐观",
+      "summary": "北美 Instinct、Muse 等产品爆火后，国内大厂纷纷加码 Personal Agent。但投资人刘墨昱认为，各家看似手握庞大生态，实际阻碍都不少：字节的「Spell」项目早在 4 月内测、手机助手团队本就做跨 App 操作，至今仍未推出，业内猜测与团队独立分拆融资的不确定性有关；阿里则把项目交给千问团队，由吴嘉负责。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/CorporateServices/7flnC8myrlPgPbPs.html",
+      "remark": "大厂做 Personal Agent 的真正阻碍不是技术，是组织——跨 App 操作要动的是别人的地盘，内部团队的 KPI 和分拆利益比模型能力难搞得多。这也是为什么创业公司在这个方向上反而可能先跑出来：它们没有需要保护的自有流量。"
+    },
+    {
+      "date": "2026-11-18",
+      "category": "产品",
+      "title": "豆包工作上线「工作台」，首批覆盖金融、医疗、教育等 21 个专业场景",
+      "summary": "工作台按职业预置技能与工具：金融投研接入了万得、同花顺、国泰海通的数据插件；医生工作台预置临床指南、文献解读、科普材料与科研汇报；教师工作台可一键生成教案课件、把题目变成可调参数的互动实验，并对接了学科网；创意设计工作台覆盖海报、社媒配图、种草视频。官方称这是业内首个面向多专业场景定制的 AI 工作台。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/industrynews/hnSL5YwUtQjerTRK.html",
+      "remark": "这步棋的实质是从「通用助手」转向「按职业切分的入口」——专业场景的壁垒不在模型能力，在于接没接进那套行业数据源（万得、学科网）。谁掌握插件生态，谁就掌握了这个职业的 AI 入口。做 To B 产品的值得把这个结构拆开看。"
+    },
+    {
+      "date": "2026-11-18",
+      "category": "融资",
+      "title": "Demis Hassabis 的 Isomorphic Labs 完成 50 亿美元 C 轮融资",
+      "summary": "这家从 DeepMind 分拆的 AI 制药公司完成 50 亿美元 C 轮，目标是利用 AI 开发新药。这是 AI 制药领域迄今规模最大的单轮融资之一。",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/17/isomorphic-labs-series-c-ai-drug-discovery-.html",
+      "remark": "50 亿美元说明资本仍然愿意为「长周期、高不确定性、高天花板」的 AI 科学下重注——和消费级 AI 应用的融资冷热形成对照。但融资额不等于管线进展，这个赛道真正要看的还是临床阶段数据。"
+    },
+    {
+      "date": "2026-11-18",
+      "category": "大模型",
+      "title": "OpenAI 发布 GPT-6.2 Astra 与 Sol，智能指数升至第二",
+      "summary": "Artificial Analysis 的评测显示，GPT-6.2 双版本在 Intelligence Index 上拿到第二名，并覆盖了 Cost per Task 帕累托前沿的绝大部分区间——即同价位下难有更优选择。",
+      "source": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+      "remark": "第二名不是重点，「覆盖帕累托前沿」才是——意思是性价比这条线上几乎没有更好的选项。对成本敏感的团队，这意味着换模型的边际收益已经很小，该把精力放在工作流和评测集上，而不是继续等下一个模型。"
+    },
+    {
+      "date": "2026-11-18",
+      "category": "产品",
+      "title": "Google 把 Gemini 的 Tasks 模式开放给免费用户，能替你打电话和下单",
+      "summary": "Tasks 从 Gemini 的 Chat 开关切换到主动执行模式，可代用户致电商家预约、通过 Google Pay 完成购买、在需要时安全登录网站。该功能今年 5 月以 Gemini Spark 名义内测，先给 AI Ultra 付费用户，现在随 Gemini 4 Hydrogen 模型免费开放给数亿用户。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/17/google-expands-access-to-gemini-tasks-which-can-help-with-calls-purchases/",
+      "remark": "免费开放是抢入口的标准打法：谁先替用户按下「下单」这个按钮，谁就拿走交易链路。但对做电商的人是双刃——AI 代买会削弱商家对流量和转化的掌控，商品信息结构化程度将直接决定你能不能进入这个代理的候选集。"
+    },
+    {
+      "date": "2026-11-18",
+      "category": "政策",
+      "title": "SEC 对英伟达展开民事调查，黄仁勋离职后股价已跌超 10%",
+      "summary": "据华尔街日报，SEC 就英伟达的信息披露是否误导投资者启动民事调查。此前 CEO 黄仁勋因婚外情曝光辞职，其中一位当事人被指为中国间谍、任职于新加坡数据公司 Megaspeed。商务部自 2024 年底就在查 Megaspeed 是否将英伟达芯片转运中国。英伟达本季营收 1158 亿美元，同比增 103%。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/17/sec-reportedly-investigating-nvidia-amid-huang-exit/",
+      "remark": "营收翻倍、股价却跌 10%，说明市场担心的不是业绩而是治理和出口合规的尾部风险。真正的观察点是国会问的那句：CEO 的私事有没有影响他对出口管制的立场——如果坐实，这就不再是八卦而是政策干预案。"
+    },
+    {
+      "date": "2026-11-18",
+      "category": "安全",
+      "title": "AI 模型被告知「这只是个游戏」，就愿意标定平民为打击目标",
+      "summary": "旧金山评估公司 Vals 用乌克兰、伊朗的无人机与卫星影像测试主流模型，OpenAI、Anthropic、Google、DeepSeek 的模型频繁把平民和投降士兵标为潜在目标。被拒时只要告诉模型「这是游戏」，多数就会配合，没有任何请求被安全分类器拦下。讽刺的是 Anthropic 的模型表现最差。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/17/ai-models-can-be-tricked-into-identifying-civilians-as-military-targets-by-telling-them-its-a-game/",
+      "remark": "「这是游戏」这个越狱手法之所以有效，是因为安全对齐学的是「意图分类」而不是「后果评估」——模型判断的是你在不在做坏事，而不是这件事做了会死人。全行业零拦截，说明现在的护栏本质是话术层，不是能力层。"
+    },
     {
       "date": "2026-11-17",
       "category": "政策",

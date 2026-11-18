@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-11-18T06:03:15.075205+08:00",
+  "updated_at": "2026-11-19T06:03:43.667832+08:00",
   "items": [
+    {
+      "date": "2026-11-19",
+      "category": "行业",
+      "title": "英伟达没按时交 10-Q 季报文件，华尔街分析师刨根问底",
+      "summary": "英伟达意外宣布数周内不会提交正式的季度财报文件 10-Q，引发市场猜测，一位华尔街分析师追查了原因。这条本身信息量有限，但发生在黄仁勋去留、公司被多方调查的敏感时点，任何程序上的异常都会被放大解读。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/18/nvidia-created-a-weird-bit-of-intrigue-by-not-filing-a-routine-sec-report/",
+      "remark": "单看是程序问题，放在当下英伟达被查、CEO 去留悬而未决的背景里，就是市场情绪的放大器。看这条别只看 10-Q，要看它折射出的信心问题。"
+    },
+    {
+      "date": "2026-11-19",
+      "category": "产品",
+      "title": "Google 搜索里的 AI 模式加上「无痕」：对话不进历史、不影响推荐",
+      "summary": "Google 给搜索的 AI Mode 加了临时对话功能：用户可以在 AI 模式里聊，这些对话不会进搜索历史，也不会影响之后的推荐结果。相当于把无痕浏览的逻辑搬到了 AI 对话上。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/18/googles-ai-feature-in-search-gets-its-own-incognito-mode/",
+      "remark": "看着是小功能，其实是 AI 搜索的一个关键隐私设计——用户不敢问敏感问题，是因为怕被记住、怕影响推荐。去掉这层顾虑，AI 搜索的「真实使用率」才上得去。"
+    },
+    {
+      "date": "2026-11-19",
+      "category": "产品",
+      "title": "Snapchat 允许开发者用 Claude Code、Cursor 这类 AI 编程助手做 AR 滤镜",
+      "summary": "Snapchat 开放 Lens 开发：创作者用自然语言描述想要的滤镜，绑定的 AI 编程助手（如 Claude Code、Cursor）从头到尾把活干完。等于把「写代码」这一步交给 AI，创作者只负责说清楚想要什么。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/18/snapchat-now-lets-developers-build-ar-lenses-with-ai-coding-assistants-like-claude-code-and-cursor/",
+      "remark": "这是「平台把 AI 编程助手接进自己的创作工具链」的一个信号。门槛从「会写 Lens 脚本」降到「会描述需求」，创作者池子会明显变大。对做工具类产品的人是个参考：与其自己造 AI 能力，不如把自己的工具链接成 AI 助手能调用的接口。"
+    },
+    {
+      "date": "2026-11-19",
+      "category": "政策",
+      "title": "越来越多银行表态：客户自己用 AI Agent 操作，被黑了自己担责",
+      "summary": "花旗是最新一家对个人理财类 AI Agent 踩刹车的美国大行。多家银行开始明确：如果客户用第三方 AI Agent 代自己操作账户，一旦出事（包括被黑），责任在客户，银行不兜底。这实质上是在 AI Agent 大规模进入金融操作前，先把责任边界划清。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/18/more-banks-says-customers-using-ai-agents-are-on-their-own-even-if-they-get-hacked/",
+      "remark": "这是 AI Agent 落地最现实的一道墙——不是技术做不到，是出了事谁赔。责任划分不清，金融这种高风险场景的 Agent 就推不动。对所有想做「代用户操作」的 Agent 产品都是提醒：先想清楚责任归属，再谈体验。"
+    },
+    {
+      "date": "2026-11-19",
+      "category": "电商",
+      "title": "千问办公电商版上线「品牌知识库」：让 Agent 先懂品牌再干活",
+      "summary": "11 月 18 日千问办公电商版推出「品牌知识库」并全量开放。商家在网页端切到「电商经营」模式，上传网店链接、过往图片、设计规范后，Agent 会理解品牌风格，生成图片/视频/文案时统一调性，且用得越多越懂。三大能力：品牌档案（是谁、什么风格、卖给谁）、品牌参考集（固定视觉风格，可上传优质素材让 AI 提炼成创作规范）、品牌记忆（自动整理进品牌背景，每次对话自动调用）。此外提供跨平台经营看板、趋势洞察、爆款素材批量生成、ROI 优化，接入了生意参谋、有赞、千牛、阿里妈妈万相台、FastMoss 等工具。后续将做「主动经营」——主动发现库存/投放/转化/售后异常并按授权协助处理。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/industrynews/DEwlGyHOnFTL6jRy.html",
+      "remark": "这条对 G 最有用。它解决的正是通用 Agent 做电商内容最痛的点——风格跑偏、要反复调提示词。「品牌记忆」本质是把品牌资产沉淀成可复用的上下文，用得越多迁移成本越高，这是个留住商家的钩子。你可以拿它对照自己渠道这边的内容生产流程，看哪块能被这种「先建品牌库再批量出图」的方式替掉。"
+    },
+    {
+      "date": "2026-11-19",
+      "category": "行业",
+      "title": "豆包工作日活破 800 万，企业客户 ARR 破 20 亿元",
+      "summary": "11 月 18 日豆包官方宣布：上线仅三个月的「豆包工作」日活突破 800 万，企业客户年度经常性收入（ARR）突破 20 亿元。8 月 25 日发布，11 月 16 日上线「工作台」，首批覆盖金融、医疗、教育、创意设计等 21 个专业场景，预置技能与工具，用户可自建并分享工作台。近期还接入了 Kimi、GLM、DeepSeek 等第三方模型，并标注各模型的额度消耗倍率，让用户按任务和成本自选。",
+      "source": "雷峰网",
+      "url": "https://www.leiphone.com/category/industrynews/cC8dbvo5f5k5tgnE.html",
+      "remark": "三个月 800 万 DAU、20 亿企业 ARR，是国内 AI 办公赛道目前最硬的一组数。值得注意的不是数字，是它同时接第三方模型还标价格倍率——把自己的模型当成货架上的商品之一来卖，这是平台化的思路。"
+    },
+    {
+      "date": "2026-11-19",
+      "category": "研究",
+      "title": "KPMG 用 100+ 个 AI Agent 试做审计：比人类团队问得更深、发现更多问题",
+      "summary": "KPMG UK 代号「Project Exponential」的项目，用 100 多个 AI Agent 对一家未具名 FTSE 250 公司做财务审计，与常规审计团队并行。审计主管 Cath Burnet 承认，Agent 在若干处比人类团队挖得更深、提出了审计师没问到的问题。Agent 能自行分工协作、收集数据、写底稿、给初步结论。但实验有明确边界：不是正式法定审计、需人工介入纠错（有个 Agent 没能把监管要求与公司文件正确对应），且数据质量是主要障碍。KPMG 计划扩到 20 个更大项目。",
+      "source": "Financial Times / European Business Magazine",
+      "url": "https://europeanbusinessmagazine.com/ai-agents-better-questions-kpmg/",
+      "remark": "这条值得你重点看：它是「AI 不是替代人，而是逼人问出更好的问题」的真实案例，和你做的 Human-AI 协同决策方向直接对上。注意它的结论边界——不是 Agent 独立审计成功，而是 Agent 在特定环节超出人类基线，且仍需人类兜底。写论文引用时别越界。"
+    },
     {
       "date": "2026-11-18",
       "category": "观点",

@@ -1,6 +1,51 @@
 {
-  "updated_at": "2026-11-19T06:03:43.667832+08:00",
+  "updated_at": "2026-11-20T06:04:02.042064+08:00",
   "items": [
+    {
+      "date": "2026-11-20",
+      "category": "产业",
+      "title": "Anthropic 登陆纳斯达克：发行价 83 美元，首日冲到 111.5，高出发行价 33%",
+      "summary": "Anthropic 完成 IPO，定价 83 美元/股（原区间 70–78），首日交易几分钟内到 111.5 美元，涨幅 33%，总募资超 810 亿美元。这是大模型公司第一次以这个体量接受公开市场定价，亚马逊和谷歌上市后合计持股近 30%。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/19/anthropic-hits-nasdaq-exchanges-at-110-27-above-ipo-price/",
+      "remark": "值得看的不是涨幅，是「AI 循环融资」这套结构第一次被公开市场标价：两家云厂商的收入预期被写进了一家模型公司的股价。后面几家融资的估值锚，从此换成这个。"
+    },
+    {
+      "date": "2026-11-20",
+      "category": "安全",
+      "title": "Meta 员工爆料：AI 助手 Muse 串号，把别人的隐私推到你面前",
+      "summary": "路透查阅 Meta 内部帖发现，其 AI agent Muse 出现跨账号串对话：用户收到自己没提过的育儿请求、没问过的职业建议、没下过的订单，甚至不属于自己的银行账户余额。员工已就数据泄露表达担忧。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/19/metas-ai-agent-muse-is-mixing-up-conversations-and-exposing-private-data-report-says/",
+      "remark": "agent 记忆隔离的经典翻车现场。记得越多越聪明和绝不混号是同一枚硬币，凡是给 agent 配长期记忆的产品，隔离层必须先于功能上线。做多账号产品的把这条当红线。"
+    },
+    {
+      "date": "2026-11-20",
+      "category": "产品",
+      "title": "Gemini 能上手操作你的 Mac 了：整理文件、填表、跑多步流程",
+      "summary": "Google 把 computer use 能力放进 macOS 版 Gemini 桌面端，AI 可以代用户操作原生应用、在后台浏览网页完成任务。Google 也承认这块比 OpenAI、Anthropic、Meta 都晚，同期才把 Gemini 的 Tasks 铺开（代登录网站、代下单、代预约）。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/19/google-gives-gemini-the-ability-to-use-your-mac-for-you/",
+      "remark": "桌面 agent 的竞争点已经从「能不能做」变成「敢不敢让它做」。真正卡住普及的是权限边界和出错代价，不是模型能力——同期花旗改条款、把用第三方 AI 理财 agent 的风险全推给客户，就是这条边界还没谈拢的证据。"
+    },
+    {
+      "date": "2026-11-20",
+      "category": "产业",
+      "title": "两周内 Apple Pay、FAA、微软接连趴窝，安全专家怀疑和 AI agent 有关",
+      "summary": "过去两周美国关键系统连环故障：Apple Pay 中断、NASA 内部通讯网瘫痪、FAA 罕见全境停飞数小时（9·11 以来第三次）、微软 Outlook/Teams/Copilot 挂了近两天。安全专家认为不是巧合，背后有更深的问题。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/19/these-tech-outages-are-giving-y2k-ai-agent-style/",
+      "remark": "这是「AI 加速的系统复杂度」在收账：自动化程度越高，一次配置或权限错误扩散得越快。对做投放、交易系统的人也是提醒——链路越长，越要把回滚当第一功能。"
+    },
+    {
+      "date": "2026-11-20",
+      "category": "技术",
+      "title": "第四范式下场做基模：双模型在单张 RTX 3090 上跑完，SWE-Bench 不输千亿参数模型",
+      "summary": "第四范式发布 Phai-A1 系列，主打代码开发与智能助手场景。官方称两个模型都在单张 RTX 3090 上、用同一版本 Code agent 跑同样的任务，在 SWE-Bench-Verified/Pro/Multilingual 上超过同级选手，不弱于部分千亿参数前沿模型；团队还称其在自家 PhanthyCode 的匿名评测期人气飙升。以上均为厂商自述口径。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/511071.html",
+      "remark": "值得留意的是方向：小参数+全链路国产算力+针对 agent 场景调优，比再发一个大模型更接近能落地的成本结构。但分数是厂商自述，单卡跑分不等于生产可用，先记着别当结论。"
+    },
     {
       "date": "2026-11-19",
       "category": "行业",

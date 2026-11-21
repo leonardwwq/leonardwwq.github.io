@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-11-21T06:06:37.502470+08:00",
+  "updated_at": "2026-11-22T06:04:39.766166+08:00",
   "items": [
+    {
+      "date": "2026-11-22",
+      "category": "产业",
+      "title": "Anthropic 上市第二日跌 9%，纳指抹平 2026 年全部涨幅",
+      "summary": "Anthropic 周四上市，周五股价跌 9% 至 88.30 美元（发行价 83 美元），回吐首日大部分涨幅。纳指周五收盘比 1 月 1 日低 5%，2026 年涨幅全部抹平，道指与标普 500 进入回调区间。据 WSJ，本周科技股蒸发约 4 万亿美元市值，Nvidia 单日跌 14%，SanDisk 跌 14%、Micron 跌 12%。",
+      "source": "The Guardian",
+      "url": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off",
+      "remark": "史上最大 IPO 没托住大盘，说明资金在怀疑 AI 资本开支的回报周期，不是怀疑 Anthropic 一家。对从业者的含义很实际：明年预算和招聘更看 ROI 证据，只讲能力不够了。"
+    },
+    {
+      "date": "2026-11-22",
+      "category": "安全",
+      "title": "Signal 开始限制手机截屏，CEO 称 OS 级 AI agent 是「生存威胁」",
+      "summary": "Signal 11 月 21 日宣布在 Android 和 iOS 上限制应用内截屏，此前已默认封掉 Windows 版截屏。总裁 Meredith Whittaker 称，操作系统把 AI agent 放进系统层去「扫描」屏幕内容，等于把敏感数据抓进本地数据库或远端服务器，「一旦被抓走，Signal 就管不着了」，这会危及所有对话参与者。用户可手动关闭限制，但那等于放弃 Signal 的隐私保证；她也承认方案不完整，管不住 agent 其他更隐蔽的取数方式。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance/",
+      "remark": "这是端到端加密第一次被「本机 agent」从内部绕开的公开案例，威胁模型变了——敌人不在网络上，在自己设备里。Signal 的解法是补丁式的，真正的答案要看 OS 给不给应用数据边界。"
+    },
+    {
+      "date": "2026-11-22",
+      "category": "具身智能",
+      "title": "GPT-6.2 Astra 具身实测：Ember-0 基准 16 项任务成功率从 19.6% 翻到 41.2%",
+      "summary": "机器人基础设施公司 XDOF 在双臂机器人基准 Ember-0 上实测 GPT-6.2 Astra：16 项操作任务综合成功率 41.2%，两个月前 GPT-6 Astra 是 19.6%。此前无 AI 通关的「打结」「展开 T 恤」两项这次被拿下。测试用六台 YAM 工作站并行、每项任务重复 30 次、单日 480 场，并人工标注子步骤与碰撞。XDOF 认为 Ember-0 可能很快被模型能力饱和。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/511779.html",
+      "remark": "翻倍是真的，但 41.2% 意味着近六成任务仍然失败，离干活还有距离。真正值得记的是评测方法：多机并行 + 30 次重复 + 人工标子步骤，这套协议比一个漂亮数字更值钱。"
+    },
+    {
+      "date": "2026-11-22",
+      "category": "技术",
+      "title": "Agnes Harness 开源：9B 决策小模型接管高频操作，Agent 决策快 14 倍、成本降到 1/27",
+      "summary": "Apache 2.0 开源、GitHub 2.1k star 的 Agnes Harness 用「双系统」拆 Agent：复杂推理仍走大模型，高频且明确的操作交给专门训练的 9B 模型 Agnes Sys1.0。官方数据：判断下一步的平均耗时从 7.6 秒降到 0.53 秒（14.3 倍），单次决策成本从 0.00247 美元降到 0.000091 美元（约 1/27），机器狗找门任务整体耗时缩短 32.9%。配套 TTT（测试时训练，只调末端校准参数、用完即清）与 RSI（复盘后把有效流程写进版本化 Playbook）。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/511582.html",
+      "remark": "本质是把「路由」做成产品——不是每个步骤都值得付大模型的钱。数字全是自家 harness 报告口径，跨场景能留住多少要打问号；但「经验沉淀成 Playbook、参数用完即清」这个设计值得抄。"
+    },
+    {
+      "date": "2026-11-22",
+      "category": "产业",
+      "title": "清昴智能联合华为昇腾发起万卡级「Token 工厂」：2027 年落地，五年冲十万卡",
+      "summary": "清华系 AI 基础设施公司清昴智能 11 月 17 日联合华为昇腾生态及多家伙伴发起「昇腾 950DT 万卡级 Token 工厂联合运营计划」，2027 年推进万卡集群，五年内扩到多地域、多芯片的十万卡网络。模式是四方共建：昇腾出芯片与超节点，IDC 出机房与电力，模型与流量方出真实需求，清昴做调度、计量与联合运营。清昴称已联合 20 余家算力中心、调度近 2 万张国产卡、完成 15 款以上国产芯片适配。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/511679.html",
+      "remark": "思路从「卖卡」转向「卖可验收的 Token」，正好卡在国产算力的真实痛点上：上架率不等于利用率。风险也直白——多厂商芯片的软件栈适配是硬活，大盘需求不等于每张卡都能跑满。"
+    },
+    {
+      "date": "2026-11-22",
+      "category": "产品",
+      "title": "腾讯混元 Hy4 团队上 Reddit 开 AMA：24GB 显存小模型已在路线图，llama.cpp 适配在做",
+      "summary": "姚顺雨与混元团队就 11 月 4 日的旗舰 Hy4 和 11 月 16 日的 Hy4 flash 答网友问。Hy4 flash 支持图文输入、最长 100 万 Token 上下文、每 Token 激活约 120 亿参数，权重已公开；96GB 显存机器可以跑，部分专家层和 Engram 查表模块能挪到系统内存。团队称小模型与 24GB 显存档位已在路线图上，llama.cpp 适配进行中；按内部 WorkIndex 评测，Hy4 flash 单任务平均成本约为旗舰 Hy4 的 1/20。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/511757.html",
+      "remark": "信息量不在参数，在部署口径——官方第一次明确给出「什么显存跑什么档」，对想本地跑的人比榜单有用。但 1/20 是自家 WorkIndex 口径，别当独立结论。"
+    },
     {
       "date": "2026-11-21",
       "category": "学术",

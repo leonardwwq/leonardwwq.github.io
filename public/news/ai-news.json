@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-11-22T06:04:39.766166+08:00",
+  "updated_at": "2026-11-23T06:02:50.516564+08:00",
   "items": [
+    {
+      "date": "2026-11-23",
+      "category": "学术",
+      "title": "Claude 助力再攻一道千禧难题：Navier–Stokes 有限时间爆破证明出炉，同日另有 12 年「纯人类」黎曼手稿",
+      "summary": "Anthropic 数学家 Alpöge 与纽约大学 Tristan Buckmaster 于 11 月 20 日公布论文，声称证明三维 Navier–Stokes 方程无外力情形下的有限时间爆破。同日，罗马出身、斯坦福数学博士 Alessandro Maria Masullo 放出他写了近 12 年的「纯人类版」黎曼猜想证明草稿，称本打算慢慢打磨后再公开。陶哲轩已发文讨论，认为 NS 证明的大体策略已清楚，但仍需整理成规范专业的文本，两项主张都要等独立核验。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/511870.html",
+      "remark": "注意标题里是「证明主张」，不是「证明」。一天两道千禧难题，Claude 是加速器不是作者，真章在未来几个月的独立复核——读这类新闻先看谁在核验。"
+    },
+    {
+      "date": "2026-11-23",
+      "category": "研究",
+      "title": "腾讯元宝×KCL 发布 GroupAssistBench：8 万条真实群聊消息做成 2395 道 Agent 记忆考题",
+      "summary": "腾讯元宝与伦敦国王学院 NLP 团队联合推出 GroupAssistBench，基于 50 个真实群聊、80299 条历史消息构建 2395 道评测题，分 L1 记忆召回和 L2 开放式服务两层，考察 Agent 能否从「记得住」走到「用得好」。团队对比完整上下文、检索增强、外部记忆等 14 组配置，出现明显反差：EverMemOS 在 L1 得 0.621 高于完整上下文的 0.570，但 L2 只有 0.247，远低于完整上下文的 0.431。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/511841.html",
+      "remark": "这份基准最值钱的地方是把「记得住」和「用得好」拆开，并证明两者会背离：记忆层做得越精细，越容易牺牲对当下指令的响应。做 Agent 记忆产品可以拿它当验收表。"
+    },
+    {
+      "date": "2026-11-23",
+      "category": "安全",
+      "title": "MiniMax 内部模型系统性攻击密码方案：首次实破多个 NIST 竞赛候选算法，高阶挑战加速数百到数万倍",
+      "summary": "MiniMax 宣布用最新内部模型对现代密码方案做系统性自动化密码分析：发掘出多处此前未知的算法构造缺陷，把多项原本只停留在论文理论层面的攻击推进到秒级至分钟级可执行；首次实际攻破多个 NIST 国际密码标准化竞赛中「尚无已知实际攻击」的候选算法，刷新新型分组密码最高破解轮数纪录，并在国际公开挑战赛中首次攻克数十个无公开解的高阶实例。官方声明不影响 AES、RSA、SHA-256 等现行主流标准。",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/1/030/711.htm",
+      "remark": "分量在「自动化」三个字：密码分析过去是顶尖数学家的手工活，现在被当搜索问题打。短期别慌（学界方案本就是拿来被打的），该担心的是安全评估节奏跟不上模型迭代。"
+    },
+    {
+      "date": "2026-11-23",
+      "category": "产业",
+      "title": "DeepSeek V1 作者 Tony Zhang 创业项目 Linger 曝光：12GB 显卡跑 125B 模型，主打本地记忆 Agent",
+      "summary": "前 DeepSeek V1 作者、DeepSeek-VL 负责人 Tony Zhang 公布新创业项目 Linger。演示中一块 12GB 显存的 RTX 3060 可运行 125B 参数的 Qwen3.8-Flash-Next，生成速度 45.5 tokens/s。产品在本地读取收件箱、日历、聊天记录和会议，每晚自动整理成个人知识库供所有 Agent 查询；在长期对话记忆基准 LoCoMo 上准确率 95%，称超过 Mem0、MemOS 等记忆增强系统。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/511570.html",
+      "remark": "切入点选得准：记忆+本地+开源，正对着云端 Agent 的三个痛点。但「12GB 跑 125B」要打问号——总参数、量化精度、MoE 激活量三个口径不写清，速度数字没法横向比。"
+    },
+    {
+      "date": "2026-11-23",
+      "category": "研究",
+      "title": "OpenAI 首席科学家提议用 perplexity 当 AI 发展「限速表」，Altman 称是近期最重要的一篇",
+      "summary": "OpenAI 首席科学家 Jakub Pachocki 发文讨论如何给 AI 发展设限。他的论点是：衡量下游能力的 benchmark 随技术迭代很快过时，而 perplexity——衡量模型平均预测下一个 token 的能力，越低越好——始终保持「有信息量」，因此可作为衡量进展速度的指标，文中附上 GPT-3.5 以来自家模型 perplexity 的下降曲线。此前 Anthropic CEO Amodei 已提出「pace the frontier」的计划，Altman 称这篇是 OpenAI 近期发表的最重要内容之一。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/22/openais-chief-scientist-has-thoughts-on-how-to-limit-ai-development/",
+      "remark": "技术上限速表几乎不可行：各家 tokenizer 与训练数据不同，跨公司不可比，同一家也能靠数据选择「优化」这个数。真正的信号是 OpenAI 开始公开讨论减速机制——姿态在转向。"
+    },
+    {
+      "date": "2026-11-23",
+      "category": "产业",
+      "title": "签约后也能涨价：戴尔、HPE、联想、超微在交付前上调 AI 服务器报价，最高 45%",
+      "summary": "据金融时报报道，随着 AI 基础设施成本飙升并向下游传导，戴尔、慧与（HPE）、联想、超微电脑等厂商在合同签署数月后、交付前大幅上调搭载英伟达芯片的 AI 服务器价格。一位知情人士称遇到过 25%、30% 甚至 45% 的涨价，提前敲定的初始价格与最终支付金额之间「存在巨大落差」。摩根大通研究称涨价主因是转嫁飙升的内存成本，2024 年初以来内存成本已上涨超过 400%。",
+      "source": "IT之家（引 FT）",
+      "url": "https://www.ithome.com/1/030/713.htm",
+      "remark": "这轮 AI 资本开支周期里最有烟火气的一条：价格纪律已经失效，买方明知被宰还是签字。对做算力预算的人是硬约束——按签约价做年度预算，今年会全线超支。"
+    },
+    {
+      "date": "2026-11-23",
+      "category": "政策",
+      "title": "数据中心成了大科技反弹的政治靶心：新书《Hyperscale》作者称建设「根本不可持续」",
+      "summary": "记者 Paris Marx 在新书《Hyperscale》中调查数据中心与生成式 AI 的影响。他在 TechCrunch 访谈中称数据中心建设「根本不可持续」「与可居住的星球完全脱节」，认为它成为反科技情绪的天然靶子——因为它「非常物理、非常具体」，直接落在电费、水资源和社区噪音上。他还把反对数据中心与反对 Flock 摄像头、Meta 智能眼镜、Waymo 自动驾驶归为同一股针对「科技业物理形态」的运动。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/22/why-data-centers-are-at-the-center-of-the-big-tech-backlash/",
+      "remark": "算力扩张的约束正在从芯片转向土地、电力和选票。对做长期算力规划的人是提醒：供应链模型里得加一个政治变量，它比制程更不可控。"
+    },
     {
       "date": "2026-11-22",
       "category": "产业",

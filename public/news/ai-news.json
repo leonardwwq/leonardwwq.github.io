@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-11-27T06:06:32.491746+08:00",
+  "updated_at": "2026-11-28T06:04:37.704047+08:00",
   "items": [
+    {
+      "date": "2026-11-28",
+      "category": "产业",
+      "title": "OpenAI 合并 ChatGPT 的 Chat 与 Work，统一额度：重度用户会更早触限",
+      "summary": "OpenAI 已向一小批 Pro 用户灰度「Chat + Work」统一体验，产品负责人 Tibo Sottiaux 在 X 公布。合并后两条线共用一个用量表，「Instant」模型对话仍不计量、不限量，用完后也能继续用 Instant。官方称多数用户不会更频繁触限，但「极少数最重度用户」可能更早用完；部分订阅者担心同等价格下高级推理模型用量被压缩。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/",
+      "remark": "订阅制的「额度通胀」开始了：把两条产品线塞进一个计数器，本质是拿重度用户补贴轻度用户，同时也是为 agent 化的高 token 消耗提前收口。对做会员产品的启示——先动计量口径，再动价格，顺序反了就是舆情。"
+    },
+    {
+      "date": "2026-11-28",
+      "category": "观点",
+      "title": "GTA VI 首日 37.9 亿美元，同一天 Anthropic 上市：效率不是美德",
+      "summary": "GTA VI 发售首日收入 37.9 亿美元，Metacritic 史上评分最高，规模超过《复联4》的 29 亿和 Taylor Swift 巡演的 20 亿；同一天 Anthropic 进入公开市场。前 Take-Two CEO Ben Feder 称「GTA 可能是最后一个用这种方式做出来的游戏」。TechCrunch 的论点是：在人人都谈 AI 提效的时点，玩家愿意为「人手做的、慢的」东西付溢价。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/26/as-anthropic-ipos-grand-theft-auto-vi-proves-why-efficiency-isnt-a-virtue/",
+      "remark": "这条是给「AI 提效」叙事的一记反问，而且反问得很贵：37.9 亿美元。效率是成本项，不是价值项——把「快和省」当卖点的产品，最后大概率被拖进价格战。"
+    },
+    {
+      "date": "2026-11-28",
+      "category": "政策",
+      "title": "纽约州禁售 AI 聊天机器人玩具五年，签字即生效倒计时 90 天",
+      "summary": "纽约州长 Hochul 本周签署法案，禁止制造、分销、销售内置 AI 聊天机器人的玩具（会说话的玩偶、毛绒玩具、机器人等），为期五年，签署 90 天后生效。Common Sense Media 同期研究显示，约四分之一有 8 岁以下孩子的美国家长已拥有或正考虑购买这类玩具；州政府表示将与总检察长合作执法，罚则很重。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/25/want-to-buy-your-kid-an-ai-toy-this-christmas-not-in-new-york/",
+      "remark": "第一例针对「AI 陪伴形态」的实体商品禁令，切入口是未成年人和情感依赖，不是模型能力——这是监管最没争议、也最容易立法的位置。做 AI 硬件/玩具出海的，北美合规清单今天就要加一条。"
+    },
+    {
+      "date": "2026-11-28",
+      "category": "产业",
+      "title": "Anthropic 的 Amodei 回击「把人类控制权交给 AI」的指控：荒谬",
+      "summary": "Anthropic CEO Dario Amodei 在 X 发长文，称对手公司暗示他主张「交出人类自由意志」是荒谬的，并写道「我们永远不该为了效率或安全牺牲正当性与自决，把治理交给 AI 是个坏主意」。争论由 OpenAI 的 Altman 强调「人对未来的 agency」、Meta 首席 AI 官 Alexandr Wang 称不能接受「把社会交给 AI」引发，而这几家公司同时在自动化自己的研究与模型开发。",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/25/anthropics-dario-amodei-calls-accusations-of-surrendering-human-control-to-ai-absurd/",
+      "remark": "别当技术辩论看，当品牌定位看：Anthropic 刚上市，安全叙事就是它的估值溢价来源，所以这句话必须由 CEO 亲口说。对手攻击的不是它的模型，是它的溢价。"
+    },
+    {
+      "date": "2026-11-28",
+      "category": "技术",
+      "title": "20 个 AI Agent 组队，4 天 350 次实验，把开源搜索引擎优化到超越公开最好成绩",
+      "summary": "TabbyML 把 20 个 AI Agent 组成一支系统工程团队，投入开源搜索引擎 Quickwit（Rust + Tantivy），不指定改哪行代码，让它们自己找瓶颈、提方案、设计实验、互相 review。4 天跑了约 350 次实验，ClickBench 数据湖类别热查询 geomean 从 403ms 降到 304ms，比 Duckflight 公开成绩 354ms 快 16%（ClickHouse 同口径未优化为 392ms）。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/513163.html",
+      "remark": "重点不是榜单，是结构：20 个 agent 互相评审，替代的是 code review 这道质量闸门，而不是写代码那一步。想复制的硬前提是有一个能自动判优劣的硬指标——没有 ClickBench 这种尺子，多 agent 只会互相吹。"
+    },
+    {
+      "date": "2026-11-28",
+      "category": "产品",
+      "title": "DeepSeek APP 突然冒出账单明细，用户担心要收费",
+      "summary": "DeepSeek 手机端 APP 近日更新后出现用量账单，计价规则与 DeepSeek-V4.1-Flash 的 API「空闲时段」定价逐项对得上。目前聊天仍免费、收费方案未官宣，官方也未解释账单用途。背景是 V4.1-Flash-1017 在 OpenRouter 上单周调用量已达 33.6 万亿 Token，环比涨 801%。",
+      "source": "量子位",
+      "url": "https://www.qbitai.com/2026/11/513305.html",
+      "remark": "先给账单、再谈价格，是定价过渡期成本最低的做法——用量先变得可见，心理账户建好，正式收费时抵触会小很多。国内免费额度大概率不会消失，但一定会分层。"
+    },
     {
       "date": "2026-11-27",
       "category": "研究",
